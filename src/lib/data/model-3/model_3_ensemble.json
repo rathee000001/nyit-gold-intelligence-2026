@@ -1,198 +1,196 @@
 {
-    "model_name": "NYIT Model 3 (Cortex V8.4)",
+    "model_name": "NYIT Model 3 (Self-Correcting V9.0)",
     "status": "ACTIVE",
     "components": {
-        "structural_bias": "15.0%",
-        "temporal_bias": "85.0%",
-        "reality_anchor": "DISABLED",
+        "dynamic_weights": "Struct 0.26 | Temp 0.74",
+        "residual_correction": "$438.82",
         "narrative_adjustment": "0.00%"
     },
     "forecast_data": [
         {
             "date": "2026-01-21",
-            "price": 4392.62,
-            "base_price": 4392.62,
+            "price": 4771.36,
+            "base_prediction": 4332.54,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-01-22",
-            "price": 4428.33,
-            "base_price": 4428.33,
+            "price": 4802.95,
+            "base_prediction": 4364.12,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-01-23",
-            "price": 4465.66,
-            "base_price": 4465.66,
+            "price": 4835.53,
+            "base_prediction": 4396.7,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-01-24",
-            "price": 4504.08,
-            "base_price": 4504.08,
+            "price": 4869.01,
+            "base_prediction": 4430.19,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-01-25",
-            "price": 4543.32,
-            "base_price": 4543.32,
+            "price": 4904.08,
+            "base_prediction": 4465.26,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-01-26",
-            "price": 4581.25,
-            "base_price": 4581.25,
+            "price": 4937.28,
+            "base_prediction": 4498.46,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-01-27",
-            "price": 4618.99,
-            "base_price": 4618.99,
+            "price": 4970.38,
+            "base_prediction": 4531.56,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-01-28",
-            "price": 4660.84,
-            "base_price": 4660.84,
+            "price": 5010.65,
+            "base_prediction": 4571.83,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-01-29",
-            "price": 4699.03,
-            "base_price": 4699.03,
+            "price": 5044.57,
+            "base_prediction": 4605.75,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-01-30",
-            "price": 4737.58,
-            "base_price": 4737.58,
+            "price": 5079.06,
+            "base_prediction": 4640.24,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-01-31",
-            "price": 4775.21,
-            "base_price": 4775.21,
+            "price": 5111.85,
+            "base_prediction": 4673.03,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-01",
-            "price": 4822.16,
-            "base_price": 4822.16,
+            "price": 5160.67,
+            "base_prediction": 4721.85,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-02",
-            "price": 4859.97,
-            "base_price": 4859.97,
+            "price": 5193.63,
+            "base_prediction": 4754.8,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-03",
-            "price": 4897.86,
-            "base_price": 4897.86,
+            "price": 5226.65,
+            "base_prediction": 4787.83,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-04",
-            "price": 4935.82,
-            "base_price": 4935.82,
+            "price": 5259.74,
+            "base_prediction": 4820.92,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-05",
-            "price": 4973.83,
-            "base_price": 4973.83,
+            "price": 5292.87,
+            "base_prediction": 4854.04,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-06",
-            "price": 5012.0,
-            "base_price": 5012.0,
+            "price": 5326.27,
+            "base_prediction": 4887.45,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-07",
-            "price": 5049.96,
-            "base_price": 5049.96,
+            "price": 5359.28,
+            "base_prediction": 4920.45,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-08",
-            "price": 5088.2,
-            "base_price": 5088.2,
+            "price": 5392.78,
+            "base_prediction": 4953.96,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-09",
-            "price": 5126.06,
-            "base_price": 5126.06,
+            "price": 5425.68,
+            "base_prediction": 4986.86,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-10",
-            "price": 5163.27,
-            "base_price": 5163.27,
+            "price": 5457.47,
+            "base_prediction": 5018.65,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-11",
-            "price": 5201.14,
-            "base_price": 5201.14,
+            "price": 5490.48,
+            "base_prediction": 5051.66,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-12",
-            "price": 5238.9,
-            "base_price": 5238.9,
+            "price": 5523.4,
+            "base_prediction": 5084.57,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-13",
-            "price": 5277.92,
-            "base_price": 5277.92,
+            "price": 5558.59,
+            "base_prediction": 5119.77,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-14",
-            "price": 5311.36,
-            "base_price": 5311.36,
+            "price": 5584.25,
+            "base_prediction": 5145.43,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-15",
-            "price": 5348.7,
-            "base_price": 5348.7,
+            "price": 5616.8,
+            "base_prediction": 5177.98,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-16",
-            "price": 5385.86,
-            "base_price": 5385.86,
+            "price": 5649.18,
+            "base_prediction": 5210.36,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-17",
-            "price": 5422.81,
-            "base_price": 5422.81,
+            "price": 5681.39,
+            "base_prediction": 5242.57,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-18",
-            "price": 5459.41,
-            "base_price": 5459.41,
+            "price": 5713.2,
+            "base_prediction": 5274.38,
             "narrative_impact": 0.0
         },
         {
             "date": "2026-02-19",
-            "price": 5490.48,
-            "base_price": 5490.48,
+            "price": 5735.66,
+            "base_prediction": 5296.84,
             "narrative_impact": 0.0
         }
     ],
     "metadata": {
-        "generated_at": "2026-01-21T10:30:40.572317",
+        "generated_at": "2026-01-21T10:37:39.150331",
         "latest_news": "Gold breaks new record on Greenland tariff threats \u2014 $7,000 level on the cards - CNBC",
-        "sentiment_score": 0.0,
         "verdict": "BULLISH"
     }
 }
