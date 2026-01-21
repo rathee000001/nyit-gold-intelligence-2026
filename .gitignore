@@ -1,0 +1,20 @@
+# Python virtual environment
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Next.js / Node
+node_modules/
+.next/
+out/
+build/
+
+# Local Environment Secrets
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
