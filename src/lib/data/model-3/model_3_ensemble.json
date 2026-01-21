@@ -1,259 +1,260 @@
 {
-    "model_name": "NYIT Model 3 (Cortex V10.0 - Bull Trend)",
+    "model_name": "NYIT Model 3 (Cortex V10.1 - Bull Trend)",
     "status": "ACTIVE",
     "components": {
         "regime": "Bull Trend",
         "regime_prob": "59.5%",
         "volatility_risk": "1.13% (Daily)",
         "weights": "Struct 0.3 | Temp 0.7",
-        "regime_premium": "1.05x"
+        "basis_calibration": "1.1196x",
+        "sentiment_impact": "0.8667"
     },
     "forecast_data": [
         {
             "date": "2026-01-21",
-            "price": 4443.92,
+            "price": 4943.97,
             "base_model": 4232.3,
-            "regime_premium": 211.62,
-            "risk_upper": 4544.11,
-            "risk_lower": 4343.72
+            "calibration_boost": 711.66,
+            "risk_upper": 5055.43,
+            "risk_lower": 4832.5
         },
         {
             "date": "2026-01-22",
-            "price": 4407.96,
+            "price": 4903.97,
             "base_model": 4198.06,
-            "regime_premium": 209.9,
-            "risk_upper": 4507.63,
-            "risk_lower": 4308.3
+            "calibration_boost": 705.91,
+            "risk_upper": 5014.85,
+            "risk_lower": 4793.09
         },
         {
             "date": "2026-01-23",
-            "price": 4381.6,
+            "price": 4874.64,
             "base_model": 4172.95,
-            "regime_premium": 208.65,
-            "risk_upper": 4480.95,
-            "risk_lower": 4282.25
+            "calibration_boost": 701.68,
+            "risk_upper": 4985.16,
+            "risk_lower": 4764.11
         },
         {
             "date": "2026-01-24",
-            "price": 4364.0,
+            "price": 4855.06,
             "base_model": 4156.19,
-            "regime_premium": 207.81,
-            "risk_upper": 4463.23,
-            "risk_lower": 4264.78
+            "calibration_boost": 698.87,
+            "risk_upper": 4965.45,
+            "risk_lower": 4744.67
         },
         {
             "date": "2026-01-25",
-            "price": 4355.34,
+            "price": 4845.42,
             "base_model": 4147.94,
-            "regime_premium": 207.4,
-            "risk_upper": 4454.64,
-            "risk_lower": 4256.04
+            "calibration_boost": 697.48,
+            "risk_upper": 4955.9,
+            "risk_lower": 4734.94
         },
         {
             "date": "2026-01-26",
-            "price": 4349.91,
+            "price": 4839.38,
             "base_model": 4142.77,
-            "regime_premium": 207.14,
-            "risk_upper": 4449.36,
-            "risk_lower": 4250.45
+            "calibration_boost": 696.61,
+            "risk_upper": 4950.03,
+            "risk_lower": 4728.73
         },
         {
             "date": "2026-01-27",
-            "price": 4348.17,
+            "price": 4837.45,
             "base_model": 4141.12,
-            "regime_premium": 207.06,
-            "risk_upper": 4447.87,
-            "risk_lower": 4248.48
+            "calibration_boost": 696.33,
+            "risk_upper": 4948.36,
+            "risk_lower": 4726.54
         },
         {
             "date": "2026-01-28",
-            "price": 4357.65,
+            "price": 4847.99,
             "base_model": 4150.14,
-            "regime_premium": 207.51,
-            "risk_upper": 4457.83,
-            "risk_lower": 4257.47
+            "calibration_boost": 697.85,
+            "risk_upper": 4959.44,
+            "risk_lower": 4736.53
         },
         {
             "date": "2026-01-29",
-            "price": 4360.91,
+            "price": 4851.62,
             "base_model": 4153.25,
-            "regime_premium": 207.66,
-            "risk_upper": 4461.44,
-            "risk_lower": 4260.38
+            "calibration_boost": 698.37,
+            "risk_upper": 4963.47,
+            "risk_lower": 4739.78
         },
         {
             "date": "2026-01-30",
-            "price": 4365.66,
+            "price": 4856.9,
             "base_model": 4157.77,
-            "regime_premium": 207.89,
-            "risk_upper": 4466.57,
-            "risk_lower": 4264.75
+            "calibration_boost": 699.13,
+            "risk_upper": 4969.17,
+            "risk_lower": 4744.64
         },
         {
             "date": "2026-01-31",
-            "price": 4368.51,
+            "price": 4860.08,
             "base_model": 4160.49,
-            "regime_premium": 208.02,
-            "risk_upper": 4469.76,
-            "risk_lower": 4267.26
+            "calibration_boost": 699.59,
+            "risk_upper": 4972.72,
+            "risk_lower": 4747.43
         },
         {
             "date": "2026-02-01",
-            "price": 4390.62,
+            "price": 4884.67,
             "base_model": 4181.54,
-            "regime_premium": 209.08,
-            "risk_upper": 4492.66,
-            "risk_lower": 4288.58
+            "calibration_boost": 703.13,
+            "risk_upper": 4998.19,
+            "risk_lower": 4771.15
         },
         {
             "date": "2026-02-02",
-            "price": 4392.95,
+            "price": 4887.26,
             "base_model": 4183.76,
-            "regime_premium": 209.19,
-            "risk_upper": 4495.31,
-            "risk_lower": 4290.58
+            "calibration_boost": 703.5,
+            "risk_upper": 5001.14,
+            "risk_lower": 4773.38
         },
         {
             "date": "2026-02-03",
-            "price": 4394.74,
+            "price": 4889.25,
             "base_model": 4185.47,
-            "regime_premium": 209.27,
-            "risk_upper": 4497.42,
-            "risk_lower": 4292.06
+            "calibration_boost": 703.79,
+            "risk_upper": 5003.49,
+            "risk_lower": 4775.02
         },
         {
             "date": "2026-02-04",
-            "price": 4395.98,
+            "price": 4890.64,
             "base_model": 4186.65,
-            "regime_premium": 209.33,
-            "risk_upper": 4498.96,
-            "risk_lower": 4293.0
+            "calibration_boost": 703.99,
+            "risk_upper": 5005.2,
+            "risk_lower": 4776.07
         },
         {
             "date": "2026-02-05",
-            "price": 4396.71,
+            "price": 4891.45,
             "base_model": 4187.34,
-            "regime_premium": 209.37,
-            "risk_upper": 4499.98,
-            "risk_lower": 4293.44
+            "calibration_boost": 704.1,
+            "risk_upper": 5006.33,
+            "risk_lower": 4776.56
         },
         {
             "date": "2026-02-06",
-            "price": 4397.41,
+            "price": 4892.23,
             "base_model": 4188.01,
-            "regime_premium": 209.4,
-            "risk_upper": 4500.97,
-            "risk_lower": 4293.85
+            "calibration_boost": 704.22,
+            "risk_upper": 5007.43,
+            "risk_lower": 4777.02
         },
         {
             "date": "2026-02-07",
-            "price": 4397.58,
+            "price": 4892.41,
             "base_model": 4188.17,
-            "regime_premium": 209.41,
-            "risk_upper": 4501.41,
-            "risk_lower": 4293.75
+            "calibration_boost": 704.24,
+            "risk_upper": 5007.92,
+            "risk_lower": 4776.9
         },
         {
             "date": "2026-02-08",
-            "price": 4398.4,
+            "price": 4893.33,
             "base_model": 4188.95,
-            "regime_premium": 209.45,
-            "risk_upper": 4502.52,
-            "risk_lower": 4294.28
+            "calibration_boost": 704.38,
+            "risk_upper": 5009.16,
+            "risk_lower": 4777.49
         },
         {
             "date": "2026-02-09",
-            "price": 4398.61,
+            "price": 4893.56,
             "base_model": 4189.15,
-            "regime_premium": 209.46,
-            "risk_upper": 4503.0,
-            "risk_lower": 4294.22
+            "calibration_boost": 704.41,
+            "risk_upper": 5009.7,
+            "risk_lower": 4777.42
         },
         {
             "date": "2026-02-10",
-            "price": 4397.67,
+            "price": 4892.51,
             "base_model": 4188.25,
-            "regime_premium": 209.41,
-            "risk_upper": 4502.3,
-            "risk_lower": 4293.03
+            "calibration_boost": 704.26,
+            "risk_upper": 5008.92,
+            "risk_lower": 4776.1
         },
         {
             "date": "2026-02-11",
-            "price": 4398.43,
+            "price": 4893.36,
             "base_model": 4188.98,
-            "regime_premium": 209.45,
-            "risk_upper": 4503.35,
-            "risk_lower": 4293.51
+            "calibration_boost": 704.38,
+            "risk_upper": 5010.09,
+            "risk_lower": 4776.63
         },
         {
             "date": "2026-02-12",
-            "price": 4399.34,
+            "price": 4894.37,
             "base_model": 4189.85,
-            "regime_premium": 209.49,
-            "risk_upper": 4504.55,
-            "risk_lower": 4294.13
+            "calibration_boost": 704.53,
+            "risk_upper": 5011.43,
+            "risk_lower": 4777.32
         },
         {
             "date": "2026-02-13",
-            "price": 4403.28,
+            "price": 4898.75,
             "base_model": 4193.6,
-            "regime_premium": 209.68,
-            "risk_upper": 4508.85,
-            "risk_lower": 4297.7
+            "calibration_boost": 705.16,
+            "risk_upper": 5016.21,
+            "risk_lower": 4781.3
         },
         {
             "date": "2026-02-14",
-            "price": 4395.87,
+            "price": 4890.51,
             "base_model": 4186.54,
-            "regime_premium": 209.33,
-            "risk_upper": 4501.53,
-            "risk_lower": 4290.21
+            "calibration_boost": 703.97,
+            "risk_upper": 5008.06,
+            "risk_lower": 4772.96
         },
         {
             "date": "2026-02-15",
-            "price": 4397.03,
+            "price": 4891.8,
             "base_model": 4187.65,
-            "regime_premium": 209.38,
-            "risk_upper": 4502.98,
-            "risk_lower": 4291.07
+            "calibration_boost": 704.16,
+            "risk_upper": 5009.68,
+            "risk_lower": 4773.92
         },
         {
             "date": "2026-02-16",
-            "price": 4398.14,
+            "price": 4893.04,
             "base_model": 4188.7,
-            "regime_premium": 209.44,
-            "risk_upper": 4504.38,
-            "risk_lower": 4291.89
+            "calibration_boost": 704.33,
+            "risk_upper": 5011.24,
+            "risk_lower": 4774.84
         },
         {
             "date": "2026-02-17",
-            "price": 4399.18,
+            "price": 4894.2,
             "base_model": 4189.7,
-            "regime_premium": 209.48,
-            "risk_upper": 4505.72,
-            "risk_lower": 4292.65
+            "calibration_boost": 704.5,
+            "risk_upper": 5012.72,
+            "risk_lower": 4775.68
         },
         {
             "date": "2026-02-18",
-            "price": 4399.95,
+            "price": 4895.05,
             "base_model": 4190.43,
-            "regime_premium": 209.52,
-            "risk_upper": 4506.76,
-            "risk_lower": 4293.13
+            "calibration_boost": 704.62,
+            "risk_upper": 5013.88,
+            "risk_lower": 4776.21
         },
         {
             "date": "2026-02-19",
-            "price": 4389.57,
+            "price": 4883.51,
             "base_model": 4180.54,
-            "regime_premium": 209.03,
-            "risk_upper": 4496.4,
-            "risk_lower": 4282.75
+            "calibration_boost": 702.96,
+            "risk_upper": 5002.35,
+            "risk_lower": 4764.66
         }
     ],
     "metadata": {
-        "generated_at": "2026-01-21T11:25:53.506758",
-        "latest_news": "Gold breaks new record on Greenland tariff threats \u2014 $7,000 level on the cards - CNBC",
-        "sentiment_momentum": 0.0,
+        "generated_at": "2026-01-21T11:37:10.457039",
+        "latest_news": "Gold Prices Smash Another Record: Spot Gold Hits $4,689 All\u2011Time High as Central Banks Go on a Buying Spree - CarbonCredits.com",
+        "sentiment_momentum": 0.8667,
         "verdict": "BEARISH"
     }
 }
