@@ -4,10 +4,12 @@
  * ============================================================================================================================================================
  * MODULE: MASTER INTELLIGENCE ORCHESTRATOR (MODEL 3 - DAILY MATRIX ENGINE)
  * ============================================================================================================================================================
- * ID:              0xENGINE_MASTER_V86_MULTI_LOBE_SYNC
+ * ID:              0xENGINE_MASTER_V88_COLAB_SYNC
  * PURPOSE:         Centralized Daily Synchronization & Neural Brain Bridge.
  * UPGRADE:         Multi-Lobe JSON Integration (Structural, Temporal, Narrative).
  * ARCHITECTURE:    Server Action orchestrating parallel agent streams + Lobe-specific hydration.
+ * FIX (COLAB):     Re-indexed to src/lib/data/model-3/ and added R2 metric support.
+ * FIX (CLEANUP):   Removed all legacy Kaggle pathing and redundant fetch logic.
  * ============================================================================================================================================================
  */
 
@@ -30,6 +32,7 @@ export interface BrainAnalytics {
     rmse: number;
     mad: number;
     accuracy_score: number;
+    r2_score: number; // Institutional Standard
   };
   coefficients: Record<string, number>;
   formula: string;
@@ -60,7 +63,7 @@ export async function fetchMaxHistorySeries(): Promise<{
   
   const droppedFactors = ['move_index', 'cb_reserves', 'china_holdings', 'copper', 'silver_spot', 'brics_gdp'];
 
-  console.log(`[ENGINE M3]: Initiating Daily Zipper for 1968-2026 timeline...`);
+  console.log(`[ENGINE M3]: Initiating Daily Zipper for Colab-Synced 1968-2026 timeline...`);
 
   // PHASE 1: PARALLEL AGENT HYDRATION
   await Promise.all(allFactorKeys.map(async (key) => {
@@ -118,31 +121,37 @@ export async function fetchMaxHistorySeries(): Promise<{
 /**
  * UTILITY: getBrainAnalytics
  * Merges outputs from the three distinct Python lobes (Structural, Temporal, Narrative).
+ * Synchronized with Google Colab /content/ root mapping.
  */
 export async function getBrainAnalytics(): Promise<BrainAnalytics | null> {
   try {
-    const brainDir = path.join(process.cwd(), 'data', 'brain');
+    // Re-indexed to internal src directory (Synced via Cloud Bridge)
+    const brainDir = path.join(process.cwd(), 'src', 'lib', 'data', 'model-3');
+    
     const structuralPath = path.join(brainDir, 'structural_lobe.json');
     const temporalPath = path.join(brainDir, 'temporal_lobe.json');
     const narrativePath = path.join(brainDir, 'narrative_lobe.json');
 
-    if (!fs.existsSync(structuralPath)) return null;
+    if (!fs.existsSync(structuralPath)) {
+      console.warn("[ENGINE M3]: Structural Artifact missing at", structuralPath);
+      return null;
+    }
 
-    // Load Lobes
+    // Load Lobes from the synchronized GitHub repository folders
     const structural = JSON.parse(fs.readFileSync(structuralPath, 'utf-8'));
     const temporal = fs.existsSync(temporalPath) ? JSON.parse(fs.readFileSync(temporalPath, 'utf-8')) : {};
     const narrative = fs.existsSync(narrativePath) ? JSON.parse(fs.readFileSync(narrativePath, 'utf-8')) : {};
 
-    // Dynamic Formula Construction
-    const topCoeffs = Object.entries(structural.coefficients || {})
-      .sort(([, a], [, b]) => (b as number) - (a as number))
-      .slice(0, 3);
-    const formulaStr = `Gold Price ≈ ${topCoeffs.map(([k, v]) => `(${v} * ${k})`).join(' + ')} + ε`;
-
     return {
-      metrics: structural.metrics || { mape: 0, rmse: 0, mad: 0, accuracy_score: 0 },
+      metrics: {
+        mape: structural.metrics?.mape || 0,
+        rmse: structural.metrics?.rmse || 0,
+        mad: structural.metrics?.mad || 0,
+        accuracy_score: structural.metrics?.accuracy_score || 0,
+        r2_score: structural.metrics?.r2_score || 0
+      },
       coefficients: structural.coefficients || {},
-      formula: formulaStr,
+      formula: structural.formula || "Awaiting Regression Convergence...",
       temporal: {
         momentum_score: temporal.momentum_score || 0,
         trend_direction: temporal.trend_direction || "Stable",
@@ -154,7 +163,7 @@ export async function getBrainAnalytics(): Promise<BrainAnalytics | null> {
         managerial_insight: narrative.managerial_insight || "Awaiting Lobe Integration",
         chatbot_context: narrative.chatbot_context || "No context available"
       },
-      last_trained: structural.last_updated || new Date().toISOString()
+      last_trained: structural.metadata?.timestamp || new Date().toISOString()
     };
   } catch (error) {
     console.error("[ENGINE M3 ANALYTICS FAILURE]:", error);
@@ -163,14 +172,14 @@ export async function getBrainAnalytics(): Promise<BrainAnalytics | null> {
 }
 
 /**
- * NEURAL BRIDGE: updateBrainStore (Kaggle Sync Support)
- * Now handles lobe-specific file writes.
+ * NEURAL BRIDGE: updateBrainStore (Remote Laboratory Support)
+ * Handles internal file writes when new JSONs arrive from the laboratory.
  */
 export async function updateBrainStore(filename: string, data: any) {
-  console.log(`[ENGINE M3]: Receiving Lobe update for ${filename}...`);
+  console.log(`[ENGINE M3]: Receiving Colab update for ${filename}...`);
   
   try {
-    const brainPath = path.join(process.cwd(), 'data', 'brain');
+    const brainPath = path.join(process.cwd(), 'src', 'lib', 'data', 'model-3');
     if (!fs.existsSync(brainPath)) {
       fs.mkdirSync(brainPath, { recursive: true });
     }
