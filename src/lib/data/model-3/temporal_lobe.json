@@ -1,25 +1,30 @@
 {
-    "momentum_score": 49.92,
-    "trend_direction": "Neutral",
+    "momentum_score": 100.0,
+    "trend_direction": "Bullish",
     "wavelet_denoised_path": [
-        4443.8,
-        4208.38,
-        4604.41,
-        4475.3,
-        4759.67,
-        4210.3,
-        4494.12,
-        4557.73,
-        4286.54,
-        4421.87
+        4248.81,
+        4644.86,
+        4399.11,
+        4558.85,
+        4614.58,
+        4438.64,
+        4433.0,
+        4654.64,
+        4546.98,
+        4612.21,
+        4533.29,
+        4530.58,
+        4222.75,
+        4508.91,
+        4474.56
     ],
     "forecast": {
-        "price": 4443.79,
-        "lower_ci": 4240.03,
-        "upper_ci": 4626.21
+        "price": 4496.59,
+        "lower_ci": 4259.23,
+        "upper_ci": 4685.79
     },
     "metadata": {
-        "timestamp": "2026-01-21T08:28:17.754394",
-        "lobe": "Temporal Beta (Bi-LSTM + MC Dropout)"
+        "timestamp": "2026-01-21T08:46:36.457645",
+        "lobe": "Temporal Beta (Bi-LSTM V16.12)"
     }
 }
