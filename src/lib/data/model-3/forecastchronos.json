@@ -32,8 +32,8 @@
         3982.13
     ],
     "start_date": "2026-01-22",
-    "model_type": "XGBoost + CatBoost Ensemble",
+    "model_type": "XGBoost + CatBoost (Regime Aware)",
     "metadata": {
-        "timestamp": "2026-01-21T08:56:58.266410"
+        "timestamp": "2026-01-21T11:06:15.987017"
     }
 }
