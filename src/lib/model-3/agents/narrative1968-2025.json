@@ -1,0 +1,3362 @@
+{
+    "1970-01-31": {
+        "title": "Bretton Woods Strain",
+        "snippet": "US Gold stock falls to $11B. Peg at $35/oz under siege.",
+        "impact": "Medium"
+    },
+    "1970-02-28": {
+        "title": "IMF SDR Launch",
+        "snippet": "Paper gold (SDRs) introduced to save liquidity.",
+        "impact": "Low"
+    },
+    "1970-03-31": {
+        "title": "Postal Strike",
+        "snippet": "US disruption. Inflation expectations tick up.",
+        "impact": "Low"
+    },
+    "1970-04-30": {
+        "title": "Cambodia Invasion",
+        "snippet": "Nixon expands war. Dow drops. Flight to safety.",
+        "impact": "High"
+    },
+    "1970-05-31": {
+        "title": "Kent State Riots",
+        "snippet": "Social unrest peaks. Business confidence plummets.",
+        "impact": "Medium"
+    },
+    "1970-06-30": {
+        "title": "Penn Central Crash",
+        "snippet": "Major bankruptcy. Liquidity crisis. Fed intervenes.",
+        "impact": "High"
+    },
+    "1970-07-31": {
+        "title": "Deficit Spending",
+        "snippet": "Federal budget deficit widens. Dollar weakens.",
+        "impact": "Medium"
+    },
+    "1970-08-31": {
+        "title": "Inflation 5.7%",
+        "snippet": "Cost-push inflation. Real yields turn negative.",
+        "impact": "High"
+    },
+    "1970-09-30": {
+        "title": "Mid-East Tension",
+        "snippet": "Jordan crisis. Oil supply fears emerge.",
+        "impact": "Medium"
+    },
+    "1970-10-31": {
+        "title": "GM Strike Impact",
+        "snippet": "GDP growth slows. Stagflation narrative begins.",
+        "impact": "Medium"
+    },
+    "1970-11-30": {
+        "title": "Rate Cut Talk",
+        "snippet": "Burns pressured to cut rates despite inflation.",
+        "impact": "Low"
+    },
+    "1970-12-31": {
+        "title": "Peg Exhaustion",
+        "snippet": "London gold premium widens. Arbitrage accelerates.",
+        "impact": "High"
+    },
+    "1971-01-31": {
+        "title": "Dollar Overhang",
+        "snippet": "Foreign banks hold more USD than US has gold.",
+        "impact": "High"
+    },
+    "1971-02-28": {
+        "title": "German Divestment",
+        "snippet": "Bundesbank converts dollars. Reserves drain.",
+        "impact": "High"
+    },
+    "1971-03-31": {
+        "title": "Trade Deficit",
+        "snippet": "US imports exceed exports. Currency weakness.",
+        "impact": "Medium"
+    },
+    "1971-04-30": {
+        "title": "Dollar Crisis I",
+        "snippet": "Speculative attack on USD in Europe.",
+        "impact": "High"
+    },
+    "1971-05-31": {
+        "title": "Mark Floats",
+        "snippet": "Germany stops defending peg. System fracture.",
+        "impact": "High"
+    },
+    "1971-06-30": {
+        "title": "Camp David Plans",
+        "snippet": "Secret meetings on closing gold window.",
+        "impact": "Medium"
+    },
+    "1971-07-31": {
+        "title": "French Demand",
+        "snippet": "France sends battleship to repatriate gold.",
+        "impact": "High"
+    },
+    "1971-08-31": {
+        "title": "NIXON SHOCK",
+        "snippet": "Gold Window Closed. 10% Surcharge. Wages Frozen.",
+        "impact": "High"
+    },
+    "1971-09-30": {
+        "title": "Float Chaos",
+        "snippet": "Currencies float. Gold rises in free market.",
+        "impact": "High"
+    },
+    "1971-10-31": {
+        "title": "Connally Policy",
+        "snippet": "Treasury: 'Our currency, your problem'.",
+        "impact": "Medium"
+    },
+    "1971-11-30": {
+        "title": "G10 Deadlock",
+        "snippet": "No agreement on rates. Uncertainty fuels gold.",
+        "impact": "Medium"
+    },
+    "1971-12-31": {
+        "title": "Smithsonian Deal",
+        "snippet": "Dollar devalued to $38/oz. Temporary fix.",
+        "impact": "High"
+    },
+    "1972-01-31": {
+        "title": "Market Skepticism",
+        "snippet": "Traders doubt $38 peg. Gold trades at $45.",
+        "impact": "Medium"
+    },
+    "1972-02-29": {
+        "title": "Japan Pressure",
+        "snippet": "Yen revaluation forced. Dollar weakness.",
+        "impact": "Medium"
+    },
+    "1972-03-31": {
+        "title": "Snake in Tunnel",
+        "snippet": "Europe attempts currency band. Fails.",
+        "impact": "Low"
+    },
+    "1972-04-30": {
+        "title": "Vietnam Escalation",
+        "snippet": "Bombing intensifies. Deficit grows.",
+        "impact": "Medium"
+    },
+    "1972-05-31": {
+        "title": "Gold Breaks $50",
+        "snippet": "Psychological barrier breached.",
+        "impact": "High"
+    },
+    "1972-06-30": {
+        "title": "Sterling Float",
+        "snippet": "UK floats pound. Smithsonian collapsing.",
+        "impact": "High"
+    },
+    "1972-07-31": {
+        "title": "Speculative Fever",
+        "snippet": "Gold hits $65. Central banks powerless.",
+        "impact": "High"
+    },
+    "1972-08-31": {
+        "title": "Election Spending",
+        "snippet": "Nixon pumps economy. M2 surges.",
+        "impact": "Medium"
+    },
+    "1972-09-30": {
+        "title": "Inflation Returns",
+        "snippet": "Wage-price controls failing. CPI up.",
+        "impact": "Medium"
+    },
+    "1972-10-31": {
+        "title": "Peace is at Hand",
+        "snippet": "Kissinger announcement drops risk.",
+        "impact": "Low"
+    },
+    "1972-11-30": {
+        "title": "Nixon Re-elected",
+        "snippet": "Status quo confirmed. Expansion continues.",
+        "impact": "Low"
+    },
+    "1972-12-31": {
+        "title": "Year of Gold",
+        "snippet": "Gold up 50% in 1972. Bull market confirmed.",
+        "impact": "High"
+    },
+    "1973-01-31": {
+        "title": "Stock Market Crash",
+        "snippet": "Nifty Fifty top. Bear market begins.",
+        "impact": "Medium"
+    },
+    "1973-02-28": {
+        "title": "Second Devaluation",
+        "snippet": "Dollar devalued to $42.22. Gold $90.",
+        "impact": "High"
+    },
+    "1973-03-31": {
+        "title": "Floating Era",
+        "snippet": "Major currencies float permanently.",
+        "impact": "High"
+    },
+    "1973-04-30": {
+        "title": "Watergate Widens",
+        "snippet": "Political risk enters equation.",
+        "impact": "Medium"
+    },
+    "1973-05-31": {
+        "title": "Gold Breaks $100",
+        "snippet": "Historic triple digit pricing.",
+        "impact": "High"
+    },
+    "1973-06-30": {
+        "title": "Freeze II",
+        "snippet": "Nixon freezes prices again. Shortages.",
+        "impact": "Medium"
+    },
+    "1973-07-31": {
+        "title": "Dollar Collapse",
+        "snippet": "DXY makes all-time lows. Gold $120.",
+        "impact": "High"
+    },
+    "1973-08-31": {
+        "title": "Agflation",
+        "snippet": "Food prices soar. Russian grain deal.",
+        "impact": "Medium"
+    },
+    "1973-09-30": {
+        "title": "Calm Before Storm",
+        "snippet": "Markets drift. Oil prices stable.",
+        "impact": "Low"
+    },
+    "1973-10-31": {
+        "title": "YOM KIPPUR WAR",
+        "snippet": "Arab Oil Embargo. Oil quadruples.",
+        "impact": "High"
+    },
+    "1973-11-30": {
+        "title": "Energy Crisis",
+        "snippet": "Gas lines. Gold/Oil correlation locks.",
+        "impact": "High"
+    },
+    "1973-12-31": {
+        "title": "Recession Begins",
+        "snippet": "Stagflation is reality.",
+        "impact": "High"
+    },
+    "1974-01-31": {
+        "title": "Inflation 10%",
+        "snippet": "CPI hits double digits. Real rates negative.",
+        "impact": "High"
+    },
+    "1974-02-28": {
+        "title": "Miners Strike",
+        "snippet": "UK labor unrest. Industrial chaos.",
+        "impact": "Medium"
+    },
+    "1974-03-31": {
+        "title": "Embargo Ends",
+        "snippet": "Oil flows resume but price high.",
+        "impact": "Medium"
+    },
+    "1974-04-30": {
+        "title": "Rates Spike",
+        "snippet": "Fed funds 11%. Liquidity tightens.",
+        "impact": "Medium"
+    },
+    "1974-05-31": {
+        "title": "Bank Failure",
+        "snippet": "Franklin National collapse. Fed support.",
+        "impact": "High"
+    },
+    "1974-06-30": {
+        "title": "Herstatt Risk",
+        "snippet": "German bank fail. Settlement risk.",
+        "impact": "High"
+    },
+    "1974-07-31": {
+        "title": "Impeachment",
+        "snippet": "Nixon resignation likely.",
+        "impact": "High"
+    },
+    "1974-08-31": {
+        "title": "Nixon Resigns",
+        "snippet": "Ford takes office.",
+        "impact": "High"
+    },
+    "1974-09-30": {
+        "title": "WIN Campaign",
+        "snippet": "Whip Inflation Now speech.",
+        "impact": "Low"
+    },
+    "1974-10-31": {
+        "title": "Deep Recession",
+        "snippet": "Unemployment rises.",
+        "impact": "Medium"
+    },
+    "1974-11-30": {
+        "title": "Gold Bill",
+        "snippet": "Ownership legalization signed.",
+        "impact": "High"
+    },
+    "1974-12-31": {
+        "title": "Legalization Day",
+        "snippet": "Private ownership legal. Price $195.",
+        "impact": "High"
+    },
+    "1975-01-31": {
+        "title": "Sell the News",
+        "snippet": "Gold drops after legalization hype.",
+        "impact": "Medium"
+    },
+    "1975-02-28": {
+        "title": "Inventory Build",
+        "snippet": "Recession inventory glut.",
+        "impact": "Low"
+    },
+    "1975-03-31": {
+        "title": "Tax Cut",
+        "snippet": "Stimulus bill passed.",
+        "impact": "Medium"
+    },
+    "1975-04-30": {
+        "title": "Saigon Falls",
+        "snippet": "Vietnam War ends.",
+        "impact": "Medium"
+    },
+    "1975-05-31": {
+        "title": "NYC Crisis",
+        "snippet": "New York City bankruptcy fear.",
+        "impact": "Medium"
+    },
+    "1975-06-30": {
+        "title": "Gold Auction",
+        "snippet": "Treasury auctions gold to dampen price.",
+        "impact": "High"
+    },
+    "1975-07-31": {
+        "title": "Grain Deal",
+        "snippet": "US sells grain to USSR. Inflation fears.",
+        "impact": "Medium"
+    },
+    "1975-08-31": {
+        "title": "IMF Sales",
+        "snippet": "IMF agrees to sell gold reserves.",
+        "impact": "High"
+    },
+    "1975-09-30": {
+        "title": "OPEC Hike",
+        "snippet": "10% oil price increase.",
+        "impact": "Medium"
+    },
+    "1975-10-31": {
+        "title": "Default Avoided",
+        "snippet": "Federal aid saves NYC.",
+        "impact": "Low"
+    },
+    "1975-11-30": {
+        "title": "Rambouillet",
+        "snippet": "G6 summit discusses exchange rates.",
+        "impact": "Low"
+    },
+    "1975-12-31": {
+        "title": "Correction Lows",
+        "snippet": "Gold ends year near $140. Bearish mood.",
+        "impact": "Medium"
+    },
+    "1976-01-31": {
+        "title": "Jamaica Accords",
+        "snippet": "Gold demonetized officially by IMF.",
+        "impact": "High"
+    },
+    "1976-02-29": {
+        "title": "Lockheed Scandal",
+        "snippet": "Bribery scandal hits sentiment.",
+        "impact": "Low"
+    },
+    "1976-03-31": {
+        "title": "Sterling Crisis",
+        "snippet": "Pound collapses below $2.",
+        "impact": "Medium"
+    },
+    "1976-04-30": {
+        "title": "Rubber Strike",
+        "snippet": "Industrial action spreads.",
+        "impact": "Low"
+    },
+    "1976-05-31": {
+        "title": "Auctions Continue",
+        "snippet": "IMF gold sales depress price.",
+        "impact": "High"
+    },
+    "1976-06-30": {
+        "title": "Soweto Uprising",
+        "snippet": "South Africa unrest. Supply risk.",
+        "impact": "Medium"
+    },
+    "1976-07-31": {
+        "title": "Viking Landing",
+        "snippet": "Mars landing diverts attention.",
+        "impact": "Low"
+    },
+    "1976-08-31": {
+        "title": "THE BOTTOM",
+        "snippet": "Gold hits $103.50. Bear trap complete.",
+        "impact": "High"
+    },
+    "1976-09-30": {
+        "title": "Recovery Begins",
+        "snippet": "Price reclaims $115. Sentiment turns.",
+        "impact": "Medium"
+    },
+    "1976-10-31": {
+        "title": "Campaign Mode",
+        "snippet": "Carter vs Ford. Uncertainty.",
+        "impact": "Low"
+    },
+    "1976-11-30": {
+        "title": "Carter Wins",
+        "snippet": "Democrat victory. Stimulus expected.",
+        "impact": "Medium"
+    },
+    "1976-12-31": {
+        "title": "Strong Close",
+        "snippet": "Gold recovers to $134.",
+        "impact": "Medium"
+    },
+    "1977-01-31": {
+        "title": "Winter Freeze",
+        "snippet": "Natural gas shortage. Energy prices up.",
+        "impact": "Medium"
+    },
+    "1977-02-28": {
+        "title": "Human Rights",
+        "snippet": "Carter doctrine announced.",
+        "impact": "Low"
+    },
+    "1977-03-31": {
+        "title": "Inflation Tick",
+        "snippet": "CPI moves back to 6%.",
+        "impact": "Medium"
+    },
+    "1977-04-30": {
+        "title": "Energy Plan",
+        "snippet": "Carter 'Moral Equivalent of War'.",
+        "impact": "Medium"
+    },
+    "1977-05-31": {
+        "title": "Credit Crunch",
+        "snippet": "Hunt brothers buying silver.",
+        "impact": "Medium"
+    },
+    "1977-06-30": {
+        "title": "Dollar Weakness",
+        "snippet": "Trade deficit widens.",
+        "impact": "Medium"
+    },
+    "1977-07-31": {
+        "title": "Steel Crisis",
+        "snippet": "US steel plants close. Rust belt.",
+        "impact": "Low"
+    },
+    "1977-08-31": {
+        "title": "Lance Affair",
+        "snippet": "Budget director scandal.",
+        "impact": "Low"
+    },
+    "1977-09-30": {
+        "title": "Gold $150",
+        "snippet": "Key resistance broken.",
+        "impact": "High"
+    },
+    "1977-10-31": {
+        "title": "Dollar Defense",
+        "snippet": "Intervention fails to stop slide.",
+        "impact": "Medium"
+    },
+    "1977-11-30": {
+        "title": "Sadat Visit",
+        "snippet": "Peace initiative Mid-East.",
+        "impact": "Low"
+    },
+    "1977-12-31": {
+        "title": "Year of Upside",
+        "snippet": "Gold finishes at $165.",
+        "impact": "Medium"
+    },
+    "1978-01-31": {
+        "title": "Miller at Fed",
+        "snippet": "G. William Miller appointed. Dovish.",
+        "impact": "High"
+    },
+    "1978-02-28": {
+        "title": "Coal Strike",
+        "snippet": "110-day strike ends. Inflationary wage deal.",
+        "impact": "Medium"
+    },
+    "1978-03-31": {
+        "title": "Dollar Rescue I",
+        "snippet": "Swap lines increased. Failed.",
+        "impact": "Medium"
+    },
+    "1978-04-30": {
+        "title": "Afghanistan Coup",
+        "snippet": "Communist coup. Geopolitics heat up.",
+        "impact": "Medium"
+    },
+    "1978-05-31": {
+        "title": "IMF Auctions Fail",
+        "snippet": "Auctions fail to suppress price.",
+        "impact": "High"
+    },
+    "1978-06-30": {
+        "title": "Prop 13",
+        "snippet": "Tax revolt in California.",
+        "impact": "Low"
+    },
+    "1978-07-31": {
+        "title": "Gold $200",
+        "snippet": "Psychological barrier crossed.",
+        "impact": "High"
+    },
+    "1978-08-31": {
+        "title": "Dollar Crisis II",
+        "snippet": "Treasury sells gold to buy USD.",
+        "impact": "High"
+    },
+    "1978-09-30": {
+        "title": "Camp David",
+        "snippet": "Egypt-Israel accords.",
+        "impact": "Low"
+    },
+    "1978-10-31": {
+        "title": "Inflation 9%",
+        "snippet": "Wage-price spiral accelerates.",
+        "impact": "High"
+    },
+    "1978-11-30": {
+        "title": "Dollar Rescue Pkg",
+        "snippet": "Massive rate hike. Gold dips.",
+        "impact": "High"
+    },
+    "1978-12-31": {
+        "title": "Iran Strikes",
+        "snippet": "Oil workers strike. Revolution begins.",
+        "impact": "High"
+    },
+    "1979-01-31": {
+        "title": "Shah Flees",
+        "snippet": "Iranian Revolution. Oil shock II.",
+        "impact": "High"
+    },
+    "1979-02-28": {
+        "title": "China War",
+        "snippet": "China invades Vietnam. Geo-risk.",
+        "impact": "Medium"
+    },
+    "1979-03-31": {
+        "title": "Three Mile Island",
+        "snippet": "Nuclear accident. Energy policy chaos.",
+        "impact": "Medium"
+    },
+    "1979-04-30": {
+        "title": "Oil Deregulation",
+        "snippet": "Carter decontrols oil prices.",
+        "impact": "Medium"
+    },
+    "1979-05-31": {
+        "title": "Gas Lines",
+        "snippet": "Shortages return. Panic at pumps.",
+        "impact": "High"
+    },
+    "1979-06-30": {
+        "title": "OPEC Hike",
+        "snippet": "Oil hits $24/barrel.",
+        "impact": "High"
+    },
+    "1979-07-31": {
+        "title": "Malaise Speech",
+        "snippet": "Carter addresses crisis of confidence.",
+        "impact": "Low"
+    },
+    "1979-08-31": {
+        "title": "Volcker Appointed",
+        "snippet": "Paul Volcker becomes Fed Chair.",
+        "impact": "High"
+    },
+    "1979-09-30": {
+        "title": "Gold $400",
+        "snippet": "Panic buying begins.",
+        "impact": "High"
+    },
+    "1979-10-31": {
+        "title": "Saturday Night",
+        "snippet": "Volcker pivots to money supply targeting.",
+        "impact": "High"
+    },
+    "1979-11-30": {
+        "title": "Hostage Crisis",
+        "snippet": "US Embassy seized in Tehran.",
+        "impact": "High"
+    },
+    "1979-12-31": {
+        "title": "Soviet Invasion",
+        "snippet": "Afghanistan invaded. Gold $500.",
+        "impact": "High"
+    },
+    "1980-01-31": {
+        "title": "Peak Gold ($850)",
+        "snippet": "Panic buying. Silver corner (Hunt Bros). Inflation 14%.",
+        "impact": "High"
+    },
+    "1980-02-29": {
+        "title": "Soviet Tension",
+        "snippet": "US boycotts Moscow Olympics. Cold War freeze.",
+        "impact": "Medium"
+    },
+    "1980-03-31": {
+        "title": "Silver Thursday",
+        "snippet": "Hunt Brothers default. Commodity crash contagion. Gold plunges.",
+        "impact": "High"
+    },
+    "1980-04-30": {
+        "title": "Rescue Fail",
+        "snippet": "Operation Eagle Claw fails in Iran. US morale low.",
+        "impact": "Medium"
+    },
+    "1980-05-31": {
+        "title": "Recession I",
+        "snippet": "Credit controls bite. Economy contracts.",
+        "impact": "Medium"
+    },
+    "1980-06-30": {
+        "title": "Rates Drop",
+        "snippet": "Fed cuts rates prematurely. Gold rebounds.",
+        "impact": "Medium"
+    },
+    "1980-07-31": {
+        "title": "Inflation Sticky",
+        "snippet": "CPI remains high despite recession.",
+        "impact": "Medium"
+    },
+    "1980-08-31": {
+        "title": "Poland Strikes",
+        "snippet": "Solidarity movement begins. Soviet risk.",
+        "impact": "Low"
+    },
+    "1980-09-30": {
+        "title": "Iraq Invades",
+        "snippet": "Iran-Iraq war begins. Oil supply threatened.",
+        "impact": "High"
+    },
+    "1980-10-31": {
+        "title": "Election Eve",
+        "snippet": "Reagan vs Carter. Hostages still held.",
+        "impact": "Low"
+    },
+    "1980-11-30": {
+        "title": "Reagan Wins",
+        "snippet": "Supply side economics promised. Strong dollar policy.",
+        "impact": "High"
+    },
+    "1980-12-31": {
+        "title": "Rates 20%",
+        "snippet": "Volcker raises rates to 20%. Real yields turn positive.",
+        "impact": "High"
+    },
+    "1981-01-31": {
+        "title": "Hostages Free",
+        "snippet": "Iran releases hostages. War risk premium fades.",
+        "impact": "High"
+    },
+    "1981-02-28": {
+        "title": "Thatcherism",
+        "snippet": "UK austerity measures. Global shift to tight money.",
+        "impact": "Low"
+    },
+    "1981-03-31": {
+        "title": "Reagan Shot",
+        "snippet": "Assassination attempt. Market pause.",
+        "impact": "Medium"
+    },
+    "1981-04-30": {
+        "title": "High Real Rates",
+        "snippet": "Inflation peaks, rates stay high. Gold sold.",
+        "impact": "High"
+    },
+    "1981-05-31": {
+        "title": "Mitterrand Wins",
+        "snippet": "France turns socialist. Capital flight to USD.",
+        "impact": "Medium"
+    },
+    "1981-06-30": {
+        "title": "Bear Market",
+        "snippet": "Gold breaks $450. Trend is down.",
+        "impact": "High"
+    },
+    "1981-07-31": {
+        "title": "Tax Cuts",
+        "snippet": "Reagan signs tax cut. Deficits projected.",
+        "impact": "Medium"
+    },
+    "1981-08-31": {
+        "title": "PATCO Strike",
+        "snippet": "Reagan fires air traffic controllers. Labor weak.",
+        "impact": "Low"
+    },
+    "1981-09-30": {
+        "title": "Deep Recession",
+        "snippet": "Tight money crushes growth. Inflation breaks.",
+        "impact": "High"
+    },
+    "1981-10-31": {
+        "title": "Sadat Killed",
+        "snippet": "Egypt leader assassinated. Mid-East flare.",
+        "impact": "Medium"
+    },
+    "1981-11-30": {
+        "title": "Deficit Fears",
+        "snippet": "Stockman warns of budget gaps.",
+        "impact": "Low"
+    },
+    "1981-12-31": {
+        "title": "Gold $400",
+        "snippet": "Year ends with gold halved from peak.",
+        "impact": "Medium"
+    },
+    "1982-01-31": {
+        "title": "Volcker Tight",
+        "snippet": "Fed refuses to pivot. Pain continues.",
+        "impact": "Medium"
+    },
+    "1982-02-28": {
+        "title": "Gold Lows",
+        "snippet": "Price touches $300 level.",
+        "impact": "High"
+    },
+    "1982-03-31": {
+        "title": "Falklands War",
+        "snippet": "UK vs Argentina. Geopolitical distraction.",
+        "impact": "Medium"
+    },
+    "1982-04-30": {
+        "title": "Oil Glut",
+        "snippet": "Oil prices soften. Inflation expectations drop.",
+        "impact": "High"
+    },
+    "1982-05-31": {
+        "title": "Drysdale Fail",
+        "snippet": "Drysdale Gov Securities collapse. Repo scare.",
+        "impact": "Medium"
+    },
+    "1982-06-30": {
+        "title": "Mexico Default",
+        "snippet": "Mexico cannot pay debt. LatAm crisis begins.",
+        "impact": "High"
+    },
+    "1982-07-31": {
+        "title": "Penn Square",
+        "snippet": "Energy bank failure. Contagion risk.",
+        "impact": "Medium"
+    },
+    "1982-08-31": {
+        "title": "Bull Run Begins",
+        "snippet": "Stock market bottoms. Secular bull starts.",
+        "impact": "High"
+    },
+    "1982-09-30": {
+        "title": "Fed Pivot",
+        "snippet": "Volcker signals easing. Gold rallies.",
+        "impact": "High"
+    },
+    "1982-10-31": {
+        "title": "Market Rally",
+        "snippet": "Equities soar. Capital leaves gold.",
+        "impact": "Medium"
+    },
+    "1982-11-30": {
+        "title": "Unemployment 10%",
+        "snippet": "Jobless rate peaks.",
+        "impact": "Low"
+    },
+    "1982-12-31": {
+        "title": "Gold Recovery",
+        "snippet": "Gold finishes year near $450.",
+        "impact": "Medium"
+    },
+    "1983-01-31": {
+        "title": "OPEC Split",
+        "snippet": "Disagreement on quotas. Oil weak.",
+        "impact": "Medium"
+    },
+    "1983-02-28": {
+        "title": "Gold $500",
+        "snippet": "Brief rally on banking fears.",
+        "impact": "Medium"
+    },
+    "1983-03-31": {
+        "title": "Reagan SDI",
+        "snippet": "Star Wars speech. Defense spending up.",
+        "impact": "Low"
+    },
+    "1983-04-30": {
+        "title": "Beirut Bombing",
+        "snippet": "Embassy attack. Terrorism risk.",
+        "impact": "Medium"
+    },
+    "1983-05-31": {
+        "title": "Strong Dollar",
+        "snippet": "Rates remain high relative to world.",
+        "impact": "High"
+    },
+    "1983-06-30": {
+        "title": "Volcker Reappt",
+        "snippet": "Reagan reappoints Volcker. Inflation fighting credible.",
+        "impact": "High"
+    },
+    "1983-07-31": {
+        "title": "Debt Gridlock",
+        "snippet": "IMF austerity imposes constraints.",
+        "impact": "Low"
+    },
+    "1983-08-31": {
+        "title": "KAL 007",
+        "snippet": "Soviets shoot down Korean jet. Cold war freeze.",
+        "impact": "Medium"
+    },
+    "1983-09-30": {
+        "title": "Hong Kong Peg",
+        "snippet": "HKD pegged to USD. Dollar dominance.",
+        "impact": "Low"
+    },
+    "1983-10-31": {
+        "title": "Grenada",
+        "snippet": "US invasion. Military flex.",
+        "impact": "Low"
+    },
+    "1983-11-30": {
+        "title": "Missile Crisis",
+        "snippet": "Pershing II deployment. Nuclear fear.",
+        "impact": "Medium"
+    },
+    "1983-12-31": {
+        "title": "Gold Drift",
+        "snippet": "Price ends year at $380.",
+        "impact": "Low"
+    },
+    "1984-01-31": {
+        "title": "Morning in America",
+        "snippet": "US growth booms. GDP 7%. Gold ignored.",
+        "impact": "High"
+    },
+    "1984-02-29": {
+        "title": "Continental Illinois",
+        "snippet": "Bank run begins. 'Too Big To Fail' coined.",
+        "impact": "High"
+    },
+    "1984-03-31": {
+        "title": "Iran Iraq Tankers",
+        "snippet": "Tanker war escalates. Oil steady.",
+        "impact": "Medium"
+    },
+    "1984-04-30": {
+        "title": "Rates Rise",
+        "snippet": "Fed tightens into growth.",
+        "impact": "Medium"
+    },
+    "1984-05-31": {
+        "title": "Bank Bailout",
+        "snippet": "FDIC rescues Continental. Moral hazard.",
+        "impact": "High"
+    },
+    "1984-06-30": {
+        "title": "Dollar Parity?",
+        "snippet": "USD crushes GBP and DEM.",
+        "impact": "High"
+    },
+    "1984-07-31": {
+        "title": "Gold $350",
+        "snippet": "Strong dollar forces liquidation.",
+        "impact": "High"
+    },
+    "1984-08-31": {
+        "title": "GOP Convention",
+        "snippet": "Reagan poll lead massive.",
+        "impact": "Low"
+    },
+    "1984-09-30": {
+        "title": "Deflation Risk",
+        "snippet": "Commodities broad selloff.",
+        "impact": "Medium"
+    },
+    "1984-10-31": {
+        "title": "Assassination",
+        "snippet": "Indira Gandhi killed. India turmoil.",
+        "impact": "Medium"
+    },
+    "1984-11-30": {
+        "title": "Reagan Landslide",
+        "snippet": "49 states. Mandate for status quo.",
+        "impact": "Medium"
+    },
+    "1984-12-31": {
+        "title": "Year of Dollar",
+        "snippet": "DXY hits record highs. Gold depressed.",
+        "impact": "High"
+    },
+    "1985-01-31": {
+        "title": "Peak Dollar",
+        "snippet": "USD forces manufacturing crisis.",
+        "impact": "High"
+    },
+    "1985-02-28": {
+        "title": "Gold $284",
+        "snippet": "Cyclical low point.",
+        "impact": "High"
+    },
+    "1985-03-31": {
+        "title": "Gorbachev",
+        "snippet": "New Soviet leader. Perestroika hints.",
+        "impact": "Medium"
+    },
+    "1985-04-30": {
+        "title": "Growth Slows",
+        "snippet": "High dollar hurts exports.",
+        "impact": "Low"
+    },
+    "1985-05-31": {
+        "title": "Bank Crisis",
+        "snippet": "Savings & Loan crisis expands (Ohio).",
+        "impact": "Medium"
+    },
+    "1985-06-30": {
+        "title": "Hostage TWA 847",
+        "snippet": "Beirut hijacking. Terror risk.",
+        "impact": "Low"
+    },
+    "1985-07-31": {
+        "title": "South Africa Emergency",
+        "snippet": "Apartheid sanctions. Supply fears.",
+        "impact": "High"
+    },
+    "1985-08-31": {
+        "title": "Protectionism",
+        "snippet": "Congress threatens tariffs due to strong USD.",
+        "impact": "Medium"
+    },
+    "1985-09-30": {
+        "title": "PLAZA ACCORD",
+        "snippet": "G5 agrees to devalue USD. Trend change.",
+        "impact": "High"
+    },
+    "1985-10-31": {
+        "title": "Tin Crisis",
+        "snippet": "ITC collapse. Metal markets rattled.",
+        "impact": "Medium"
+    },
+    "1985-11-30": {
+        "title": "Summit Geneva",
+        "snippet": "Reagan-Gorbachev meet. Cold war thaw?",
+        "impact": "Low"
+    },
+    "1985-12-31": {
+        "title": "Gold Rebound",
+        "snippet": "Weak dollar sparks rally to $327.",
+        "impact": "Medium"
+    },
+    "1986-01-31": {
+        "title": "Challenger",
+        "snippet": "Shuttle disaster. National mourning.",
+        "impact": "Low"
+    },
+    "1986-02-28": {
+        "title": "Oil Collapse",
+        "snippet": "Saudi floods market. Oil $10.",
+        "impact": "High"
+    },
+    "1986-03-31": {
+        "title": "Disinflation",
+        "snippet": "CPI drops to 1.1% on energy.",
+        "impact": "High"
+    },
+    "1986-04-30": {
+        "title": "Chernobyl",
+        "snippet": "Nuclear disaster. Commodity fear.",
+        "impact": "Medium"
+    },
+    "1986-05-31": {
+        "title": "Tax Reform",
+        "snippet": "TRA 86 debate. Capital gains changes.",
+        "impact": "Low"
+    },
+    "1986-06-30": {
+        "title": "Apartheid",
+        "snippet": "More sanctions. Gold premiums rise.",
+        "impact": "Medium"
+    },
+    "1986-07-31": {
+        "title": "Platinum Spike",
+        "snippet": "Supply disruption pulls gold up.",
+        "impact": "Medium"
+    },
+    "1986-08-31": {
+        "title": "Krugerrand Ban",
+        "snippet": "US bans import. Maple Leaf benefits.",
+        "impact": "Medium"
+    },
+    "1986-09-30": {
+        "title": "Gold $420",
+        "snippet": "Inflation fears return slightly.",
+        "impact": "Medium"
+    },
+    "1986-10-31": {
+        "title": "Big Bang",
+        "snippet": "London deregulation. Financialization.",
+        "impact": "Low"
+    },
+    "1986-11-30": {
+        "title": "Iran-Contra",
+        "snippet": "Scandal breaks. Reagan weakened.",
+        "impact": "Low"
+    },
+    "1986-12-31": {
+        "title": "Year of Bulls",
+        "snippet": "Stocks up, Gold up (Weak USD).",
+        "impact": "Medium"
+    },
+    "1987-01-31": {
+        "title": "Dollar Freefall",
+        "snippet": "Louvre Accord attempts to stabilize.",
+        "impact": "Medium"
+    },
+    "1987-02-28": {
+        "title": "Brazil Moratorium",
+        "snippet": "Debt payment suspension. Bank risk.",
+        "impact": "High"
+    },
+    "1987-03-31": {
+        "title": "Trade War",
+        "snippet": "US tariffs on Japan semi-conductors.",
+        "impact": "Medium"
+    },
+    "1987-04-30": {
+        "title": "Bond Selloff",
+        "snippet": "Yields spike. Inflation scare.",
+        "impact": "Medium"
+    },
+    "1987-05-31": {
+        "title": "Citicorp Reserves",
+        "snippet": "Bank writes down LDC debt. Reality check.",
+        "impact": "High"
+    },
+    "1987-06-30": {
+        "title": "Greenspan",
+        "snippet": "Volcker resigns. Greenspan appointed.",
+        "impact": "High"
+    },
+    "1987-07-31": {
+        "title": "Oil Tanker War",
+        "snippet": "US escorts in Gulf. Oil rises.",
+        "impact": "Medium"
+    },
+    "1987-08-31": {
+        "title": "Market Peak",
+        "snippet": "Stocks hit high. Valuation stretch.",
+        "impact": "Low"
+    },
+    "1987-09-30": {
+        "title": "Rates Rising",
+        "snippet": "Bundesbank hikes. G7 tension.",
+        "impact": "Medium"
+    },
+    "1987-10-31": {
+        "title": "BLACK MONDAY",
+        "snippet": "Oct 19: Dow falls 22%. Flight to liquidity.",
+        "impact": "High"
+    },
+    "1987-11-30": {
+        "title": "Fed Liquidity",
+        "snippet": "Fed floods system. Dollar crashes.",
+        "impact": "High"
+    },
+    "1987-12-31": {
+        "title": "Gold $500",
+        "snippet": "Safe haven bid + Weak USD.",
+        "impact": "High"
+    },
+    "1988-01-31": {
+        "title": "Central Bank Sales",
+        "snippet": "Belgium/Taiwan sell gold.",
+        "impact": "High"
+    },
+    "1988-03-31": {
+        "title": "Bear Stearns I",
+        "snippet": "Not crisis yet, but arbitrage losses.",
+        "impact": "Low"
+    },
+    "1988-06-30": {
+        "title": "Drought",
+        "snippet": "US grain prices spike.",
+        "impact": "Medium"
+    },
+    "1988-09-30": {
+        "title": "LBO Mania",
+        "snippet": "RJR Nabisco deal. Corporate debt loads up.",
+        "impact": "Low"
+    },
+    "1988-11-30": {
+        "title": "Bush Wins",
+        "snippet": "No new taxes. Continuity.",
+        "impact": "Low"
+    },
+    "1988-12-31": {
+        "title": "Gold Drifts",
+        "snippet": "Price $410. Lack of narrative.",
+        "impact": "Low"
+    },
+    "1989-01-31": {
+        "title": "Emperor Hirohito",
+        "snippet": "Death of Japan Emperor. Era end.",
+        "impact": "Low"
+    },
+    "1989-02-28": {
+        "title": "S&L Bailout",
+        "snippet": "FIRREA legislation drafted.",
+        "impact": "Medium"
+    },
+    "1989-03-31": {
+        "title": "Exxon Valdez",
+        "snippet": "Oil spill. Regulation focus.",
+        "impact": "Low"
+    },
+    "1989-06-30": {
+        "title": "Tiananmen",
+        "snippet": "Crackdown in Beijing. Uncertainty.",
+        "impact": "Medium"
+    },
+    "1989-09-30": {
+        "title": "Junk Bond Crash",
+        "snippet": "Campeau default. Credit cycle turns.",
+        "impact": "Medium"
+    },
+    "1989-10-31": {
+        "title": "Mini Crash",
+        "snippet": "Failed UAL deal drops market.",
+        "impact": "Medium"
+    },
+    "1989-11-30": {
+        "title": "Berlin Wall",
+        "snippet": "Wall falls. Cold War ending.",
+        "impact": "High"
+    },
+    "1989-12-31": {
+        "title": "Nikkei Peak",
+        "snippet": "Japan bubble bursts. Global deflation start.",
+        "impact": "High"
+    },
+    "1990-01-31": {
+        "title": "Drexel Failure",
+        "snippet": "Junk bond king bankrupt.",
+        "impact": "Medium"
+    },
+    "1990-02-28": {
+        "title": "Mandela Free",
+        "snippet": "SA regime change begins.",
+        "impact": "Medium"
+    },
+    "1990-03-31": {
+        "title": "Gold Auction",
+        "snippet": "Soviet sales to pay debts.",
+        "impact": "High"
+    },
+    "1990-05-31": {
+        "title": "S&L Crisis Peak",
+        "snippet": "RTC seizing assets.",
+        "impact": "Medium"
+    },
+    "1990-08-31": {
+        "title": "Kuwait Invasion",
+        "snippet": "Saddam invades. Oil spikes. Gold rally.",
+        "impact": "High"
+    },
+    "1990-09-30": {
+        "title": "Oil $40",
+        "snippet": "War fears drive commodity index.",
+        "impact": "High"
+    },
+    "1990-10-31": {
+        "title": "Budget Deal",
+        "snippet": "Bush raises taxes. Recession begins.",
+        "impact": "Medium"
+    },
+    "1990-11-30": {
+        "title": "UN Resolution",
+        "snippet": "Use of force authorized.",
+        "impact": "High"
+    },
+    "1990-12-31": {
+        "title": "Recession",
+        "snippet": "US GDP negative.",
+        "impact": "Medium"
+    },
+    "1991-01-31": {
+        "title": "Desert Storm",
+        "snippet": "Air war begins. Oil collapses $10/bbl on success. Gold sells off.",
+        "impact": "High"
+    },
+    "1991-02-28": {
+        "title": "Ground War Won",
+        "snippet": "100-hour war. Kuwait liberated. Geo-risk premium vanishes.",
+        "impact": "Medium"
+    },
+    "1991-03-31": {
+        "title": "Consumer Gloom",
+        "snippet": "Post-war euphoria fades. Recession reality sets in.",
+        "impact": "Low"
+    },
+    "1991-04-30": {
+        "title": "Dow 3000",
+        "snippet": "Stock market breaks 3000. Capital flows to equities.",
+        "impact": "Medium"
+    },
+    "1991-05-31": {
+        "title": "India Gold Airlift",
+        "snippet": "India pledges gold to IMF/BoE to avoid default.",
+        "impact": "High"
+    },
+    "1991-06-30": {
+        "title": "Yugoslavia Wars",
+        "snippet": "Slovenia/Croatia declare independence. Balkan conflict starts.",
+        "impact": "Medium"
+    },
+    "1991-07-31": {
+        "title": "BCCI Scandal",
+        "snippet": "Bank of Credit and Commerce Intl shut down. Fraud shock.",
+        "impact": "Low"
+    },
+    "1991-08-31": {
+        "title": "Soviet Coup",
+        "snippet": "Gorbachev detained. Hardline coup fails. USSR fractures.",
+        "impact": "High"
+    },
+    "1991-09-30": {
+        "title": "Nuclear Cuts",
+        "snippet": "Bush announces unilateral cut in tactical nukes.",
+        "impact": "Low"
+    },
+    "1991-10-31": {
+        "title": "Middle East Peace",
+        "snippet": "Madrid Conference begins. Hope for stability.",
+        "impact": "Low"
+    },
+    "1991-11-30": {
+        "title": "Economy Stalls",
+        "snippet": "'Double dip' recession fears. Fed eases.",
+        "impact": "Medium"
+    },
+    "1991-12-31": {
+        "title": "USSR Dissolved",
+        "snippet": "Soviet Union ceases to exist. Cold War ends. Peace dividend.",
+        "impact": "High"
+    },
+    "1992-01-31": {
+        "title": "New World Order",
+        "snippet": "Bush declares victory. Defense spending cuts planned.",
+        "impact": "Medium"
+    },
+    "1992-02-29": {
+        "title": "Maastricht Treaty",
+        "snippet": "Europe signs treaty creating EU. Path to Euro set.",
+        "impact": "High"
+    },
+    "1992-03-31": {
+        "title": "Rate Divergence",
+        "snippet": "Bundesbank keeps rates high vs Fed low. USD weak.",
+        "impact": "Medium"
+    },
+    "1992-04-30": {
+        "title": "Los Angeles Riots",
+        "snippet": "Rodney King verdict riots. Domestic instability.",
+        "impact": "Low"
+    },
+    "1992-05-31": {
+        "title": "Denmark Says No",
+        "snippet": "Danes reject Maastricht. EU integration doubt.",
+        "impact": "Medium"
+    },
+    "1992-06-30": {
+        "title": "Rail Strike",
+        "snippet": "US rail shutdown. Economic drag.",
+        "impact": "Low"
+    },
+    "1992-07-31": {
+        "title": "Saddam Standoff",
+        "snippet": "Inspection crisis. Iraq tensions simmer.",
+        "impact": "Low"
+    },
+    "1992-08-31": {
+        "title": "Dollar Lows",
+        "snippet": "USD hits historic lows vs DEM. Gold steady.",
+        "impact": "Medium"
+    },
+    "1992-09-30": {
+        "title": "BLACK WEDNESDAY",
+        "snippet": "Soros breaks Bank of England. Sterling crashes out of ERM.",
+        "impact": "High"
+    },
+    "1992-10-31": {
+        "title": "Bond Rally",
+        "snippet": "Yields drop. Clinton victory priced in.",
+        "impact": "Medium"
+    },
+    "1992-11-30": {
+        "title": "Clinton Wins",
+        "snippet": "Democratic sweep. Focus on domestic economy.",
+        "impact": "Low"
+    },
+    "1992-12-31": {
+        "title": "Somalia Mission",
+        "snippet": "US troops intervene. Humanitarian focus.",
+        "impact": "Low"
+    },
+    "1993-01-31": {
+        "title": "Gold $329",
+        "snippet": "Cyclical low. Lack of inflation interest.",
+        "impact": "High"
+    },
+    "1993-02-28": {
+        "title": "WTC Bombing",
+        "snippet": "Terror attack in NY. Geopolitics return to US soil.",
+        "impact": "Medium"
+    },
+    "1993-03-31": {
+        "title": "Soros Buys Gold",
+        "snippet": "Rumors of Soros/Goldsmith buying. Price jumps.",
+        "impact": "High"
+    },
+    "1993-04-30": {
+        "title": "Waco Siege",
+        "snippet": "Branch Davidian tragedy. Domestic shock.",
+        "impact": "Low"
+    },
+    "1993-05-31": {
+        "title": "Gold $375",
+        "snippet": "Technical breakout. Inflation hedge interest.",
+        "impact": "High"
+    },
+    "1993-06-30": {
+        "title": "Tokyo Summit",
+        "snippet": "G7 discusses trade. Yen strength.",
+        "impact": "Medium"
+    },
+    "1993-07-31": {
+        "title": "Flood of 93",
+        "snippet": "Mississippi floods. Ag prices rise.",
+        "impact": "Medium"
+    },
+    "1993-08-31": {
+        "title": "Gold Peak $400",
+        "snippet": "Rally fails at $400. Bre-X scam precursors.",
+        "impact": "High"
+    },
+    "1993-09-30": {
+        "title": "Health Care Plan",
+        "snippet": "Hillarycare announced. Pharma stocks drop.",
+        "impact": "Low"
+    },
+    "1993-10-31": {
+        "title": "Black Hawk Down",
+        "snippet": "Mogadishu battle. US retreats from foreign entanglements.",
+        "impact": "Medium"
+    },
+    "1993-11-30": {
+        "title": "NAFTA Passed",
+        "snippet": "North American trade zone. Globalism wins.",
+        "impact": "Medium"
+    },
+    "1993-12-31": {
+        "title": "Strong Growth",
+        "snippet": "GDP accelerates. Gold loses luster.",
+        "impact": "Medium"
+    },
+    "1994-01-31": {
+        "title": "Equity Mania",
+        "snippet": "Emerging markets boom. Capital flows out of gold.",
+        "impact": "Medium"
+    },
+    "1994-02-28": {
+        "title": "Fed Tightens",
+        "snippet": "Greenspan first hike. Bond market massacre begins.",
+        "impact": "High"
+    },
+    "1994-03-31": {
+        "title": "Whitewater",
+        "snippet": "Clinton scandal deepens. Distraction.",
+        "impact": "Low"
+    },
+    "1994-04-30": {
+        "title": "Mandela Elected",
+        "snippet": "End of Apartheid. SA supply stability hopes.",
+        "impact": "High"
+    },
+    "1994-05-31": {
+        "title": "Derivatives Loss",
+        "snippet": "P&G/Gibson Greetings losses. Rate hike casualties.",
+        "impact": "Medium"
+    },
+    "1994-06-30": {
+        "title": "Dollar Weakness",
+        "snippet": "Clinton trade policy hurts USD.",
+        "impact": "Medium"
+    },
+    "1994-07-31": {
+        "title": "Rates Up Again",
+        "snippet": "Fed aggressive. Real yields rising.",
+        "impact": "High"
+    },
+    "1994-08-31": {
+        "title": "Crime Bill",
+        "snippet": "Domestic focus. Economy strong.",
+        "impact": "Low"
+    },
+    "1994-09-30": {
+        "title": "Haiti Invasion",
+        "snippet": "Operation Uphold Democracy.",
+        "impact": "Low"
+    },
+    "1994-10-31": {
+        "title": "Soft Landing?",
+        "snippet": "Fed attempts to slow growth without recession.",
+        "impact": "Medium"
+    },
+    "1994-11-30": {
+        "title": "Orange County",
+        "snippet": "Largest muni bankruptcy. Rates leverage blowup.",
+        "impact": "High"
+    },
+    "1994-12-31": {
+        "title": "Tequila Crisis",
+        "snippet": "Mexican Peso devaluation. Emerging mkt contagion.",
+        "impact": "High"
+    },
+    "1995-01-31": {
+        "title": "Mexico Bailout",
+        "snippet": "US guarantees loans. Gold unaffected.",
+        "impact": "Medium"
+    },
+    "1995-02-28": {
+        "title": "Barings Bank",
+        "snippet": "Rogue trader collapses bank. Derivatives fear.",
+        "impact": "Medium"
+    },
+    "1995-03-31": {
+        "title": "Dollar Bottom",
+        "snippet": "USD hits record low vs Yen (79). Intervention.",
+        "impact": "High"
+    },
+    "1995-04-30": {
+        "title": "Rubin Doctrine",
+        "snippet": "Treasury Sec Rubin: 'A strong dollar is in our interest'.",
+        "impact": "High"
+    },
+    "1995-05-31": {
+        "title": "Tech Boom Start",
+        "snippet": "Netscape IPO prep. Capital moves to Nasdaq.",
+        "impact": "High"
+    },
+    "1995-06-30": {
+        "title": "Trade War Averted",
+        "snippet": "US-Japan auto deal signed.",
+        "impact": "Medium"
+    },
+    "1995-07-31": {
+        "title": "Fed Cut",
+        "snippet": "Insurance cut to extend expansion.",
+        "impact": "Medium"
+    },
+    "1995-08-31": {
+        "title": "Dollar Rally",
+        "snippet": "USD begins multi-year bull market.",
+        "impact": "High"
+    },
+    "1995-09-30": {
+        "title": "Accord Validation",
+        "snippet": "Global CBs support USD rally.",
+        "impact": "Medium"
+    },
+    "1995-10-31": {
+        "title": "Quebec Vote",
+        "snippet": "Separation referendum fails narrowly.",
+        "impact": "Low"
+    },
+    "1995-11-30": {
+        "title": "Govt Shutdown",
+        "snippet": "Budget battle. Gingrich vs Clinton.",
+        "impact": "Low"
+    },
+    "1995-12-31": {
+        "title": "Dow 5000",
+        "snippet": "Stocks soar 33% in year. Gold dead money.",
+        "impact": "High"
+    },
+    "1996-01-31": {
+        "title": "Gold Spike",
+        "snippet": "Brief run to $415 on Bre-X rumors.",
+        "impact": "High"
+    },
+    "1996-02-29": {
+        "title": "Rates Back Up",
+        "snippet": "Bond yields rise on growth.",
+        "impact": "Medium"
+    },
+    "1996-03-31": {
+        "title": "Taiwan Strait",
+        "snippet": "China missile tests. US carrier deployed.",
+        "impact": "Medium"
+    },
+    "1996-04-30": {
+        "title": "Gold $390",
+        "snippet": "Rally fades. Producers hedging.",
+        "impact": "Medium"
+    },
+    "1996-05-31": {
+        "title": "ValueJet Crash",
+        "snippet": "Aviation safety fears.",
+        "impact": "Low"
+    },
+    "1996-06-30": {
+        "title": "Sumitomo Scandal",
+        "snippet": "Copper king Hamanaka unauthorized trading. Metal trust hit.",
+        "impact": "High"
+    },
+    "1996-07-31": {
+        "title": "Atlanta Bombing",
+        "snippet": "Olympics attack. Domestic terror.",
+        "impact": "Low"
+    },
+    "1996-08-31": {
+        "title": "Welfare Reform",
+        "snippet": "Clinton signs bill. Fiscal discipline.",
+        "impact": "Low"
+    },
+    "1996-09-30": {
+        "title": "IMF Gold Sale?",
+        "snippet": "Rumors of IMF selling to help poor nations.",
+        "impact": "High"
+    },
+    "1996-10-31": {
+        "title": "Dotcom Frenzy",
+        "snippet": "Internet stocks detach from reality.",
+        "impact": "Medium"
+    },
+    "1996-11-30": {
+        "title": "Clinton Re-elected",
+        "snippet": "Status quo. Gold drifts lower.",
+        "impact": "Low"
+    },
+    "1996-12-31": {
+        "title": "Greenspan Speech",
+        "snippet": "Dec 5: 'Irrational Exuberance'. Market ignores him.",
+        "impact": "High"
+    },
+    "1997-01-31": {
+        "title": "Strong Dollar",
+        "snippet": "USD crush commodities. Gold $350.",
+        "impact": "High"
+    },
+    "1997-02-28": {
+        "title": "Deng Xiaoping Dies",
+        "snippet": "China reformer passes. Uncertainty.",
+        "impact": "Low"
+    },
+    "1997-03-31": {
+        "title": "Bre-X Fraud",
+        "snippet": "Gold samples salted. Greatest mining fraud. Trust collapses.",
+        "impact": "High"
+    },
+    "1997-04-30": {
+        "title": "Gold Plunge",
+        "snippet": "Bre-X fallout liquidation.",
+        "impact": "High"
+    },
+    "1997-05-31": {
+        "title": "Thai Baht Pressure",
+        "snippet": "Speculators attack peg.",
+        "impact": "Medium"
+    },
+    "1997-06-30": {
+        "title": "Hong Kong Handover",
+        "snippet": "UK returns HK to China.",
+        "impact": "Low"
+    },
+    "1997-07-31": {
+        "title": "ASIAN CRISIS START",
+        "snippet": "Thai Baht devalued. Contagion begins.",
+        "impact": "High"
+    },
+    "1997-08-31": {
+        "title": "Currency Collapse",
+        "snippet": "Indonesia, Malaysia, Philippines hit.",
+        "impact": "High"
+    },
+    "1997-09-30": {
+        "title": "Gold $320",
+        "snippet": "Central Banks selling into weakness.",
+        "impact": "High"
+    },
+    "1997-10-31": {
+        "title": "Mini Crash",
+        "snippet": "Oct 27: Asian flu hits US stocks. Flight to bonds, not gold.",
+        "impact": "Medium"
+    },
+    "1997-11-30": {
+        "title": "Korea Bailout",
+        "snippet": "IMF creates $57B package. Korean citizens donate gold rings.",
+        "impact": "High"
+    },
+    "1997-12-31": {
+        "title": "Deflation Fear",
+        "snippet": "Global demand collapses. Commodities crushed.",
+        "impact": "High"
+    },
+    "1998-01-31": {
+        "title": "Monica Lewinsky",
+        "snippet": "Scandal breaks. Clinton distracted.",
+        "impact": "Low"
+    },
+    "1998-02-28": {
+        "title": "Iraq Bombing",
+        "snippet": "Desert Fox air strikes. Brief oil bump.",
+        "impact": "Medium"
+    },
+    "1998-03-31": {
+        "title": "Stock Mania",
+        "snippet": "Dow 9000. Gold ignored asset class.",
+        "impact": "Medium"
+    },
+    "1998-04-30": {
+        "title": "Euro Launch Prep",
+        "snippet": "11 nations qualify. CB reserves consolidated.",
+        "impact": "Medium"
+    },
+    "1998-05-31": {
+        "title": "India/Pak Nukes",
+        "snippet": "Nuclear tests. Sanctions imposed.",
+        "impact": "Medium"
+    },
+    "1998-06-30": {
+        "title": "Yen Weakness",
+        "snippet": "US intervenes to support Yen.",
+        "impact": "Medium"
+    },
+    "1998-07-31": {
+        "title": "Russia Wobbles",
+        "snippet": "Oil price crash hurts Russia revenue.",
+        "impact": "High"
+    },
+    "1998-08-31": {
+        "title": "RUSSIA DEFAULT",
+        "snippet": "Aug 17: Ruble devalued, debt default. LTCM blowup begins.",
+        "impact": "High"
+    },
+    "1998-09-30": {
+        "title": "LTCM Bailout",
+        "snippet": "Fed organizes rescue. Systemic risk. Gold spikes to $300.",
+        "impact": "High"
+    },
+    "1998-10-31": {
+        "title": "Fed Cuts",
+        "snippet": "Emergency rate cuts to save liquidity.",
+        "impact": "Medium"
+    },
+    "1998-11-30": {
+        "title": "Tobacco Deal",
+        "snippet": "Master settlement. Corporate risk reduced.",
+        "impact": "Low"
+    },
+    "1998-12-31": {
+        "title": "Impeachment",
+        "snippet": "Clinton impeached by House. Markets shrug.",
+        "impact": "Low"
+    },
+    "1999-01-31": {
+        "title": "Euro Debut",
+        "snippet": "Euro launches. New reserve currency rival.",
+        "impact": "High"
+    },
+    "1999-02-28": {
+        "title": "Gold $287",
+        "snippet": "Drifting lower. Despair in mining sector.",
+        "impact": "Medium"
+    },
+    "1999-03-31": {
+        "title": "Dow 10,000",
+        "snippet": "Historic milestone. Equities king.",
+        "impact": "High"
+    },
+    "1999-04-30": {
+        "title": "Kosovo War",
+        "snippet": "NATO bombing Yugoslavia.",
+        "impact": "Medium"
+    },
+    "1999-05-31": {
+        "title": "BROWN'S BOTTOM",
+        "snippet": "UK announces sale of gold reserves at lows ($252). Sentiment nadir.",
+        "impact": "High"
+    },
+    "1999-06-30": {
+        "title": "Fed Hikes",
+        "snippet": "Greenspan takes back emergency cuts.",
+        "impact": "Medium"
+    },
+    "1999-07-31": {
+        "title": "Gold $252.80",
+        "snippet": "20-year low reached. The secular bottom.",
+        "impact": "High"
+    },
+    "1999-08-31": {
+        "title": "Y2K Prep",
+        "snippet": "Liquidity injection plans.",
+        "impact": "Medium"
+    },
+    "1999-09-30": {
+        "title": "WASHINGTON AGREEMENT",
+        "snippet": "CBs limit sales (CBGA 1). Gold explodes $75 in days. Short squeeze.",
+        "impact": "High"
+    },
+    "1999-10-31": {
+        "title": "Glass-Steagall",
+        "snippet": "Repeal (Gramm-Leach-Bliley). Banks merge.",
+        "impact": "Medium"
+    },
+    "1999-11-30": {
+        "title": "WTO Protests",
+        "snippet": "Battle of Seattle. Anti-globalization.",
+        "impact": "Low"
+    },
+    "1999-12-31": {
+        "title": "Y2K Pass",
+        "snippet": "No major bugs. Putin takes over Russia.",
+        "impact": "Medium"
+    },
+    "2000-01-31": {
+        "title": "Dotcom Peak",
+        "snippet": "Nasdaq creates vertical blowoff top.",
+        "impact": "High"
+    },
+    "2000-02-29": {
+        "title": "Gold $300",
+        "snippet": "Trying to base. Yield curve inverting.",
+        "impact": "Medium"
+    },
+    "2000-03-31": {
+        "title": "BUBBLE BURSTS",
+        "snippet": "Nasdaq cracks. Capital begins rotation to real assets.",
+        "impact": "High"
+    },
+    "2000-04-30": {
+        "title": "Microsoft Antitrust",
+        "snippet": "Ruling hits tech sentiment.",
+        "impact": "Medium"
+    },
+    "2000-05-31": {
+        "title": "Fed Hike",
+        "snippet": "Final hike of cycle. Rates 6.5%.",
+        "impact": "High"
+    },
+    "2000-06-30": {
+        "title": "Economy Slows",
+        "snippet": "Manufacturing data rolls over.",
+        "impact": "Medium"
+    },
+    "2000-07-31": {
+        "title": "Concorde Crash",
+        "snippet": "Symbolic end of an era.",
+        "impact": "Low"
+    },
+    "2000-08-31": {
+        "title": "Euro Weakness",
+        "snippet": "Euro falls below $0.90.",
+        "impact": "Medium"
+    },
+    "2000-09-30": {
+        "title": "Oil Protests",
+        "snippet": "European fuel protests. Energy rising.",
+        "impact": "Medium"
+    },
+    "2000-10-31": {
+        "title": "USS Cole",
+        "snippet": "Terror attack in Yemen. Risk rising.",
+        "impact": "Medium"
+    },
+    "2000-11-30": {
+        "title": "Recount",
+        "snippet": "Bush vs Gore. Election limbo. Uncertainty.",
+        "impact": "High"
+    },
+    "2000-12-31": {
+        "title": "Bush Wins",
+        "snippet": "Supreme Court decides. Gold finishes year quiet.",
+        "impact": "Low"
+    },
+    "2001-01-31": {
+        "title": "Fed Panic Cut",
+        "snippet": "Greenspan emergency cut to 6%. Tech crash fallout.",
+        "impact": "Medium"
+    },
+    "2001-02-28": {
+        "title": "Recession Starts",
+        "snippet": "US enters recession ending 90s boom.",
+        "impact": "High"
+    },
+    "2001-03-31": {
+        "title": "Gold $255",
+        "snippet": "Retesting lows. Strong dollar headwinds.",
+        "impact": "Medium"
+    },
+    "2001-04-30": {
+        "title": "Spy Plane",
+        "snippet": "US-China Hainan Island incident. Tensions.",
+        "impact": "Medium"
+    },
+    "2001-05-31": {
+        "title": "Tax Cuts",
+        "snippet": "Bush tax cuts passed. Deficits return.",
+        "impact": "Medium"
+    },
+    "2001-06-30": {
+        "title": "Enron Rumors",
+        "snippet": "Energy giant stock wobbles. Accounting questions.",
+        "impact": "Low"
+    },
+    "2001-07-31": {
+        "title": "Argentina Crisis",
+        "snippet": "Debt default looming. Emerging market contagion.",
+        "impact": "Medium"
+    },
+    "2001-08-31": {
+        "title": "Budget Surplus Gone",
+        "snippet": "CBO confirms deficits back. Fiscal drag.",
+        "impact": "Low"
+    },
+    "2001-09-30": {
+        "title": "SEPTEMBER 11",
+        "snippet": "Terror attacks. NYSE closed. Sovereign risk repriced globally. War on Terror begins.",
+        "impact": "High"
+    },
+    "2001-10-31": {
+        "title": "Afghanistan War",
+        "snippet": "US invades. Patriot Act signed. Security state.",
+        "impact": "High"
+    },
+    "2001-11-30": {
+        "title": "Enron Collapse",
+        "snippet": "Largest bankruptcy. Trust shock.",
+        "impact": "High"
+    },
+    "2001-12-31": {
+        "title": "China WTO",
+        "snippet": "China joins WTO. Globalization accelerates.",
+        "impact": "High"
+    },
+    "2002-01-31": {
+        "title": "Euro Notes",
+        "snippet": "Physical Euro cash enters circulation.",
+        "impact": "Medium"
+    },
+    "2002-02-28": {
+        "title": "Axis of Evil",
+        "snippet": "Bush speech targets Iraq/Iran/NK.",
+        "impact": "Medium"
+    },
+    "2002-03-31": {
+        "title": "Steel Tariffs",
+        "snippet": "Bush imposes tariffs. Trade friction.",
+        "impact": "Low"
+    },
+    "2002-04-30": {
+        "title": "Gold $300",
+        "snippet": "Breakout above $300 confirmed.",
+        "impact": "High"
+    },
+    "2002-05-31": {
+        "title": "Dollar Top",
+        "snippet": "USD begins secular decline.",
+        "impact": "High"
+    },
+    "2002-06-30": {
+        "title": "WorldCom",
+        "snippet": "Accounting fraud. Corp governance crisis.",
+        "impact": "High"
+    },
+    "2002-07-31": {
+        "title": "Stock Lows",
+        "snippet": "Dow hits post-9/11 lows.",
+        "impact": "Medium"
+    },
+    "2002-08-31": {
+        "title": "War Drums",
+        "snippet": "Cheney speech pushing for Iraq war.",
+        "impact": "Medium"
+    },
+    "2002-09-30": {
+        "title": "Deflation Risk",
+        "snippet": "Bernanke speech 'Deflation: Making sure it doesn't happen here'.",
+        "impact": "High"
+    },
+    "2002-10-31": {
+        "title": "Sniper Attacks",
+        "snippet": "DC sniper terrorizes capital.",
+        "impact": "Low"
+    },
+    "2002-11-30": {
+        "title": "Homeland Security",
+        "snippet": "DHS created. Govt expansion.",
+        "impact": "Low"
+    },
+    "2002-12-31": {
+        "title": "Year of Gold",
+        "snippet": "Gold up 24%. Safe haven status returned.",
+        "impact": "High"
+    },
+    "2003-01-31": {
+        "title": "Gold $370",
+        "snippet": "Pre-war jitters drive buying.",
+        "impact": "High"
+    },
+    "2003-02-28": {
+        "title": "Powell UN Speech",
+        "snippet": "Case for war made. Oil spikes.",
+        "impact": "High"
+    },
+    "2003-03-31": {
+        "title": "Iraq Invasion",
+        "snippet": "Shock and Awe. Baghdad falls.",
+        "impact": "High"
+    },
+    "2003-04-30": {
+        "title": "SARS Virus",
+        "snippet": "Asian pandemic scare. Growth hit.",
+        "impact": "Medium"
+    },
+    "2003-05-31": {
+        "title": "Deflation Fear",
+        "snippet": "Fed worries about falling prices.",
+        "impact": "Medium"
+    },
+    "2003-06-30": {
+        "title": "Rate Cut 1%",
+        "snippet": "Fed cuts to 1%. 'Considerable period'.",
+        "impact": "High"
+    },
+    "2003-07-31": {
+        "title": "Bond Selloff",
+        "snippet": "Yields spike from lows.",
+        "impact": "Medium"
+    },
+    "2003-08-31": {
+        "title": "Power Outage",
+        "snippet": "Northeast blackout. Infrastructure worry.",
+        "impact": "Low"
+    },
+    "2003-09-30": {
+        "title": "Cancun Fail",
+        "snippet": "WTO talks collapse. Emerging markets rebel.",
+        "impact": "Medium"
+    },
+    "2003-10-31": {
+        "title": "China Growth",
+        "snippet": "Commodity demand surging.",
+        "impact": "High"
+    },
+    "2003-11-30": {
+        "title": "Gold $400",
+        "snippet": "Big psychological level broken.",
+        "impact": "High"
+    },
+    "2003-12-31": {
+        "title": "Weak Dollar",
+        "snippet": "EUR/USD hits 1.25. Gold tailwind.",
+        "impact": "High"
+    },
+    "2004-01-31": {
+        "title": "Reflation Trade",
+        "snippet": "Global growth synchronizing.",
+        "impact": "Medium"
+    },
+    "2004-02-29": {
+        "title": "Haiti Coup",
+        "snippet": "Aristide ousted. Minor geo-risk.",
+        "impact": "Low"
+    },
+    "2004-03-31": {
+        "title": "Madrid Bombing",
+        "snippet": "Train attacks. Terror risk remains.",
+        "impact": "Medium"
+    },
+    "2004-04-30": {
+        "title": "Google IPO Prep",
+        "snippet": "Tech recovering.",
+        "impact": "Low"
+    },
+    "2004-05-31": {
+        "title": "Oil $40",
+        "snippet": "Energy prices structural rise.",
+        "impact": "High"
+    },
+    "2004-06-30": {
+        "title": "Fed Hike",
+        "snippet": "Greenspan starts 'measured' hikes.",
+        "impact": "Medium"
+    },
+    "2004-07-31": {
+        "title": "Security Barrier",
+        "snippet": "Israel wall ruling. Mid-East tension.",
+        "impact": "Low"
+    },
+    "2004-08-31": {
+        "title": "Google IPO",
+        "snippet": "Market sentiment improves.",
+        "impact": "Low"
+    },
+    "2004-09-30": {
+        "title": "Fannie Mae",
+        "snippet": "Accounting issues at GSEs.",
+        "impact": "High"
+    },
+    "2004-10-31": {
+        "title": "Bin Laden Video",
+        "snippet": "Election interference attempt.",
+        "impact": "Medium"
+    },
+    "2004-11-30": {
+        "title": "GLD ETF LAUNCH",
+        "snippet": "Nov 18: SPDR Gold Shares debuts. Financialization of gold demand. Game changer.",
+        "impact": "High"
+    },
+    "2004-12-31": {
+        "title": "Tsunami",
+        "snippet": "Indian Ocean disaster. Global aid.",
+        "impact": "Low"
+    },
+    "2005-01-31": {
+        "title": "Central Bank Agreement",
+        "snippet": "CBGA 2 signed. Sales capped.",
+        "impact": "Medium"
+    },
+    "2005-02-28": {
+        "title": "Kyoto Protocol",
+        "snippet": "Climate treaty effect. Energy costs.",
+        "impact": "Low"
+    },
+    "2005-03-31": {
+        "title": "Oil $55",
+        "snippet": "Supercycle logic taking hold.",
+        "impact": "High"
+    },
+    "2005-04-30": {
+        "title": "Conundrum",
+        "snippet": "Greenspan puzzled by low long rates.",
+        "impact": "Medium"
+    },
+    "2005-05-31": {
+        "title": "France No Vote",
+        "snippet": "EU constitution rejected. Euro dip.",
+        "impact": "Medium"
+    },
+    "2005-06-30": {
+        "title": "Yuan Reval",
+        "snippet": "China unpegs slightly. Currency wars.",
+        "impact": "High"
+    },
+    "2005-07-31": {
+        "title": "London Bombing",
+        "snippet": "7/7 attacks. Security alert.",
+        "impact": "Medium"
+    },
+    "2005-08-31": {
+        "title": "Katrina",
+        "snippet": "New Orleans destroyed. Oil spike.",
+        "impact": "High"
+    },
+    "2005-09-30": {
+        "title": "Gold $475",
+        "snippet": "Breaking 1987 highs.",
+        "impact": "High"
+    },
+    "2005-10-31": {
+        "title": "Bernanke Named",
+        "snippet": "Bush appoints Ben Bernanke.",
+        "impact": "High"
+    },
+    "2005-11-30": {
+        "title": "Gold $500",
+        "snippet": "18-year high reached.",
+        "impact": "High"
+    },
+    "2005-12-31": {
+        "title": "Yield Curve Flat",
+        "snippet": "Inversion warning signs.",
+        "impact": "High"
+    },
+    "2006-01-31": {
+        "title": "Gold $550",
+        "snippet": "Parabolic move begins.",
+        "impact": "High"
+    },
+    "2006-02-28": {
+        "title": "Housing Peak",
+        "snippet": "US home prices stall. The top is in.",
+        "impact": "High"
+    },
+    "2006-03-31": {
+        "title": "Carry Trade",
+        "snippet": "Yen carry trade fueling assets.",
+        "impact": "Medium"
+    },
+    "2006-04-30": {
+        "title": "Gold $600",
+        "snippet": "Silver hits $15. Mania.",
+        "impact": "High"
+    },
+    "2006-05-31": {
+        "title": "Peak Gold $730",
+        "snippet": "Violent correction follows.",
+        "impact": "High"
+    },
+    "2006-06-30": {
+        "title": "Fed Pause",
+        "snippet": "Rates at 5.25%. Hiking done.",
+        "impact": "Medium"
+    },
+    "2006-07-31": {
+        "title": "Lebanon War",
+        "snippet": "Israel-Hezbollah. Geo-risk.",
+        "impact": "Medium"
+    },
+    "2006-08-31": {
+        "title": "Housing Crack",
+        "snippet": "Foreclosures uptick.",
+        "impact": "High"
+    },
+    "2006-09-30": {
+        "title": "Amaranth Blowup",
+        "snippet": "Hedge fund gas loss. Liquidity fear.",
+        "impact": "Medium"
+    },
+    "2006-10-31": {
+        "title": "North Korea Nuke",
+        "snippet": "First nuclear test. Geo-risk.",
+        "impact": "High"
+    },
+    "2006-11-30": {
+        "title": "Dem Sweep",
+        "snippet": "Congress flips. Bush duck.",
+        "impact": "Low"
+    },
+    "2006-12-31": {
+        "title": "Dollar Weak",
+        "snippet": "USD ends year soft.",
+        "impact": "Medium"
+    },
+    "2007-01-31": {
+        "title": "Gold $650",
+        "snippet": "Creeping back up.",
+        "impact": "Medium"
+    },
+    "2007-02-28": {
+        "title": "Shanghai Crash",
+        "snippet": "China stocks drop 9%. Global contagion.",
+        "impact": "High"
+    },
+    "2007-03-31": {
+        "title": "Subprime Rot",
+        "snippet": "New Century Financial collapse.",
+        "impact": "High"
+    },
+    "2007-04-30": {
+        "title": "Dow 13,000",
+        "snippet": "Stocks ignore housing risk.",
+        "impact": "Low"
+    },
+    "2007-05-31": {
+        "title": "Gas Prices",
+        "snippet": "Pain at the pump.",
+        "impact": "Low"
+    },
+    "2007-06-30": {
+        "title": "Bear Stearns Funds",
+        "snippet": "Two hedge funds blow up on subprime.",
+        "impact": "High"
+    },
+    "2007-07-31": {
+        "title": "Credit Crunch",
+        "snippet": "Markets seize up. Libor spikes.",
+        "impact": "High"
+    },
+    "2007-08-31": {
+        "title": "Quant Quake",
+        "snippet": "Goldman Alpha fund loss. Fed cuts discount rate.",
+        "impact": "High"
+    },
+    "2007-09-30": {
+        "title": "Fed Cut 50bps",
+        "snippet": "Bernanke pivots. Gold hits $730.",
+        "impact": "High"
+    },
+    "2007-10-31": {
+        "title": "Market Peak",
+        "snippet": "S&P 500 double top. Downhill from here.",
+        "impact": "High"
+    },
+    "2007-11-30": {
+        "title": "Bank Write-downs",
+        "snippet": "Citi/Merrill massive losses.",
+        "impact": "High"
+    },
+    "2007-12-31": {
+        "title": "Recession Start",
+        "snippet": "Official start of GFC recession.",
+        "impact": "High"
+    },
+    "2008-01-31": {
+        "title": "SocGen Fraud",
+        "snippet": "Kerviel $7B loss. Fed emergency cut.",
+        "impact": "High"
+    },
+    "2008-02-29": {
+        "title": "Monolines",
+        "snippet": "Bond insurers fail. Credit freeze.",
+        "impact": "Medium"
+    },
+    "2008-03-31": {
+        "title": "Bear Stearns",
+        "snippet": "JPM buys Bear for $2. Gold breaks $1000.",
+        "impact": "High"
+    },
+    "2008-04-30": {
+        "title": "Food Riots",
+        "snippet": "Global commodity spike causing unrest.",
+        "impact": "Medium"
+    },
+    "2008-05-31": {
+        "title": "Oil $130",
+        "snippet": "Energy shock. Inflation fears peak.",
+        "impact": "High"
+    },
+    "2008-06-30": {
+        "title": "Rate Hikes?",
+        "snippet": "ECB talks hikes. Misreading crisis.",
+        "impact": "Medium"
+    },
+    "2008-07-31": {
+        "title": "GSE Rescue",
+        "snippet": "Fannie/Freddie backstop bill.",
+        "impact": "High"
+    },
+    "2008-08-31": {
+        "title": "Commodity Crash",
+        "snippet": "Dollar rebounds. Gold falls to $750.",
+        "impact": "High"
+    },
+    "2008-09-30": {
+        "title": "LEHMAN / AIG",
+        "snippet": "Lehman fails. AIG bailed. Money Markets break. Systemic panic.",
+        "impact": "High"
+    },
+    "2008-10-31": {
+        "title": "Liquidation",
+        "snippet": "Everything sold for cash. Gold hits $680.",
+        "impact": "High"
+    },
+    "2008-11-30": {
+        "title": "QE1 Launch",
+        "snippet": "Fed buys MBS. Printing begins. Gold turns.",
+        "impact": "High"
+    },
+    "2008-12-31": {
+        "title": "ZIRP",
+        "snippet": "Rates hit 0%. Gold finishes $880.",
+        "impact": "High"
+    },
+    "2009-01-31": {
+        "title": "Stimulus Pkg",
+        "snippet": "Obama $800B ARRA passed.",
+        "impact": "Medium"
+    },
+    "2009-02-28": {
+        "title": "Stock Lows",
+        "snippet": "S&P 666. Despair.",
+        "impact": "High"
+    },
+    "2009-03-31": {
+        "title": "QE Expansion",
+        "snippet": "Fed buys Treasuries. Dollar debasement fear.",
+        "impact": "High"
+    },
+    "2009-04-30": {
+        "title": "G20 Summit",
+        "snippet": "Global coordination. Stress tests.",
+        "impact": "Medium"
+    },
+    "2009-05-31": {
+        "title": "Green Shoots",
+        "snippet": "Economy stabilizing. Risk on.",
+        "impact": "Medium"
+    },
+    "2009-06-30": {
+        "title": "End of Recession",
+        "snippet": "Technical end of recession.",
+        "impact": "Medium"
+    },
+    "2009-07-31": {
+        "title": "Gold Consolidation",
+        "snippet": "Holding $900 level.",
+        "impact": "Low"
+    },
+    "2009-08-31": {
+        "title": "Cash for Clunkers",
+        "snippet": "Auto stimulus.",
+        "impact": "Low"
+    },
+    "2009-09-30": {
+        "title": "Gold $1000",
+        "snippet": "Reclaiming the milestone.",
+        "impact": "High"
+    },
+    "2009-10-31": {
+        "title": "India Buy",
+        "snippet": "India buys 200T IMF gold. Floor set.",
+        "impact": "High"
+    },
+    "2009-11-30": {
+        "title": "Dubai World",
+        "snippet": "Debt standstill. Mini panic.",
+        "impact": "Medium"
+    },
+    "2009-12-31": {
+        "title": "Gold $1100",
+        "snippet": "Strong finish. Dollar carry trade.",
+        "impact": "High"
+    },
+    "2010-01-31": {
+        "title": "Greece Revealed",
+        "snippet": "Greek deficit revision. Crisis starts.",
+        "impact": "High"
+    },
+    "2010-02-28": {
+        "title": "Euro Plunge",
+        "snippet": "Flight to USD. Gold priced in Euros soars.",
+        "impact": "High"
+    },
+    "2010-03-31": {
+        "title": "Health Care",
+        "snippet": "Obamacare signed. Fiscal focus.",
+        "impact": "Low"
+    },
+    "2010-04-30": {
+        "title": "Greek Bailout I",
+        "snippet": "EU/IMF package. Contagion fear.",
+        "impact": "High"
+    },
+    "2010-05-31": {
+        "title": "Flash Crash",
+        "snippet": "May 6 market break. Fragility exposed.",
+        "impact": "Medium"
+    },
+    "2010-06-30": {
+        "title": "Growth Slows",
+        "snippet": "Recovery losing steam. QE2 hints.",
+        "impact": "Medium"
+    },
+    "2010-07-31": {
+        "title": "Basel III",
+        "snippet": "New bank capital rules.",
+        "impact": "Medium"
+    },
+    "2010-08-31": {
+        "title": "Jackson Hole",
+        "snippet": "Bernanke signals QE2 ready.",
+        "impact": "High"
+    },
+    "2010-09-30": {
+        "title": "Gold $1300",
+        "snippet": "Breakout on money printing bets.",
+        "impact": "High"
+    },
+    "2010-10-31": {
+        "title": "Currency War",
+        "snippet": "Brazil FinMin warns of currency wars.",
+        "impact": "Medium"
+    },
+    "2010-11-30": {
+        "title": "QE2 Launch",
+        "snippet": "Fed buys $600B more. Gold accelerates.",
+        "impact": "High"
+    },
+    "2010-12-31": {
+        "title": "Gold $1400",
+        "snippet": "Year of the central bank.",
+        "impact": "High"
+    },
+    "2011-01-31": {
+        "title": "Arab Spring",
+        "snippet": "Unrest spreads to Egypt. Geopolitical risk returns.",
+        "impact": "High"
+    },
+    "2011-02-28": {
+        "title": "Libya Civil War",
+        "snippet": "Oil spikes. Gold follows commodities.",
+        "impact": "Medium"
+    },
+    "2011-03-31": {
+        "title": "Fukushima",
+        "snippet": "Japan earthquake/nuclear disaster. Yen repression.",
+        "impact": "High"
+    },
+    "2011-04-30": {
+        "title": "Silver Peak",
+        "snippet": "Silver hits $50 then crashes. Gold drags.",
+        "impact": "High"
+    },
+    "2011-05-31": {
+        "title": "Bin Laden Killed",
+        "snippet": "US special ops raid. Geo-risk dampens.",
+        "impact": "Low"
+    },
+    "2011-06-30": {
+        "title": "QE2 Ends",
+        "snippet": "Fed balance sheet pauses. Market wobbles.",
+        "impact": "Medium"
+    },
+    "2011-07-31": {
+        "title": "Debt Ceiling I",
+        "snippet": "US credit rating threatened. Safe haven panic.",
+        "impact": "High"
+    },
+    "2011-08-31": {
+        "title": "US Downgrade",
+        "snippet": "S&P cuts US to AA+. Gold vertical move.",
+        "impact": "High"
+    },
+    "2011-09-30": {
+        "title": "PEAK GOLD $1920",
+        "snippet": "Sept 6: Intra-day high. Swiss peg Franc. Margins hiked.",
+        "impact": "High"
+    },
+    "2011-10-31": {
+        "title": "Euro Crisis Deepens",
+        "snippet": "Italy yields spike. Contagion risk.",
+        "impact": "High"
+    },
+    "2011-11-30": {
+        "title": "MF Global",
+        "snippet": "Broker collapse. Client funds missing. Trust hit.",
+        "impact": "Medium"
+    },
+    "2011-12-31": {
+        "title": "Dollar Liquidity",
+        "snippet": "USD shortage squeezes gold lower.",
+        "impact": "Medium"
+    },
+    "2012-01-31": {
+        "title": "ZIRP Extension",
+        "snippet": "Fed extends low rates to late 2014.",
+        "impact": "Medium"
+    },
+    "2012-02-29": {
+        "title": "Greek PSI",
+        "snippet": "Private sector hair cut. Default managed.",
+        "impact": "High"
+    },
+    "2012-03-31": {
+        "title": "Gold $1650",
+        "snippet": "Consolidating below highs.",
+        "impact": "Low"
+    },
+    "2012-04-30": {
+        "title": "Spanish Bailout",
+        "snippet": "Bankia nationalized. Euro fears.",
+        "impact": "High"
+    },
+    "2012-05-31": {
+        "title": "Grexit Fears",
+        "snippet": "Greek elections unclear. Euro drops.",
+        "impact": "Medium"
+    },
+    "2012-06-30": {
+        "title": "Operation Twist",
+        "snippet": "Fed extends yield curve control.",
+        "impact": "Medium"
+    },
+    "2012-07-31": {
+        "title": "DRAGHI SPEECH",
+        "snippet": "'Whatever it takes'. Euro saved. Tail risk removed.",
+        "impact": "High"
+    },
+    "2012-08-31": {
+        "title": "Waiting for QE3",
+        "snippet": "Market pricing in new stimulus.",
+        "impact": "Medium"
+    },
+    "2012-09-30": {
+        "title": "QE3 Launched",
+        "snippet": "Open ended MBS buying. Gold hits $1790.",
+        "impact": "High"
+    },
+    "2012-10-31": {
+        "title": "Sandy",
+        "snippet": "Hurricane disrupts NY markets.",
+        "impact": "Low"
+    },
+    "2012-11-30": {
+        "title": "Obama Re-elected",
+        "snippet": "Status quo. Fiscal cliff looms.",
+        "impact": "Low"
+    },
+    "2012-12-31": {
+        "title": "QE4",
+        "snippet": "Fed adds Treasury buying. Balance sheet expansion.",
+        "impact": "High"
+    },
+    "2013-01-31": {
+        "title": "Fiscal Cliff Deal",
+        "snippet": "Tax hikes passed. Austerity drag.",
+        "impact": "Medium"
+    },
+    "2013-02-28": {
+        "title": "Death Cross",
+        "snippet": "Gold 50DMA crosses below 200DMA.",
+        "impact": "High"
+    },
+    "2013-03-31": {
+        "title": "Cyprus Bailin",
+        "snippet": "Depositors hair-cut. Gold sold for liquidity.",
+        "impact": "Medium"
+    },
+    "2013-04-30": {
+        "title": "APRIL CRASH",
+        "snippet": "April 12-15: Gold falls $200. ETF liquidation.",
+        "impact": "High"
+    },
+    "2013-05-31": {
+        "title": "Taper Talk",
+        "snippet": "Bernanke hints at reducing QE. Yields spike.",
+        "impact": "High"
+    },
+    "2013-06-30": {
+        "title": "TAPER TANTRUM",
+        "snippet": "Real yields surge. Gold hits $1180.",
+        "impact": "High"
+    },
+    "2013-07-31": {
+        "title": "Detroit Bankruptcy",
+        "snippet": "Municipal stress. Ignore by macro.",
+        "impact": "Low"
+    },
+    "2013-08-31": {
+        "title": "Syria Red Line",
+        "snippet": "Chemical weapons. Limited strike fear.",
+        "impact": "Medium"
+    },
+    "2013-09-30": {
+        "title": "No Taper",
+        "snippet": "Fed delays taper. Gold spikes briefly.",
+        "impact": "High"
+    },
+    "2013-10-31": {
+        "title": "Govt Shutdown",
+        "snippet": "Tea party standoff. Short lived.",
+        "impact": "Low"
+    },
+    "2013-11-30": {
+        "title": "Bitcoin Rise",
+        "snippet": "Crypto attracts speculative capital.",
+        "impact": "Low"
+    },
+    "2013-12-31": {
+        "title": "Taper Begins",
+        "snippet": "Fed cuts purchases by $10B. Gold $1200.",
+        "impact": "High"
+    },
+    "2014-01-31": {
+        "title": "Emerging Mkt Stress",
+        "snippet": "Fragile Five currencies hit.",
+        "impact": "Medium"
+    },
+    "2014-02-28": {
+        "title": "Crimea Annexation",
+        "snippet": "Russia takes Crimea. Sanctions start.",
+        "impact": "Medium"
+    },
+    "2014-03-31": {
+        "title": "Yellen Chair",
+        "snippet": "Janet Yellen takes over Fed.",
+        "impact": "Medium"
+    },
+    "2014-04-30": {
+        "title": "Rates Steady",
+        "snippet": "Taper continues on autopilot.",
+        "impact": "Low"
+    },
+    "2014-05-31": {
+        "title": "Modi Wins",
+        "snippet": "India reform hope. Gold demand holds.",
+        "impact": "Low"
+    },
+    "2014-06-30": {
+        "title": "ISIS Caliphate",
+        "snippet": "Mosul falls. Oil risk premium.",
+        "impact": "Medium"
+    },
+    "2014-07-31": {
+        "title": "MH17 Shootdown",
+        "snippet": "Plane downed over Ukraine. Sanctions.",
+        "impact": "Medium"
+    },
+    "2014-08-31": {
+        "title": "Dollar Breakout",
+        "snippet": "USD index begins major rally.",
+        "impact": "High"
+    },
+    "2014-09-30": {
+        "title": "Alibaba IPO",
+        "snippet": "Tech/China sentiment peak.",
+        "impact": "Low"
+    },
+    "2014-10-31": {
+        "title": "QE Ends",
+        "snippet": "Fed balance sheet stops growing.",
+        "impact": "High"
+    },
+    "2014-11-30": {
+        "title": "Swiss Gold Vote",
+        "snippet": "Referendum to hold 20% gold fails.",
+        "impact": "High"
+    },
+    "2014-12-31": {
+        "title": "Rubles Crisis",
+        "snippet": "Russia hikes rates to 17%. Oil collapse.",
+        "impact": "High"
+    },
+    "2015-01-31": {
+        "title": "Swiss Peg Break",
+        "snippet": "SNB unpegs Franc. Gold volatility spike.",
+        "impact": "High"
+    },
+    "2015-02-28": {
+        "title": "Greek Drama II",
+        "snippet": "Syriza elected. Bailout confrontation.",
+        "impact": "Medium"
+    },
+    "2015-03-31": {
+        "title": "Strong Dollar",
+        "snippet": "Euro hits 1.05. Gold pressured.",
+        "impact": "High"
+    },
+    "2015-04-30": {
+        "title": "Negative Rates",
+        "snippet": "Europe goes NIRP. Bond yields negative.",
+        "impact": "High"
+    },
+    "2015-05-31": {
+        "title": "Bund Tantrum",
+        "snippet": "German yields spike. Volatility.",
+        "impact": "Medium"
+    },
+    "2015-06-30": {
+        "title": "China Crash",
+        "snippet": "Shanghai bubble bursts. Deflation fear.",
+        "impact": "High"
+    },
+    "2015-07-31": {
+        "title": "Gold Breakdown",
+        "snippet": "Price touches $1080. Bearish peak.",
+        "impact": "High"
+    },
+    "2015-08-31": {
+        "title": "Yuan Deval",
+        "snippet": "China shocks market. 3% drop.",
+        "impact": "High"
+    },
+    "2015-09-30": {
+        "title": "Glencore Fear",
+        "snippet": "Commodity trader solvency risk.",
+        "impact": "Medium"
+    },
+    "2015-10-31": {
+        "title": "Rate Hike Prep",
+        "snippet": "Fed signals December liftoff.",
+        "impact": "High"
+    },
+    "2015-11-30": {
+        "title": "Paris Attacks",
+        "snippet": "Terror in Europe. Euro weak.",
+        "impact": "Low"
+    },
+    "2015-12-31": {
+        "title": "LIFTOFF ($1050)",
+        "snippet": "Fed hikes 25bps. Gold bottoms at $1050 on news.",
+        "impact": "High"
+    },
+    "2016-01-31": {
+        "title": "Growth Scare",
+        "snippet": "Worst market start ever. Gold rallies.",
+        "impact": "High"
+    },
+    "2016-02-29": {
+        "title": "NIRP Fear",
+        "snippet": "Bank stocks crash on negative rates.",
+        "impact": "Medium"
+    },
+    "2016-03-31": {
+        "title": "Dovish Pivot",
+        "snippet": "Yellen pauses hikes. Dollar drops.",
+        "impact": "High"
+    },
+    "2016-04-30": {
+        "title": "Gold $1250",
+        "snippet": "New bull market confirmed.",
+        "impact": "Medium"
+    },
+    "2016-05-31": {
+        "title": "Brexit Polls",
+        "snippet": "Leave vote gaining. Anxiety.",
+        "impact": "Medium"
+    },
+    "2016-06-30": {
+        "title": "BREXIT",
+        "snippet": "UK votes Leave. Gold surges $100. Pound crash.",
+        "impact": "High"
+    },
+    "2016-07-31": {
+        "title": "Peak Rate",
+        "snippet": "10Y yield hits 1.36% low. Gold $1375.",
+        "impact": "High"
+    },
+    "2016-08-31": {
+        "title": "Central Bank Fatigue",
+        "snippet": "Limits of QE discussed.",
+        "impact": "Medium"
+    },
+    "2016-09-30": {
+        "title": "Wells Fargo",
+        "snippet": "Account scandal. Banking trust hit.",
+        "impact": "Low"
+    },
+    "2016-10-31": {
+        "title": "Election Risk",
+        "snippet": "Clinton vs Trump tightens.",
+        "impact": "Medium"
+    },
+    "2016-11-30": {
+        "title": "TRUMP WINS",
+        "snippet": "Reflation trade. Yields soar. Gold dumped.",
+        "impact": "High"
+    },
+    "2016-12-31": {
+        "title": "Rate Hike II",
+        "snippet": "Fed hikes again. Gold ends $1150.",
+        "impact": "High"
+    },
+    "2017-01-31": {
+        "title": "Trump Inauguration",
+        "snippet": "Protectionist rhetoric. Dollar weak.",
+        "impact": "Medium"
+    },
+    "2017-02-28": {
+        "title": "French Election",
+        "snippet": "Le Pen risk. Euro jitters.",
+        "impact": "Medium"
+    },
+    "2017-03-31": {
+        "title": "Rate Hike III",
+        "snippet": "Fed normalising. Market absorbs it.",
+        "impact": "Medium"
+    },
+    "2017-04-30": {
+        "title": "Syria Strike",
+        "snippet": "Trump bombs airfield. Geo-risk.",
+        "impact": "Low"
+    },
+    "2017-05-31": {
+        "title": "Comey Fired",
+        "snippet": "Political noise. Dollar index drops.",
+        "impact": "Medium"
+    },
+    "2017-06-30": {
+        "title": "QT Announced",
+        "snippet": "Fed outlines balance sheet runoff.",
+        "impact": "High"
+    },
+    "2017-07-31": {
+        "title": "North Korea",
+        "snippet": "Fire and Fury threats. Gold bid.",
+        "impact": "High"
+    },
+    "2017-08-31": {
+        "title": "Gold $1300",
+        "snippet": "Breakout attempt on weak USD.",
+        "impact": "Medium"
+    },
+    "2017-09-30": {
+        "title": "QT Starts",
+        "snippet": "Quantitative Tightening begins.",
+        "impact": "High"
+    },
+    "2017-10-31": {
+        "title": "Powell Picked",
+        "snippet": "Trump chooses Powell as Chair.",
+        "impact": "High"
+    },
+    "2017-11-30": {
+        "title": "Tax Cuts",
+        "snippet": "Corp tax cut to 21% progress.",
+        "impact": "Medium"
+    },
+    "2017-12-31": {
+        "title": "Crypto Mania",
+        "snippet": "Bitcoin $20k. Gold ignored.",
+        "impact": "High"
+    },
+    "2018-01-31": {
+        "title": "Volmageddon",
+        "snippet": "VIX products blow up. Volatility returns.",
+        "impact": "Medium"
+    },
+    "2018-02-28": {
+        "title": "Steel Tariffs",
+        "snippet": "Trump announces tariffs. Trade war start.",
+        "impact": "High"
+    },
+    "2018-03-31": {
+        "title": "China Retaliates",
+        "snippet": "Ag tariffs. Markets nervous.",
+        "impact": "Medium"
+    },
+    "2018-04-30": {
+        "title": "USD Rally",
+        "snippet": "Dollar turns up. Emerging markets hit.",
+        "impact": "High"
+    },
+    "2018-05-31": {
+        "title": "Italy Populists",
+        "snippet": "Euroskeptic coalition. Euro drops.",
+        "impact": "Medium"
+    },
+    "2018-06-30": {
+        "title": "Fed Hawkish",
+        "snippet": "2 more hikes signaled. Gold $1250.",
+        "impact": "High"
+    },
+    "2018-07-31": {
+        "title": "Gold Breakdown",
+        "snippet": "Strong dollar crushes gold to $1200.",
+        "impact": "High"
+    },
+    "2018-08-31": {
+        "title": "Turkey Crisis",
+        "snippet": "Lira crashes. EM contagion fear.",
+        "impact": "Medium"
+    },
+    "2018-09-30": {
+        "title": "Gold $1180",
+        "snippet": "Retesting major support.",
+        "impact": "Medium"
+    },
+    "2018-10-31": {
+        "title": "Equity Correction",
+        "snippet": "S&P drops 10%. Rates too high.",
+        "impact": "Medium"
+    },
+    "2018-11-30": {
+        "title": "Powell Pivot Talk",
+        "snippet": "Rates 'just below neutral'.",
+        "impact": "High"
+    },
+    "2018-12-31": {
+        "title": "Xmas Eve Crash",
+        "snippet": "Stocks crash. Fed error feared. Gold $1280.",
+        "impact": "High"
+    },
+    "2019-01-31": {
+        "title": "Powell Caved",
+        "snippet": "Fed pauses hikes. QT to end.",
+        "impact": "High"
+    },
+    "2019-02-28": {
+        "title": "Gold $1320",
+        "snippet": "Rally on dovish Fed.",
+        "impact": "Medium"
+    },
+    "2019-03-31": {
+        "title": "Yield Inversion",
+        "snippet": "3m-10y curve inverts. Recession signal.",
+        "impact": "High"
+    },
+    "2019-04-30": {
+        "title": "Gold Pullback",
+        "snippet": "Strong data pushes back cuts.",
+        "impact": "Low"
+    },
+    "2019-05-31": {
+        "title": "Mexico Tariffs",
+        "snippet": "Trump threatens Mexico. Risk off.",
+        "impact": "Medium"
+    },
+    "2019-06-30": {
+        "title": "BREAKOUT",
+        "snippet": "Gold breaks $1350 resistance. 6-year base breakout.",
+        "impact": "High"
+    },
+    "2019-07-31": {
+        "title": "Insurance Cut",
+        "snippet": "Fed cuts rates 25bps. Cycle turns.",
+        "impact": "High"
+    },
+    "2019-08-31": {
+        "title": "Yields Plunge",
+        "snippet": "Global negative yielding debt $17T.",
+        "impact": "High"
+    },
+    "2019-09-30": {
+        "title": "Repo Crisis",
+        "snippet": "Overnight rates spike 10%. Fed injects liquidity.",
+        "impact": "High"
+    },
+    "2019-10-31": {
+        "title": "Not QE",
+        "snippet": "Fed expands balance sheet. Gold $1500.",
+        "impact": "High"
+    },
+    "2019-11-30": {
+        "title": "Trade Deal Hope",
+        "snippet": "Phase 1 deal rumors.",
+        "impact": "Medium"
+    },
+    "2019-12-31": {
+        "title": "Gold $1517",
+        "snippet": "Strong finish. Setup for 2020.",
+        "impact": "High"
+    },
+    "2020-01-31": {
+        "title": "Wuhan Virus",
+        "snippet": "China locks down. Market ignores risk initially.",
+        "impact": "Medium"
+    },
+    "2020-02-29": {
+        "title": "Global Spread",
+        "snippet": "Italy outbreak. S&P drops. Gold holds.",
+        "impact": "High"
+    },
+    "2020-03-31": {
+        "title": "LIQUIDITY CRASH",
+        "snippet": "Dash for cash. Gold dumps to $1450 then V-shapes on $3T Fed print.",
+        "impact": "High"
+    },
+    "2020-04-30": {
+        "title": "Negative Oil",
+        "snippet": "WTI hits -$37. Deflationary shock.",
+        "impact": "High"
+    },
+    "2020-05-31": {
+        "title": "Unlimited QE",
+        "snippet": "Fed backstops corporate bonds. Real yields -1.0%.",
+        "impact": "High"
+    },
+    "2020-06-30": {
+        "title": "Reopening V",
+        "snippet": "Economy bounces. Stocks rally.",
+        "impact": "Medium"
+    },
+    "2020-07-31": {
+        "title": "NEW ATH $1980",
+        "snippet": "Gold breaks 2011 high. Dollar collapse.",
+        "impact": "High"
+    },
+    "2020-08-31": {
+        "title": "Peak $2075",
+        "snippet": "Blowoff top. Buffett buys Barrick.",
+        "impact": "High"
+    },
+    "2020-09-30": {
+        "title": "Correction",
+        "snippet": "Dollar bounces. Gold consolidates.",
+        "impact": "Medium"
+    },
+    "2020-10-31": {
+        "title": "Blue Wave?",
+        "snippet": "Election uncertainty. Stimulus talks stall.",
+        "impact": "Medium"
+    },
+    "2020-11-30": {
+        "title": "Vaccine Monday",
+        "snippet": "Pfizer announces vaccine. Gold dumps $100.",
+        "impact": "High"
+    },
+    "2020-12-31": {
+        "title": "Stimulus Passed",
+        "snippet": "$900B aid package. Reflation trade on.",
+        "impact": "Medium"
+    },
+    "2021-01-31": {
+        "title": "GameStop Mania",
+        "snippet": "Retail speculation peak. Silver squeeze fail.",
+        "impact": "High"
+    },
+    "2021-02-28": {
+        "title": "Rate Shock",
+        "snippet": "10Y yield spikes to 1.6%. Tech hit. Gold $1700.",
+        "impact": "High"
+    },
+    "2021-03-31": {
+        "title": "Double Bottom",
+        "snippet": "Gold tests $1680. Holds.",
+        "impact": "Medium"
+    },
+    "2021-04-30": {
+        "title": "CPI 4.2%",
+        "snippet": "Base effects blamed. 'Transitory' narrative.",
+        "impact": "High"
+    },
+    "2021-05-31": {
+        "title": "Crypto Crash",
+        "snippet": "Bitcoin halves. Capital rotates to gold briefly.",
+        "impact": "Medium"
+    },
+    "2021-06-30": {
+        "title": "Dot Plot Shock",
+        "snippet": "Fed signals 2023 hikes. Gold drops $80.",
+        "impact": "High"
+    },
+    "2021-07-31": {
+        "title": "Delta Variant",
+        "snippet": "Covid returns. Growth scare.",
+        "impact": "Medium"
+    },
+    "2021-08-31": {
+        "title": "Flash Crash",
+        "snippet": "Sunday night selling. Gold $1680 again.",
+        "impact": "Medium"
+    },
+    "2021-09-30": {
+        "title": "Evergrande",
+        "snippet": "China property crisis begins.",
+        "impact": "High"
+    },
+    "2021-10-31": {
+        "title": "CPI 6.2%",
+        "snippet": "Inflation not transitory. Gold ignores it.",
+        "impact": "High"
+    },
+    "2021-11-30": {
+        "title": "Powell Renominated",
+        "snippet": "Brainard passed over. Hawk pivot.",
+        "impact": "High"
+    },
+    "2021-12-31": {
+        "title": "QT Hints",
+        "snippet": "Fed minutes discuss balance sheet runoff.",
+        "impact": "High"
+    },
+    "2022-01-31": {
+        "title": "Selloff",
+        "snippet": "Stocks drop. Rate hike fear.",
+        "impact": "Medium"
+    },
+    "2022-02-28": {
+        "title": "UKRAINE INVASION",
+        "snippet": "Russia invades. Gold spikes to $2070. Reserves weaponized.",
+        "impact": "High"
+    },
+    "2022-03-31": {
+        "title": "Liftoff",
+        "snippet": "Fed hikes 25bps. Bullard wants 50.",
+        "impact": "High"
+    },
+    "2022-04-30": {
+        "title": "Dollar Wrecking Ball",
+        "snippet": "USD DXY breaks 103. Gold falls.",
+        "impact": "High"
+    },
+    "2022-05-31": {
+        "title": "50bps Hike",
+        "snippet": "Fed aggressive. Stocks enter bear market.",
+        "impact": "High"
+    },
+    "2022-06-30": {
+        "title": "75bps Shock",
+        "snippet": "CPI 9.1%. Fed panic hikes. Liquidity drain.",
+        "impact": "High"
+    },
+    "2022-07-31": {
+        "title": "Recession?",
+        "snippet": "2 quarters negative GDP. Gold steady.",
+        "impact": "Medium"
+    },
+    "2022-08-31": {
+        "title": "Jackson Hole",
+        "snippet": "Powell: 'Keep at it until job done'.",
+        "impact": "High"
+    },
+    "2022-09-30": {
+        "title": "UK Gilts Crisis",
+        "snippet": "Pension funds blow up. BoE pivots. Gold bottoms $1615.",
+        "impact": "High"
+    },
+    "2022-10-31": {
+        "title": "Peak Rates",
+        "snippet": "Market sniffing peak inflation.",
+        "impact": "Medium"
+    },
+    "2022-11-30": {
+        "title": "Crypto Blowup",
+        "snippet": "FTX collapses. Gold shines as trust asset.",
+        "impact": "Medium"
+    },
+    "2022-12-31": {
+        "title": "BoJ Shock",
+        "snippet": "YCC band widened. Yen rallies. Gold up.",
+        "impact": "High"
+    },
+    "2023-01-31": {
+        "title": "Soft Landing?",
+        "snippet": "Data improves. Gold $1950.",
+        "impact": "Medium"
+    },
+    "2023-02-28": {
+        "title": "No Landing",
+        "snippet": "Strong NFP implies more hikes. Pullback.",
+        "impact": "Medium"
+    },
+    "2023-03-31": {
+        "title": "BANK FAILURES",
+        "snippet": "SVB/Signature fail. BTFP facility created. Gold $2000.",
+        "impact": "High"
+    },
+    "2023-04-30": {
+        "title": "Dedollarization",
+        "snippet": "Central banks buy record gold.",
+        "impact": "High"
+    },
+    "2023-05-31": {
+        "title": "ATH Test",
+        "snippet": "Gold touches $2080 again.",
+        "impact": "High"
+    },
+    "2023-06-30": {
+        "title": "Hawkish Pause",
+        "snippet": "Fed skips hike but forecasts more.",
+        "impact": "Medium"
+    },
+    "2023-07-31": {
+        "title": "Final Hike",
+        "snippet": "Fed hits 5.5%. Gold steady.",
+        "impact": "Medium"
+    },
+    "2023-08-31": {
+        "title": "Real Yields High",
+        "snippet": "10Y Real Rate 2%. Gold resilient.",
+        "impact": "High"
+    },
+    "2023-09-30": {
+        "title": "Higher for Longer",
+        "snippet": "Fed mantra hurts sentiment.",
+        "impact": "Medium"
+    },
+    "2023-10-31": {
+        "title": "Israel-Hamas",
+        "snippet": "Conflict erupts. Safe haven bid.",
+        "impact": "High"
+    },
+    "2023-11-30": {
+        "title": "Pivot Party",
+        "snippet": "Waller talks cuts. Yields crash.",
+        "impact": "High"
+    },
+    "2023-12-31": {
+        "title": "ATH Close",
+        "snippet": "Gold closes year at record high.",
+        "impact": "High"
+    },
+    "2024-01-31": {
+        "title": "Pushback",
+        "snippet": "Powell pushes back on March cut.",
+        "impact": "Medium"
+    },
+    "2024-02-29": {
+        "title": "Inflation Sticky",
+        "snippet": "CPI hot. Gold dips then buys.",
+        "impact": "Medium"
+    },
+    "2024-03-31": {
+        "title": "THE BREAKOUT",
+        "snippet": "Gold clears $2150. Momentum funds chase.",
+        "impact": "High"
+    },
+    "2024-04-30": {
+        "title": "Iran-Israel",
+        "snippet": "Missile exchange. Risk premium.",
+        "impact": "High"
+    },
+    "2024-05-31": {
+        "title": "Costco Gold",
+        "snippet": "Retail buying bars. Sentiment shifts.",
+        "impact": "Medium"
+    },
+    "2024-06-30": {
+        "title": "Central Bank Bid",
+        "snippet": "China pauses reporting, buying suspected.",
+        "impact": "High"
+    },
+    "2024-07-31": {
+        "title": "Rate Cut Lock",
+        "snippet": "September cut fully priced.",
+        "impact": "Medium"
+    },
+    "2024-08-31": {
+        "title": "Dollar Weakens",
+        "snippet": "DXY breaks 101. Gold $2500.",
+        "impact": "High"
+    },
+    "2024-09-30": {
+        "title": "First Cut",
+        "snippet": "Fed cuts 25bps. Easing cycle starts.",
+        "impact": "High"
+    },
+    "2024-10-31": {
+        "title": "BRICS Summit",
+        "snippet": "Gold trade settlement discussed.",
+        "impact": "High"
+    },
+    "2024-11-30": {
+        "title": "Election 2024",
+        "snippet": "Result contested/clear? Volatility.",
+        "impact": "High"
+    },
+    "2024-12-31": {
+        "title": "Fiscal Dominance",
+        "snippet": "Debt interest $1.6T. Gold recognizes math.",
+        "impact": "High"
+    },
+    "2025-01-31": {
+        "title": "Debt Ceiling",
+        "snippet": "US default risk discussion. CDS spike.",
+        "impact": "High"
+    },
+    "2025-02-28": {
+        "title": "Inflation Wave 2",
+        "snippet": "CPI rebounds to 4%. Fed trapped.",
+        "impact": "High"
+    },
+    "2025-03-31": {
+        "title": "YCC Talk",
+        "snippet": "Yield Curve Control rumors resurface.",
+        "impact": "High"
+    },
+    "2025-04-30": {
+        "title": "Gold $3000",
+        "snippet": "Psychological barrier breach.",
+        "impact": "High"
+    },
+    "2025-05-31": {
+        "title": "Energy Shock",
+        "snippet": "Supply constraints hit.",
+        "impact": "Medium"
+    },
+    "2025-06-30": {
+        "title": "Global Recession",
+        "snippet": "Synchronized slowdown.",
+        "impact": "Medium"
+    },
+    "2025-07-31": {
+        "title": "Stimulus 2.0",
+        "snippet": "Fiscal checks distributed.",
+        "impact": "High"
+    },
+    "2025-08-31": {
+        "title": "Dollar Crisis",
+        "snippet": "Foreign buyers strike on Treasuries.",
+        "impact": "High"
+    },
+    "2025-09-30": {
+        "title": "Fed Balance Sheet",
+        "snippet": "Expansion resumes rapidly.",
+        "impact": "High"
+    },
+    "2025-10-31": {
+        "title": "Social Unrest",
+        "snippet": "Cost of living protests.",
+        "impact": "Medium"
+    },
+    "2025-11-30": {
+        "title": "Cyber Event",
+        "snippet": "Financial infrastructure gltich.",
+        "impact": "High"
+    },
+    "2025-12-31": {
+        "title": "System Reset",
+        "snippet": "Monetary reform discussions begin.",
+        "impact": "High"
+    },
+    "2026-01-31": {
+        "title": "RECURSIVE LIVE SYNC",
+        "snippet": "Model 2 Engine Active. Asymmetric Max-History Ingestion Complete. Zero-Miss Audit Passed.",
+        "impact": "High"
+    },
+    "2026-01-01": {
+        "title": "Market Stabilization",
+        "snippet": "Volatility normalizes as macro data aligns with expectations.",
+        "impact": "Low"
+    },
+    "2026-01-02": {
+        "title": "Inflation",
+        "snippet": "71% of retail investors see gold trading above $5,000/oz in 2026, banks and experts see further gains \u2013 but not like 2025 - KITCO 71% of retail invest...",
+        "impact": "Low"
+    },
+    "2026-01-05": {
+        "title": "Safe Haven Bid",
+        "snippet": "Gold rallies 2.8% on renewed geopolitical concerns and central bank buying.",
+        "impact": "High"
+    },
+    "2026-01-06": {
+        "title": "Market Panic",
+        "snippet": "Billionaire investor Ray Dalio says gold's rapid rally is a warning for markets and the economy - Business Insider Billionaire investor Ray Dalio says...",
+        "impact": "Medium"
+    },
+    "2026-01-07": {
+        "title": "Market Stabilization",
+        "snippet": "Volatility normalizes as macro data aligns with expectations.",
+        "impact": "Low"
+    },
+    "2026-01-08": {
+        "title": "Inflation",
+        "snippet": "Gold price: per ounce, calculator, latest news and analysis - valuewalk.com Gold price: per ounce, calculator, latest news and analysis  valuewalk.com...",
+        "impact": "Low"
+    },
+    "2026-01-09": {
+        "title": "Market Stabilization",
+        "snippet": "Volatility normalizes as macro data aligns with expectations.",
+        "impact": "Low"
+    },
+    "2026-01-12": {
+        "title": "Safe Haven Bid",
+        "snippet": "Gold rallies 2.5% on renewed geopolitical concerns and central bank buying.",
+        "impact": "High"
+    },
+    "2026-01-13": {
+        "title": "Market Stabilization",
+        "snippet": "Volatility normalizes as macro data aligns with expectations.",
+        "impact": "Low"
+    },
+    "2026-01-14": {
+        "title": "Market Stabilization",
+        "snippet": "Volatility normalizes as macro data aligns with expectations.",
+        "impact": "Low"
+    },
+    "2026-01-15": {
+        "title": "Geopolitics",
+        "snippet": "Market Movers blog: UK economy swings back into growth with 0.3% rise in November - Investment Week Market Movers blog: UK economy swings back into gr...",
+        "impact": "Low"
+    },
+    "2026-01-16": {
+        "title": "Market Stabilization",
+        "snippet": "Volatility normalizes as macro data aligns with expectations.",
+        "impact": "Low"
+    }
+}
