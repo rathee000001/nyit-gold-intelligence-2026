@@ -1,5 +1,5 @@
 {
-    "model_name": "NYIT Model 3 (Cortex V10.3 - Bull Trend)",
+    "model_name": "NYIT Model 3 (Cortex V11.0 - Bull Trend)",
     "status": "ACTIVE",
     "components": {
         "regime": "Bull Trend",
@@ -7,9 +7,7 @@
         "volatility_risk": "1.13% (Daily)",
         "weights": "Struct 0.3 | Temp 0.7",
         "basis_hybrid": "1.0552x",
-        "basis_tactical": "1.0940x",
-        "basis_structural": "0.9985x",
-        "sentiment_impact": "0.8667"
+        "sentiment_decay": "Factor 0.95 (Half-Life applied)"
     },
     "forecast_data": [
         {
@@ -17,244 +15,274 @@
             "price": 4659.59,
             "base_model": 4232.3,
             "calibration_boost": 427.29,
+            "sentiment_scalar": 1.0433,
             "risk_upper": 4764.65,
             "risk_lower": 4554.54
         },
         {
             "date": "2026-01-22",
-            "price": 4621.9,
+            "price": 4612.3,
             "base_model": 4198.06,
-            "calibration_boost": 423.83,
-            "risk_upper": 4726.4,
-            "risk_lower": 4517.4
+            "calibration_boost": 414.24,
+            "sentiment_scalar": 1.0412,
+            "risk_upper": 4716.58,
+            "risk_lower": 4508.01
         },
         {
             "date": "2026-01-23",
-            "price": 4594.25,
+            "price": 4575.65,
             "base_model": 4172.95,
-            "calibration_boost": 421.3,
-            "risk_upper": 4698.42,
-            "risk_lower": 4490.08
+            "calibration_boost": 402.69,
+            "sentiment_scalar": 1.0391,
+            "risk_upper": 4679.39,
+            "risk_lower": 4471.9
         },
         {
             "date": "2026-01-24",
-            "price": 4575.8,
+            "price": 4548.69,
             "base_model": 4156.19,
-            "calibration_boost": 419.61,
-            "risk_upper": 4679.84,
-            "risk_lower": 4471.76
+            "calibration_boost": 392.5,
+            "sentiment_scalar": 1.0372,
+            "risk_upper": 4652.12,
+            "risk_lower": 4445.27
         },
         {
             "date": "2026-01-25",
-            "price": 4566.72,
+            "price": 4531.53,
             "base_model": 4147.94,
-            "calibration_boost": 418.77,
-            "risk_upper": 4670.84,
-            "risk_lower": 4462.59
+            "calibration_boost": 383.59,
+            "sentiment_scalar": 1.0353,
+            "risk_upper": 4634.86,
+            "risk_lower": 4428.21
         },
         {
             "date": "2026-01-26",
-            "price": 4561.02,
+            "price": 4518.17,
             "base_model": 4142.77,
-            "calibration_boost": 418.25,
-            "risk_upper": 4665.3,
-            "risk_lower": 4456.74
+            "calibration_boost": 375.4,
+            "sentiment_scalar": 1.0335,
+            "risk_upper": 4621.47,
+            "risk_lower": 4414.87
         },
         {
             "date": "2026-01-27",
-            "price": 4559.2,
+            "price": 4509.04,
             "base_model": 4141.12,
-            "calibration_boost": 418.09,
-            "risk_upper": 4663.73,
-            "risk_lower": 4454.68
+            "calibration_boost": 367.92,
+            "sentiment_scalar": 1.0319,
+            "risk_upper": 4612.42,
+            "risk_lower": 4405.66
         },
         {
             "date": "2026-01-28",
-            "price": 4569.14,
+            "price": 4511.89,
             "base_model": 4150.14,
-            "calibration_boost": 419.0,
-            "risk_upper": 4674.18,
-            "risk_lower": 4464.09
+            "calibration_boost": 361.75,
+            "sentiment_scalar": 1.0303,
+            "risk_upper": 4615.62,
+            "risk_lower": 4408.16
         },
         {
             "date": "2026-01-29",
-            "price": 4572.56,
+            "price": 4508.64,
             "base_model": 4153.25,
-            "calibration_boost": 419.31,
-            "risk_upper": 4677.97,
-            "risk_lower": 4467.15
+            "calibration_boost": 355.39,
+            "sentiment_scalar": 1.0287,
+            "risk_upper": 4612.58,
+            "risk_lower": 4404.7
         },
         {
             "date": "2026-01-30",
-            "price": 4577.54,
+            "price": 4507.24,
             "base_model": 4157.77,
-            "calibration_boost": 419.77,
-            "risk_upper": 4683.35,
-            "risk_lower": 4471.73
+            "calibration_boost": 349.47,
+            "sentiment_scalar": 1.0273,
+            "risk_upper": 4611.43,
+            "risk_lower": 4403.06
         },
         {
             "date": "2026-01-31",
-            "price": 4580.53,
+            "price": 4504.19,
             "base_model": 4160.49,
-            "calibration_boost": 420.04,
-            "risk_upper": 4686.7,
-            "risk_lower": 4474.36
+            "calibration_boost": 343.7,
+            "sentiment_scalar": 1.0259,
+            "risk_upper": 4608.59,
+            "risk_lower": 4399.79
         },
         {
             "date": "2026-02-01",
-            "price": 4603.71,
+            "price": 4521.26,
             "base_model": 4181.54,
-            "calibration_boost": 422.17,
-            "risk_upper": 4710.7,
-            "risk_lower": 4496.72
+            "calibration_boost": 339.72,
+            "sentiment_scalar": 1.0246,
+            "risk_upper": 4626.33,
+            "risk_lower": 4416.19
         },
         {
             "date": "2026-02-02",
-            "price": 4606.15,
+            "price": 4518.21,
             "base_model": 4183.76,
-            "calibration_boost": 422.39,
-            "risk_upper": 4713.48,
-            "risk_lower": 4498.81
+            "calibration_boost": 334.46,
+            "sentiment_scalar": 1.0234,
+            "risk_upper": 4623.5,
+            "risk_lower": 4412.93
         },
         {
             "date": "2026-02-03",
-            "price": 4608.03,
+            "price": 4514.89,
             "base_model": 4185.47,
-            "calibration_boost": 422.56,
-            "risk_upper": 4715.69,
-            "risk_lower": 4500.37
+            "calibration_boost": 329.42,
+            "sentiment_scalar": 1.0222,
+            "risk_upper": 4620.37,
+            "risk_lower": 4409.4
         },
         {
             "date": "2026-02-04",
-            "price": 4609.33,
+            "price": 4511.25,
             "base_model": 4186.65,
-            "calibration_boost": 422.68,
-            "risk_upper": 4717.31,
-            "risk_lower": 4501.35
+            "calibration_boost": 324.6,
+            "sentiment_scalar": 1.0211,
+            "risk_upper": 4616.93,
+            "risk_lower": 4405.57
         },
         {
             "date": "2026-02-05",
-            "price": 4610.09,
+            "price": 4507.33,
             "base_model": 4187.34,
-            "calibration_boost": 422.75,
-            "risk_upper": 4718.37,
-            "risk_lower": 4501.81
+            "calibration_boost": 319.99,
+            "sentiment_scalar": 1.0201,
+            "risk_upper": 4613.2,
+            "risk_lower": 4401.46
         },
         {
             "date": "2026-02-06",
-            "price": 4610.83,
+            "price": 4503.61,
             "base_model": 4188.01,
-            "calibration_boost": 422.82,
-            "risk_upper": 4719.41,
-            "risk_lower": 4502.25
+            "calibration_boost": 315.6,
+            "sentiment_scalar": 1.0191,
+            "risk_upper": 4609.67,
+            "risk_lower": 4397.55
         },
         {
             "date": "2026-02-07",
-            "price": 4611.0,
+            "price": 4499.57,
             "base_model": 4188.17,
-            "calibration_boost": 422.84,
-            "risk_upper": 4719.87,
-            "risk_lower": 4502.13
+            "calibration_boost": 311.4,
+            "sentiment_scalar": 1.0181,
+            "risk_upper": 4605.8,
+            "risk_lower": 4393.33
         },
         {
             "date": "2026-02-08",
-            "price": 4611.87,
+            "price": 4496.41,
             "base_model": 4188.95,
-            "calibration_boost": 422.91,
-            "risk_upper": 4721.04,
-            "risk_lower": 4502.7
+            "calibration_boost": 307.45,
+            "sentiment_scalar": 1.0172,
+            "risk_upper": 4602.85,
+            "risk_lower": 4389.97
         },
         {
             "date": "2026-02-09",
-            "price": 4612.09,
+            "price": 4492.82,
             "base_model": 4189.15,
-            "calibration_boost": 422.94,
-            "risk_upper": 4721.55,
-            "risk_lower": 4502.63
+            "calibration_boost": 303.66,
+            "sentiment_scalar": 1.0164,
+            "risk_upper": 4599.45,
+            "risk_lower": 4386.19
         },
         {
             "date": "2026-02-10",
-            "price": 4611.1,
+            "price": 4488.24,
             "base_model": 4188.25,
-            "calibration_boost": 422.84,
-            "risk_upper": 4720.81,
-            "risk_lower": 4501.38
+            "calibration_boost": 299.98,
+            "sentiment_scalar": 1.0155,
+            "risk_upper": 4595.03,
+            "risk_lower": 4381.44
         },
         {
             "date": "2026-02-11",
-            "price": 4611.9,
+            "price": 4485.58,
             "base_model": 4188.98,
-            "calibration_boost": 422.92,
-            "risk_upper": 4721.91,
-            "risk_lower": 4501.88
+            "calibration_boost": 296.6,
+            "sentiment_scalar": 1.0148,
+            "risk_upper": 4592.59,
+            "risk_lower": 4378.58
         },
         {
             "date": "2026-02-12",
-            "price": 4612.85,
+            "price": 4483.25,
             "base_model": 4189.85,
-            "calibration_boost": 423.01,
-            "risk_upper": 4723.17,
-            "risk_lower": 4502.54
+            "calibration_boost": 293.4,
+            "sentiment_scalar": 1.014,
+            "risk_upper": 4590.47,
+            "risk_lower": 4376.03
         },
         {
             "date": "2026-02-13",
-            "price": 4616.98,
+            "price": 4484.16,
             "base_model": 4193.6,
-            "calibration_boost": 423.38,
-            "risk_upper": 4727.68,
-            "risk_lower": 4506.28
+            "calibration_boost": 290.56,
+            "sentiment_scalar": 1.0133,
+            "risk_upper": 4591.67,
+            "risk_lower": 4376.65
         },
         {
             "date": "2026-02-14",
-            "price": 4609.21,
+            "price": 4473.67,
             "base_model": 4186.54,
-            "calibration_boost": 422.67,
-            "risk_upper": 4720.0,
-            "risk_lower": 4498.42
+            "calibration_boost": 287.13,
+            "sentiment_scalar": 1.0127,
+            "risk_upper": 4581.2,
+            "risk_lower": 4366.14
         },
         {
             "date": "2026-02-15",
-            "price": 4610.43,
+            "price": 4472.06,
             "base_model": 4187.65,
-            "calibration_boost": 422.78,
-            "risk_upper": 4721.52,
-            "risk_lower": 4499.33
+            "calibration_boost": 284.41,
+            "sentiment_scalar": 1.012,
+            "risk_upper": 4579.82,
+            "risk_lower": 4364.3
         },
         {
             "date": "2026-02-16",
-            "price": 4611.59,
+            "price": 4470.53,
             "base_model": 4188.7,
-            "calibration_boost": 422.89,
-            "risk_upper": 4722.99,
-            "risk_lower": 4500.19
+            "calibration_boost": 281.83,
+            "sentiment_scalar": 1.0114,
+            "risk_upper": 4578.52,
+            "risk_lower": 4362.54
         },
         {
             "date": "2026-02-17",
-            "price": 4612.69,
+            "price": 4469.07,
             "base_model": 4189.7,
-            "calibration_boost": 422.99,
-            "risk_upper": 4724.39,
-            "risk_lower": 4500.98
+            "calibration_boost": 279.37,
+            "sentiment_scalar": 1.0108,
+            "risk_upper": 4577.29,
+            "risk_lower": 4360.84
         },
         {
             "date": "2026-02-18",
-            "price": 4613.49,
+            "price": 4467.45,
             "base_model": 4190.43,
-            "calibration_boost": 423.06,
-            "risk_upper": 4725.49,
-            "risk_lower": 4501.49
+            "calibration_boost": 277.02,
+            "sentiment_scalar": 1.0103,
+            "risk_upper": 4575.9,
+            "risk_lower": 4358.99
         },
         {
             "date": "2026-02-19",
-            "price": 4602.61,
+            "price": 4454.64,
             "base_model": 4180.54,
-            "calibration_boost": 422.07,
-            "risk_upper": 4714.62,
-            "risk_lower": 4490.6
+            "calibration_boost": 274.09,
+            "sentiment_scalar": 1.0098,
+            "risk_upper": 4563.05,
+            "risk_lower": 4346.23
         }
     ],
     "metadata": {
-        "generated_at": "2026-01-21T11:46:30.715752",
+        "generated_at": "2026-01-21T11:56:36.161271",
         "latest_news": "Gold Prices Smash Another Record: Spot Gold Hits $4,689 All\u2011Time High as Central Banks Go on a Buying Spree - CarbonCredits.com",
         "sentiment_momentum": 0.8667,
         "verdict": "BEARISH"
