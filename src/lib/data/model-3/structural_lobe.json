@@ -1,8 +1,8 @@
 {
     "metrics": {
-        "mape": 0.010764,
-        "rmse": 20.81,
-        "accuracy_score": 98.92,
+        "mape": 0.010737,
+        "rmse": 20.79,
+        "accuracy_score": 98.93,
         "r2_score": 0.9986
     },
     "coefficients": {
@@ -69,7 +69,7 @@
     },
     "formula": "Gold \u2248 0.3474*[jpy_usd_MA_5] + 0.1847*[m2_supply_MA_5] + \u03b5",
     "metadata": {
-        "timestamp": "2026-01-21T07:51:46.857448",
-        "lobe": "Structural Alpha (Colab Sync)"
+        "timestamp": "2026-01-21T08:11:08.790961",
+        "lobe": "Structural Alpha (Smart-Resume)"
     }
 }
