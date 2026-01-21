@@ -1,0 +1,25 @@
+{
+    "momentum_score": 49.92,
+    "trend_direction": "Neutral",
+    "wavelet_denoised_path": [
+        4443.8,
+        4208.38,
+        4604.41,
+        4475.3,
+        4759.67,
+        4210.3,
+        4494.12,
+        4557.73,
+        4286.54,
+        4421.87
+    ],
+    "forecast": {
+        "price": 4443.79,
+        "lower_ci": 4240.03,
+        "upper_ci": 4626.21
+    },
+    "metadata": {
+        "timestamp": "2026-01-21T08:28:17.754394",
+        "lobe": "Temporal Beta (Bi-LSTM + MC Dropout)"
+    }
+}
