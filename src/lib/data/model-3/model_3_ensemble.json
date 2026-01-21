@@ -1,226 +1,227 @@
 {
-    "model_name": "NYIT Model 3 (Cortex V9.2)",
+    "model_name": "NYIT Model 3 (Cortex V9.3)",
     "status": "ACTIVE",
     "components": {
         "weights": "Struct 0.15 | Temp 0.85",
-        "ecm_type": "Vectorized (Intercept + Slope)",
-        "narrative_adjustment": "0.00%"
+        "ecm_type": "Vectorized",
+        "narrative_adjustment": "2.17%"
     },
     "forecast_data": [
         {
             "date": "2026-01-21",
-            "price": 4771.36,
+            "price": 4874.74,
             "raw_model": 4392.62,
             "ecm_boost": 378.74,
-            "narrative_impact": 0.0
+            "narrative_impact": 103.38
         },
         {
             "date": "2026-01-22",
-            "price": 4796.16,
+            "price": 4900.08,
             "raw_model": 4428.33,
             "ecm_boost": 367.83,
-            "narrative_impact": 0.0
+            "narrative_impact": 103.92
         },
         {
             "date": "2026-01-23",
-            "price": 4822.59,
+            "price": 4927.08,
             "raw_model": 4465.66,
             "ecm_boost": 356.93,
-            "narrative_impact": 0.0
+            "narrative_impact": 104.49
         },
         {
             "date": "2026-01-24",
-            "price": 4850.1,
+            "price": 4955.19,
             "raw_model": 4504.08,
             "ecm_boost": 346.02,
-            "narrative_impact": 0.0
+            "narrative_impact": 105.09
         },
         {
             "date": "2026-01-25",
-            "price": 4878.43,
+            "price": 4984.13,
             "raw_model": 4543.32,
             "ecm_boost": 335.11,
-            "narrative_impact": 0.0
+            "narrative_impact": 105.7
         },
         {
             "date": "2026-01-26",
-            "price": 4905.45,
+            "price": 5011.74,
             "raw_model": 4581.25,
             "ecm_boost": 324.21,
-            "narrative_impact": 0.0
+            "narrative_impact": 106.28
         },
         {
             "date": "2026-01-27",
-            "price": 4932.29,
+            "price": 5039.15,
             "raw_model": 4618.99,
             "ecm_boost": 313.3,
-            "narrative_impact": 0.0
+            "narrative_impact": 106.87
         },
         {
             "date": "2026-01-28",
-            "price": 4963.23,
+            "price": 5070.77,
             "raw_model": 4660.84,
             "ecm_boost": 302.39,
-            "narrative_impact": 0.0
+            "narrative_impact": 107.54
         },
         {
             "date": "2026-01-29",
-            "price": 4990.51,
+            "price": 5098.64,
             "raw_model": 4699.03,
             "ecm_boost": 291.49,
-            "narrative_impact": 0.0
+            "narrative_impact": 108.13
         },
         {
             "date": "2026-01-30",
-            "price": 5018.17,
+            "price": 5126.89,
             "raw_model": 4737.58,
             "ecm_boost": 280.58,
-            "narrative_impact": 0.0
+            "narrative_impact": 108.73
         },
         {
             "date": "2026-01-31",
-            "price": 5055.79,
+            "price": 5176.47,
             "raw_model": 4775.21,
-            "ecm_boost": 280.58,
-            "narrative_impact": 0.0
+            "ecm_boost": 291.49,
+            "narrative_impact": 109.78
         },
         {
             "date": "2026-02-01",
-            "price": 5092.93,
+            "price": 5215.53,
             "raw_model": 4822.16,
-            "ecm_boost": 270.76,
-            "narrative_impact": 0.0
+            "ecm_boost": 282.76,
+            "narrative_impact": 110.61
         },
         {
             "date": "2026-02-02",
-            "price": 5120.92,
+            "price": 5245.24,
             "raw_model": 4859.97,
-            "ecm_boost": 260.95,
-            "narrative_impact": 0.0
+            "ecm_boost": 274.04,
+            "narrative_impact": 111.24
         },
         {
             "date": "2026-02-03",
-            "price": 5148.99,
+            "price": 5275.04,
             "raw_model": 4897.86,
-            "ecm_boost": 251.13,
-            "narrative_impact": 0.0
+            "ecm_boost": 265.31,
+            "narrative_impact": 111.87
         },
         {
             "date": "2026-02-04",
-            "price": 5177.14,
+            "price": 5304.91,
             "raw_model": 4935.82,
-            "ecm_boost": 241.32,
-            "narrative_impact": 0.0
+            "ecm_boost": 256.59,
+            "narrative_impact": 112.5
         },
         {
             "date": "2026-02-05",
-            "price": 5205.33,
+            "price": 5334.82,
             "raw_model": 4973.83,
-            "ecm_boost": 231.5,
-            "narrative_impact": 0.0
+            "ecm_boost": 247.86,
+            "narrative_impact": 113.14
         },
         {
             "date": "2026-02-06",
-            "price": 5233.69,
+            "price": 5364.91,
             "raw_model": 5012.0,
-            "ecm_boost": 221.68,
-            "narrative_impact": 0.0
+            "ecm_boost": 239.14,
+            "narrative_impact": 113.77
         },
         {
             "date": "2026-02-07",
-            "price": 5261.82,
+            "price": 5394.77,
             "raw_model": 5049.96,
-            "ecm_boost": 211.87,
-            "narrative_impact": 0.0
+            "ecm_boost": 230.41,
+            "narrative_impact": 114.41
         },
         {
             "date": "2026-02-08",
-            "price": 5290.25,
+            "price": 5424.93,
             "raw_model": 5088.2,
-            "ecm_boost": 202.05,
-            "narrative_impact": 0.0
+            "ecm_boost": 221.68,
+            "narrative_impact": 115.05
         },
         {
             "date": "2026-02-09",
-            "price": 5318.3,
+            "price": 5454.7,
             "raw_model": 5126.06,
-            "ecm_boost": 192.24,
-            "narrative_impact": 0.0
+            "ecm_boost": 212.96,
+            "narrative_impact": 115.68
         },
         {
             "date": "2026-02-10",
-            "price": 5432.94,
+            "price": 5483.8,
             "raw_model": 5163.27,
-            "ecm_boost": 269.67,
-            "narrative_impact": 0.0
+            "ecm_boost": 204.23,
+            "narrative_impact": 116.3
         },
         {
             "date": "2026-02-11",
-            "price": 5465.36,
+            "price": 5513.57,
             "raw_model": 5201.14,
-            "ecm_boost": 264.22,
-            "narrative_impact": 0.0
+            "ecm_boost": 195.51,
+            "narrative_impact": 116.93
         },
         {
             "date": "2026-02-12",
-            "price": 5497.67,
+            "price": 5543.24,
             "raw_model": 5238.9,
-            "ecm_boost": 258.77,
-            "narrative_impact": 0.0
+            "ecm_boost": 186.78,
+            "narrative_impact": 117.56
         },
         {
             "date": "2026-02-13",
-            "price": 5531.24,
+            "price": 5574.2,
             "raw_model": 5277.92,
-            "ecm_boost": 253.31,
-            "narrative_impact": 0.0
+            "ecm_boost": 178.06,
+            "narrative_impact": 118.21
         },
         {
             "date": "2026-02-14",
-            "price": 5559.22,
+            "price": 5599.45,
             "raw_model": 5311.36,
-            "ecm_boost": 247.86,
-            "narrative_impact": 0.0
+            "ecm_boost": 169.33,
+            "narrative_impact": 118.75
         },
         {
             "date": "2026-02-15",
-            "price": 5591.11,
+            "price": 5628.68,
             "raw_model": 5348.7,
-            "ecm_boost": 242.41,
-            "narrative_impact": 0.0
+            "ecm_boost": 160.61,
+            "narrative_impact": 119.37
         },
         {
             "date": "2026-02-16",
-            "price": 5622.81,
+            "price": 5657.72,
             "raw_model": 5385.86,
-            "ecm_boost": 236.95,
-            "narrative_impact": 0.0
+            "ecm_boost": 151.88,
+            "narrative_impact": 119.98
         },
         {
             "date": "2026-02-17",
-            "price": 5654.31,
+            "price": 5686.56,
             "raw_model": 5422.81,
-            "ecm_boost": 231.5,
-            "narrative_impact": 0.0
+            "ecm_boost": 143.16,
+            "narrative_impact": 120.6
         },
         {
             "date": "2026-02-18",
-            "price": 5685.46,
+            "price": 5715.04,
             "raw_model": 5459.41,
-            "ecm_boost": 226.05,
-            "narrative_impact": 0.0
+            "ecm_boost": 134.43,
+            "narrative_impact": 121.2
         },
         {
             "date": "2026-02-19",
-            "price": 5711.07,
+            "price": 5737.87,
             "raw_model": 5490.48,
-            "ecm_boost": 220.59,
-            "narrative_impact": 0.0
+            "ecm_boost": 125.71,
+            "narrative_impact": 121.68
         }
     ],
     "metadata": {
-        "generated_at": "2026-01-21T10:43:02.575295",
-        "latest_news": "Gold breaks new record on Greenland tariff threats \u2014 $7,000 level on the cards - CNBC",
+        "generated_at": "2026-01-21T10:45:14.094945",
+        "latest_news": "Gold Prices Smash Another Record: Spot Gold Hits $4,689 All\u2011Time High as Central Banks Go on a Buying Spree - CarbonCredits.com",
+        "sentiment_momentum": 0.4333,
         "verdict": "BULLISH"
     }
 }
