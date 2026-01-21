@@ -1,0 +1,24 @@
+{"level":"info","time":"2026-01-21T06:36:58Z","message":"Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps"}
+{"level":"info","time":"2026-01-21T06:36:58Z","message":"Requesting new quick Tunnel on trycloudflare.com..."}
+{"level":"info","time":"2026-01-21T06:37:00Z","message":"Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps"}
+{"level":"info","time":"2026-01-21T06:37:00Z","message":"Requesting new quick Tunnel on trycloudflare.com..."}
+{"level":"info","time":"2026-01-21T06:37:03Z","message":"Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps"}
+{"level":"info","time":"2026-01-21T06:37:03Z","message":"Requesting new quick Tunnel on trycloudflare.com..."}
+{"level":"info","time":"2026-01-21T06:37:06Z","message":"+--------------------------------------------------------------------------------------------+"}
+{"level":"info","time":"2026-01-21T06:37:06Z","message":"|  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |"}
+{"level":"info","time":"2026-01-21T06:37:06Z","message":"|  https://tsunami-cite-produced-earthquake.trycloudflare.com                                |"}
+{"level":"info","time":"2026-01-21T06:37:06Z","message":"+--------------------------------------------------------------------------------------------+"}
+{"level":"info","time":"2026-01-21T06:37:06Z","message":"Cannot determine default configuration path. No file [config.yml config.yaml] in [~/.cloudflared ~/.cloudflare-warp ~/cloudflare-warp /etc/cloudflared /usr/local/etc/cloudflared]"}
+{"level":"info","time":"2026-01-21T06:37:06Z","message":"Version 2026.1.1 (Checksum 0c3de409287cc60264cd59a285c434a243ec6d1d79ff39dc8d36b716f9dda7ef)"}
+{"level":"info","time":"2026-01-21T06:37:06Z","message":"GOOS: linux, GOVersion: go1.24.11, GoArch: amd64"}
+{"level":"info","time":"2026-01-21T06:37:06Z","message":"Settings: map[ha-connections:1 logfile:./cloudflared.log metrics:localhost:45678 protocol:quic url:ssh://localhost:22]"}
+{"level":"info","autoupdateFreq":86400000,"time":"2026-01-21T06:37:06Z","message":"Autoupdate frequency is set"}
+{"level":"info","time":"2026-01-21T06:37:06Z","message":"Generated Connector ID: f99e96a4-5b02-40a6-9b55-536eb80e76c0"}
+{"level":"info","time":"2026-01-21T06:37:06Z","message":"Initial protocol quic"}
+{"level":"info","time":"2026-01-21T06:37:06Z","message":"ICMP proxy will use 172.28.0.12 as source for IPv4"}
+{"level":"info","time":"2026-01-21T06:37:06Z","message":"ICMP proxy will use ::1 in zone lo as source for IPv6"}
+{"level":"info","time":"2026-01-21T06:37:06Z","message":"ICMP proxy will use 172.28.0.12 as source for IPv4"}
+{"level":"info","time":"2026-01-21T06:37:06Z","message":"ICMP proxy will use ::1 in zone lo as source for IPv6"}
+{"level":"info","time":"2026-01-21T06:37:06Z","message":"Starting metrics server on 127.0.0.1:45678/metrics"}
+{"level":"info","event":0,"ip":"198.41.200.13","connIndex":0,"time":"2026-01-21T06:37:06Z","message":"Tunnel connection curve preferences: [X25519MLKEM768 CurveP256]"}
+{"level":"info","event":0,"connection":"ad2bad03-5141-462f-9b2d-7e51152ca947","connIndex":0,"location":"sea09","ip":"198.41.200.13","protocol":"quic","time":"2026-01-21T06:37:07Z","message":"Registered tunnel connection"}
