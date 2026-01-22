@@ -1,0 +1,37 @@
+{
+  "evaluation": "ensemble_fusion_walkforward",
+  "timestamp_utc": "2026-01-22T05:14:37.693646+00:00",
+  "matrix_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv",
+  "gold_col_used": "gold_price",
+  "alpha_has_paths": false,
+  "beta_has_paths": true,
+  "alpha_windows_file": "alpha_walkforward_windows.parquet",
+  "beta_windows_file": "beta_walkforward_windows.parquet",
+  "n_windows_used": 25,
+  "vol_median_20d": 0.0069511242474592895,
+  "fusion_rule": {
+    "mode": "BETA_ONLY_FALLBACK",
+    "note": "If alpha_has_paths==False then ensemble==beta (w_beta=1.0). Fix alpha export to enable true fusion."
+  },
+  "alpha_avg": {
+    "mae": NaN,
+    "rmse": NaN,
+    "smape": NaN,
+    "da": NaN,
+    "coverage": NaN
+  },
+  "beta_avg": {
+    "mae": 79.23424293703398,
+    "rmse": 93.41351168320887,
+    "smape": 2.614692051536697,
+    "da": 32.41379310344828,
+    "coverage": 11.066666666666668
+  },
+  "ensemble_avg": {
+    "mae": 79.23424293703398,
+    "rmse": 93.41351168320887,
+    "smape": 2.614692051536697,
+    "da": 32.41379310344828,
+    "coverage": 11.066666666666668
+  }
+}

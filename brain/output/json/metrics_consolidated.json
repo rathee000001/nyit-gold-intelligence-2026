@@ -1,0 +1,133 @@
+{
+  "timestamp_utc": "2026-01-22T05:14:37.702288+00:00",
+  "alpha_eval_summary_exists": true,
+  "beta_eval_summary_exists": true,
+  "ensemble_walkforward_summary": {
+    "evaluation": "ensemble_fusion_walkforward",
+    "timestamp_utc": "2026-01-22T05:14:37.693646+00:00",
+    "matrix_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv",
+    "gold_col_used": "gold_price",
+    "alpha_has_paths": false,
+    "beta_has_paths": true,
+    "alpha_windows_file": "alpha_walkforward_windows.parquet",
+    "beta_windows_file": "beta_walkforward_windows.parquet",
+    "n_windows_used": 25,
+    "vol_median_20d": 0.0069511242474592895,
+    "fusion_rule": {
+      "mode": "BETA_ONLY_FALLBACK",
+      "note": "If alpha_has_paths==False then ensemble==beta (w_beta=1.0). Fix alpha export to enable true fusion."
+    },
+    "alpha_avg": {
+      "mae": NaN,
+      "rmse": NaN,
+      "smape": NaN,
+      "da": NaN,
+      "coverage": NaN
+    },
+    "beta_avg": {
+      "mae": 79.23424293703398,
+      "rmse": 93.41351168320887,
+      "smape": 2.614692051536697,
+      "da": 32.41379310344828,
+      "coverage": 11.066666666666668
+    },
+    "ensemble_avg": {
+      "mae": 79.23424293703398,
+      "rmse": 93.41351168320887,
+      "smape": 2.614692051536697,
+      "da": 32.41379310344828,
+      "coverage": 11.066666666666668
+    }
+  },
+  "alpha_eval_summary": {
+    "lobe": "alpha_structural",
+    "target": "gold_log_return",
+    "returns_metrics_xgboost": {
+      "train": {
+        "mae": 0.014512548487456384,
+        "rmse": 0.04385176145325523,
+        "mape": 181369.67929232004,
+        "smape": 1.9791460120957745,
+        "da": 0.5703159441587068
+      },
+      "test": {
+        "mae": 0.004636812799385794,
+        "rmse": 0.008305834133622753,
+        "mape": 116923.19891698798,
+        "smape": 1.903828698348798,
+        "da": 0.29298486932599727
+      },
+      "split": {
+        "test_years": 2,
+        "train_end": "2024-01-22",
+        "test_start": "2024-01-23",
+        "test_end": "2026-01-21",
+        "n_train": 20416,
+        "n_test": 728
+      },
+      "optuna": {
+        "n_trials": 100,
+        "best_trial": 51,
+        "best_objective": "rmse",
+        "best_rmse": 0.008305834133622753,
+        "best_params": {
+          "n_estimators": 1389,
+          "learning_rate": 0.11928460480686913,
+          "max_depth": 5,
+          "min_child_weight": 0.6152597604382282,
+          "subsample": 0.6839042624533989,
+          "colsample_bytree": 0.8111453351147451,
+          "reg_lambda": 0.026464628606823727,
+          "reg_alpha": 0.00016466216685604582,
+          "gamma": 4.263209356194586
+        }
+      }
+    },
+    "returns_metrics_elasticnet": {
+      "train": {
+        "mae": 0.015372149529650677,
+        "rmse": 0.043101827823036995,
+        "mape": 1098683.22093519,
+        "smape": 1.9425521705379027,
+        "da": 0.22444281165809454
+      },
+      "test": {
+        "mae": 0.005488876937265163,
+        "rmse": 0.009895104202832633,
+        "mape": 736815.5597068423,
+        "smape": 1.7985249061943631,
+        "da": 0.37551581843191195
+      }
+    },
+    "price_metrics_holdout": {
+      "test_price_mae": 776.7550250445355,
+      "test_price_rmse": 968.0070022511479,
+      "test_price_mape": 0.2283771621486835,
+      "test_price_smape": 0.2694059844353359
+    },
+    "walkforward": {
+      "refit_stride_days": 30,
+      "horizon_days": 30,
+      "n_windows": 25,
+      "windows_file": "alpha_walkforward_windows.parquet"
+    },
+    "coverage": {
+      "coverage_mean": 0.999900681044268,
+      "coverage_median": 1.0,
+      "coverage_min": 0.9,
+      "coverage_max": 1.0,
+      "coverage_file": "alpha_coverage_daily.parquet"
+    },
+    "last_updated": "2026-01-22T01:36:01.593170+00:00"
+  },
+  "beta_eval_summary": {
+    "lobe": "beta_temporal_multivariate",
+    "walkforward": {
+      "n_windows": 25,
+      "horizon_days": 30,
+      "stride_days": 30,
+      "note": "Walk-forward windows reuse one trained model; future X held constant at cutoff (no exogenous forecasts)."
+    },
+    "timestamp_utc": "2026-01-22T04:41:45.891489+00:00"
+  }
+}
