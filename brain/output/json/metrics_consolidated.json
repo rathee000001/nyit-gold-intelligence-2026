@@ -16,41 +16,83 @@
       "method": "nearest_start_date_with_tolerance",
       "tolerance_days": 25
     },
-    "n_pairs_used": 3,
+    "n_pairs_used": 10,
     "alpha_avg": {
-      "mae": 137.94018011404455,
-      "rmse": 156.73342034989568,
-      "smape": 0.03181594497261379,
-      "da": 0.3830049261083744,
-      "coverage": 0.8762452107279693
+      "mae": 64.11622890849499,
+      "rmse": 77.28461826399999,
+      "smape": 0.021622735451305882,
+      "da": 0.3149014778325124,
+      "coverage": 0.9529885057471266
     },
     "beta_avg": {
-      "mae": 96.7146121579297,
-      "rmse": 115.59548949955733,
-      "smape": 0.022526893263125552,
-      "da": 0.3830049261083744,
-      "coverage": 0.07854406130268199
+      "mae": 77.93022244164982,
+      "rmse": 90.95408397961782,
+      "smape": 0.026917674652538037,
+      "da": 0.2942118226600986,
+      "coverage": 0.07390804597701148
     },
     "delta_avg": {
-      "mae": 141.0275224422294,
-      "rmse": 154.97163474502088,
-      "smape": 0.032596498156364014,
-      "da": 0.3600164203612479,
-      "coverage": 0.8877394636015326
+      "mae": 73.73584382857402,
+      "rmse": 87.90493478919498,
+      "smape": 0.024734339759167574,
+      "da": 0.2461822660098522,
+      "coverage": 0.9058620689655171
     },
     "ensemble_avg": {
-      "mae": 112.00516825718307,
-      "rmse": 133.77706318853643,
-      "smape": 0.02587133647293179,
-      "da": 0.3830049261083744,
-      "coverage": 0.8421455938697319
+      "mae": 67.07243515269411,
+      "rmse": 78.66845909722777,
+      "smape": 0.02262511881750017,
+      "da": 0.3149014778325124,
+      "coverage": 0.902528735632184
     }
   },
-  "delta_config": {
-    "encoder_len": 120,
-    "horizon": 30,
-    "lookback_years": 15
+  "delta_forecast_meta": {
+    "cutoff_date": "2026-01-21",
+    "start_date": "2026-01-22",
+    "horizon_days": 30,
+    "has_paths": true
   },
-  "delta_inputs_used": null,
-  "delta_source_file": "delta_tft_lobe.json"
+  "delta_config": {
+    "encoder_length": 180,
+    "horizon_days": 30,
+    "refit_stride_days": 30,
+    "wf_windows_max": 6,
+    "quantiles": [
+      0.1,
+      0.5,
+      0.9
+    ],
+    "fast_mode": true,
+    "max_epochs": 6,
+    "batch_size": 128,
+    "precision": "32-true",
+    "walkforward_refit": false,
+    "uses_masks": true,
+    "uses_manifest": true,
+    "uses_matrix_csv": true
+  },
+  "delta_inputs_used": {
+    "features_cleaned": "features_cleaned.parquet",
+    "availability_mask": "availability_mask.parquet",
+    "observed_mask": "observed_mask.parquet",
+    "days_since_start": "days_since_start.parquet",
+    "transforms_manifest": "transforms_manifest.json",
+    "matrix_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv",
+    "gold_col_used": "gold_price",
+    "base_factors_count": null
+  },
+  "delta_source_file": "delta_tft_lobe.json",
+  "delta_eval_from_delta_eval_summary": {
+    "n_windows": 5,
+    "refit_stride_days": 30,
+    "horizon_days": 30,
+    "avg": {
+      "mae": 68.11928776041668,
+      "rmse": 87.62603260247526,
+      "smape": 0.023054023324452354,
+      "da": 0.28965517241379307,
+      "coverage": 0.9933333333333334
+    },
+    "windows_file": "delta_walkforward_windows.parquet"
+  }
 }
