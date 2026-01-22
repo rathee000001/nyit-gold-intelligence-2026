@@ -1,0 +1,26 @@
+{
+  "lobe": "gamma_narrative",
+  "sentiment_score": 0.036,
+  "regime": "neutral_transition",
+  "confidence": 0.336,
+  "primary_driver": "liquidity_and_risk_sentiment",
+  "bias_overrides": {
+    "structural_weight": 1.011,
+    "temporal_weight": 0.993
+  },
+  "managerial_summary": "Narrative regime identified as neutral transition. Structural macro bias and short-term momentum jointly indicate support for gold as a hedge.",
+  "inputs_used": {
+    "structural_linear_coefficients": [
+      "real_yield",
+      "inflation",
+      "usd_index",
+      "gpr_index",
+      "policy_unc",
+      "vix_index",
+      "fed_bs"
+    ],
+    "temporal_momentum": 0.089139,
+    "temporal_trend": "Up"
+  },
+  "last_updated": "2026-01-22T02:17:31.662226"
+}
