@@ -3,17 +3,17 @@
   "target": "gold_log_return",
   "returns_metrics": {
     "train": {
-      "mae": 0.01450916085069902,
-      "rmse": 0.04385175429553397,
-      "mape": 177979.5062016697,
-      "smape": 1.9794539851264534,
+      "mae": 0.014536280747871418,
+      "rmse": 0.04385182687670363,
+      "mape": 205105.80862555755,
+      "smape": 1.977074988367462,
       "da": 0.5703159441587068
     },
     "test": {
-      "mae": 0.004635171971638968,
-      "rmse": 0.008306371465162641,
-      "mape": 114737.66986395541,
-      "smape": 1.90520778307107,
+      "mae": 0.00464830097373123,
+      "rmse": 0.008302151921786745,
+      "mape": 132225.07252731393,
+      "smape": 1.8943483006463273,
       "da": 0.29298486932599727
     },
     "split": {
@@ -26,27 +26,27 @@
     },
     "optuna": {
       "n_trials": 100,
-      "best_trial": 45,
+      "best_trial": 62,
       "best_objective": "rmse",
-      "best_rmse": 0.008306371465162641,
+      "best_rmse": 0.008302151921786745,
       "best_params": {
-        "n_estimators": 405,
-        "learning_rate": 0.11988694280408926,
-        "max_depth": 9,
-        "min_child_weight": 1.9863437132329664,
-        "subsample": 0.6744043088471389,
-        "colsample_bytree": 0.8445734799965023,
-        "reg_lambda": 0.4454689280172053,
-        "reg_alpha": 0.003762232931466968,
-        "gamma": 2.1529339459315233
+        "n_estimators": 496,
+        "learning_rate": 0.09658454182693675,
+        "max_depth": 3,
+        "min_child_weight": 5.939517407534662,
+        "subsample": 0.6666459421293432,
+        "colsample_bytree": 0.8795673065924555,
+        "reg_lambda": 0.017084585236845556,
+        "reg_alpha": 0.004602657400050053,
+        "gamma": 3.1827318971613443
       }
     }
   },
   "price_metrics_holdout": {
-    "test_price_mae": 780.8667432914984,
-    "test_price_rmse": 972.7723405000858,
-    "test_price_mape": 0.22961662754135578,
-    "test_price_smape": 0.2711119201081798
+    "test_price_mae": 747.6956722116994,
+    "test_price_rmse": 934.2965756653812,
+    "test_price_mape": 0.2196231871498386,
+    "test_price_smape": 0.25744331283922306
   },
   "walkforward": {
     "refit_stride_days": 30,
@@ -61,5 +61,5 @@
     "coverage_max": 1.0,
     "coverage_file": "alpha_coverage_daily.parquet"
   },
-  "last_updated": "2026-01-22T00:43:21.207047+00:00"
+  "last_updated": "2026-01-22T00:53:40.417633+00:00"
 }
