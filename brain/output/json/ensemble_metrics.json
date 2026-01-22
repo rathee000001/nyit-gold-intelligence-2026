@@ -1,0 +1,80 @@
+{
+  "model": "model_3_cortex",
+  "backtest_available": false,
+  "note": "Exports lobe metrics + fusion diagnostics. Ensemble backtest requires historical fusion windows.",
+  "lobe_metrics": {
+    "alpha_structural": {
+      "train": {
+        "mae": 0.014512548487456384,
+        "rmse": 0.04385176145325523,
+        "mape": 181369.67929232004,
+        "smape": 1.9791460120957745,
+        "da": 0.5703159441587068
+      },
+      "test": {
+        "mae": 0.004636812799385794,
+        "rmse": 0.008305834133622753,
+        "mape": 116923.19891698798,
+        "smape": 1.903828698348798,
+        "da": 0.29298486932599727
+      },
+      "split": {
+        "test_years": 2,
+        "train_end": "2024-01-22",
+        "test_start": "2024-01-23",
+        "test_end": "2026-01-21",
+        "n_train": 20416,
+        "n_test": 728
+      },
+      "optuna": {
+        "n_trials": 100,
+        "best_trial": 51,
+        "best_objective": "rmse",
+        "best_rmse": 0.008305834133622753,
+        "best_params": {
+          "n_estimators": 1389,
+          "learning_rate": 0.11928460480686913,
+          "max_depth": 5,
+          "min_child_weight": 0.6152597604382282,
+          "subsample": 0.6839042624533989,
+          "colsample_bytree": 0.8111453351147451,
+          "reg_lambda": 0.026464628606823727,
+          "reg_alpha": 0.00016466216685604582,
+          "gamma": 4.263209356194586
+        }
+      }
+    },
+    "beta_temporal": {
+      "momentum_score": 0.089139,
+      "trend_direction": "Up",
+      "model_type": "Attention-BiLSTM + MC Dropout"
+    },
+    "gamma_narrative": {
+      "version": "v2_scored_explainable",
+      "dominant_regime": "breakout_up",
+      "confidence": 0.1494982180663572,
+      "sentiment": {
+        "raw": 0.060197610179294966,
+        "z_score": -0.06180199074904595,
+        "percentile_0_1": 0.4410958904109589,
+        "structural_score": 0.04106024659091119,
+        "temporal_score": 0.08890365556187065,
+        "structural_pred_log_return": 0.000821666901022318,
+        "beta_momentum_score": 0.089139,
+        "beta_trend_direction": "Up",
+        "as_of_date": "2026-01-21"
+      }
+    }
+  },
+  "fusion_diagnostics": {
+    "weights": {
+      "w_alpha": 0.3899999999999999,
+      "w_beta": 0.6100000000000001,
+      "w_gamma": 0.0
+    },
+    "alpha_daily_log_ret_used": 0.000821666901022318,
+    "ensemble_interval_avg_width": 590.1874357740397,
+    "alpha_beta_mean_abs_divergence": 67.78577966415502
+  },
+  "timestamp_utc": "2026-01-22T03:44:43.017718+00:00"
+}

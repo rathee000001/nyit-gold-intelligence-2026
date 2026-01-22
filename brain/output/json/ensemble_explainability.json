@@ -1,0 +1,68 @@
+{
+  "model": "model_3_cortex",
+  "weights_summary": {
+    "w_alpha": 0.3899999999999999,
+    "w_beta": 0.6100000000000001,
+    "w_gamma": 0.0
+  },
+  "alpha_top_coefficients_elasticnet": [
+    {
+      "feature": "ppi_index",
+      "coef": -3.4419794915827024
+    },
+    {
+      "feature": "m2_supply",
+      "coef": -2.3760023077923593
+    },
+    {
+      "feature": "ind_prod",
+      "coef": -0.41483977131850364
+    },
+    {
+      "feature": "usd_index",
+      "coef": 0.2646445750334125
+    },
+    {
+      "feature": "unrate",
+      "coef": -0.12536835310127442
+    },
+    {
+      "feature": "jpy_usd",
+      "coef": -0.11187364990857394
+    },
+    {
+      "feature": "nominal_yield",
+      "coef": -0.028927450834325814
+    },
+    {
+      "feature": "inflation",
+      "coef": 0.02847234454506309
+    },
+    {
+      "feature": "fed_bs",
+      "coef": 0.013536120904105223
+    },
+    {
+      "feature": "vix_index",
+      "coef": -0.008236282338149405
+    }
+  ],
+  "beta_state": {
+    "momentum_score": 0.089139,
+    "trend_direction": "Up",
+    "model_type": "Attention-BiLSTM + MC Dropout"
+  },
+  "gamma_summary": {
+    "dominant_regime": "breakout_up",
+    "confidence": 0.1494982180663572,
+    "summary": "Regime: breakout up (32.7% prob). Structural and temporal signals are aligned; dominant driver: temporal.",
+    "interpretation": {
+      "structural_vs_temporal_alignment": 1.0,
+      "dominant_driver": "temporal",
+      "sentiment_direction": "bullish",
+      "volatility_state": "low",
+      "trend_state_30d": "up"
+    }
+  },
+  "timestamp_utc": "2026-01-22T03:44:43.018091+00:00"
+}
