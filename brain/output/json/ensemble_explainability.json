@@ -5,7 +5,29 @@
     "w_beta": 0.6100000000000001,
     "w_gamma": 0.0
   },
-  "alpha_top_coefficients_elasticnet": [
+  "alpha_elasticnet_coefficients_original_scale_full": {
+    "cap_util": 0.0,
+    "eur_usd": 0.0,
+    "fed_bs": 0.013536120904105223,
+    "fin_stress": 0.0,
+    "gld_tonnes": 0.0,
+    "gpr_index": 0.0076483589117141496,
+    "high_yield": 0.0,
+    "ind_prod": -0.41483977131850364,
+    "inflation": 0.02847234454506309,
+    "jpy_usd": -0.11187364990857394,
+    "m2_supply": -2.3760023077923593,
+    "nominal_yield": -0.028927450834325814,
+    "oil_wti": -0.006382094337923534,
+    "policy_unc": 0.001110292500115831,
+    "ppi_index": -3.4419794915827024,
+    "real_yield": 0.0,
+    "tips_curve": 0.0,
+    "unrate": -0.12536835310127442,
+    "usd_index": 0.2646445750334125,
+    "vix_index": -0.008236282338149405
+  },
+  "alpha_elasticnet_coefficients_sorted_abs": [
     {
       "feature": "ppi_index",
       "coef": -3.4419794915827024
@@ -45,14 +67,63 @@
     {
       "feature": "vix_index",
       "coef": -0.008236282338149405
+    },
+    {
+      "feature": "gpr_index",
+      "coef": 0.0076483589117141496
+    },
+    {
+      "feature": "oil_wti",
+      "coef": -0.006382094337923534
+    },
+    {
+      "feature": "policy_unc",
+      "coef": 0.001110292500115831
+    },
+    {
+      "feature": "cap_util",
+      "coef": 0.0
+    },
+    {
+      "feature": "eur_usd",
+      "coef": 0.0
+    },
+    {
+      "feature": "fin_stress",
+      "coef": 0.0
+    },
+    {
+      "feature": "gld_tonnes",
+      "coef": 0.0
+    },
+    {
+      "feature": "high_yield",
+      "coef": 0.0
+    },
+    {
+      "feature": "real_yield",
+      "coef": 0.0
+    },
+    {
+      "feature": "tips_curve",
+      "coef": 0.0
     }
   ],
   "beta_state": {
     "momentum_score": 0.089139,
     "trend_direction": "Up",
-    "model_type": "Attention-BiLSTM + MC Dropout"
+    "model_type": "Attention-BiLSTM + MC Dropout",
+    "metadata": {
+      "lobe": "beta_temporal",
+      "model_type": "Attention-BiLSTM + MC Dropout",
+      "window_size": 60,
+      "epochs_ran": 7,
+      "mc_iterations": 50,
+      "timestamp_utc": "2026-01-22T01:54:36.160262+00:00",
+      "source_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv"
+    }
   },
-  "gamma_summary": {
+  "gamma_state": {
     "dominant_regime": "breakout_up",
     "confidence": 0.1494982180663572,
     "summary": "Regime: breakout up (32.7% prob). Structural and temporal signals are aligned; dominant driver: temporal.",
@@ -64,5 +135,5 @@
       "trend_state_30d": "up"
     }
   },
-  "timestamp_utc": "2026-01-22T03:44:43.018091+00:00"
+  "timestamp_utc": "2026-01-22T03:56:11.034267+00:00"
 }
