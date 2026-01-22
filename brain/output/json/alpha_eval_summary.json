@@ -1,0 +1,65 @@
+{
+  "lobe": "alpha_structural",
+  "target": "gold_log_return",
+  "returns_metrics": {
+    "train": {
+      "mae": 0.01450916085069902,
+      "rmse": 0.04385175429553397,
+      "mape": 177979.5062016697,
+      "smape": 1.9794539851264534,
+      "da": 0.5703159441587068
+    },
+    "test": {
+      "mae": 0.004635171971638968,
+      "rmse": 0.008306371465162641,
+      "mape": 114737.66986395541,
+      "smape": 1.90520778307107,
+      "da": 0.29298486932599727
+    },
+    "split": {
+      "test_years": 2,
+      "train_end": "2024-01-22",
+      "test_start": "2024-01-23",
+      "test_end": "2026-01-21",
+      "n_train": 20416,
+      "n_test": 728
+    },
+    "optuna": {
+      "n_trials": 100,
+      "best_trial": 45,
+      "best_objective": "rmse",
+      "best_rmse": 0.008306371465162641,
+      "best_params": {
+        "n_estimators": 405,
+        "learning_rate": 0.11988694280408926,
+        "max_depth": 9,
+        "min_child_weight": 1.9863437132329664,
+        "subsample": 0.6744043088471389,
+        "colsample_bytree": 0.8445734799965023,
+        "reg_lambda": 0.4454689280172053,
+        "reg_alpha": 0.003762232931466968,
+        "gamma": 2.1529339459315233
+      }
+    }
+  },
+  "price_metrics_holdout": {
+    "test_price_mae": 780.8667432914984,
+    "test_price_rmse": 972.7723405000858,
+    "test_price_mape": 0.22961662754135578,
+    "test_price_smape": 0.2711119201081798
+  },
+  "walkforward": {
+    "refit_stride_days": 30,
+    "horizon_days": 30,
+    "n_windows": 25,
+    "windows_file": "alpha_walkforward_windows.parquet"
+  },
+  "coverage": {
+    "coverage_mean": 0.999900681044268,
+    "coverage_median": 1.0,
+    "coverage_min": 0.9,
+    "coverage_max": 1.0,
+    "coverage_file": "alpha_coverage_daily.parquet"
+  },
+  "last_updated": "2026-01-22T00:43:21.207047+00:00"
+}
