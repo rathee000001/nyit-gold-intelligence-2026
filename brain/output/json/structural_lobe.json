@@ -1,0 +1,92 @@
+{
+  "lobe": "alpha_structural",
+  "model": "xgboost_regressor_optuna",
+  "tree_method": "hist",
+  "target": "gold_log_return",
+  "metrics": {
+    "train": {
+      "mae": 0.014510286901782894,
+      "rmse": 0.04385175661435713,
+      "mape": 179106.51388239715,
+      "smape": 1.9793510217769001,
+      "da": 0.5703159441587068
+    },
+    "test": {
+      "mae": 0.004635717438028055,
+      "rmse": 0.008306192521757091,
+      "mape": 115464.21330711033,
+      "smape": 1.9047486212396776,
+      "da": 0.29298486932599727
+    },
+    "split": {
+      "test_years": 2,
+      "train_end": "2024-01-22",
+      "test_start": "2024-01-23",
+      "test_end": "2026-01-21",
+      "n_train": 20416,
+      "n_test": 728
+    },
+    "optuna": {
+      "n_trials": 100,
+      "best_trial": 51,
+      "best_objective": "rmse",
+      "best_rmse": 0.008306192521757091,
+      "best_params": {
+        "n_estimators": 795,
+        "learning_rate": 0.05162456063223701,
+        "max_depth": 6,
+        "min_child_weight": 2.207868608649703,
+        "subsample": 0.7099978583202665,
+        "colsample_bytree": 0.7452668866766087,
+        "reg_lambda": 0.04327164620349858,
+        "reg_alpha": 0.06571216355989597,
+        "gamma": 2.7084982055217823
+      }
+    }
+  },
+  "coefficients": {},
+  "formula": "Gold log-return \u2248  + \u03b5",
+  "features_used": [
+    "real_yield",
+    "nominal_yield",
+    "tips_curve",
+    "fed_bs",
+    "m2_supply",
+    "inflation",
+    "usd_index",
+    "eur_usd",
+    "jpy_usd",
+    "vix_index",
+    "high_yield",
+    "fin_stress",
+    "gpr_index",
+    "policy_unc",
+    "oil_wti",
+    "ppi_index",
+    "gld_tonnes",
+    "unrate",
+    "ind_prod",
+    "cap_util",
+    "real_yield__days_since_start",
+    "nominal_yield__days_since_start",
+    "tips_curve__days_since_start",
+    "fed_bs__days_since_start",
+    "m2_supply__days_since_start",
+    "inflation__days_since_start",
+    "usd_index__days_since_start",
+    "eur_usd__days_since_start",
+    "jpy_usd__days_since_start",
+    "vix_index__days_since_start",
+    "high_yield__days_since_start",
+    "fin_stress__days_since_start",
+    "gpr_index__days_since_start",
+    "policy_unc__days_since_start",
+    "oil_wti__days_since_start",
+    "ppi_index__days_since_start",
+    "gld_tonnes__days_since_start",
+    "unrate__days_since_start",
+    "ind_prod__days_since_start",
+    "cap_util__days_since_start"
+  ],
+  "last_updated": "2026-01-22T00:28:11.678489+00:00"
+}
