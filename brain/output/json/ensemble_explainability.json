@@ -1,11 +1,11 @@
 {
   "model": "model_3_cortex",
-  "weights_summary": {
-    "w_alpha": 0.3899999999999999,
-    "w_beta": 0.6100000000000001,
-    "w_gamma": 0.0
-  },
-  "alpha_elasticnet_coefficients_original_scale_full": {
+  "dominant_driver": "temporal",
+  "alignment": 1.0,
+  "confidence": 0.45389603320047567,
+  "dominant_regime": "breakout_up",
+  "tilt": 0.002181187215251277,
+  "coefficients_full": {
     "cap_util": 0.0,
     "eur_usd": 0.0,
     "fed_bs": 0.013536120904105295,
@@ -27,148 +27,26 @@
     "usd_index": 0.2646445750334125,
     "vix_index": -0.008236282338149402
   },
-  "alpha_elasticnet_coefficients_sorted_abs": [
-    {
-      "feature": "ppi_index",
-      "coef": -3.4419794915827016
-    },
-    {
-      "feature": "m2_supply",
-      "coef": -2.3760023077923593
-    },
-    {
-      "feature": "ind_prod",
-      "coef": -0.4148397713185041
-    },
-    {
-      "feature": "usd_index",
-      "coef": 0.2646445750334125
-    },
-    {
-      "feature": "unrate",
-      "coef": -0.12536835310127442
-    },
-    {
-      "feature": "jpy_usd",
-      "coef": -0.11187364990857394
-    },
-    {
-      "feature": "nominal_yield",
-      "coef": -0.028927450834325786
-    },
-    {
-      "feature": "inflation",
-      "coef": 0.028472344545063023
-    },
-    {
-      "feature": "fed_bs",
-      "coef": 0.013536120904105295
-    },
-    {
-      "feature": "vix_index",
-      "coef": -0.008236282338149402
-    },
-    {
-      "feature": "gpr_index",
-      "coef": 0.0076483589117141496
-    },
-    {
-      "feature": "oil_wti",
-      "coef": -0.006382094337923524
-    },
-    {
-      "feature": "policy_unc",
-      "coef": 0.0011102925001158172
-    },
-    {
-      "feature": "cap_util",
-      "coef": 0.0
-    },
-    {
-      "feature": "eur_usd",
-      "coef": 0.0
-    },
-    {
-      "feature": "fin_stress",
-      "coef": 0.0
-    },
-    {
-      "feature": "gld_tonnes",
-      "coef": 0.0
-    },
-    {
-      "feature": "high_yield",
-      "coef": 0.0
-    },
-    {
-      "feature": "real_yield",
-      "coef": 0.0
-    },
-    {
-      "feature": "tips_curve",
-      "coef": 0.0
-    }
-  ],
-  "beta_state": {
-    "momentum_score": null,
-    "trend_direction": null,
-    "model_type": "BiLSTM+Attention+MC Dropout (mask-aware, multivariate, returns target)",
-    "metadata": {
-      "lobe": "beta_temporal_multivariate",
-      "model_type": "BiLSTM+Attention+MC Dropout (mask-aware, multivariate, returns target)",
-      "window_size": 60,
-      "input_dim": 60,
-      "factors_used": [
-        "cap_util",
-        "eur_usd",
-        "fed_bs",
-        "fin_stress",
-        "gld_tonnes",
-        "gpr_index",
-        "high_yield",
-        "ind_prod",
-        "inflation",
-        "jpy_usd",
-        "m2_supply",
-        "nominal_yield",
-        "oil_wti",
-        "policy_unc",
-        "ppi_index",
-        "real_yield",
-        "tips_curve",
-        "unrate",
-        "usd_index",
-        "vix_index"
-      ],
-      "channels": [
-        "raw_masked",
-        "availability",
-        "observed"
-      ],
-      "seed": 42,
-      "epochs_ran": 12,
-      "mc_iterations": 30,
-      "timestamp_utc": "2026-01-22T04:41:45.891094+00:00",
-      "source_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv",
-      "gold_col_used": "gold_price",
-      "features_source": "features_cleaned.parquet",
-      "masks_source": {
-        "availability_mask": "availability_mask.parquet",
-        "observed_mask": "observed_mask.parquet"
-      }
-    }
-  },
-  "gamma_state": {
-    "dominant_regime": "breakout_up",
-    "confidence": 0.45389603320047567,
-    "summary": "Regime: breakout up (32.7% prob). Structural and temporal signals are aligned; dominant driver: temporal.",
-    "interpretation": {
-      "structural_vs_temporal_alignment": 1.0,
-      "dominant_driver": "temporal",
-      "sentiment_direction": "bullish",
-      "volatility_state": "low",
-      "trend_state_30d": "up"
-    }
-  },
-  "timestamp_utc": "2026-01-22T06:12:21.522682+00:00"
+  "factor_transforms": {
+    "cap_util": "log_diff1",
+    "eur_usd": "log_diff1",
+    "fed_bs": "log_diff1",
+    "fin_stress": "diff1",
+    "gld_tonnes": "log_diff1",
+    "gpr_index": "log_diff1",
+    "high_yield": "log_diff1",
+    "ind_prod": "log_diff1",
+    "inflation": "log_diff1",
+    "jpy_usd": "log_diff1",
+    "m2_supply": "log_diff1",
+    "nominal_yield": "log_diff1",
+    "oil_wti": "log_diff1",
+    "policy_unc": "log_diff1",
+    "ppi_index": "log_diff1",
+    "real_yield": "diff1",
+    "tips_curve": "diff1",
+    "unrate": "log_diff1",
+    "usd_index": "log_diff1",
+    "vix_index": "log_diff1"
+  }
 }
