@@ -1,26 +1,24 @@
 {
   "model": "model_3_cortex",
-  "backtest_available": false,
-  "note": "Full metrics are embedded in model_3_ensemble.json.metrics. This file remains for compatibility.",
+  "backtest_available": true,
   "metrics": {
-    "ensemble_backtest_available": false,
-    "explanation": "Ensemble MAE/RMSE/MAPE vs realized future requires historical fusion backtest windows. This bundle includes all computed lobe metrics + fusion diagnostics.",
+    "ensemble_backtest_available": true,
     "alpha_returns_metrics": {
       "train": {
-        "mae": 0.014512548487456384,
-        "rmse": 0.04385176145325523,
-        "mape": 181369.67929232004,
-        "smape": 1.9791460120957745,
+        "mae": 0.014511971835928976,
+        "rmse": 0.043851760196657145,
+        "mape": 180792.78292604655,
+        "smape": 1.9791976106633977,
         "da": 0.5703159441587068
       },
       "test": {
-        "mae": 0.004636812799385794,
-        "rmse": 0.008305834133622753,
-        "mape": 116923.19891698798,
-        "smape": 1.903828698348798,
+        "mae": 0.004636533584272484,
+        "rmse": 0.008305925368565842,
+        "mape": 116551.29349098133,
+        "smape": 1.904062923651925,
         "da": 0.29298486932599727
       },
-      "test_mad": 0.004636812799385794,
+      "test_mad": 0.004636533584272484,
       "split": {
         "test_years": 2,
         "train_end": "2024-01-22",
@@ -31,19 +29,19 @@
       },
       "optuna": {
         "n_trials": 100,
-        "best_trial": 51,
+        "best_trial": 46,
         "best_objective": "rmse",
-        "best_rmse": 0.008305834133622753,
+        "best_rmse": 0.008305925368565842,
         "best_params": {
-          "n_estimators": 1389,
-          "learning_rate": 0.11928460480686913,
-          "max_depth": 5,
-          "min_child_weight": 0.6152597604382282,
-          "subsample": 0.6839042624533989,
-          "colsample_bytree": 0.8111453351147451,
-          "reg_lambda": 0.026464628606823727,
-          "reg_alpha": 0.00016466216685604582,
-          "gamma": 4.263209356194586
+          "n_estimators": 507,
+          "learning_rate": 0.05992885263388265,
+          "max_depth": 9,
+          "min_child_weight": 4.759191736368968,
+          "subsample": 0.6716147657032524,
+          "colsample_bytree": 0.6750467395839281,
+          "reg_lambda": 0.04372340344685614,
+          "reg_alpha": 0.0003168178993980241,
+          "gamma": 2.377597821513526
         }
       }
     },
@@ -130,12 +128,208 @@
       },
       "alpha_daily_log_ret_used": 0.000821666901022318,
       "alpha_beta_mean_abs_divergence": 26.235780156853405,
-      "ensemble_interval_avg_width": 178.16296545363957,
+      "ensemble_interval_avg_width": 178.1645623439953,
       "tilt": {
         "direction": "bullish",
         "k_max": 0.01
       }
+    },
+    "ensemble_walkforward_summary": {
+      "evaluation": "ensemble_fusion_walkforward",
+      "timestamp_utc": "2026-01-22T05:50:40.028624+00:00",
+      "matrix_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv",
+      "gold_col_used": "gold_price",
+      "alpha_windows_file": "alpha_walkforward_windows.parquet",
+      "beta_windows_file": "beta_walkforward_windows.parquet",
+      "n_pairs_used": 24,
+      "pairing": {
+        "method": "nearest_start_date",
+        "tolerance_days": 25
+      },
+      "vol_median_20d": 0.007097884640077151,
+      "alpha_avg": {
+        "mae": 63.62857993016099,
+        "rmse": 78.59678381085546,
+        "smape": 2.1026470524320833,
+        "da": 33.90804597701149,
+        "coverage": 99.30555555555556
+      },
+      "beta_avg": {
+        "mae": 57.8549198801366,
+        "rmse": 72.49617216135863,
+        "smape": 1.9084445363599276,
+        "da": 33.62068965517241,
+        "coverage": 16.666666666666668
+      },
+      "ensemble_avg": {
+        "mae": 52.157389778357064,
+        "rmse": 65.42673997160396,
+        "smape": 1.7665608965472372,
+        "da": 33.90804597701149,
+        "coverage": 92.91666666666667
+      }
+    },
+    "metrics_consolidated": {
+      "timestamp_utc": "2026-01-22T05:50:40.039376+00:00",
+      "alpha_eval_summary_exists": true,
+      "beta_eval_summary_exists": true,
+      "ensemble_walkforward_summary": {
+        "evaluation": "ensemble_fusion_walkforward",
+        "timestamp_utc": "2026-01-22T05:50:40.028624+00:00",
+        "matrix_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv",
+        "gold_col_used": "gold_price",
+        "alpha_windows_file": "alpha_walkforward_windows.parquet",
+        "beta_windows_file": "beta_walkforward_windows.parquet",
+        "n_pairs_used": 24,
+        "pairing": {
+          "method": "nearest_start_date",
+          "tolerance_days": 25
+        },
+        "vol_median_20d": 0.007097884640077151,
+        "alpha_avg": {
+          "mae": 63.62857993016099,
+          "rmse": 78.59678381085546,
+          "smape": 2.1026470524320833,
+          "da": 33.90804597701149,
+          "coverage": 99.30555555555556
+        },
+        "beta_avg": {
+          "mae": 57.8549198801366,
+          "rmse": 72.49617216135863,
+          "smape": 1.9084445363599276,
+          "da": 33.62068965517241,
+          "coverage": 16.666666666666668
+        },
+        "ensemble_avg": {
+          "mae": 52.157389778357064,
+          "rmse": 65.42673997160396,
+          "smape": 1.7665608965472372,
+          "da": 33.90804597701149,
+          "coverage": 92.91666666666667
+        }
+      },
+      "alpha_eval_summary": {
+        "lobe": "alpha_structural",
+        "target": "gold_log_return",
+        "returns_metrics_xgboost": {
+          "train": {
+            "mae": 0.014511971835928976,
+            "rmse": 0.043851760196657145,
+            "mape": 180792.78292604655,
+            "smape": 1.9791976106633977,
+            "da": 0.5703159441587068
+          },
+          "test": {
+            "mae": 0.004636533584272484,
+            "rmse": 0.008305925368565842,
+            "mape": 116551.29349098133,
+            "smape": 1.904062923651925,
+            "da": 0.29298486932599727
+          },
+          "split": {
+            "test_years": 2,
+            "train_end": "2024-01-22",
+            "test_start": "2024-01-23",
+            "test_end": "2026-01-21",
+            "n_train": 20416,
+            "n_test": 728
+          },
+          "optuna": {
+            "n_trials": 100,
+            "best_trial": 46,
+            "best_objective": "rmse",
+            "best_rmse": 0.008305925368565842,
+            "best_params": {
+              "n_estimators": 507,
+              "learning_rate": 0.05992885263388265,
+              "max_depth": 9,
+              "min_child_weight": 4.759191736368968,
+              "subsample": 0.6716147657032524,
+              "colsample_bytree": 0.6750467395839281,
+              "reg_lambda": 0.04372340344685614,
+              "reg_alpha": 0.0003168178993980241,
+              "gamma": 2.377597821513526
+            }
+          }
+        },
+        "returns_metrics_elasticnet": {
+          "train": {
+            "mae": 0.015372149529650674,
+            "rmse": 0.043101827823036995,
+            "mape": 1098683.22093519,
+            "smape": 1.9425521705379027,
+            "da": 0.22444281165809454
+          },
+          "test": {
+            "mae": 0.005488876937265163,
+            "rmse": 0.009895104202832633,
+            "mape": 736815.5597068422,
+            "smape": 1.7985249061943636,
+            "da": 0.37551581843191195
+          }
+        },
+        "price_metrics_holdout": {
+          "test_price_mae": 777.4559420474544,
+          "test_price_rmse": 968.8195953879739,
+          "test_price_mape": 0.22858841649839776,
+          "test_price_smape": 0.2696965482826588
+        },
+        "walkforward": {
+          "refit_stride_days": 30,
+          "horizon_days": 30,
+          "n_windows": 25,
+          "windows_file": "alpha_walkforward_windows.parquet",
+          "paths_exported": true,
+          "paths_schema": "mean_path_1..N, p10_path_1..N, p90_path_1..N, actual_path_1..N"
+        },
+        "coverage": {
+          "coverage_mean": 0.999900681044268,
+          "coverage_median": 1.0,
+          "coverage_min": 0.9,
+          "coverage_max": 1.0,
+          "coverage_file": "alpha_coverage_daily.parquet"
+        },
+        "last_updated": "2026-01-22T05:31:28.932724+00:00"
+      },
+      "beta_eval_summary": {
+        "lobe": "beta_temporal_multivariate",
+        "walkforward": {
+          "n_windows": 25,
+          "horizon_days": 30,
+          "stride_days": 30,
+          "note": "Walk-forward windows reuse one trained model; future X held constant at cutoff (no exogenous forecasts)."
+        },
+        "timestamp_utc": "2026-01-22T04:41:45.891489+00:00"
+      }
+    },
+    "headline": {
+      "alpha_avg": {
+        "mae": 63.62857993016099,
+        "rmse": 78.59678381085546,
+        "smape": 2.1026470524320833,
+        "da": 33.90804597701149,
+        "coverage": 99.30555555555556
+      },
+      "beta_avg": {
+        "mae": 57.8549198801366,
+        "rmse": 72.49617216135863,
+        "smape": 1.9084445363599276,
+        "da": 33.62068965517241,
+        "coverage": 16.666666666666668
+      },
+      "ensemble_avg": {
+        "mae": 52.157389778357064,
+        "rmse": 65.42673997160396,
+        "smape": 1.7665608965472372,
+        "da": 33.90804597701149,
+        "coverage": 92.91666666666667
+      },
+      "n_pairs_used": 24,
+      "pairing": {
+        "method": "nearest_start_date",
+        "tolerance_days": 25
+      }
     }
   },
-  "timestamp_utc": "2026-01-22T04:46:26.680115+00:00"
+  "timestamp_utc": "2026-01-22T06:12:21.522500+00:00"
 }

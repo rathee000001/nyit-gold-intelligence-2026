@@ -246,45 +246,44 @@
     "alpha_elasticnet_coefficients_original_scale_full": {
       "cap_util": 0.0,
       "eur_usd": 0.0,
-      "fed_bs": 0.013536120904105223,
+      "fed_bs": 0.013536120904105295,
       "fin_stress": 0.0,
       "gld_tonnes": 0.0,
       "gpr_index": 0.0076483589117141496,
       "high_yield": 0.0,
-      "ind_prod": -0.41483977131850364,
-      "inflation": 0.02847234454506309,
+      "ind_prod": -0.4148397713185041,
+      "inflation": 0.028472344545063023,
       "jpy_usd": -0.11187364990857394,
       "m2_supply": -2.3760023077923593,
-      "nominal_yield": -0.028927450834325814,
-      "oil_wti": -0.006382094337923534,
-      "policy_unc": 0.001110292500115831,
-      "ppi_index": -3.4419794915827024,
+      "nominal_yield": -0.028927450834325786,
+      "oil_wti": -0.006382094337923524,
+      "policy_unc": 0.0011102925001158172,
+      "ppi_index": -3.4419794915827016,
       "real_yield": 0.0,
       "tips_curve": 0.0,
       "unrate": -0.12536835310127442,
       "usd_index": 0.2646445750334125,
-      "vix_index": -0.008236282338149405
+      "vix_index": -0.008236282338149402
     }
   },
   "metrics": {
-    "ensemble_backtest_available": false,
-    "explanation": "Ensemble MAE/RMSE/MAPE vs realized future requires historical fusion backtest windows. This bundle includes all computed lobe metrics + fusion diagnostics.",
+    "ensemble_backtest_available": true,
     "alpha_returns_metrics": {
       "train": {
-        "mae": 0.014512548487456384,
-        "rmse": 0.04385176145325523,
-        "mape": 181369.67929232004,
-        "smape": 1.9791460120957745,
+        "mae": 0.014511971835928976,
+        "rmse": 0.043851760196657145,
+        "mape": 180792.78292604655,
+        "smape": 1.9791976106633977,
         "da": 0.5703159441587068
       },
       "test": {
-        "mae": 0.004636812799385794,
-        "rmse": 0.008305834133622753,
-        "mape": 116923.19891698798,
-        "smape": 1.903828698348798,
+        "mae": 0.004636533584272484,
+        "rmse": 0.008305925368565842,
+        "mape": 116551.29349098133,
+        "smape": 1.904062923651925,
         "da": 0.29298486932599727
       },
-      "test_mad": 0.004636812799385794,
+      "test_mad": 0.004636533584272484,
       "split": {
         "test_years": 2,
         "train_end": "2024-01-22",
@@ -295,19 +294,19 @@
       },
       "optuna": {
         "n_trials": 100,
-        "best_trial": 51,
+        "best_trial": 46,
         "best_objective": "rmse",
-        "best_rmse": 0.008305834133622753,
+        "best_rmse": 0.008305925368565842,
         "best_params": {
-          "n_estimators": 1389,
-          "learning_rate": 0.11928460480686913,
-          "max_depth": 5,
-          "min_child_weight": 0.6152597604382282,
-          "subsample": 0.6839042624533989,
-          "colsample_bytree": 0.8111453351147451,
-          "reg_lambda": 0.026464628606823727,
-          "reg_alpha": 0.00016466216685604582,
-          "gamma": 4.263209356194586
+          "n_estimators": 507,
+          "learning_rate": 0.05992885263388265,
+          "max_depth": 9,
+          "min_child_weight": 4.759191736368968,
+          "subsample": 0.6716147657032524,
+          "colsample_bytree": 0.6750467395839281,
+          "reg_lambda": 0.04372340344685614,
+          "reg_alpha": 0.0003168178993980241,
+          "gamma": 2.377597821513526
         }
       }
     },
@@ -394,10 +393,206 @@
       },
       "alpha_daily_log_ret_used": 0.000821666901022318,
       "alpha_beta_mean_abs_divergence": 26.235780156853405,
-      "ensemble_interval_avg_width": 178.16296545363957,
+      "ensemble_interval_avg_width": 178.1645623439953,
       "tilt": {
         "direction": "bullish",
         "k_max": 0.01
+      }
+    },
+    "ensemble_walkforward_summary": {
+      "evaluation": "ensemble_fusion_walkforward",
+      "timestamp_utc": "2026-01-22T05:50:40.028624+00:00",
+      "matrix_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv",
+      "gold_col_used": "gold_price",
+      "alpha_windows_file": "alpha_walkforward_windows.parquet",
+      "beta_windows_file": "beta_walkforward_windows.parquet",
+      "n_pairs_used": 24,
+      "pairing": {
+        "method": "nearest_start_date",
+        "tolerance_days": 25
+      },
+      "vol_median_20d": 0.007097884640077151,
+      "alpha_avg": {
+        "mae": 63.62857993016099,
+        "rmse": 78.59678381085546,
+        "smape": 2.1026470524320833,
+        "da": 33.90804597701149,
+        "coverage": 99.30555555555556
+      },
+      "beta_avg": {
+        "mae": 57.8549198801366,
+        "rmse": 72.49617216135863,
+        "smape": 1.9084445363599276,
+        "da": 33.62068965517241,
+        "coverage": 16.666666666666668
+      },
+      "ensemble_avg": {
+        "mae": 52.157389778357064,
+        "rmse": 65.42673997160396,
+        "smape": 1.7665608965472372,
+        "da": 33.90804597701149,
+        "coverage": 92.91666666666667
+      }
+    },
+    "metrics_consolidated": {
+      "timestamp_utc": "2026-01-22T05:50:40.039376+00:00",
+      "alpha_eval_summary_exists": true,
+      "beta_eval_summary_exists": true,
+      "ensemble_walkforward_summary": {
+        "evaluation": "ensemble_fusion_walkforward",
+        "timestamp_utc": "2026-01-22T05:50:40.028624+00:00",
+        "matrix_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv",
+        "gold_col_used": "gold_price",
+        "alpha_windows_file": "alpha_walkforward_windows.parquet",
+        "beta_windows_file": "beta_walkforward_windows.parquet",
+        "n_pairs_used": 24,
+        "pairing": {
+          "method": "nearest_start_date",
+          "tolerance_days": 25
+        },
+        "vol_median_20d": 0.007097884640077151,
+        "alpha_avg": {
+          "mae": 63.62857993016099,
+          "rmse": 78.59678381085546,
+          "smape": 2.1026470524320833,
+          "da": 33.90804597701149,
+          "coverage": 99.30555555555556
+        },
+        "beta_avg": {
+          "mae": 57.8549198801366,
+          "rmse": 72.49617216135863,
+          "smape": 1.9084445363599276,
+          "da": 33.62068965517241,
+          "coverage": 16.666666666666668
+        },
+        "ensemble_avg": {
+          "mae": 52.157389778357064,
+          "rmse": 65.42673997160396,
+          "smape": 1.7665608965472372,
+          "da": 33.90804597701149,
+          "coverage": 92.91666666666667
+        }
+      },
+      "alpha_eval_summary": {
+        "lobe": "alpha_structural",
+        "target": "gold_log_return",
+        "returns_metrics_xgboost": {
+          "train": {
+            "mae": 0.014511971835928976,
+            "rmse": 0.043851760196657145,
+            "mape": 180792.78292604655,
+            "smape": 1.9791976106633977,
+            "da": 0.5703159441587068
+          },
+          "test": {
+            "mae": 0.004636533584272484,
+            "rmse": 0.008305925368565842,
+            "mape": 116551.29349098133,
+            "smape": 1.904062923651925,
+            "da": 0.29298486932599727
+          },
+          "split": {
+            "test_years": 2,
+            "train_end": "2024-01-22",
+            "test_start": "2024-01-23",
+            "test_end": "2026-01-21",
+            "n_train": 20416,
+            "n_test": 728
+          },
+          "optuna": {
+            "n_trials": 100,
+            "best_trial": 46,
+            "best_objective": "rmse",
+            "best_rmse": 0.008305925368565842,
+            "best_params": {
+              "n_estimators": 507,
+              "learning_rate": 0.05992885263388265,
+              "max_depth": 9,
+              "min_child_weight": 4.759191736368968,
+              "subsample": 0.6716147657032524,
+              "colsample_bytree": 0.6750467395839281,
+              "reg_lambda": 0.04372340344685614,
+              "reg_alpha": 0.0003168178993980241,
+              "gamma": 2.377597821513526
+            }
+          }
+        },
+        "returns_metrics_elasticnet": {
+          "train": {
+            "mae": 0.015372149529650674,
+            "rmse": 0.043101827823036995,
+            "mape": 1098683.22093519,
+            "smape": 1.9425521705379027,
+            "da": 0.22444281165809454
+          },
+          "test": {
+            "mae": 0.005488876937265163,
+            "rmse": 0.009895104202832633,
+            "mape": 736815.5597068422,
+            "smape": 1.7985249061943636,
+            "da": 0.37551581843191195
+          }
+        },
+        "price_metrics_holdout": {
+          "test_price_mae": 777.4559420474544,
+          "test_price_rmse": 968.8195953879739,
+          "test_price_mape": 0.22858841649839776,
+          "test_price_smape": 0.2696965482826588
+        },
+        "walkforward": {
+          "refit_stride_days": 30,
+          "horizon_days": 30,
+          "n_windows": 25,
+          "windows_file": "alpha_walkforward_windows.parquet",
+          "paths_exported": true,
+          "paths_schema": "mean_path_1..N, p10_path_1..N, p90_path_1..N, actual_path_1..N"
+        },
+        "coverage": {
+          "coverage_mean": 0.999900681044268,
+          "coverage_median": 1.0,
+          "coverage_min": 0.9,
+          "coverage_max": 1.0,
+          "coverage_file": "alpha_coverage_daily.parquet"
+        },
+        "last_updated": "2026-01-22T05:31:28.932724+00:00"
+      },
+      "beta_eval_summary": {
+        "lobe": "beta_temporal_multivariate",
+        "walkforward": {
+          "n_windows": 25,
+          "horizon_days": 30,
+          "stride_days": 30,
+          "note": "Walk-forward windows reuse one trained model; future X held constant at cutoff (no exogenous forecasts)."
+        },
+        "timestamp_utc": "2026-01-22T04:41:45.891489+00:00"
+      }
+    },
+    "headline": {
+      "alpha_avg": {
+        "mae": 63.62857993016099,
+        "rmse": 78.59678381085546,
+        "smape": 2.1026470524320833,
+        "da": 33.90804597701149,
+        "coverage": 99.30555555555556
+      },
+      "beta_avg": {
+        "mae": 57.8549198801366,
+        "rmse": 72.49617216135863,
+        "smape": 1.9084445363599276,
+        "da": 33.62068965517241,
+        "coverage": 16.666666666666668
+      },
+      "ensemble_avg": {
+        "mae": 52.157389778357064,
+        "rmse": 65.42673997160396,
+        "smape": 1.7665608965472372,
+        "da": 33.90804597701149,
+        "coverage": 92.91666666666667
+      },
+      "n_pairs_used": 24,
+      "pairing": {
+        "method": "nearest_start_date",
+        "tolerance_days": 25
       }
     }
   },
@@ -414,7 +609,7 @@
           "cap_util__days_since_start": -0.0,
           "eur_usd": -0.0,
           "eur_usd__days_since_start": -0.0,
-          "fed_bs": 4.860284674451357e-05,
+          "fed_bs": 4.8602846744513826e-05,
           "fed_bs__days_since_start": -0.0,
           "fin_stress": 0.0,
           "fin_stress__days_since_start": -0.0,
@@ -424,21 +619,21 @@
           "gpr_index__days_since_start": -0.0,
           "high_yield": -0.0,
           "high_yield__days_since_start": -0.0,
-          "ind_prod": -0.0007409914333873917,
+          "ind_prod": -0.0007409914333873925,
           "ind_prod__days_since_start": -0.0,
-          "inflation": 0.0002189405838404211,
+          "inflation": 0.00021894058384042058,
           "inflation__days_since_start": -0.0,
           "jpy_usd": -0.0004738884121093502,
-          "jpy_usd__days_since_start": -8.136275585713434e-05,
-          "m2_supply": -0.0031437231709883734,
+          "jpy_usd__days_since_start": -8.136275585713426e-05,
+          "m2_supply": -0.003143723170988373,
           "m2_supply__days_since_start": -0.0,
-          "nominal_yield": -0.00027722390195901594,
+          "nominal_yield": -0.00027722390195901567,
           "nominal_yield__days_since_start": -0.0,
-          "oil_wti": -9.58600973490119e-05,
+          "oil_wti": -9.586009734901174e-05,
           "oil_wti__days_since_start": -0.0,
-          "policy_unc": 4.866578734578983e-05,
+          "policy_unc": 4.866578734578922e-05,
           "policy_unc__days_since_start": -0.0,
-          "ppi_index": -0.006411196994330925,
+          "ppi_index": -0.006411196994330923,
           "ppi_index__days_since_start": -0.0,
           "real_yield": -0.0,
           "real_yield__days_since_start": -0.0,
@@ -448,7 +643,7 @@
           "unrate__days_since_start": -0.0,
           "usd_index": 0.00039166837914704413,
           "usd_index__days_since_start": -0.0,
-          "vix_index": -0.0003218660314503591,
+          "vix_index": -0.00032186603145035894,
           "vix_index__days_since_start": -0.0
         },
         "intercept_original_scale": 0.0011007094845300314,
@@ -457,7 +652,7 @@
           "cap_util__days_since_start": -0.0,
           "eur_usd": -0.0,
           "eur_usd__days_since_start": -0.0,
-          "fed_bs": 0.013536120904105223,
+          "fed_bs": 0.013536120904105295,
           "fed_bs__days_since_start": -0.0,
           "fin_stress": 0.0,
           "fin_stress__days_since_start": -0.0,
@@ -467,21 +662,21 @@
           "gpr_index__days_since_start": -0.0,
           "high_yield": -0.0,
           "high_yield__days_since_start": -0.0,
-          "ind_prod": -0.41483977131850364,
+          "ind_prod": -0.4148397713185041,
           "ind_prod__days_since_start": -0.0,
-          "inflation": 0.02847234454506309,
+          "inflation": 0.028472344545063023,
           "inflation__days_since_start": -0.0,
           "jpy_usd": -0.11187364990857394,
-          "jpy_usd__days_since_start": -1.3878572739864386e-08,
+          "jpy_usd__days_since_start": -1.387857273986437e-08,
           "m2_supply": -2.3760023077923593,
           "m2_supply__days_since_start": -0.0,
-          "nominal_yield": -0.028927450834325814,
+          "nominal_yield": -0.028927450834325786,
           "nominal_yield__days_since_start": -0.0,
-          "oil_wti": -0.006382094337923534,
+          "oil_wti": -0.006382094337923524,
           "oil_wti__days_since_start": -0.0,
-          "policy_unc": 0.001110292500115831,
+          "policy_unc": 0.0011102925001158172,
           "policy_unc__days_since_start": -0.0,
-          "ppi_index": -3.4419794915827024,
+          "ppi_index": -3.4419794915827016,
           "ppi_index__days_since_start": -0.0,
           "real_yield": -0.0,
           "real_yield__days_since_start": -0.0,
@@ -491,12 +686,12 @@
           "unrate__days_since_start": -0.0,
           "usd_index": 0.2646445750334125,
           "usd_index__days_since_start": -0.0,
-          "vix_index": -0.008236282338149405,
+          "vix_index": -0.008236282338149402,
           "vix_index__days_since_start": -0.0
         },
         "metrics": {
           "train": {
-            "mae": 0.015372149529650677,
+            "mae": 0.015372149529650674,
             "rmse": 0.043101827823036995,
             "mape": 1098683.22093519,
             "smape": 1.9425521705379027,
@@ -505,25 +700,25 @@
           "test": {
             "mae": 0.005488876937265163,
             "rmse": 0.009895104202832633,
-            "mape": 736815.5597068423,
-            "smape": 1.7985249061943631,
+            "mape": 736815.5597068422,
+            "smape": 1.7985249061943636,
             "da": 0.37551581843191195
           }
         }
       },
       "metrics": {
         "train": {
-          "mae": 0.014512548487456384,
-          "rmse": 0.04385176145325523,
-          "mape": 181369.67929232004,
-          "smape": 1.9791460120957745,
+          "mae": 0.014511971835928976,
+          "rmse": 0.043851760196657145,
+          "mape": 180792.78292604655,
+          "smape": 1.9791976106633977,
           "da": 0.5703159441587068
         },
         "test": {
-          "mae": 0.004636812799385794,
-          "rmse": 0.008305834133622753,
-          "mape": 116923.19891698798,
-          "smape": 1.903828698348798,
+          "mae": 0.004636533584272484,
+          "rmse": 0.008305925368565842,
+          "mape": 116551.29349098133,
+          "smape": 1.904062923651925,
           "da": 0.29298486932599727
         },
         "split": {
@@ -536,19 +731,19 @@
         },
         "optuna": {
           "n_trials": 100,
-          "best_trial": 51,
+          "best_trial": 46,
           "best_objective": "rmse",
-          "best_rmse": 0.008305834133622753,
+          "best_rmse": 0.008305925368565842,
           "best_params": {
-            "n_estimators": 1389,
-            "learning_rate": 0.11928460480686913,
-            "max_depth": 5,
-            "min_child_weight": 0.6152597604382282,
-            "subsample": 0.6839042624533989,
-            "colsample_bytree": 0.8111453351147451,
-            "reg_lambda": 0.026464628606823727,
-            "reg_alpha": 0.00016466216685604582,
-            "gamma": 4.263209356194586
+            "n_estimators": 507,
+            "learning_rate": 0.05992885263388265,
+            "max_depth": 9,
+            "min_child_weight": 4.759191736368968,
+            "subsample": 0.6716147657032524,
+            "colsample_bytree": 0.6750467395839281,
+            "reg_lambda": 0.04372340344685614,
+            "reg_alpha": 0.0003168178993980241,
+            "gamma": 2.377597821513526
           }
         }
       },
@@ -849,7 +1044,10 @@
     "beta": "temporal_lobe.json",
     "gamma": "narrative_lobe.json",
     "manifest": "transforms_manifest.json",
-    "source_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv"
+    "source_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv",
+    "gold_col_from_manifest": "gold_price",
+    "evaluation_summary": "ensemble_walkforward_summary.json",
+    "metrics_consolidated": "metrics_consolidated.json"
   },
-  "timestamp_utc": "2026-01-22T04:46:26.680006+00:00"
+  "timestamp_utc": "2026-01-22T06:12:21.522392+00:00"
 }

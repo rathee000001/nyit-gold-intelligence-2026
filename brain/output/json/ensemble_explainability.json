@@ -8,29 +8,29 @@
   "alpha_elasticnet_coefficients_original_scale_full": {
     "cap_util": 0.0,
     "eur_usd": 0.0,
-    "fed_bs": 0.013536120904105223,
+    "fed_bs": 0.013536120904105295,
     "fin_stress": 0.0,
     "gld_tonnes": 0.0,
     "gpr_index": 0.0076483589117141496,
     "high_yield": 0.0,
-    "ind_prod": -0.41483977131850364,
-    "inflation": 0.02847234454506309,
+    "ind_prod": -0.4148397713185041,
+    "inflation": 0.028472344545063023,
     "jpy_usd": -0.11187364990857394,
     "m2_supply": -2.3760023077923593,
-    "nominal_yield": -0.028927450834325814,
-    "oil_wti": -0.006382094337923534,
-    "policy_unc": 0.001110292500115831,
-    "ppi_index": -3.4419794915827024,
+    "nominal_yield": -0.028927450834325786,
+    "oil_wti": -0.006382094337923524,
+    "policy_unc": 0.0011102925001158172,
+    "ppi_index": -3.4419794915827016,
     "real_yield": 0.0,
     "tips_curve": 0.0,
     "unrate": -0.12536835310127442,
     "usd_index": 0.2646445750334125,
-    "vix_index": -0.008236282338149405
+    "vix_index": -0.008236282338149402
   },
   "alpha_elasticnet_coefficients_sorted_abs": [
     {
       "feature": "ppi_index",
-      "coef": -3.4419794915827024
+      "coef": -3.4419794915827016
     },
     {
       "feature": "m2_supply",
@@ -38,7 +38,7 @@
     },
     {
       "feature": "ind_prod",
-      "coef": -0.41483977131850364
+      "coef": -0.4148397713185041
     },
     {
       "feature": "usd_index",
@@ -54,19 +54,19 @@
     },
     {
       "feature": "nominal_yield",
-      "coef": -0.028927450834325814
+      "coef": -0.028927450834325786
     },
     {
       "feature": "inflation",
-      "coef": 0.02847234454506309
+      "coef": 0.028472344545063023
     },
     {
       "feature": "fed_bs",
-      "coef": 0.013536120904105223
+      "coef": 0.013536120904105295
     },
     {
       "feature": "vix_index",
-      "coef": -0.008236282338149405
+      "coef": -0.008236282338149402
     },
     {
       "feature": "gpr_index",
@@ -74,11 +74,11 @@
     },
     {
       "feature": "oil_wti",
-      "coef": -0.006382094337923534
+      "coef": -0.006382094337923524
     },
     {
       "feature": "policy_unc",
-      "coef": 0.001110292500115831
+      "coef": 0.0011102925001158172
     },
     {
       "feature": "cap_util",
@@ -170,5 +170,5 @@
       "trend_state_30d": "up"
     }
   },
-  "timestamp_utc": "2026-01-22T04:46:26.680436+00:00"
+  "timestamp_utc": "2026-01-22T06:12:21.522682+00:00"
 }
