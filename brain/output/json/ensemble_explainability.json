@@ -110,22 +110,57 @@
     }
   ],
   "beta_state": {
-    "momentum_score": 0.089139,
-    "trend_direction": "Up",
-    "model_type": "Attention-BiLSTM + MC Dropout",
+    "momentum_score": null,
+    "trend_direction": null,
+    "model_type": "BiLSTM+Attention+MC Dropout (mask-aware, multivariate, returns target)",
     "metadata": {
-      "lobe": "beta_temporal",
-      "model_type": "Attention-BiLSTM + MC Dropout",
+      "lobe": "beta_temporal_multivariate",
+      "model_type": "BiLSTM+Attention+MC Dropout (mask-aware, multivariate, returns target)",
       "window_size": 60,
-      "epochs_ran": 7,
-      "mc_iterations": 50,
-      "timestamp_utc": "2026-01-22T01:54:36.160262+00:00",
-      "source_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv"
+      "input_dim": 60,
+      "factors_used": [
+        "cap_util",
+        "eur_usd",
+        "fed_bs",
+        "fin_stress",
+        "gld_tonnes",
+        "gpr_index",
+        "high_yield",
+        "ind_prod",
+        "inflation",
+        "jpy_usd",
+        "m2_supply",
+        "nominal_yield",
+        "oil_wti",
+        "policy_unc",
+        "ppi_index",
+        "real_yield",
+        "tips_curve",
+        "unrate",
+        "usd_index",
+        "vix_index"
+      ],
+      "channels": [
+        "raw_masked",
+        "availability",
+        "observed"
+      ],
+      "seed": 42,
+      "epochs_ran": 12,
+      "mc_iterations": 30,
+      "timestamp_utc": "2026-01-22T04:41:45.891094+00:00",
+      "source_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv",
+      "gold_col_used": "gold_price",
+      "features_source": "features_cleaned.parquet",
+      "masks_source": {
+        "availability_mask": "availability_mask.parquet",
+        "observed_mask": "observed_mask.parquet"
+      }
     }
   },
   "gamma_state": {
     "dominant_regime": "breakout_up",
-    "confidence": 0.1494982180663572,
+    "confidence": 0.45389603320047567,
     "summary": "Regime: breakout up (32.7% prob). Structural and temporal signals are aligned; dominant driver: temporal.",
     "interpretation": {
       "structural_vs_temporal_alignment": 1.0,
@@ -135,5 +170,5 @@
       "trend_state_30d": "up"
     }
   },
-  "timestamp_utc": "2026-01-22T03:56:11.034267+00:00"
+  "timestamp_utc": "2026-01-22T04:46:26.680436+00:00"
 }

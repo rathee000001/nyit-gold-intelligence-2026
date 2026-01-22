@@ -49,32 +49,67 @@
     },
     "alpha_price_metrics_holdout": null,
     "beta_state": {
-      "momentum_score": 0.089139,
-      "trend_direction": "Up",
+      "momentum_score": null,
+      "trend_direction": null,
       "metadata": {
-        "lobe": "beta_temporal",
-        "model_type": "Attention-BiLSTM + MC Dropout",
+        "lobe": "beta_temporal_multivariate",
+        "model_type": "BiLSTM+Attention+MC Dropout (mask-aware, multivariate, returns target)",
         "window_size": 60,
-        "epochs_ran": 7,
-        "mc_iterations": 50,
-        "timestamp_utc": "2026-01-22T01:54:36.160262+00:00",
-        "source_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv"
+        "input_dim": 60,
+        "factors_used": [
+          "cap_util",
+          "eur_usd",
+          "fed_bs",
+          "fin_stress",
+          "gld_tonnes",
+          "gpr_index",
+          "high_yield",
+          "ind_prod",
+          "inflation",
+          "jpy_usd",
+          "m2_supply",
+          "nominal_yield",
+          "oil_wti",
+          "policy_unc",
+          "ppi_index",
+          "real_yield",
+          "tips_curve",
+          "unrate",
+          "usd_index",
+          "vix_index"
+        ],
+        "channels": [
+          "raw_masked",
+          "availability",
+          "observed"
+        ],
+        "seed": 42,
+        "epochs_ran": 12,
+        "mc_iterations": 30,
+        "timestamp_utc": "2026-01-22T04:41:45.891094+00:00",
+        "source_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv",
+        "gold_col_used": "gold_price",
+        "features_source": "features_cleaned.parquet",
+        "masks_source": {
+          "availability_mask": "availability_mask.parquet",
+          "observed_mask": "observed_mask.parquet"
+        }
       },
-      "interval_avg_width": 739.0836666666668
+      "interval_avg_width": 53.51166666666668
     },
     "gamma_state": {
       "version": "v2_scored_explainable",
       "dominant_regime": "breakout_up",
-      "confidence": 0.1494982180663572,
+      "confidence": 0.45389603320047567,
       "regime_probs": null,
       "sentiment": {
-        "raw": 0.060197610179294966,
-        "z_score": -0.06180199074904595,
-        "percentile_0_1": 0.4410958904109589,
+        "raw": 0.21747693329838844,
+        "z_score": 1.0905936076256386,
+        "percentile_0_1": 0.9041095890410958,
         "structural_score": 0.04106024659091119,
-        "temporal_score": 0.08890365556187065,
+        "temporal_score": 0.48210196335960426,
         "structural_pred_log_return": 0.000821666901022318,
-        "beta_momentum_score": 0.089139,
+        "beta_momentum_score": 0.05257191111276782,
         "beta_trend_direction": "Up",
         "as_of_date": "2026-01-21"
       },
@@ -94,13 +129,13 @@
         "w_gamma": 0.0
       },
       "alpha_daily_log_ret_used": 0.000821666901022318,
-      "alpha_beta_mean_abs_divergence": 67.78577966415502,
-      "ensemble_interval_avg_width": 590.1874357740397,
+      "alpha_beta_mean_abs_divergence": 26.235780156853405,
+      "ensemble_interval_avg_width": 178.16296545363957,
       "tilt": {
         "direction": "bullish",
-        "k_max": 0.0013858931234903794
+        "k_max": 0.01
       }
     }
   },
-  "timestamp_utc": "2026-01-22T03:56:11.034104+00:00"
+  "timestamp_utc": "2026-01-22T04:46:26.680115+00:00"
 }
