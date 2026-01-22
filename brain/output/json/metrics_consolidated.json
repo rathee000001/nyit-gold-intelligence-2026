@@ -5,6 +5,11 @@
   "delta_tft_lobe_exists": true,
   "ensemble_walkforward_summary": "ensemble_walkforward_summary.json",
   "ensemble_walkforward_windows": "ensemble_walkforward_windows.parquet",
+  "delta_files": {
+    "delta_tft_lobe_json": "delta_tft_lobe.json",
+    "delta_eval_summary_json": "delta_eval_summary.json",
+    "delta_walkforward_windows": "delta_walkforward_windows.parquet"
+  },
   "headline": {
     "pairing": {
       "reference": "beta.start_date",
@@ -40,5 +45,12 @@
       "da": 0.3830049261083744,
       "coverage": 0.8421455938697319
     }
-  }
+  },
+  "delta_config": {
+    "encoder_len": 120,
+    "horizon": 30,
+    "lookback_years": 15
+  },
+  "delta_inputs_used": null,
+  "delta_source_file": "delta_tft_lobe.json"
 }
