@@ -1,0 +1,18 @@
+{
+  "lobe_name": "delta_tft",
+  "timestamp": "2026-01-22T08:47:41.968262+00:00",
+  "metrics": {
+    "test_nextday_mae": 0.0014295863063766845,
+    "test_nextday_rmse": 0.0014295863063766845,
+    "test_nextday_smape": 0.7776430682289293,
+    "pred_nextday_q10": -0.009800284169614315,
+    "pred_nextday_q50": 0.0011235647834837437,
+    "pred_nextday_q90": 0.011295243166387081,
+    "actual_nextday": 0.002553151089860428
+  },
+  "config": {
+    "encoder_len": 120,
+    "horizon": 30,
+    "lookback_years": 15
+  }
+}
