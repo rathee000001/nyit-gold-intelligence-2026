@@ -1,133 +1,44 @@
 {
-  "timestamp_utc": "2026-01-22T05:50:40.039376+00:00",
   "alpha_eval_summary_exists": true,
   "beta_eval_summary_exists": true,
-  "ensemble_walkforward_summary": {
-    "evaluation": "ensemble_fusion_walkforward",
-    "timestamp_utc": "2026-01-22T05:50:40.028624+00:00",
-    "matrix_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv",
-    "gold_col_used": "gold_price",
-    "alpha_windows_file": "alpha_walkforward_windows.parquet",
-    "beta_windows_file": "beta_walkforward_windows.parquet",
-    "n_pairs_used": 24,
+  "delta_eval_summary_exists": true,
+  "delta_tft_lobe_exists": true,
+  "ensemble_walkforward_summary": "ensemble_walkforward_summary.json",
+  "ensemble_walkforward_windows": "ensemble_walkforward_windows.parquet",
+  "headline": {
     "pairing": {
-      "method": "nearest_start_date",
+      "reference": "beta.start_date",
+      "method": "nearest_start_date_with_tolerance",
       "tolerance_days": 25
     },
-    "vol_median_20d": 0.007097884640077151,
+    "n_pairs_used": 3,
     "alpha_avg": {
-      "mae": 63.62857993016099,
-      "rmse": 78.59678381085546,
-      "smape": 2.1026470524320833,
-      "da": 33.90804597701149,
-      "coverage": 99.30555555555556
+      "mae": 137.94018011404455,
+      "rmse": 156.73342034989568,
+      "smape": 0.03181594497261379,
+      "da": 0.3830049261083744,
+      "coverage": 0.8762452107279693
     },
     "beta_avg": {
-      "mae": 57.8549198801366,
-      "rmse": 72.49617216135863,
-      "smape": 1.9084445363599276,
-      "da": 33.62068965517241,
-      "coverage": 16.666666666666668
+      "mae": 96.7146121579297,
+      "rmse": 115.59548949955733,
+      "smape": 0.022526893263125552,
+      "da": 0.3830049261083744,
+      "coverage": 0.07854406130268199
+    },
+    "delta_avg": {
+      "mae": 141.0275224422294,
+      "rmse": 154.97163474502088,
+      "smape": 0.032596498156364014,
+      "da": 0.3600164203612479,
+      "coverage": 0.8877394636015326
     },
     "ensemble_avg": {
-      "mae": 52.157389778357064,
-      "rmse": 65.42673997160396,
-      "smape": 1.7665608965472372,
-      "da": 33.90804597701149,
-      "coverage": 92.91666666666667
+      "mae": 112.00516825718307,
+      "rmse": 133.77706318853643,
+      "smape": 0.02587133647293179,
+      "da": 0.3830049261083744,
+      "coverage": 0.8421455938697319
     }
-  },
-  "alpha_eval_summary": {
-    "lobe": "alpha_structural",
-    "target": "gold_log_return",
-    "returns_metrics_xgboost": {
-      "train": {
-        "mae": 0.014511971835928976,
-        "rmse": 0.043851760196657145,
-        "mape": 180792.78292604655,
-        "smape": 1.9791976106633977,
-        "da": 0.5703159441587068
-      },
-      "test": {
-        "mae": 0.004636533584272484,
-        "rmse": 0.008305925368565842,
-        "mape": 116551.29349098133,
-        "smape": 1.904062923651925,
-        "da": 0.29298486932599727
-      },
-      "split": {
-        "test_years": 2,
-        "train_end": "2024-01-22",
-        "test_start": "2024-01-23",
-        "test_end": "2026-01-21",
-        "n_train": 20416,
-        "n_test": 728
-      },
-      "optuna": {
-        "n_trials": 100,
-        "best_trial": 46,
-        "best_objective": "rmse",
-        "best_rmse": 0.008305925368565842,
-        "best_params": {
-          "n_estimators": 507,
-          "learning_rate": 0.05992885263388265,
-          "max_depth": 9,
-          "min_child_weight": 4.759191736368968,
-          "subsample": 0.6716147657032524,
-          "colsample_bytree": 0.6750467395839281,
-          "reg_lambda": 0.04372340344685614,
-          "reg_alpha": 0.0003168178993980241,
-          "gamma": 2.377597821513526
-        }
-      }
-    },
-    "returns_metrics_elasticnet": {
-      "train": {
-        "mae": 0.015372149529650674,
-        "rmse": 0.043101827823036995,
-        "mape": 1098683.22093519,
-        "smape": 1.9425521705379027,
-        "da": 0.22444281165809454
-      },
-      "test": {
-        "mae": 0.005488876937265163,
-        "rmse": 0.009895104202832633,
-        "mape": 736815.5597068422,
-        "smape": 1.7985249061943636,
-        "da": 0.37551581843191195
-      }
-    },
-    "price_metrics_holdout": {
-      "test_price_mae": 777.4559420474544,
-      "test_price_rmse": 968.8195953879739,
-      "test_price_mape": 0.22858841649839776,
-      "test_price_smape": 0.2696965482826588
-    },
-    "walkforward": {
-      "refit_stride_days": 30,
-      "horizon_days": 30,
-      "n_windows": 25,
-      "windows_file": "alpha_walkforward_windows.parquet",
-      "paths_exported": true,
-      "paths_schema": "mean_path_1..N, p10_path_1..N, p90_path_1..N, actual_path_1..N"
-    },
-    "coverage": {
-      "coverage_mean": 0.999900681044268,
-      "coverage_median": 1.0,
-      "coverage_min": 0.9,
-      "coverage_max": 1.0,
-      "coverage_file": "alpha_coverage_daily.parquet"
-    },
-    "last_updated": "2026-01-22T05:31:28.932724+00:00"
-  },
-  "beta_eval_summary": {
-    "lobe": "beta_temporal_multivariate",
-    "walkforward": {
-      "n_windows": 25,
-      "horizon_days": 30,
-      "stride_days": 30,
-      "note": "Walk-forward windows reuse one trained model; future X held constant at cutoff (no exogenous forecasts)."
-    },
-    "timestamp_utc": "2026-01-22T04:41:45.891489+00:00"
   }
 }
