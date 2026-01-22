@@ -1,0 +1,17 @@
+{
+  "lobe": "epsilon_chronos_like",
+  "walkforward": {
+    "n_windows": 6,
+    "windows_file": "epsilon_walkforward_windows.parquet",
+    "refit_stride_days": 30,
+    "horizon_days": 30,
+    "avg": {
+      "mae": 112.26919410880159,
+      "rmse": 137.51139208946913,
+      "smape": 0.027806813743721143,
+      "da": 0.3290229885057471,
+      "coverage": 0.7833333333333333
+    }
+  },
+  "last_updated": "2026-01-22T20:57:05.582704+00:00"
+}
