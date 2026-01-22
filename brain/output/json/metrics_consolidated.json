@@ -1,98 +1,51 @@
 {
-  "alpha_eval_summary_exists": true,
-  "beta_eval_summary_exists": true,
   "delta_eval_summary_exists": true,
   "delta_tft_lobe_exists": true,
+  "epsilon_eval_summary_exists": true,
+  "epsilon_chronos_lobe_exists": true,
   "ensemble_walkforward_summary": "ensemble_walkforward_summary.json",
   "ensemble_walkforward_windows": "ensemble_walkforward_windows.parquet",
-  "delta_files": {
-    "delta_tft_lobe_json": "delta_tft_lobe.json",
-    "delta_eval_summary_json": "delta_eval_summary.json",
-    "delta_walkforward_windows": "delta_walkforward_windows.parquet"
-  },
   "headline": {
     "pairing": {
       "reference": "beta.start_date",
       "method": "nearest_start_date_with_tolerance",
       "tolerance_days": 25
     },
-    "n_pairs_used": 10,
+    "n_pairs_used": 2,
     "alpha_avg": {
-      "mae": 64.11622890849499,
-      "rmse": 77.28461826399999,
-      "smape": 0.021622735451305882,
-      "da": 0.3149014778325124,
-      "coverage": 0.9529885057471266
+      "mae": 113.79515218098962,
+      "rmse": 133.69500542952483,
+      "smape": 0.03224369677339693,
+      "da": 0.3620689655172414,
+      "coverage": 0.9333333333333333
     },
     "beta_avg": {
-      "mae": 77.93022244164982,
-      "rmse": 90.95408397961782,
-      "smape": 0.026917674652538037,
-      "da": 0.2942118226600986,
-      "coverage": 0.07390804597701148
+      "mae": 134.73089205382132,
+      "rmse": 152.56148186704945,
+      "smape": 0.03825458656703165,
+      "da": 0.3620689655172414,
+      "coverage": 0.06666666666666667
     },
     "delta_avg": {
-      "mae": 73.73584382857402,
-      "rmse": 87.90493478919498,
-      "smape": 0.024734339759167574,
-      "da": 0.2461822660098522,
-      "coverage": 0.9058620689655171
+      "mae": 116.95185058593754,
+      "rmse": 133.69756278986677,
+      "smape": 0.03313448551212607,
+      "da": 0.20689655172413796,
+      "coverage": 0.95
+    },
+    "epsilon_avg": {
+      "mae": 110.97499580789535,
+      "rmse": 126.24262639459127,
+      "smape": 0.03139391896306674,
+      "da": 0.3275862068965517,
+      "coverage": 0.65
     },
     "ensemble_avg": {
-      "mae": 67.07243515269411,
-      "rmse": 78.66845909722777,
-      "smape": 0.02262511881750017,
-      "da": 0.3149014778325124,
-      "coverage": 0.902528735632184
+      "mae": 114.05531382461653,
+      "rmse": 128.63648448675988,
+      "smape": 0.03229013657834969,
+      "da": 0.3275862068965517,
+      "coverage": 0.9
     }
-  },
-  "delta_forecast_meta": {
-    "cutoff_date": "2026-01-21",
-    "start_date": "2026-01-22",
-    "horizon_days": 30,
-    "has_paths": true
-  },
-  "delta_config": {
-    "encoder_length": 180,
-    "horizon_days": 30,
-    "refit_stride_days": 30,
-    "wf_windows_max": 6,
-    "quantiles": [
-      0.1,
-      0.5,
-      0.9
-    ],
-    "fast_mode": true,
-    "max_epochs": 6,
-    "batch_size": 128,
-    "precision": "32-true",
-    "walkforward_refit": false,
-    "uses_masks": true,
-    "uses_manifest": true,
-    "uses_matrix_csv": true
-  },
-  "delta_inputs_used": {
-    "features_cleaned": "features_cleaned.parquet",
-    "availability_mask": "availability_mask.parquet",
-    "observed_mask": "observed_mask.parquet",
-    "days_since_start": "days_since_start.parquet",
-    "transforms_manifest": "transforms_manifest.json",
-    "matrix_csv": "Gold_Matrix_M3_Daily_2026-01-21.csv",
-    "gold_col_used": "gold_price",
-    "base_factors_count": null
-  },
-  "delta_source_file": "delta_tft_lobe.json",
-  "delta_eval_from_delta_eval_summary": {
-    "n_windows": 5,
-    "refit_stride_days": 30,
-    "horizon_days": 30,
-    "avg": {
-      "mae": 68.11928776041668,
-      "rmse": 87.62603260247526,
-      "smape": 0.023054023324452354,
-      "da": 0.28965517241379307,
-      "coverage": 0.9933333333333334
-    },
-    "windows_file": "delta_walkforward_windows.parquet"
   }
 }
