@@ -3,17 +3,17 @@
   "target": "gold_log_return",
   "returns_metrics_xgboost": {
     "train": {
-      "mae": 0.014512548487456384,
-      "rmse": 0.04385176145325523,
-      "mape": 181369.67929232004,
-      "smape": 1.9791460120957745,
+      "mae": 0.014511971835928976,
+      "rmse": 0.043851760196657145,
+      "mape": 180792.78292604655,
+      "smape": 1.9791976106633977,
       "da": 0.5703159441587068
     },
     "test": {
-      "mae": 0.004636812799385794,
-      "rmse": 0.008305834133622753,
-      "mape": 116923.19891698798,
-      "smape": 1.903828698348798,
+      "mae": 0.004636533584272484,
+      "rmse": 0.008305925368565842,
+      "mape": 116551.29349098133,
+      "smape": 1.904062923651925,
       "da": 0.29298486932599727
     },
     "split": {
@@ -26,25 +26,25 @@
     },
     "optuna": {
       "n_trials": 100,
-      "best_trial": 51,
+      "best_trial": 46,
       "best_objective": "rmse",
-      "best_rmse": 0.008305834133622753,
+      "best_rmse": 0.008305925368565842,
       "best_params": {
-        "n_estimators": 1389,
-        "learning_rate": 0.11928460480686913,
-        "max_depth": 5,
-        "min_child_weight": 0.6152597604382282,
-        "subsample": 0.6839042624533989,
-        "colsample_bytree": 0.8111453351147451,
-        "reg_lambda": 0.026464628606823727,
-        "reg_alpha": 0.00016466216685604582,
-        "gamma": 4.263209356194586
+        "n_estimators": 507,
+        "learning_rate": 0.05992885263388265,
+        "max_depth": 9,
+        "min_child_weight": 4.759191736368968,
+        "subsample": 0.6716147657032524,
+        "colsample_bytree": 0.6750467395839281,
+        "reg_lambda": 0.04372340344685614,
+        "reg_alpha": 0.0003168178993980241,
+        "gamma": 2.377597821513526
       }
     }
   },
   "returns_metrics_elasticnet": {
     "train": {
-      "mae": 0.015372149529650677,
+      "mae": 0.015372149529650674,
       "rmse": 0.043101827823036995,
       "mape": 1098683.22093519,
       "smape": 1.9425521705379027,
@@ -53,22 +53,24 @@
     "test": {
       "mae": 0.005488876937265163,
       "rmse": 0.009895104202832633,
-      "mape": 736815.5597068423,
-      "smape": 1.7985249061943631,
+      "mape": 736815.5597068422,
+      "smape": 1.7985249061943636,
       "da": 0.37551581843191195
     }
   },
   "price_metrics_holdout": {
-    "test_price_mae": 776.7550250445355,
-    "test_price_rmse": 968.0070022511479,
-    "test_price_mape": 0.2283771621486835,
-    "test_price_smape": 0.2694059844353359
+    "test_price_mae": 777.4559420474544,
+    "test_price_rmse": 968.8195953879739,
+    "test_price_mape": 0.22858841649839776,
+    "test_price_smape": 0.2696965482826588
   },
   "walkforward": {
     "refit_stride_days": 30,
     "horizon_days": 30,
     "n_windows": 25,
-    "windows_file": "alpha_walkforward_windows.parquet"
+    "windows_file": "alpha_walkforward_windows.parquet",
+    "paths_exported": true,
+    "paths_schema": "mean_path_1..N, p10_path_1..N, p90_path_1..N, actual_path_1..N"
   },
   "coverage": {
     "coverage_mean": 0.999900681044268,
@@ -77,5 +79,5 @@
     "coverage_max": 1.0,
     "coverage_file": "alpha_coverage_daily.parquet"
   },
-  "last_updated": "2026-01-22T01:36:01.593170+00:00"
+  "last_updated": "2026-01-22T05:31:28.932724+00:00"
 }
