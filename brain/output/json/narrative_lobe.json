@@ -1,6 +1,10 @@
 {
   "lobe": "gamma_narrative",
   "version": "v2_scored_explainable",
+  "eval_truth_params": {
+    "r_q": 0.6,
+    "v_q": 0.6
+  },
   "sentiment": {
     "raw": 0.21747693329838844,
     "z_score": 1.0905936076256386,
@@ -40,5 +44,5 @@
     "beta": "temporal_lobe.json",
     "features": "features_cleaned.parquet"
   },
-  "last_updated": "2026-01-23T00:49:34.188980+00:00"
+  "last_updated": "2026-01-23T18:26:23.978864+00:00"
 }
