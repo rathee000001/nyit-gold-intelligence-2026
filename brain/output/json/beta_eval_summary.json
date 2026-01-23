@@ -6,5 +6,5 @@
     "stride_days": 30,
     "note": "Walk-forward windows reuse one trained model; future X held constant at cutoff (no exogenous forecasts)."
   },
-  "timestamp_utc": "2026-01-22T04:41:45.891489+00:00"
+  "timestamp_utc": "2026-01-23T00:48:53.527801+00:00"
 }
