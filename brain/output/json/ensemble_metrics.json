@@ -1,7 +1,7 @@
 {
   "model": "model_3_cortex",
-  "run_id": "2026-01-23T03:51:30.511715+00:00",
-  "generated_at_utc": "2026-01-23T03:51:30.511715+00:00",
+  "run_id": "2026-01-23T03:51:03.298420+00:00",
+  "generated_at_utc": "2026-01-23T03:51:03.298420+00:00",
   "start_date": "2026-01-22",
   "horizon_days": 30,
   "weights": {
@@ -52,5 +52,31 @@
       "da": 0.3275862068965517,
       "coverage": 0.6333333333333333
     }
+  },
+  "calibration": null,
+  "gamma_classification_metrics": {
+    "run_id": "2026-01-23T03:51:03.298420+00:00",
+    "generated_at_utc": "2026-01-23T03:51:03.298420+00:00",
+    "horizon_days": null,
+    "n_windows": 2,
+    "direction_accuracy": 0.0,
+    "regime_top1_accuracy": 0.5,
+    "brier_score": 0.38400767735745517,
+    "ece": 0.534718778802505,
+    "log_loss": 1.4975588622492646,
+    "thresholds": {
+      "r_thr_abs_log_return_q70": 0.07885557668140265,
+      "v_thr_realized_vol_q70": 0.007310263273947025
+    },
+    "confusion_matrix": {
+      "high_vol_risk": {
+        "low_vol_trend": 1
+      },
+      "low_vol_trend": {
+        "low_vol_trend": 1
+      }
+    },
+    "notes": [],
+    "gamma_walkforward_windows": "gamma_walkforward_windows.parquet"
   }
 }

@@ -1,7 +1,9 @@
 {
   "model_name": "model_3_ensemble",
   "version": "v3.1-alpha+beta+gamma+delta+epsilon",
-  "last_updated": "2026-01-23T03:51:30.529722+00:00",
+  "run_id": "2026-01-23T03:51:03.298420+00:00",
+  "generated_at_utc": "2026-01-23T03:51:03.298420+00:00",
+  "last_updated": "2026-01-23T03:51:31.715901+00:00",
   "lobe_context": {
     "alpha": {
       "enabled": true,
@@ -34,6 +36,7 @@
       "last_updated": "2026-01-23T01:29:29.399847+00:00"
     }
   },
+  "calibration": null,
   "available_numeric_lobes": [
     "beta",
     "delta",
