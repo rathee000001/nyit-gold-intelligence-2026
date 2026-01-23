@@ -1,48 +1,32 @@
 {
   "lobe": "gamma_narrative",
-  "version": "v2_scored_explainable",
+  "enabled": true,
+  "fusion_ready": false,
+  "horizon_days": 30,
+  "cutoff_date": "2026-01-21",
+  "thresholds": {
+    "r_thr_abs_log_return_q60": 0.01957907313433575,
+    "v_thr_realized_vol_q60": 0.03658163785135625
+  },
   "eval_truth_params": {
     "r_q": 0.6,
     "v_q": 0.6
   },
-  "sentiment": {
-    "raw": 0.21747693329838844,
-    "z_score": 1.0905936076256386,
-    "percentile_0_1": 0.9041095890410958,
-    "structural_score": 0.041060246590911204,
-    "temporal_score": 0.48210196335960426,
-    "structural_pred_log_return": 0.0008216669010223184,
-    "beta_momentum_score": 0.05257191111276782,
-    "beta_trend_direction": "Up",
-    "as_of_date": "2026-01-21"
+  "prediction": {
+    "status": "ok",
+    "cutoff_date": "2026-01-21",
+    "dominant_regime": "low_vol_trend",
+    "regime_probabilities": {
+      "breakout_up": 0.06120593459004689,
+      "breakout_down": 0.06120593459004689,
+      "low_vol_trend": 0.7710397246716992,
+      "mean_revert": 0.06120593459004689,
+      "high_vol_risk": 0.04534247155816016
+    },
+    "confidence": 0.7098337900816524,
+    "trend_state_30d": "Up",
+    "beta_trend_direction": "Up"
   },
-  "regime_probabilities": {
-    "low_vol_trend": 0.30074335516306816,
-    "high_vol_risk": 0.08894484072374331,
-    "breakout_up": 0.3271752732200083,
-    "breakout_down": 0.12359218535632871,
-    "mean_revert": 0.15954434553685157
-  },
-  "dominant_regime": "breakout_up",
-  "bias_overrides": {
-    "alignment": 1.0,
-    "boost_breakout_up": 0.12
-  },
-  "confidence": 0.45389603320047567,
-  "narrative": {
-    "summary": "Regime: breakout up (32.7% prob). Structural and temporal signals are aligned; dominant driver: temporal.",
-    "interpretation": {
-      "structural_vs_temporal_alignment": 1.0,
-      "dominant_driver": "temporal",
-      "sentiment_direction": "bullish",
-      "volatility_state": "low",
-      "trend_state_30d": "up"
-    }
-  },
-  "inputs_used": {
-    "alpha": "structural_lobe.json",
-    "beta": "temporal_lobe.json",
-    "features": "features_cleaned.parquet"
-  },
-  "last_updated": "2026-01-23T18:45:34.575831+00:00"
+  "narrative_summary": "Gamma regime context as-of 2026-01-21: dominant_regime=low_vol_trend (confidence=0.710).",
+  "last_updated": "2026-01-23T19:29:40.514755+00:00"
 }
