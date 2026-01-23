@@ -1,7 +1,7 @@
 {
   "model_name": "model_3_ensemble",
   "version": "v3.1-alpha+beta+gamma+delta+epsilon",
-  "last_updated": "2026-01-23T02:08:52.296138+00:00",
+  "last_updated": "2026-01-23T02:08:53.513210+00:00",
   "lobe_context": {
     "alpha": {
       "enabled": true,
