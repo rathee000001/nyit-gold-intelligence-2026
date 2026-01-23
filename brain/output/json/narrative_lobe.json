@@ -5,9 +5,9 @@
     "raw": 0.21747693329838844,
     "z_score": 1.0905936076256386,
     "percentile_0_1": 0.9041095890410958,
-    "structural_score": 0.04106024659091119,
+    "structural_score": 0.041060246590911204,
     "temporal_score": 0.48210196335960426,
-    "structural_pred_log_return": 0.000821666901022318,
+    "structural_pred_log_return": 0.0008216669010223184,
     "beta_momentum_score": 0.05257191111276782,
     "beta_trend_direction": "Up",
     "as_of_date": "2026-01-21"
@@ -40,5 +40,5 @@
     "beta": "temporal_lobe.json",
     "features": "features_cleaned.parquet"
   },
-  "last_updated": "2026-01-22T04:45:52.189759+00:00"
+  "last_updated": "2026-01-23T00:49:34.188980+00:00"
 }
