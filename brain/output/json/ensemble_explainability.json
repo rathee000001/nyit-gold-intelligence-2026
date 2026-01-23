@@ -1,9 +1,8 @@
 {
   "model": "model_3_cortex",
-  "run_id": "2026-01-23T03:16:48.773672+00:00",
-  "generated_at_utc": "2026-01-23T03:21:28.517151+00:00",
+  "run_id": "2026-01-23T03:51:30.511715+00:00",
+  "generated_at_utc": "2026-01-23T03:51:30.511715+00:00",
   "dominant_driver": "beta",
-  "calibration": null,
   "dominant_regime": "breakout_up",
   "confidence": 0.45389603320047567,
   "tilt": 0.009376389342040499,

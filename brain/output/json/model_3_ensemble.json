@@ -1,7 +1,7 @@
 {
   "model_name": "model_3_ensemble",
   "version": "v3.1-alpha+beta+gamma+delta+epsilon",
-  "last_updated": "2026-01-23T03:21:28.526296+00:00",
+  "last_updated": "2026-01-23T03:51:30.529722+00:00",
   "lobe_context": {
     "alpha": {
       "enabled": true,
@@ -34,7 +34,6 @@
       "last_updated": "2026-01-23T01:29:29.399847+00:00"
     }
   },
-  "calibration": null,
   "available_numeric_lobes": [
     "beta",
     "delta",
@@ -192,6 +191,5 @@
       "features": "features_cleaned.parquet"
     },
     "last_updated": "2026-01-23T00:49:34.188980+00:00"
-  },
-  "run_id": "2026-01-23T03:16:48.773672+00:00"
+  }
 }
