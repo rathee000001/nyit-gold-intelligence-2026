@@ -41,21 +41,30 @@
     "coverage": 0.6333333333333333
   },
   "gamma_classification": {
-    "run_id": "2026-01-23T18:27:09.799317+00:00",
-    "generated_at_utc": "2026-01-23T18:27:09.799317+00:00",
+    "run_id": "2026-01-23T18:37:16.047650+00:00",
+    "generated_at_utc": "2026-01-23T18:37:16.047650+00:00",
     "horizon_days": null,
-    "n_windows": 0,
-    "direction_accuracy": null,
-    "regime_top1_accuracy": null,
-    "brier_score": null,
-    "ece": null,
-    "log_loss": null,
-    "thresholds": {},
-    "confusion_matrix": {},
-    "notes": [
-      "No gamma records produced (check features dates vs walkforward windows)."
-    ]
+    "n_windows": 2,
+    "direction_accuracy": 0.0,
+    "regime_top1_accuracy": 0.5,
+    "brier_score": 0.38400767735745517,
+    "ece": 0.534718778802505,
+    "log_loss": 1.4975588622492646,
+    "thresholds": {
+      "r_thr_abs_log_return_q70": 0.07024653578219678,
+      "v_thr_realized_vol_q70": 0.007308509040751586
+    },
+    "confusion_matrix": {
+      "high_vol_risk": {
+        "low_vol_trend": 1
+      },
+      "low_vol_trend": {
+        "low_vol_trend": 1
+      }
+    },
+    "notes": [],
+    "gamma_walkforward_windows": "gamma_walkforward_windows.parquet"
   },
-  "run_id": "2026-01-23T18:27:09.799317+00:00",
-  "generated_at_utc": "2026-01-23T18:27:09.799317+00:00"
+  "run_id": "2026-01-23T18:37:16.047650+00:00",
+  "generated_at_utc": "2026-01-23T18:37:16.047650+00:00"
 }
