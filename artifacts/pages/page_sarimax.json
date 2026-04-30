@@ -5,7 +5,7 @@
   "model_family": "SARIMAX",
   "default_chart_mode": "one_step_rolling",
   "dataset_window": {
-    "name": "Dataset B \u2014 Core Multivariate",
+    "name": "Dataset B — Core Multivariate",
     "target": "gold_price",
     "start": "2006-01-02",
     "end": "2026-03-31",
@@ -326,5 +326,6 @@
     "The default frontend chart should use the one-step rolling forecast.",
     "Exogenous variables are lagged by one row/day to reduce leakage risk."
   ],
-  "json_first_rule": "Frontend should read all SARIMAX claims, metrics, and selected-model labels from this artifact."
+  "json_first_rule": "Frontend should read all SARIMAX claims, metrics, and selected-model labels from this artifact.",
+  "export_timestamp_utc": "2026-04-30 23:02:08 UTC"
 }

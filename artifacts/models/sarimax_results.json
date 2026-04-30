@@ -3,7 +3,7 @@
   "run_timestamp_utc": "2026-04-30T22:08:19.018749+00:00",
   "project_identity": "Gold Nexus Alpha professor-style forecasting platform",
   "dataset": {
-    "name": "Dataset B \u2014 Core Multivariate",
+    "name": "Dataset B — Core Multivariate",
     "target": "gold_price",
     "start": "2006-01-02",
     "end": "2026-03-31",
