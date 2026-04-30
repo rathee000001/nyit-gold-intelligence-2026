@@ -1,275 +1,167 @@
 {
-  "artifact_type": "shap_summary",
-  "model_family": "XGBoost",
-  "model_name": "XGBoost Forecasting Candidate",
-  "created_at_utc": "2026-04-30T21:02:13.693263+00:00",
-  "status": {
-    "status": "calculated",
-    "reason": null,
-    "sample_size": 750
-  },
-  "method": "TreeExplainer mean absolute SHAP value on a held-out test sample, if available.",
-  "interpretation_warning": "SHAP values explain model prediction behavior on the sampled data; they are not causal estimates.",
-  "top_features": [
-    {
-      "feature": "gold_lag_1",
-      "mean_abs_shap": 420.520751953125,
-      "mean_shap": 420.520751953125,
-      "rank": 1
-    },
+  "model_name": "XGBoost",
+  "selected_candidate_id": "xgboost_dollar_change",
+  "target_mode": "dollar_change",
+  "records": [
     {
       "feature": "gold_lag_20",
-      "mean_abs_shap": 159.8297576904297,
-      "mean_shap": 159.8297576904297,
-      "rank": 2
+      "mean_abs_shap": 44.6605110168457,
+      "target_mode": "dollar_change"
     },
     {
-      "feature": "m2_supply",
-      "mean_abs_shap": 18.091522216796875,
-      "mean_shap": 18.091522216796875,
-      "rank": 3
-    },
-    {
-      "feature": "gold_ma_5",
-      "mean_abs_shap": 8.640691757202148,
-      "mean_shap": -5.469149112701416,
-      "rank": 4
-    },
-    {
-      "feature": "real_yield",
-      "mean_abs_shap": 4.2212419509887695,
-      "mean_shap": -4.149941444396973,
-      "rank": 5
-    },
-    {
-      "feature": "policy_unc",
-      "mean_abs_shap": 4.118318557739258,
-      "mean_shap": 2.67246413230896,
-      "rank": 6
-    },
-    {
-      "feature": "gold_ma_60",
-      "mean_abs_shap": 2.7869768142700195,
-      "mean_shap": -2.7869768142700195,
-      "rank": 7
-    },
-    {
-      "feature": "vix_index",
-      "mean_abs_shap": 2.363523483276367,
-      "mean_shap": -0.396548867225647,
-      "rank": 8
+      "feature": "gold_lag_1",
+      "mean_abs_shap": 19.381973266601562,
+      "target_mode": "dollar_change"
     },
     {
       "feature": "gold_ma_20",
-      "mean_abs_shap": 2.001349925994873,
-      "mean_shap": 0.9013831615447998,
-      "rank": 9
-    },
-    {
-      "feature": "usd_index",
-      "mean_abs_shap": 1.6866000890731812,
-      "mean_shap": -1.0315855741500854,
-      "rank": 10
-    },
-    {
-      "feature": "gold_return_1",
-      "mean_abs_shap": 1.6405117511749268,
-      "mean_shap": 0.2976665496826172,
-      "rank": 11
-    },
-    {
-      "feature": "gpr_index",
-      "mean_abs_shap": 1.6081702709197998,
-      "mean_shap": 1.212357521057129,
-      "rank": 12
-    },
-    {
-      "feature": "gold_volatility_20",
-      "mean_abs_shap": 1.5936264991760254,
-      "mean_shap": -0.3879530131816864,
-      "rank": 13
-    },
-    {
-      "feature": "gold_return_5",
-      "mean_abs_shap": 1.5043565034866333,
-      "mean_shap": 0.07112365961074829,
-      "rank": 14
-    },
-    {
-      "feature": "nominal_yield",
-      "mean_abs_shap": 1.2882232666015625,
-      "mean_shap": -1.2854528427124023,
-      "rank": 15
-    }
-  ],
-  "all_features": [
-    {
-      "feature": "gold_lag_1",
-      "mean_abs_shap": 420.520751953125,
-      "mean_shap": 420.520751953125,
-      "rank": 1
-    },
-    {
-      "feature": "gold_lag_20",
-      "mean_abs_shap": 159.8297576904297,
-      "mean_shap": 159.8297576904297,
-      "rank": 2
-    },
-    {
-      "feature": "m2_supply",
-      "mean_abs_shap": 18.091522216796875,
-      "mean_shap": 18.091522216796875,
-      "rank": 3
+      "mean_abs_shap": 14.864556312561035,
+      "target_mode": "dollar_change"
     },
     {
       "feature": "gold_ma_5",
-      "mean_abs_shap": 8.640691757202148,
-      "mean_shap": -5.469149112701416,
-      "rank": 4
-    },
-    {
-      "feature": "real_yield",
-      "mean_abs_shap": 4.2212419509887695,
-      "mean_shap": -4.149941444396973,
-      "rank": 5
-    },
-    {
-      "feature": "policy_unc",
-      "mean_abs_shap": 4.118318557739258,
-      "mean_shap": 2.67246413230896,
-      "rank": 6
-    },
-    {
-      "feature": "gold_ma_60",
-      "mean_abs_shap": 2.7869768142700195,
-      "mean_shap": -2.7869768142700195,
-      "rank": 7
-    },
-    {
-      "feature": "vix_index",
-      "mean_abs_shap": 2.363523483276367,
-      "mean_shap": -0.396548867225647,
-      "rank": 8
-    },
-    {
-      "feature": "gold_ma_20",
-      "mean_abs_shap": 2.001349925994873,
-      "mean_shap": 0.9013831615447998,
-      "rank": 9
-    },
-    {
-      "feature": "usd_index",
-      "mean_abs_shap": 1.6866000890731812,
-      "mean_shap": -1.0315855741500854,
-      "rank": 10
-    },
-    {
-      "feature": "gold_return_1",
-      "mean_abs_shap": 1.6405117511749268,
-      "mean_shap": 0.2976665496826172,
-      "rank": 11
-    },
-    {
-      "feature": "gpr_index",
-      "mean_abs_shap": 1.6081702709197998,
-      "mean_shap": 1.212357521057129,
-      "rank": 12
-    },
-    {
-      "feature": "gold_volatility_20",
-      "mean_abs_shap": 1.5936264991760254,
-      "mean_shap": -0.3879530131816864,
-      "rank": 13
+      "mean_abs_shap": 13.560832977294922,
+      "target_mode": "dollar_change"
     },
     {
       "feature": "gold_return_5",
-      "mean_abs_shap": 1.5043565034866333,
-      "mean_shap": 0.07112365961074829,
-      "rank": 14
-    },
-    {
-      "feature": "nominal_yield",
-      "mean_abs_shap": 1.2882232666015625,
-      "mean_shap": -1.2854528427124023,
-      "rank": 15
+      "mean_abs_shap": 5.989853858947754,
+      "target_mode": "dollar_change"
     },
     {
       "feature": "gold_lag_5",
-      "mean_abs_shap": 1.0521575212478638,
-      "mean_shap": -1.0521575212478638,
-      "rank": 16
+      "mean_abs_shap": 2.4147233963012695,
+      "target_mode": "dollar_change"
     },
     {
-      "feature": "oil_wti",
-      "mean_abs_shap": 0.8688931465148926,
-      "mean_shap": -0.867590069770813,
-      "rank": 17
+      "feature": "gold_ma_60",
+      "mean_abs_shap": 1.890791893005371,
+      "target_mode": "dollar_change"
     },
     {
-      "feature": "unrate",
-      "mean_abs_shap": 0.7809718251228333,
-      "mean_shap": 0.14133484661579132,
-      "rank": 18
+      "feature": "gold_volatility_20",
+      "mean_abs_shap": 1.6753076314926147,
+      "target_mode": "dollar_change"
     },
     {
-      "feature": "gld_tonnes",
-      "mean_abs_shap": 0.6317729949951172,
-      "mean_shap": 0.6317729949951172,
-      "rank": 19
+      "feature": "tips_curve_lag1",
+      "mean_abs_shap": 1.0400725603103638,
+      "target_mode": "dollar_change"
     },
     {
-      "feature": "jpy_usd",
-      "mean_abs_shap": 0.3369322717189789,
-      "mean_shap": -0.1561606377363205,
-      "rank": 20
+      "feature": "real_yield_lag1",
+      "mean_abs_shap": 0.9313990473747253,
+      "target_mode": "dollar_change"
     },
     {
-      "feature": "tips_curve",
-      "mean_abs_shap": 0.263983815908432,
-      "mean_shap": 0.17345678806304932,
-      "rank": 21
+      "feature": "m2_supply_lag1",
+      "mean_abs_shap": 0.7008980512619019,
+      "target_mode": "dollar_change"
     },
     {
-      "feature": "fin_stress",
-      "mean_abs_shap": 0.21227838099002838,
-      "mean_shap": -0.14608891308307648,
-      "rank": 22
+      "feature": "vix_index_lag1",
+      "mean_abs_shap": 0.6592589020729065,
+      "target_mode": "dollar_change"
     },
     {
-      "feature": "ppi_index",
-      "mean_abs_shap": 0.19063490629196167,
-      "mean_shap": 0.19063490629196167,
-      "rank": 23
+      "feature": "usd_index_lag1",
+      "mean_abs_shap": 0.6113659739494324,
+      "target_mode": "dollar_change"
     },
     {
-      "feature": "ind_prod",
-      "mean_abs_shap": 0.15569555759429932,
-      "mean_shap": -0.1272386908531189,
-      "rank": 24
+      "feature": "fed_bs_lag1",
+      "mean_abs_shap": 0.5428056120872498,
+      "target_mode": "dollar_change"
     },
     {
-      "feature": "inflation",
-      "mean_abs_shap": 0.13486561179161072,
-      "mean_shap": 0.11433171480894089,
-      "rank": 25
+      "feature": "ppi_index_lag1",
+      "mean_abs_shap": 0.5170098543167114,
+      "target_mode": "dollar_change"
     },
     {
-      "feature": "fed_bs",
-      "mean_abs_shap": 0.10747352987527847,
-      "mean_shap": 0.10747352987527847,
-      "rank": 26
+      "feature": "gold_return_1",
+      "mean_abs_shap": 0.5136985182762146,
+      "target_mode": "dollar_change"
     },
     {
-      "feature": "cap_util",
-      "mean_abs_shap": 0.10046788305044174,
-      "mean_shap": 0.0716293528676033,
-      "rank": 27
+      "feature": "ind_prod_lag1",
+      "mean_abs_shap": 0.48281213641166687,
+      "target_mode": "dollar_change"
     },
     {
-      "feature": "eur_usd",
-      "mean_abs_shap": 0.03288230672478676,
-      "mean_shap": 0.032293230295181274,
-      "rank": 28
+      "feature": "gld_tonnes_lag1",
+      "mean_abs_shap": 0.4489299952983856,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "jpy_usd_lag1",
+      "mean_abs_shap": 0.44395771622657776,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "oil_wti_lag1",
+      "mean_abs_shap": 0.4047545790672302,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "policy_unc_lag1",
+      "mean_abs_shap": 0.3721521198749542,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "unrate_lag1",
+      "mean_abs_shap": 0.3548877537250519,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "fin_stress_lag1",
+      "mean_abs_shap": 0.3206479251384735,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "trend_idx",
+      "mean_abs_shap": 0.28544700145721436,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "inflation_lag1",
+      "mean_abs_shap": 0.22361142933368683,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "nominal_yield_lag1",
+      "mean_abs_shap": 0.19959741830825806,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "eur_usd_lag1",
+      "mean_abs_shap": 0.1898062378168106,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gpr_index_lag1",
+      "mean_abs_shap": 0.16661745309829712,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "cap_util_lag1",
+      "mean_abs_shap": 0.15266522765159607,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "month_sin",
+      "mean_abs_shap": 0.0771549791097641,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "month_cos",
+      "mean_abs_shap": 0.024133628234267235,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "trend_sq",
+      "mean_abs_shap": 0.0,
+      "target_mode": "dollar_change"
     }
   ]
 }
