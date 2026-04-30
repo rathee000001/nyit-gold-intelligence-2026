@@ -1,0 +1,407 @@
+{
+  "artifact_name": "arima_results",
+  "notebook": "07_arima_forecasting.ipynb",
+  "generated_at_utc": "2026-04-30T20:48:01.559801+00:00",
+  "model": {
+    "name": "ARIMA(0, 1, 0)",
+    "category": "classical_time_series",
+    "selected_order": [
+      0,
+      1,
+      0
+    ],
+    "description": "Univariate ARIMA model fit to gold_price using the long Dataset A history.",
+    "selection_basis": "Lowest validation RMSE among candidate ARIMA orders. Test results were not used for model order selection."
+  },
+  "dataset": {
+    "source_file": "model_ready_univariate.csv",
+    "target": "gold_price",
+    "frequency_note": "Weekday-clean daily series; market holidays have not been removed.",
+    "window": {
+      "start": "1968-01-04",
+      "end": "2026-03-31",
+      "cutoff": "2026-03-31"
+    },
+    "splits": {
+      "train": {
+        "start": "1968-01-04",
+        "end": "2018-12-31",
+        "rows": 13303
+      },
+      "validation": {
+        "start": "2019-01-01",
+        "end": "2022-12-30",
+        "rows": 1044
+      },
+      "test": {
+        "start": "2023-01-02",
+        "end": "2026-03-31",
+        "rows": 847
+      }
+    }
+  },
+  "evaluation_design": {
+    "validation_design": "Each candidate ARIMA model is fit on the training period and forecast over the validation period.",
+    "test_design": "After selecting the order by validation RMSE, the selected ARIMA order is refit on train + validation and forecast over the test period.",
+    "leakage_control": "The test period is never used for fitting or ARIMA order selection.",
+    "professor_style_reference": "Mirrors the uploaded Amtrak ARIMA notebook flow: plot series, partition data, inspect autocorrelation, fit ARIMA, forecast, evaluate errors."
+  },
+  "stationarity_checks": {
+    "level_train_series": {
+      "label": "train gold_price level",
+      "n": 13303,
+      "adf_statistic": -0.3128064304450516,
+      "p_value": 0.9236708728090972,
+      "used_lags": 41,
+      "nobs": 13261,
+      "critical_values": {
+        "1%": -3.4308432181787762,
+        "5%": -2.861757978999306,
+        "10%": -2.5668860253241945
+      },
+      "interpretation": "Lower p-value suggests stationarity; this is diagnostic, not a guarantee."
+    },
+    "first_difference_train_series": {
+      "label": "train gold_price first difference",
+      "n": 13302,
+      "adf_statistic": -24.099925620649735,
+      "p_value": 0.0,
+      "used_lags": 41,
+      "nobs": 13260,
+      "critical_values": {
+        "1%": -3.4308432553819217,
+        "5%": -2.8617579954399632,
+        "10%": -2.566886034075424
+      },
+      "interpretation": "Lower p-value suggests stationarity; this is diagnostic, not a guarantee."
+    }
+  },
+  "candidate_orders_tested": [
+    [
+      0,
+      1,
+      0
+    ],
+    [
+      1,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      1
+    ],
+    [
+      2,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      2,
+      1,
+      1
+    ]
+  ],
+  "candidate_summary": [
+    {
+      "model": "ARIMA(0, 1, 0)",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "fit_status": "success",
+      "aic": 130986.02815663323,
+      "bic": 130993.52375113258,
+      "hqic": 130988.5298125415,
+      "converged": true,
+      "validation_n": 1044,
+      "validation_mae": 419.763601532567,
+      "validation_mse": 216790.0251340996,
+      "validation_rmse": 465.6071575202636,
+      "validation_mape": 23.43843520072894,
+      "validation_bias_mean_error": 419.67777777777775,
+      "validation_directional_accuracy_pct": 40.99616858237548,
+      "validation_MAE": 419.763601532567,
+      "validation_MSE": 216790.0251340996,
+      "validation_RMSE": 465.6071575202636,
+      "validation_MAPE": 23.43843520072894
+    },
+    {
+      "model": "ARIMA(1, 1, 0)",
+      "order": [
+        1,
+        1,
+        0
+      ],
+      "fit_status": "success",
+      "aic": 130907.41216879744,
+      "bic": 130922.40335779615,
+      "hqic": 130912.41548061398,
+      "converged": true,
+      "validation_n": 1044,
+      "validation_mae": 419.763601532567,
+      "validation_mse": 216790.0251340996,
+      "validation_rmse": 465.6071575202636,
+      "validation_mape": 23.43843520072894,
+      "validation_bias_mean_error": 419.67777777777775,
+      "validation_directional_accuracy_pct": 40.99616858237548,
+      "validation_MAE": 419.763601532567,
+      "validation_MSE": 216790.0251340996,
+      "validation_RMSE": 465.6071575202636,
+      "validation_MAPE": 23.43843520072894
+    },
+    {
+      "model": "ARIMA(0, 1, 1)",
+      "order": [
+        0,
+        1,
+        1
+      ],
+      "fit_status": "success",
+      "aic": 130886.3182343189,
+      "bic": 130901.30927294731,
+      "hqic": 130891.32151446374,
+      "converged": true,
+      "validation_n": 1044,
+      "validation_mae": 419.76679151830325,
+      "validation_mse": 216792.76031464883,
+      "validation_rmse": 465.61009473018174,
+      "validation_mape": 23.43862405478551,
+      "validation_bias_mean_error": 419.68103643248287,
+      "validation_directional_accuracy_pct": 40.51724137931034,
+      "validation_MAE": 419.76679151830325,
+      "validation_MSE": 216792.76031464883,
+      "validation_RMSE": 465.61009473018174,
+      "validation_MAPE": 23.43862405478551
+    },
+    {
+      "model": "ARIMA(1, 1, 1)",
+      "order": [
+        1,
+        1,
+        1
+      ],
+      "fit_status": "success",
+      "aic": 129835.21268645496,
+      "bic": 129857.69924439759,
+      "hqic": 129842.71760667222,
+      "converged": true,
+      "validation_n": 1044,
+      "validation_mae": 440.444730877369,
+      "validation_mse": 234700.4571843078,
+      "validation_rmse": 484.4589324022293,
+      "validation_mape": 24.668431482387675,
+      "validation_bias_mean_error": 440.444730877369,
+      "validation_directional_accuracy_pct": 40.32567049808429,
+      "validation_MAE": 440.444730877369,
+      "validation_MSE": 234700.4571843078,
+      "validation_RMSE": 484.4589324022293,
+      "validation_MAPE": 24.668431482387675
+    },
+    {
+      "model": "ARIMA(2, 1, 0)",
+      "order": [
+        2,
+        1,
+        0
+      ],
+      "fit_status": "success",
+      "aic": 130842.90910831757,
+      "bic": 130865.3956662602,
+      "hqic": 130850.41402853483,
+      "converged": true,
+      "validation_n": 1044,
+      "validation_mae": 419.763601532567,
+      "validation_mse": 216790.0251340996,
+      "validation_rmse": 465.6071575202636,
+      "validation_mape": 23.43843520072894,
+      "validation_bias_mean_error": 419.67777777777775,
+      "validation_directional_accuracy_pct": 40.99616858237548,
+      "validation_MAE": 419.763601532567,
+      "validation_MSE": 216790.0251340996,
+      "validation_RMSE": 465.6071575202636,
+      "validation_MAPE": 23.43843520072894
+    },
+    {
+      "model": "ARIMA(0, 1, 2)",
+      "order": [
+        0,
+        1,
+        2
+      ],
+      "fit_status": "success",
+      "aic": 130802.15934994856,
+      "bic": 130824.6456823188,
+      "hqic": 130809.66422265429,
+      "converged": true,
+      "validation_n": 1044,
+      "validation_mae": 420.02016447906794,
+      "validation_mse": 217010.11839765988,
+      "validation_rmse": 465.84344837902347,
+      "validation_mape": 23.453623382842384,
+      "validation_bias_mean_error": 419.9398646444904,
+      "validation_directional_accuracy_pct": 40.51724137931034,
+      "validation_MAE": 420.02016447906794,
+      "validation_MSE": 217010.11839765988,
+      "validation_RMSE": 465.84344837902347,
+      "validation_MAPE": 23.453623382842384
+    },
+    {
+      "model": "ARIMA(2, 1, 1)",
+      "order": [
+        2,
+        1,
+        1
+      ],
+      "fit_status": "success",
+      "aic": 129811.84621810068,
+      "bic": 129841.82829535751,
+      "hqic": 129821.85277839034,
+      "converged": true,
+      "validation_n": 1044,
+      "validation_mae": 440.1941346407371,
+      "validation_mse": 234473.28535041396,
+      "validation_rmse": 484.2244163096425,
+      "validation_mape": 24.653627872574955,
+      "validation_bias_mean_error": 440.1941346407371,
+      "validation_directional_accuracy_pct": 40.32567049808429,
+      "validation_MAE": 440.1941346407371,
+      "validation_MSE": 234473.28535041396,
+      "validation_RMSE": 484.2244163096425,
+      "validation_MAPE": 24.653627872574955
+    }
+  ],
+  "selected_model_fit_stats": {
+    "selected_order": [
+      0,
+      1,
+      0
+    ],
+    "selection_basis": "Lowest validation RMSE among candidate ARIMA models.",
+    "train_fit_aic": 130986.02815663323,
+    "train_fit_bic": 130993.52375113258,
+    "train_fit_hqic": 130988.5298125415,
+    "train_fit_log_likelihood": -65492.01407831661,
+    "train_fit_converged": true,
+    "train_validation_refit_aic": 144170.28274448833,
+    "train_validation_refit_bic": 144177.85390121673,
+    "train_validation_refit_hqic": 144172.80025262517,
+    "train_validation_refit_log_likelihood": -72084.14137224416,
+    "train_validation_refit_converged": true
+  },
+  "metrics": {
+    "train_fit": {
+      "n": 13298,
+      "mae": 10.018099714242743,
+      "mse": 1107.6890758384718,
+      "rmse": 33.281963220917,
+      "mape": 1.9655549958019918,
+      "bias_mean_error": 0.09364190103775004,
+      "mean_actual": 523.6505940742968,
+      "mean_prediction": 523.5569521732591,
+      "directional_accuracy_pct": 68.65694089336742,
+      "MAE": 10.018099714242743,
+      "MSE": 1107.6890758384718,
+      "RMSE": 33.281963220917,
+      "MAPE": 1.9655549958019918
+    },
+    "validation": {
+      "n": 1044,
+      "mae": 419.763601532567,
+      "mse": 216790.0251340996,
+      "rmse": 465.6071575202636,
+      "mape": 23.43843520072894,
+      "bias_mean_error": 419.67777777777775,
+      "mean_actual": 1704.3777777777777,
+      "mean_prediction": 1284.7000000000003,
+      "directional_accuracy_pct": 40.99616858237548,
+      "MAE": 419.763601532567,
+      "MSE": 216790.0251340996,
+      "RMSE": 465.6071575202636,
+      "MAPE": 23.43843520072894
+    },
+    "test": {
+      "n": 847,
+      "mae": 955.8111570247935,
+      "mse": 1740606.1682175915,
+      "rmse": 1319.3203432895255,
+      "mape": 28.218597527814595,
+      "bias_mean_error": 955.8111570247935,
+      "mean_actual": 2783.111157024793,
+      "mean_prediction": 1827.2999999999995,
+      "directional_accuracy_pct": 31.16883116883117,
+      "MAE": 955.8111570247935,
+      "MSE": 1740606.1682175915,
+      "RMSE": 1319.3203432895255,
+      "MAPE": 28.218597527814595
+    }
+  },
+  "metrics_table": [
+    {
+      "split": "train_fit",
+      "n": 13298,
+      "mae": 10.018099714242743,
+      "mse": 1107.6890758384718,
+      "rmse": 33.281963220917,
+      "mape": 1.9655549958019918,
+      "bias_mean_error": 0.09364190103775004,
+      "mean_actual": 523.6505940742968,
+      "mean_prediction": 523.5569521732591,
+      "directional_accuracy_pct": 68.65694089336742,
+      "MAE": 10.018099714242743,
+      "MSE": 1107.6890758384718,
+      "RMSE": 33.281963220917,
+      "MAPE": 1.9655549958019918
+    },
+    {
+      "split": "validation",
+      "n": 1044,
+      "mae": 419.763601532567,
+      "mse": 216790.0251340996,
+      "rmse": 465.6071575202636,
+      "mape": 23.43843520072894,
+      "bias_mean_error": 419.67777777777775,
+      "mean_actual": 1704.3777777777777,
+      "mean_prediction": 1284.7000000000003,
+      "directional_accuracy_pct": 40.99616858237548,
+      "MAE": 419.763601532567,
+      "MSE": 216790.0251340996,
+      "RMSE": 465.6071575202636,
+      "MAPE": 23.43843520072894
+    },
+    {
+      "split": "test",
+      "n": 847,
+      "mae": 955.8111570247935,
+      "mse": 1740606.1682175915,
+      "rmse": 1319.3203432895255,
+      "mape": 28.218597527814595,
+      "bias_mean_error": 955.8111570247935,
+      "mean_actual": 2783.111157024793,
+      "mean_prediction": 1827.2999999999995,
+      "directional_accuracy_pct": 31.16883116883117,
+      "MAE": 955.8111570247935,
+      "MSE": 1740606.1682175915,
+      "RMSE": 1319.3203432895255,
+      "MAPE": 28.218597527814595
+    }
+  ],
+  "limitations": [
+    "ARIMA is univariate and does not use macro, financial, or geopolitical factors.",
+    "The series is weekday-clean, not full exchange trading-calendar-clean, because market holidays have not been removed.",
+    "ARIMA order selection is based on validation RMSE among a professor-readable candidate set, not exhaustive automated search.",
+    "This notebook does not claim the final winning model; final selection happens in Notebook 11 after all models are compared."
+  ]
+}

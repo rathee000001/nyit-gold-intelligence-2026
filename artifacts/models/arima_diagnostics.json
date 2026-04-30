@@ -1,0 +1,121 @@
+{
+  "artifact_name": "arima_diagnostics",
+  "notebook": "07_arima_forecasting.ipynb",
+  "generated_at_utc": "2026-04-30T20:48:01.559801+00:00",
+  "selected_model": "ARIMA(0, 1, 0)",
+  "selected_order": [
+    0,
+    1,
+    0
+  ],
+  "parameter_table": [
+    {
+      "term": "sigma2",
+      "coefficient": 1107.2729439224233,
+      "std_error": 2.597299030858234,
+      "p_value": 0.0
+    }
+  ],
+  "residual_summary": {
+    "n": 13298,
+    "mean": 0.09364190103775004,
+    "std": 33.28308294098802,
+    "min": -419.0,
+    "max": 450.0,
+    "skew": -0.4206185294947025,
+    "kurtosis": 52.65326829828832
+  },
+  "ljung_box": [
+    {
+      "lag": 10,
+      "lb_stat": 404.0282541364824,
+      "lb_pvalue": 1.3071841801631236e-80
+    },
+    {
+      "lag": 20,
+      "lb_stat": 777.5446899413627,
+      "lb_pvalue": 8.240549643229188e-152
+    },
+    {
+      "lag": 40,
+      "lb_stat": 2952.827505155469,
+      "lb_pvalue": 0.0
+    }
+  ],
+  "residual_acf_lags_0_to_40": [
+    1.0,
+    -0.07774237639821241,
+    -0.05934116222909486,
+    -0.02514280340447051,
+    -0.07905830590012271,
+    -0.09093023149939367,
+    -0.040307220202758454,
+    -0.05126310998205574,
+    -0.03645217509164085,
+    -0.00845757041236218,
+    0.0004206378003826984,
+    -0.0005587926436319534,
+    -0.005508470876401164,
+    -0.013041969533898879,
+    -0.041405628823584915,
+    -0.07157823021645686,
+    -0.06410471018592073,
+    -0.04801776835850499,
+    -0.044673488128050866,
+    -0.07062840204791201,
+    0.08723027625373905,
+    0.18940609111926654,
+    0.24922452248657298,
+    0.17936844486360692,
+    -0.05254833731089355,
+    -0.0550468537845486,
+    -0.05196627131230316,
+    -0.055918628370812115,
+    -0.06905189128570345,
+    -0.02560681871289511,
+    -0.0346822077241505,
+    -3.130917771285209e-05,
+    -0.00045453234417742344,
+    -0.00038310099224285097,
+    -0.0034232322365286903,
+    -0.02820888080394864,
+    -0.04652563559858294,
+    -0.05888426794914747,
+    -0.04735853626130712,
+    -0.060156814501847955,
+    -0.050527394164065625
+  ],
+  "stationarity_checks": {
+    "level_train_series": {
+      "label": "train gold_price level",
+      "n": 13303,
+      "adf_statistic": -0.3128064304450516,
+      "p_value": 0.9236708728090972,
+      "used_lags": 41,
+      "nobs": 13261,
+      "critical_values": {
+        "1%": -3.4308432181787762,
+        "5%": -2.861757978999306,
+        "10%": -2.5668860253241945
+      },
+      "interpretation": "Lower p-value suggests stationarity; this is diagnostic, not a guarantee."
+    },
+    "first_difference_train_series": {
+      "label": "train gold_price first difference",
+      "n": 13302,
+      "adf_statistic": -24.099925620649735,
+      "p_value": 0.0,
+      "used_lags": 41,
+      "nobs": 13260,
+      "critical_values": {
+        "1%": -3.4308432553819217,
+        "5%": -2.8617579954399632,
+        "10%": -2.566886034075424
+      },
+      "interpretation": "Lower p-value suggests stationarity; this is diagnostic, not a guarantee."
+    }
+  },
+  "model_summary_text_train_fit": "                               SARIMAX Results                                \n==============================================================================\nDep. Variable:             gold_price   No. Observations:                13303\nModel:                 ARIMA(0, 1, 0)   Log Likelihood              -65492.014\nDate:                Thu, 30 Apr 2026   AIC                         130986.028\nTime:                        20:48:01   BIC                         130993.524\nSample:                    01-04-1968   HQIC                        130988.530\n                         - 12-31-2018                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P>|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nsigma2      1107.2729      2.597    426.317      0.000    1102.182    1112.364\n===================================================================================\nLjung-Box (L1) (Q):                  80.41   Jarque-Bera (JB):           1536411.63\nProb(Q):                              0.00   Prob(JB):                         0.00\nHeteroskedasticity (H):               6.27   Skew:                            -0.42\nProb(H) (two-sided):                  0.00   Kurtosis:                        55.65\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step).",
+  "model_summary_text_train_validation_refit": "                               SARIMAX Results                                \n==============================================================================\nDep. Variable:             gold_price   No. Observations:                14347\nModel:                 ARIMA(0, 1, 0)   Log Likelihood              -72084.141\nDate:                Thu, 30 Apr 2026   AIC                         144170.283\nTime:                        20:48:01   BIC                         144177.854\nSample:                    01-04-1968   HQIC                        144172.800\n                         - 12-30-2022                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P>|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nsigma2      1355.6762      3.435    394.635      0.000    1348.943    1362.409\n===================================================================================\nLjung-Box (L1) (Q):                  67.86   Jarque-Bera (JB):           1025766.06\nProb(Q):                              0.00   Prob(JB):                         0.00\nHeteroskedasticity (H):               8.40   Skew:                            -0.37\nProb(H) (two-sided):                  0.00   Kurtosis:                        44.42\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step).",
+  "diagnostic_note": "Residual diagnostics are based on the training fit. Test-period performance is kept out-of-sample."
+}

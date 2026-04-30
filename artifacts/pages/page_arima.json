@@ -1,0 +1,272 @@
+{
+  "artifact_name": "page_arima",
+  "page_title": "ARIMA Forecasting",
+  "page_subtitle": "Professor-style classical univariate ARIMA forecast for gold price.",
+  "generated_at_utc": "2026-04-30T20:48:01.559801+00:00",
+  "source_artifacts": [
+    "artifacts/models/arima_results.json",
+    "artifacts/models/arima_diagnostics.json",
+    "artifacts/models/arima_forecast_path.json"
+  ],
+  "what_this_page_shows": [
+    "The locked long univariate Dataset A gold price series.",
+    "Stationarity and autocorrelation evidence used before ARIMA fitting.",
+    "Candidate ARIMA orders compared on validation-period accuracy.",
+    "The selected ARIMA order and its validation/test performance.",
+    "Forecast path and residual diagnostics for professor-style review."
+  ],
+  "dataset_window": {
+    "start": "1968-01-04",
+    "end": "2026-03-31",
+    "target": "gold_price",
+    "cutoff": "2026-03-31"
+  },
+  "splits": {
+    "train": {
+      "start": "1968-01-04",
+      "end": "2018-12-31",
+      "rows": 13303
+    },
+    "validation": {
+      "start": "2019-01-01",
+      "end": "2022-12-30",
+      "rows": 1044
+    },
+    "test": {
+      "start": "2023-01-02",
+      "end": "2026-03-31",
+      "rows": 847
+    }
+  },
+  "model": {
+    "name": "ARIMA(0, 1, 0)",
+    "type": "classical_time_series",
+    "selected_order": [
+      0,
+      1,
+      0
+    ],
+    "selection_basis": "Validation RMSE only."
+  },
+  "candidate_leaderboard": [
+    {
+      "model": "ARIMA(0, 1, 0)",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "fit_status": "success",
+      "aic": 130986.02815663323,
+      "bic": 130993.52375113258,
+      "hqic": 130988.5298125415,
+      "converged": true,
+      "validation_n": 1044,
+      "validation_mae": 419.763601532567,
+      "validation_mse": 216790.0251340996,
+      "validation_rmse": 465.6071575202636,
+      "validation_mape": 23.43843520072894,
+      "validation_bias_mean_error": 419.67777777777775,
+      "validation_directional_accuracy_pct": 40.99616858237548,
+      "validation_MAE": 419.763601532567,
+      "validation_MSE": 216790.0251340996,
+      "validation_RMSE": 465.6071575202636,
+      "validation_MAPE": 23.43843520072894
+    },
+    {
+      "model": "ARIMA(1, 1, 0)",
+      "order": [
+        1,
+        1,
+        0
+      ],
+      "fit_status": "success",
+      "aic": 130907.41216879744,
+      "bic": 130922.40335779615,
+      "hqic": 130912.41548061398,
+      "converged": true,
+      "validation_n": 1044,
+      "validation_mae": 419.763601532567,
+      "validation_mse": 216790.0251340996,
+      "validation_rmse": 465.6071575202636,
+      "validation_mape": 23.43843520072894,
+      "validation_bias_mean_error": 419.67777777777775,
+      "validation_directional_accuracy_pct": 40.99616858237548,
+      "validation_MAE": 419.763601532567,
+      "validation_MSE": 216790.0251340996,
+      "validation_RMSE": 465.6071575202636,
+      "validation_MAPE": 23.43843520072894
+    },
+    {
+      "model": "ARIMA(0, 1, 1)",
+      "order": [
+        0,
+        1,
+        1
+      ],
+      "fit_status": "success",
+      "aic": 130886.3182343189,
+      "bic": 130901.30927294731,
+      "hqic": 130891.32151446374,
+      "converged": true,
+      "validation_n": 1044,
+      "validation_mae": 419.76679151830325,
+      "validation_mse": 216792.76031464883,
+      "validation_rmse": 465.61009473018174,
+      "validation_mape": 23.43862405478551,
+      "validation_bias_mean_error": 419.68103643248287,
+      "validation_directional_accuracy_pct": 40.51724137931034,
+      "validation_MAE": 419.76679151830325,
+      "validation_MSE": 216792.76031464883,
+      "validation_RMSE": 465.61009473018174,
+      "validation_MAPE": 23.43862405478551
+    },
+    {
+      "model": "ARIMA(1, 1, 1)",
+      "order": [
+        1,
+        1,
+        1
+      ],
+      "fit_status": "success",
+      "aic": 129835.21268645496,
+      "bic": 129857.69924439759,
+      "hqic": 129842.71760667222,
+      "converged": true,
+      "validation_n": 1044,
+      "validation_mae": 440.444730877369,
+      "validation_mse": 234700.4571843078,
+      "validation_rmse": 484.4589324022293,
+      "validation_mape": 24.668431482387675,
+      "validation_bias_mean_error": 440.444730877369,
+      "validation_directional_accuracy_pct": 40.32567049808429,
+      "validation_MAE": 440.444730877369,
+      "validation_MSE": 234700.4571843078,
+      "validation_RMSE": 484.4589324022293,
+      "validation_MAPE": 24.668431482387675
+    },
+    {
+      "model": "ARIMA(2, 1, 0)",
+      "order": [
+        2,
+        1,
+        0
+      ],
+      "fit_status": "success",
+      "aic": 130842.90910831757,
+      "bic": 130865.3956662602,
+      "hqic": 130850.41402853483,
+      "converged": true,
+      "validation_n": 1044,
+      "validation_mae": 419.763601532567,
+      "validation_mse": 216790.0251340996,
+      "validation_rmse": 465.6071575202636,
+      "validation_mape": 23.43843520072894,
+      "validation_bias_mean_error": 419.67777777777775,
+      "validation_directional_accuracy_pct": 40.99616858237548,
+      "validation_MAE": 419.763601532567,
+      "validation_MSE": 216790.0251340996,
+      "validation_RMSE": 465.6071575202636,
+      "validation_MAPE": 23.43843520072894
+    },
+    {
+      "model": "ARIMA(0, 1, 2)",
+      "order": [
+        0,
+        1,
+        2
+      ],
+      "fit_status": "success",
+      "aic": 130802.15934994856,
+      "bic": 130824.6456823188,
+      "hqic": 130809.66422265429,
+      "converged": true,
+      "validation_n": 1044,
+      "validation_mae": 420.02016447906794,
+      "validation_mse": 217010.11839765988,
+      "validation_rmse": 465.84344837902347,
+      "validation_mape": 23.453623382842384,
+      "validation_bias_mean_error": 419.9398646444904,
+      "validation_directional_accuracy_pct": 40.51724137931034,
+      "validation_MAE": 420.02016447906794,
+      "validation_MSE": 217010.11839765988,
+      "validation_RMSE": 465.84344837902347,
+      "validation_MAPE": 23.453623382842384
+    },
+    {
+      "model": "ARIMA(2, 1, 1)",
+      "order": [
+        2,
+        1,
+        1
+      ],
+      "fit_status": "success",
+      "aic": 129811.84621810068,
+      "bic": 129841.82829535751,
+      "hqic": 129821.85277839034,
+      "converged": true,
+      "validation_n": 1044,
+      "validation_mae": 440.1941346407371,
+      "validation_mse": 234473.28535041396,
+      "validation_rmse": 484.2244163096425,
+      "validation_mape": 24.653627872574955,
+      "validation_bias_mean_error": 440.1941346407371,
+      "validation_directional_accuracy_pct": 40.32567049808429,
+      "validation_MAE": 440.1941346407371,
+      "validation_MSE": 234473.28535041396,
+      "validation_RMSE": 484.2244163096425,
+      "validation_MAPE": 24.653627872574955
+    }
+  ],
+  "kpi_cards": [
+    {
+      "label": "Selected ARIMA Order",
+      "value": "ARIMA(0, 1, 0)",
+      "unit": "p,d,q"
+    },
+    {
+      "label": "Validation RMSE",
+      "value": 465.6071575202636,
+      "unit": "gold price units"
+    },
+    {
+      "label": "Test RMSE",
+      "value": 1319.3203432895255,
+      "unit": "gold price units"
+    },
+    {
+      "label": "Training AIC",
+      "value": 130986.02815663323,
+      "unit": "AIC"
+    },
+    {
+      "label": "Training BIC",
+      "value": 130993.52375113258,
+      "unit": "BIC"
+    }
+  ],
+  "primary_chart": {
+    "artifact": "artifacts/models/arima_forecast_path.json",
+    "x": "date",
+    "y_actual": "actual",
+    "y_forecast": "arima_forecast",
+    "lower_interval": "lower_95",
+    "upper_interval": "upper_95"
+  },
+  "diagnostics": {
+    "artifact": "artifacts/models/arima_diagnostics.json",
+    "contains": [
+      "parameter table",
+      "residual summary",
+      "Ljung-Box residual autocorrelation test",
+      "residual ACF values",
+      "ADF stationarity checks"
+    ]
+  },
+  "limitations": [
+    "ARIMA is univariate and does not use macro, financial, or geopolitical factors.",
+    "The series is weekday-clean, not full exchange trading-calendar-clean, because market holidays have not been removed.",
+    "ARIMA order selection is based on validation RMSE among a professor-readable candidate set, not exhaustive automated search.",
+    "This notebook does not claim the final winning model; final selection happens in Notebook 11 after all models are compared."
+  ]
+}
