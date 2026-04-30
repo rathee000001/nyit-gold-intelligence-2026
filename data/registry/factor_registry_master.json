@@ -1,7 +1,7 @@
 {
   "artifact_type": "factor_registry_master",
   "project": "Gold Nexus Alpha",
-  "created_utc": "2026-04-30T19:43:54.412345+00:00",
+  "created_utc": "2026-04-30T19:46:10.386272+00:00",
   "factors": [
     {
       "factor": "gold_price",
@@ -17,16 +17,16 @@
       "notes": "Dependent variable / target series.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "1968-01-04",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "1968-01-04",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 15145,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 15215,
       "missing_count_weekday_clean": 0,
       "missing_pct_weekday_clean": 0.0,
       "coverage_pct_weekday_clean": 100.0,
-      "valid_through_official_cutoff": false,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -43,16 +43,16 @@
       "notes": "Rate factor; expected inverse relationship with gold.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "2003-01-02",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "2003-01-02",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 6015,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 6085,
       "missing_count_weekday_clean": 9130,
-      "missing_pct_weekday_clean": 60.2839,
-      "coverage_pct_weekday_clean": 39.7161,
-      "valid_through_official_cutoff": false,
+      "missing_pct_weekday_clean": 60.0066,
+      "coverage_pct_weekday_clean": 39.9934,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -69,16 +69,16 @@
       "notes": "Benchmark rate factor.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "1968-01-04",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "1968-01-04",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 15145,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 15215,
       "missing_count_weekday_clean": 0,
       "missing_pct_weekday_clean": 0.0,
       "coverage_pct_weekday_clean": 100.0,
-      "valid_through_official_cutoff": false,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -95,16 +95,16 @@
       "notes": "Yield curve factor.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "1997-01-02",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "1997-01-02",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 7580,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 7650,
       "missing_count_weekday_clean": 7565,
-      "missing_pct_weekday_clean": 49.9505,
-      "coverage_pct_weekday_clean": 50.0495,
-      "valid_through_official_cutoff": false,
+      "missing_pct_weekday_clean": 49.7207,
+      "coverage_pct_weekday_clean": 50.2793,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -121,16 +121,16 @@
       "notes": "Liquidity factor.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "2003-01-01",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "2003-01-01",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 6016,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 6086,
       "missing_count_weekday_clean": 9129,
-      "missing_pct_weekday_clean": 60.2773,
-      "coverage_pct_weekday_clean": 39.7227,
-      "valid_through_official_cutoff": false,
+      "missing_pct_weekday_clean": 60.0,
+      "coverage_pct_weekday_clean": 40.0,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -147,16 +147,16 @@
       "notes": "Money supply factor.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "1968-01-04",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "1968-01-04",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 15145,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 15215,
       "missing_count_weekday_clean": 0,
       "missing_pct_weekday_clean": 0.0,
       "coverage_pct_weekday_clean": 100.0,
-      "valid_through_official_cutoff": false,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -173,16 +173,16 @@
       "notes": "Inflation expectation/proxy factor.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "2003-01-02",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "2003-01-02",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 6015,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 6085,
       "missing_count_weekday_clean": 9130,
-      "missing_pct_weekday_clean": 60.2839,
-      "coverage_pct_weekday_clean": 39.7161,
-      "valid_through_official_cutoff": false,
+      "missing_pct_weekday_clean": 60.0066,
+      "coverage_pct_weekday_clean": 39.9934,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -199,16 +199,16 @@
       "notes": "Currency factor; determines core multivariate model start.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "2006-01-02",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "2006-01-02",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 5233,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 5303,
       "missing_count_weekday_clean": 9912,
-      "missing_pct_weekday_clean": 65.4473,
-      "coverage_pct_weekday_clean": 34.5527,
-      "valid_through_official_cutoff": false,
+      "missing_pct_weekday_clean": 65.1462,
+      "coverage_pct_weekday_clean": 34.8538,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -225,16 +225,16 @@
       "notes": "Currency factor.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "1999-01-04",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "1999-01-04",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 7058,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 7128,
       "missing_count_weekday_clean": 8087,
-      "missing_pct_weekday_clean": 53.3972,
-      "coverage_pct_weekday_clean": 46.6028,
-      "valid_through_official_cutoff": false,
+      "missing_pct_weekday_clean": 53.1515,
+      "coverage_pct_weekday_clean": 46.8485,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -251,16 +251,16 @@
       "notes": "Currency factor.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "1971-01-04",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "1971-01-04",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 14363,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 14433,
       "missing_count_weekday_clean": 782,
-      "missing_pct_weekday_clean": 5.1634,
-      "coverage_pct_weekday_clean": 94.8366,
-      "valid_through_official_cutoff": false,
+      "missing_pct_weekday_clean": 5.1397,
+      "coverage_pct_weekday_clean": 94.8603,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -277,16 +277,16 @@
       "notes": "Market risk factor.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "1990-01-02",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "1990-01-02",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 9407,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 9477,
       "missing_count_weekday_clean": 5738,
-      "missing_pct_weekday_clean": 37.8871,
-      "coverage_pct_weekday_clean": 62.1129,
-      "valid_through_official_cutoff": false,
+      "missing_pct_weekday_clean": 37.7128,
+      "coverage_pct_weekday_clean": 62.2872,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -302,18 +302,17 @@
       "alignment_method": "Daily date alignment.",
       "notes": "Too short for main model; use only as optional short-window sensitivity test.",
       "official_forecast_cutoff_date": "2026-03-31",
-      "observed_first_valid_date_raw": "1996-12-31",
-      "observed_last_valid_date_raw": "2026-01-21",
-      "observed_first_valid_date_weekday_clean": "1996-12-31",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 7582,
-      "missing_count_weekday_clean": 7563,
-      "missing_pct_weekday_clean": 49.9373,
-      "coverage_pct_weekday_clean": 50.0627,
-      "valid_through_official_cutoff": false,
+      "observed_first_valid_date_raw": "2023-05-01",
+      "observed_last_valid_date_raw": "2026-04-29",
+      "observed_first_valid_date_weekday_clean": "2023-05-01",
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 783,
+      "missing_count_weekday_clean": 14432,
+      "missing_pct_weekday_clean": 94.8538,
+      "coverage_pct_weekday_clean": 5.1462,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "observed_before_source_start_verify_metadata",
-        "ends_before_official_cutoff",
+        "has_values_after_official_cutoff_display_only",
         "excluded_from_main_models_too_short_sensitivity_only"
       ]
     },
@@ -331,16 +330,16 @@
       "notes": "Stress factor.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "1993-12-31",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "1993-12-31",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 8364,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 8434,
       "missing_count_weekday_clean": 6781,
-      "missing_pct_weekday_clean": 44.7739,
-      "coverage_pct_weekday_clean": 55.2261,
-      "valid_through_official_cutoff": false,
+      "missing_pct_weekday_clean": 44.5679,
+      "coverage_pct_weekday_clean": 55.4321,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -357,16 +356,16 @@
       "notes": "Local/monthly; cutoff controlled.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "1985-01-01",
-      "observed_last_valid_date_raw": "2025-12-31",
+      "observed_last_valid_date_raw": "2026-03-31",
       "observed_first_valid_date_weekday_clean": "1985-01-01",
-      "observed_last_valid_date_weekday_clean": "2025-12-31",
-      "non_null_count_weekday_clean": 10697,
-      "missing_count_weekday_clean": 4448,
-      "missing_pct_weekday_clean": 29.3694,
-      "coverage_pct_weekday_clean": 70.6306,
-      "valid_through_official_cutoff": false,
+      "observed_last_valid_date_weekday_clean": "2026-03-31",
+      "non_null_count_weekday_clean": 10761,
+      "missing_count_weekday_clean": 4454,
+      "missing_pct_weekday_clean": 29.2737,
+      "coverage_pct_weekday_clean": 70.7263,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "ends_at_official_cutoff"
       ]
     },
     {
@@ -383,16 +382,16 @@
       "notes": "Local/monthly; cutoff controlled. Start date follows uploaded dataset/user correction.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "1968-01-04",
-      "observed_last_valid_date_raw": "2025-12-31",
+      "observed_last_valid_date_raw": "2026-03-31",
       "observed_first_valid_date_weekday_clean": "1968-01-04",
-      "observed_last_valid_date_weekday_clean": "2025-12-31",
-      "non_null_count_weekday_clean": 15130,
-      "missing_count_weekday_clean": 15,
-      "missing_pct_weekday_clean": 0.099,
-      "coverage_pct_weekday_clean": 99.901,
-      "valid_through_official_cutoff": false,
+      "observed_last_valid_date_weekday_clean": "2026-03-31",
+      "non_null_count_weekday_clean": 15194,
+      "missing_count_weekday_clean": 21,
+      "missing_pct_weekday_clean": 0.138,
+      "coverage_pct_weekday_clean": 99.862,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "ends_at_official_cutoff"
       ]
     },
     {
@@ -409,16 +408,16 @@
       "notes": "Commodity factor.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "1986-01-02",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "1986-01-02",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 10450,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 10520,
       "missing_count_weekday_clean": 4695,
-      "missing_pct_weekday_clean": 31.0003,
-      "coverage_pct_weekday_clean": 68.9997,
-      "valid_through_official_cutoff": false,
+      "missing_pct_weekday_clean": 30.8577,
+      "coverage_pct_weekday_clean": 69.1423,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -435,16 +434,16 @@
       "notes": "Macro price factor.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "1968-01-04",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "1968-01-04",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 15145,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 15215,
       "missing_count_weekday_clean": 0,
       "missing_pct_weekday_clean": 0.0,
       "coverage_pct_weekday_clean": 100.0,
-      "valid_through_official_cutoff": false,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -461,16 +460,16 @@
       "notes": "Gold ETF holdings / investment demand proxy.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "2004-11-18",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "2004-11-18",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 5525,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 5595,
       "missing_count_weekday_clean": 9620,
-      "missing_pct_weekday_clean": 63.5193,
-      "coverage_pct_weekday_clean": 36.4807,
-      "valid_through_official_cutoff": false,
+      "missing_pct_weekday_clean": 63.2271,
+      "coverage_pct_weekday_clean": 36.7729,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -487,16 +486,16 @@
       "notes": "Labor macro factor.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "1968-01-04",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "1968-01-04",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 15145,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 15215,
       "missing_count_weekday_clean": 0,
       "missing_pct_weekday_clean": 0.0,
       "coverage_pct_weekday_clean": 100.0,
-      "valid_through_official_cutoff": false,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -513,16 +512,16 @@
       "notes": "Industrial activity factor.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "1968-01-04",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "1968-01-04",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 15145,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 15215,
       "missing_count_weekday_clean": 0,
       "missing_pct_weekday_clean": 0.0,
       "coverage_pct_weekday_clean": 100.0,
-      "valid_through_official_cutoff": false,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     },
     {
@@ -539,16 +538,16 @@
       "notes": "Capacity utilization factor.",
       "official_forecast_cutoff_date": "2026-03-31",
       "observed_first_valid_date_raw": "1968-01-04",
-      "observed_last_valid_date_raw": "2026-01-21",
+      "observed_last_valid_date_raw": "2026-04-29",
       "observed_first_valid_date_weekday_clean": "1968-01-04",
-      "observed_last_valid_date_weekday_clean": "2026-01-21",
-      "non_null_count_weekday_clean": 15145,
+      "observed_last_valid_date_weekday_clean": "2026-04-29",
+      "non_null_count_weekday_clean": 15215,
       "missing_count_weekday_clean": 0,
       "missing_pct_weekday_clean": 0.0,
       "coverage_pct_weekday_clean": 100.0,
-      "valid_through_official_cutoff": false,
+      "valid_through_official_cutoff": true,
       "data_quality_flags": [
-        "ends_before_official_cutoff"
+        "has_values_after_official_cutoff_display_only"
       ]
     }
   ]

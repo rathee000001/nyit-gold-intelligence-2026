@@ -1,7 +1,7 @@
 {
   "artifact_type": "page_data_pipeline",
   "project": "Gold Nexus Alpha",
-  "created_utc": "2026-04-30T19:43:53.884400+00:00",
+  "created_utc": "2026-04-30T19:46:10.055979+00:00",
   "page_title": "Data Pipeline",
   "page_subtitle": "Weekday-clean matrix, factor registry, missing-value audit, and official forecast cutoff governance.",
   "professor_safe_summary": [
@@ -13,17 +13,17 @@
   "kpi_cards": [
     {
       "label": "Raw Rows",
-      "value": 21145,
+      "value": 21243,
       "note": "After date parsing and duplicate handling."
     },
     {
       "label": "Weekday-Clean Rows",
-      "value": 15145,
+      "value": 15215,
       "note": "Saturday/Sunday rows removed."
     },
     {
       "label": "Rows Removed",
-      "value": 6000,
+      "value": 6028,
       "note": "Weekend rows removed."
     },
     {
@@ -33,7 +33,7 @@
     },
     {
       "label": "Display-Only Rows After Cutoff",
-      "value": 0,
+      "value": 21,
       "note": "Rows after cutoff are provisional/display-only."
     },
     {
