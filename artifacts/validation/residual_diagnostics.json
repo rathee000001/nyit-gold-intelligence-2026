@@ -1,0 +1,131 @@
+{
+  "artifact_type": "residual_diagnostics",
+  "generated_at_utc": "2026-04-30T23:10:08.991577+00:00",
+  "residual_summaries": [
+    {
+      "model_key": "exponential_smoothing",
+      "model_name": "Exponential Smoothing",
+      "records_used": 847,
+      "actual_column": "actual",
+      "forecast_column": "static_forecast",
+      "mean_error_bias": 903.0371505388089,
+      "mae_from_path": 903.179281242474,
+      "rmse_from_path": 1262.4310476985875,
+      "mape_from_path": 26.46129473641685,
+      "residual_std": 882.7094535320921,
+      "residual_min": -17.844503725630375,
+      "residual_max": 3487.165541669501,
+      "date_column": "date",
+      "first_date": "2023-01-02",
+      "last_date": "2026-03-31",
+      "source_path": "artifacts/models/exponential_smoothing_forecast_path.json"
+    },
+    {
+      "model_key": "sarimax",
+      "model_name": "SARIMAX",
+      "records_used": 847,
+      "actual_column": "actual",
+      "forecast_column": "static_forecast",
+      "mean_error_bias": 887.140606492805,
+      "mae_from_path": 887.5948747145808,
+      "rmse_from_path": 1225.709226832861,
+      "mape_from_path": 26.221296076998215,
+      "residual_std": 846.280221977572,
+      "residual_min": -35.580498528208636,
+      "residual_max": 3376.1983271282043,
+      "date_column": "date",
+      "first_date": "2023-01-02",
+      "last_date": "2026-03-31",
+      "source_path": "artifacts/models/sarimax_forecast_path.json"
+    },
+    {
+      "model_key": "xgboost",
+      "model_name": "XGBoost Candidate",
+      "records_used": 847,
+      "actual_column": "actual",
+      "forecast_column": "prediction",
+      "mean_error_bias": 57.470546529038316,
+      "mae_from_path": 132.35921913046622,
+      "rmse_from_path": 219.599256524221,
+      "mape_from_path": 4.343907695859342,
+      "residual_std": 212.0709028146767,
+      "residual_min": -1172.923170471191,
+      "residual_max": 923.2144775390625,
+      "date_column": "date",
+      "first_date": "2023-01-02",
+      "last_date": "2026-03-31",
+      "source_path": "artifacts/models/xgboost_forecast_path.json"
+    },
+    {
+      "model_key": "prophet_optional",
+      "model_name": "Prophet Optional",
+      "records_used": 1891,
+      "actual_column": "actual",
+      "forecast_column": "yhat",
+      "mean_error_bias": 698.9519113576858,
+      "mae_from_path": 702.5938358558532,
+      "rmse_from_path": 992.9150015477096,
+      "mape_from_path": 27.054295211424236,
+      "residual_std": 705.4144683553211,
+      "residual_min": -76.88381890502842,
+      "residual_max": 3636.7575348442742,
+      "date_column": "date",
+      "first_date": "2019-01-01",
+      "last_date": "2026-03-31",
+      "split_column": "split",
+      "splits_detected": [
+        "test",
+        "validation"
+      ],
+      "source_path": "artifacts/models/prophet_forecast_path.json"
+    }
+  ],
+  "forecast_path_parse_notes": [
+    {
+      "path_key": "naive_moving_average",
+      "model_key": "naive",
+      "path": "artifacts/models/baseline_forecast_paths.json",
+      "status": "could_not_identify_actual_forecast_columns"
+    },
+    {
+      "path_key": "naive_moving_average",
+      "model_key": "moving_average",
+      "path": "artifacts/models/baseline_forecast_paths.json",
+      "status": "could_not_identify_actual_forecast_columns"
+    },
+    {
+      "path_key": "exponential_smoothing",
+      "model_key": "exponential_smoothing",
+      "path": "artifacts/models/exponential_smoothing_forecast_path.json",
+      "status": "parsed"
+    },
+    {
+      "path_key": "arima",
+      "model_key": "arima",
+      "path": "artifacts/models/arima_forecast_path.json",
+      "status": "could_not_identify_actual_forecast_columns"
+    },
+    {
+      "path_key": "sarimax",
+      "model_key": "sarimax",
+      "path": "artifacts/models/sarimax_forecast_path.json",
+      "status": "parsed"
+    },
+    {
+      "path_key": "xgboost",
+      "model_key": "xgboost",
+      "path": "artifacts/models/xgboost_forecast_path.json",
+      "status": "parsed"
+    },
+    {
+      "path_key": "prophet_optional",
+      "model_key": "prophet_optional",
+      "path": "artifacts/models/prophet_forecast_path.json",
+      "status": "parsed"
+    }
+  ],
+  "limitations": [
+    "Residual diagnostics are generated only when forecast path artifacts contain both actual and predicted values.",
+    "If a forecast path could not be parsed, the corresponding model result metrics are still used for ranking if available."
+  ]
+}
