@@ -1,7 +1,7 @@
 {
   "artifact_type": "missing_values_report",
   "project": "Gold Nexus Alpha",
-  "created_utc": "2026-04-30T19:33:04.873536+00:00",
+  "created_utc": "2026-04-30T19:43:54.420960+00:00",
   "report_basis": "weekday_clean_matrix",
   "factors": [
     {

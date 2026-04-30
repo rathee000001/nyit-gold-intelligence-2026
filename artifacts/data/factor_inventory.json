@@ -2,7 +2,7 @@
   "artifact_type": "factor_inventory",
   "project": "Gold Nexus Alpha",
   "notebook": "01_matrix_cleaning_and_factor_registry.ipynb",
-  "created_utc": "2026-04-30T19:33:04.290839+00:00",
+  "created_utc": "2026-04-30T19:43:53.881022+00:00",
   "official_forecast_cutoff_date": "2026-03-31",
   "cleaning_method": "weekday_clean",
   "calendar_note": "Saturday and Sunday rows are removed. Market-holiday filtering is not yet applied, so this artifact should be called weekday-clean, not fully trading-day-clean.",

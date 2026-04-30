@@ -1,7 +1,7 @@
 {
   "artifact_type": "weekday_matrix_preview",
   "project": "Gold Nexus Alpha",
-  "created_utc": "2026-04-30T19:33:04.278962+00:00",
+  "created_utc": "2026-04-30T19:43:53.875114+00:00",
   "source_file": "Gold_Matrix_M3_Daily_2026-01-21.csv",
   "columns": [
     "date",
