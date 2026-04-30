@@ -1,0 +1,146 @@
+{
+  "generated_at_utc": "2026-04-30T19:47:15+00:00",
+  "input_matrix_path": "/content/nyit-gold-intelligence-2026/data/aligned/weekday_clean_matrix.csv",
+  "input_source_type": "notebook_01_weekday_clean_output",
+  "official_forecast_cutoff_date": "2026-03-31",
+  "datasets": {
+    "long_univariate": {
+      "dataset_name": "Dataset A — Long Univariate",
+      "purpose": "Long professor-style gold price history for baseline and classical univariate forecasting models.",
+      "status": "main",
+      "start_date": "1968-01-04",
+      "end_date": "2026-03-31",
+      "target": "gold_price",
+      "raw_factors": [
+        "gold_price"
+      ],
+      "engineered_features_planned": [],
+      "excluded_factors": [],
+      "models_supported": [
+        "Naive",
+        "Moving Average",
+        "Exponential Smoothing",
+        "ARIMA",
+        "Prophet optional"
+      ],
+      "train_start": "1968-01-04",
+      "train_end": "2018-12-31",
+      "validation_start": "2019-01-01",
+      "validation_end": "2022-12-30",
+      "test_start": "2023-01-02",
+      "test_end": "2026-03-31",
+      "row_counts": {
+        "total": 15194,
+        "train": 13303,
+        "validation": 1044,
+        "test": 847
+      },
+      "actual_date_range_in_matrix": {
+        "start": "1968-01-04",
+        "end": "2026-03-31"
+      },
+      "split_logic": "Time-based chronological split; no random shuffling.",
+      "official_cutoff_applied": true
+    },
+    "core_multivariate": {
+      "dataset_name": "Dataset B — Core Multivariate",
+      "purpose": "Common professor-safe multivariate window for Regression, SARIMAX, and XGBoost main candidate.",
+      "status": "main",
+      "start_date": "2006-01-02",
+      "end_date": "2026-03-31",
+      "target": "gold_price",
+      "raw_factors": [
+        "real_yield",
+        "nominal_yield",
+        "tips_curve",
+        "fed_bs",
+        "m2_supply",
+        "inflation",
+        "usd_index",
+        "eur_usd",
+        "jpy_usd",
+        "vix_index",
+        "fin_stress",
+        "gpr_index",
+        "policy_unc",
+        "oil_wti",
+        "ppi_index",
+        "gld_tonnes",
+        "unrate",
+        "ind_prod",
+        "cap_util"
+      ],
+      "engineered_features_planned": [
+        "gold_lag_1",
+        "gold_lag_5",
+        "gold_lag_20",
+        "gold_return_1",
+        "gold_return_5",
+        "gold_ma_5",
+        "gold_ma_20",
+        "gold_ma_60",
+        "gold_volatility_20"
+      ],
+      "excluded_factors": [
+        "high_yield"
+      ],
+      "models_supported": [
+        "Regression",
+        "SARIMAX",
+        "XGBoost candidate"
+      ],
+      "train_start": "2006-01-02",
+      "train_end": "2018-12-31",
+      "validation_start": "2019-01-01",
+      "validation_end": "2022-12-30",
+      "test_start": "2023-01-02",
+      "test_end": "2026-03-31",
+      "row_counts": {
+        "total": 5282,
+        "train": 3391,
+        "validation": 1044,
+        "test": 847
+      },
+      "actual_date_range_in_matrix": {
+        "start": "2006-01-02",
+        "end": "2026-03-31"
+      },
+      "split_logic": "Time-based chronological split; no random shuffling.",
+      "official_cutoff_applied": true
+    },
+    "high_yield_sensitivity": {
+      "dataset_name": "Dataset C — High-Yield Sensitivity",
+      "purpose": "Optional short-window sensitivity experiment only; not part of the main model comparison.",
+      "status": "optional_sensitivity_only",
+      "start_date": "2023-05-01",
+      "end_date": "2026-03-31",
+      "target": "gold_price",
+      "raw_factors": [
+        "high_yield"
+      ],
+      "engineered_features_planned": [],
+      "excluded_factors": [],
+      "models_supported": [
+        "Optional sensitivity test only"
+      ],
+      "train_start": "2023-05-01",
+      "train_end": "2024-12-31",
+      "validation_start": "2025-01-01",
+      "validation_end": "2025-12-31",
+      "test_start": "2026-01-01",
+      "test_end": "2026-03-31",
+      "row_counts": {
+        "total": 762,
+        "train": 437,
+        "validation": 261,
+        "test": 64
+      },
+      "actual_date_range_in_matrix": {
+        "start": "2023-05-01",
+        "end": "2026-03-31"
+      },
+      "split_logic": "Time-based chronological split; no random shuffling.",
+      "official_cutoff_applied": true
+    }
+  }
+}
