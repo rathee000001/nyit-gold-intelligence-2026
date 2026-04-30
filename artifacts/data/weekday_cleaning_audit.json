@@ -1,0 +1,13 @@
+{
+  "artifact_type": "weekday_cleaning_audit",
+  "project": "Gold Nexus Alpha",
+  "notebook": "01_matrix_cleaning_and_factor_registry.ipynb",
+  "created_utc": "2026-04-30T19:33:04.278709+00:00",
+  "raw_rows_after_date_parse_and_dedup": 21145,
+  "weekday_clean_rows": 15145,
+  "saturday_sunday_rows_removed": 6000,
+  "removed_pct": 28.3755,
+  "cleaning_rule": "Remove rows where parsed date falls on Saturday or Sunday.",
+  "not_yet_applied": "Official market-holiday calendar filtering.",
+  "professor_safe_wording": "weekday-clean matrix"
+}

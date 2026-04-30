@@ -1,0 +1,28 @@
+{
+  "artifact_type": "data_table_audit",
+  "project": "Gold Nexus Alpha",
+  "notebook": "01_matrix_cleaning_and_factor_registry.ipynb",
+  "matrix_csv_used": "Gold_Matrix_M3_Daily_2026-01-21.csv",
+  "created_utc": "2026-04-30T19:33:04.278372+00:00",
+  "cleaning_method": "weekday_clean",
+  "calendar_note": "Saturday and Sunday rows are removed. Market-holiday filtering is not yet applied, so this artifact should be called weekday-clean, not fully trading-day-clean.",
+  "official_forecast_cutoff_date": "2026-03-31",
+  "raw": {
+    "rows": 21145,
+    "columns": 22,
+    "date_min": "1968-01-04",
+    "date_max": "2026-01-21",
+    "duplicate_dates_before_deduplication": 0,
+    "invalid_date_rows_dropped": 0,
+    "extra_columns_ignored": [],
+    "missing_expected_columns": []
+  },
+  "weekday_clean": {
+    "rows": 15145,
+    "columns": 22,
+    "date_min": "1968-01-04",
+    "date_max": "2026-01-21",
+    "rows_through_official_cutoff": 15145,
+    "rows_after_official_cutoff_display_only": 0
+  }
+}

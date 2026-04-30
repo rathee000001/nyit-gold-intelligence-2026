@@ -1,0 +1,59 @@
+{
+  "artifact_type": "page_data_pipeline",
+  "project": "Gold Nexus Alpha",
+  "created_utc": "2026-04-30T19:33:04.294142+00:00",
+  "page_title": "Data Pipeline",
+  "page_subtitle": "Weekday-clean matrix, factor registry, missing-value audit, and official forecast cutoff governance.",
+  "professor_safe_summary": [
+    "The raw matrix is sorted by date, checked for duplicate dates, and cleaned by removing Saturday/Sunday rows.",
+    "The current cleaned dataset is called weekday-clean because official market-holiday filtering has not yet been applied.",
+    "The official model cutoff is 2026-03-31 because local/monthly risk factors are valid only through that date.",
+    "High-yield spread is excluded from the main models because its usable history is too short and is reserved for optional sensitivity testing."
+  ],
+  "kpi_cards": [
+    {
+      "label": "Raw Rows",
+      "value": 21145,
+      "note": "After date parsing and duplicate handling."
+    },
+    {
+      "label": "Weekday-Clean Rows",
+      "value": 15145,
+      "note": "Saturday/Sunday rows removed."
+    },
+    {
+      "label": "Rows Removed",
+      "value": 6000,
+      "note": "Weekend rows removed."
+    },
+    {
+      "label": "Official Cutoff",
+      "value": "2026-03-31",
+      "note": "Modeling cutoff date."
+    },
+    {
+      "label": "Display-Only Rows After Cutoff",
+      "value": 0,
+      "note": "Rows after cutoff are provisional/display-only."
+    },
+    {
+      "label": "Factor Count",
+      "value": 21,
+      "note": "Excluding date column."
+    }
+  ],
+  "source_artifacts": {
+    "factor_inventory": "artifacts/data/factor_inventory.json",
+    "data_table_audit": "artifacts/data/data_table_audit.json",
+    "missing_values_report": "artifacts/data/missing_values_report.json",
+    "weekday_cleaning_audit": "artifacts/data/weekday_cleaning_audit.json",
+    "weekday_matrix_preview": "artifacts/data/weekday_matrix_preview.json",
+    "weekday_clean_matrix": "data/aligned/weekday_clean_matrix.csv",
+    "factor_registry_master": "data/registry/factor_registry_master.csv"
+  },
+  "warnings": [
+    "Do not call this matrix fully trading-day clean until market-holiday filtering is added.",
+    "Do not use high_yield in the main regression, SARIMAX, or XGBoost models.",
+    "Do not hardcode these explanations in the frontend; render them from this JSON artifact."
+  ]
+}
