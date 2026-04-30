@@ -1,0 +1,270 @@
+{
+  "artifact_name": "page_sarimax",
+  "page_title": "SARIMAX Forecasting",
+  "page_subtitle": "Professor-style classical time-series forecast with selected external gold-market factors.",
+  "generated_at_utc": "2026-04-30T20:54:33.641755+00:00",
+  "source_artifacts": [
+    "artifacts/models/sarimax_results.json",
+    "artifacts/models/sarimax_diagnostics.json",
+    "artifacts/models/sarimax_forecast_path.json"
+  ],
+  "what_this_page_shows": [
+    "The locked core multivariate Dataset B gold price series.",
+    "The selected external factors used by SARIMAX.",
+    "Candidate SARIMAX orders compared on validation-period accuracy.",
+    "The selected SARIMAX order and its validation/test performance.",
+    "Forecast path, coefficient table, and residual diagnostics for professor-style review."
+  ],
+  "dataset_window": {
+    "start": "2006-01-02",
+    "end": "2026-03-31",
+    "target": "gold_price",
+    "cutoff": "2026-03-31"
+  },
+  "splits": {
+    "train": {
+      "start": "2006-01-02",
+      "end": "2018-12-31",
+      "rows": 3391
+    },
+    "validation": {
+      "start": "2019-01-01",
+      "end": "2022-12-30",
+      "rows": 1044
+    },
+    "test": {
+      "start": "2023-01-02",
+      "end": "2026-03-31",
+      "rows": 847
+    }
+  },
+  "model": {
+    "name": "SARIMAX(0, 1, 2)x(0, 0, 0, 0)",
+    "type": "classical_time_series_with_exogenous_factors",
+    "selected_order": [
+      0,
+      1,
+      2
+    ],
+    "seasonal_order": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "selection_basis": "Validation RMSE only."
+  },
+  "selected_features": [
+    "real_yield",
+    "usd_index",
+    "vix_index",
+    "gpr_index",
+    "policy_unc",
+    "gld_tonnes",
+    "oil_wti"
+  ],
+  "excluded_features": [
+    "high_yield"
+  ],
+  "candidate_leaderboard": [
+    {
+      "model_name": "SARIMAX(0, 1, 0)x(0, 0, 0, 0)",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "fit_success",
+      "validation_mae": 266.45250186812217,
+      "validation_mse": 90545.01078224582,
+      "validation_rmse": 300.9069802816907,
+      "validation_mape": 14.870031615314108,
+      "validation_directional_accuracy_pct": 41.18773946360153,
+      "train_aic": 37302.549783621056,
+      "train_bic": 37357.70439516552,
+      "train_llf": -18642.274891810528,
+      "converged": true
+    },
+    {
+      "model_name": "SARIMAX(1, 1, 0)x(0, 0, 0, 0)",
+      "order": [
+        1,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "fit_success",
+      "validation_mae": 265.8993090111258,
+      "validation_mse": 90201.79872079293,
+      "validation_rmse": 300.3361428812605,
+      "validation_mape": 14.839058486494897,
+      "validation_directional_accuracy_pct": 41.18773946360153,
+      "train_aic": 37286.269837103886,
+      "train_bic": 37347.552738819955,
+      "train_llf": -18633.134918551943,
+      "converged": true
+    },
+    {
+      "model_name": "SARIMAX(0, 1, 1)x(0, 0, 0, 0)",
+      "order": [
+        0,
+        1,
+        1
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "fit_success",
+      "validation_mae": 280.0212823026284,
+      "validation_mse": 99219.53221136297,
+      "validation_rmse": 314.9913208508497,
+      "validation_mape": 15.623349460626285,
+      "validation_directional_accuracy_pct": 41.28352490421456,
+      "train_aic": 37273.50358809467,
+      "train_bic": 37334.78353865239,
+      "train_llf": -18626.751794047334,
+      "converged": true
+    },
+    {
+      "model_name": "SARIMAX(1, 1, 1)x(0, 0, 0, 0)",
+      "order": [
+        1,
+        1,
+        1
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "fit_success",
+      "validation_mae": 297.5931664850535,
+      "validation_mse": 110373.17350626613,
+      "validation_rmse": 332.22458293489683,
+      "validation_mape": 16.616660142060894,
+      "validation_directional_accuracy_pct": 41.28352490421456,
+      "train_aic": 37005.050213513496,
+      "train_bic": 37072.45815912699,
+      "train_llf": -18491.525106756748,
+      "converged": true
+    },
+    {
+      "model_name": "SARIMAX(2, 1, 0)x(0, 0, 0, 0)",
+      "order": [
+        2,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "fit_success",
+      "validation_mae": 265.8502351631679,
+      "validation_mse": 90175.88892114598,
+      "validation_rmse": 300.29300511524735,
+      "validation_mape": 14.836065540377632,
+      "validation_directional_accuracy_pct": 41.09195402298851,
+      "train_aic": 37264.366798850424,
+      "train_bic": 37331.77474446392,
+      "train_llf": -18621.183399425212,
+      "converged": true
+    },
+    {
+      "model_name": "SARIMAX(0, 1, 2)x(0, 0, 0, 0)",
+      "order": [
+        0,
+        1,
+        2
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "fit_success",
+      "validation_mae": 256.25544647349597,
+      "validation_mse": 84293.5938764221,
+      "validation_rmse": 290.33359067876063,
+      "validation_mape": 14.30239930883657,
+      "validation_directional_accuracy_pct": 41.09195402298851,
+      "train_aic": 37246.85823840182,
+      "train_bic": 37314.26293678282,
+      "train_llf": -18612.42911920091,
+      "converged": true
+    }
+  ],
+  "kpi_cards": [
+    {
+      "label": "Selected SARIMAX Order",
+      "value": "SARIMAX(0, 1, 2)x(0, 0, 0, 0)",
+      "unit": "p,d,q"
+    },
+    {
+      "label": "Validation RMSE",
+      "value": 290.33359067876063,
+      "unit": "gold price units"
+    },
+    {
+      "label": "Test RMSE",
+      "value": 1156.0227800242417,
+      "unit": "gold price units"
+    },
+    {
+      "label": "Training AIC",
+      "value": 37246.85823840182,
+      "unit": "AIC"
+    },
+    {
+      "label": "External Factors Used",
+      "value": 7,
+      "unit": "factors"
+    }
+  ],
+  "primary_chart": {
+    "artifact": "artifacts/models/sarimax_forecast_path.json",
+    "x": "date",
+    "y_actual": "actual",
+    "y_forecast": "sarimax_prediction",
+    "lower_interval": "lower_95",
+    "upper_interval": "upper_95"
+  },
+  "diagnostics": {
+    "artifact": "artifacts/models/sarimax_diagnostics.json",
+    "contains": [
+      "parameter table",
+      "exogenous factor table",
+      "residual summary",
+      "Ljung-Box residual autocorrelation test",
+      "residual ACF values",
+      "ADF stationarity checks"
+    ]
+  },
+  "limitations": [
+    "SARIMAX results are conditional on available exogenous factor values during validation/test periods.",
+    "A true future SARIMAX forecast requires assumptions or forecasts for future exogenous variables.",
+    "The model uses a selected professor-readable exogenous factor set, not all available factors blindly.",
+    "high_yield is excluded from the main model because it starts too late and is reserved only for optional short-window sensitivity later.",
+    "The series is weekday-clean, not full exchange trading-calendar-clean, because market holidays have not been removed.",
+    "No seasonal component is imposed by default because stable weekday seasonality has not been proven.",
+    "This notebook does not claim the final winning model; final selection happens in Notebook 11 after all models are compared."
+  ]
+}

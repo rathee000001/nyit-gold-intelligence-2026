@@ -1,0 +1,511 @@
+{
+  "artifact_name": "sarimax_results",
+  "notebook": "08_sarimax_forecasting.ipynb",
+  "generated_at_utc": "2026-04-30T20:54:33.641755+00:00",
+  "model": {
+    "name": "SARIMAX(0, 1, 2)x(0, 0, 0, 0)",
+    "category": "classical_time_series_with_exogenous_factors",
+    "selected_order": [
+      0,
+      1,
+      2
+    ],
+    "seasonal_order": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "description": "SARIMAX model fit to gold_price using selected Dataset B exogenous factors.",
+    "selection_basis": "Lowest validation RMSE among candidate SARIMAX orders. Test results were not used for model order selection.",
+    "seasonality_note": "No seasonal component is imposed by default because stable weekday seasonality has not been established for this project version."
+  },
+  "dataset": {
+    "source_file": "model_ready_multivariate.csv",
+    "target": "gold_price",
+    "frequency_note": "Weekday-clean daily series; market holidays have not been removed.",
+    "window": {
+      "start": "2006-01-02",
+      "end": "2026-03-31",
+      "cutoff": "2026-03-31"
+    },
+    "splits": {
+      "train": {
+        "start": "2006-01-02",
+        "end": "2018-12-31",
+        "rows": 3391
+      },
+      "validation": {
+        "start": "2019-01-01",
+        "end": "2022-12-30",
+        "rows": 1044
+      },
+      "test": {
+        "start": "2023-01-02",
+        "end": "2026-03-31",
+        "rows": 847
+      }
+    },
+    "excluded_columns": [
+      "high_yield"
+    ]
+  },
+  "exogenous_variables": [
+    "real_yield",
+    "usd_index",
+    "vix_index",
+    "gpr_index",
+    "policy_unc",
+    "gld_tonnes",
+    "oil_wti"
+  ],
+  "exogenous_variable_table": [
+    {
+      "factor": "real_yield",
+      "main_model_use": "Yes",
+      "reason": "Rate pressure / opportunity-cost channel.",
+      "train_mean_raw": 0.9064051902093777,
+      "train_std_raw": 0.8894895422667767,
+      "train_corr_with_gold_price": -0.7668355979368866,
+      "missing_before_fill": 0
+    },
+    {
+      "factor": "usd_index",
+      "main_model_use": "Yes",
+      "reason": "Currency channel for dollar-denominated gold.",
+      "train_mean_raw": 99.07928097906222,
+      "train_std_raw": 9.157825563890054,
+      "train_corr_with_gold_price": -0.07296853636693876,
+      "missing_before_fill": 0
+    },
+    {
+      "factor": "vix_index",
+      "main_model_use": "Yes",
+      "reason": "Market risk and uncertainty channel.",
+      "train_mean_raw": 19.044724270126807,
+      "train_std_raw": 9.223586411383462,
+      "train_corr_with_gold_price": -0.027951862041955607,
+      "missing_before_fill": 0
+    },
+    {
+      "factor": "gpr_index",
+      "main_model_use": "Yes",
+      "reason": "Geopolitical risk channel.",
+      "train_mean_raw": 93.29976113240932,
+      "train_std_raw": 17.558750310879134,
+      "train_corr_with_gold_price": -0.1390367181814189,
+      "missing_before_fill": 0
+    },
+    {
+      "factor": "policy_unc",
+      "main_model_use": "Yes",
+      "reason": "Policy uncertainty channel.",
+      "train_mean_raw": 127.80536714833383,
+      "train_std_raw": 46.1897061100877,
+      "train_corr_with_gold_price": 0.47669745198023655,
+      "missing_before_fill": 0
+    },
+    {
+      "factor": "gld_tonnes",
+      "main_model_use": "Yes",
+      "reason": "Gold ETF holdings / investment demand proxy.",
+      "train_mean_raw": 877.5494603361841,
+      "train_std_raw": 282.09272512608186,
+      "train_corr_with_gold_price": 0.82869175227263,
+      "missing_before_fill": 0
+    },
+    {
+      "factor": "oil_wti",
+      "main_model_use": "Yes",
+      "reason": "Commodity/inflation pressure channel.",
+      "train_mean_raw": 74.39049837805956,
+      "train_std_raw": 22.558512918425716,
+      "train_corr_with_gold_price": 0.21456183789595673,
+      "missing_before_fill": 0
+    }
+  ],
+  "exogenous_preprocessing": {
+    "missing_before_fill": {
+      "real_yield": 0,
+      "usd_index": 0,
+      "vix_index": 0,
+      "gpr_index": 0,
+      "policy_unc": 0,
+      "gld_tonnes": 0,
+      "oil_wti": 0
+    },
+    "missing_after_fill": {
+      "real_yield": 0,
+      "usd_index": 0,
+      "vix_index": 0,
+      "gpr_index": 0,
+      "policy_unc": 0,
+      "gld_tonnes": 0,
+      "oil_wti": 0
+    },
+    "fill_method": "Forward fill and backward fill across the weekday-clean series, then training-period medians for any remaining missing values.",
+    "standardization": "Training-period mean and standard deviation only; validation/test values are transformed using training statistics.",
+    "zero_std_columns": [],
+    "train_means": {
+      "real_yield": 0.9064051902093777,
+      "usd_index": 99.07928097906222,
+      "vix_index": 19.044724270126807,
+      "gpr_index": 93.29976113240932,
+      "policy_unc": 127.80536714833383,
+      "gld_tonnes": 877.5494603361841,
+      "oil_wti": 74.39049837805956
+    },
+    "train_stds": {
+      "real_yield": 0.8893583781368494,
+      "usd_index": 9.156475150911556,
+      "vix_index": 9.222226301310243,
+      "gpr_index": 17.556161097518324,
+      "policy_unc": 46.18289497591956,
+      "gld_tonnes": 282.05112773219264,
+      "oil_wti": 22.555186440059412
+    }
+  },
+  "evaluation_design": {
+    "validation_design": "Each candidate SARIMAX model is fit on the training period and conditionally forecast over the validation period using validation exogenous values.",
+    "test_design": "After selecting the order by validation RMSE, the selected SARIMAX order is refit on train + validation and conditionally forecast over the test period using test exogenous values.",
+    "leakage_control": "The test period is never used for fitting, scaling, or SARIMAX order selection. Exogenous scaling uses training statistics only.",
+    "conditional_forecast_warning": "Historical validation/test forecasts use observed exogenous values. A true future forecast requires exogenous assumptions or scenarios.",
+    "professor_style_note": "No separate SARIMAX professor notebook was supplied, so this notebook extends the professor ARIMA flow with a selected exogenous factor panel and regression-style coefficient review."
+  },
+  "stationarity_checks": {
+    "gold_price_level": {
+      "label": "gold_price_level",
+      "n": 5282,
+      "adf_statistic": 3.2911261867583543,
+      "p_value": 1.0,
+      "used_lags": 29,
+      "nobs": 5252,
+      "critical_values": {
+        "1%": -3.4315957157264836,
+        "5%": -2.8620904774601432,
+        "10%": -2.567063018820234
+      },
+      "interpretation": "Lower p-value suggests stationarity; this is diagnostic evidence, not a guarantee."
+    },
+    "gold_price_first_difference": {
+      "label": "gold_price_first_difference",
+      "n": 5281,
+      "adf_statistic": -14.867266346928645,
+      "p_value": 1.6840689970956904e-27,
+      "used_lags": 28,
+      "nobs": 5252,
+      "critical_values": {
+        "1%": -3.4315957157264836,
+        "5%": -2.8620904774601432,
+        "10%": -2.567063018820234
+      },
+      "interpretation": "Lower p-value suggests stationarity; this is diagnostic evidence, not a guarantee."
+    }
+  },
+  "candidate_orders_tested": [
+    [
+      0,
+      1,
+      0
+    ],
+    [
+      1,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      1
+    ],
+    [
+      2,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      2
+    ]
+  ],
+  "candidate_summary": [
+    {
+      "model_name": "SARIMAX(0, 1, 0)x(0, 0, 0, 0)",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "fit_success",
+      "validation_mae": 266.45250186812217,
+      "validation_mse": 90545.01078224582,
+      "validation_rmse": 300.9069802816907,
+      "validation_mape": 14.870031615314108,
+      "validation_directional_accuracy_pct": 41.18773946360153,
+      "train_aic": 37302.549783621056,
+      "train_bic": 37357.70439516552,
+      "train_llf": -18642.274891810528,
+      "converged": true
+    },
+    {
+      "model_name": "SARIMAX(1, 1, 0)x(0, 0, 0, 0)",
+      "order": [
+        1,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "fit_success",
+      "validation_mae": 265.8993090111258,
+      "validation_mse": 90201.79872079293,
+      "validation_rmse": 300.3361428812605,
+      "validation_mape": 14.839058486494897,
+      "validation_directional_accuracy_pct": 41.18773946360153,
+      "train_aic": 37286.269837103886,
+      "train_bic": 37347.552738819955,
+      "train_llf": -18633.134918551943,
+      "converged": true
+    },
+    {
+      "model_name": "SARIMAX(0, 1, 1)x(0, 0, 0, 0)",
+      "order": [
+        0,
+        1,
+        1
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "fit_success",
+      "validation_mae": 280.0212823026284,
+      "validation_mse": 99219.53221136297,
+      "validation_rmse": 314.9913208508497,
+      "validation_mape": 15.623349460626285,
+      "validation_directional_accuracy_pct": 41.28352490421456,
+      "train_aic": 37273.50358809467,
+      "train_bic": 37334.78353865239,
+      "train_llf": -18626.751794047334,
+      "converged": true
+    },
+    {
+      "model_name": "SARIMAX(1, 1, 1)x(0, 0, 0, 0)",
+      "order": [
+        1,
+        1,
+        1
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "fit_success",
+      "validation_mae": 297.5931664850535,
+      "validation_mse": 110373.17350626613,
+      "validation_rmse": 332.22458293489683,
+      "validation_mape": 16.616660142060894,
+      "validation_directional_accuracy_pct": 41.28352490421456,
+      "train_aic": 37005.050213513496,
+      "train_bic": 37072.45815912699,
+      "train_llf": -18491.525106756748,
+      "converged": true
+    },
+    {
+      "model_name": "SARIMAX(2, 1, 0)x(0, 0, 0, 0)",
+      "order": [
+        2,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "fit_success",
+      "validation_mae": 265.8502351631679,
+      "validation_mse": 90175.88892114598,
+      "validation_rmse": 300.29300511524735,
+      "validation_mape": 14.836065540377632,
+      "validation_directional_accuracy_pct": 41.09195402298851,
+      "train_aic": 37264.366798850424,
+      "train_bic": 37331.77474446392,
+      "train_llf": -18621.183399425212,
+      "converged": true
+    },
+    {
+      "model_name": "SARIMAX(0, 1, 2)x(0, 0, 0, 0)",
+      "order": [
+        0,
+        1,
+        2
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "fit_success",
+      "validation_mae": 256.25544647349597,
+      "validation_mse": 84293.5938764221,
+      "validation_rmse": 290.33359067876063,
+      "validation_mape": 14.30239930883657,
+      "validation_directional_accuracy_pct": 41.09195402298851,
+      "train_aic": 37246.85823840182,
+      "train_bic": 37314.26293678282,
+      "train_llf": -18612.42911920091,
+      "converged": true
+    }
+  ],
+  "selected_model_fit_stats": {
+    "selected_model": "SARIMAX(0, 1, 2)x(0, 0, 0, 0)",
+    "selected_order": [
+      0,
+      1,
+      2
+    ],
+    "seasonal_order": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "train_fit_aic": 37246.85823840182,
+    "train_fit_bic": 37314.26293678282,
+    "train_fit_llf": -18612.42911920091,
+    "train_fit_converged": true,
+    "train_validation_refit_aic": 49012.99777987499,
+    "train_validation_refit_bic": 49083.35796615818,
+    "train_validation_refit_llf": -24495.498889937495,
+    "train_validation_refit_converged": true
+  },
+  "metrics": {
+    "train_fit": {
+      "n": 3391,
+      "mae": 25.5035253118864,
+      "mse": 3583.6099405175905,
+      "rmse": 59.86326035656253,
+      "mape": 2.284064161806942,
+      "bias_mean_error": 0.16162061379442424,
+      "mean_actual": 1183.1069595989384,
+      "mean_prediction": 1182.945338985144,
+      "directional_accuracy_pct": 18.702064896755164,
+      "MAE": 25.5035253118864,
+      "MSE": 3583.6099405175905,
+      "RMSE": 59.86326035656253,
+      "MAPE": 2.284064161806942
+    },
+    "validation": {
+      "n": 1044,
+      "mae": 256.25544647349597,
+      "mse": 84293.5938764221,
+      "rmse": 290.33359067876063,
+      "mape": 14.30239930883657,
+      "bias_mean_error": 249.2702640391455,
+      "mean_actual": 1704.3777777777777,
+      "mean_prediction": 1455.1075137386324,
+      "directional_accuracy_pct": 41.09195402298851,
+      "MAE": 256.25544647349597,
+      "MSE": 84293.5938764221,
+      "RMSE": 290.33359067876063,
+      "MAPE": 14.30239930883657
+    },
+    "test": {
+      "n": 847,
+      "mae": 804.4150108214175,
+      "mse": 1336388.6679349765,
+      "rmse": 1156.0227800242417,
+      "mape": 23.177441849568297,
+      "bias_mean_error": 802.6493213333723,
+      "mean_actual": 2783.111157024793,
+      "mean_prediction": 1980.4618356914211,
+      "directional_accuracy_pct": 32.82172373081464,
+      "MAE": 804.4150108214175,
+      "MSE": 1336388.6679349765,
+      "RMSE": 1156.0227800242417,
+      "MAPE": 23.177441849568297
+    }
+  },
+  "metrics_table": [
+    {
+      "period": "train_fit",
+      "n": 3391,
+      "mae": 25.5035253118864,
+      "mse": 3583.6099405175905,
+      "rmse": 59.86326035656253,
+      "mape": 2.284064161806942,
+      "bias_mean_error": 0.16162061379442424,
+      "mean_actual": 1183.1069595989384,
+      "mean_prediction": 1182.945338985144,
+      "directional_accuracy_pct": 18.702064896755164,
+      "MAE": 25.5035253118864,
+      "MSE": 3583.6099405175905,
+      "RMSE": 59.86326035656253,
+      "MAPE": 2.284064161806942
+    },
+    {
+      "period": "validation",
+      "n": 1044,
+      "mae": 256.25544647349597,
+      "mse": 84293.5938764221,
+      "rmse": 290.33359067876063,
+      "mape": 14.30239930883657,
+      "bias_mean_error": 249.2702640391455,
+      "mean_actual": 1704.3777777777777,
+      "mean_prediction": 1455.1075137386324,
+      "directional_accuracy_pct": 41.09195402298851,
+      "MAE": 256.25544647349597,
+      "MSE": 84293.5938764221,
+      "RMSE": 290.33359067876063,
+      "MAPE": 14.30239930883657
+    },
+    {
+      "period": "test",
+      "n": 847,
+      "mae": 804.4150108214175,
+      "mse": 1336388.6679349765,
+      "rmse": 1156.0227800242417,
+      "mape": 23.177441849568297,
+      "bias_mean_error": 802.6493213333723,
+      "mean_actual": 2783.111157024793,
+      "mean_prediction": 1980.4618356914211,
+      "directional_accuracy_pct": 32.82172373081464,
+      "MAE": 804.4150108214175,
+      "MSE": 1336388.6679349765,
+      "RMSE": 1156.0227800242417,
+      "MAPE": 23.177441849568297
+    }
+  ],
+  "limitations": [
+    "SARIMAX results are conditional on available exogenous factor values during validation/test periods.",
+    "A true future SARIMAX forecast requires assumptions or forecasts for future exogenous variables.",
+    "The model uses a selected professor-readable exogenous factor set, not all available factors blindly.",
+    "high_yield is excluded from the main model because it starts too late and is reserved only for optional short-window sensitivity later.",
+    "The series is weekday-clean, not full exchange trading-calendar-clean, because market holidays have not been removed.",
+    "No seasonal component is imposed by default because stable weekday seasonality has not been proven.",
+    "This notebook does not claim the final winning model; final selection happens in Notebook 11 after all models are compared."
+  ]
+}
