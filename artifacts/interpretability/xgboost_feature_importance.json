@@ -1,0 +1,392 @@
+{
+  "artifact_type": "feature_importance",
+  "model_family": "XGBoost",
+  "model_name": "XGBoost Forecasting Candidate",
+  "created_at_utc": "2026-04-30T21:02:13.693263+00:00",
+  "importance_types": {
+    "importance": "XGBRegressor feature_importances_ value",
+    "gain": "Average gain when the feature is used in tree splits",
+    "weight": "Number of times the feature is used in tree splits",
+    "cover": "Average coverage when the feature is used",
+    "normalized_gain": "Feature gain divided by total gain across all features"
+  },
+  "selected_features": [
+    "gold_lag_1",
+    "gold_lag_5",
+    "gold_lag_20",
+    "gold_return_1",
+    "gold_return_5",
+    "gold_ma_5",
+    "gold_ma_20",
+    "gold_ma_60",
+    "gold_volatility_20",
+    "real_yield",
+    "nominal_yield",
+    "tips_curve",
+    "fed_bs",
+    "m2_supply",
+    "inflation",
+    "usd_index",
+    "eur_usd",
+    "jpy_usd",
+    "vix_index",
+    "fin_stress",
+    "gpr_index",
+    "policy_unc",
+    "oil_wti",
+    "ppi_index",
+    "gld_tonnes",
+    "unrate",
+    "ind_prod",
+    "cap_util"
+  ],
+  "top_features_by_normalized_gain": [
+    {
+      "feature": "gold_lag_1",
+      "importance": 0.4491148293018341,
+      "gain": 17983768.0,
+      "weight": 274.0,
+      "cover": 2651.751708984375,
+      "normalized_gain": 0.4491148320647901
+    },
+    {
+      "feature": "gold_ma_20",
+      "importance": 0.19121763110160828,
+      "gain": 7656869.5,
+      "weight": 70.0,
+      "cover": 2231.1142578125,
+      "normalized_gain": 0.1912176391307157
+    },
+    {
+      "feature": "gold_lag_20",
+      "importance": 0.14228859543800354,
+      "gain": 5697619.0,
+      "weight": 182.0,
+      "cover": 2605.835205078125,
+      "normalized_gain": 0.14228860160752502
+    },
+    {
+      "feature": "m2_supply",
+      "importance": 0.12989884614944458,
+      "gain": 5201500.0,
+      "weight": 37.0,
+      "cover": 2048.486572265625,
+      "normalized_gain": 0.1298988509518698
+    },
+    {
+      "feature": "gold_ma_5",
+      "importance": 0.06724448502063751,
+      "gain": 2692650.5,
+      "weight": 64.0,
+      "cover": 1829.09375,
+      "normalized_gain": 0.06724448831394361
+    },
+    {
+      "feature": "gold_ma_60",
+      "importance": 0.002847811905667186,
+      "gain": 114034.0703125,
+      "weight": 6.0,
+      "cover": 1900.6666259765625,
+      "normalized_gain": 0.0028478121124595746
+    },
+    {
+      "feature": "nominal_yield",
+      "importance": 0.0017469640588387847,
+      "gain": 69953.1484375,
+      "weight": 9.0,
+      "cover": 1839.0,
+      "normalized_gain": 0.0017469640685373136
+    },
+    {
+      "feature": "gold_lag_5",
+      "importance": 0.0012171765556558967,
+      "gain": 48739.03125,
+      "weight": 17.0,
+      "cover": 482.941162109375,
+      "normalized_gain": 0.001217176613646501
+    },
+    {
+      "feature": "gld_tonnes",
+      "importance": 0.0010051787830889225,
+      "gain": 40250.06640625,
+      "weight": 22.0,
+      "cover": 3043.272705078125,
+      "normalized_gain": 0.0010051787709138384
+    },
+    {
+      "feature": "vix_index",
+      "importance": 0.0009463320602662861,
+      "gain": 37893.6875,
+      "weight": 17.0,
+      "cover": 1237.941162109375,
+      "normalized_gain": 0.0009463321089261236
+    },
+    {
+      "feature": "policy_unc",
+      "importance": 0.0009082713513635099,
+      "gain": 36369.6328125,
+      "weight": 23.0,
+      "cover": 2106.9130859375,
+      "normalized_gain": 0.0009082713663145575
+    },
+    {
+      "feature": "gold_return_5",
+      "importance": 0.0008892510086297989,
+      "gain": 35608.0078125,
+      "weight": 46.0,
+      "cover": 2738.826171875,
+      "normalized_gain": 0.0008892510428778147
+    },
+    {
+      "feature": "tips_curve",
+      "importance": 0.0008157113334164023,
+      "gain": 32663.28125,
+      "weight": 33.0,
+      "cover": 2651.727294921875,
+      "normalized_gain": 0.0008157113722373841
+    },
+    {
+      "feature": "ind_prod",
+      "importance": 0.000797487678937614,
+      "gain": 31933.556640625,
+      "weight": 15.0,
+      "cover": 2446.533447265625,
+      "normalized_gain": 0.0007974877082425529
+    },
+    {
+      "feature": "ppi_index",
+      "importance": 0.0007733210804872215,
+      "gain": 30965.861328125,
+      "weight": 13.0,
+      "cover": 2359.84619140625,
+      "normalized_gain": 0.0007733211199189423
+    }
+  ],
+  "all_features": [
+    {
+      "feature": "gold_lag_1",
+      "importance": 0.4491148293018341,
+      "gain": 17983768.0,
+      "weight": 274.0,
+      "cover": 2651.751708984375,
+      "normalized_gain": 0.4491148320647901
+    },
+    {
+      "feature": "gold_ma_20",
+      "importance": 0.19121763110160828,
+      "gain": 7656869.5,
+      "weight": 70.0,
+      "cover": 2231.1142578125,
+      "normalized_gain": 0.1912176391307157
+    },
+    {
+      "feature": "gold_lag_20",
+      "importance": 0.14228859543800354,
+      "gain": 5697619.0,
+      "weight": 182.0,
+      "cover": 2605.835205078125,
+      "normalized_gain": 0.14228860160752502
+    },
+    {
+      "feature": "m2_supply",
+      "importance": 0.12989884614944458,
+      "gain": 5201500.0,
+      "weight": 37.0,
+      "cover": 2048.486572265625,
+      "normalized_gain": 0.1298988509518698
+    },
+    {
+      "feature": "gold_ma_5",
+      "importance": 0.06724448502063751,
+      "gain": 2692650.5,
+      "weight": 64.0,
+      "cover": 1829.09375,
+      "normalized_gain": 0.06724448831394361
+    },
+    {
+      "feature": "gold_ma_60",
+      "importance": 0.002847811905667186,
+      "gain": 114034.0703125,
+      "weight": 6.0,
+      "cover": 1900.6666259765625,
+      "normalized_gain": 0.0028478121124595746
+    },
+    {
+      "feature": "nominal_yield",
+      "importance": 0.0017469640588387847,
+      "gain": 69953.1484375,
+      "weight": 9.0,
+      "cover": 1839.0,
+      "normalized_gain": 0.0017469640685373136
+    },
+    {
+      "feature": "gold_lag_5",
+      "importance": 0.0012171765556558967,
+      "gain": 48739.03125,
+      "weight": 17.0,
+      "cover": 482.941162109375,
+      "normalized_gain": 0.001217176613646501
+    },
+    {
+      "feature": "gld_tonnes",
+      "importance": 0.0010051787830889225,
+      "gain": 40250.06640625,
+      "weight": 22.0,
+      "cover": 3043.272705078125,
+      "normalized_gain": 0.0010051787709138384
+    },
+    {
+      "feature": "vix_index",
+      "importance": 0.0009463320602662861,
+      "gain": 37893.6875,
+      "weight": 17.0,
+      "cover": 1237.941162109375,
+      "normalized_gain": 0.0009463321089261236
+    },
+    {
+      "feature": "policy_unc",
+      "importance": 0.0009082713513635099,
+      "gain": 36369.6328125,
+      "weight": 23.0,
+      "cover": 2106.9130859375,
+      "normalized_gain": 0.0009082713663145575
+    },
+    {
+      "feature": "gold_return_5",
+      "importance": 0.0008892510086297989,
+      "gain": 35608.0078125,
+      "weight": 46.0,
+      "cover": 2738.826171875,
+      "normalized_gain": 0.0008892510428778147
+    },
+    {
+      "feature": "tips_curve",
+      "importance": 0.0008157113334164023,
+      "gain": 32663.28125,
+      "weight": 33.0,
+      "cover": 2651.727294921875,
+      "normalized_gain": 0.0008157113722373841
+    },
+    {
+      "feature": "ind_prod",
+      "importance": 0.000797487678937614,
+      "gain": 31933.556640625,
+      "weight": 15.0,
+      "cover": 2446.533447265625,
+      "normalized_gain": 0.0007974877082425529
+    },
+    {
+      "feature": "ppi_index",
+      "importance": 0.0007733210804872215,
+      "gain": 30965.861328125,
+      "weight": 13.0,
+      "cover": 2359.84619140625,
+      "normalized_gain": 0.0007733211199189423
+    },
+    {
+      "feature": "gold_volatility_20",
+      "importance": 0.0007588332518935204,
+      "gain": 30385.728515625,
+      "weight": 46.0,
+      "cover": 2672.521728515625,
+      "normalized_gain": 0.0007588332633884749
+    },
+    {
+      "feature": "real_yield",
+      "importance": 0.0007585044368170202,
+      "gain": 30372.5625,
+      "weight": 12.0,
+      "cover": 873.0833129882812,
+      "normalized_gain": 0.000758504463945756
+    },
+    {
+      "feature": "fed_bs",
+      "importance": 0.0007423677016049623,
+      "gain": 29726.404296875,
+      "weight": 6.0,
+      "cover": 2099.0,
+      "normalized_gain": 0.0007423677325953643
+    },
+    {
+      "feature": "fin_stress",
+      "importance": 0.0007209387258626521,
+      "gain": 28868.330078125,
+      "weight": 4.0,
+      "cover": 2026.5,
+      "normalized_gain": 0.0007209387496006419
+    },
+    {
+      "feature": "oil_wti",
+      "importance": 0.0006931283278390765,
+      "gain": 27754.7265625,
+      "weight": 11.0,
+      "cover": 1399.9090576171875,
+      "normalized_gain": 0.0006931283454680552
+    },
+    {
+      "feature": "unrate",
+      "importance": 0.000687536143232137,
+      "gain": 27530.80078125,
+      "weight": 13.0,
+      "cover": 2935.6923828125,
+      "normalized_gain": 0.0006875361698104805
+    },
+    {
+      "feature": "eur_usd",
+      "importance": 0.0006632278673350811,
+      "gain": 26557.431640625,
+      "weight": 3.0,
+      "cover": 3304.0,
+      "normalized_gain": 0.0006632278870229776
+    },
+    {
+      "feature": "jpy_usd",
+      "importance": 0.0006117532029747963,
+      "gain": 24496.248046875,
+      "weight": 22.0,
+      "cover": 3222.818115234375,
+      "normalized_gain": 0.0006117532392427276
+    },
+    {
+      "feature": "gold_return_1",
+      "importance": 0.0005768734263256192,
+      "gain": 23099.56640625,
+      "weight": 33.0,
+      "cover": 3160.45458984375,
+      "normalized_gain": 0.0005768734275994016
+    },
+    {
+      "feature": "usd_index",
+      "importance": 0.0005553640658035874,
+      "gain": 22238.275390625,
+      "weight": 38.0,
+      "cover": 3033.421142578125,
+      "normalized_gain": 0.0005553641104284208
+    },
+    {
+      "feature": "cap_util",
+      "importance": 0.0005333438166417181,
+      "gain": 21356.525390625,
+      "weight": 7.0,
+      "cover": 3220.428466796875,
+      "normalized_gain": 0.0005333438639943516
+    },
+    {
+      "feature": "gpr_index",
+      "importance": 0.0005028657615184784,
+      "gain": 20136.1015625,
+      "weight": 17.0,
+      "cover": 2615.294189453125,
+      "normalized_gain": 0.0005028657994076516
+    },
+    {
+      "feature": "inflation",
+      "importance": 0.00048334457096643746,
+      "gain": 19354.419921875,
+      "weight": 10.0,
+      "cover": 2464.39990234375,
+      "normalized_gain": 0.00048334459457686054
+    }
+  ],
+  "interpretation_warning": "Feature importance reflects model split usage and should not be read as causal proof."
+}
