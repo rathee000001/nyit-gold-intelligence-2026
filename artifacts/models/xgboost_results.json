@@ -1,489 +1,319 @@
 {
-  "artifact_type": "model_results",
-  "model_family": "XGBoost",
-  "model_name": "XGBoost Forecasting Candidate",
-  "model_category": "advanced nonlinear candidate",
   "notebook": "09_xgboost_forecasting_candidate.ipynb",
-  "created_at_utc": "2026-04-30T21:02:13.693263+00:00",
-  "project_version": "Gold Nexus Alpha — professor-style forecasting platform",
-  "professor_reference": {
-    "source_file": "Forecasting_with_XGBoost (2).ipynb",
-    "mirrored_steps": [
-      "parse datetime index",
-      "plot series before modeling",
-      "split by time",
-      "create time-series features",
-      "fit XGBRegressor",
-      "use eval_set",
-      "calculate forecast accuracy",
-      "plot actual vs predicted",
-      "review feature importance",
-      "review prediction errors"
-    ]
-  },
+  "run_timestamp_utc": "2026-04-30T22:09:04.724166+00:00",
+  "project_identity": "Gold Nexus Alpha professor-style forecasting platform",
   "dataset": {
-    "input_path": "/content/nyit-gold-intelligence-2026/data/aligned/model_ready_multivariate.csv",
-    "dataset_name": "Dataset B — Core Multivariate",
+    "name": "Dataset B \u2014 Core Multivariate",
     "target": "gold_price",
-    "official_forecast_cutoff_date": "2026-03-31",
-    "core_multivariate_start": "2006-01-02",
-    "core_multivariate_end": "2026-03-31",
-    "rows_after_window_and_missing_filter": 5222,
-    "rows_dropped_for_missing_after_window": 60,
-    "available_feature_count": 28,
-    "excluded_main_model_columns": [
-      "high_yield"
-    ],
-    "train_rows": 3331,
-    "validation_rows": 1044,
-    "test_rows": 847,
-    "train_start": "2006-03-27",
-    "train_end": "2018-12-31",
-    "validation_start": "2019-01-01",
-    "validation_end": "2022-12-30",
-    "test_start": "2023-01-02",
-    "test_end": "2026-03-31"
+    "start": "2006-01-02",
+    "end": "2026-03-31",
+    "train": {
+      "start": "2006-01-02",
+      "end": "2018-12-31",
+      "rows": 3390
+    },
+    "validation": {
+      "start": "2019-01-01",
+      "end": "2022-12-30",
+      "rows": 1044
+    },
+    "test": {
+      "start": "2023-01-02",
+      "end": "2026-03-31",
+      "rows": 847
+    }
   },
-  "target": "gold_price",
-  "selected_features": [
-    "gold_lag_1",
-    "gold_lag_5",
-    "gold_lag_20",
-    "gold_return_1",
-    "gold_return_5",
-    "gold_ma_5",
-    "gold_ma_20",
-    "gold_ma_60",
-    "gold_volatility_20",
-    "real_yield",
-    "nominal_yield",
-    "tips_curve",
-    "fed_bs",
-    "m2_supply",
-    "inflation",
-    "usd_index",
-    "eur_usd",
-    "jpy_usd",
-    "vix_index",
-    "fin_stress",
-    "gpr_index",
-    "policy_unc",
-    "oil_wti",
-    "ppi_index",
-    "gld_tonnes",
-    "unrate",
-    "ind_prod",
-    "cap_util"
-  ],
-  "excluded_columns": [
+  "excluded_variables": [
     "high_yield"
   ],
-  "candidate_selection_rule": "Select candidate using validation RMSE only; do not use the test period for model selection.",
-  "candidate_models": [
-    {
-      "model_id": "xgb_conservative_shallow",
-      "description": "Conservative shallow tree candidate.",
-      "train_rmse": 46.401274125696844,
-      "validation_rmse": 178.52800096283318,
-      "validation_mae": 147.06795829685254,
-      "validation_mape": 8.13774087591849,
-      "validation_r2": 0.21613904972365972,
-      "parameters": {
+  "feature_policy": "Uses gold history features and lagged macro variables; high_yield is excluded from the main model.",
+  "gpu_policy": "Notebook attempts Colab GPU/CUDA XGBoost first and falls back to CPU if unavailable.",
+  "selection_rule": "Top fixed one-step candidates are rolled through validation; final XGBoost candidate selected by rolling validation RMSE.",
+  "selected_model": {
+    "candidate_id": "xgboost_dollar_change",
+    "target_mode": "dollar_change",
+    "features": [
+      "gold_lag_1",
+      "gold_lag_5",
+      "gold_lag_20",
+      "gold_return_1",
+      "gold_return_5",
+      "gold_ma_5",
+      "gold_ma_20",
+      "gold_ma_60",
+      "gold_volatility_20",
+      "real_yield_lag1",
+      "nominal_yield_lag1",
+      "tips_curve_lag1",
+      "fed_bs_lag1",
+      "m2_supply_lag1",
+      "inflation_lag1",
+      "usd_index_lag1",
+      "eur_usd_lag1",
+      "jpy_usd_lag1",
+      "vix_index_lag1",
+      "fin_stress_lag1",
+      "gpr_index_lag1",
+      "policy_unc_lag1",
+      "oil_wti_lag1",
+      "ppi_index_lag1",
+      "gld_tonnes_lag1",
+      "unrate_lag1",
+      "ind_prod_lag1",
+      "cap_util_lag1",
+      "trend_idx",
+      "trend_sq",
+      "month_sin",
+      "month_cos"
+    ],
+    "validation_metrics": {
+      "candidate_id": "xgboost_dollar_change",
+      "model_name": "XGBoost",
+      "target_mode": "dollar_change",
+      "forecast_mode": "rolling_refit_one_step_validation",
+      "n": 1044,
+      "mae": 39.26206735987145,
+      "mse": 3780.2723280856717,
+      "rmse": 61.48391926419193,
+      "mape": 2.2855728054638966,
+      "refit_every": 20,
+      "refit_count": 53,
+      "fit_params": {
         "n_estimators": 350,
-        "max_depth": 2,
+        "max_depth": 3,
         "learning_rate": 0.035,
         "subsample": 0.85,
         "colsample_bytree": 0.85,
-        "reg_lambda": 4.0,
-        "reg_alpha": 0.05
-      }
+        "min_child_weight": 3,
+        "reg_lambda": 1.0,
+        "reg_alpha": 0.0,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "n_jobs": -1,
+        "tree_method": "hist",
+        "device": "cuda"
+      },
+      "fit_error": null
     },
+    "test_metrics_rolling": {
+      "n": 847,
+      "mae": 132.35921913046622,
+      "mse": 48223.83346599062,
+      "rmse": 219.599256524221,
+      "mape": 4.343907695859342
+    },
+    "test_metrics_fixed_diagnostic": {
+      "n": 847,
+      "mae": 116.96857540691053,
+      "mse": 36499.397499029576,
+      "rmse": 191.04815492181436,
+      "mape": 4.1860711507231825
+    },
+    "refit_every": 20,
+    "test_refit_count": 43
+  },
+  "fixed_validation_leaderboard": [
     {
-      "model_id": "xgb_balanced_depth3",
-      "description": "Balanced depth-3 nonlinear candidate.",
-      "train_rmse": 40.78388746451281,
-      "validation_rmse": 249.23304233620524,
-      "validation_mae": 205.9042596692783,
-      "validation_mape": 11.324691504459672,
-      "validation_r2": -0.5276982574005835,
-      "parameters": {
-        "n_estimators": 500,
+      "candidate_id": "xgboost_log_return",
+      "model_name": "XGBoost",
+      "target_mode": "log_return",
+      "forecast_mode": "fixed_model_one_step_validation",
+      "n": 1044,
+      "mae": 100.98468235173038,
+      "mse": 14836.552864143765,
+      "rmse": 121.80538930664672,
+      "mape": 5.6692319519690795,
+      "fit_params": {
+        "n_estimators": 350,
         "max_depth": 3,
-        "learning_rate": 0.025,
-        "subsample": 0.9,
-        "colsample_bytree": 0.9,
-        "reg_lambda": 2.0,
-        "reg_alpha": 0.0
-      }
+        "learning_rate": 0.035,
+        "subsample": 0.85,
+        "colsample_bytree": 0.85,
+        "min_child_weight": 3,
+        "reg_lambda": 1.0,
+        "reg_alpha": 0.0,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "n_jobs": -1,
+        "tree_method": "hist",
+        "device": "cuda"
+      },
+      "fit_error": null
     },
     {
-      "model_id": "xgb_regularized_depth4",
-      "description": "More flexible but regularized depth-4 candidate.",
-      "train_rmse": 35.98063587594041,
-      "validation_rmse": 318.446168277847,
-      "validation_mae": 273.6188340461117,
-      "validation_mape": 15.13248352986606,
-      "validation_r2": -1.4940112070359217,
-      "parameters": {
-        "n_estimators": 650,
-        "max_depth": 4,
-        "learning_rate": 0.018,
-        "subsample": 0.8,
-        "colsample_bytree": 0.8,
-        "reg_lambda": 6.0,
-        "reg_alpha": 0.1
-      }
+      "candidate_id": "xgboost_dollar_change",
+      "model_name": "XGBoost",
+      "target_mode": "dollar_change",
+      "forecast_mode": "fixed_model_one_step_validation",
+      "n": 1044,
+      "mae": 116.10503347535472,
+      "mse": 19047.45333193593,
+      "rmse": 138.01251150506585,
+      "mape": 6.5062610180166525,
+      "fit_params": {
+        "n_estimators": 350,
+        "max_depth": 3,
+        "learning_rate": 0.035,
+        "subsample": 0.85,
+        "colsample_bytree": 0.85,
+        "min_child_weight": 3,
+        "reg_lambda": 1.0,
+        "reg_alpha": 0.0,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "n_jobs": -1,
+        "tree_method": "hist",
+        "device": "cuda"
+      },
+      "fit_error": null
+    },
+    {
+      "candidate_id": "xgboost_log_price",
+      "model_name": "XGBoost",
+      "target_mode": "log_price",
+      "forecast_mode": "fixed_model_one_step_validation",
+      "n": 1044,
+      "mae": 192.1394950284579,
+      "mse": 53001.92317967796,
+      "rmse": 230.22146550588621,
+      "mape": 10.591801351342164,
+      "fit_params": {
+        "n_estimators": 350,
+        "max_depth": 3,
+        "learning_rate": 0.035,
+        "subsample": 0.85,
+        "colsample_bytree": 0.85,
+        "min_child_weight": 3,
+        "reg_lambda": 1.0,
+        "reg_alpha": 0.0,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "n_jobs": -1,
+        "tree_method": "hist",
+        "device": "cuda"
+      },
+      "fit_error": null
+    },
+    {
+      "candidate_id": "xgboost_price_level",
+      "model_name": "XGBoost",
+      "target_mode": "price_level",
+      "forecast_mode": "fixed_model_one_step_validation",
+      "n": 1044,
+      "mae": 210.65858289930554,
+      "mse": 63814.92569355257,
+      "rmse": 252.61616277180795,
+      "mape": 11.606713800758438,
+      "fit_params": {
+        "n_estimators": 350,
+        "max_depth": 3,
+        "learning_rate": 0.035,
+        "subsample": 0.85,
+        "colsample_bytree": 0.85,
+        "min_child_weight": 3,
+        "reg_lambda": 1.0,
+        "reg_alpha": 0.0,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "n_jobs": -1,
+        "tree_method": "hist",
+        "device": "cuda"
+      },
+      "fit_error": null
     }
   ],
-  "selected_candidate": {
-    "model_id": "xgb_conservative_shallow",
-    "description": "Conservative shallow tree candidate.",
-    "parameters": {
-      "n_estimators": 350,
-      "max_depth": 2,
-      "learning_rate": 0.035,
-      "subsample": 0.85,
-      "colsample_bytree": 0.85,
-      "reg_lambda": 4.0,
-      "reg_alpha": 0.05
+  "rolling_validation_leaderboard": [
+    {
+      "candidate_id": "xgboost_dollar_change",
+      "model_name": "XGBoost",
+      "target_mode": "dollar_change",
+      "forecast_mode": "rolling_refit_one_step_validation",
+      "n": 1044,
+      "mae": 39.26206735987145,
+      "mse": 3780.2723280856717,
+      "rmse": 61.48391926419193,
+      "mape": 2.2855728054638966,
+      "refit_every": 20,
+      "refit_count": 53,
+      "fit_params": {
+        "n_estimators": 350,
+        "max_depth": 3,
+        "learning_rate": 0.035,
+        "subsample": 0.85,
+        "colsample_bytree": 0.85,
+        "min_child_weight": 3,
+        "reg_lambda": 1.0,
+        "reg_alpha": 0.0,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "n_jobs": -1,
+        "tree_method": "hist",
+        "device": "cuda"
+      },
+      "fit_error": null
     },
-    "validation_rmse": 178.52800096283318
-  },
-  "metrics": {
-    "train_plus_validation_refit": {
-      "count": 4375,
-      "mae": 29.245419224330355,
-      "mse": 2553.9348141205405,
-      "rmse": 50.536470139103905,
-      "mape": 2.3239000108174612,
-      "bias_mean_error": -0.01425078124999878,
-      "median_absolute_error": 14.626000976562409,
-      "r2": 0.9802780697932745,
-      "directional_accuracy_percent": 52.20924327069578
+    {
+      "candidate_id": "xgboost_log_return",
+      "model_name": "XGBoost",
+      "target_mode": "log_return",
+      "forecast_mode": "rolling_refit_one_step_validation",
+      "n": 1044,
+      "mae": 38.90344576788983,
+      "mse": 3909.3404774832406,
+      "rmse": 62.52471893166126,
+      "mape": 2.27312795532319,
+      "refit_every": 20,
+      "refit_count": 53,
+      "fit_params": {
+        "n_estimators": 350,
+        "max_depth": 3,
+        "learning_rate": 0.035,
+        "subsample": 0.85,
+        "colsample_bytree": 0.85,
+        "min_child_weight": 3,
+        "reg_lambda": 1.0,
+        "reg_alpha": 0.0,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "n_jobs": -1,
+        "tree_method": "hist",
+        "device": "cuda"
+      },
+      "fit_error": null
     },
-    "validation_selection_period": {
-      "count": 1044,
-      "mae": 147.06795829685254,
-      "mse": 31872.247127785366,
-      "rmse": 178.52800096283318,
-      "mape": 8.13774087591849,
-      "bias_mean_error": 131.23326161117845,
-      "median_absolute_error": 147.1862670898438,
-      "r2": 0.21613904972365972,
-      "directional_accuracy_percent": 43.86174016686532
-    },
-    "test_holdout_period": {
-      "count": 847,
-      "mae": 882.1965817718327,
-      "mse": 1580496.421359052,
-      "rmse": 1257.1779593037145,
-      "mape": 25.495165727456076,
-      "bias_mean_error": 880.6106651405237,
-      "median_absolute_error": 571.9482177734376,
-      "r2": -0.9110481209643406,
-      "directional_accuracy_percent": 43.67816091954023
+    {
+      "candidate_id": "xgboost_log_price",
+      "model_name": "XGBoost",
+      "target_mode": "log_price",
+      "forecast_mode": "rolling_refit_one_step_validation",
+      "n": 1044,
+      "mae": 44.31529129837259,
+      "mse": 4364.250963037817,
+      "rmse": 66.06247772402892,
+      "mape": 2.5680003842626378,
+      "refit_every": 20,
+      "refit_count": 53,
+      "fit_params": {
+        "n_estimators": 350,
+        "max_depth": 3,
+        "learning_rate": 0.035,
+        "subsample": 0.85,
+        "colsample_bytree": 0.85,
+        "min_child_weight": 3,
+        "reg_lambda": 1.0,
+        "reg_alpha": 0.0,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "n_jobs": -1,
+        "tree_method": "hist",
+        "device": "cuda"
+      },
+      "fit_error": null
     }
-  },
-  "error_review": {
-    "worst_absolute_errors": [
-      {
-        "date": "2026-01-28",
-        "actual": 5414.48,
-        "prediction": 1942.072509765625,
-        "residual": 3472.4074902343746,
-        "abs_error": 3472.4074902343746
-      },
-      {
-        "date": "2026-01-29",
-        "actual": 5380.13,
-        "prediction": 1933.7501220703125,
-        "residual": 3446.3798779296876,
-        "abs_error": 3446.3798779296876
-      },
-      {
-        "date": "2026-03-02",
-        "actual": 5321.1,
-        "prediction": 1928.2923583984375,
-        "residual": 3392.807641601563,
-        "abs_error": 3392.807641601563
-      },
-      {
-        "date": "2026-02-27",
-        "actual": 5279.11,
-        "prediction": 1918.488525390625,
-        "residual": 3360.6214746093747,
-        "abs_error": 3360.6214746093747
-      },
-      {
-        "date": "2026-02-23",
-        "actual": 5228.41,
-        "prediction": 1921.0079345703125,
-        "residual": 3307.4020654296874,
-        "abs_error": 3307.4020654296874
-      },
-      {
-        "date": "2026-03-10",
-        "actual": 5190.44,
-        "prediction": 1923.6533203125,
-        "residual": 3266.7866796874996,
-        "abs_error": 3266.7866796874996
-      },
-      {
-        "date": "2026-02-26",
-        "actual": 5184.06,
-        "prediction": 1918.488525390625,
-        "residual": 3265.5714746093754,
-        "abs_error": 3265.5714746093754
-      },
-      {
-        "date": "2026-03-06",
-        "actual": 5172.85,
-        "prediction": 1920.843017578125,
-        "residual": 3252.0069824218754,
-        "abs_error": 3252.0069824218754
-      },
-      {
-        "date": "2026-01-27",
-        "actual": 5180.6,
-        "prediction": 1929.1295166015625,
-        "residual": 3251.470483398438,
-        "abs_error": 3251.470483398438
-      },
-      {
-        "date": "2026-03-11",
-        "actual": 5177.0,
-        "prediction": 1925.7191162109375,
-        "residual": 3251.2808837890625,
-        "abs_error": 3251.2808837890625
-      }
-    ],
-    "best_absolute_errors": [
-      {
-        "date": "2023-02-24",
-        "actual": 1832.7,
-        "prediction": 1832.169921875,
-        "residual": 0.5300781250000455,
-        "abs_error": 0.5300781250000455
-      },
-      {
-        "date": "2023-02-28",
-        "actual": 1838.6,
-        "prediction": 1839.6112060546875,
-        "residual": -1.011206054687591,
-        "abs_error": 1.011206054687591
-      },
-      {
-        "date": "2023-03-14",
-        "actual": 1919.4,
-        "prediction": 1916.043212890625,
-        "residual": 3.356787109375091,
-        "abs_error": 3.356787109375091
-      },
-      {
-        "date": "2023-02-27",
-        "actual": 1827.3,
-        "prediction": 1832.169921875,
-        "residual": -4.8699218750000455,
-        "abs_error": 4.8699218750000455
-      },
-      {
-        "date": "2023-02-15",
-        "actual": 1861.7,
-        "prediction": 1856.7349853515625,
-        "residual": 4.9650146484375455,
-        "abs_error": 4.9650146484375455
-      },
-      {
-        "date": "2023-02-23",
-        "actual": 1832.7,
-        "prediction": 1826.0643310546875,
-        "residual": 6.6356689453125455,
-        "abs_error": 6.6356689453125455
-      },
-      {
-        "date": "2023-09-04",
-        "actual": 1839.4,
-        "prediction": 1831.1832275390625,
-        "residual": 8.216772460937591,
-        "abs_error": 8.216772460937591
-      },
-      {
-        "date": "2023-03-07",
-        "actual": 1939.9,
-        "prediction": 1948.4521484375,
-        "residual": -8.552148437499909,
-        "abs_error": 8.552148437499909
-      },
-      {
-        "date": "2023-06-05",
-        "actual": 1864.3,
-        "prediction": 1855.724365234375,
-        "residual": 8.575634765624955,
-        "abs_error": 8.575634765624955
-      },
-      {
-        "date": "2023-03-02",
-        "actual": 1856.6,
-        "prediction": 1847.4443359375,
-        "residual": 9.155664062499909,
-        "abs_error": 9.155664062499909
-      }
-    ],
-    "largest_over_forecasts": [
-      {
-        "date": "2026-01-28",
-        "actual": 5414.48,
-        "prediction": 1942.072509765625,
-        "residual": 3472.4074902343746,
-        "abs_error": 3472.4074902343746
-      },
-      {
-        "date": "2026-01-29",
-        "actual": 5380.13,
-        "prediction": 1933.7501220703125,
-        "residual": 3446.3798779296876,
-        "abs_error": 3446.3798779296876
-      },
-      {
-        "date": "2026-03-02",
-        "actual": 5321.1,
-        "prediction": 1928.2923583984375,
-        "residual": 3392.807641601563,
-        "abs_error": 3392.807641601563
-      },
-      {
-        "date": "2026-02-27",
-        "actual": 5279.11,
-        "prediction": 1918.488525390625,
-        "residual": 3360.6214746093747,
-        "abs_error": 3360.6214746093747
-      },
-      {
-        "date": "2026-02-23",
-        "actual": 5228.41,
-        "prediction": 1921.0079345703125,
-        "residual": 3307.4020654296874,
-        "abs_error": 3307.4020654296874
-      },
-      {
-        "date": "2026-03-10",
-        "actual": 5190.44,
-        "prediction": 1923.6533203125,
-        "residual": 3266.7866796874996,
-        "abs_error": 3266.7866796874996
-      },
-      {
-        "date": "2026-02-26",
-        "actual": 5184.06,
-        "prediction": 1918.488525390625,
-        "residual": 3265.5714746093754,
-        "abs_error": 3265.5714746093754
-      },
-      {
-        "date": "2026-03-06",
-        "actual": 5172.85,
-        "prediction": 1920.843017578125,
-        "residual": 3252.0069824218754,
-        "abs_error": 3252.0069824218754
-      },
-      {
-        "date": "2026-01-27",
-        "actual": 5180.6,
-        "prediction": 1929.1295166015625,
-        "residual": 3251.470483398438,
-        "abs_error": 3251.470483398438
-      },
-      {
-        "date": "2026-03-11",
-        "actual": 5177.0,
-        "prediction": 1925.7191162109375,
-        "residual": 3251.2808837890625,
-        "abs_error": 3251.2808837890625
-      }
-    ],
-    "largest_under_forecasts": [
-      {
-        "date": "2023-02-03",
-        "actual": 1845.3,
-        "prediction": 1942.0123291015625,
-        "residual": -96.71232910156255,
-        "abs_error": 96.71232910156255
-      },
-      {
-        "date": "2023-04-10",
-        "actual": 1836.0,
-        "prediction": 1920.531005859375,
-        "residual": -84.531005859375,
-        "abs_error": 84.531005859375
-      },
-      {
-        "date": "2023-03-10",
-        "actual": 1839.9,
-        "prediction": 1913.5244140625,
-        "residual": -73.62441406249991,
-        "abs_error": 73.62441406249991
-      },
-      {
-        "date": "2023-01-03",
-        "actual": 1852.5,
-        "prediction": 1925.67333984375,
-        "residual": -73.17333984375,
-        "abs_error": 73.17333984375
-      },
-      {
-        "date": "2023-05-10",
-        "actual": 1834.1,
-        "prediction": 1904.2596435546875,
-        "residual": -70.15964355468759,
-        "abs_error": 70.15964355468759
-      },
-      {
-        "date": "2023-05-01",
-        "actual": 1864.3,
-        "prediction": 1915.2637939453125,
-        "residual": -50.963793945312545,
-        "abs_error": 50.963793945312545
-      },
-      {
-        "date": "2023-02-10",
-        "actual": 1855.1,
-        "prediction": 1902.65673828125,
-        "residual": -47.55673828125009,
-        "abs_error": 47.55673828125009
-      },
-      {
-        "date": "2023-04-03",
-        "actual": 1871.3,
-        "prediction": 1918.1199951171875,
-        "residual": -46.819995117187545,
-        "abs_error": 46.819995117187545
-      },
-      {
-        "date": "2023-10-10",
-        "actual": 1870.0,
-        "prediction": 1894.2607421875,
-        "residual": -24.2607421875,
-        "abs_error": 24.2607421875
-      },
-      {
-        "date": "2023-07-03",
-        "actual": 1856.9,
-        "prediction": 1879.7816162109375,
-        "residual": -22.88161621093741,
-        "abs_error": 22.88161621093741
-      }
-    ]
-  },
+  ],
   "interpretation_notes": [
-    "XGBoost is evaluated as the advanced nonlinear candidate, not as the assumed winner.",
-    "The main feature set excludes high_yield because high_yield starts too late for the locked Dataset B window.",
-    "Gold lag, return, moving-average, and volatility features are recomputed from prior gold values to reduce leakage risk.",
-    "The official selected model will be chosen later in Notebook 11 using cross-model evidence."
-  ],
-  "limitations": [
-    "XGBoost is less transparent than regression and classical time-series models.",
-    "Observed exogenous factor values are used for validation and test evaluation; future official forecasting must obey available factor assumptions.",
-    "Feature importance shows model usage, not proof of economic causality.",
-    "SHAP values, if available, are interpretability diagnostics and not causal claims."
+    "Raw price-level XGBoost can underforecast when test prices exceed the training range.",
+    "Change, log-price, and log-return targets are tested to reduce extrapolation weakness.",
+    "The default frontend chart should use the rolling refit forecast."
   ]
 }

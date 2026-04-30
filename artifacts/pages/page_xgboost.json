@@ -1,23 +1,18 @@
 {
-  "artifact_type": "page_content",
-  "page_key": "xgboost",
   "page_title": "XGBoost Forecasting Candidate",
-  "page_subtitle": "Advanced nonlinear tabular model trained on the locked core multivariate Dataset B.",
-  "created_at_utc": "2026-04-30T21:02:13.693263+00:00",
-  "source_notebook": "09_xgboost_forecasting_candidate.ipynb",
-  "model_status": "candidate",
+  "page_subtitle": "Advanced nonlinear tabular model with target-transform testing and rolling refit evaluation.",
+  "artifact_type": "model_page",
+  "model_family": "XGBoost",
+  "default_chart_mode": "rolling_refit_one_step",
   "dataset_window": {
-    "name": "Dataset B — Core Multivariate",
+    "name": "Dataset B \u2014 Core Multivariate",
+    "target": "gold_price",
     "start": "2006-01-02",
     "end": "2026-03-31",
-    "official_forecast_cutoff_date": "2026-03-31",
-    "weekday_clean_wording": true
-  },
-  "train_validation_test_split": {
     "train": {
       "start": "2006-01-02",
       "end": "2018-12-31",
-      "rows": 3331
+      "rows": 3390
     },
     "validation": {
       "start": "2019-01-01",
@@ -30,416 +25,317 @@
       "rows": 847
     }
   },
-  "selected_candidate": {
-    "model_id": "xgb_conservative_shallow",
-    "description": "Conservative shallow tree candidate.",
-    "parameters": {
-      "n_estimators": 350,
-      "max_depth": 2,
-      "learning_rate": 0.035,
-      "subsample": 0.85,
-      "colsample_bytree": 0.85,
-      "reg_lambda": 4.0,
-      "reg_alpha": 0.05
-    }
+  "selected_model": {
+    "candidate_id": "xgboost_dollar_change",
+    "target_mode": "dollar_change",
+    "features": [
+      "gold_lag_1",
+      "gold_lag_5",
+      "gold_lag_20",
+      "gold_return_1",
+      "gold_return_5",
+      "gold_ma_5",
+      "gold_ma_20",
+      "gold_ma_60",
+      "gold_volatility_20",
+      "real_yield_lag1",
+      "nominal_yield_lag1",
+      "tips_curve_lag1",
+      "fed_bs_lag1",
+      "m2_supply_lag1",
+      "inflation_lag1",
+      "usd_index_lag1",
+      "eur_usd_lag1",
+      "jpy_usd_lag1",
+      "vix_index_lag1",
+      "fin_stress_lag1",
+      "gpr_index_lag1",
+      "policy_unc_lag1",
+      "oil_wti_lag1",
+      "ppi_index_lag1",
+      "gld_tonnes_lag1",
+      "unrate_lag1",
+      "ind_prod_lag1",
+      "cap_util_lag1",
+      "trend_idx",
+      "trend_sq",
+      "month_sin",
+      "month_cos"
+    ],
+    "validation_metrics": {
+      "candidate_id": "xgboost_dollar_change",
+      "model_name": "XGBoost",
+      "target_mode": "dollar_change",
+      "forecast_mode": "rolling_refit_one_step_validation",
+      "n": 1044,
+      "mae": 39.26206735987145,
+      "mse": 3780.2723280856717,
+      "rmse": 61.48391926419193,
+      "mape": 2.2855728054638966,
+      "refit_every": 20,
+      "refit_count": 53,
+      "fit_params": {
+        "n_estimators": 350,
+        "max_depth": 3,
+        "learning_rate": 0.035,
+        "subsample": 0.85,
+        "colsample_bytree": 0.85,
+        "min_child_weight": 3,
+        "reg_lambda": 1.0,
+        "reg_alpha": 0.0,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "n_jobs": -1,
+        "tree_method": "hist",
+        "device": "cuda"
+      },
+      "fit_error": null
+    },
+    "test_metrics_rolling": {
+      "n": 847,
+      "mae": 132.35921913046622,
+      "mse": 48223.83346599062,
+      "rmse": 219.599256524221,
+      "mape": 4.343907695859342
+    },
+    "test_metrics_fixed_diagnostic": {
+      "n": 847,
+      "mae": 116.96857540691053,
+      "mse": 36499.397499029576,
+      "rmse": 191.04815492181436,
+      "mape": 4.1860711507231825
+    },
+    "refit_every": 20,
+    "test_refit_count": 43
   },
-  "selected_features": [
-    "gold_lag_1",
-    "gold_lag_5",
-    "gold_lag_20",
-    "gold_return_1",
-    "gold_return_5",
-    "gold_ma_5",
-    "gold_ma_20",
-    "gold_ma_60",
-    "gold_volatility_20",
-    "real_yield",
-    "nominal_yield",
-    "tips_curve",
-    "fed_bs",
-    "m2_supply",
-    "inflation",
-    "usd_index",
-    "eur_usd",
-    "jpy_usd",
-    "vix_index",
-    "fin_stress",
-    "gpr_index",
-    "policy_unc",
-    "oil_wti",
-    "ppi_index",
-    "gld_tonnes",
-    "unrate",
-    "ind_prod",
-    "cap_util"
-  ],
-  "excluded_features": [
-    "high_yield"
-  ],
-  "model_explanation": [
-    "XGBoost is a gradient-boosted tree model that can learn nonlinear relationships between gold price and the selected model-ready features.",
-    "The notebook follows a professor-style time split: train first, use validation for candidate selection, then evaluate once on the test period.",
-    "This page treats XGBoost as an advanced candidate. The final model is not selected until the model-comparison notebook."
-  ],
-  "metrics_cards": [
-    {
-      "label": "Validation RMSE",
-      "value": 178.52800096283318,
-      "format": "number"
-    },
-    {
-      "label": "Validation MAE",
-      "value": 147.06795829685254,
-      "format": "number"
-    },
-    {
-      "label": "Validation MAPE",
-      "value": 8.13774087591849,
-      "format": "percent"
-    },
-    {
-      "label": "Test RMSE",
-      "value": 1257.1779593037145,
-      "format": "number"
-    },
-    {
-      "label": "Test MAE",
-      "value": 882.1965817718327,
-      "format": "number"
-    },
-    {
-      "label": "Test MAPE",
-      "value": 25.495165727456076,
-      "format": "percent"
-    }
-  ],
+  "leaderboards": {
+    "fixed_validation": [
+      {
+        "candidate_id": "xgboost_log_return",
+        "model_name": "XGBoost",
+        "target_mode": "log_return",
+        "forecast_mode": "fixed_model_one_step_validation",
+        "n": 1044,
+        "mae": 100.98468235173038,
+        "mse": 14836.552864143765,
+        "rmse": 121.80538930664672,
+        "mape": 5.6692319519690795,
+        "fit_params": {
+          "n_estimators": 350,
+          "max_depth": 3,
+          "learning_rate": 0.035,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "min_child_weight": 3,
+          "reg_lambda": 1.0,
+          "reg_alpha": 0.0,
+          "objective": "reg:squarederror",
+          "random_state": 42,
+          "n_jobs": -1,
+          "tree_method": "hist",
+          "device": "cuda"
+        },
+        "fit_error": null
+      },
+      {
+        "candidate_id": "xgboost_dollar_change",
+        "model_name": "XGBoost",
+        "target_mode": "dollar_change",
+        "forecast_mode": "fixed_model_one_step_validation",
+        "n": 1044,
+        "mae": 116.10503347535472,
+        "mse": 19047.45333193593,
+        "rmse": 138.01251150506585,
+        "mape": 6.5062610180166525,
+        "fit_params": {
+          "n_estimators": 350,
+          "max_depth": 3,
+          "learning_rate": 0.035,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "min_child_weight": 3,
+          "reg_lambda": 1.0,
+          "reg_alpha": 0.0,
+          "objective": "reg:squarederror",
+          "random_state": 42,
+          "n_jobs": -1,
+          "tree_method": "hist",
+          "device": "cuda"
+        },
+        "fit_error": null
+      },
+      {
+        "candidate_id": "xgboost_log_price",
+        "model_name": "XGBoost",
+        "target_mode": "log_price",
+        "forecast_mode": "fixed_model_one_step_validation",
+        "n": 1044,
+        "mae": 192.1394950284579,
+        "mse": 53001.92317967796,
+        "rmse": 230.22146550588621,
+        "mape": 10.591801351342164,
+        "fit_params": {
+          "n_estimators": 350,
+          "max_depth": 3,
+          "learning_rate": 0.035,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "min_child_weight": 3,
+          "reg_lambda": 1.0,
+          "reg_alpha": 0.0,
+          "objective": "reg:squarederror",
+          "random_state": 42,
+          "n_jobs": -1,
+          "tree_method": "hist",
+          "device": "cuda"
+        },
+        "fit_error": null
+      },
+      {
+        "candidate_id": "xgboost_price_level",
+        "model_name": "XGBoost",
+        "target_mode": "price_level",
+        "forecast_mode": "fixed_model_one_step_validation",
+        "n": 1044,
+        "mae": 210.65858289930554,
+        "mse": 63814.92569355257,
+        "rmse": 252.61616277180795,
+        "mape": 11.606713800758438,
+        "fit_params": {
+          "n_estimators": 350,
+          "max_depth": 3,
+          "learning_rate": 0.035,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "min_child_weight": 3,
+          "reg_lambda": 1.0,
+          "reg_alpha": 0.0,
+          "objective": "reg:squarederror",
+          "random_state": 42,
+          "n_jobs": -1,
+          "tree_method": "hist",
+          "device": "cuda"
+        },
+        "fit_error": null
+      }
+    ],
+    "rolling_validation": [
+      {
+        "candidate_id": "xgboost_dollar_change",
+        "model_name": "XGBoost",
+        "target_mode": "dollar_change",
+        "forecast_mode": "rolling_refit_one_step_validation",
+        "n": 1044,
+        "mae": 39.26206735987145,
+        "mse": 3780.2723280856717,
+        "rmse": 61.48391926419193,
+        "mape": 2.2855728054638966,
+        "refit_every": 20,
+        "refit_count": 53,
+        "fit_params": {
+          "n_estimators": 350,
+          "max_depth": 3,
+          "learning_rate": 0.035,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "min_child_weight": 3,
+          "reg_lambda": 1.0,
+          "reg_alpha": 0.0,
+          "objective": "reg:squarederror",
+          "random_state": 42,
+          "n_jobs": -1,
+          "tree_method": "hist",
+          "device": "cuda"
+        },
+        "fit_error": null
+      },
+      {
+        "candidate_id": "xgboost_log_return",
+        "model_name": "XGBoost",
+        "target_mode": "log_return",
+        "forecast_mode": "rolling_refit_one_step_validation",
+        "n": 1044,
+        "mae": 38.90344576788983,
+        "mse": 3909.3404774832406,
+        "rmse": 62.52471893166126,
+        "mape": 2.27312795532319,
+        "refit_every": 20,
+        "refit_count": 53,
+        "fit_params": {
+          "n_estimators": 350,
+          "max_depth": 3,
+          "learning_rate": 0.035,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "min_child_weight": 3,
+          "reg_lambda": 1.0,
+          "reg_alpha": 0.0,
+          "objective": "reg:squarederror",
+          "random_state": 42,
+          "n_jobs": -1,
+          "tree_method": "hist",
+          "device": "cuda"
+        },
+        "fit_error": null
+      },
+      {
+        "candidate_id": "xgboost_log_price",
+        "model_name": "XGBoost",
+        "target_mode": "log_price",
+        "forecast_mode": "rolling_refit_one_step_validation",
+        "n": 1044,
+        "mae": 44.31529129837259,
+        "mse": 4364.250963037817,
+        "rmse": 66.06247772402892,
+        "mape": 2.5680003842626378,
+        "refit_every": 20,
+        "refit_count": 53,
+        "fit_params": {
+          "n_estimators": 350,
+          "max_depth": 3,
+          "learning_rate": 0.035,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "min_child_weight": 3,
+          "reg_lambda": 1.0,
+          "reg_alpha": 0.0,
+          "objective": "reg:squarederror",
+          "random_state": 42,
+          "n_jobs": -1,
+          "tree_method": "hist",
+          "device": "cuda"
+        },
+        "fit_error": null
+      }
+    ]
+  },
   "charts": [
     {
-      "chart_key": "actual_vs_prediction",
-      "title": "Actual vs XGBoost Prediction",
+      "chart_id": "actual_vs_rolling_forecast",
+      "title": "Actual Gold Price vs Rolling XGBoost Forecast",
       "source_artifact": "artifacts/models/xgboost_forecast_path.json",
       "x": "date",
-      "y": [
-        "actual",
-        "prediction"
-      ]
+      "y_actual": "actual",
+      "y_forecast": "rolling_forecast"
     },
     {
-      "chart_key": "residuals",
-      "title": "XGBoost Residuals",
+      "chart_id": "fixed_model_diagnostic",
+      "title": "Fixed Model Forecast Diagnostic",
       "source_artifact": "artifacts/models/xgboost_forecast_path.json",
       "x": "date",
-      "y": [
-        "residual"
-      ]
+      "y_actual": "actual",
+      "y_forecast": "fixed_model_forecast"
     },
     {
-      "chart_key": "feature_importance",
-      "title": "Top Feature Importance by Normalized Gain",
-      "source_artifact": "artifacts/interpretability/xgboost_feature_importance.json",
-      "x": "normalized_gain",
-      "y": "feature"
-    }
-  ],
-  "tables": [
-    {
-      "table_key": "candidate_comparison",
-      "title": "Validation Candidate Comparison",
-      "records": [
-        {
-          "model_id": "xgb_conservative_shallow",
-          "description": "Conservative shallow tree candidate.",
-          "train_rmse": 46.401274125696844,
-          "validation_rmse": 178.52800096283318,
-          "validation_mae": 147.06795829685254,
-          "validation_mape": 8.13774087591849,
-          "validation_r2": 0.21613904972365972,
-          "parameters": {
-            "n_estimators": 350,
-            "max_depth": 2,
-            "learning_rate": 0.035,
-            "subsample": 0.85,
-            "colsample_bytree": 0.85,
-            "reg_lambda": 4.0,
-            "reg_alpha": 0.05
-          }
-        },
-        {
-          "model_id": "xgb_balanced_depth3",
-          "description": "Balanced depth-3 nonlinear candidate.",
-          "train_rmse": 40.78388746451281,
-          "validation_rmse": 249.23304233620524,
-          "validation_mae": 205.9042596692783,
-          "validation_mape": 11.324691504459672,
-          "validation_r2": -0.5276982574005835,
-          "parameters": {
-            "n_estimators": 500,
-            "max_depth": 3,
-            "learning_rate": 0.025,
-            "subsample": 0.9,
-            "colsample_bytree": 0.9,
-            "reg_lambda": 2.0,
-            "reg_alpha": 0.0
-          }
-        },
-        {
-          "model_id": "xgb_regularized_depth4",
-          "description": "More flexible but regularized depth-4 candidate.",
-          "train_rmse": 35.98063587594041,
-          "validation_rmse": 318.446168277847,
-          "validation_mae": 273.6188340461117,
-          "validation_mape": 15.13248352986606,
-          "validation_r2": -1.4940112070359217,
-          "parameters": {
-            "n_estimators": 650,
-            "max_depth": 4,
-            "learning_rate": 0.018,
-            "subsample": 0.8,
-            "colsample_bytree": 0.8,
-            "reg_lambda": 6.0,
-            "reg_alpha": 0.1
-          }
-        }
-      ]
-    },
-    {
-      "table_key": "top_feature_importance",
-      "title": "Top XGBoost Feature Importance",
-      "records": [
-        {
-          "feature": "gold_lag_1",
-          "importance": 0.4491148293018341,
-          "gain": 17983768.0,
-          "weight": 274.0,
-          "cover": 2651.751708984375,
-          "normalized_gain": 0.4491148320647901
-        },
-        {
-          "feature": "gold_ma_20",
-          "importance": 0.19121763110160828,
-          "gain": 7656869.5,
-          "weight": 70.0,
-          "cover": 2231.1142578125,
-          "normalized_gain": 0.1912176391307157
-        },
-        {
-          "feature": "gold_lag_20",
-          "importance": 0.14228859543800354,
-          "gain": 5697619.0,
-          "weight": 182.0,
-          "cover": 2605.835205078125,
-          "normalized_gain": 0.14228860160752502
-        },
-        {
-          "feature": "m2_supply",
-          "importance": 0.12989884614944458,
-          "gain": 5201500.0,
-          "weight": 37.0,
-          "cover": 2048.486572265625,
-          "normalized_gain": 0.1298988509518698
-        },
-        {
-          "feature": "gold_ma_5",
-          "importance": 0.06724448502063751,
-          "gain": 2692650.5,
-          "weight": 64.0,
-          "cover": 1829.09375,
-          "normalized_gain": 0.06724448831394361
-        },
-        {
-          "feature": "gold_ma_60",
-          "importance": 0.002847811905667186,
-          "gain": 114034.0703125,
-          "weight": 6.0,
-          "cover": 1900.6666259765625,
-          "normalized_gain": 0.0028478121124595746
-        },
-        {
-          "feature": "nominal_yield",
-          "importance": 0.0017469640588387847,
-          "gain": 69953.1484375,
-          "weight": 9.0,
-          "cover": 1839.0,
-          "normalized_gain": 0.0017469640685373136
-        },
-        {
-          "feature": "gold_lag_5",
-          "importance": 0.0012171765556558967,
-          "gain": 48739.03125,
-          "weight": 17.0,
-          "cover": 482.941162109375,
-          "normalized_gain": 0.001217176613646501
-        },
-        {
-          "feature": "gld_tonnes",
-          "importance": 0.0010051787830889225,
-          "gain": 40250.06640625,
-          "weight": 22.0,
-          "cover": 3043.272705078125,
-          "normalized_gain": 0.0010051787709138384
-        },
-        {
-          "feature": "vix_index",
-          "importance": 0.0009463320602662861,
-          "gain": 37893.6875,
-          "weight": 17.0,
-          "cover": 1237.941162109375,
-          "normalized_gain": 0.0009463321089261236
-        },
-        {
-          "feature": "policy_unc",
-          "importance": 0.0009082713513635099,
-          "gain": 36369.6328125,
-          "weight": 23.0,
-          "cover": 2106.9130859375,
-          "normalized_gain": 0.0009082713663145575
-        },
-        {
-          "feature": "gold_return_5",
-          "importance": 0.0008892510086297989,
-          "gain": 35608.0078125,
-          "weight": 46.0,
-          "cover": 2738.826171875,
-          "normalized_gain": 0.0008892510428778147
-        },
-        {
-          "feature": "tips_curve",
-          "importance": 0.0008157113334164023,
-          "gain": 32663.28125,
-          "weight": 33.0,
-          "cover": 2651.727294921875,
-          "normalized_gain": 0.0008157113722373841
-        },
-        {
-          "feature": "ind_prod",
-          "importance": 0.000797487678937614,
-          "gain": 31933.556640625,
-          "weight": 15.0,
-          "cover": 2446.533447265625,
-          "normalized_gain": 0.0007974877082425529
-        },
-        {
-          "feature": "ppi_index",
-          "importance": 0.0007733210804872215,
-          "gain": 30965.861328125,
-          "weight": 13.0,
-          "cover": 2359.84619140625,
-          "normalized_gain": 0.0007733211199189423
-        }
-      ]
-    },
-    {
-      "table_key": "top_shap_features",
-      "title": "Top SHAP Features",
-      "records": [
-        {
-          "feature": "gold_lag_1",
-          "mean_abs_shap": 420.520751953125,
-          "mean_shap": 420.520751953125,
-          "rank": 1
-        },
-        {
-          "feature": "gold_lag_20",
-          "mean_abs_shap": 159.8297576904297,
-          "mean_shap": 159.8297576904297,
-          "rank": 2
-        },
-        {
-          "feature": "m2_supply",
-          "mean_abs_shap": 18.091522216796875,
-          "mean_shap": 18.091522216796875,
-          "rank": 3
-        },
-        {
-          "feature": "gold_ma_5",
-          "mean_abs_shap": 8.640691757202148,
-          "mean_shap": -5.469149112701416,
-          "rank": 4
-        },
-        {
-          "feature": "real_yield",
-          "mean_abs_shap": 4.2212419509887695,
-          "mean_shap": -4.149941444396973,
-          "rank": 5
-        },
-        {
-          "feature": "policy_unc",
-          "mean_abs_shap": 4.118318557739258,
-          "mean_shap": 2.67246413230896,
-          "rank": 6
-        },
-        {
-          "feature": "gold_ma_60",
-          "mean_abs_shap": 2.7869768142700195,
-          "mean_shap": -2.7869768142700195,
-          "rank": 7
-        },
-        {
-          "feature": "vix_index",
-          "mean_abs_shap": 2.363523483276367,
-          "mean_shap": -0.396548867225647,
-          "rank": 8
-        },
-        {
-          "feature": "gold_ma_20",
-          "mean_abs_shap": 2.001349925994873,
-          "mean_shap": 0.9013831615447998,
-          "rank": 9
-        },
-        {
-          "feature": "usd_index",
-          "mean_abs_shap": 1.6866000890731812,
-          "mean_shap": -1.0315855741500854,
-          "rank": 10
-        },
-        {
-          "feature": "gold_return_1",
-          "mean_abs_shap": 1.6405117511749268,
-          "mean_shap": 0.2976665496826172,
-          "rank": 11
-        },
-        {
-          "feature": "gpr_index",
-          "mean_abs_shap": 1.6081702709197998,
-          "mean_shap": 1.212357521057129,
-          "rank": 12
-        },
-        {
-          "feature": "gold_volatility_20",
-          "mean_abs_shap": 1.5936264991760254,
-          "mean_shap": -0.3879530131816864,
-          "rank": 13
-        },
-        {
-          "feature": "gold_return_5",
-          "mean_abs_shap": 1.5043565034866333,
-          "mean_shap": 0.07112365961074829,
-          "rank": 14
-        },
-        {
-          "feature": "nominal_yield",
-          "mean_abs_shap": 1.2882232666015625,
-          "mean_shap": -1.2854528427124023,
-          "rank": 15
-        }
-      ],
-      "status": {
-        "status": "calculated",
-        "reason": null,
-        "sample_size": 750
-      }
+      "chart_id": "feature_importance",
+      "title": "XGBoost Feature Importance",
+      "source_artifact": "artifacts/interpretability/xgboost_feature_importance.json"
     }
   ],
   "limitations": [
-    "XGBoost is less transparent than regression and classical time-series models.",
-    "Observed exogenous factor values are used for validation and test evaluation; future official forecasting must obey available factor assumptions.",
-    "Feature importance shows model usage, not proof of economic causality.",
-    "SHAP values, if available, are interpretability diagnostics and not causal claims."
+    "Raw price-level XGBoost can underforecast when test prices exceed the training range.",
+    "Change, log-price, and log-return targets are tested to reduce extrapolation weakness.",
+    "The default frontend chart should use the rolling refit forecast."
   ],
-  "artifact_sources": [
-    "artifacts/models/xgboost_results.json",
-    "artifacts/models/xgboost_forecast_path.json",
-    "artifacts/interpretability/xgboost_feature_importance.json",
-    "artifacts/interpretability/xgboost_shap_summary.json"
-  ]
+  "json_first_rule": "Frontend should read all XGBoost claims, metrics, target mode, and selected-model labels from this artifact."
 }

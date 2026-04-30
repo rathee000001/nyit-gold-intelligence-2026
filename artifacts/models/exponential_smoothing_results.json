@@ -1,21 +1,12 @@
 {
-  "artifact_name": "exponential_smoothing_results",
   "notebook": "05_exponential_smoothing_forecast.ipynb",
-  "generated_at_utc": "2026-04-30T20:34:10.890666+00:00",
-  "project": "Gold Nexus Alpha",
-  "project_style": "clean professor-style forecasting platform",
+  "run_timestamp_utc": "2026-04-30T22:03:51.978896+00:00",
+  "project_identity": "Gold Nexus Alpha professor-style forecasting platform",
   "dataset": {
-    "dataset_label": "Dataset A — Long Univariate",
-    "target_column": "gold_price",
-    "dataset_type": "long_univariate",
-    "start_date": "1968-01-04",
-    "end_date": "2026-03-31",
-    "official_forecast_cutoff_date": "2026-03-31",
-    "weekday_clean_note": "Rows are Saturday/Sunday-cleaned. This should be described as weekday-clean unless an official holiday calendar is added later.",
-    "source_input_path": "data/aligned/model_ready_univariate.csv",
-    "rows": 15194
-  },
-  "split_windows": {
+    "name": "Dataset A \u2014 Long Univariate",
+    "target": "gold_price",
+    "start": "1968-01-04",
+    "end": "2026-03-31",
     "train": {
       "start": "1968-01-04",
       "end": "2018-12-31",
@@ -32,320 +23,174 @@
       "rows": 847
     }
   },
-  "professor_reference_files": [
-    "Case 11.1-HoltWinters.xlsx",
-    "Chapter_18_TS_smoothing.ipynb",
-    "Exponential_smoothing.ipynb"
-  ],
-  "professor_style_mirrored": [
-    "pd.to_datetime date parsing",
-    "date-indexed time-series object",
-    "time-series plot before modeling",
-    "sequential train/validation/test partition",
-    "Simple Exponential Smoothing",
-    "Holt Trend smoothing",
-    "Holt-Winters seasonality tested only as an optional candidate",
-    "fitted values and out-of-sample forecasts",
-    "residual/error plot",
-    "MAE, MSE, RMSE, MAPE, and bias metrics"
-  ],
-  "models": [
-    {
-      "status": "success",
-      "model_key": "simple_exponential_smoothing",
-      "model_name": "Simple Exponential Smoothing",
-      "model_category": "classical_smoothing_baseline",
-      "method_description": "Level-only exponential smoothing; no explicit trend or seasonal component.",
-      "professor_safe_note": "Mirrors the professor smoothing examples by fitting a level-smoothed series and evaluating forecast errors.",
-      "seasonal_periods": null,
-      "metrics": {
-        "train": {
-          "n": 13303,
-          "MAE": 10.247856420842103,
-          "MSE": 1099.5687973055706,
-          "RMSE": 33.159746641154705,
-          "MAPE": 2.0153981699691492,
-          "mean_error_bias": 0.102931377439203,
-          "directional_accuracy_pct": 14.027965719440685
-        },
-        "validation": {
-          "n": 1044,
-          "MAE": 419.76679087199983,
-          "MSE": 216792.7597604885,
-          "RMSE": 465.61009413509123,
-          "MAPE": 23.43862401652295,
-          "mean_error_bias": 419.6810357722669,
-          "directional_accuracy_pct": 19.55896452540748
-        },
-        "test": {
-          "n": 847,
-          "MAE": 955.8975539450668,
-          "MSE": 1740771.3339626798,
-          "RMSE": 1319.382936816556,
-          "MAPE": 28.22199143801352,
-          "mean_error_bias": 955.8975539450668,
-          "directional_accuracy_pct": 28.01418439716312
-        }
-      },
-      "parameters_train_fit": {
-        "smoothing_level": 0.910102315131601,
-        "smoothing_trend": null,
-        "smoothing_seasonal": null,
-        "damping_trend": null,
-        "initial_level": 38.49717848631109,
-        "initial_trend": null,
-        "initial_seasons": [],
-        "use_boxcox": 0.0,
-        "lamda": null,
-        "remove_bias": 0.0
-      },
-      "parameters_train_validation_fit": {
-        "smoothing_level": 0.9191743246823443,
-        "smoothing_trend": null,
-        "smoothing_seasonal": null,
-        "damping_trend": null,
-        "initial_level": 38.44122365674636,
-        "initial_trend": null,
-        "initial_seasons": [],
-        "use_boxcox": 0.0,
-        "lamda": null,
-        "remove_bias": 0.0
+  "selection_rule": "Final smoothing candidate selected by rolling one-step validation RMSE.",
+  "selected_model": {
+    "model_name": "Holt Rolling One-Step",
+    "parameters": {
+      "alpha": 0.9191563497346975,
+      "beta": 0.0,
+      "phi": 1.0
+    },
+    "validation_metrics": {
+      "model_name": "Holt Rolling One-Step",
+      "forecast_mode": "one_step_rolling_validation",
+      "n": 1044,
+      "mae": 34.26784831549761,
+      "mse": 4517.232907165589,
+      "rmse": 67.21036309354078,
+      "mape": 2.012846776088445,
+      "parameters": {
+        "alpha": 0.9100896143960652,
+        "beta": 0.0,
+        "phi": 1.0
       }
     },
-    {
-      "status": "success",
-      "model_key": "holt_trend",
-      "model_name": "Holt Trend",
-      "model_category": "classical_smoothing_trend",
-      "method_description": "Exponential smoothing with an additive trend component.",
-      "professor_safe_note": "Useful for a price level series where the long-run level has trended upward over time.",
-      "seasonal_periods": null,
-      "metrics": {
-        "train": {
-          "n": 13303,
-          "MAE": 10.303254241193384,
-          "MSE": 1099.55820194222,
-          "RMSE": 33.159586878340626,
-          "MAPE": 2.0442206036436272,
-          "mean_error_bias": -9.466552777187555e-06,
-          "directional_accuracy_pct": 14.080589385054878
-        },
-        "validation": {
-          "n": 1044,
-          "MAE": 371.32584213721265,
-          "MSE": 170840.69024151488,
-          "RMSE": 413.328791933873,
-          "MAPE": 20.72196120827916,
-          "mean_error_bias": 370.72036231746154,
-          "directional_accuracy_pct": 40.076701821668266
-        },
-        "test": {
-          "n": 847,
-          "MAE": 903.179281242474,
-          "MSE": 1593732.1501933534,
-          "RMSE": 1262.4310476985875,
-          "MAPE": 26.461294736416853,
-          "mean_error_bias": 903.0371505388089,
-          "directional_accuracy_pct": 40.78014184397163
-        }
-      },
-      "parameters_train_fit": {
-        "smoothing_level": 0.9100896143960652,
-        "smoothing_trend": 0.0,
-        "smoothing_seasonal": null,
-        "damping_trend": null,
-        "initial_level": 38.50341656319662,
-        "initial_trend": 0.09368692703443286,
-        "initial_seasons": [],
-        "use_boxcox": 0.0,
-        "lamda": null,
-        "remove_bias": 0.0
-      },
-      "parameters_train_validation_fit": {
-        "smoothing_level": 0.9191563497346975,
-        "smoothing_trend": 0.0,
-        "smoothing_seasonal": null,
-        "damping_trend": null,
-        "initial_level": 38.50307914941613,
-        "initial_trend": 0.12464499167417846,
-        "initial_seasons": [],
-        "use_boxcox": 0.0,
-        "lamda": null,
-        "remove_bias": 0.0
-      }
+    "test_metrics_rolling": {
+      "n": 847,
+      "mae": 79.68657206119191,
+      "mse": 32497.783938202305,
+      "rmse": 180.2714174188529,
+      "mape": 2.791342273126361
     },
+    "test_metrics_static_diagnostic": {
+      "n": 847,
+      "mae": 903.179281242474,
+      "mse": 1593732.1501933534,
+      "rmse": 1262.4310476985875,
+      "mape": 26.461294736416853
+    }
+  },
+  "static_validation_leaderboard": [
     {
-      "status": "success",
-      "model_key": "holt_winters_weekday",
-      "model_name": "Holt-Winters Additive Weekday Seasonality",
-      "model_category": "optional_classical_smoothing_seasonal",
-      "method_description": "Additive trend plus additive 5-weekday seasonality, tested only as an optional professor-reference candidate.",
-      "professor_safe_note": "Gold does not have an obvious Amtrak-style monthly seasonality. This candidate is included only because the professor reference uses Holt-Winters; it must be judged by validation metrics, not assumed superior.",
-      "seasonal_periods": 5,
-      "metrics": {
-        "train": {
-          "n": 13303,
-          "MAE": 10.474656854818146,
-          "MSE": 1099.187945664688,
-          "RMSE": 33.15400346360433,
-          "MAPE": 2.13853701822539,
-          "mean_error_bias": -0.014167858616942792,
-          "directional_accuracy_pct": 14.862426702751467
-        },
-        "validation": {
-          "n": 1044,
-          "MAE": 365.32940719789394,
-          "MSE": 165508.534937162,
-          "RMSE": 406.82740190056273,
-          "MAPE": 20.387918883250318,
-          "mean_error_bias": 364.6487609098077,
-          "directional_accuracy_pct": 40.46021093000959
-        },
-        "test": {
-          "n": 847,
-          "MAE": 891.4704116739767,
-          "MSE": 1562339.454401365,
-          "RMSE": 1249.9357801108683,
-          "MAPE": 26.068724104600516,
-          "mean_error_bias": 891.2604557963692,
-          "directional_accuracy_pct": 39.2434988179669
-        }
-      },
-      "parameters_train_fit": {
+      "model_name": "Holt-Winters Weekday Static",
+      "forecast_mode": "static_multi_step_validation",
+      "n": 1044,
+      "mae": 365.32940719789394,
+      "mse": 165508.534937162,
+      "rmse": 406.82740190056273,
+      "mape": 20.387918883250318,
+      "parameters": {
         "smoothing_level": 0.9103032304907089,
         "smoothing_trend": 0.0,
         "smoothing_seasonal": 0.0,
         "damping_trend": null,
         "initial_level": 39.012162968174245,
         "initial_trend": 0.10649069460474327,
-        "initial_seasons": [
-          -0.10833181115283408,
-          -0.42264199871296304,
-          0.7186500645854283,
-          -0.0695480163421133,
-          -0.11879523497246693
-        ],
-        "use_boxcox": 0.0,
+        "use_boxcox": false,
         "lamda": null,
-        "remove_bias": 0.0
+        "remove_bias": false
       },
-      "parameters_train_validation_fit": {
-        "smoothing_level": 0.9193532633751502,
+      "fit_error": null
+    },
+    {
+      "model_name": "Holt Static",
+      "forecast_mode": "static_multi_step_validation",
+      "n": 1044,
+      "mae": 371.32584213721265,
+      "mse": 170840.69024151488,
+      "rmse": 413.328791933873,
+      "mape": 20.72196120827916,
+      "parameters": {
+        "smoothing_level": 0.9100896143960652,
         "smoothing_trend": 0.0,
-        "smoothing_seasonal": 0.0,
+        "smoothing_seasonal": null,
         "damping_trend": null,
-        "initial_level": 39.012234807525495,
-        "initial_trend": 0.1514903562142496,
-        "initial_seasons": [
-          0.0025034339994494978,
-          -0.4250713270601536,
-          0.6051453768002896,
-          -0.11199081552083737,
-          -0.07111440451000083
-        ],
-        "use_boxcox": 0.0,
+        "initial_level": 38.50341656319662,
+        "initial_trend": 0.09368692703443286,
+        "use_boxcox": false,
         "lamda": null,
-        "remove_bias": 0.0
+        "remove_bias": false
+      },
+      "fit_error": null
+    },
+    {
+      "model_name": "SES Static",
+      "forecast_mode": "static_multi_step_validation",
+      "n": 1044,
+      "mae": 419.76679087199983,
+      "mse": 216792.7597604885,
+      "rmse": 465.61009413509123,
+      "mape": 23.43862401652295,
+      "parameters": {
+        "smoothing_level": 0.910102315131601,
+        "smoothing_trend": null,
+        "smoothing_seasonal": null,
+        "damping_trend": null,
+        "initial_level": 38.49717848631109,
+        "initial_trend": null,
+        "use_boxcox": false,
+        "lamda": null,
+        "remove_bias": false
+      },
+      "fit_error": null
+    },
+    {
+      "model_name": "Damped Holt Static",
+      "forecast_mode": "static_multi_step_validation",
+      "n": 1044,
+      "mae": 419.7667985160387,
+      "mse": 216792.7663147209,
+      "rmse": 465.6101011734184,
+      "mape": 23.43862446906659,
+      "parameters": {
+        "smoothing_level": 0.9100372511852601,
+        "smoothing_trend": 0.0,
+        "smoothing_seasonal": null,
+        "damping_trend": 0.9720925518708253,
+        "initial_level": 38.36301847749253,
+        "initial_trend": -0.6463498521753283,
+        "use_boxcox": false,
+        "lamda": null,
+        "remove_bias": false
+      },
+      "fit_error": null
+    }
+  ],
+  "rolling_validation_leaderboard": [
+    {
+      "model_name": "Holt Rolling One-Step",
+      "forecast_mode": "one_step_rolling_validation",
+      "n": 1044,
+      "mae": 34.26784831549761,
+      "mse": 4517.232907165589,
+      "rmse": 67.21036309354078,
+      "mape": 2.012846776088445,
+      "parameters": {
+        "alpha": 0.9100896143960652,
+        "beta": 0.0,
+        "phi": 1.0
+      }
+    },
+    {
+      "model_name": "SES Rolling One-Step",
+      "forecast_mode": "one_step_rolling_validation",
+      "n": 1044,
+      "mae": 34.26621947422903,
+      "mse": 4517.336247511226,
+      "rmse": 67.21113187196914,
+      "mape": 2.0126437750757376,
+      "parameters": {
+        "alpha": 0.910102315131601
+      }
+    },
+    {
+      "model_name": "Damped Holt Rolling One-Step",
+      "forecast_mode": "one_step_rolling_validation",
+      "n": 1044,
+      "mae": 34.266970111859735,
+      "mse": 4517.35478745951,
+      "rmse": 67.21126979502404,
+      "mape": 2.0126911595714514,
+      "parameters": {
+        "alpha": 0.9100372511852601,
+        "beta": 0.0,
+        "phi": 0.9720925518708253
       }
     }
   ],
-  "comparison_table": [
-    {
-      "model_key": "holt_winters_weekday",
-      "model_name": "Holt-Winters Additive Weekday Seasonality",
-      "status": "success",
-      "model_category": "optional_classical_smoothing_seasonal",
-      "seasonal_periods": 5.0,
-      "train_MAE": 10.474656854818146,
-      "train_MSE": 1099.187945664688,
-      "train_RMSE": 33.15400346360433,
-      "train_MAPE": 2.13853701822539,
-      "train_mean_error_bias": -0.014167858616942792,
-      "train_directional_accuracy_pct": 14.862426702751467,
-      "train_n": 13303,
-      "validation_MAE": 365.32940719789394,
-      "validation_MSE": 165508.534937162,
-      "validation_RMSE": 406.82740190056273,
-      "validation_MAPE": 20.387918883250318,
-      "validation_mean_error_bias": 364.6487609098077,
-      "validation_directional_accuracy_pct": 40.46021093000959,
-      "validation_n": 1044,
-      "test_MAE": 891.4704116739767,
-      "test_MSE": 1562339.454401365,
-      "test_RMSE": 1249.9357801108683,
-      "test_MAPE": 26.068724104600516,
-      "test_mean_error_bias": 891.2604557963692,
-      "test_directional_accuracy_pct": 39.2434988179669,
-      "test_n": 847
-    },
-    {
-      "model_key": "holt_trend",
-      "model_name": "Holt Trend",
-      "status": "success",
-      "model_category": "classical_smoothing_trend",
-      "seasonal_periods": null,
-      "train_MAE": 10.303254241193384,
-      "train_MSE": 1099.55820194222,
-      "train_RMSE": 33.159586878340626,
-      "train_MAPE": 2.0442206036436272,
-      "train_mean_error_bias": -9.466552777187555e-06,
-      "train_directional_accuracy_pct": 14.080589385054878,
-      "train_n": 13303,
-      "validation_MAE": 371.32584213721265,
-      "validation_MSE": 170840.69024151488,
-      "validation_RMSE": 413.328791933873,
-      "validation_MAPE": 20.72196120827916,
-      "validation_mean_error_bias": 370.72036231746154,
-      "validation_directional_accuracy_pct": 40.076701821668266,
-      "validation_n": 1044,
-      "test_MAE": 903.179281242474,
-      "test_MSE": 1593732.1501933534,
-      "test_RMSE": 1262.4310476985875,
-      "test_MAPE": 26.461294736416853,
-      "test_mean_error_bias": 903.0371505388089,
-      "test_directional_accuracy_pct": 40.78014184397163,
-      "test_n": 847
-    },
-    {
-      "model_key": "simple_exponential_smoothing",
-      "model_name": "Simple Exponential Smoothing",
-      "status": "success",
-      "model_category": "classical_smoothing_baseline",
-      "seasonal_periods": null,
-      "train_MAE": 10.247856420842103,
-      "train_MSE": 1099.5687973055706,
-      "train_RMSE": 33.159746641154705,
-      "train_MAPE": 2.0153981699691492,
-      "train_mean_error_bias": 0.102931377439203,
-      "train_directional_accuracy_pct": 14.027965719440685,
-      "train_n": 13303,
-      "validation_MAE": 419.76679087199983,
-      "validation_MSE": 216792.7597604885,
-      "validation_RMSE": 465.61009413509123,
-      "validation_MAPE": 23.43862401652295,
-      "validation_mean_error_bias": 419.6810357722669,
-      "validation_directional_accuracy_pct": 19.55896452540748,
-      "validation_n": 1044,
-      "test_MAE": 955.8975539450668,
-      "test_MSE": 1740771.3339626798,
-      "test_RMSE": 1319.382936816556,
-      "test_MAPE": 28.22199143801352,
-      "test_mean_error_bias": 955.8975539450668,
-      "test_directional_accuracy_pct": 28.01418439716312,
-      "test_n": 847
-    }
-  ],
-  "best_validation_candidate_within_notebook": {
-    "model_key": "holt_winters_weekday",
-    "model_name": "Holt-Winters Additive Weekday Seasonality",
-    "selection_basis": "Lowest validation RMSE within Notebook 05 exponential smoothing candidates only.",
-    "validation_RMSE": 406.82740190056273,
-    "validation_MAE": 365.32940719789394,
-    "validation_MAPE": 20.387918883250318
-  },
-  "important_notes": [
-    "This notebook does not select the final project model. Final selection happens in Notebook 11 after comparing all model families.",
-    "Holt-Winters is not assumed to be best because gold prices do not have an obvious professor-style monthly seasonal demand pattern like the reference case.",
-    "Validation forecasts are fitted only on training data. Test forecasts are fitted only on training plus validation data."
+  "interpretation_notes": [
+    "Static multi-step smoothing forecasts are retained as diagnostics because they may lag sharply during regime breaks.",
+    "The default frontend chart should use the one-step rolling forecast because it updates after each observed gold price.",
+    "Holt-Winters weekday seasonality is diagnostic only and is not forced unless it improves validation evidence."
   ]
 }
