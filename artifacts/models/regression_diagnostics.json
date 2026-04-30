@@ -1,0 +1,211 @@
+{
+  "artifact_name": "regression_diagnostics",
+  "notebook": "06_regression_based_forecasting.ipynb",
+  "generated_at_utc": "2026-04-30T20:39:40.431870+00:00",
+  "diagnostic_model_id": "selected_factor_plus_trend_ols",
+  "diagnostic_fit_scope": "train_plus_validation",
+  "fit_statistics": {
+    "r_squared": 0.9748106472697751,
+    "adjusted_r_squared": 0.9747365776960377,
+    "f_statistic": 13160.743313120016,
+    "f_p_value": 0.0,
+    "aic": 48650.99722662183,
+    "bic": 48740.55918714825,
+    "df_model": 13.0,
+    "df_resid": 4421.0,
+    "condition_number": 119504.26469111862,
+    "nobs": 4435
+  },
+  "residual_summary": {
+    "train_plus_validation": {
+      "n": 4435,
+      "mean": 7.397539727219192e-12,
+      "std": 58.143267599431894,
+      "min": -403.3627301632416,
+      "p25": -13.11315959956221,
+      "median": -0.08492167597910338,
+      "p75": 13.305141974500316,
+      "max": 431.6787899739502
+    },
+    "test": {
+      "n": 847,
+      "mean": 33.111892185363075,
+      "std": 173.67873025337994,
+      "min": -1165.7937014835788,
+      "p25": -4.9933107661287295,
+      "median": 22.558525719524596,
+      "p75": 76.57020794725588,
+      "max": 757.7020692325373
+    }
+  },
+  "residual_acf": [
+    {
+      "lag": 0,
+      "acf": 1.0
+    },
+    {
+      "lag": 1,
+      "acf": 0.04655465801430657
+    },
+    {
+      "lag": 2,
+      "acf": 0.009437618264321514
+    },
+    {
+      "lag": 3,
+      "acf": 0.01246528010718084
+    },
+    {
+      "lag": 4,
+      "acf": -0.06477155055799273
+    },
+    {
+      "lag": 5,
+      "acf": -0.10343352653712717
+    },
+    {
+      "lag": 6,
+      "acf": -0.03496055965472856
+    },
+    {
+      "lag": 7,
+      "acf": -0.0319624168544715
+    },
+    {
+      "lag": 8,
+      "acf": -0.04741045958661799
+    },
+    {
+      "lag": 9,
+      "acf": -0.023896147076182175
+    },
+    {
+      "lag": 10,
+      "acf": -0.016669282002201517
+    },
+    {
+      "lag": 11,
+      "acf": -0.023128936327896626
+    },
+    {
+      "lag": 12,
+      "acf": -0.019142397650297155
+    },
+    {
+      "lag": 13,
+      "acf": -0.03251619328022935
+    },
+    {
+      "lag": 14,
+      "acf": -0.06084981360724584
+    },
+    {
+      "lag": 15,
+      "acf": -0.06126959187377229
+    },
+    {
+      "lag": 16,
+      "acf": -0.07190544936017301
+    },
+    {
+      "lag": 17,
+      "acf": -0.0689060659617875
+    },
+    {
+      "lag": 18,
+      "acf": -0.05812268608240559
+    },
+    {
+      "lag": 19,
+      "acf": -0.04397556407606682
+    },
+    {
+      "lag": 20,
+      "acf": 0.10237768609246264
+    }
+  ],
+  "ljung_box": [
+    {
+      "lag": 10,
+      "lb_stat": 100.59448265698751,
+      "p_value": 4.1434853422987607e-17
+    },
+    {
+      "lag": 20,
+      "lb_stat": 257.0587526628984,
+      "p_value": 4.2945603307795626e-43
+    }
+  ],
+  "vif_table": [
+    {
+      "feature": "trend",
+      "vif": 23.53301835240303,
+      "flag": "high_multicollinearity_watch"
+    },
+    {
+      "feature": "gold_lag_1",
+      "vif": 18.514212557639645,
+      "flag": "high_multicollinearity_watch"
+    },
+    {
+      "feature": "gold_ma_20",
+      "vif": 31.264432500535392,
+      "flag": "high_multicollinearity_watch"
+    },
+    {
+      "feature": "real_yield",
+      "vif": 32.39956189487733,
+      "flag": "high_multicollinearity_watch"
+    },
+    {
+      "feature": "nominal_yield",
+      "vif": 34.044870846676815,
+      "flag": "high_multicollinearity_watch"
+    },
+    {
+      "feature": "usd_index",
+      "vif": 17.860117632449985,
+      "flag": "high_multicollinearity_watch"
+    },
+    {
+      "feature": "vix_index",
+      "vif": 5.113357411407125,
+      "flag": "ok_or_moderate"
+    },
+    {
+      "feature": "fin_stress",
+      "vif": 6.601197922233008,
+      "flag": "ok_or_moderate"
+    },
+    {
+      "feature": "gpr_index",
+      "vif": 1.3921420192820353,
+      "flag": "ok_or_moderate"
+    },
+    {
+      "feature": "policy_unc",
+      "vif": 2.6780398699688477,
+      "flag": "ok_or_moderate"
+    },
+    {
+      "feature": "oil_wti",
+      "vif": 6.3319190677958455,
+      "flag": "ok_or_moderate"
+    },
+    {
+      "feature": "gld_tonnes",
+      "vif": 7.467997227877982,
+      "flag": "ok_or_moderate"
+    },
+    {
+      "feature": "unrate",
+      "vif": 4.468757042730881,
+      "flag": "ok_or_moderate"
+    }
+  ],
+  "diagnostic_notes": [
+    "High VIF values indicate possible multicollinearity and should be discussed, not hidden.",
+    "Residual autocorrelation means plain OLS may not fully capture time-series dependence.",
+    "Regression is treated as one classical forecasting candidate, not the final selected model."
+  ]
+}
