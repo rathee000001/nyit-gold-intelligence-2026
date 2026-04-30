@@ -1,0 +1,109 @@
+{
+  "artifact_name": "feature_engineering_audit",
+  "created_at_utc": "2026-04-30T19:54:50.475545+00:00",
+  "notebook": "03_feature_engineering_for_forecasting.ipynb",
+  "input": {
+    "input_matrix_path": "/content/nyit-gold-intelligence-2026/data/aligned/weekday_clean_matrix.csv",
+    "input_rows": 15215,
+    "input_columns": 22,
+    "input_date_min": "1968-01-04",
+    "input_date_max": "2026-04-29",
+    "input_was_already_weekday_clean": true,
+    "weekend_rows_removed_in_this_notebook": 0
+  },
+  "cutoff": {
+    "official_forecast_cutoff_date": "2026-03-31",
+    "rows_after_cutoff_excluded_from_model_ready_outputs": 21
+  },
+  "features": {
+    "engineered_gold_feature_count": 9,
+    "core_factor_count": 19,
+    "main_xgboost_feature_count": 28,
+    "engineered_gold_features": [
+      "gold_lag_1",
+      "gold_lag_5",
+      "gold_lag_20",
+      "gold_return_1",
+      "gold_return_5",
+      "gold_ma_5",
+      "gold_ma_20",
+      "gold_ma_60",
+      "gold_volatility_20"
+    ],
+    "core_factors": [
+      "real_yield",
+      "nominal_yield",
+      "tips_curve",
+      "fed_bs",
+      "m2_supply",
+      "inflation",
+      "usd_index",
+      "eur_usd",
+      "jpy_usd",
+      "vix_index",
+      "fin_stress",
+      "gpr_index",
+      "policy_unc",
+      "oil_wti",
+      "ppi_index",
+      "gld_tonnes",
+      "unrate",
+      "ind_prod",
+      "cap_util"
+    ],
+    "excluded_main_features": [
+      "high_yield"
+    ]
+  },
+  "datasets": {
+    "model_ready_univariate": {
+      "path": "data/aligned/model_ready_univariate.csv",
+      "rows": 15194,
+      "columns": 4,
+      "date_min": "1968-01-04",
+      "date_max": "2026-03-31",
+      "split_counts": {
+        "train": 13303,
+        "validation": 1044,
+        "test": 847
+      },
+      "target": "gold_price",
+      "used_for": [
+        "Naive",
+        "Moving Average",
+        "Exponential Smoothing",
+        "ARIMA",
+        "Prophet optional"
+      ]
+    },
+    "model_ready_multivariate": {
+      "path": "data/aligned/model_ready_multivariate.csv",
+      "rows_before_missing_drop": 5282,
+      "rows_after_missing_drop": 5282,
+      "rows_dropped_for_missing_required_values": 0,
+      "columns": 32,
+      "date_min": "2006-01-02",
+      "date_max": "2026-03-31",
+      "split_counts": {
+        "train": 3391,
+        "validation": 1044,
+        "test": 847
+      },
+      "target": "gold_price",
+      "used_for": [
+        "Regression",
+        "SARIMAX",
+        "XGBoost main candidate"
+      ],
+      "high_yield_excluded": true
+    }
+  },
+  "missing_before_multivariate_drop": {},
+  "professor_safe_notes": [
+    "This notebook does not fit a model.",
+    "The long univariate dataset contains gold_price only.",
+    "The core multivariate dataset excludes high_yield from the main model path.",
+    "Gold-derived rolling and return features are shifted to avoid using the current target value.",
+    "No rows after the official forecast cutoff are included in model-ready outputs."
+  ]
+}
