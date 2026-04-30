@@ -1,0 +1,404 @@
+{
+  "artifact_name": "moving_average_results",
+  "notebook": "04_naive_and_moving_average_forecast.ipynb",
+  "generated_at_utc": "2026-04-30T20:02:10.011724+00:00",
+  "model": {
+    "name": "Trailing Moving Average Forecast",
+    "category": "baseline",
+    "windows_tested": [
+      5,
+      10,
+      20,
+      60
+    ],
+    "description": "Trailing moving-average baselines where the forecast for date t is the average of prior observed gold prices."
+  },
+  "dataset": {
+    "source_file": "model_ready_univariate.csv",
+    "target": "gold_price",
+    "frequency_note": "Weekday-clean daily series; market holidays have not been removed.",
+    "window": {
+      "start": "1968-01-04",
+      "end": "2026-03-31"
+    },
+    "splits": {
+      "train": {
+        "start": "1968-01-04",
+        "end": "2018-12-31",
+        "rows": 13303
+      },
+      "validation": {
+        "start": "2019-01-01",
+        "end": "2022-12-30",
+        "rows": 1044
+      },
+      "test": {
+        "start": "2023-01-02",
+        "end": "2026-03-31",
+        "rows": 847
+      }
+    }
+  },
+  "evaluation_design": {
+    "primary_method": "one_step_roll_forward",
+    "primary_method_note": "For each date t, the forecast uses only gold prices available before date t.",
+    "professor_static_holdout_included": true,
+    "professor_static_holdout_note": "Included because the professor's Amtrak class example also shows validation forecasts created from the last training observation."
+  },
+  "metrics_by_window": {
+    "5": {
+      "train": {
+        "n": 13298,
+        "MAE": 17.971951722063466,
+        "MSE": 1958.4689670269215,
+        "RMSE": 44.254592609433445,
+        "MAPE": 3.512952382928234,
+        "mean_error_bias": 0.28064596179876683,
+        "directional_accuracy_pct": 49.33443633902384
+      },
+      "validation": {
+        "n": 1044,
+        "MAE": 56.864042145593885,
+        "MSE": 7979.51300421456,
+        "RMSE": 89.32811989633814,
+        "MAPE": 3.3843492552469447,
+        "mean_error_bias": 1.5569540229885124,
+        "directional_accuracy_pct": 35.57046979865772
+      },
+      "test": {
+        "n": 847,
+        "MAE": 143.0416906729634,
+        "MSE": 56672.65004998347,
+        "RMSE": 238.06018157176868,
+        "MAPE": 4.897010188514494,
+        "mean_error_bias": 9.627886658795738,
+        "directional_accuracy_pct": 35.69739952718676
+      }
+    },
+    "10": {
+      "train": {
+        "n": 13293,
+        "MAE": 23.833808696306328,
+        "MSE": 2472.1523691767848,
+        "RMSE": 49.7207438518048,
+        "MAPE": 4.604643141143819,
+        "mean_error_bias": 0.5123000827503195,
+        "directional_accuracy_pct": 23.698465242250975
+      },
+      "validation": {
+        "n": 1044,
+        "MAE": 63.84136973180077,
+        "MSE": 8520.894479980841,
+        "RMSE": 92.30869124833718,
+        "MAPE": 3.8006385798446987,
+        "mean_error_bias": 2.879339080459767,
+        "directional_accuracy_pct": 35.76222435282838
+      },
+      "test": {
+        "n": 847,
+        "MAE": 165.17240377804015,
+        "MSE": 71137.57571948052,
+        "RMSE": 266.71628319148516,
+        "MAPE": 5.588653347818099,
+        "mean_error_bias": 17.500635182998817,
+        "directional_accuracy_pct": 32.505910165484636
+      }
+    },
+    "20": {
+      "train": {
+        "n": 13283,
+        "MAE": 26.62831709704133,
+        "MSE": 2402.4911574810285,
+        "RMSE": 49.01521353091332,
+        "MAPE": 5.153127621429022,
+        "mean_error_bias": 0.9717428291801553,
+        "directional_accuracy_pct": 7.536515585002259
+      },
+      "validation": {
+        "n": 1044,
+        "MAE": 64.21364463601532,
+        "MSE": 8222.663738864943,
+        "RMSE": 90.67890459674148,
+        "MAPE": 3.8157695656183246,
+        "mean_error_bias": 5.514889846743298,
+        "directional_accuracy_pct": 31.831255992329815
+      },
+      "test": {
+        "n": 847,
+        "MAE": 169.56321015348286,
+        "MSE": 72078.68103484946,
+        "RMSE": 268.4747307193909,
+        "MAPE": 5.66574770282273,
+        "mean_error_bias": 35.43427981109798,
+        "directional_accuracy_pct": 29.432624113475175
+      }
+    },
+    "60": {
+      "train": {
+        "n": 13243,
+        "MAE": 29.377800838178658,
+        "MSE": 2982.3322031403363,
+        "RMSE": 54.61073340599205,
+        "MAPE": 5.675097768510319,
+        "mean_error_bias": 2.808236363865187,
+        "directional_accuracy_pct": 10.617731460504455
+      },
+      "validation": {
+        "n": 1044,
+        "MAE": 68.5886079182631,
+        "MSE": 9006.661491916775,
+        "RMSE": 94.9034324559274,
+        "MAPE": 4.048307904027234,
+        "mean_error_bias": 15.519549808429117,
+        "directional_accuracy_pct": 37.20038350910834
+      },
+      "test": {
+        "n": 847,
+        "MAE": 198.83110684769773,
+        "MSE": 94321.89028167377,
+        "RMSE": 307.118690869953,
+        "MAPE": 6.284441784669473,
+        "mean_error_bias": 112.01709071231798,
+        "directional_accuracy_pct": 34.86997635933806
+      }
+    }
+  },
+  "metrics_table": [
+    {
+      "window": 5,
+      "split": "train",
+      "n": 13298,
+      "MAE": 17.971951722063466,
+      "MSE": 1958.4689670269215,
+      "RMSE": 44.254592609433445,
+      "MAPE": 3.512952382928234,
+      "mean_error_bias": 0.28064596179876683,
+      "directional_accuracy_pct": 49.33443633902384
+    },
+    {
+      "window": 5,
+      "split": "validation",
+      "n": 1044,
+      "MAE": 56.864042145593885,
+      "MSE": 7979.51300421456,
+      "RMSE": 89.32811989633814,
+      "MAPE": 3.3843492552469447,
+      "mean_error_bias": 1.5569540229885124,
+      "directional_accuracy_pct": 35.57046979865772
+    },
+    {
+      "window": 5,
+      "split": "test",
+      "n": 847,
+      "MAE": 143.0416906729634,
+      "MSE": 56672.65004998347,
+      "RMSE": 238.06018157176868,
+      "MAPE": 4.897010188514494,
+      "mean_error_bias": 9.627886658795738,
+      "directional_accuracy_pct": 35.69739952718676
+    },
+    {
+      "window": 10,
+      "split": "train",
+      "n": 13293,
+      "MAE": 23.833808696306328,
+      "MSE": 2472.1523691767848,
+      "RMSE": 49.7207438518048,
+      "MAPE": 4.604643141143819,
+      "mean_error_bias": 0.5123000827503195,
+      "directional_accuracy_pct": 23.698465242250975
+    },
+    {
+      "window": 10,
+      "split": "validation",
+      "n": 1044,
+      "MAE": 63.84136973180077,
+      "MSE": 8520.894479980841,
+      "RMSE": 92.30869124833718,
+      "MAPE": 3.8006385798446987,
+      "mean_error_bias": 2.879339080459767,
+      "directional_accuracy_pct": 35.76222435282838
+    },
+    {
+      "window": 10,
+      "split": "test",
+      "n": 847,
+      "MAE": 165.17240377804015,
+      "MSE": 71137.57571948052,
+      "RMSE": 266.71628319148516,
+      "MAPE": 5.588653347818099,
+      "mean_error_bias": 17.500635182998817,
+      "directional_accuracy_pct": 32.505910165484636
+    },
+    {
+      "window": 20,
+      "split": "train",
+      "n": 13283,
+      "MAE": 26.62831709704133,
+      "MSE": 2402.4911574810285,
+      "RMSE": 49.01521353091332,
+      "MAPE": 5.153127621429022,
+      "mean_error_bias": 0.9717428291801553,
+      "directional_accuracy_pct": 7.536515585002259
+    },
+    {
+      "window": 20,
+      "split": "validation",
+      "n": 1044,
+      "MAE": 64.21364463601532,
+      "MSE": 8222.663738864943,
+      "RMSE": 90.67890459674148,
+      "MAPE": 3.8157695656183246,
+      "mean_error_bias": 5.514889846743298,
+      "directional_accuracy_pct": 31.831255992329815
+    },
+    {
+      "window": 20,
+      "split": "test",
+      "n": 847,
+      "MAE": 169.56321015348286,
+      "MSE": 72078.68103484946,
+      "RMSE": 268.4747307193909,
+      "MAPE": 5.66574770282273,
+      "mean_error_bias": 35.43427981109798,
+      "directional_accuracy_pct": 29.432624113475175
+    },
+    {
+      "window": 60,
+      "split": "train",
+      "n": 13243,
+      "MAE": 29.377800838178658,
+      "MSE": 2982.3322031403363,
+      "RMSE": 54.61073340599205,
+      "MAPE": 5.675097768510319,
+      "mean_error_bias": 2.808236363865187,
+      "directional_accuracy_pct": 10.617731460504455
+    },
+    {
+      "window": 60,
+      "split": "validation",
+      "n": 1044,
+      "MAE": 68.5886079182631,
+      "MSE": 9006.661491916775,
+      "RMSE": 94.9034324559274,
+      "MAPE": 4.048307904027234,
+      "mean_error_bias": 15.519549808429117,
+      "directional_accuracy_pct": 37.20038350910834
+    },
+    {
+      "window": 60,
+      "split": "test",
+      "n": 847,
+      "MAE": 198.83110684769773,
+      "MSE": 94321.89028167377,
+      "RMSE": 307.118690869953,
+      "MAPE": 6.284441784669473,
+      "mean_error_bias": 112.01709071231798,
+      "directional_accuracy_pct": 34.86997635933806
+    }
+  ],
+  "professor_static_holdout_metrics_by_window": {
+    "5": {
+      "validation": {
+        "n": 1044,
+        "MAE": 424.01670498084275,
+        "MSE": 220434.7035340995,
+        "RMSE": 469.5047428238606,
+        "MAPE": 23.690679635194765,
+        "mean_error_bias": 423.9977777777777,
+        "directional_accuracy_pct": 19.55896452540748
+      },
+      "test": {
+        "n": 847,
+        "MAE": 958.4911570247934,
+        "MSE": 1745736.498419244,
+        "RMSE": 1321.2632207169183,
+        "MAPE": 28.323875346796402,
+        "mean_error_bias": 958.4911570247934,
+        "directional_accuracy_pct": 28.01418439716312
+      }
+    },
+    "10": {
+      "validation": {
+        "n": 1044,
+        "MAE": 431.0777777777778,
+        "MSE": 226488.638467433,
+        "RMSE": 475.90822483692483,
+        "MAPE": 24.111167556653754,
+        "mean_error_bias": 431.0777777777778,
+        "directional_accuracy_pct": 19.55896452540748
+      },
+      "test": {
+        "n": 847,
+        "MAE": 961.2911570247937,
+        "MSE": 1751111.888898584,
+        "RMSE": 1323.2958433013323,
+        "MAPE": 28.433867097971437,
+        "mean_error_bias": 961.2911570247937,
+        "directional_accuracy_pct": 28.01418439716312
+      }
+    },
+    "20": {
+      "validation": {
+        "n": 1044,
+        "MAE": 433.79777777777764,
+        "MSE": 228841.09997854396,
+        "RMSE": 478.37338970572347,
+        "MAPE": 24.273279882300404,
+        "mean_error_bias": 433.79777777777764,
+        "directional_accuracy_pct": 19.55896452540748
+      },
+      "test": {
+        "n": 847,
+        "MAE": 971.6861570247935,
+        "MSE": 1771205.1880781285,
+        "RMSE": 1330.866329906249,
+        "MAPE": 28.8422114742087,
+        "mean_error_bias": 971.6861570247935,
+        "directional_accuracy_pct": 28.01418439716312
+      }
+    },
+    "60": {
+      "validation": {
+        "n": 1044,
+        "MAE": 450.781111111111,
+        "MSE": 243864.1981081736,
+        "RMSE": 493.8260808302591,
+        "MAPE": 25.285488582263365,
+        "mean_error_bias": 450.781111111111,
+        "directional_accuracy_pct": 19.55896452540748
+      },
+      "test": {
+        "n": 847,
+        "MAE": 1017.2028236914601,
+        "MSE": 1861732.784850397,
+        "RMSE": 1364.4532915605419,
+        "MAPE": 30.630232143607433,
+        "mean_error_bias": 1017.2028236914601,
+        "directional_accuracy_pct": 28.01418439716312
+      }
+    }
+  },
+  "best_moving_average_by_validation_rmse": {
+    "window": 5,
+    "selection_basis": "Lowest validation RMSE among moving-average windows only.",
+    "warning": "This is not the final project winner. Final selection happens only in Notebook 11 after all models are compared.",
+    "metrics": {
+      "window": 5,
+      "split": "validation",
+      "n": 1044,
+      "MAE": 56.864042145593885,
+      "MSE": 7979.51300421456,
+      "RMSE": 89.32811989633814,
+      "MAPE": 3.3843492552469447,
+      "mean_error_bias": 1.5569540229885124,
+      "directional_accuracy_pct": 35.57046979865772
+    }
+  },
+  "limitations": [
+    "Moving averages smooth short-term noise but lag during fast trend changes.",
+    "Window selection is sensitive to the validation period.",
+    "Moving averages do not directly use macro or financial explanatory variables.",
+    "This notebook does not claim any final winning model."
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "artifact_name": "naive_results",
+  "notebook": "04_naive_and_moving_average_forecast.ipynb",
+  "generated_at_utc": "2026-04-30T20:02:10.011724+00:00",
+  "model": {
+    "name": "Naive Forecast",
+    "category": "baseline",
+    "description": "One-step naive baseline where the forecast for date t equals the previous observed gold price."
+  },
+  "dataset": {
+    "source_file": "model_ready_univariate.csv",
+    "target": "gold_price",
+    "frequency_note": "Weekday-clean daily series; market holidays have not been removed.",
+    "window": {
+      "start": "1968-01-04",
+      "end": "2026-03-31"
+    },
+    "splits": {
+      "train": {
+        "start": "1968-01-04",
+        "end": "2018-12-31",
+        "rows": 13303
+      },
+      "validation": {
+        "start": "2019-01-01",
+        "end": "2022-12-30",
+        "rows": 1044
+      },
+      "test": {
+        "start": "2023-01-02",
+        "end": "2026-03-31",
+        "rows": 847
+      }
+    }
+  },
+  "evaluation_design": {
+    "primary_method": "one_step_roll_forward",
+    "primary_method_note": "For each date t, the forecast uses only gold prices available before date t.",
+    "professor_static_holdout_included": true,
+    "professor_static_holdout_note": "Included because the professor's Amtrak class example also shows validation forecasts created from the last training observation."
+  },
+  "metrics": {
+    "train": {
+      "n": 13302,
+      "MAE": 10.015263870094723,
+      "MSE": 1107.356185009773,
+      "RMSE": 33.276961775525315,
+      "MAPE": 1.9654143920349265,
+      "mean_error_bias": 0.0937453014584273,
+      "directional_accuracy_pct": 66.16043906473197
+    },
+    "validation": {
+      "n": 1044,
+      "MAE": 33.37088122605364,
+      "MSE": 4520.9137164750955,
+      "RMSE": 67.23774026895234,
+      "MAPE": 1.9559803583397088,
+      "mean_error_bias": 0.5197318007662834,
+      "directional_accuracy_pct": 35.47459252157239
+    },
+    "test": {
+      "n": 847,
+      "MAE": 76.6117945690673,
+      "MSE": 32723.436071900822,
+      "RMSE": 180.8962024805961,
+      "MAPE": 2.6875489357196383,
+      "mean_error_bias": 3.3557851239669416,
+      "directional_accuracy_pct": 34.39716312056738
+    }
+  },
+  "professor_static_holdout_metrics": {
+    "validation": {
+      "n": 1044,
+      "MAE": 419.763601532567,
+      "MSE": 216790.0251340996,
+      "RMSE": 465.6071575202636,
+      "MAPE": 23.43843520072894,
+      "mean_error_bias": 419.67777777777775,
+      "directional_accuracy_pct": 19.55896452540748
+    },
+    "test": {
+      "n": 847,
+      "MAE": 955.8111570247935,
+      "MSE": 1740606.1682175915,
+      "RMSE": 1319.3203432895255,
+      "MAPE": 28.218597527814595,
+      "mean_error_bias": 955.8111570247935,
+      "directional_accuracy_pct": 28.01418439716312
+    }
+  },
+  "limitations": [
+    "The naive model does not use trend, seasonality, macro factors, or structural gold drivers.",
+    "It is a baseline benchmark only, not a final forecasting claim.",
+    "Strong performance by naive models in financial series can reflect persistence rather than explanatory power."
+  ]
+}
