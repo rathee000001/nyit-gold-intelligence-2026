@@ -2,7 +2,7 @@
   "artifact_name": "page_arima",
   "notebook": "07_arima_forecasting.ipynb",
   "version": "v4_professor_style_arima_family_with_one_step_roll_forward",
-  "export_timestamp_utc": "2026-04-30T22:49:12.912099+00:00",
+  "export_timestamp_utc": "2026-04-30T22:52:18.762791+00:00",
   "page_title": "ARIMA Forecasting",
   "page_subtitle": "Classical univariate forecasting with professor-style trend diagnostics, ARIMA-family selection, and one-step roll-forward evaluation.",
   "model_type": "Classical univariate time-series model",
