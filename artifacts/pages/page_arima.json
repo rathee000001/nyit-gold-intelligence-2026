@@ -1,77 +1,139 @@
 {
   "artifact_name": "page_arima",
+  "notebook": "07_arima_forecasting.ipynb",
+  "version": "v2_professor_style",
+  "generated_at_utc": "2026-04-30T21:15:14.543075+00:00",
   "page_title": "ARIMA Forecasting",
-  "page_subtitle": "Professor-style classical univariate ARIMA forecast for gold price.",
-  "generated_at_utc": "2026-04-30T20:48:01.559801+00:00",
-  "source_artifacts": [
-    "artifacts/models/arima_results.json",
-    "artifacts/models/arima_diagnostics.json",
-    "artifacts/models/arima_forecast_path.json"
-  ],
-  "what_this_page_shows": [
-    "The locked long univariate Dataset A gold price series.",
-    "Stationarity and autocorrelation evidence used before ARIMA fitting.",
-    "Candidate ARIMA orders compared on validation-period accuracy.",
-    "The selected ARIMA order and its validation/test performance.",
-    "Forecast path and residual diagnostics for professor-style review."
-  ],
-  "dataset_window": {
-    "start": "1968-01-04",
-    "end": "2026-03-31",
+  "page_subtitle": "Classical univariate gold-price model with professor-style trend benchmarks, diagnostics, fitted values, static forecast, and one-step rolling evaluation.",
+  "model_badge": "Classical univariate benchmark",
+  "dataset": {
+    "source_file": "model_ready_univariate.csv",
     "target": "gold_price",
-    "cutoff": "2026-03-31"
-  },
-  "splits": {
-    "train": {
+    "frequency_note": "Weekday-clean daily series; market holidays have not been removed.",
+    "window": {
       "start": "1968-01-04",
-      "end": "2018-12-31",
-      "rows": 13303
-    },
-    "validation": {
-      "start": "2019-01-01",
-      "end": "2022-12-30",
-      "rows": 1044
-    },
-    "test": {
-      "start": "2023-01-02",
       "end": "2026-03-31",
-      "rows": 847
+      "cutoff": "2026-03-31"
+    },
+    "splits": {
+      "train": {
+        "start": "1968-01-04",
+        "end": "2018-12-31",
+        "rows": 13303
+      },
+      "validation": {
+        "start": "2019-01-01",
+        "end": "2022-12-30",
+        "rows": 1044
+      },
+      "test": {
+        "start": "2023-01-02",
+        "end": "2026-03-31",
+        "rows": 847
+      }
     }
   },
-  "model": {
-    "name": "ARIMA(0, 1, 0)",
-    "type": "classical_time_series",
-    "selected_order": [
-      0,
-      1,
-      0
-    ],
-    "selection_basis": "Validation RMSE only."
-  },
-  "candidate_leaderboard": [
+  "hero_cards": [
     {
-      "model": "ARIMA(0, 1, 0)",
+      "label": "Selected ARIMA Order",
+      "value": "(2, 1, 0)",
+      "note": "Selected using validation RMSE only."
+    },
+    {
+      "label": "Model Input",
+      "value": "gold_price only",
+      "note": "No macro factors are used in ARIMA."
+    },
+    {
+      "label": "Evaluation View",
+      "value": "Static + one-step rolling",
+      "note": "Rolling view is used to show professor-style sequential fit."
+    }
+  ],
+  "model_explanation": [
+    "ARIMA is a classical time-series model that forecasts gold price from its own history.",
+    "The notebook first builds trend benchmark models to match the professor's Amtrak workflow.",
+    "The final ARIMA order is selected using validation RMSE only.",
+    "The static multi-step forecast is shown separately from the one-step rolling forecast.",
+    "The one-step rolling path updates with each actual observation and therefore visually tracks the actual series more closely."
+  ],
+  "charts": [
+    {
+      "id": "gold_raw_series",
+      "title": "Gold Price Time Series",
+      "artifact": "generated_in_notebook_plot",
+      "description": "Raw gold_price series plotted before modeling."
+    },
+    {
+      "id": "professor_trend_benchmarks",
+      "title": "Trend Benchmark Fits",
+      "artifact": "generated_in_notebook_plot",
+      "description": "Linear, exponential/log, quadratic, and trend-plus-month diagnostic fits."
+    },
+    {
+      "id": "arima_acf_pacf",
+      "title": "ACF/PACF Diagnostics",
+      "artifact": "arima_diagnostics.json",
+      "description": "Autocorrelation and partial autocorrelation checks for ARIMA identification."
+    },
+    {
+      "id": "arima_professor_fit_and_rolling_path",
+      "title": "ARIMA Fitted Values and One-Step Rolling Forecast",
+      "artifact": "arima_forecast_path.json",
+      "json_path": "chart_data.professor_fit_and_rolling_path",
+      "description": "Main professor-style curve showing fitted values and one-step rolling test predictions."
+    },
+    {
+      "id": "arima_static_forecast_path",
+      "title": "ARIMA Static Multi-Step Forecast",
+      "artifact": "arima_forecast_path.json",
+      "json_path": "chart_data.static_forecast_path",
+      "description": "Static forecast path shown separately because long static horizons can flatten."
+    }
+  ],
+  "kpi_cards": [
+    {
+      "period": "validation_selection_period_static",
+      "n": 1044,
+      "mse": 216790.0251340996,
+      "mae": 419.763601532567,
+      "rmse": 465.6071575202636,
+      "mape": 23.43843520072894
+    },
+    {
+      "period": "test_holdout_period_static",
+      "n": 847,
+      "mse": 1742386.6083287797,
+      "mae": 956.7422647091815,
+      "rmse": 1319.9949273875184,
+      "mape": 28.25517660348385
+    },
+    {
+      "period": "test_holdout_period_one_step_rolling",
+      "n": 847,
+      "mse": 32334.663992565816,
+      "mae": 80.83601977491881,
+      "rmse": 179.8184195030248,
+      "mape": 2.829999198436334
+    }
+  ],
+  "candidate_order_table": [
+    {
+      "model": "ARIMA(2, 1, 0)",
       "order": [
-        0,
+        2,
         1,
         0
       ],
-      "fit_status": "success",
-      "aic": 130986.02815663323,
-      "bic": 130993.52375113258,
-      "hqic": 130988.5298125415,
-      "converged": true,
-      "validation_n": 1044,
-      "validation_mae": 419.763601532567,
-      "validation_mse": 216790.0251340996,
-      "validation_rmse": 465.6071575202636,
-      "validation_mape": 23.43843520072894,
-      "validation_bias_mean_error": 419.67777777777775,
-      "validation_directional_accuracy_pct": 40.99616858237548,
-      "validation_MAE": 419.763601532567,
-      "validation_MSE": 216790.0251340996,
-      "validation_RMSE": 465.6071575202636,
-      "validation_MAPE": 23.43843520072894
+      "status": "success",
+      "aic": 130842.90910831757,
+      "bic": 130865.3956662602,
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 216790.0251340996,
+      "mae": 419.763601532567,
+      "rmse": 465.6071575202636,
+      "mape": 23.43843520072894
     },
     {
       "model": "ARIMA(1, 1, 0)",
@@ -80,22 +142,32 @@
         1,
         0
       ],
-      "fit_status": "success",
+      "status": "success",
       "aic": 130907.41216879744,
       "bic": 130922.40335779615,
-      "hqic": 130912.41548061398,
-      "converged": true,
-      "validation_n": 1044,
-      "validation_mae": 419.763601532567,
-      "validation_mse": 216790.0251340996,
-      "validation_rmse": 465.6071575202636,
-      "validation_mape": 23.43843520072894,
-      "validation_bias_mean_error": 419.67777777777775,
-      "validation_directional_accuracy_pct": 40.99616858237548,
-      "validation_MAE": 419.763601532567,
-      "validation_MSE": 216790.0251340996,
-      "validation_RMSE": 465.6071575202636,
-      "validation_MAPE": 23.43843520072894
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 216790.0251340996,
+      "mae": 419.763601532567,
+      "rmse": 465.6071575202636,
+      "mape": 23.43843520072894
+    },
+    {
+      "model": "ARIMA(0, 1, 0)",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "status": "success",
+      "aic": 130986.02815663323,
+      "bic": 130993.52375113258,
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 216790.0251340996,
+      "mae": 419.763601532567,
+      "rmse": 465.6071575202636,
+      "mape": 23.43843520072894
     },
     {
       "model": "ARIMA(0, 1, 1)",
@@ -104,70 +176,15 @@
         1,
         1
       ],
-      "fit_status": "success",
+      "status": "success",
       "aic": 130886.3182343189,
       "bic": 130901.30927294731,
-      "hqic": 130891.32151446374,
-      "converged": true,
-      "validation_n": 1044,
-      "validation_mae": 419.76679151830325,
-      "validation_mse": 216792.76031464883,
-      "validation_rmse": 465.61009473018174,
-      "validation_mape": 23.43862405478551,
-      "validation_bias_mean_error": 419.68103643248287,
-      "validation_directional_accuracy_pct": 40.51724137931034,
-      "validation_MAE": 419.76679151830325,
-      "validation_MSE": 216792.76031464883,
-      "validation_RMSE": 465.61009473018174,
-      "validation_MAPE": 23.43862405478551
-    },
-    {
-      "model": "ARIMA(1, 1, 1)",
-      "order": [
-        1,
-        1,
-        1
-      ],
-      "fit_status": "success",
-      "aic": 129835.21268645496,
-      "bic": 129857.69924439759,
-      "hqic": 129842.71760667222,
-      "converged": true,
-      "validation_n": 1044,
-      "validation_mae": 440.444730877369,
-      "validation_mse": 234700.4571843078,
-      "validation_rmse": 484.4589324022293,
-      "validation_mape": 24.668431482387675,
-      "validation_bias_mean_error": 440.444730877369,
-      "validation_directional_accuracy_pct": 40.32567049808429,
-      "validation_MAE": 440.444730877369,
-      "validation_MSE": 234700.4571843078,
-      "validation_RMSE": 484.4589324022293,
-      "validation_MAPE": 24.668431482387675
-    },
-    {
-      "model": "ARIMA(2, 1, 0)",
-      "order": [
-        2,
-        1,
-        0
-      ],
-      "fit_status": "success",
-      "aic": 130842.90910831757,
-      "bic": 130865.3956662602,
-      "hqic": 130850.41402853483,
-      "converged": true,
-      "validation_n": 1044,
-      "validation_mae": 419.763601532567,
-      "validation_mse": 216790.0251340996,
-      "validation_rmse": 465.6071575202636,
-      "validation_mape": 23.43843520072894,
-      "validation_bias_mean_error": 419.67777777777775,
-      "validation_directional_accuracy_pct": 40.99616858237548,
-      "validation_MAE": 419.763601532567,
-      "validation_MSE": 216790.0251340996,
-      "validation_RMSE": 465.6071575202636,
-      "validation_MAPE": 23.43843520072894
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 216792.76031464883,
+      "mae": 419.76679151830325,
+      "rmse": 465.61009473018174,
+      "mape": 23.43862405478551
     },
     {
       "model": "ARIMA(0, 1, 2)",
@@ -176,22 +193,15 @@
         1,
         2
       ],
-      "fit_status": "success",
-      "aic": 130802.15934994856,
-      "bic": 130824.6456823188,
-      "hqic": 130809.66422265429,
-      "converged": true,
-      "validation_n": 1044,
-      "validation_mae": 420.02016447906794,
-      "validation_mse": 217010.11839765988,
-      "validation_rmse": 465.84344837902347,
-      "validation_mape": 23.453623382842384,
-      "validation_bias_mean_error": 419.9398646444904,
-      "validation_directional_accuracy_pct": 40.51724137931034,
-      "validation_MAE": 420.02016447906794,
-      "validation_MSE": 217010.11839765988,
-      "validation_RMSE": 465.84344837902347,
-      "validation_MAPE": 23.453623382842384
+      "status": "success",
+      "aic": 130802.15934994827,
+      "bic": 130824.64568231851,
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 217010.11839836914,
+      "mae": 420.0201644798945,
+      "rmse": 465.8434483797847,
+      "mape": 23.453623382891315
     },
     {
       "model": "ARIMA(2, 1, 1)",
@@ -200,73 +210,86 @@
         1,
         1
       ],
-      "fit_status": "success",
-      "aic": 129811.84621810068,
-      "bic": 129841.82829535751,
-      "hqic": 129821.85277839034,
-      "converged": true,
-      "validation_n": 1044,
-      "validation_mae": 440.1941346407371,
-      "validation_mse": 234473.28535041396,
-      "validation_rmse": 484.2244163096425,
-      "validation_mape": 24.653627872574955,
-      "validation_bias_mean_error": 440.1941346407371,
-      "validation_directional_accuracy_pct": 40.32567049808429,
-      "validation_MAE": 440.1941346407371,
-      "validation_MSE": 234473.28535041396,
-      "validation_RMSE": 484.2244163096425,
-      "validation_MAPE": 24.653627872574955
+      "status": "success",
+      "aic": 129811.84621810283,
+      "bic": 129841.82829535966,
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 234473.28581629213,
+      "mae": 440.19413516982223,
+      "rmse": 484.2244167906985,
+      "mape": 24.653627904106504
+    },
+    {
+      "model": "ARIMA(1, 1, 1)",
+      "order": [
+        1,
+        1,
+        1
+      ],
+      "status": "success",
+      "aic": 129835.21268645502,
+      "bic": 129857.69924439765,
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 234700.4571886059,
+      "mae": 440.4447308822258,
+      "rmse": 484.4589324066653,
+      "mape": 24.668431482676738
     }
   ],
-  "kpi_cards": [
+  "trend_benchmark_table": [
     {
-      "label": "Selected ARIMA Order",
-      "value": "ARIMA(0, 1, 0)",
-      "unit": "p,d,q"
+      "model": "exponential_log_trend",
+      "formula": "np.log(gold_price) ~ trend",
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 23333.868206338942,
+      "mae": 124.34387661476356,
+      "rmse": 152.75427393804384,
+      "mape": 7.409780054167428
     },
     {
-      "label": "Validation RMSE",
-      "value": 465.6071575202636,
-      "unit": "gold price units"
+      "model": "quadratic_trend",
+      "formula": "gold_price ~ trend + np.square(trend)",
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 50601.87206557138,
+      "mae": 192.80684169948668,
+      "rmse": 224.94859871884373,
+      "mape": 10.894848019774786
     },
     {
-      "label": "Test RMSE",
-      "value": 1319.3203432895255,
-      "unit": "gold price units"
+      "model": "quadratic_trend_plus_month",
+      "formula": "gold_price ~ trend + np.square(trend) + C(Month)",
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 50627.078778141724,
+      "mae": 193.32148082720605,
+      "rmse": 225.0046194595607,
+      "mape": 10.934022565367842
     },
     {
-      "label": "Training AIC",
-      "value": 130986.02815663323,
-      "unit": "AIC"
-    },
-    {
-      "label": "Training BIC",
-      "value": 130993.52375113258,
-      "unit": "BIC"
+      "model": "linear_trend",
+      "formula": "gold_price ~ trend",
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 310281.96424065274,
+      "mae": 526.0316018877975,
+      "rmse": 557.029590094326,
+      "mape": 29.92734058607651
     }
   ],
-  "primary_chart": {
-    "artifact": "artifacts/models/arima_forecast_path.json",
-    "x": "date",
-    "y_actual": "actual",
-    "y_forecast": "arima_forecast",
-    "lower_interval": "lower_95",
-    "upper_interval": "upper_95"
-  },
-  "diagnostics": {
-    "artifact": "artifacts/models/arima_diagnostics.json",
-    "contains": [
-      "parameter table",
-      "residual summary",
-      "Ljung-Box residual autocorrelation test",
-      "residual ACF values",
-      "ADF stationarity checks"
-    ]
-  },
   "limitations": [
-    "ARIMA is univariate and does not use macro, financial, or geopolitical factors.",
-    "The series is weekday-clean, not full exchange trading-calendar-clean, because market holidays have not been removed.",
-    "ARIMA order selection is based on validation RMSE among a professor-readable candidate set, not exhaustive automated search.",
-    "This notebook does not claim the final winning model; final selection happens in Notebook 11 after all models are compared."
+    "ARIMA is univariate and does not directly use macroeconomic factors.",
+    "Static multi-step forecasts may flatten over long daily horizons.",
+    "One-step rolling forecasts are evaluation paths, not a single long official future forecast.",
+    "Market holidays have not been removed; the dataset is weekday-clean.",
+    "Notebook 11 will compare ARIMA against other models before selecting an official model."
+  ],
+  "source_artifacts": [
+    "artifacts/models/arima_results.json",
+    "artifacts/models/arima_diagnostics.json",
+    "artifacts/models/arima_forecast_path.json"
   ]
 }

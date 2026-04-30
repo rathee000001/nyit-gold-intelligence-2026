@@ -1,17 +1,18 @@
 {
   "artifact_name": "arima_results",
   "notebook": "07_arima_forecasting.ipynb",
-  "generated_at_utc": "2026-04-30T20:48:01.559801+00:00",
+  "version": "v2_professor_style",
+  "generated_at_utc": "2026-04-30T21:15:14.543075+00:00",
   "model": {
-    "name": "ARIMA(0, 1, 0)",
-    "category": "classical_time_series",
+    "name": "ARIMA(2, 1, 0)",
+    "category": "classical_univariate_time_series",
     "selected_order": [
-      0,
+      2,
       1,
       0
     ],
     "description": "Univariate ARIMA model fit to gold_price using the long Dataset A history.",
-    "selection_basis": "Lowest validation RMSE among candidate ARIMA orders. Test results were not used for model order selection."
+    "selection_rule": "Selected by lowest validation RMSE. Test data was held out and not used for selection."
   },
   "dataset": {
     "source_file": "model_ready_univariate.csv",
@@ -40,103 +41,74 @@
       }
     }
   },
-  "evaluation_design": {
-    "validation_design": "Each candidate ARIMA model is fit on the training period and forecast over the validation period.",
-    "test_design": "After selecting the order by validation RMSE, the selected ARIMA order is refit on train + validation and forecast over the test period.",
-    "leakage_control": "The test period is never used for fitting or ARIMA order selection.",
-    "professor_style_reference": "Mirrors the uploaded Amtrak ARIMA notebook flow: plot series, partition data, inspect autocorrelation, fit ARIMA, forecast, evaluate errors."
-  },
-  "stationarity_checks": {
-    "level_train_series": {
-      "label": "train gold_price level",
-      "n": 13303,
-      "adf_statistic": -0.3128064304450516,
-      "p_value": 0.9236708728090972,
-      "used_lags": 41,
-      "nobs": 13261,
-      "critical_values": {
-        "1%": -3.4308432181787762,
-        "5%": -2.861757978999306,
-        "10%": -2.5668860253241945
-      },
-      "interpretation": "Lower p-value suggests stationarity; this is diagnostic, not a guarantee."
-    },
-    "first_difference_train_series": {
-      "label": "train gold_price first difference",
-      "n": 13302,
-      "adf_statistic": -24.099925620649735,
-      "p_value": 0.0,
-      "used_lags": 41,
-      "nobs": 13260,
-      "critical_values": {
-        "1%": -3.4308432553819217,
-        "5%": -2.8617579954399632,
-        "10%": -2.566886034075424
-      },
-      "interpretation": "Lower p-value suggests stationarity; this is diagnostic, not a guarantee."
-    }
-  },
-  "candidate_orders_tested": [
-    [
-      0,
-      1,
-      0
-    ],
-    [
-      1,
-      1,
-      0
-    ],
-    [
-      0,
-      1,
-      1
-    ],
-    [
-      1,
-      1,
-      1
-    ],
-    [
-      2,
-      1,
-      0
-    ],
-    [
-      0,
-      1,
-      2
-    ],
-    [
-      2,
-      1,
-      1
-    ]
+  "professor_style_steps": [
+    "Plot raw time series first.",
+    "Fit trend benchmark models before ARIMA.",
+    "Plot actual/fitted/forecast and residuals together.",
+    "Check ACF/PACF and ADF stationarity diagnostics.",
+    "Compare ARIMA orders on validation data.",
+    "Show static multi-step forecast separately from one-step rolling evaluation.",
+    "Use one-step rolling forecast path for professor-style curve-following evaluation."
   ],
-  "candidate_summary": [
+  "trend_benchmark_metrics": [
     {
-      "model": "ARIMA(0, 1, 0)",
+      "model": "exponential_log_trend",
+      "formula": "np.log(gold_price) ~ trend",
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 23333.868206338942,
+      "mae": 124.34387661476356,
+      "rmse": 152.75427393804384,
+      "mape": 7.409780054167428
+    },
+    {
+      "model": "quadratic_trend",
+      "formula": "gold_price ~ trend + np.square(trend)",
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 50601.87206557138,
+      "mae": 192.80684169948668,
+      "rmse": 224.94859871884373,
+      "mape": 10.894848019774786
+    },
+    {
+      "model": "quadratic_trend_plus_month",
+      "formula": "gold_price ~ trend + np.square(trend) + C(Month)",
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 50627.078778141724,
+      "mae": 193.32148082720605,
+      "rmse": 225.0046194595607,
+      "mape": 10.934022565367842
+    },
+    {
+      "model": "linear_trend",
+      "formula": "gold_price ~ trend",
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 310281.96424065274,
+      "mae": 526.0316018877975,
+      "rmse": 557.029590094326,
+      "mape": 29.92734058607651
+    }
+  ],
+  "candidate_order_results": [
+    {
+      "model": "ARIMA(2, 1, 0)",
       "order": [
-        0,
+        2,
         1,
         0
       ],
-      "fit_status": "success",
-      "aic": 130986.02815663323,
-      "bic": 130993.52375113258,
-      "hqic": 130988.5298125415,
-      "converged": true,
-      "validation_n": 1044,
-      "validation_mae": 419.763601532567,
-      "validation_mse": 216790.0251340996,
-      "validation_rmse": 465.6071575202636,
-      "validation_mape": 23.43843520072894,
-      "validation_bias_mean_error": 419.67777777777775,
-      "validation_directional_accuracy_pct": 40.99616858237548,
-      "validation_MAE": 419.763601532567,
-      "validation_MSE": 216790.0251340996,
-      "validation_RMSE": 465.6071575202636,
-      "validation_MAPE": 23.43843520072894
+      "status": "success",
+      "aic": 130842.90910831757,
+      "bic": 130865.3956662602,
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 216790.0251340996,
+      "mae": 419.763601532567,
+      "rmse": 465.6071575202636,
+      "mape": 23.43843520072894
     },
     {
       "model": "ARIMA(1, 1, 0)",
@@ -145,22 +117,32 @@
         1,
         0
       ],
-      "fit_status": "success",
+      "status": "success",
       "aic": 130907.41216879744,
       "bic": 130922.40335779615,
-      "hqic": 130912.41548061398,
-      "converged": true,
-      "validation_n": 1044,
-      "validation_mae": 419.763601532567,
-      "validation_mse": 216790.0251340996,
-      "validation_rmse": 465.6071575202636,
-      "validation_mape": 23.43843520072894,
-      "validation_bias_mean_error": 419.67777777777775,
-      "validation_directional_accuracy_pct": 40.99616858237548,
-      "validation_MAE": 419.763601532567,
-      "validation_MSE": 216790.0251340996,
-      "validation_RMSE": 465.6071575202636,
-      "validation_MAPE": 23.43843520072894
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 216790.0251340996,
+      "mae": 419.763601532567,
+      "rmse": 465.6071575202636,
+      "mape": 23.43843520072894
+    },
+    {
+      "model": "ARIMA(0, 1, 0)",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "status": "success",
+      "aic": 130986.02815663323,
+      "bic": 130993.52375113258,
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 216790.0251340996,
+      "mae": 419.763601532567,
+      "rmse": 465.6071575202636,
+      "mape": 23.43843520072894
     },
     {
       "model": "ARIMA(0, 1, 1)",
@@ -169,70 +151,15 @@
         1,
         1
       ],
-      "fit_status": "success",
+      "status": "success",
       "aic": 130886.3182343189,
       "bic": 130901.30927294731,
-      "hqic": 130891.32151446374,
-      "converged": true,
-      "validation_n": 1044,
-      "validation_mae": 419.76679151830325,
-      "validation_mse": 216792.76031464883,
-      "validation_rmse": 465.61009473018174,
-      "validation_mape": 23.43862405478551,
-      "validation_bias_mean_error": 419.68103643248287,
-      "validation_directional_accuracy_pct": 40.51724137931034,
-      "validation_MAE": 419.76679151830325,
-      "validation_MSE": 216792.76031464883,
-      "validation_RMSE": 465.61009473018174,
-      "validation_MAPE": 23.43862405478551
-    },
-    {
-      "model": "ARIMA(1, 1, 1)",
-      "order": [
-        1,
-        1,
-        1
-      ],
-      "fit_status": "success",
-      "aic": 129835.21268645496,
-      "bic": 129857.69924439759,
-      "hqic": 129842.71760667222,
-      "converged": true,
-      "validation_n": 1044,
-      "validation_mae": 440.444730877369,
-      "validation_mse": 234700.4571843078,
-      "validation_rmse": 484.4589324022293,
-      "validation_mape": 24.668431482387675,
-      "validation_bias_mean_error": 440.444730877369,
-      "validation_directional_accuracy_pct": 40.32567049808429,
-      "validation_MAE": 440.444730877369,
-      "validation_MSE": 234700.4571843078,
-      "validation_RMSE": 484.4589324022293,
-      "validation_MAPE": 24.668431482387675
-    },
-    {
-      "model": "ARIMA(2, 1, 0)",
-      "order": [
-        2,
-        1,
-        0
-      ],
-      "fit_status": "success",
-      "aic": 130842.90910831757,
-      "bic": 130865.3956662602,
-      "hqic": 130850.41402853483,
-      "converged": true,
-      "validation_n": 1044,
-      "validation_mae": 419.763601532567,
-      "validation_mse": 216790.0251340996,
-      "validation_rmse": 465.6071575202636,
-      "validation_mape": 23.43843520072894,
-      "validation_bias_mean_error": 419.67777777777775,
-      "validation_directional_accuracy_pct": 40.99616858237548,
-      "validation_MAE": 419.763601532567,
-      "validation_MSE": 216790.0251340996,
-      "validation_RMSE": 465.6071575202636,
-      "validation_MAPE": 23.43843520072894
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 216792.76031464883,
+      "mae": 419.76679151830325,
+      "rmse": 465.61009473018174,
+      "mape": 23.43862405478551
     },
     {
       "model": "ARIMA(0, 1, 2)",
@@ -241,22 +168,15 @@
         1,
         2
       ],
-      "fit_status": "success",
-      "aic": 130802.15934994856,
-      "bic": 130824.6456823188,
-      "hqic": 130809.66422265429,
-      "converged": true,
-      "validation_n": 1044,
-      "validation_mae": 420.02016447906794,
-      "validation_mse": 217010.11839765988,
-      "validation_rmse": 465.84344837902347,
-      "validation_mape": 23.453623382842384,
-      "validation_bias_mean_error": 419.9398646444904,
-      "validation_directional_accuracy_pct": 40.51724137931034,
-      "validation_MAE": 420.02016447906794,
-      "validation_MSE": 217010.11839765988,
-      "validation_RMSE": 465.84344837902347,
-      "validation_MAPE": 23.453623382842384
+      "status": "success",
+      "aic": 130802.15934994827,
+      "bic": 130824.64568231851,
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 217010.11839836914,
+      "mae": 420.0201644798945,
+      "rmse": 465.8434483797847,
+      "mape": 23.453623382891315
     },
     {
       "model": "ARIMA(2, 1, 1)",
@@ -265,143 +185,185 @@
         1,
         1
       ],
-      "fit_status": "success",
-      "aic": 129811.84621810068,
-      "bic": 129841.82829535751,
-      "hqic": 129821.85277839034,
-      "converged": true,
-      "validation_n": 1044,
-      "validation_mae": 440.1941346407371,
-      "validation_mse": 234473.28535041396,
-      "validation_rmse": 484.2244163096425,
-      "validation_mape": 24.653627872574955,
-      "validation_bias_mean_error": 440.1941346407371,
-      "validation_directional_accuracy_pct": 40.32567049808429,
-      "validation_MAE": 440.1941346407371,
-      "validation_MSE": 234473.28535041396,
-      "validation_RMSE": 484.2244163096425,
-      "validation_MAPE": 24.653627872574955
+      "status": "success",
+      "aic": 129811.84621810283,
+      "bic": 129841.82829535966,
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 234473.28581629213,
+      "mae": 440.19413516982223,
+      "rmse": 484.2244167906985,
+      "mape": 24.653627904106504
+    },
+    {
+      "model": "ARIMA(1, 1, 1)",
+      "order": [
+        1,
+        1,
+        1
+      ],
+      "status": "success",
+      "aic": 129835.21268645502,
+      "bic": 129857.69924439765,
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 234700.4571886059,
+      "mae": 440.4447308822258,
+      "rmse": 484.4589324066653,
+      "mape": 24.668431482676738
     }
   ],
-  "selected_model_fit_stats": {
-    "selected_order": [
-      0,
-      1,
-      0
-    ],
-    "selection_basis": "Lowest validation RMSE among candidate ARIMA models.",
-    "train_fit_aic": 130986.02815663323,
-    "train_fit_bic": 130993.52375113258,
-    "train_fit_hqic": 130988.5298125415,
-    "train_fit_log_likelihood": -65492.01407831661,
-    "train_fit_converged": true,
-    "train_validation_refit_aic": 144170.28274448833,
-    "train_validation_refit_bic": 144177.85390121673,
-    "train_validation_refit_hqic": 144172.80025262517,
-    "train_validation_refit_log_likelihood": -72084.14137224416,
-    "train_validation_refit_converged": true
-  },
-  "metrics": {
-    "train_fit": {
-      "n": 13298,
-      "mae": 10.018099714242743,
-      "mse": 1107.6890758384718,
-      "rmse": 33.281963220917,
-      "mape": 1.9655549958019918,
-      "bias_mean_error": 0.09364190103775004,
-      "mean_actual": 523.6505940742968,
-      "mean_prediction": 523.5569521732591,
-      "directional_accuracy_pct": 68.65694089336742,
-      "MAE": 10.018099714242743,
-      "MSE": 1107.6890758384718,
-      "RMSE": 33.281963220917,
-      "MAPE": 1.9655549958019918
-    },
-    "validation": {
+  "candidate_order_results_all_attempts": [
+    {
+      "model": "ARIMA(0, 1, 0)",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "status": "success",
+      "aic": 130986.02815663323,
+      "bic": 130993.52375113258,
+      "period": "validation_selection_period",
       "n": 1044,
-      "mae": 419.763601532567,
       "mse": 216790.0251340996,
+      "mae": 419.763601532567,
       "rmse": 465.6071575202636,
-      "mape": 23.43843520072894,
-      "bias_mean_error": 419.67777777777775,
-      "mean_actual": 1704.3777777777777,
-      "mean_prediction": 1284.7000000000003,
-      "directional_accuracy_pct": 40.99616858237548,
-      "MAE": 419.763601532567,
-      "MSE": 216790.0251340996,
-      "RMSE": 465.6071575202636,
-      "MAPE": 23.43843520072894
-    },
-    "test": {
-      "n": 847,
-      "mae": 955.8111570247935,
-      "mse": 1740606.1682175915,
-      "rmse": 1319.3203432895255,
-      "mape": 28.218597527814595,
-      "bias_mean_error": 955.8111570247935,
-      "mean_actual": 2783.111157024793,
-      "mean_prediction": 1827.2999999999995,
-      "directional_accuracy_pct": 31.16883116883117,
-      "MAE": 955.8111570247935,
-      "MSE": 1740606.1682175915,
-      "RMSE": 1319.3203432895255,
-      "MAPE": 28.218597527814595
-    }
-  },
-  "metrics_table": [
-    {
-      "split": "train_fit",
-      "n": 13298,
-      "mae": 10.018099714242743,
-      "mse": 1107.6890758384718,
-      "rmse": 33.281963220917,
-      "mape": 1.9655549958019918,
-      "bias_mean_error": 0.09364190103775004,
-      "mean_actual": 523.6505940742968,
-      "mean_prediction": 523.5569521732591,
-      "directional_accuracy_pct": 68.65694089336742,
-      "MAE": 10.018099714242743,
-      "MSE": 1107.6890758384718,
-      "RMSE": 33.281963220917,
-      "MAPE": 1.9655549958019918
+      "mape": 23.43843520072894
     },
     {
-      "split": "validation",
+      "model": "ARIMA(1, 1, 0)",
+      "order": [
+        1,
+        1,
+        0
+      ],
+      "status": "success",
+      "aic": 130907.41216879744,
+      "bic": 130922.40335779615,
+      "period": "validation_selection_period",
       "n": 1044,
-      "mae": 419.763601532567,
       "mse": 216790.0251340996,
+      "mae": 419.763601532567,
       "rmse": 465.6071575202636,
-      "mape": 23.43843520072894,
-      "bias_mean_error": 419.67777777777775,
-      "mean_actual": 1704.3777777777777,
-      "mean_prediction": 1284.7000000000003,
-      "directional_accuracy_pct": 40.99616858237548,
-      "MAE": 419.763601532567,
-      "MSE": 216790.0251340996,
-      "RMSE": 465.6071575202636,
-      "MAPE": 23.43843520072894
+      "mape": 23.43843520072894
     },
     {
-      "split": "test",
-      "n": 847,
-      "mae": 955.8111570247935,
-      "mse": 1740606.1682175915,
-      "rmse": 1319.3203432895255,
-      "mape": 28.218597527814595,
-      "bias_mean_error": 955.8111570247935,
-      "mean_actual": 2783.111157024793,
-      "mean_prediction": 1827.2999999999995,
-      "directional_accuracy_pct": 31.16883116883117,
-      "MAE": 955.8111570247935,
-      "MSE": 1740606.1682175915,
-      "RMSE": 1319.3203432895255,
-      "MAPE": 28.218597527814595
+      "model": "ARIMA(0, 1, 1)",
+      "order": [
+        0,
+        1,
+        1
+      ],
+      "status": "success",
+      "aic": 130886.3182343189,
+      "bic": 130901.30927294731,
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 216792.76031464883,
+      "mae": 419.76679151830325,
+      "rmse": 465.61009473018174,
+      "mape": 23.43862405478551
+    },
+    {
+      "model": "ARIMA(1, 1, 1)",
+      "order": [
+        1,
+        1,
+        1
+      ],
+      "status": "success",
+      "aic": 129835.21268645502,
+      "bic": 129857.69924439765,
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 234700.4571886059,
+      "mae": 440.4447308822258,
+      "rmse": 484.4589324066653,
+      "mape": 24.668431482676738
+    },
+    {
+      "model": "ARIMA(2, 1, 0)",
+      "order": [
+        2,
+        1,
+        0
+      ],
+      "status": "success",
+      "aic": 130842.90910831757,
+      "bic": 130865.3956662602,
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 216790.0251340996,
+      "mae": 419.763601532567,
+      "rmse": 465.6071575202636,
+      "mape": 23.43843520072894
+    },
+    {
+      "model": "ARIMA(0, 1, 2)",
+      "order": [
+        0,
+        1,
+        2
+      ],
+      "status": "success",
+      "aic": 130802.15934994827,
+      "bic": 130824.64568231851,
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 217010.11839836914,
+      "mae": 420.0201644798945,
+      "rmse": 465.8434483797847,
+      "mape": 23.453623382891315
+    },
+    {
+      "model": "ARIMA(2, 1, 1)",
+      "order": [
+        2,
+        1,
+        1
+      ],
+      "status": "success",
+      "aic": 129811.84621810283,
+      "bic": 129841.82829535966,
+      "period": "validation_selection_period",
+      "n": 1044,
+      "mse": 234473.28581629213,
+      "mae": 440.19413516982223,
+      "rmse": 484.2244167906985,
+      "mape": 24.653627904106504
     }
   ],
-  "limitations": [
-    "ARIMA is univariate and does not use macro, financial, or geopolitical factors.",
-    "The series is weekday-clean, not full exchange trading-calendar-clean, because market holidays have not been removed.",
-    "ARIMA order selection is based on validation RMSE among a professor-readable candidate set, not exhaustive automated search.",
-    "This notebook does not claim the final winning model; final selection happens in Notebook 11 after all models are compared."
+  "final_metrics": [
+    {
+      "period": "validation_selection_period_static",
+      "n": 1044,
+      "mse": 216790.0251340996,
+      "mae": 419.763601532567,
+      "rmse": 465.6071575202636,
+      "mape": 23.43843520072894
+    },
+    {
+      "period": "test_holdout_period_static",
+      "n": 847,
+      "mse": 1742386.6083287797,
+      "mae": 956.7422647091815,
+      "rmse": 1319.9949273875184,
+      "mape": 28.25517660348385
+    },
+    {
+      "period": "test_holdout_period_one_step_rolling",
+      "n": 847,
+      "mse": 32334.663992565816,
+      "mae": 80.83601977491881,
+      "rmse": 179.8184195030248,
+      "mape": 2.829999198436334
+    }
+  ],
+  "notes": [
+    "ARIMA uses gold_price only and does not use macro factor columns.",
+    "Static multi-step forecasts can flatten over long horizons because the model is not updated with future actual values.",
+    "One-step rolling forecasts update the model state after each actual value becomes available, which is why this path visually follows the actual series more closely.",
+    "This notebook does not claim ARIMA is the final winner; Notebook 11 will compare all models."
   ]
 }

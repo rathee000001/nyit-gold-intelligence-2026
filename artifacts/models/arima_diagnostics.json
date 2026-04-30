@@ -1,121 +1,351 @@
 {
   "artifact_name": "arima_diagnostics",
   "notebook": "07_arima_forecasting.ipynb",
-  "generated_at_utc": "2026-04-30T20:48:01.559801+00:00",
-  "selected_model": "ARIMA(0, 1, 0)",
-  "selected_order": [
-    0,
-    1,
-    0
-  ],
-  "parameter_table": [
-    {
-      "term": "sigma2",
-      "coefficient": 1107.2729439224233,
-      "std_error": 2.597299030858234,
-      "p_value": 0.0
-    }
-  ],
-  "residual_summary": {
-    "n": 13298,
-    "mean": 0.09364190103775004,
-    "std": 33.28308294098802,
-    "min": -419.0,
-    "max": 450.0,
-    "skew": -0.4206185294947025,
-    "kurtosis": 52.65326829828832
+  "version": "v2_professor_style",
+  "generated_at_utc": "2026-04-30T21:15:14.543075+00:00",
+  "model": {
+    "name": "ARIMA(2, 1, 0)",
+    "selected_order": [
+      2,
+      1,
+      0
+    ],
+    "aic": 144023.63793219137,
+    "bic": 144046.35119323723,
+    "log_likelihood": -72008.81896609569
   },
-  "ljung_box": [
-    {
-      "lag": 10,
-      "lb_stat": 404.0282541364824,
-      "lb_pvalue": 1.3071841801631236e-80
+  "dataset": {
+    "source_file": "model_ready_univariate.csv",
+    "target": "gold_price",
+    "frequency_note": "Weekday-clean daily series; market holidays have not been removed.",
+    "window": {
+      "start": "1968-01-04",
+      "end": "2026-03-31",
+      "cutoff": "2026-03-31"
     },
-    {
-      "lag": 20,
-      "lb_stat": 777.5446899413627,
-      "lb_pvalue": 8.240549643229188e-152
-    },
-    {
-      "lag": 40,
-      "lb_stat": 2952.827505155469,
-      "lb_pvalue": 0.0
+    "splits": {
+      "train": {
+        "start": "1968-01-04",
+        "end": "2018-12-31",
+        "rows": 13303
+      },
+      "validation": {
+        "start": "2019-01-01",
+        "end": "2022-12-30",
+        "rows": 1044
+      },
+      "test": {
+        "start": "2023-01-02",
+        "end": "2026-03-31",
+        "rows": 847
+      }
     }
-  ],
-  "residual_acf_lags_0_to_40": [
-    1.0,
-    -0.07774237639821241,
-    -0.05934116222909486,
-    -0.02514280340447051,
-    -0.07905830590012271,
-    -0.09093023149939367,
-    -0.040307220202758454,
-    -0.05126310998205574,
-    -0.03645217509164085,
-    -0.00845757041236218,
-    0.0004206378003826984,
-    -0.0005587926436319534,
-    -0.005508470876401164,
-    -0.013041969533898879,
-    -0.041405628823584915,
-    -0.07157823021645686,
-    -0.06410471018592073,
-    -0.04801776835850499,
-    -0.044673488128050866,
-    -0.07062840204791201,
-    0.08723027625373905,
-    0.18940609111926654,
-    0.24922452248657298,
-    0.17936844486360692,
-    -0.05254833731089355,
-    -0.0550468537845486,
-    -0.05196627131230316,
-    -0.055918628370812115,
-    -0.06905189128570345,
-    -0.02560681871289511,
-    -0.0346822077241505,
-    -3.130917771285209e-05,
-    -0.00045453234417742344,
-    -0.00038310099224285097,
-    -0.0034232322365286903,
-    -0.02820888080394864,
-    -0.04652563559858294,
-    -0.05888426794914747,
-    -0.04735853626130712,
-    -0.060156814501847955,
-    -0.050527394164065625
-  ],
-  "stationarity_checks": {
-    "level_train_series": {
-      "label": "train gold_price level",
-      "n": 13303,
-      "adf_statistic": -0.3128064304450516,
-      "p_value": 0.9236708728090972,
+  },
+  "adf_stationarity_tests": [
+    {
+      "series": "train_gold_price_level",
+      "adf_statistic": -0.3128064304450462,
+      "p_value": 0.923670872809098,
       "used_lags": 41,
-      "nobs": 13261,
+      "n_obs": 13261,
       "critical_values": {
         "1%": -3.4308432181787762,
         "5%": -2.861757978999306,
         "10%": -2.5668860253241945
       },
-      "interpretation": "Lower p-value suggests stationarity; this is diagnostic, not a guarantee."
+      "interpretation": "not_stationary_by_5pct_rule"
     },
-    "first_difference_train_series": {
-      "label": "train gold_price first difference",
-      "n": 13302,
-      "adf_statistic": -24.099925620649735,
+    {
+      "series": "train_gold_price_first_difference",
+      "adf_statistic": -24.099925620650083,
       "p_value": 0.0,
       "used_lags": 41,
-      "nobs": 13260,
+      "n_obs": 13260,
       "critical_values": {
         "1%": -3.4308432553819217,
         "5%": -2.8617579954399632,
         "10%": -2.566886034075424
       },
-      "interpretation": "Lower p-value suggests stationarity; this is diagnostic, not a guarantee."
+      "interpretation": "stationary_by_5pct_rule"
+    }
+  ],
+  "ljung_box_tests": [
+    {
+      "residual_series": "train_validation_fitted_residuals",
+      "lag": 20,
+      "lb_stat": 1110.8303424992976,
+      "p_value": 8.61260481576994e-223
+    },
+    {
+      "residual_series": "test_one_step_rolling_residuals",
+      "lag": 20,
+      "lb_stat": 105.06241646220141,
+      "p_value": 1.5475439146998462e-13
+    }
+  ],
+  "parameter_table": [
+    {
+      "parameter": "ar.L1",
+      "coefficient": -0.07367765416555046,
+      "std_error": 0.004980362024416943,
+      "z_value": -14.793634238702957,
+      "p_value": 1.6101961296629506e-49
+    },
+    {
+      "parameter": "ar.L2",
+      "coefficient": -0.07154978660123837,
+      "std_error": 0.00512034131257803,
+      "z_value": -13.973636176455182,
+      "p_value": 2.2579763214570115e-44
+    },
+    {
+      "parameter": "sigma2",
+      "coefficient": 1342.6402441014852,
+      "std_error": 3.373499892993462,
+      "z_value": 397.99623141831455,
+      "p_value": 0.0
+    }
+  ],
+  "trend_model_formulas": [
+    {
+      "model": "linear_trend",
+      "formula": "gold_price ~ trend"
+    },
+    {
+      "model": "exponential_log_trend",
+      "formula": "np.log(gold_price) ~ trend"
+    },
+    {
+      "model": "quadratic_trend",
+      "formula": "gold_price ~ trend + np.square(trend)"
+    },
+    {
+      "model": "quadratic_trend_plus_month",
+      "formula": "gold_price ~ trend + np.square(trend) + C(Month)"
+    }
+  ],
+  "residual_summary": {
+    "train_validation_fitted": {
+      "mean": 0.14297803497899436,
+      "std": 36.640508699789756,
+      "min": -419.0,
+      "max": 450.0
+    },
+    "test_static": {
+      "mean": 956.7422647091815,
+      "std": 909.9496827196282,
+      "min": 0.9308996470122111,
+      "max": 3588.110899647012
+    },
+    "test_one_step_rolling": {
+      "mean": 3.815811512322192,
+      "std": 179.88414884916924,
+      "min": -1284.914899424136,
+      "max": 807.6999999999998
     }
   },
-  "model_summary_text_train_fit": "                               SARIMAX Results                                \n==============================================================================\nDep. Variable:             gold_price   No. Observations:                13303\nModel:                 ARIMA(0, 1, 0)   Log Likelihood              -65492.014\nDate:                Thu, 30 Apr 2026   AIC                         130986.028\nTime:                        20:48:01   BIC                         130993.524\nSample:                    01-04-1968   HQIC                        130988.530\n                         - 12-31-2018                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P>|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nsigma2      1107.2729      2.597    426.317      0.000    1102.182    1112.364\n===================================================================================\nLjung-Box (L1) (Q):                  80.41   Jarque-Bera (JB):           1536411.63\nProb(Q):                              0.00   Prob(JB):                         0.00\nHeteroskedasticity (H):               6.27   Skew:                            -0.42\nProb(H) (two-sided):                  0.00   Kurtosis:                        55.65\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step).",
-  "model_summary_text_train_validation_refit": "                               SARIMAX Results                                \n==============================================================================\nDep. Variable:             gold_price   No. Observations:                14347\nModel:                 ARIMA(0, 1, 0)   Log Likelihood              -72084.141\nDate:                Thu, 30 Apr 2026   AIC                         144170.283\nTime:                        20:48:01   BIC                         144177.854\nSample:                    01-04-1968   HQIC                        144172.800\n                         - 12-30-2022                                         \nCovariance Type:                  opg                                         \n==============================================================================\n                 coef    std err          z      P>|z|      [0.025      0.975]\n------------------------------------------------------------------------------\nsigma2      1355.6762      3.435    394.635      0.000    1348.943    1362.409\n===================================================================================\nLjung-Box (L1) (Q):                  67.86   Jarque-Bera (JB):           1025766.06\nProb(Q):                              0.00   Prob(JB):                         0.00\nHeteroskedasticity (H):               8.40   Skew:                            -0.37\nProb(H) (two-sided):                  0.00   Kurtosis:                        44.42\n===================================================================================\n\nWarnings:\n[1] Covariance matrix calculated using the outer product of gradients (complex-step).",
-  "diagnostic_note": "Residual diagnostics are based on the training fit. Test-period performance is kept out-of-sample."
+  "worst_absolute_errors_test_rolling": [
+    {
+      "date": "2025-02-13",
+      "actual": 2958.8,
+      "prediction": 4243.714899424136,
+      "residual": -1284.914899424136,
+      "abs_error": 1284.914899424136,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2025-12-02",
+      "actual": 2936.5,
+      "prediction": 4209.0,
+      "residual": -1272.5,
+      "abs_error": 1272.5,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2025-03-13",
+      "actual": 3001.5,
+      "prediction": 4227.504840010792,
+      "residual": -1226.0048400107917,
+      "abs_error": 1226.0048400107917,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2025-01-13",
+      "actual": 2723.8,
+      "prediction": 3882.0151993697827,
+      "residual": -1158.2151993697826,
+      "abs_error": 1158.2151993697826,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2025-11-03",
+      "actual": 2929.0,
+      "prediction": 4040.6771774540857,
+      "residual": -1111.6771774540857,
+      "abs_error": 1111.6771774540857,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2025-10-02",
+      "actual": 2938.1,
+      "prediction": 3896.6599825756557,
+      "residual": -958.5599825756558,
+      "abs_error": 958.5599825756558,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2025-12-11",
+      "actual": 4218.5,
+      "prediction": 3410.8,
+      "residual": 807.6999999999998,
+      "abs_error": 807.6999999999998,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2025-09-01",
+      "actual": 2696.8,
+      "prediction": 3475.644824112127,
+      "residual": -778.8448241121268,
+      "abs_error": 778.8448241121268,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2025-08-13",
+      "actual": 3422.6,
+      "prediction": 4183.700984319231,
+      "residual": -761.100984319231,
+      "abs_error": 761.100984319231,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2024-11-01",
+      "actual": 2056.1,
+      "prediction": 2799.197882695704,
+      "residual": -743.0978826957039,
+      "abs_error": 743.0978826957039,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    }
+  ],
+  "best_absolute_errors_test_rolling": [
+    {
+      "date": "2023-10-13",
+      "actual": 1870.0,
+      "prediction": 1870.0,
+      "residual": 0.0,
+      "abs_error": 0.0,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2026-01-07",
+      "actual": 4364.45,
+      "prediction": 4364.45,
+      "residual": 0.0,
+      "abs_error": 0.0,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2026-01-08",
+      "actual": 4364.45,
+      "prediction": 4364.45,
+      "residual": 0.0,
+      "abs_error": 0.0,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2026-01-09",
+      "actual": 4364.45,
+      "prediction": 4364.45,
+      "residual": 0.0,
+      "abs_error": 0.0,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2025-01-02",
+      "actual": 2640.7,
+      "prediction": 2640.7,
+      "residual": 0.0,
+      "abs_error": 0.0,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2025-01-03",
+      "actual": 2640.7,
+      "prediction": 2640.7,
+      "residual": 0.0,
+      "abs_error": 0.0,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2026-01-12",
+      "actual": 4364.45,
+      "prediction": 4364.45,
+      "residual": 0.0,
+      "abs_error": 0.0,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2023-01-16",
+      "actual": 2005.9,
+      "prediction": 2005.9,
+      "residual": 0.0,
+      "abs_error": 0.0,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2026-01-06",
+      "actual": 4364.45,
+      "prediction": 4364.45,
+      "residual": 0.0,
+      "abs_error": 0.0,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    },
+    {
+      "date": "2024-01-15",
+      "actual": 2681.7,
+      "prediction": 2681.7,
+      "residual": 0.0,
+      "abs_error": 0.0,
+      "period": "test_holdout_period",
+      "model": "ARIMA(2, 1, 0)",
+      "path_type": "one_step_rolling_test_forecast"
+    }
+  ]
 }
