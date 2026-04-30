@@ -1,291 +1,136 @@
 {
   "artifact_name": "page_arima",
   "notebook": "07_arima_forecasting.ipynb",
-  "version": "v2_professor_style",
-  "generated_at_utc": "2026-04-30T21:15:14.543075+00:00",
+  "version": "v4_professor_style_arima_family_with_one_step_roll_forward",
+  "export_timestamp_utc": "2026-04-30T22:49:12.912099+00:00",
   "page_title": "ARIMA Forecasting",
-  "page_subtitle": "Classical univariate gold-price model with professor-style trend benchmarks, diagnostics, fitted values, static forecast, and one-step rolling evaluation.",
-  "model_badge": "Classical univariate benchmark",
-  "dataset": {
-    "source_file": "model_ready_univariate.csv",
+  "page_subtitle": "Classical univariate forecasting with professor-style trend diagnostics, ARIMA-family selection, and one-step roll-forward evaluation.",
+  "model_type": "Classical univariate time-series model",
+  "dataset_window": {
+    "name": "Dataset A — Long Univariate",
     "target": "gold_price",
-    "frequency_note": "Weekday-clean daily series; market holidays have not been removed.",
-    "window": {
+    "start": "1968-01-04",
+    "end": "2026-03-31",
+    "official_cutoff": "2026-03-31"
+  },
+  "split_summary": {
+    "train": {
       "start": "1968-01-04",
-      "end": "2026-03-31",
-      "cutoff": "2026-03-31"
+      "end": "2018-12-31",
+      "rows": 13303
     },
-    "splits": {
-      "train": {
-        "start": "1968-01-04",
-        "end": "2018-12-31",
-        "rows": 13303
-      },
-      "validation": {
-        "start": "2019-01-01",
-        "end": "2022-12-30",
-        "rows": 1044
-      },
-      "test": {
-        "start": "2023-01-02",
-        "end": "2026-03-31",
-        "rows": 847
-      }
+    "validation": {
+      "start": "2019-01-01",
+      "end": "2022-12-30",
+      "rows": 1044
+    },
+    "test": {
+      "start": "2023-01-02",
+      "end": "2026-03-31",
+      "rows": 847
     }
   },
-  "hero_cards": [
+  "selected_model": {
+    "model_key": "direct_arima_rolling_(2, 1, 1)",
+    "display_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+    "model_family": "arima_family",
+    "candidate_type": "direct_arima_rolling",
+    "forecast_mode": "one_step_rolling",
+    "target_scale": "price",
+    "order": [
+      2,
+      1,
+      1
+    ],
+    "formula": null,
+    "selection_rule": "Lowest validation RMSE among ARIMA-family candidates only. Deterministic trend benchmarks are diagnostic and cannot be selected as the ARIMA model."
+  },
+  "kpi_cards": [
     {
-      "label": "Selected ARIMA Order",
-      "value": "(2, 1, 0)",
-      "note": "Selected using validation RMSE only."
+      "label": "Validation RMSE",
+      "value": 63.30395349646531,
+      "period": "validation",
+      "mode": "one_step_rolling"
     },
     {
-      "label": "Model Input",
-      "value": "gold_price only",
-      "note": "No macro factors are used in ARIMA."
+      "label": "Validation MAE",
+      "value": 34.92506209724155,
+      "period": "validation",
+      "mode": "one_step_rolling"
     },
     {
-      "label": "Evaluation View",
-      "value": "Static + one-step rolling",
-      "note": "Rolling view is used to show professor-style sequential fit."
+      "label": "Validation MAPE",
+      "value": 2.05343947804817,
+      "period": "validation",
+      "mode": "one_step_rolling"
+    },
+    {
+      "label": "Test RMSE",
+      "value": 173.8306655765098,
+      "period": "test",
+      "mode": "one_step_rolling"
+    },
+    {
+      "label": "Test MAE",
+      "value": 90.06936008027932,
+      "period": "test",
+      "mode": "one_step_rolling"
+    },
+    {
+      "label": "Test MAPE",
+      "value": 3.0794405113156684,
+      "period": "test",
+      "mode": "one_step_rolling"
     }
   ],
-  "model_explanation": [
-    "ARIMA is a classical time-series model that forecasts gold price from its own history.",
-    "The notebook first builds trend benchmark models to match the professor's Amtrak workflow.",
-    "The final ARIMA order is selected using validation RMSE only.",
-    "The static multi-step forecast is shown separately from the one-step rolling forecast.",
-    "The one-step rolling path updates with each actual observation and therefore visually tracks the actual series more closely."
+  "sections": [
+    {
+      "title": "What this model does",
+      "body": [
+        "ARIMA uses historical gold price behavior to forecast future gold price movements.",
+        "This notebook tests direct ARIMA, log ARIMA, and professor-style trend/month plus residual ARIMA correction.",
+        "The selected ARIMA model is chosen from ARIMA-family candidates only."
+      ]
+    },
+    {
+      "title": "Why rolling forecast is shown",
+      "body": [
+        "One-step rolling evaluation forecasts the next observation, then updates with the actual value.",
+        "This is the fairest comparison against Naive roll-forward forecasts.",
+        "Static multi-step forecasts are also exported because they show long-horizon behavior without daily updating."
+      ]
+    },
+    {
+      "title": "Limitations",
+      "body": [
+        "ARIMA is univariate and does not directly use macroeconomic factors.",
+        "Long static forecasts can flatten over multi-year horizons.",
+        "Trend and month seasonality are tested but only retained if validation metrics support them."
+      ]
+    }
   ],
   "charts": [
     {
-      "id": "gold_raw_series",
-      "title": "Gold Price Time Series",
-      "artifact": "generated_in_notebook_plot",
-      "description": "Raw gold_price series plotted before modeling."
+      "chart_id": "selected_arima_actual_vs_forecast",
+      "title": "Selected ARIMA Actual vs Forecast",
+      "artifact": "artifacts/models/arima_forecast_path.json",
+      "path_key": "selected_validation_and_test",
+      "default": true
     },
     {
-      "id": "professor_trend_benchmarks",
-      "title": "Trend Benchmark Fits",
-      "artifact": "generated_in_notebook_plot",
-      "description": "Linear, exponential/log, quadratic, and trend-plus-month diagnostic fits."
+      "chart_id": "selected_arima_residuals",
+      "title": "Selected ARIMA Residuals",
+      "artifact": "artifacts/models/arima_forecast_path.json",
+      "path_key": "selected_validation_and_test",
+      "default": true
     },
     {
-      "id": "arima_acf_pacf",
-      "title": "ACF/PACF Diagnostics",
-      "artifact": "arima_diagnostics.json",
-      "description": "Autocorrelation and partial autocorrelation checks for ARIMA identification."
-    },
-    {
-      "id": "arima_professor_fit_and_rolling_path",
-      "title": "ARIMA Fitted Values and One-Step Rolling Forecast",
-      "artifact": "arima_forecast_path.json",
-      "json_path": "chart_data.professor_fit_and_rolling_path",
-      "description": "Main professor-style curve showing fitted values and one-step rolling test predictions."
-    },
-    {
-      "id": "arima_static_forecast_path",
-      "title": "ARIMA Static Multi-Step Forecast",
-      "artifact": "arima_forecast_path.json",
-      "json_path": "chart_data.static_forecast_path",
-      "description": "Static forecast path shown separately because long static horizons can flatten."
+      "chart_id": "static_diagnostic_actual_vs_forecast",
+      "title": "Static Multi-Step Diagnostic",
+      "artifact": "artifacts/models/arima_forecast_path.json",
+      "path_key": "static_diagnostic_validation_and_test",
+      "default": false
     }
-  ],
-  "kpi_cards": [
-    {
-      "period": "validation_selection_period_static",
-      "n": 1044,
-      "mse": 216790.0251340996,
-      "mae": 419.763601532567,
-      "rmse": 465.6071575202636,
-      "mape": 23.43843520072894
-    },
-    {
-      "period": "test_holdout_period_static",
-      "n": 847,
-      "mse": 1742386.6083287797,
-      "mae": 956.7422647091815,
-      "rmse": 1319.9949273875184,
-      "mape": 28.25517660348385
-    },
-    {
-      "period": "test_holdout_period_one_step_rolling",
-      "n": 847,
-      "mse": 32334.663992565816,
-      "mae": 80.83601977491881,
-      "rmse": 179.8184195030248,
-      "mape": 2.829999198436334
-    }
-  ],
-  "candidate_order_table": [
-    {
-      "model": "ARIMA(2, 1, 0)",
-      "order": [
-        2,
-        1,
-        0
-      ],
-      "status": "success",
-      "aic": 130842.90910831757,
-      "bic": 130865.3956662602,
-      "period": "validation_selection_period",
-      "n": 1044,
-      "mse": 216790.0251340996,
-      "mae": 419.763601532567,
-      "rmse": 465.6071575202636,
-      "mape": 23.43843520072894
-    },
-    {
-      "model": "ARIMA(1, 1, 0)",
-      "order": [
-        1,
-        1,
-        0
-      ],
-      "status": "success",
-      "aic": 130907.41216879744,
-      "bic": 130922.40335779615,
-      "period": "validation_selection_period",
-      "n": 1044,
-      "mse": 216790.0251340996,
-      "mae": 419.763601532567,
-      "rmse": 465.6071575202636,
-      "mape": 23.43843520072894
-    },
-    {
-      "model": "ARIMA(0, 1, 0)",
-      "order": [
-        0,
-        1,
-        0
-      ],
-      "status": "success",
-      "aic": 130986.02815663323,
-      "bic": 130993.52375113258,
-      "period": "validation_selection_period",
-      "n": 1044,
-      "mse": 216790.0251340996,
-      "mae": 419.763601532567,
-      "rmse": 465.6071575202636,
-      "mape": 23.43843520072894
-    },
-    {
-      "model": "ARIMA(0, 1, 1)",
-      "order": [
-        0,
-        1,
-        1
-      ],
-      "status": "success",
-      "aic": 130886.3182343189,
-      "bic": 130901.30927294731,
-      "period": "validation_selection_period",
-      "n": 1044,
-      "mse": 216792.76031464883,
-      "mae": 419.76679151830325,
-      "rmse": 465.61009473018174,
-      "mape": 23.43862405478551
-    },
-    {
-      "model": "ARIMA(0, 1, 2)",
-      "order": [
-        0,
-        1,
-        2
-      ],
-      "status": "success",
-      "aic": 130802.15934994827,
-      "bic": 130824.64568231851,
-      "period": "validation_selection_period",
-      "n": 1044,
-      "mse": 217010.11839836914,
-      "mae": 420.0201644798945,
-      "rmse": 465.8434483797847,
-      "mape": 23.453623382891315
-    },
-    {
-      "model": "ARIMA(2, 1, 1)",
-      "order": [
-        2,
-        1,
-        1
-      ],
-      "status": "success",
-      "aic": 129811.84621810283,
-      "bic": 129841.82829535966,
-      "period": "validation_selection_period",
-      "n": 1044,
-      "mse": 234473.28581629213,
-      "mae": 440.19413516982223,
-      "rmse": 484.2244167906985,
-      "mape": 24.653627904106504
-    },
-    {
-      "model": "ARIMA(1, 1, 1)",
-      "order": [
-        1,
-        1,
-        1
-      ],
-      "status": "success",
-      "aic": 129835.21268645502,
-      "bic": 129857.69924439765,
-      "period": "validation_selection_period",
-      "n": 1044,
-      "mse": 234700.4571886059,
-      "mae": 440.4447308822258,
-      "rmse": 484.4589324066653,
-      "mape": 24.668431482676738
-    }
-  ],
-  "trend_benchmark_table": [
-    {
-      "model": "exponential_log_trend",
-      "formula": "np.log(gold_price) ~ trend",
-      "period": "validation_selection_period",
-      "n": 1044,
-      "mse": 23333.868206338942,
-      "mae": 124.34387661476356,
-      "rmse": 152.75427393804384,
-      "mape": 7.409780054167428
-    },
-    {
-      "model": "quadratic_trend",
-      "formula": "gold_price ~ trend + np.square(trend)",
-      "period": "validation_selection_period",
-      "n": 1044,
-      "mse": 50601.87206557138,
-      "mae": 192.80684169948668,
-      "rmse": 224.94859871884373,
-      "mape": 10.894848019774786
-    },
-    {
-      "model": "quadratic_trend_plus_month",
-      "formula": "gold_price ~ trend + np.square(trend) + C(Month)",
-      "period": "validation_selection_period",
-      "n": 1044,
-      "mse": 50627.078778141724,
-      "mae": 193.32148082720605,
-      "rmse": 225.0046194595607,
-      "mape": 10.934022565367842
-    },
-    {
-      "model": "linear_trend",
-      "formula": "gold_price ~ trend",
-      "period": "validation_selection_period",
-      "n": 1044,
-      "mse": 310281.96424065274,
-      "mae": 526.0316018877975,
-      "rmse": 557.029590094326,
-      "mape": 29.92734058607651
-    }
-  ],
-  "limitations": [
-    "ARIMA is univariate and does not directly use macroeconomic factors.",
-    "Static multi-step forecasts may flatten over long daily horizons.",
-    "One-step rolling forecasts are evaluation paths, not a single long official future forecast.",
-    "Market holidays have not been removed; the dataset is weekday-clean.",
-    "Notebook 11 will compare ARIMA against other models before selecting an official model."
   ],
   "source_artifacts": [
     "artifacts/models/arima_results.json",

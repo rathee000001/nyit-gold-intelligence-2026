@@ -1,351 +1,447 @@
 {
   "artifact_name": "arima_diagnostics",
   "notebook": "07_arima_forecasting.ipynb",
-  "version": "v2_professor_style",
-  "generated_at_utc": "2026-04-30T21:15:14.543075+00:00",
-  "model": {
-    "name": "ARIMA(2, 1, 0)",
-    "selected_order": [
-      2,
-      1,
-      0
-    ],
-    "aic": 144023.63793219137,
-    "bic": 144046.35119323723,
-    "log_likelihood": -72008.81896609569
-  },
-  "dataset": {
-    "source_file": "model_ready_univariate.csv",
-    "target": "gold_price",
-    "frequency_note": "Weekday-clean daily series; market holidays have not been removed.",
-    "window": {
-      "start": "1968-01-04",
-      "end": "2026-03-31",
-      "cutoff": "2026-03-31"
-    },
-    "splits": {
-      "train": {
-        "start": "1968-01-04",
-        "end": "2018-12-31",
-        "rows": 13303
-      },
-      "validation": {
-        "start": "2019-01-01",
-        "end": "2022-12-30",
-        "rows": 1044
-      },
-      "test": {
-        "start": "2023-01-02",
-        "end": "2026-03-31",
-        "rows": 847
-      }
-    }
-  },
-  "adf_stationarity_tests": [
+  "version": "v4_professor_style_arima_family_with_one_step_roll_forward",
+  "export_timestamp_utc": "2026-04-30T22:49:12.912099+00:00",
+  "adf_tests": [
     {
-      "series": "train_gold_price_level",
-      "adf_statistic": -0.3128064304450462,
-      "p_value": 0.923670872809098,
-      "used_lags": 41,
-      "n_obs": 13261,
-      "critical_values": {
-        "1%": -3.4308432181787762,
-        "5%": -2.861757978999306,
-        "10%": -2.5668860253241945
-      },
-      "interpretation": "not_stationary_by_5pct_rule"
+      "series": "gold_price_level",
+      "adf_statistic": -0.3128064304450516,
+      "p_value": 0.9236708728090972,
+      "lags_used": 41,
+      "observations": 13261
     },
     {
-      "series": "train_gold_price_first_difference",
-      "adf_statistic": -24.099925620650083,
+      "series": "first_difference_gold_price",
+      "adf_statistic": -24.099925620649735,
       "p_value": 0.0,
-      "used_lags": 41,
-      "n_obs": 13260,
-      "critical_values": {
-        "1%": -3.4308432553819217,
-        "5%": -2.8617579954399632,
-        "10%": -2.566886034075424
-      },
-      "interpretation": "stationary_by_5pct_rule"
+      "lags_used": 41,
+      "observations": 13260
     }
   ],
-  "ljung_box_tests": [
+  "ljung_box_selected_test_residuals": [
     {
-      "residual_series": "train_validation_fitted_residuals",
-      "lag": 20,
-      "lb_stat": 1110.8303424992976,
-      "p_value": 8.61260481576994e-223
+      "lb_stat": 34.354558770383605,
+      "lb_pvalue": 0.0001608144893206885
     },
     {
-      "residual_series": "test_one_step_rolling_residuals",
-      "lag": 20,
-      "lb_stat": 105.06241646220141,
-      "p_value": 1.5475439146998462e-13
+      "lb_stat": 64.75117775755656,
+      "lb_pvalue": 1.2785397648864083e-06
     }
   ],
-  "parameter_table": [
-    {
-      "parameter": "ar.L1",
-      "coefficient": -0.07367765416555046,
-      "std_error": 0.004980362024416943,
-      "z_value": -14.793634238702957,
-      "p_value": 1.6101961296629506e-49
-    },
-    {
-      "parameter": "ar.L2",
-      "coefficient": -0.07154978660123837,
-      "std_error": 0.00512034131257803,
-      "z_value": -13.973636176455182,
-      "p_value": 2.2579763214570115e-44
-    },
-    {
-      "parameter": "sigma2",
-      "coefficient": 1342.6402441014852,
-      "std_error": 3.373499892993462,
-      "z_value": 397.99623141831455,
-      "p_value": 0.0
-    }
-  ],
-  "trend_model_formulas": [
-    {
-      "model": "linear_trend",
-      "formula": "gold_price ~ trend"
-    },
-    {
-      "model": "exponential_log_trend",
-      "formula": "np.log(gold_price) ~ trend"
-    },
-    {
-      "model": "quadratic_trend",
-      "formula": "gold_price ~ trend + np.square(trend)"
-    },
-    {
-      "model": "quadratic_trend_plus_month",
-      "formula": "gold_price ~ trend + np.square(trend) + C(Month)"
-    }
-  ],
-  "residual_summary": {
-    "train_validation_fitted": {
-      "mean": 0.14297803497899436,
-      "std": 36.640508699789756,
-      "min": -419.0,
-      "max": 450.0
-    },
-    "test_static": {
-      "mean": 956.7422647091815,
-      "std": 909.9496827196282,
-      "min": 0.9308996470122111,
-      "max": 3588.110899647012
-    },
-    "test_one_step_rolling": {
-      "mean": 3.815811512322192,
-      "std": 179.88414884916924,
-      "min": -1284.914899424136,
-      "max": 807.6999999999998
-    }
-  },
-  "worst_absolute_errors_test_rolling": [
-    {
-      "date": "2025-02-13",
-      "actual": 2958.8,
-      "prediction": 4243.714899424136,
-      "residual": -1284.914899424136,
-      "abs_error": 1284.914899424136,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
-    },
+  "selected_test_worst_absolute_errors": [
     {
       "date": "2025-12-02",
       "actual": 2936.5,
-      "prediction": 4209.0,
-      "residual": -1272.5,
-      "abs_error": 1272.5,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
-    },
-    {
-      "date": "2025-03-13",
-      "actual": 3001.5,
-      "prediction": 4227.504840010792,
-      "residual": -1226.0048400107917,
-      "abs_error": 1226.0048400107917,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
-    },
-    {
-      "date": "2025-01-13",
-      "actual": 2723.8,
-      "prediction": 3882.0151993697827,
-      "residual": -1158.2151993697826,
-      "abs_error": 1158.2151993697826,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
+      "prediction": 4148.085263942103,
+      "residual": -1211.5852639421028,
+      "abs_error": 1211.5852639421028,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
     },
     {
       "date": "2025-11-03",
       "actual": 2929.0,
-      "prediction": 4040.6771774540857,
-      "residual": -1111.6771774540857,
-      "abs_error": 1111.6771774540857,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
+      "prediction": 3998.421390076097,
+      "residual": -1069.421390076097,
+      "abs_error": 1069.421390076097,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2025-02-13",
+      "actual": 2958.8,
+      "prediction": 3996.4760032539853,
+      "residual": -1037.676003253985,
+      "abs_error": 1037.676003253985,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2025-03-13",
+      "actual": 3001.5,
+      "prediction": 4026.5737948285314,
+      "residual": -1025.0737948285314,
+      "abs_error": 1025.0737948285314,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2025-01-13",
+      "actual": 2723.8,
+      "prediction": 3687.9286755589537,
+      "residual": -964.1286755589535,
+      "abs_error": 964.1286755589535,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
     },
     {
       "date": "2025-10-02",
       "actual": 2938.1,
-      "prediction": 3896.6599825756557,
-      "residual": -958.5599825756558,
-      "abs_error": 958.5599825756558,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
-    },
-    {
-      "date": "2025-12-11",
-      "actual": 4218.5,
-      "prediction": 3410.8,
-      "residual": 807.6999999999998,
-      "abs_error": 807.6999999999998,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
+      "prediction": 3829.1219627400033,
+      "residual": -891.0219627400033,
+      "abs_error": 891.0219627400033,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
     },
     {
       "date": "2025-09-01",
       "actual": 2696.8,
-      "prediction": 3475.644824112127,
-      "residual": -778.8448241121268,
-      "abs_error": 778.8448241121268,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
+      "prediction": 3466.454853442926,
+      "residual": -769.6548534429257,
+      "abs_error": 769.6548534429257,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
     },
     {
-      "date": "2025-08-13",
-      "actual": 3422.6,
-      "prediction": 4183.700984319231,
-      "residual": -761.100984319231,
-      "abs_error": 761.100984319231,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
+      "date": "2025-12-11",
+      "actual": 4218.5,
+      "prediction": 3489.5184703799446,
+      "residual": 728.9815296200554,
+      "abs_error": 728.9815296200554,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2025-08-11",
+      "actual": 4081.0,
+      "prediction": 3355.528639936718,
+      "residual": 725.4713600632822,
+      "abs_error": 725.4713600632822,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2025-01-10",
+      "actual": 3922.7,
+      "prediction": 3217.419244902818,
+      "residual": 705.280755097182,
+      "abs_error": 705.280755097182,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
     },
     {
       "date": "2024-11-01",
       "actual": 2056.1,
-      "prediction": 2799.197882695704,
-      "residual": -743.0978826957039,
-      "abs_error": 743.0978826957039,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
+      "prediction": 2754.8875698481784,
+      "residual": -698.7875698481785,
+      "abs_error": 698.7875698481785,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2025-08-01",
+      "actual": 2687.0,
+      "prediction": 3372.5129498861147,
+      "residual": -685.5129498861147,
+      "abs_error": 685.5129498861147,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2025-02-10",
+      "actual": 3923.3,
+      "prediction": 3249.266965951275,
+      "residual": 674.0330340487253,
+      "abs_error": 674.0330340487253,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2025-01-06",
+      "actual": 3300.6,
+      "prediction": 2629.6943665028566,
+      "residual": 670.9056334971433,
+      "abs_error": 670.9056334971433,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2025-07-01",
+      "actual": 2678.5,
+      "prediction": 3340.431021541049,
+      "residual": -661.9310215410492,
+      "abs_error": 661.9310215410492,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2025-08-13",
+      "actual": 3422.6,
+      "prediction": 4064.0522431887857,
+      "residual": -641.4522431887858,
+      "abs_error": 641.4522431887858,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2024-12-02",
+      "actual": 2031.1,
+      "prediction": 2654.427832783975,
+      "residual": -623.3278327839753,
+      "abs_error": 623.3278327839753,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2025-05-13",
+      "actual": 3270.4,
+      "prediction": 3878.9486310789084,
+      "residual": -608.5486310789083,
+      "abs_error": 608.5486310789083,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2024-10-01",
+      "actual": 2046.2,
+      "prediction": 2640.7481694722187,
+      "residual": -594.5481694722187,
+      "abs_error": 594.5481694722187,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2025-04-14",
+      "actual": 3261.6,
+      "prediction": 3852.9914540391296,
+      "residual": -591.3914540391297,
+      "abs_error": 591.3914540391297,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
     }
   ],
-  "best_absolute_errors_test_rolling": [
+  "selected_test_best_absolute_errors": [
     {
-      "date": "2023-10-13",
-      "actual": 1870.0,
-      "prediction": 1870.0,
-      "residual": 0.0,
-      "abs_error": 0.0,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
+      "date": "2024-07-26",
+      "actual": 2400.8,
+      "prediction": 2400.775501469637,
+      "residual": 0.0244985303629619,
+      "abs_error": 0.0244985303629619,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
     },
     {
-      "date": "2026-01-07",
-      "actual": 4364.45,
-      "prediction": 4364.45,
-      "residual": 0.0,
-      "abs_error": 0.0,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
+      "date": "2024-05-31",
+      "actual": 2360.7,
+      "prediction": 2360.725336864805,
+      "residual": -0.025336864805012738,
+      "abs_error": 0.025336864805012738,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
     },
     {
-      "date": "2026-01-08",
-      "actual": 4364.45,
-      "prediction": 4364.45,
-      "residual": 0.0,
-      "abs_error": 0.0,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
+      "date": "2023-05-18",
+      "actual": 1988.8,
+      "prediction": 1988.7628697080984,
+      "residual": 0.03713029190157613,
+      "abs_error": 0.03713029190157613,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
     },
     {
-      "date": "2026-01-09",
-      "actual": 4364.45,
-      "prediction": 4364.45,
-      "residual": 0.0,
-      "abs_error": 0.0,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
+      "date": "2023-08-28",
+      "actual": 1926.0,
+      "prediction": 1926.0885614223282,
+      "residual": -0.08856142232821185,
+      "abs_error": 0.08856142232821185,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
     },
     {
-      "date": "2025-01-02",
-      "actual": 2640.7,
-      "prediction": 2640.7,
-      "residual": 0.0,
-      "abs_error": 0.0,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
+      "date": "2024-03-28",
+      "actual": 2206.5,
+      "prediction": 2206.3902750675265,
+      "residual": 0.10972493247345483,
+      "abs_error": 0.10972493247345483,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
     },
     {
-      "date": "2025-01-03",
-      "actual": 2640.7,
-      "prediction": 2640.7,
-      "residual": 0.0,
-      "abs_error": 0.0,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
+      "date": "2023-09-19",
+      "actual": 1940.3,
+      "prediction": 1940.188367131569,
+      "residual": 0.11163286843088827,
+      "abs_error": 0.11163286843088827,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
     },
     {
-      "date": "2026-01-12",
-      "actual": 4364.45,
-      "prediction": 4364.45,
-      "residual": 0.0,
-      "abs_error": 0.0,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
+      "date": "2023-05-22",
+      "actual": 1984.8,
+      "prediction": 1984.6351491913267,
+      "residual": 0.16485080867323632,
+      "abs_error": 0.16485080867323632,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
     },
     {
-      "date": "2023-01-16",
-      "actual": 2005.9,
-      "prediction": 2005.9,
-      "residual": 0.0,
-      "abs_error": 0.0,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
+      "date": "2025-03-17",
+      "actual": 3038.6,
+      "prediction": 3038.7958273178606,
+      "residual": -0.19582731786067598,
+      "abs_error": 0.19582731786067598,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
     },
     {
-      "date": "2026-01-06",
-      "actual": 4364.45,
-      "prediction": 4364.45,
-      "residual": 0.0,
-      "abs_error": 0.0,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
+      "date": "2024-03-01",
+      "actual": 2074.3,
+      "prediction": 2074.1010066894823,
+      "residual": 0.1989933105178352,
+      "abs_error": 0.1989933105178352,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
     },
     {
-      "date": "2024-01-15",
-      "actual": 2681.7,
-      "prediction": 2681.7,
-      "residual": 0.0,
-      "abs_error": 0.0,
-      "period": "test_holdout_period",
-      "model": "ARIMA(2, 1, 0)",
-      "path_type": "one_step_rolling_test_forecast"
+      "date": "2023-06-16",
+      "actual": 1963.7,
+      "prediction": 1963.9007874685203,
+      "residual": -0.20078746852027507,
+      "abs_error": 0.20078746852027507,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2023-05-26",
+      "actual": 1965.4,
+      "prediction": 1965.6554295328963,
+      "residual": -0.2554295328961871,
+      "abs_error": 0.2554295328961871,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2023-06-19",
+      "actual": 1963.7,
+      "prediction": 1963.966794778216,
+      "residual": -0.2667947782158535,
+      "abs_error": 0.2667947782158535,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2024-05-29",
+      "actual": 2363.7,
+      "prediction": 2363.2337460793233,
+      "residual": 0.4662539206765359,
+      "abs_error": 0.4662539206765359,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2023-06-15",
+      "actual": 1963.7,
+      "prediction": 1964.1752868408364,
+      "residual": -0.4752868408363611,
+      "abs_error": 0.4752868408363611,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2024-03-29",
+      "actual": 2206.5,
+      "prediction": 2206.0243710962027,
+      "residual": 0.4756289037973147,
+      "abs_error": 0.4756289037973147,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2023-07-07",
+      "actual": 1977.5,
+      "prediction": 1976.981138454771,
+      "residual": 0.5188615452289014,
+      "abs_error": 0.5188615452289014,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2023-12-18",
+      "actual": 2036.3,
+      "prediction": 2036.841973971517,
+      "residual": -0.541973971517109,
+      "abs_error": 0.541973971517109,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2025-11-17",
+      "actual": 4142.7,
+      "prediction": 4142.107960293581,
+      "residual": 0.5920397064192002,
+      "abs_error": 0.5920397064192002,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2023-03-14",
+      "actual": 1919.4,
+      "prediction": 1918.7332454964403,
+      "residual": 0.6667545035597868,
+      "abs_error": 0.6667545035597868,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
+    },
+    {
+      "date": "2024-07-29",
+      "actual": 2402.1,
+      "prediction": 2402.8018555503036,
+      "residual": -0.7018555503036623,
+      "abs_error": 0.7018555503036623,
+      "model_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+      "evaluation_period": "test",
+      "forecast_mode": "one_step_rolling"
     }
+  ],
+  "residual_summary": {
+    "selected_validation_residual_mean": 2.789380485861699,
+    "selected_validation_residual_std": 63.272779311796526,
+    "selected_test_residual_mean": 20.304196046331022,
+    "selected_test_residual_std": 172.74278631802787
+  },
+  "diagnostic_notes": [
+    "ADF, ACF, and PACF are used to justify differencing and residual autocorrelation checks.",
+    "Residual ARIMA candidates are tested after deterministic trend/month structure.",
+    "Ljung-Box p-values should be interpreted as residual autocorrelation diagnostics, not final model selection alone."
   ]
 }
