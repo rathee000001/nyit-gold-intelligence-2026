@@ -1,6 +1,6 @@
 {
   "artifact_type": "model_ranking",
-  "generated_at_utc": "2026-05-01T03:06:25.740455+00:00",
+  "generated_at_utc": "2026-05-01T03:16:20.080008+00:00",
   "ranking_rule": {
     "primary_metric": "test_rmse_if_available_else_validation_rmse",
     "direction": "lower_is_better",
@@ -121,6 +121,24 @@
     },
     {
       "rank": 7,
+      "model_key": "regression",
+      "model_name": "Regression",
+      "category": "explainable",
+      "candidate_name": "All Raw Factors OLS Regression",
+      "primary_rmse": 1365.791833331711,
+      "primary_mae": 1089.518531184253,
+      "primary_mape": 34.38896112083758,
+      "validation_mae": 211.93948698189425,
+      "validation_rmse": 261.4567166114467,
+      "validation_mape": 12.300477048805462,
+      "test_mae": 1089.518531184253,
+      "test_rmse": 1365.791833331711,
+      "test_mape": 34.38896112083758,
+      "ranking_basis": "test_rmse_primary",
+      "source_artifact": "artifacts/models/regression_results.json"
+    },
+    {
+      "rank": 8,
       "model_key": "prophet_optional",
       "model_name": "Prophet Optional",
       "category": "optional_benchmark",
@@ -136,24 +154,6 @@
       "test_mape": 34.20080965684771,
       "ranking_basis": "test_rmse_primary",
       "source_artifact": "artifacts/models/prophet_results.json"
-    },
-    {
-      "rank": 8,
-      "model_key": "regression",
-      "model_name": "Regression",
-      "category": "explainable",
-      "candidate_name": "All Raw Factors OLS Regression",
-      "primary_rmse": 1494.959968116017,
-      "primary_mae": 1202.5257569499852,
-      "primary_mape": 38.064580878169366,
-      "validation_mae": 214.7673248669686,
-      "validation_rmse": 243.23931240616525,
-      "validation_mape": 12.682520746682382,
-      "test_mae": 1202.5257569499852,
-      "test_rmse": 1494.959968116017,
-      "test_mape": 38.064580878169366,
-      "ranking_basis": "test_rmse_primary",
-      "source_artifact": "artifacts/models/regression_results.json"
     }
   ]
 }
