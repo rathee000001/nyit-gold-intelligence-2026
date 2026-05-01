@@ -1,0 +1,381 @@
+{
+  "artifact_name": "page_naive_moving_average",
+  "page_title": "Naive + Moving Average Forecasts",
+  "page_subtitle": "Professor-style baseline time-series forecasts for gold price.",
+  "generated_at_utc": "2026-04-30T20:02:10.011724+00:00",
+  "source_artifacts": [
+    "artifacts/models/naive_results.json",
+    "artifacts/models/moving_average_results.json",
+    "artifacts/models/baseline_forecast_paths.json"
+  ],
+  "what_this_page_shows": [
+    "A naive benchmark where tomorrow's forecast equals the prior observed gold price.",
+    "Trailing moving-average benchmarks using 5, 10, 20, and 60 weekday windows.",
+    "Validation and test performance using leakage-safe one-step roll-forward predictions.",
+    "Residual charts and baseline metrics for later model comparison."
+  ],
+  "dataset_window": {
+    "start": "1968-01-04",
+    "end": "2026-03-31",
+    "target": "gold_price",
+    "cutoff": "2026-03-31"
+  },
+  "splits": {
+    "train": {
+      "start": "1968-01-04",
+      "end": "2018-12-31",
+      "rows": 13303
+    },
+    "validation": {
+      "start": "2019-01-01",
+      "end": "2022-12-30",
+      "rows": 1044
+    },
+    "test": {
+      "start": "2023-01-02",
+      "end": "2026-03-31",
+      "rows": 847
+    }
+  },
+  "models": [
+    {
+      "name": "Naive Forecast",
+      "type": "baseline",
+      "metrics": {
+        "train": {
+          "n": 13302,
+          "MAE": 10.015263870094723,
+          "MSE": 1107.356185009773,
+          "RMSE": 33.276961775525315,
+          "MAPE": 1.9654143920349265,
+          "mean_error_bias": 0.0937453014584273,
+          "directional_accuracy_pct": 66.16043906473197
+        },
+        "validation": {
+          "n": 1044,
+          "MAE": 33.37088122605364,
+          "MSE": 4520.9137164750955,
+          "RMSE": 67.23774026895234,
+          "MAPE": 1.9559803583397088,
+          "mean_error_bias": 0.5197318007662834,
+          "directional_accuracy_pct": 35.47459252157239
+        },
+        "test": {
+          "n": 847,
+          "MAE": 76.6117945690673,
+          "MSE": 32723.436071900822,
+          "RMSE": 180.8962024805961,
+          "MAPE": 2.6875489357196383,
+          "mean_error_bias": 3.3557851239669416,
+          "directional_accuracy_pct": 34.39716312056738
+        }
+      }
+    },
+    {
+      "name": "Moving Average",
+      "type": "baseline",
+      "windows_tested": [
+        5,
+        10,
+        20,
+        60
+      ],
+      "best_window_by_validation_rmse": 5,
+      "metrics_table": [
+        {
+          "window": 5,
+          "split": "train",
+          "n": 13298,
+          "MAE": 17.971951722063466,
+          "MSE": 1958.4689670269215,
+          "RMSE": 44.254592609433445,
+          "MAPE": 3.512952382928234,
+          "mean_error_bias": 0.28064596179876683,
+          "directional_accuracy_pct": 49.33443633902384
+        },
+        {
+          "window": 5,
+          "split": "validation",
+          "n": 1044,
+          "MAE": 56.864042145593885,
+          "MSE": 7979.51300421456,
+          "RMSE": 89.32811989633814,
+          "MAPE": 3.3843492552469447,
+          "mean_error_bias": 1.5569540229885124,
+          "directional_accuracy_pct": 35.57046979865772
+        },
+        {
+          "window": 5,
+          "split": "test",
+          "n": 847,
+          "MAE": 143.0416906729634,
+          "MSE": 56672.65004998347,
+          "RMSE": 238.06018157176868,
+          "MAPE": 4.897010188514494,
+          "mean_error_bias": 9.627886658795738,
+          "directional_accuracy_pct": 35.69739952718676
+        },
+        {
+          "window": 10,
+          "split": "train",
+          "n": 13293,
+          "MAE": 23.833808696306328,
+          "MSE": 2472.1523691767848,
+          "RMSE": 49.7207438518048,
+          "MAPE": 4.604643141143819,
+          "mean_error_bias": 0.5123000827503195,
+          "directional_accuracy_pct": 23.698465242250975
+        },
+        {
+          "window": 10,
+          "split": "validation",
+          "n": 1044,
+          "MAE": 63.84136973180077,
+          "MSE": 8520.894479980841,
+          "RMSE": 92.30869124833718,
+          "MAPE": 3.8006385798446987,
+          "mean_error_bias": 2.879339080459767,
+          "directional_accuracy_pct": 35.76222435282838
+        },
+        {
+          "window": 10,
+          "split": "test",
+          "n": 847,
+          "MAE": 165.17240377804015,
+          "MSE": 71137.57571948052,
+          "RMSE": 266.71628319148516,
+          "MAPE": 5.588653347818099,
+          "mean_error_bias": 17.500635182998817,
+          "directional_accuracy_pct": 32.505910165484636
+        },
+        {
+          "window": 20,
+          "split": "train",
+          "n": 13283,
+          "MAE": 26.62831709704133,
+          "MSE": 2402.4911574810285,
+          "RMSE": 49.01521353091332,
+          "MAPE": 5.153127621429022,
+          "mean_error_bias": 0.9717428291801553,
+          "directional_accuracy_pct": 7.536515585002259
+        },
+        {
+          "window": 20,
+          "split": "validation",
+          "n": 1044,
+          "MAE": 64.21364463601532,
+          "MSE": 8222.663738864943,
+          "RMSE": 90.67890459674148,
+          "MAPE": 3.8157695656183246,
+          "mean_error_bias": 5.514889846743298,
+          "directional_accuracy_pct": 31.831255992329815
+        },
+        {
+          "window": 20,
+          "split": "test",
+          "n": 847,
+          "MAE": 169.56321015348286,
+          "MSE": 72078.68103484946,
+          "RMSE": 268.4747307193909,
+          "MAPE": 5.66574770282273,
+          "mean_error_bias": 35.43427981109798,
+          "directional_accuracy_pct": 29.432624113475175
+        },
+        {
+          "window": 60,
+          "split": "train",
+          "n": 13243,
+          "MAE": 29.377800838178658,
+          "MSE": 2982.3322031403363,
+          "RMSE": 54.61073340599205,
+          "MAPE": 5.675097768510319,
+          "mean_error_bias": 2.808236363865187,
+          "directional_accuracy_pct": 10.617731460504455
+        },
+        {
+          "window": 60,
+          "split": "validation",
+          "n": 1044,
+          "MAE": 68.5886079182631,
+          "MSE": 9006.661491916775,
+          "RMSE": 94.9034324559274,
+          "MAPE": 4.048307904027234,
+          "mean_error_bias": 15.519549808429117,
+          "directional_accuracy_pct": 37.20038350910834
+        },
+        {
+          "window": 60,
+          "split": "test",
+          "n": 847,
+          "MAE": 198.83110684769773,
+          "MSE": 94321.89028167377,
+          "RMSE": 307.118690869953,
+          "MAPE": 6.284441784669473,
+          "mean_error_bias": 112.01709071231798,
+          "directional_accuracy_pct": 34.86997635933806
+        }
+      ]
+    }
+  ],
+  "leaderboard": [
+    {
+      "model": "Naive",
+      "window": null,
+      "split": "test",
+      "n": 847,
+      "MAE": 76.6117945690673,
+      "MSE": 32723.436071900822,
+      "RMSE": 180.8962024805961,
+      "MAPE": 2.6875489357196383,
+      "mean_error_bias": 3.3557851239669416,
+      "directional_accuracy_pct": 34.39716312056738
+    },
+    {
+      "model": "Moving Average 5",
+      "window": 5.0,
+      "split": "test",
+      "n": 847,
+      "MAE": 143.0416906729634,
+      "MSE": 56672.65004998347,
+      "RMSE": 238.06018157176868,
+      "MAPE": 4.897010188514494,
+      "mean_error_bias": 9.627886658795738,
+      "directional_accuracy_pct": 35.69739952718676
+    },
+    {
+      "model": "Moving Average 10",
+      "window": 10.0,
+      "split": "test",
+      "n": 847,
+      "MAE": 165.17240377804015,
+      "MSE": 71137.57571948052,
+      "RMSE": 266.71628319148516,
+      "MAPE": 5.588653347818099,
+      "mean_error_bias": 17.500635182998817,
+      "directional_accuracy_pct": 32.505910165484636
+    },
+    {
+      "model": "Moving Average 20",
+      "window": 20.0,
+      "split": "test",
+      "n": 847,
+      "MAE": 169.56321015348286,
+      "MSE": 72078.68103484946,
+      "RMSE": 268.4747307193909,
+      "MAPE": 5.66574770282273,
+      "mean_error_bias": 35.43427981109798,
+      "directional_accuracy_pct": 29.432624113475175
+    },
+    {
+      "model": "Moving Average 60",
+      "window": 60.0,
+      "split": "test",
+      "n": 847,
+      "MAE": 198.83110684769773,
+      "MSE": 94321.89028167377,
+      "RMSE": 307.118690869953,
+      "MAPE": 6.284441784669473,
+      "mean_error_bias": 112.01709071231798,
+      "directional_accuracy_pct": 34.86997635933806
+    },
+    {
+      "model": "Naive",
+      "window": null,
+      "split": "validation",
+      "n": 1044,
+      "MAE": 33.37088122605364,
+      "MSE": 4520.9137164750955,
+      "RMSE": 67.23774026895234,
+      "MAPE": 1.9559803583397088,
+      "mean_error_bias": 0.5197318007662834,
+      "directional_accuracy_pct": 35.47459252157239
+    },
+    {
+      "model": "Moving Average 5",
+      "window": 5.0,
+      "split": "validation",
+      "n": 1044,
+      "MAE": 56.864042145593885,
+      "MSE": 7979.51300421456,
+      "RMSE": 89.32811989633814,
+      "MAPE": 3.3843492552469447,
+      "mean_error_bias": 1.5569540229885124,
+      "directional_accuracy_pct": 35.57046979865772
+    },
+    {
+      "model": "Moving Average 20",
+      "window": 20.0,
+      "split": "validation",
+      "n": 1044,
+      "MAE": 64.21364463601532,
+      "MSE": 8222.663738864943,
+      "RMSE": 90.67890459674148,
+      "MAPE": 3.8157695656183246,
+      "mean_error_bias": 5.514889846743298,
+      "directional_accuracy_pct": 31.831255992329815
+    },
+    {
+      "model": "Moving Average 10",
+      "window": 10.0,
+      "split": "validation",
+      "n": 1044,
+      "MAE": 63.84136973180077,
+      "MSE": 8520.894479980841,
+      "RMSE": 92.30869124833718,
+      "MAPE": 3.8006385798446987,
+      "mean_error_bias": 2.879339080459767,
+      "directional_accuracy_pct": 35.76222435282838
+    },
+    {
+      "model": "Moving Average 60",
+      "window": 60.0,
+      "split": "validation",
+      "n": 1044,
+      "MAE": 68.5886079182631,
+      "MSE": 9006.661491916775,
+      "RMSE": 94.9034324559274,
+      "MAPE": 4.048307904027234,
+      "mean_error_bias": 15.519549808429117,
+      "directional_accuracy_pct": 37.20038350910834
+    }
+  ],
+  "primary_chart": {
+    "artifact": "artifacts/models/baseline_forecast_paths.json",
+    "x": "date",
+    "y_actual": "gold_price",
+    "y_forecasts": [
+      "naive_pred",
+      "ma_5_pred",
+      "ma_10_pred",
+      "ma_20_pred",
+      "ma_60_pred"
+    ]
+  },
+  "kpi_cards": [
+    {
+      "label": "Naive Validation RMSE",
+      "value": 67.23774026895234,
+      "unit": "gold price units"
+    },
+    {
+      "label": "Naive Test RMSE",
+      "value": 180.8962024805961,
+      "unit": "gold price units"
+    },
+    {
+      "label": "Best MA Window",
+      "value": 5,
+      "unit": "weekdays"
+    },
+    {
+      "label": "Best MA Validation RMSE",
+      "value": 89.32811989633814,
+      "unit": "gold price units"
+    }
+  ],
+  "limitations": [
+    "These are baseline models only.",
+    "They are included to create a fair benchmark before advanced models.",
+    "The final selected model cannot be decided until Notebook 11 model comparison."
+  ]
+}

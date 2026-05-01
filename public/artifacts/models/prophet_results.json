@@ -1,0 +1,189 @@
+{
+  "artifact_name": "prophet_results",
+  "notebook": "10_prophet_optional_forecast.ipynb",
+  "model_family": "Prophet",
+  "model_status": "optional_benchmark",
+  "run_timestamp_utc": "2026-04-30T22:33:34.752073+00:00",
+  "project_rules": {
+    "dataset": "Dataset A \u2014 Long Univariate",
+    "target": "gold_price",
+    "official_forecast_cutoff_date": "2026-03-31",
+    "weekend_handling": "weekday_clean_from_prior_notebooks",
+    "high_yield_used": false,
+    "exogenous_variables_used": false,
+    "selection_rule": "best_validation_rmse_among_small_professor_safe_candidate_set"
+  },
+  "professor_reference_style": {
+    "uses_prophet_column_names": true,
+    "date_column": "ds",
+    "target_column": "y",
+    "fit_predict_flow": [
+      "rename date to ds",
+      "rename gold_price to y",
+      "fit Prophet model",
+      "predict future/holdout dates",
+      "plot forecast",
+      "evaluate errors"
+    ]
+  },
+  "time_windows": {
+    "train": {
+      "start": "1968-01-04",
+      "end": "2018-12-31",
+      "rows": 13303
+    },
+    "validation": {
+      "start": "2019-01-01",
+      "end": "2022-12-30",
+      "rows": 1044
+    },
+    "test": {
+      "start": "2023-01-02",
+      "end": "2026-03-31",
+      "rows": 847
+    }
+  },
+  "candidate_results": [
+    {
+      "candidate_name": "Prophet_Log_Target_Flexible",
+      "config": {
+        "candidate_name": "Prophet_Log_Target_Flexible",
+        "target_transform": "log",
+        "growth": "linear",
+        "yearly_seasonality": true,
+        "weekly_seasonality": true,
+        "daily_seasonality": false,
+        "seasonality_mode": "additive",
+        "changepoint_prior_scale": 0.2,
+        "seasonality_prior_scale": 10.0,
+        "interval_width": 0.8
+      },
+      "validation_metrics": {
+        "n": 1044,
+        "mean_error": 374.04187345222095,
+        "mae": 380.63850106336497,
+        "mse": 179311.97491827892,
+        "rmse": 423.4524470566665,
+        "mape": 21.256308874955195,
+        "bias_direction": "under_forecast_on_average"
+      }
+    },
+    {
+      "candidate_name": "Prophet_Default_Additive",
+      "config": {
+        "candidate_name": "Prophet_Default_Additive",
+        "target_transform": "none",
+        "growth": "linear",
+        "yearly_seasonality": true,
+        "weekly_seasonality": true,
+        "daily_seasonality": false,
+        "seasonality_mode": "additive",
+        "changepoint_prior_scale": 0.05,
+        "seasonality_prior_scale": 10.0,
+        "interval_width": 0.8
+      },
+      "validation_metrics": {
+        "n": 1044,
+        "mean_error": 383.42707701390435,
+        "mae": 387.1291154664998,
+        "mse": 186359.0381917441,
+        "rmse": 431.69322231388355,
+        "mape": 21.58508497787397,
+        "bias_direction": "under_forecast_on_average"
+      }
+    },
+    {
+      "candidate_name": "Prophet_Flexible_Trend_Additive",
+      "config": {
+        "candidate_name": "Prophet_Flexible_Trend_Additive",
+        "target_transform": "none",
+        "growth": "linear",
+        "yearly_seasonality": true,
+        "weekly_seasonality": true,
+        "daily_seasonality": false,
+        "seasonality_mode": "additive",
+        "changepoint_prior_scale": 0.2,
+        "seasonality_prior_scale": 10.0,
+        "interval_width": 0.8
+      },
+      "validation_metrics": {
+        "n": 1044,
+        "mean_error": 397.92992473411067,
+        "mae": 400.0454616554616,
+        "mse": 198532.5467829314,
+        "rmse": 445.56991234028743,
+        "mape": 22.309665863931606,
+        "bias_direction": "under_forecast_on_average"
+      }
+    },
+    {
+      "candidate_name": "Prophet_Multiplicative_Seasonality",
+      "config": {
+        "candidate_name": "Prophet_Multiplicative_Seasonality",
+        "target_transform": "none",
+        "growth": "linear",
+        "yearly_seasonality": true,
+        "weekly_seasonality": true,
+        "daily_seasonality": false,
+        "seasonality_mode": "multiplicative",
+        "changepoint_prior_scale": 0.1,
+        "seasonality_prior_scale": 10.0,
+        "interval_width": 0.8
+      },
+      "validation_metrics": {
+        "n": 1044,
+        "mean_error": 399.0053167193345,
+        "mae": 402.3746400278245,
+        "mse": 200251.87646862413,
+        "rmse": 447.49511334608354,
+        "mape": 22.457943278109056,
+        "bias_direction": "under_forecast_on_average"
+      }
+    }
+  ],
+  "selected_candidate": {
+    "candidate_name": "Prophet_Log_Target_Flexible",
+    "config": {
+      "candidate_name": "Prophet_Log_Target_Flexible",
+      "target_transform": "log",
+      "growth": "linear",
+      "yearly_seasonality": true,
+      "weekly_seasonality": true,
+      "daily_seasonality": false,
+      "seasonality_mode": "additive",
+      "changepoint_prior_scale": 0.2,
+      "seasonality_prior_scale": 10.0,
+      "interval_width": 0.8
+    },
+    "validation_metrics": {
+      "n": 1044,
+      "mean_error": 374.04187345222095,
+      "mae": 380.63850106336497,
+      "mse": 179311.97491827892,
+      "rmse": 423.4524470566665,
+      "mape": 21.256308874955195,
+      "bias_direction": "under_forecast_on_average"
+    },
+    "test_metrics": {
+      "n": 847,
+      "mean_error": 1099.4313441478928,
+      "mae": 1099.4313441478928,
+      "mse": 1980044.577272441,
+      "rmse": 1407.1405677019056,
+      "mape": 34.20080965684771,
+      "bias_direction": "under_forecast_on_average"
+    }
+  },
+  "interpretation": [
+    "Prophet is included as an optional recognizable forecasting benchmark, not as the assumed winner.",
+    "Candidate selection is based on validation RMSE before test evaluation.",
+    "The selected Prophet configuration is refit on train plus validation data before test-period evaluation.",
+    "Prophet can capture trend and recurring seasonality, but it may still lag sharp gold regime shifts because it is a univariate model and does not use macro drivers."
+  ],
+  "limitations": [
+    "Prophet uses gold_price only in this notebook.",
+    "It does not use real yields, USD index, VIX, geopolitical risk, policy uncertainty, oil, or ETF holdings.",
+    "The long test period contains a large post-2023 gold surge, so Prophet may under-forecast if the surge is not represented in the fitted historical trend.",
+    "Prophet is optional and should be judged only inside Notebook 11 model comparison."
+  ]
+}

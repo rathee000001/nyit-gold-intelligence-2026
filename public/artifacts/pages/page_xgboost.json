@@ -1,0 +1,341 @@
+{
+  "page_title": "XGBoost Forecasting Candidate",
+  "page_subtitle": "Advanced nonlinear tabular model with target-transform testing and rolling refit evaluation.",
+  "artifact_type": "model_page",
+  "model_family": "XGBoost",
+  "default_chart_mode": "rolling_refit_one_step",
+  "dataset_window": {
+    "name": "Dataset B \u2014 Core Multivariate",
+    "target": "gold_price",
+    "start": "2006-01-02",
+    "end": "2026-03-31",
+    "train": {
+      "start": "2006-01-02",
+      "end": "2018-12-31",
+      "rows": 3390
+    },
+    "validation": {
+      "start": "2019-01-01",
+      "end": "2022-12-30",
+      "rows": 1044
+    },
+    "test": {
+      "start": "2023-01-02",
+      "end": "2026-03-31",
+      "rows": 847
+    }
+  },
+  "selected_model": {
+    "candidate_id": "xgboost_dollar_change",
+    "target_mode": "dollar_change",
+    "features": [
+      "gold_lag_1",
+      "gold_lag_5",
+      "gold_lag_20",
+      "gold_return_1",
+      "gold_return_5",
+      "gold_ma_5",
+      "gold_ma_20",
+      "gold_ma_60",
+      "gold_volatility_20",
+      "real_yield_lag1",
+      "nominal_yield_lag1",
+      "tips_curve_lag1",
+      "fed_bs_lag1",
+      "m2_supply_lag1",
+      "inflation_lag1",
+      "usd_index_lag1",
+      "eur_usd_lag1",
+      "jpy_usd_lag1",
+      "vix_index_lag1",
+      "fin_stress_lag1",
+      "gpr_index_lag1",
+      "policy_unc_lag1",
+      "oil_wti_lag1",
+      "ppi_index_lag1",
+      "gld_tonnes_lag1",
+      "unrate_lag1",
+      "ind_prod_lag1",
+      "cap_util_lag1",
+      "trend_idx",
+      "trend_sq",
+      "month_sin",
+      "month_cos"
+    ],
+    "validation_metrics": {
+      "candidate_id": "xgboost_dollar_change",
+      "model_name": "XGBoost",
+      "target_mode": "dollar_change",
+      "forecast_mode": "rolling_refit_one_step_validation",
+      "n": 1044,
+      "mae": 39.26206735987145,
+      "mse": 3780.2723280856717,
+      "rmse": 61.48391926419193,
+      "mape": 2.2855728054638966,
+      "refit_every": 20,
+      "refit_count": 53,
+      "fit_params": {
+        "n_estimators": 350,
+        "max_depth": 3,
+        "learning_rate": 0.035,
+        "subsample": 0.85,
+        "colsample_bytree": 0.85,
+        "min_child_weight": 3,
+        "reg_lambda": 1.0,
+        "reg_alpha": 0.0,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "n_jobs": -1,
+        "tree_method": "hist",
+        "device": "cuda"
+      },
+      "fit_error": null
+    },
+    "test_metrics_rolling": {
+      "n": 847,
+      "mae": 132.35921913046622,
+      "mse": 48223.83346599062,
+      "rmse": 219.599256524221,
+      "mape": 4.343907695859342
+    },
+    "test_metrics_fixed_diagnostic": {
+      "n": 847,
+      "mae": 116.96857540691053,
+      "mse": 36499.397499029576,
+      "rmse": 191.04815492181436,
+      "mape": 4.1860711507231825
+    },
+    "refit_every": 20,
+    "test_refit_count": 43
+  },
+  "leaderboards": {
+    "fixed_validation": [
+      {
+        "candidate_id": "xgboost_log_return",
+        "model_name": "XGBoost",
+        "target_mode": "log_return",
+        "forecast_mode": "fixed_model_one_step_validation",
+        "n": 1044,
+        "mae": 100.98468235173038,
+        "mse": 14836.552864143765,
+        "rmse": 121.80538930664672,
+        "mape": 5.6692319519690795,
+        "fit_params": {
+          "n_estimators": 350,
+          "max_depth": 3,
+          "learning_rate": 0.035,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "min_child_weight": 3,
+          "reg_lambda": 1.0,
+          "reg_alpha": 0.0,
+          "objective": "reg:squarederror",
+          "random_state": 42,
+          "n_jobs": -1,
+          "tree_method": "hist",
+          "device": "cuda"
+        },
+        "fit_error": null
+      },
+      {
+        "candidate_id": "xgboost_dollar_change",
+        "model_name": "XGBoost",
+        "target_mode": "dollar_change",
+        "forecast_mode": "fixed_model_one_step_validation",
+        "n": 1044,
+        "mae": 116.10503347535472,
+        "mse": 19047.45333193593,
+        "rmse": 138.01251150506585,
+        "mape": 6.5062610180166525,
+        "fit_params": {
+          "n_estimators": 350,
+          "max_depth": 3,
+          "learning_rate": 0.035,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "min_child_weight": 3,
+          "reg_lambda": 1.0,
+          "reg_alpha": 0.0,
+          "objective": "reg:squarederror",
+          "random_state": 42,
+          "n_jobs": -1,
+          "tree_method": "hist",
+          "device": "cuda"
+        },
+        "fit_error": null
+      },
+      {
+        "candidate_id": "xgboost_log_price",
+        "model_name": "XGBoost",
+        "target_mode": "log_price",
+        "forecast_mode": "fixed_model_one_step_validation",
+        "n": 1044,
+        "mae": 192.1394950284579,
+        "mse": 53001.92317967796,
+        "rmse": 230.22146550588621,
+        "mape": 10.591801351342164,
+        "fit_params": {
+          "n_estimators": 350,
+          "max_depth": 3,
+          "learning_rate": 0.035,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "min_child_weight": 3,
+          "reg_lambda": 1.0,
+          "reg_alpha": 0.0,
+          "objective": "reg:squarederror",
+          "random_state": 42,
+          "n_jobs": -1,
+          "tree_method": "hist",
+          "device": "cuda"
+        },
+        "fit_error": null
+      },
+      {
+        "candidate_id": "xgboost_price_level",
+        "model_name": "XGBoost",
+        "target_mode": "price_level",
+        "forecast_mode": "fixed_model_one_step_validation",
+        "n": 1044,
+        "mae": 210.65858289930554,
+        "mse": 63814.92569355257,
+        "rmse": 252.61616277180795,
+        "mape": 11.606713800758438,
+        "fit_params": {
+          "n_estimators": 350,
+          "max_depth": 3,
+          "learning_rate": 0.035,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "min_child_weight": 3,
+          "reg_lambda": 1.0,
+          "reg_alpha": 0.0,
+          "objective": "reg:squarederror",
+          "random_state": 42,
+          "n_jobs": -1,
+          "tree_method": "hist",
+          "device": "cuda"
+        },
+        "fit_error": null
+      }
+    ],
+    "rolling_validation": [
+      {
+        "candidate_id": "xgboost_dollar_change",
+        "model_name": "XGBoost",
+        "target_mode": "dollar_change",
+        "forecast_mode": "rolling_refit_one_step_validation",
+        "n": 1044,
+        "mae": 39.26206735987145,
+        "mse": 3780.2723280856717,
+        "rmse": 61.48391926419193,
+        "mape": 2.2855728054638966,
+        "refit_every": 20,
+        "refit_count": 53,
+        "fit_params": {
+          "n_estimators": 350,
+          "max_depth": 3,
+          "learning_rate": 0.035,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "min_child_weight": 3,
+          "reg_lambda": 1.0,
+          "reg_alpha": 0.0,
+          "objective": "reg:squarederror",
+          "random_state": 42,
+          "n_jobs": -1,
+          "tree_method": "hist",
+          "device": "cuda"
+        },
+        "fit_error": null
+      },
+      {
+        "candidate_id": "xgboost_log_return",
+        "model_name": "XGBoost",
+        "target_mode": "log_return",
+        "forecast_mode": "rolling_refit_one_step_validation",
+        "n": 1044,
+        "mae": 38.90344576788983,
+        "mse": 3909.3404774832406,
+        "rmse": 62.52471893166126,
+        "mape": 2.27312795532319,
+        "refit_every": 20,
+        "refit_count": 53,
+        "fit_params": {
+          "n_estimators": 350,
+          "max_depth": 3,
+          "learning_rate": 0.035,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "min_child_weight": 3,
+          "reg_lambda": 1.0,
+          "reg_alpha": 0.0,
+          "objective": "reg:squarederror",
+          "random_state": 42,
+          "n_jobs": -1,
+          "tree_method": "hist",
+          "device": "cuda"
+        },
+        "fit_error": null
+      },
+      {
+        "candidate_id": "xgboost_log_price",
+        "model_name": "XGBoost",
+        "target_mode": "log_price",
+        "forecast_mode": "rolling_refit_one_step_validation",
+        "n": 1044,
+        "mae": 44.31529129837259,
+        "mse": 4364.250963037817,
+        "rmse": 66.06247772402892,
+        "mape": 2.5680003842626378,
+        "refit_every": 20,
+        "refit_count": 53,
+        "fit_params": {
+          "n_estimators": 350,
+          "max_depth": 3,
+          "learning_rate": 0.035,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "min_child_weight": 3,
+          "reg_lambda": 1.0,
+          "reg_alpha": 0.0,
+          "objective": "reg:squarederror",
+          "random_state": 42,
+          "n_jobs": -1,
+          "tree_method": "hist",
+          "device": "cuda"
+        },
+        "fit_error": null
+      }
+    ]
+  },
+  "charts": [
+    {
+      "chart_id": "actual_vs_rolling_forecast",
+      "title": "Actual Gold Price vs Rolling XGBoost Forecast",
+      "source_artifact": "artifacts/models/xgboost_forecast_path.json",
+      "x": "date",
+      "y_actual": "actual",
+      "y_forecast": "rolling_forecast"
+    },
+    {
+      "chart_id": "fixed_model_diagnostic",
+      "title": "Fixed Model Forecast Diagnostic",
+      "source_artifact": "artifacts/models/xgboost_forecast_path.json",
+      "x": "date",
+      "y_actual": "actual",
+      "y_forecast": "fixed_model_forecast"
+    },
+    {
+      "chart_id": "feature_importance",
+      "title": "XGBoost Feature Importance",
+      "source_artifact": "artifacts/interpretability/xgboost_feature_importance.json"
+    }
+  ],
+  "limitations": [
+    "Raw price-level XGBoost can underforecast when test prices exceed the training range.",
+    "Change, log-price, and log-return targets are tested to reduce extrapolation weakness.",
+    "The default frontend chart should use the rolling refit forecast."
+  ],
+  "json_first_rule": "Frontend should read all XGBoost claims, metrics, target mode, and selected-model labels from this artifact."
+}

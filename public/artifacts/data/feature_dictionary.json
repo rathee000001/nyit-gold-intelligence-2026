@@ -1,0 +1,225 @@
+{
+  "artifact_name": "feature_dictionary",
+  "created_at_utc": "2026-04-30T19:54:50.474900+00:00",
+  "target_variable": "gold_price",
+  "leakage_policy": {
+    "summary": "Gold-derived features are shifted so the current target value is not used to predict itself.",
+    "gold_features": "lag/return/rolling features use only prior observed gold_price values.",
+    "exogenous_factors": "Core macro/market factors are aligned by date inside the official cutoff window.",
+    "cutoff_rule": "No rows after 2026-03-31 are used in model-ready datasets."
+  },
+  "engineered_gold_features": [
+    {
+      "feature": "gold_lag_1",
+      "formula": "gold_price.shift(1)",
+      "meaning": "Prior weekday gold price",
+      "leakage_control": "Uses previous row only"
+    },
+    {
+      "feature": "gold_lag_5",
+      "formula": "gold_price.shift(5)",
+      "meaning": "Gold price five weekday rows earlier",
+      "leakage_control": "Uses previous rows only"
+    },
+    {
+      "feature": "gold_lag_20",
+      "formula": "gold_price.shift(20)",
+      "meaning": "Gold price twenty weekday rows earlier",
+      "leakage_control": "Uses previous rows only"
+    },
+    {
+      "feature": "gold_return_1",
+      "formula": "gold_price.pct_change(1).shift(1)",
+      "meaning": "Prior 1-period gold return",
+      "leakage_control": "Return is shifted by one row"
+    },
+    {
+      "feature": "gold_return_5",
+      "formula": "gold_price.pct_change(5).shift(1)",
+      "meaning": "Prior 5-period gold return",
+      "leakage_control": "Return is shifted by one row"
+    },
+    {
+      "feature": "gold_ma_5",
+      "formula": "gold_price.shift(1).rolling(5).mean()",
+      "meaning": "Prior 5-row moving average",
+      "leakage_control": "Rolling window begins from prior row"
+    },
+    {
+      "feature": "gold_ma_20",
+      "formula": "gold_price.shift(1).rolling(20).mean()",
+      "meaning": "Prior 20-row moving average",
+      "leakage_control": "Rolling window begins from prior row"
+    },
+    {
+      "feature": "gold_ma_60",
+      "formula": "gold_price.shift(1).rolling(60).mean()",
+      "meaning": "Prior 60-row moving average",
+      "leakage_control": "Rolling window begins from prior row"
+    },
+    {
+      "feature": "gold_volatility_20",
+      "formula": "gold_price.pct_change(1).shift(1).rolling(20).std()",
+      "meaning": "Prior 20-row rolling volatility of gold returns",
+      "leakage_control": "Return series is shifted before rolling"
+    }
+  ],
+  "core_factor_features": [
+    {
+      "feature": "real_yield",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "nominal_yield",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "tips_curve",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "fed_bs",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "m2_supply",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "inflation",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "usd_index",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "eur_usd",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "jpy_usd",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "vix_index",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "fin_stress",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "gpr_index",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "policy_unc",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "oil_wti",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "ppi_index",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "gld_tonnes",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "unrate",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "ind_prod",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    },
+    {
+      "feature": "cap_util",
+      "source_type": "existing matrix factor",
+      "main_multivariate_use": true
+    }
+  ],
+  "excluded_from_main_multivariate": [
+    {
+      "feature": "high_yield",
+      "reason": "Starts too late around 2023-05-01; reserved for optional short-window sensitivity only."
+    }
+  ],
+  "model_feature_sets": {
+    "regression_recommended_first_pass": [
+      "gold_lag_1",
+      "gold_ma_20",
+      "real_yield",
+      "nominal_yield",
+      "usd_index",
+      "vix_index",
+      "fin_stress",
+      "gpr_index",
+      "policy_unc",
+      "oil_wti",
+      "gld_tonnes",
+      "unrate"
+    ],
+    "sarimax_recommended_exogenous": [
+      "real_yield",
+      "usd_index",
+      "vix_index",
+      "gpr_index",
+      "policy_unc",
+      "gld_tonnes",
+      "oil_wti"
+    ],
+    "xgboost_main_candidate": [
+      "gold_lag_1",
+      "gold_lag_5",
+      "gold_lag_20",
+      "gold_return_1",
+      "gold_return_5",
+      "gold_ma_5",
+      "gold_ma_20",
+      "gold_ma_60",
+      "gold_volatility_20",
+      "real_yield",
+      "nominal_yield",
+      "tips_curve",
+      "fed_bs",
+      "m2_supply",
+      "inflation",
+      "usd_index",
+      "eur_usd",
+      "jpy_usd",
+      "vix_index",
+      "fin_stress",
+      "gpr_index",
+      "policy_unc",
+      "oil_wti",
+      "ppi_index",
+      "gld_tonnes",
+      "unrate",
+      "ind_prod",
+      "cap_util"
+    ]
+  }
+}

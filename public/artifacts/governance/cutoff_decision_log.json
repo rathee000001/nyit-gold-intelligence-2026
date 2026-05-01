@@ -1,0 +1,35 @@
+{
+  "generated_at_utc": "2026-04-30T19:47:15+00:00",
+  "decisions": [
+    {
+      "decision_id": "cutoff_001",
+      "decision": "Set official_forecast_cutoff_date to 2026-03-31.",
+      "reason": "gpr_index and policy_unc stop at 2026-03-31 in the current matrix.",
+      "impact": "Rows after 2026-03-31 are excluded from official model training/validation/test and forecast export."
+    },
+    {
+      "decision_id": "calendar_001",
+      "decision": "Use weekday-clean matrix for the current stage.",
+      "reason": "Saturday and Sunday rows are removed. Official market-holiday filtering has not yet been added.",
+      "impact": "Project wording must say weekday-clean, not fully trading-day clean."
+    },
+    {
+      "decision_id": "split_001",
+      "decision": "Use chronological train/validation/test splits.",
+      "reason": "Random splits are invalid for time-series forecasting because they leak future information.",
+      "impact": "All later model notebooks must use the locked time windows from this notebook."
+    },
+    {
+      "decision_id": "hy_001",
+      "decision": "Exclude high_yield from main Regression, SARIMAX, and XGBoost.",
+      "reason": "high_yield begins too late for the main common multivariate window.",
+      "impact": "high_yield may only appear in optional short-window sensitivity work."
+    },
+    {
+      "decision_id": "dataset_001",
+      "decision": "Use Dataset A for long univariate models and Dataset B for core multivariate models.",
+      "reason": "This separates long gold-only history from the shorter common multivariate history.",
+      "impact": "Baseline and classical univariate models use 1968-2026 gold history; main multivariate models use 2006-2026 common factor history."
+    }
+  ]
+}

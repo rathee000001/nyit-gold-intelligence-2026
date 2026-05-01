@@ -1,0 +1,289 @@
+{
+  "generated_at_utc": "2026-04-30T19:47:15+00:00",
+  "governance_title": "Gold Nexus Alpha Forecast Cutoff and Model Window Governance",
+  "official_forecast_cutoff_date": "2026-03-31",
+  "why_cutoff_exists": [
+    "The matrix extends beyond the cutoff date, but not every required factor is valid after the cutoff.",
+    "gpr_index and policy_unc stop at 2026-03-31 in the current matrix.",
+    "Official model training/evaluation must not use rows with unavailable factor information.",
+    "Rows after cutoff can remain visible on the website as provisional/display-only data."
+  ],
+  "time_split_policy": {
+    "method": "chronological_time_based_split",
+    "random_split_allowed": false,
+    "reason": "Forecasting models must respect time order and avoid leakage from the future."
+  },
+  "calendar_policy": {
+    "current_status": "weekday_clean",
+    "weekends_removed": true,
+    "market_holidays_removed": false,
+    "wording_rule": "Call the current matrix weekday-clean unless official market-holiday filtering is added later."
+  },
+  "factor_validity": [
+    {
+      "factor": "gold_price",
+      "observed_first_valid_date": "1968-01-04",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 0,
+      "missing_pct_weekday_matrix": 0.0,
+      "non_null_count_weekday_matrix": 15215,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "real_yield",
+      "observed_first_valid_date": "2003-01-02",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 9130,
+      "missing_pct_weekday_matrix": 60.0066,
+      "non_null_count_weekday_matrix": 6085,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "nominal_yield",
+      "observed_first_valid_date": "1968-01-04",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 0,
+      "missing_pct_weekday_matrix": 0.0,
+      "non_null_count_weekday_matrix": 15215,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "tips_curve",
+      "observed_first_valid_date": "1997-01-02",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 7565,
+      "missing_pct_weekday_matrix": 49.7207,
+      "non_null_count_weekday_matrix": 7650,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "fed_bs",
+      "observed_first_valid_date": "2003-01-01",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 9129,
+      "missing_pct_weekday_matrix": 60.0,
+      "non_null_count_weekday_matrix": 6086,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "m2_supply",
+      "observed_first_valid_date": "1968-01-04",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 0,
+      "missing_pct_weekday_matrix": 0.0,
+      "non_null_count_weekday_matrix": 15215,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "inflation",
+      "observed_first_valid_date": "2003-01-02",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 9130,
+      "missing_pct_weekday_matrix": 60.0066,
+      "non_null_count_weekday_matrix": 6085,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "usd_index",
+      "observed_first_valid_date": "2006-01-02",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 9912,
+      "missing_pct_weekday_matrix": 65.1462,
+      "non_null_count_weekday_matrix": 5303,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "eur_usd",
+      "observed_first_valid_date": "1999-01-04",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 8087,
+      "missing_pct_weekday_matrix": 53.1515,
+      "non_null_count_weekday_matrix": 7128,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "jpy_usd",
+      "observed_first_valid_date": "1971-01-04",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 782,
+      "missing_pct_weekday_matrix": 5.1397,
+      "non_null_count_weekday_matrix": 14433,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "vix_index",
+      "observed_first_valid_date": "1990-01-02",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 5738,
+      "missing_pct_weekday_matrix": 37.7128,
+      "non_null_count_weekday_matrix": 9477,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "high_yield",
+      "observed_first_valid_date": "2023-05-01",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 14432,
+      "missing_pct_weekday_matrix": 94.8538,
+      "non_null_count_weekday_matrix": 783,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "fin_stress",
+      "observed_first_valid_date": "1993-12-31",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 6781,
+      "missing_pct_weekday_matrix": 44.5679,
+      "non_null_count_weekday_matrix": 8434,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "gpr_index",
+      "observed_first_valid_date": "1985-01-01",
+      "observed_last_valid_date": "2026-03-31",
+      "source_valid_through_for_this_run": "2026-03-31",
+      "missing_count_weekday_matrix": 4454,
+      "missing_pct_weekday_matrix": 29.2737,
+      "non_null_count_weekday_matrix": 10761,
+      "non_null_count_after_cutoff": 0,
+      "is_cutoff_driver": true,
+      "audit_note": "Source-valid-through is locked manually because this local/monthly factor stops at the official cutoff."
+    },
+    {
+      "factor": "policy_unc",
+      "observed_first_valid_date": "1968-01-04",
+      "observed_last_valid_date": "2026-03-31",
+      "source_valid_through_for_this_run": "2026-03-31",
+      "missing_count_weekday_matrix": 21,
+      "missing_pct_weekday_matrix": 0.138,
+      "non_null_count_weekday_matrix": 15194,
+      "non_null_count_after_cutoff": 0,
+      "is_cutoff_driver": true,
+      "audit_note": "Source-valid-through is locked manually because this local/monthly factor stops at the official cutoff."
+    },
+    {
+      "factor": "oil_wti",
+      "observed_first_valid_date": "1986-01-02",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 4695,
+      "missing_pct_weekday_matrix": 30.8577,
+      "non_null_count_weekday_matrix": 10520,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "ppi_index",
+      "observed_first_valid_date": "1968-01-04",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 0,
+      "missing_pct_weekday_matrix": 0.0,
+      "non_null_count_weekday_matrix": 15215,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "gld_tonnes",
+      "observed_first_valid_date": "2004-11-18",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 9620,
+      "missing_pct_weekday_matrix": 63.2271,
+      "non_null_count_weekday_matrix": 5595,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "unrate",
+      "observed_first_valid_date": "1968-01-04",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 0,
+      "missing_pct_weekday_matrix": 0.0,
+      "non_null_count_weekday_matrix": 15215,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "ind_prod",
+      "observed_first_valid_date": "1968-01-04",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 0,
+      "missing_pct_weekday_matrix": 0.0,
+      "non_null_count_weekday_matrix": 15215,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    },
+    {
+      "factor": "cap_util",
+      "observed_first_valid_date": "1968-01-04",
+      "observed_last_valid_date": "2026-04-29",
+      "source_valid_through_for_this_run": "2026-04-29",
+      "missing_count_weekday_matrix": 0,
+      "missing_pct_weekday_matrix": 0.0,
+      "non_null_count_weekday_matrix": 15215,
+      "non_null_count_after_cutoff": 21,
+      "is_cutoff_driver": false,
+      "audit_note": "Source-valid-through uses observed latest non-null date."
+    }
+  ],
+  "high_yield_policy": {
+    "main_model_use": false,
+    "allowed_use": "optional_short_window_sensitivity_only",
+    "reason": "high_yield starts around 2023-05-01, which is too short for the main multivariate model history."
+  },
+  "professor_safe_rules": [
+    "Use time-based train/validation/test splits only.",
+    "Do not use random train/test split for time-series forecasting.",
+    "Do not train official models after 2026-03-31 because gpr_index and policy_unc are not valid after that date in the current matrix.",
+    "Rows after the official cutoff may be displayed but are provisional/display-only for modeling until local/monthly sources are updated.",
+    "Do not include high_yield in the main regression, SARIMAX, or XGBoost model because its usable history begins around 2023-05-01.",
+    "Call the matrix weekday-clean, not fully trading-day clean, unless market-holiday filtering is added later."
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "model_name": "XGBoost",
+  "selected_candidate_id": "xgboost_dollar_change",
+  "target_mode": "dollar_change",
+  "importance_type": "gain",
+  "records": [
+    {
+      "feature": "gold_ma_20",
+      "importance_gain": 94938.7578125,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gold_ma_5",
+      "importance_gain": 61434.96484375,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "ppi_index_lag1",
+      "importance_gain": 57289.984375,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gold_lag_20",
+      "importance_gain": 56957.16015625,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gold_lag_1",
+      "importance_gain": 56523.46875,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gold_return_5",
+      "importance_gain": 55244.8359375,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "unrate_lag1",
+      "importance_gain": 45250.35546875,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gold_ma_60",
+      "importance_gain": 40160.6328125,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "ind_prod_lag1",
+      "importance_gain": 37682.2109375,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gold_lag_5",
+      "importance_gain": 37585.828125,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "m2_supply_lag1",
+      "importance_gain": 37090.46875,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gold_volatility_20",
+      "importance_gain": 33321.63671875,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "usd_index_lag1",
+      "importance_gain": 32139.728515625,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "jpy_usd_lag1",
+      "importance_gain": 29959.3984375,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "fed_bs_lag1",
+      "importance_gain": 29223.322265625,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gpr_index_lag1",
+      "importance_gain": 28574.58984375,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "real_yield_lag1",
+      "importance_gain": 28540.4140625,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "fin_stress_lag1",
+      "importance_gain": 27961.375,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "oil_wti_lag1",
+      "importance_gain": 24753.4375,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "eur_usd_lag1",
+      "importance_gain": 24476.5234375,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "trend_idx",
+      "importance_gain": 24156.7109375,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "cap_util_lag1",
+      "importance_gain": 23167.703125,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "vix_index_lag1",
+      "importance_gain": 23072.880859375,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "nominal_yield_lag1",
+      "importance_gain": 23057.2578125,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gld_tonnes_lag1",
+      "importance_gain": 21166.380859375,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "policy_unc_lag1",
+      "importance_gain": 20510.029296875,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gold_return_1",
+      "importance_gain": 18165.962890625,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "tips_curve_lag1",
+      "importance_gain": 17893.376953125,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "inflation_lag1",
+      "importance_gain": 16967.845703125,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "month_sin",
+      "importance_gain": 15317.046875,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "month_cos",
+      "importance_gain": 8837.72265625,
+      "target_mode": "dollar_change"
+    }
+  ]
+}

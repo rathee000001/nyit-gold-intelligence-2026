@@ -1,0 +1,225 @@
+{
+  "page_title": "Exponential Smoothing Forecast",
+  "page_subtitle": "Professor-style smoothing model with static diagnostics and one-step rolling evaluation.",
+  "artifact_type": "model_page",
+  "model_family": "Exponential Smoothing",
+  "default_chart_mode": "one_step_rolling",
+  "dataset_window": {
+    "name": "Dataset A \u2014 Long Univariate",
+    "target": "gold_price",
+    "start": "1968-01-04",
+    "end": "2026-03-31",
+    "train": {
+      "start": "1968-01-04",
+      "end": "2018-12-31",
+      "rows": 13303
+    },
+    "validation": {
+      "start": "2019-01-01",
+      "end": "2022-12-30",
+      "rows": 1044
+    },
+    "test": {
+      "start": "2023-01-02",
+      "end": "2026-03-31",
+      "rows": 847
+    }
+  },
+  "selected_model": {
+    "model_name": "Holt Rolling One-Step",
+    "parameters": {
+      "alpha": 0.9191563497346975,
+      "beta": 0.0,
+      "phi": 1.0
+    },
+    "validation_metrics": {
+      "model_name": "Holt Rolling One-Step",
+      "forecast_mode": "one_step_rolling_validation",
+      "n": 1044,
+      "mae": 34.26784831549761,
+      "mse": 4517.232907165589,
+      "rmse": 67.21036309354078,
+      "mape": 2.012846776088445,
+      "parameters": {
+        "alpha": 0.9100896143960652,
+        "beta": 0.0,
+        "phi": 1.0
+      }
+    },
+    "test_metrics_rolling": {
+      "n": 847,
+      "mae": 79.68657206119191,
+      "mse": 32497.783938202305,
+      "rmse": 180.2714174188529,
+      "mape": 2.791342273126361
+    },
+    "test_metrics_static_diagnostic": {
+      "n": 847,
+      "mae": 903.179281242474,
+      "mse": 1593732.1501933534,
+      "rmse": 1262.4310476985875,
+      "mape": 26.461294736416853
+    }
+  },
+  "leaderboards": {
+    "static_validation": [
+      {
+        "model_name": "Holt-Winters Weekday Static",
+        "forecast_mode": "static_multi_step_validation",
+        "n": 1044,
+        "mae": 365.32940719789394,
+        "mse": 165508.534937162,
+        "rmse": 406.82740190056273,
+        "mape": 20.387918883250318,
+        "parameters": {
+          "smoothing_level": 0.9103032304907089,
+          "smoothing_trend": 0.0,
+          "smoothing_seasonal": 0.0,
+          "damping_trend": null,
+          "initial_level": 39.012162968174245,
+          "initial_trend": 0.10649069460474327,
+          "use_boxcox": false,
+          "lamda": null,
+          "remove_bias": false
+        },
+        "fit_error": null
+      },
+      {
+        "model_name": "Holt Static",
+        "forecast_mode": "static_multi_step_validation",
+        "n": 1044,
+        "mae": 371.32584213721265,
+        "mse": 170840.69024151488,
+        "rmse": 413.328791933873,
+        "mape": 20.72196120827916,
+        "parameters": {
+          "smoothing_level": 0.9100896143960652,
+          "smoothing_trend": 0.0,
+          "smoothing_seasonal": null,
+          "damping_trend": null,
+          "initial_level": 38.50341656319662,
+          "initial_trend": 0.09368692703443286,
+          "use_boxcox": false,
+          "lamda": null,
+          "remove_bias": false
+        },
+        "fit_error": null
+      },
+      {
+        "model_name": "SES Static",
+        "forecast_mode": "static_multi_step_validation",
+        "n": 1044,
+        "mae": 419.76679087199983,
+        "mse": 216792.7597604885,
+        "rmse": 465.61009413509123,
+        "mape": 23.43862401652295,
+        "parameters": {
+          "smoothing_level": 0.910102315131601,
+          "smoothing_trend": null,
+          "smoothing_seasonal": null,
+          "damping_trend": null,
+          "initial_level": 38.49717848631109,
+          "initial_trend": null,
+          "use_boxcox": false,
+          "lamda": null,
+          "remove_bias": false
+        },
+        "fit_error": null
+      },
+      {
+        "model_name": "Damped Holt Static",
+        "forecast_mode": "static_multi_step_validation",
+        "n": 1044,
+        "mae": 419.7667985160387,
+        "mse": 216792.7663147209,
+        "rmse": 465.6101011734184,
+        "mape": 23.43862446906659,
+        "parameters": {
+          "smoothing_level": 0.9100372511852601,
+          "smoothing_trend": 0.0,
+          "smoothing_seasonal": null,
+          "damping_trend": 0.9720925518708253,
+          "initial_level": 38.36301847749253,
+          "initial_trend": -0.6463498521753283,
+          "use_boxcox": false,
+          "lamda": null,
+          "remove_bias": false
+        },
+        "fit_error": null
+      }
+    ],
+    "rolling_validation": [
+      {
+        "model_name": "Holt Rolling One-Step",
+        "forecast_mode": "one_step_rolling_validation",
+        "n": 1044,
+        "mae": 34.26784831549761,
+        "mse": 4517.232907165589,
+        "rmse": 67.21036309354078,
+        "mape": 2.012846776088445,
+        "parameters": {
+          "alpha": 0.9100896143960652,
+          "beta": 0.0,
+          "phi": 1.0
+        }
+      },
+      {
+        "model_name": "SES Rolling One-Step",
+        "forecast_mode": "one_step_rolling_validation",
+        "n": 1044,
+        "mae": 34.26621947422903,
+        "mse": 4517.336247511226,
+        "rmse": 67.21113187196914,
+        "mape": 2.0126437750757376,
+        "parameters": {
+          "alpha": 0.910102315131601
+        }
+      },
+      {
+        "model_name": "Damped Holt Rolling One-Step",
+        "forecast_mode": "one_step_rolling_validation",
+        "n": 1044,
+        "mae": 34.266970111859735,
+        "mse": 4517.35478745951,
+        "rmse": 67.21126979502404,
+        "mape": 2.0126911595714514,
+        "parameters": {
+          "alpha": 0.9100372511852601,
+          "beta": 0.0,
+          "phi": 0.9720925518708253
+        }
+      }
+    ]
+  },
+  "charts": [
+    {
+      "chart_id": "actual_vs_rolling_forecast",
+      "title": "Actual Gold Price vs Rolling Smoothing Forecast",
+      "source_artifact": "artifacts/models/exponential_smoothing_forecast_path.json",
+      "x": "date",
+      "y_actual": "actual",
+      "y_forecast": "rolling_forecast"
+    },
+    {
+      "chart_id": "static_forecast_diagnostic",
+      "title": "Static Multi-Step Forecast Diagnostic",
+      "source_artifact": "artifacts/models/exponential_smoothing_forecast_path.json",
+      "x": "date",
+      "y_actual": "actual",
+      "y_forecast": "static_forecast"
+    },
+    {
+      "chart_id": "rolling_residuals",
+      "title": "Rolling Forecast Residuals",
+      "source_artifact": "artifacts/models/exponential_smoothing_forecast_path.json",
+      "x": "date",
+      "y": "residual"
+    }
+  ],
+  "limitations": [
+    "Static multi-step smoothing forecasts are retained as diagnostics because they may lag sharply during regime breaks.",
+    "The default frontend chart should use the one-step rolling forecast because it updates after each observed gold price.",
+    "Holt-Winters weekday seasonality is diagnostic only and is not forced unless it improves validation evidence."
+  ],
+  "json_first_rule": "Frontend should read all model claims, metrics, and selected-model labels from this artifact."
+}

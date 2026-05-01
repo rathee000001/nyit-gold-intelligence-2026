@@ -1,0 +1,364 @@
+{
+  "notebook": "08_sarimax_forecasting.ipynb",
+  "run_timestamp_utc": "2026-04-30T22:08:19.018749+00:00",
+  "project_identity": "Gold Nexus Alpha professor-style forecasting platform",
+  "dataset": {
+    "name": "Dataset B — Core Multivariate",
+    "target": "gold_price",
+    "start": "2006-01-02",
+    "end": "2026-03-31",
+    "train": {
+      "start": "2006-01-02",
+      "end": "2018-12-31",
+      "rows": 3390
+    },
+    "validation": {
+      "start": "2019-01-01",
+      "end": "2022-12-30",
+      "rows": 1044
+    },
+    "test": {
+      "start": "2023-01-02",
+      "end": "2026-03-31",
+      "rows": 847
+    }
+  },
+  "excluded_variables": [
+    "high_yield"
+  ],
+  "exogenous_factor_policy": "Uses lagged exogenous variables to avoid same-day information dependency.",
+  "selection_rule": "Top static candidates are rolled through validation; final SARIMAX candidate selected by rolling validation RMSE.",
+  "selected_model": {
+    "candidate_id": "lagged_macro_only__SARIMAX(0, 1, 0)",
+    "order": "(0, 1, 0)",
+    "feature_set": "lagged_macro_only",
+    "features": [
+      "real_yield_lag1",
+      "usd_index_lag1",
+      "vix_index_lag1",
+      "gpr_index_lag1",
+      "policy_unc_lag1",
+      "gld_tonnes_lag1",
+      "oil_wti_lag1"
+    ],
+    "validation_metrics": {
+      "candidate_id": "lagged_macro_only__SARIMAX(0, 1, 0)",
+      "model_name": "SARIMAX",
+      "feature_set": "lagged_macro_only",
+      "order": "(0, 1, 0)",
+      "order_tuple": [
+        0,
+        1,
+        0
+      ],
+      "forecast_mode": "one_step_rolling_validation",
+      "n": 1044,
+      "mae": 33.92194935518475,
+      "mse": 4526.997922053907,
+      "rmse": 67.28296903417615,
+      "mape": 1.990497496857345,
+      "append_failures": 0,
+      "fit_error": null
+    },
+    "test_metrics_rolling": {
+      "n": 847,
+      "mae": 77.17477678273086,
+      "mse": 32634.08705775532,
+      "rmse": 180.64907156626995,
+      "mape": 2.715453505508717
+    },
+    "test_metrics_static_diagnostic": {
+      "n": 847,
+      "mae": 887.5948747145808,
+      "mse": 1502363.1087432099,
+      "rmse": 1225.709226832861,
+      "mape": 26.221296076998218
+    },
+    "append_failures_test": 0
+  },
+  "static_validation_leaderboard": [
+    {
+      "candidate_id": "lagged_macro_only__SARIMAX(0, 1, 0)",
+      "model_name": "SARIMAX",
+      "feature_set": "lagged_macro_only",
+      "order": "(0, 1, 0)",
+      "order_tuple": [
+        0,
+        1,
+        0
+      ],
+      "forecast_mode": "static_multi_step_validation",
+      "n": 1044,
+      "mae": 293.7688874707995,
+      "mse": 109418.71688976753,
+      "rmse": 330.78500100483325,
+      "mape": 16.415493834109128,
+      "aic": 37294.669870189085,
+      "bic": 37349.82182569103,
+      "fit_error": null
+    },
+    {
+      "candidate_id": "lagged_macro_only__SARIMAX(1, 1, 0)",
+      "model_name": "SARIMAX",
+      "feature_set": "lagged_macro_only",
+      "order": "(1, 1, 0)",
+      "order_tuple": [
+        1,
+        1,
+        0
+      ],
+      "forecast_mode": "static_multi_step_validation",
+      "n": 1044,
+      "mae": 293.90615463542355,
+      "mse": 109518.14568429605,
+      "rmse": 330.93525905272776,
+      "mape": 16.42316755677904,
+      "aic": 37277.275489214655,
+      "bic": 37338.555439772375,
+      "fit_error": null
+    },
+    {
+      "candidate_id": "lagged_macro_only__SARIMAX(0, 1, 1)",
+      "model_name": "SARIMAX",
+      "feature_set": "lagged_macro_only",
+      "order": "(0, 1, 1)",
+      "order_tuple": [
+        0,
+        1,
+        1
+      ],
+      "forecast_mode": "static_multi_step_validation",
+      "n": 1044,
+      "mae": 294.2191719765756,
+      "mse": 109745.57274655682,
+      "rmse": 331.278693469044,
+      "mape": 16.44065399744577,
+      "aic": 37264.33045570142,
+      "bic": 37325.6074542296,
+      "fit_error": null
+    },
+    {
+      "candidate_id": "lagged_macro_only__SARIMAX(1, 1, 1)",
+      "model_name": "SARIMAX",
+      "feature_set": "lagged_macro_only",
+      "order": "(1, 1, 1)",
+      "order_tuple": [
+        1,
+        1,
+        1
+      ],
+      "forecast_mode": "static_multi_step_validation",
+      "n": 1044,
+      "mae": 308.9523558334206,
+      "mse": 119947.89042463934,
+      "rmse": 346.33493965327744,
+      "mape": 17.282588314001263,
+      "aic": 36988.14909101023,
+      "bic": 37055.553789391226,
+      "fit_error": null
+    },
+    {
+      "candidate_id": "lagged_macro_plus_trend_month__SARIMAX(1, 1, 1)",
+      "model_name": "SARIMAX",
+      "feature_set": "lagged_macro_plus_trend_month",
+      "order": "(1, 1, 1)",
+      "order_tuple": [
+        1,
+        1,
+        1
+      ],
+      "forecast_mode": "static_multi_step_validation",
+      "n": 1044,
+      "mae": 524.9970885456864,
+      "mse": 347241.07452436147,
+      "rmse": 589.271647480482,
+      "mape": 29.407292309670108,
+      "aic": 36985.606662157414,
+      "bic": 37077.52215994968,
+      "fit_error": null
+    },
+    {
+      "candidate_id": "lagged_macro_plus_trend_month__SARIMAX(0, 1, 0)",
+      "model_name": "SARIMAX",
+      "feature_set": "lagged_macro_plus_trend_month",
+      "order": "(0, 1, 0)",
+      "order_tuple": [
+        0,
+        1,
+        0
+      ],
+      "forecast_mode": "static_multi_step_validation",
+      "n": 1044,
+      "mae": 529.3468073748246,
+      "mse": 352639.90371453646,
+      "rmse": 593.8349128457643,
+      "mape": 29.677730139938163,
+      "aic": 37289.951716300464,
+      "bic": 37369.6156520255,
+      "fit_error": null
+    },
+    {
+      "candidate_id": "lagged_macro_plus_trend_month__SARIMAX(1, 1, 0)",
+      "model_name": "SARIMAX",
+      "feature_set": "lagged_macro_plus_trend_month",
+      "order": "(1, 1, 0)",
+      "order_tuple": [
+        1,
+        1,
+        0
+      ],
+      "forecast_mode": "static_multi_step_validation",
+      "n": 1044,
+      "mae": 529.4221772397813,
+      "mse": 352737.67818686675,
+      "rmse": 593.9172317645505,
+      "mape": 29.682011748821136,
+      "aic": 37273.85100688075,
+      "bic": 37359.642937661556,
+      "fit_error": null
+    },
+    {
+      "candidate_id": "lagged_macro_plus_trend_month__SARIMAX(0, 1, 1)",
+      "model_name": "SARIMAX",
+      "feature_set": "lagged_macro_plus_trend_month",
+      "order": "(0, 1, 1)",
+      "order_tuple": [
+        0,
+        1,
+        1
+      ],
+      "forecast_mode": "static_multi_step_validation",
+      "n": 1044,
+      "mae": 537.6657506264709,
+      "mse": 363915.4618470715,
+      "rmse": 603.2540607795952,
+      "mape": 30.146069144858288,
+      "aic": 37261.118518306655,
+      "bic": 37346.9063162461,
+      "fit_error": null
+    }
+  ],
+  "rolling_validation_leaderboard": [
+    {
+      "candidate_id": "lagged_macro_only__SARIMAX(0, 1, 0)",
+      "model_name": "SARIMAX",
+      "feature_set": "lagged_macro_only",
+      "order": "(0, 1, 0)",
+      "order_tuple": [
+        0,
+        1,
+        0
+      ],
+      "forecast_mode": "one_step_rolling_validation",
+      "n": 1044,
+      "mae": 33.92194935518475,
+      "mse": 4526.997922053907,
+      "rmse": 67.28296903417615,
+      "mape": 1.990497496857345,
+      "append_failures": 0,
+      "fit_error": null
+    },
+    {
+      "candidate_id": "lagged_macro_only__SARIMAX(0, 1, 1)",
+      "model_name": "SARIMAX",
+      "feature_set": "lagged_macro_only",
+      "order": "(0, 1, 1)",
+      "order_tuple": [
+        0,
+        1,
+        1
+      ],
+      "forecast_mode": "one_step_rolling_validation",
+      "n": 1044,
+      "mae": 34.52596055895161,
+      "mse": 4527.877517173562,
+      "rmse": 67.28950525285174,
+      "mape": 2.029782163688421,
+      "append_failures": 0,
+      "fit_error": null
+    },
+    {
+      "candidate_id": "lagged_macro_only__SARIMAX(1, 1, 0)",
+      "model_name": "SARIMAX",
+      "feature_set": "lagged_macro_only",
+      "order": "(1, 1, 0)",
+      "order_tuple": [
+        1,
+        1,
+        0
+      ],
+      "forecast_mode": "one_step_rolling_validation",
+      "n": 1044,
+      "mae": 34.421005427913485,
+      "mse": 4529.336229679147,
+      "rmse": 67.30034345884981,
+      "mape": 2.0229047175773776,
+      "append_failures": 0,
+      "fit_error": null
+    }
+  ],
+  "coefficient_table": [
+    {
+      "term": "intercept",
+      "coefficient": 0.2099152219771571,
+      "p_value": 0.821159677428229
+    },
+    {
+      "term": "real_yield_lag1",
+      "coefficient": -29.510921281421872,
+      "p_value": 0.07352649170109202
+    },
+    {
+      "term": "usd_index_lag1",
+      "coefficient": 11.588598017266701,
+      "p_value": 0.7073214074161155
+    },
+    {
+      "term": "vix_index_lag1",
+      "coefficient": -4.739151964344964,
+      "p_value": 0.2695338014898536
+    },
+    {
+      "term": "gpr_index_lag1",
+      "coefficient": -17.04210332928924,
+      "p_value": 2.371715977526782e-05
+    },
+    {
+      "term": "policy_unc_lag1",
+      "coefficient": 2.2885208556373726,
+      "p_value": 0.5573334904311171
+    },
+    {
+      "term": "gld_tonnes_lag1",
+      "coefficient": 124.2269696285914,
+      "p_value": 0.07253836491309867
+    },
+    {
+      "term": "oil_wti_lag1",
+      "coefficient": -4.455669126690719,
+      "p_value": 0.7257475252197843
+    },
+    {
+      "term": "sigma2",
+      "coefficient": 3745.4878205983196,
+      "p_value": 0.0
+    }
+  ],
+  "ljung_box": [
+    {
+      "lag": 10,
+      "lb_stat": 57.31899926564586,
+      "lb_pvalue": 1.1611032730562629e-08
+    },
+    {
+      "lag": 20,
+      "lb_stat": 94.41435466177073,
+      "lb_pvalue": 1.2412011253161622e-11
+    }
+  ],
+  "interpretation_notes": [
+    "Static SARIMAX forecasts are retained as diagnostics because long multi-step forecasts can flatten or lag during regime shifts.",
+    "The default frontend chart should use the one-step rolling forecast.",
+    "Exogenous variables are lagged by one row/day to reduce leakage risk."
+  ]
+}

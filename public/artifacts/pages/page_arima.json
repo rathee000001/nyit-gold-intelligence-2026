@@ -1,0 +1,140 @@
+{
+  "artifact_name": "page_arima",
+  "notebook": "07_arima_forecasting.ipynb",
+  "version": "v4_professor_style_arima_family_with_one_step_roll_forward",
+  "export_timestamp_utc": "2026-04-30T22:55:30.490718+00:00",
+  "page_title": "ARIMA Forecasting",
+  "page_subtitle": "Classical univariate forecasting with professor-style trend diagnostics, ARIMA-family selection, and one-step roll-forward evaluation.",
+  "model_type": "Classical univariate time-series model",
+  "dataset_window": {
+    "name": "Dataset A — Long Univariate",
+    "target": "gold_price",
+    "start": "1968-01-04",
+    "end": "2026-03-31",
+    "official_cutoff": "2026-03-31"
+  },
+  "split_summary": {
+    "train": {
+      "start": "1968-01-04",
+      "end": "2018-12-31",
+      "rows": 13303
+    },
+    "validation": {
+      "start": "2019-01-01",
+      "end": "2022-12-30",
+      "rows": 1044
+    },
+    "test": {
+      "start": "2023-01-02",
+      "end": "2026-03-31",
+      "rows": 847
+    }
+  },
+  "selected_model": {
+    "model_key": "direct_arima_rolling_(2, 1, 1)",
+    "display_name": "Direct ARIMA(2, 1, 1) — One-Step Rolling Validation",
+    "model_family": "arima_family",
+    "candidate_type": "direct_arima_rolling",
+    "forecast_mode": "one_step_rolling",
+    "target_scale": "price",
+    "order": [
+      2,
+      1,
+      1
+    ],
+    "formula": null,
+    "selection_rule": "Lowest validation RMSE among ARIMA-family candidates only. Deterministic trend benchmarks are diagnostic and cannot be selected as the ARIMA model."
+  },
+  "kpi_cards": [
+    {
+      "label": "Validation RMSE",
+      "value": 63.30395349646531,
+      "period": "validation",
+      "mode": "one_step_rolling"
+    },
+    {
+      "label": "Validation MAE",
+      "value": 34.92506209724155,
+      "period": "validation",
+      "mode": "one_step_rolling"
+    },
+    {
+      "label": "Validation MAPE",
+      "value": 2.05343947804817,
+      "period": "validation",
+      "mode": "one_step_rolling"
+    },
+    {
+      "label": "Test RMSE",
+      "value": 173.8306655765098,
+      "period": "test",
+      "mode": "one_step_rolling"
+    },
+    {
+      "label": "Test MAE",
+      "value": 90.06936008027932,
+      "period": "test",
+      "mode": "one_step_rolling"
+    },
+    {
+      "label": "Test MAPE",
+      "value": 3.0794405113156684,
+      "period": "test",
+      "mode": "one_step_rolling"
+    }
+  ],
+  "sections": [
+    {
+      "title": "What this model does",
+      "body": [
+        "ARIMA uses historical gold price behavior to forecast future gold price movements.",
+        "This notebook tests direct ARIMA, log ARIMA, and professor-style trend/month plus residual ARIMA correction.",
+        "The selected ARIMA model is chosen from ARIMA-family candidates only."
+      ]
+    },
+    {
+      "title": "Why rolling forecast is shown",
+      "body": [
+        "One-step rolling evaluation forecasts the next observation, then updates with the actual value.",
+        "This is the fairest comparison against Naive roll-forward forecasts.",
+        "Static multi-step forecasts are also exported because they show long-horizon behavior without daily updating."
+      ]
+    },
+    {
+      "title": "Limitations",
+      "body": [
+        "ARIMA is univariate and does not directly use macroeconomic factors.",
+        "Long static forecasts can flatten over multi-year horizons.",
+        "Trend and month seasonality are tested but only retained if validation metrics support them."
+      ]
+    }
+  ],
+  "charts": [
+    {
+      "chart_id": "selected_arima_actual_vs_forecast",
+      "title": "Selected ARIMA Actual vs Forecast",
+      "artifact": "artifacts/models/arima_forecast_path.json",
+      "path_key": "selected_validation_and_test",
+      "default": true
+    },
+    {
+      "chart_id": "selected_arima_residuals",
+      "title": "Selected ARIMA Residuals",
+      "artifact": "artifacts/models/arima_forecast_path.json",
+      "path_key": "selected_validation_and_test",
+      "default": true
+    },
+    {
+      "chart_id": "static_diagnostic_actual_vs_forecast",
+      "title": "Static Multi-Step Diagnostic",
+      "artifact": "artifacts/models/arima_forecast_path.json",
+      "path_key": "static_diagnostic_validation_and_test",
+      "default": false
+    }
+  ],
+  "source_artifacts": [
+    "artifacts/models/arima_results.json",
+    "artifacts/models/arima_diagnostics.json",
+    "artifacts/models/arima_forecast_path.json"
+  ]
+}

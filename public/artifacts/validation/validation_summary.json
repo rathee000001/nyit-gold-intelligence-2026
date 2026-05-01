@@ -1,0 +1,37 @@
+{
+  "artifact_type": "validation_summary",
+  "generated_at_utc": "2026-04-30T23:10:08.991577+00:00",
+  "official_forecast_cutoff_date": "2026-03-31",
+  "models_expected": [
+    "naive",
+    "moving_average",
+    "exponential_smoothing",
+    "regression",
+    "arima",
+    "sarimax",
+    "xgboost",
+    "prophet_optional"
+  ],
+  "models_available_count": 8,
+  "models_expected_count": 8,
+  "models_rankable_count": 8,
+  "missing_model_artifacts": [],
+  "missing_forecast_path_artifacts": [],
+  "selected_model_key": "arima",
+  "selected_model_name": "ARIMA",
+  "selected_model_primary_rmse": 173.8306655765098,
+  "ranking_rule": {
+    "primary_metric": "test_rmse_if_available_else_validation_rmse",
+    "direction": "lower_is_better",
+    "tie_breakers": [
+      "mae",
+      "mape"
+    ],
+    "warning": "This notebook selects based on available JSON metrics. A model without exported RMSE cannot be ranked."
+  },
+  "professor_safe_summary": [
+    "This page compares baseline, classical, explainable, economic time-series, nonlinear, and optional benchmark models.",
+    "The ranking is evidence-based and generated from model artifacts.",
+    "The website should read this JSON instead of hardcoding the winning model."
+  ]
+}

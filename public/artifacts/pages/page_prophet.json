@@ -1,0 +1,118 @@
+{
+  "page_title": "Prophet Optional Forecast",
+  "page_subtitle": "Univariate benchmark using Prophet on the long gold price history.",
+  "artifact_sources": [
+    "artifacts/models/prophet_results.json",
+    "artifacts/models/prophet_forecast_path.json"
+  ],
+  "model_category": "optional_benchmark",
+  "dataset_window": {
+    "name": "Dataset A \u2014 Long Univariate",
+    "start": "1968-01-04",
+    "end": "2026-03-31",
+    "target": "gold_price"
+  },
+  "training_period": {
+    "start": "1968-01-04",
+    "end": "2018-12-31"
+  },
+  "validation_period": {
+    "start": "2019-01-01",
+    "end": "2022-12-30"
+  },
+  "test_period": {
+    "start": "2023-01-02",
+    "end": "2026-03-31"
+  },
+  "selected_model": {
+    "name": "Prophet_Log_Target_Flexible",
+    "validation_metrics": {
+      "n": 1044,
+      "mean_error": 374.04187345222095,
+      "mae": 380.63850106336497,
+      "mse": 179311.97491827892,
+      "rmse": 423.4524470566665,
+      "mape": 21.256308874955195,
+      "bias_direction": "under_forecast_on_average"
+    },
+    "test_metrics": {
+      "n": 847,
+      "mean_error": 1099.4313441478928,
+      "mae": 1099.4313441478928,
+      "mse": 1980044.577272441,
+      "rmse": 1407.1405677019056,
+      "mape": 34.20080965684771,
+      "bias_direction": "under_forecast_on_average"
+    },
+    "config": {
+      "candidate_name": "Prophet_Log_Target_Flexible",
+      "target_transform": "log",
+      "growth": "linear",
+      "yearly_seasonality": true,
+      "weekly_seasonality": true,
+      "daily_seasonality": false,
+      "seasonality_mode": "additive",
+      "changepoint_prior_scale": 0.2,
+      "seasonality_prior_scale": 10.0,
+      "interval_width": 0.8
+    }
+  },
+  "kpi_cards": [
+    {
+      "label": "Validation RMSE",
+      "value": 423.4524470566665,
+      "format": "number"
+    },
+    {
+      "label": "Validation MAE",
+      "value": 380.63850106336497,
+      "format": "number"
+    },
+    {
+      "label": "Validation MAPE",
+      "value": 21.256308874955195,
+      "format": "percent"
+    },
+    {
+      "label": "Test RMSE",
+      "value": 1407.1405677019056,
+      "format": "number"
+    },
+    {
+      "label": "Test MAE",
+      "value": 1099.4313441478928,
+      "format": "number"
+    },
+    {
+      "label": "Test MAPE",
+      "value": 34.20080965684771,
+      "format": "percent"
+    }
+  ],
+  "charts": [
+    {
+      "chart_id": "prophet_actual_vs_forecast",
+      "title": "Actual vs Prophet Forecast",
+      "data_artifact": "artifacts/models/prophet_forecast_path.json",
+      "x": "date",
+      "series": [
+        "actual",
+        "yhat",
+        "yhat_lower",
+        "yhat_upper"
+      ]
+    }
+  ],
+  "model_explanation": [
+    "Prophet decomposes a time series into trend, seasonality, and changepoint components.",
+    "This notebook uses Prophet as an optional univariate benchmark on gold_price only.",
+    "The best Prophet candidate is selected by validation RMSE, then evaluated on the test period."
+  ],
+  "limitations": [
+    "Prophet uses gold_price only in this notebook.",
+    "It does not use real yields, USD index, VIX, geopolitical risk, policy uncertainty, oil, or ETF holdings.",
+    "The long test period contains a large post-2023 gold surge, so Prophet may under-forecast if the surge is not represented in the fitted historical trend.",
+    "Prophet is optional and should be judged only inside Notebook 11 model comparison."
+  ],
+  "professor_safe_note": "Prophet is not treated as the final model until Notebook 11 compares it against all other completed methods."
+}

@@ -1,0 +1,53 @@
+{
+  "generated_at_utc": "2026-04-30T19:47:15+00:00",
+  "project": "Gold Nexus Alpha",
+  "status": "official_cutoff_locked",
+  "matrix_status": "weekday_clean",
+  "matrix_date_range": {
+    "start": "1968-01-04",
+    "end": "2026-04-29"
+  },
+  "weekday_clean_rows": 15215,
+  "official_forecast_cutoff_date": "2026-03-31",
+  "official_rows_through_cutoff": 15194,
+  "display_only_rows_after_cutoff": 21,
+  "display_only_date_range_after_cutoff": {
+    "start": "2026-04-01",
+    "end": "2026-04-29"
+  },
+  "cutoff_reason": "gpr_index and policy_unc are valid through 2026-03-31 in the current matrix. Rows after that date are display-only/provisional until local/monthly sources are updated.",
+  "cutoff_drivers": [
+    {
+      "factor": "gpr_index",
+      "observed_first_valid_date": "1985-01-01",
+      "observed_last_valid_date": "2026-03-31",
+      "source_valid_through_for_this_run": "2026-03-31",
+      "missing_count_weekday_matrix": 4454,
+      "missing_pct_weekday_matrix": 29.2737,
+      "non_null_count_weekday_matrix": 10761,
+      "non_null_count_after_cutoff": 0,
+      "is_cutoff_driver": true,
+      "audit_note": "Source-valid-through is locked manually because this local/monthly factor stops at the official cutoff."
+    },
+    {
+      "factor": "policy_unc",
+      "observed_first_valid_date": "1968-01-04",
+      "observed_last_valid_date": "2026-03-31",
+      "source_valid_through_for_this_run": "2026-03-31",
+      "missing_count_weekday_matrix": 21,
+      "missing_pct_weekday_matrix": 0.138,
+      "non_null_count_weekday_matrix": 15194,
+      "non_null_count_after_cutoff": 0,
+      "is_cutoff_driver": true,
+      "audit_note": "Source-valid-through is locked manually because this local/monthly factor stops at the official cutoff."
+    }
+  ],
+  "professor_safe_rules": [
+    "Use time-based train/validation/test splits only.",
+    "Do not use random train/test split for time-series forecasting.",
+    "Do not train official models after 2026-03-31 because gpr_index and policy_unc are not valid after that date in the current matrix.",
+    "Rows after the official cutoff may be displayed but are provisional/display-only for modeling until local/monthly sources are updated.",
+    "Do not include high_yield in the main regression, SARIMAX, or XGBoost model because its usable history begins around 2023-05-01.",
+    "Call the matrix weekday-clean, not fully trading-day clean, unless market-holiday filtering is added later."
+  ]
+}

@@ -1,0 +1,400 @@
+{
+  "artifact_name": "regression_results",
+  "notebook": "06_regression_based_forecasting.ipynb",
+  "generated_at_utc": "2026-04-30T20:39:40.431670+00:00",
+  "model_family": "Regression-Based Forecasting",
+  "professor_reference": "Chapter 17 - Regression-based forecasting (2).ipynb",
+  "dataset": {
+    "dataset_name": "Dataset B — Core Multivariate",
+    "target": "gold_price",
+    "start": "2006-01-02",
+    "end": "2026-03-31",
+    "official_forecast_cutoff": "2026-03-31",
+    "rows_before_missing_drop": 5282,
+    "rows_after_missing_drop": 5282,
+    "rows_dropped_due_to_missing_selected_model_values": 0
+  },
+  "splits": {
+    "train": {
+      "start": "2006-01-02",
+      "end": "2018-12-31",
+      "rows": 3391
+    },
+    "validation": {
+      "start": "2019-01-01",
+      "end": "2022-12-30",
+      "rows": 1044
+    },
+    "test": {
+      "start": "2023-01-02",
+      "end": "2026-03-31",
+      "rows": 847
+    }
+  },
+  "excluded_from_main_regression": [
+    "high_yield"
+  ],
+  "selected_predictors_requested": [
+    "gold_lag_1",
+    "gold_ma_20",
+    "real_yield",
+    "nominal_yield",
+    "usd_index",
+    "vix_index",
+    "fin_stress",
+    "gpr_index",
+    "policy_unc",
+    "oil_wti",
+    "gld_tonnes",
+    "unrate"
+  ],
+  "selected_predictors_used": [
+    "gold_lag_1",
+    "gold_ma_20",
+    "real_yield",
+    "nominal_yield",
+    "usd_index",
+    "vix_index",
+    "fin_stress",
+    "gpr_index",
+    "policy_unc",
+    "oil_wti",
+    "gld_tonnes",
+    "unrate"
+  ],
+  "candidate_models": [
+    {
+      "model_id": "trend_only_ols",
+      "model_name": "Trend-Only OLS Benchmark",
+      "formula": "gold_price ~ trend",
+      "selected_predictors": [
+        "trend"
+      ],
+      "metrics": {
+        "train_from_train_fit": {
+          "n": 3391,
+          "mae": 220.74696495714426,
+          "mse": 74728.12189237829,
+          "rmse": 273.36444884508717,
+          "mape": 19.732707248124083,
+          "bias_mean_error": 1.6435811065952534e-12,
+          "mean_actual": 1183.1069595989384,
+          "mean_prediction": 1183.1069595989368,
+          "directional_accuracy_pct": 18.4070796460177
+        },
+        "validation_from_train_fit": {
+          "n": 1044,
+          "mae": 209.6939966981971,
+          "mse": 57608.21228681619,
+          "rmse": 240.01710832108654,
+          "mape": 11.876075679644115,
+          "bias_mean_error": 168.29913340155366,
+          "mean_actual": 1704.3777777777777,
+          "mean_prediction": 1536.078644376224,
+          "directional_accuracy_pct": 42.1455938697318
+        },
+        "test_from_train_validation_fit": {
+          "n": 847,
+          "mae": 937.8711880680166,
+          "mse": 1627679.8201926814,
+          "rmse": 1275.8055573607921,
+          "mape": 28.018645856260292,
+          "bias_mean_error": 937.8711880680166,
+          "mean_actual": 2783.111157024793,
+          "mean_prediction": 1845.239968956777,
+          "directional_accuracy_pct": 31.16883116883117
+        }
+      },
+      "fit_statistics_validation_fit": {
+        "r_squared": 0.24522306966987228,
+        "adjusted_r_squared": 0.2450003559105538,
+        "f_statistic": 1101.068341804914,
+        "f_p_value": 2.542996035839482e-209,
+        "aic": 47679.72662628736,
+        "bic": 47691.98438657161,
+        "df_model": 1.0,
+        "df_resid": 3389.0,
+        "condition_number": 3917.3226833273166,
+        "nobs": 3391
+      },
+      "fit_statistics_test_fit": {
+        "r_squared": 0.5096224894112342,
+        "adjusted_r_squared": 0.5095118696254033,
+        "f_statistic": 4606.9741103085535,
+        "f_p_value": 0.0,
+        "aic": 61793.421791929024,
+        "bic": 61806.21635771851,
+        "df_model": 1.0,
+        "df_resid": 4433.0,
+        "condition_number": 5122.829784802548,
+        "nobs": 4435
+      }
+    },
+    {
+      "model_id": "selected_factor_ols",
+      "model_name": "Selected-Factor OLS Regression",
+      "formula": "gold_price ~ gold_lag_1 + gold_ma_20 + real_yield + nominal_yield + usd_index + vix_index + fin_stress + gpr_index + policy_unc + oil_wti + gld_tonnes + unrate",
+      "selected_predictors": [
+        "gold_lag_1",
+        "gold_ma_20",
+        "real_yield",
+        "nominal_yield",
+        "usd_index",
+        "vix_index",
+        "fin_stress",
+        "gpr_index",
+        "policy_unc",
+        "oil_wti",
+        "gld_tonnes",
+        "unrate"
+      ],
+      "metrics": {
+        "train_from_train_fit": {
+          "n": 3391,
+          "mae": 28.297629328527808,
+          "mse": 3188.2659769155425,
+          "rmse": 56.46473215127778,
+          "mape": 2.507836051699979,
+          "bias_mean_error": 3.8978392256054985e-12,
+          "mean_actual": 1183.1069595989384,
+          "mean_prediction": 1183.1069595989345,
+          "directional_accuracy_pct": 24.15929203539823
+        },
+        "validation_from_train_fit": {
+          "n": 1044,
+          "mae": 36.25945620242312,
+          "mse": 4093.503325808385,
+          "rmse": 63.98049175966362,
+          "mape": 2.1211190880215702,
+          "bias_mean_error": 9.20620965300895,
+          "mean_actual": 1704.3777777777777,
+          "mean_prediction": 1695.1715681247688,
+          "directional_accuracy_pct": 45.689655172413794
+        },
+        "test_from_train_validation_fit": {
+          "n": 847,
+          "mae": 96.2203994636466,
+          "mse": 31067.665682144627,
+          "rmse": 176.26022149692378,
+          "mape": 3.265948503701268,
+          "bias_mean_error": 32.13004494181052,
+          "mean_actual": 2783.111157024793,
+          "mean_prediction": 2750.9811120829827,
+          "directional_accuracy_pct": 38.84297520661157
+        }
+      },
+      "fit_statistics_validation_fit": {
+        "r_squared": 0.9677975366409184,
+        "adjusted_r_squared": 0.9676831406787192,
+        "f_statistic": 8460.067278908557,
+        "f_p_value": 0.0,
+        "aic": 37005.2264280658,
+        "bic": 37084.90186991343,
+        "df_model": 12.0,
+        "df_resid": 3378.0,
+        "condition_number": 84087.06263366579,
+        "nobs": 3391
+      },
+      "fit_statistics_test_fit": {
+        "r_squared": 0.9747933632907801,
+        "adjusted_r_squared": 0.9747249599347171,
+        "f_statistic": 14250.665747932311,
+        "f_p_value": 0.0,
+        "aic": 48652.03931194254,
+        "bic": 48735.20398957421,
+        "df_model": 12.0,
+        "df_resid": 4422.0,
+        "condition_number": 58312.332422921136,
+        "nobs": 4435
+      }
+    },
+    {
+      "model_id": "selected_factor_plus_trend_ols",
+      "model_name": "Selected-Factor OLS Regression + Trend",
+      "formula": "gold_price ~ trend + gold_lag_1 + gold_ma_20 + real_yield + nominal_yield + usd_index + vix_index + fin_stress + gpr_index + policy_unc + oil_wti + gld_tonnes + unrate",
+      "selected_predictors": [
+        "trend",
+        "gold_lag_1",
+        "gold_ma_20",
+        "real_yield",
+        "nominal_yield",
+        "usd_index",
+        "vix_index",
+        "fin_stress",
+        "gpr_index",
+        "policy_unc",
+        "oil_wti",
+        "gld_tonnes",
+        "unrate"
+      ],
+      "metrics": {
+        "train_from_train_fit": {
+          "n": 3391,
+          "mae": 28.390880566595126,
+          "mse": 3187.376058578645,
+          "rmse": 56.45685129883392,
+          "mape": 2.515001814497339,
+          "bias_mean_error": -4.767002088458018e-12,
+          "mean_actual": 1183.1069595989384,
+          "mean_prediction": 1183.1069595989431,
+          "directional_accuracy_pct": 24.30678466076696
+        },
+        "validation_from_train_fit": {
+          "n": 1044,
+          "mae": 36.24307251781034,
+          "mse": 4090.763416728463,
+          "rmse": 63.95907610909075,
+          "mape": 2.120696725020787,
+          "bias_mean_error": 9.214380978958559,
+          "mean_actual": 1704.3777777777777,
+          "mean_prediction": 1695.1633967988191,
+          "directional_accuracy_pct": 45.593869731800766
+        },
+        "test_from_train_validation_fit": {
+          "n": 847,
+          "mae": 96.70508070900749,
+          "mse": 31225.08563985977,
+          "rmse": 176.7062127936077,
+          "mape": 3.269478583997846,
+          "bias_mean_error": 33.111892185363075,
+          "mean_actual": 2783.111157024793,
+          "mean_prediction": 2749.9992648394305,
+          "directional_accuracy_pct": 38.961038961038966
+        }
+      },
+      "fit_statistics_validation_fit": {
+        "r_squared": 0.967806525088822,
+        "adjusted_r_squared": 0.9676825940334932,
+        "f_statistic": 7809.2333073517975,
+        "f_p_value": 0.0,
+        "aic": 37006.279789881526,
+        "bic": 37092.084111871285,
+        "df_model": 13.0,
+        "df_resid": 3377.0,
+        "condition_number": 134333.38766001753,
+        "nobs": 3391
+      },
+      "fit_statistics_test_fit": {
+        "r_squared": 0.9748106472697751,
+        "adjusted_r_squared": 0.9747365776960377,
+        "f_statistic": 13160.743313120016,
+        "f_p_value": 0.0,
+        "aic": 48650.99722662183,
+        "bic": 48740.55918714825,
+        "df_model": 13.0,
+        "df_resid": 4421.0,
+        "condition_number": 119504.26469111862,
+        "nobs": 4435
+      }
+    }
+  ],
+  "candidate_metric_table": [
+    {
+      "model_id": "trend_only_ols",
+      "model_name": "Trend-Only OLS Benchmark",
+      "formula": "gold_price ~ trend",
+      "validation_rmse": 240.01710832108654,
+      "validation_mae": 209.6939966981971,
+      "validation_mape": 11.876075679644115,
+      "test_rmse": 1275.8055573607921,
+      "test_mae": 937.8711880680166,
+      "test_mape": 28.018645856260292,
+      "adj_r_squared_test_fit": 0.5095118696254033
+    },
+    {
+      "model_id": "selected_factor_ols",
+      "model_name": "Selected-Factor OLS Regression",
+      "formula": "gold_price ~ gold_lag_1 + gold_ma_20 + real_yield + nominal_yield + usd_index + vix_index + fin_stress + gpr_index + policy_unc + oil_wti + gld_tonnes + unrate",
+      "validation_rmse": 63.98049175966362,
+      "validation_mae": 36.25945620242312,
+      "validation_mape": 2.1211190880215702,
+      "test_rmse": 176.26022149692378,
+      "test_mae": 96.2203994636466,
+      "test_mape": 3.265948503701268,
+      "adj_r_squared_test_fit": 0.9747249599347171
+    },
+    {
+      "model_id": "selected_factor_plus_trend_ols",
+      "model_name": "Selected-Factor OLS Regression + Trend",
+      "formula": "gold_price ~ trend + gold_lag_1 + gold_ma_20 + real_yield + nominal_yield + usd_index + vix_index + fin_stress + gpr_index + policy_unc + oil_wti + gld_tonnes + unrate",
+      "validation_rmse": 63.95907610909075,
+      "validation_mae": 36.24307251781034,
+      "validation_mape": 2.120696725020787,
+      "test_rmse": 176.7062127936077,
+      "test_mae": 96.70508070900749,
+      "test_mape": 3.269478583997846,
+      "adj_r_squared_test_fit": 0.9747365776960377
+    }
+  ],
+  "main_regression_model_id": "selected_factor_plus_trend_ols",
+  "main_regression_model_name": "Selected-Factor OLS Regression + Trend",
+  "main_regression_formula": "gold_price ~ trend + gold_lag_1 + gold_ma_20 + real_yield + nominal_yield + usd_index + vix_index + fin_stress + gpr_index + policy_unc + oil_wti + gld_tonnes + unrate",
+  "main_metrics": {
+    "train_from_train_fit": {
+      "n": 3391,
+      "mae": 28.390880566595126,
+      "mse": 3187.376058578645,
+      "rmse": 56.45685129883392,
+      "mape": 2.515001814497339,
+      "bias_mean_error": -4.767002088458018e-12,
+      "mean_actual": 1183.1069595989384,
+      "mean_prediction": 1183.1069595989431,
+      "directional_accuracy_pct": 24.30678466076696
+    },
+    "validation_from_train_fit": {
+      "n": 1044,
+      "mae": 36.24307251781034,
+      "mse": 4090.763416728463,
+      "rmse": 63.95907610909075,
+      "mape": 2.120696725020787,
+      "bias_mean_error": 9.214380978958559,
+      "mean_actual": 1704.3777777777777,
+      "mean_prediction": 1695.1633967988191,
+      "directional_accuracy_pct": 45.593869731800766
+    },
+    "test_from_train_validation_fit": {
+      "n": 847,
+      "mae": 96.70508070900749,
+      "mse": 31225.08563985977,
+      "rmse": 176.7062127936077,
+      "mape": 3.269478583997846,
+      "bias_mean_error": 33.111892185363075,
+      "mean_actual": 2783.111157024793,
+      "mean_prediction": 2749.9992648394305,
+      "directional_accuracy_pct": 38.961038961038966
+    }
+  },
+  "main_fit_statistics": {
+    "validation_fit_train_only": {
+      "r_squared": 0.967806525088822,
+      "adjusted_r_squared": 0.9676825940334932,
+      "f_statistic": 7809.2333073517975,
+      "f_p_value": 0.0,
+      "aic": 37006.279789881526,
+      "bic": 37092.084111871285,
+      "df_model": 13.0,
+      "df_resid": 3377.0,
+      "condition_number": 134333.38766001753,
+      "nobs": 3391
+    },
+    "test_fit_train_plus_validation": {
+      "r_squared": 0.9748106472697751,
+      "adjusted_r_squared": 0.9747365776960377,
+      "f_statistic": 13160.743313120016,
+      "f_p_value": 0.0,
+      "aic": 48650.99722662183,
+      "bic": 48740.55918714825,
+      "df_model": 13.0,
+      "df_resid": 4421.0,
+      "condition_number": 119504.26469111862,
+      "nobs": 4435
+    }
+  },
+  "methodology_notes": [
+    "The validation forecast is generated from coefficients fitted on the training period only.",
+    "The test forecast is generated from coefficients fitted on training plus validation only.",
+    "The test period is not used to estimate regression coefficients.",
+    "The main model excludes high_yield because it starts too late for the core multivariate window.",
+    "The selected factor set is intentionally limited to keep the regression readable and reduce blind multicollinearity risk."
+  ]
+}

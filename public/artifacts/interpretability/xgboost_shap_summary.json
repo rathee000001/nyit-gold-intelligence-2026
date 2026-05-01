@@ -1,0 +1,167 @@
+{
+  "model_name": "XGBoost",
+  "selected_candidate_id": "xgboost_dollar_change",
+  "target_mode": "dollar_change",
+  "records": [
+    {
+      "feature": "gold_lag_20",
+      "mean_abs_shap": 44.6605110168457,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gold_lag_1",
+      "mean_abs_shap": 19.381973266601562,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gold_ma_20",
+      "mean_abs_shap": 14.864556312561035,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gold_ma_5",
+      "mean_abs_shap": 13.560832977294922,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gold_return_5",
+      "mean_abs_shap": 5.989853858947754,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gold_lag_5",
+      "mean_abs_shap": 2.4147233963012695,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gold_ma_60",
+      "mean_abs_shap": 1.890791893005371,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gold_volatility_20",
+      "mean_abs_shap": 1.6753076314926147,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "tips_curve_lag1",
+      "mean_abs_shap": 1.0400725603103638,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "real_yield_lag1",
+      "mean_abs_shap": 0.9313990473747253,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "m2_supply_lag1",
+      "mean_abs_shap": 0.7008980512619019,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "vix_index_lag1",
+      "mean_abs_shap": 0.6592589020729065,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "usd_index_lag1",
+      "mean_abs_shap": 0.6113659739494324,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "fed_bs_lag1",
+      "mean_abs_shap": 0.5428056120872498,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "ppi_index_lag1",
+      "mean_abs_shap": 0.5170098543167114,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gold_return_1",
+      "mean_abs_shap": 0.5136985182762146,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "ind_prod_lag1",
+      "mean_abs_shap": 0.48281213641166687,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gld_tonnes_lag1",
+      "mean_abs_shap": 0.4489299952983856,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "jpy_usd_lag1",
+      "mean_abs_shap": 0.44395771622657776,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "oil_wti_lag1",
+      "mean_abs_shap": 0.4047545790672302,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "policy_unc_lag1",
+      "mean_abs_shap": 0.3721521198749542,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "unrate_lag1",
+      "mean_abs_shap": 0.3548877537250519,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "fin_stress_lag1",
+      "mean_abs_shap": 0.3206479251384735,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "trend_idx",
+      "mean_abs_shap": 0.28544700145721436,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "inflation_lag1",
+      "mean_abs_shap": 0.22361142933368683,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "nominal_yield_lag1",
+      "mean_abs_shap": 0.19959741830825806,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "eur_usd_lag1",
+      "mean_abs_shap": 0.1898062378168106,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "gpr_index_lag1",
+      "mean_abs_shap": 0.16661745309829712,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "cap_util_lag1",
+      "mean_abs_shap": 0.15266522765159607,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "month_sin",
+      "mean_abs_shap": 0.0771549791097641,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "month_cos",
+      "mean_abs_shap": 0.024133628234267235,
+      "target_mode": "dollar_change"
+    },
+    {
+      "feature": "trend_sq",
+      "mean_abs_shap": 0.0,
+      "target_mode": "dollar_change"
+    }
+  ]
+}
