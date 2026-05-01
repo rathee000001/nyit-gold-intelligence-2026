@@ -1,227 +1,340 @@
 {
   "artifact_name": "regression_coefficients",
   "notebook": "06_regression_based_forecasting.ipynb",
-  "generated_at_utc": "2026-05-01T03:05:30.505723+00:00",
+  "generated_at_utc": "2026-05-01T03:15:49.792762+00:00",
   "model_id": "significant_raw_factors_ols",
   "model_name": "Significant Raw Factors OLS Regression",
   "fit_scope": "train_plus_validation",
-  "formula": "gold_price ~ real_yield + nominal_yield + tips_curve + fed_bs + usd_index + vix_index + policy_unc + gld_tonnes + inflation + fin_stress",
+  "formula": "gold_price ~ real_yield + nominal_yield + fed_bs + usd_index + fin_stress + gpr_index + gld_tonnes + oil_wti + unrate + inflation + eur_usd + jpy_usd + ppi_index + ind_prod + cap_util",
   "coefficient_table": [
     {
       "term": "Intercept",
-      "coefficient": 435.6442677982187,
-      "std_error": 65.91026854398666,
-      "t_value": 6.609656999159122,
-      "p_value": 4.30860011584788e-11,
-      "conf_low_95": 306.4271708149916,
-      "conf_high_95": 564.8613647814459,
+      "coefficient": -3172.503981036835,
+      "std_error": 200.6975846456776,
+      "t_value": -15.80738496000211,
+      "p_value": 8.554633670063178e-55,
+      "conf_low_95": -3565.9717647203506,
+      "conf_high_95": -2779.036197353319,
       "significant_at_0_05": true,
-      "direction": "positive"
+      "direction": "negative"
     },
     {
       "term": "real_yield",
-      "coefficient": -52.14580352921953,
-      "std_error": 4.455799077607138,
-      "t_value": -11.70290729473892,
-      "p_value": 3.5320516128501516e-31,
-      "conf_low_95": -60.88139866891595,
-      "conf_high_95": -43.410208389523106,
+      "coefficient": -30.191380964823338,
+      "std_error": 4.411675307833512,
+      "t_value": -6.843518359389358,
+      "p_value": 8.785937359688931e-12,
+      "conf_low_95": -38.84047412042415,
+      "conf_high_95": -21.54228780922253,
       "significant_at_0_05": true,
       "direction": "negative"
     },
     {
       "term": "nominal_yield",
-      "coefficient": -2.6310305596446177,
-      "std_error": 2.688027428073478,
-      "t_value": -0.9787960242393396,
-      "p_value": 0.327734282783408,
-      "conf_low_95": -7.900908964633073,
-      "conf_high_95": 2.6388478453438378,
-      "significant_at_0_05": false,
-      "direction": "negative"
-    },
-    {
-      "term": "tips_curve",
-      "coefficient": -46.27753313787533,
-      "std_error": 4.204427441090089,
-      "t_value": -11.006857363169734,
-      "p_value": 8.104247885420523e-28,
-      "conf_low_95": -54.520314125055,
-      "conf_high_95": -38.03475215069566,
+      "coefficient": -10.32049188129772,
+      "std_error": 4.694061868266992,
+      "t_value": -2.1986271529710275,
+      "p_value": 0.027956085707921297,
+      "conf_low_95": -19.523204126395456,
+      "conf_high_95": -1.1177796361999857,
       "significant_at_0_05": true,
       "direction": "negative"
     },
     {
       "term": "fed_bs",
-      "coefficient": 6.936435970739489e-05,
-      "std_error": 2.453215580223075e-06,
-      "t_value": 28.27487329959297,
-      "p_value": 7.961352328100381e-162,
-      "conf_low_95": 6.45548299853472e-05,
-      "conf_high_95": 7.417388942944258e-05,
+      "coefficient": 2.1860371441566887e-05,
+      "std_error": 3.6566530165004884e-06,
+      "t_value": 5.978246047115466,
+      "p_value": 2.43324010463299e-09,
+      "conf_low_95": 1.4691500123846842e-05,
+      "conf_high_95": 2.9029242759286932e-05,
       "significant_at_0_05": true,
       "direction": "positive"
     },
     {
       "term": "usd_index",
-      "coefficient": -1.9034601982634203,
-      "std_error": 0.5480241286848607,
-      "t_value": -3.4733145834861556,
-      "p_value": 0.0005189978924770641,
-      "conf_low_95": -2.977861631450737,
-      "conf_high_95": -0.8290587650761034,
-      "significant_at_0_05": true,
-      "direction": "negative"
-    },
-    {
-      "term": "vix_index",
-      "coefficient": 2.3734118672451863,
-      "std_error": 0.4654705309709568,
-      "t_value": 5.098951940726138,
-      "p_value": 3.558074996000778e-07,
-      "conf_low_95": 1.4608567817933935,
-      "conf_high_95": 3.2859669526969792,
-      "significant_at_0_05": true,
-      "direction": "positive"
-    },
-    {
-      "term": "policy_unc",
-      "coefficient": 0.46225636420931815,
-      "std_error": 0.04482830407779352,
-      "t_value": 10.311707607924093,
-      "p_value": 1.1837245088261257e-24,
-      "conf_low_95": 0.3743704635207474,
-      "conf_high_95": 0.5501422648978889,
-      "significant_at_0_05": true,
-      "direction": "positive"
-    },
-    {
-      "term": "gld_tonnes",
-      "coefficient": 0.7519796400811057,
-      "std_error": 0.013163971861637282,
-      "t_value": 57.12406923874855,
-      "p_value": 0.0,
-      "conf_low_95": 0.7261716701500707,
-      "conf_high_95": 0.7777876100121408,
-      "significant_at_0_05": true,
-      "direction": "positive"
-    },
-    {
-      "term": "inflation",
-      "coefficient": 49.514772785088276,
-      "std_error": 6.1039628883315,
-      "t_value": 8.111905935690082,
-      "p_value": 6.395766416098914e-16,
-      "conf_low_95": 37.54795210680246,
-      "conf_high_95": 61.48159346337409,
+      "coefficient": 12.88256601912785,
+      "std_error": 0.6837332619501377,
+      "t_value": 18.84150843032605,
+      "p_value": 3.118352597861024e-76,
+      "conf_low_95": 11.542106383376995,
+      "conf_high_95": 14.223025654878706,
       "significant_at_0_05": true,
       "direction": "positive"
     },
     {
       "term": "fin_stress",
-      "coefficient": -21.39883413131493,
-      "std_error": 3.335237558767848,
-      "t_value": -6.415984994850081,
-      "p_value": 1.545885069760883e-10,
-      "conf_low_95": -27.93756814975987,
-      "conf_high_95": -14.860100112869995,
+      "coefficient": -17.0620348390999,
+      "std_error": 2.516772265235547,
+      "t_value": -6.779332033644709,
+      "p_value": 1.3664053410635242e-11,
+      "conf_low_95": -21.9961689841951,
+      "conf_high_95": -12.127900694004701,
       "significant_at_0_05": true,
       "direction": "negative"
+    },
+    {
+      "term": "gpr_index",
+      "coefficient": -0.18266105207234415,
+      "std_error": 0.07891787891571281,
+      "t_value": -2.3145712300178882,
+      "p_value": 0.020682016292498228,
+      "conf_low_95": -0.33737962013478406,
+      "conf_high_95": -0.027942484009904206,
+      "significant_at_0_05": true,
+      "direction": "negative"
+    },
+    {
+      "term": "gld_tonnes",
+      "coefficient": 0.4291560845371277,
+      "std_error": 0.02135939586845666,
+      "t_value": 20.092145263850888,
+      "p_value": 5.379075155043389e-86,
+      "conf_low_95": 0.3872809709525882,
+      "conf_high_95": 0.47103119812166727,
+      "significant_at_0_05": true,
+      "direction": "positive"
+    },
+    {
+      "term": "oil_wti",
+      "coefficient": -2.952298025839022,
+      "std_error": 0.28656109009681013,
+      "t_value": -10.302508358136253,
+      "p_value": 1.3006013958736021e-24,
+      "conf_low_95": -3.5141012842558266,
+      "conf_high_95": -2.3904947674222172,
+      "significant_at_0_05": true,
+      "direction": "negative"
+    },
+    {
+      "term": "unrate",
+      "coefficient": 39.466847283008185,
+      "std_error": 2.4577829085881033,
+      "t_value": 16.057906149929366,
+      "p_value": 1.9341019288174392e-56,
+      "conf_low_95": 34.64836182128884,
+      "conf_high_95": 44.28533274472753,
+      "significant_at_0_05": true,
+      "direction": "positive"
+    },
+    {
+      "term": "inflation",
+      "coefficient": 19.870889216459474,
+      "std_error": 7.629278141920201,
+      "t_value": 2.6045569248912193,
+      "p_value": 0.009230118481454488,
+      "conf_low_95": 4.913682995437405,
+      "conf_high_95": 34.828095437481544,
+      "significant_at_0_05": true,
+      "direction": "positive"
+    },
+    {
+      "term": "eur_usd",
+      "coefficient": 266.5441762520914,
+      "std_error": 40.419879746154514,
+      "t_value": 6.5943832076207505,
+      "p_value": 4.772104400763255e-11,
+      "conf_low_95": 187.30096797655943,
+      "conf_high_95": 345.7873845276234,
+      "significant_at_0_05": true,
+      "direction": "positive"
+    },
+    {
+      "term": "jpy_usd",
+      "coefficient": -8.020925903353747,
+      "std_error": 0.398421989542675,
+      "t_value": -20.131734979187502,
+      "p_value": 2.5889518326607566e-86,
+      "conf_low_95": -8.8020325493201,
+      "conf_high_95": -7.239819257387396,
+      "significant_at_0_05": true,
+      "direction": "negative"
+    },
+    {
+      "term": "ppi_index",
+      "coefficient": 7.596350931695251,
+      "std_error": 0.37768551149351937,
+      "t_value": 20.112900020062312,
+      "p_value": 3.6667399848766765e-86,
+      "conf_low_95": 6.855898168404208,
+      "conf_high_95": 8.336803694986294,
+      "significant_at_0_05": true,
+      "direction": "positive"
+    },
+    {
+      "term": "ind_prod",
+      "coefficient": -7.293889850598947,
+      "std_error": 1.977237967716639,
+      "t_value": -3.688928682176836,
+      "p_value": 0.00022790869137269567,
+      "conf_low_95": -11.170266551125023,
+      "conf_high_95": -3.4175131500728706,
+      "significant_at_0_05": true,
+      "direction": "negative"
+    },
+    {
+      "term": "cap_util",
+      "coefficient": 31.374072698926174,
+      "std_error": 2.529641919196827,
+      "t_value": 12.402574633522672,
+      "p_value": 9.521764621287874e-35,
+      "conf_low_95": 26.414707586403743,
+      "conf_high_95": 36.333437811448604,
+      "significant_at_0_05": true,
+      "direction": "positive"
     }
   ],
   "first_regression_factor_selection_table": [
     {
       "factor": "real_yield",
-      "coefficient_in_first_regression": -30.922752158415992,
-      "p_value_in_first_regression": 2.60015876425442e-06,
+      "coefficient_in_first_regression": -13.05737477763603,
+      "p_value_in_first_regression": 0.031696634108702784,
       "significant_at_0_05": true,
       "decision": "keep_for_second_regression"
     },
     {
       "factor": "nominal_yield",
-      "coefficient_in_first_regression": 33.1585971921909,
-      "p_value_in_first_regression": 1.1516530253884786e-08,
+      "coefficient_in_first_regression": 37.4646542540531,
+      "p_value_in_first_regression": 1.0019788323494746e-11,
       "significant_at_0_05": true,
       "decision": "keep_for_second_regression"
     },
     {
       "factor": "tips_curve",
-      "coefficient_in_first_regression": -81.5768842997507,
-      "p_value_in_first_regression": 1.195604769424703e-23,
-      "significant_at_0_05": true,
-      "decision": "keep_for_second_regression"
+      "coefficient_in_first_regression": 15.070803604356025,
+      "p_value_in_first_regression": 0.05636897598538578,
+      "significant_at_0_05": false,
+      "decision": "remove_as_non_significant"
     },
     {
       "factor": "fed_bs",
-      "coefficient_in_first_regression": 0.00013619595138231479,
-      "p_value_in_first_regression": 6.142878989975598e-92,
+      "coefficient_in_first_regression": 6.771624618989505e-05,
+      "p_value_in_first_regression": 2.994136345445623e-08,
       "significant_at_0_05": true,
       "decision": "keep_for_second_regression"
     },
     {
       "factor": "usd_index",
-      "coefficient_in_first_regression": -7.6656002632905595,
-      "p_value_in_first_regression": 2.061002898075411e-19,
+      "coefficient_in_first_regression": -6.305501722296977,
+      "p_value_in_first_regression": 0.00026375664739766935,
       "significant_at_0_05": true,
       "decision": "keep_for_second_regression"
     },
     {
       "factor": "vix_index",
-      "coefficient_in_first_regression": 3.902132177474475,
-      "p_value_in_first_regression": 1.661188665271511e-10,
+      "coefficient_in_first_regression": 0.22911073667045873,
+      "p_value_in_first_regression": 0.684765694297143,
+      "significant_at_0_05": false,
+      "decision": "remove_as_non_significant"
+    },
+    {
+      "factor": "fin_stress",
+      "coefficient_in_first_regression": -11.033880647055733,
+      "p_value_in_first_regression": 0.01573663558410761,
       "significant_at_0_05": true,
       "decision": "keep_for_second_regression"
     },
     {
       "factor": "gpr_index",
-      "coefficient_in_first_regression": -0.001058805764092452,
-      "p_value_in_first_regression": 0.9940197310182664,
-      "significant_at_0_05": false,
-      "decision": "remove_as_non_significant"
-    },
-    {
-      "factor": "policy_unc",
-      "coefficient_in_first_regression": 0.437424194727142,
-      "p_value_in_first_regression": 7.1294418323175e-11,
+      "coefficient_in_first_regression": -0.26977025060124316,
+      "p_value_in_first_regression": 0.029294495404952298,
       "significant_at_0_05": true,
       "decision": "keep_for_second_regression"
     },
     {
-      "factor": "oil_wti",
-      "coefficient_in_first_regression": 0.4558855117936528,
-      "p_value_in_first_regression": 0.07663818034762254,
+      "factor": "policy_unc",
+      "coefficient_in_first_regression": -0.025435426778516367,
+      "p_value_in_first_regression": 0.6703768720836271,
       "significant_at_0_05": false,
       "decision": "remove_as_non_significant"
     },
     {
       "factor": "gld_tonnes",
-      "coefficient_in_first_regression": 0.7831672571772793,
-      "p_value_in_first_regression": 7.367718412576482e-181,
+      "coefficient_in_first_regression": 0.42589867701633033,
+      "p_value_in_first_regression": 2.87175586870006e-32,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "oil_wti",
+      "coefficient_in_first_regression": -4.693064941256981,
+      "p_value_in_first_regression": 1.3528887015341187e-41,
       "significant_at_0_05": true,
       "decision": "keep_for_second_regression"
     },
     {
       "factor": "unrate",
-      "coefficient_in_first_regression": 4.82527059394602,
-      "p_value_in_first_regression": 0.34196409076058,
+      "coefficient_in_first_regression": -22.963444928470498,
+      "p_value_in_first_regression": 0.0009437474837462917,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "inflation",
+      "coefficient_in_first_regression": 50.52202760488932,
+      "p_value_in_first_regression": 8.743679521192807e-08,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "m2_supply",
+      "coefficient_in_first_regression": -0.006245960584930732,
+      "p_value_in_first_regression": 0.5333265127570406,
       "significant_at_0_05": false,
       "decision": "remove_as_non_significant"
     },
     {
-      "factor": "inflation",
-      "coefficient_in_first_regression": 64.08134853944296,
-      "p_value_in_first_regression": 1.5011992075004241e-09,
+      "factor": "eur_usd",
+      "coefficient_in_first_regression": -443.8211587061684,
+      "p_value_in_first_regression": 2.315562659476736e-10,
       "significant_at_0_05": true,
       "decision": "keep_for_second_regression"
     },
     {
-      "factor": "fin_stress",
-      "coefficient_in_first_regression": -14.190068136647437,
-      "p_value_in_first_regression": 0.0054422699341853285,
+      "factor": "jpy_usd",
+      "coefficient_in_first_regression": -9.634592374440592,
+      "p_value_in_first_regression": 2.039794279943335e-60,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "ppi_index",
+      "coefficient_in_first_regression": 10.72283962916682,
+      "p_value_in_first_regression": 1.6199964075701448e-52,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "ind_prod",
+      "coefficient_in_first_regression": -18.956290251501795,
+      "p_value_in_first_regression": 1.333257378324482e-06,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "cap_util",
+      "coefficient_in_first_regression": 23.646204252364022,
+      "p_value_in_first_regression": 2.3113525589057434e-07,
       "significant_at_0_05": true,
       "decision": "keep_for_second_regression"
     }
   ],
+  "removed_non_significant_factors": [
+    "tips_curve",
+    "vix_index",
+    "policy_unc",
+    "m2_supply"
+  ],
+  "hard_excluded_terms": [
+    "gold_lag_1",
+    "gold_ma_20",
+    "high_yield",
+    "trend"
+  ],
+  "blocked_terms_check": {
+    "blocked_terms_in_final_predictors": [],
+    "blocked_terms_in_final_coefficients": []
+  },
   "significance_rule": "p_value < 0.05 is marked significant_at_0_05",
   "professor_style_fields": [
     "coefficient",
