@@ -1,41 +1,139 @@
 {
   "artifact_name": "regression_diagnostics",
   "notebook": "06_regression_based_forecasting.ipynb",
-  "generated_at_utc": "2026-04-30T20:39:40.431870+00:00",
-  "diagnostic_model_id": "selected_factor_plus_trend_ols",
+  "generated_at_utc": "2026-05-01T03:05:30.491092+00:00",
+  "diagnostic_model_id": "significant_raw_factors_ols",
   "diagnostic_fit_scope": "train_plus_validation",
   "fit_statistics": {
-    "r_squared": 0.9748106472697751,
-    "adjusted_r_squared": 0.9747365776960377,
-    "f_statistic": 13160.743313120016,
+    "r_squared": 0.8767928100894062,
+    "adjusted_r_squared": 0.8765422191946728,
+    "f_statistic": 3498.901310928216,
     "f_p_value": 0.0,
-    "aic": 48650.99722662183,
-    "bic": 48740.55918714825,
-    "df_model": 13.0,
-    "df_resid": 4421.0,
-    "condition_number": 119504.26469111862,
+    "aic": 55683.320301067935,
+    "bic": 55747.29313001537,
+    "df_model": 9.0,
+    "df_resid": 4425.0,
+    "condition_number": 1.399980875650409e+22,
     "nobs": 4435
   },
+  "factor_selection_table": [
+    {
+      "factor": "real_yield",
+      "coefficient_in_first_regression": -30.922752158415992,
+      "p_value_in_first_regression": 2.60015876425442e-06,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "nominal_yield",
+      "coefficient_in_first_regression": 33.1585971921909,
+      "p_value_in_first_regression": 1.1516530253884786e-08,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "tips_curve",
+      "coefficient_in_first_regression": -81.5768842997507,
+      "p_value_in_first_regression": 1.195604769424703e-23,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "fed_bs",
+      "coefficient_in_first_regression": 0.00013619595138231479,
+      "p_value_in_first_regression": 6.142878989975598e-92,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "usd_index",
+      "coefficient_in_first_regression": -7.6656002632905595,
+      "p_value_in_first_regression": 2.061002898075411e-19,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "vix_index",
+      "coefficient_in_first_regression": 3.902132177474475,
+      "p_value_in_first_regression": 1.661188665271511e-10,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "gpr_index",
+      "coefficient_in_first_regression": -0.001058805764092452,
+      "p_value_in_first_regression": 0.9940197310182664,
+      "significant_at_0_05": false,
+      "decision": "remove_as_non_significant"
+    },
+    {
+      "factor": "policy_unc",
+      "coefficient_in_first_regression": 0.437424194727142,
+      "p_value_in_first_regression": 7.1294418323175e-11,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "oil_wti",
+      "coefficient_in_first_regression": 0.4558855117936528,
+      "p_value_in_first_regression": 0.07663818034762254,
+      "significant_at_0_05": false,
+      "decision": "remove_as_non_significant"
+    },
+    {
+      "factor": "gld_tonnes",
+      "coefficient_in_first_regression": 0.7831672571772793,
+      "p_value_in_first_regression": 7.367718412576482e-181,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "unrate",
+      "coefficient_in_first_regression": 4.82527059394602,
+      "p_value_in_first_regression": 0.34196409076058,
+      "significant_at_0_05": false,
+      "decision": "remove_as_non_significant"
+    },
+    {
+      "factor": "inflation",
+      "coefficient_in_first_regression": 64.08134853944296,
+      "p_value_in_first_regression": 1.5011992075004241e-09,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "fin_stress",
+      "coefficient_in_first_regression": -14.190068136647437,
+      "p_value_in_first_regression": 0.0054422699341853285,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    }
+  ],
+  "removed_non_significant_factors": [
+    "gpr_index",
+    "oil_wti",
+    "unrate"
+  ],
   "residual_summary": {
     "train_plus_validation": {
       "n": 4435,
-      "mean": 7.397539727219192e-12,
-      "std": 58.143267599431894,
-      "min": -403.3627301632416,
-      "p25": -13.11315959956221,
-      "median": -0.08492167597910338,
-      "p75": 13.305141974500316,
-      "max": 431.6787899739502
+      "mean": 3.883236162931466e-08,
+      "std": 128.59052140718882,
+      "min": -454.6849541280285,
+      "p25": -63.54051567362103,
+      "median": -7.969247253131243,
+      "p75": 64.92433769214438,
+      "max": 650.9332108399053
     },
     "test": {
       "n": 847,
-      "mean": 33.111892185363075,
-      "std": 173.67873025337994,
-      "min": -1165.7937014835788,
-      "p25": -4.9933107661287295,
-      "median": 22.558525719524596,
-      "p75": 76.57020794725588,
-      "max": 757.7020692325373
+      "mean": 1209.8798276310613,
+      "std": 887.1635257255078,
+      "min": 130.90984037946941,
+      "p25": 450.9734771685098,
+      "median": 1016.4484315091772,
+      "p75": 1756.7290026364083,
+      "max": 3739.20594884008
     }
   },
   "residual_acf": [
@@ -45,167 +143,153 @@
     },
     {
       "lag": 1,
-      "acf": 0.04655465801430657
+      "acf": 0.8833025641049578
     },
     {
       "lag": 2,
-      "acf": 0.009437618264321514
+      "acf": 0.7821308837645075
     },
     {
       "lag": 3,
-      "acf": 0.01246528010718084
+      "acf": 0.69601389253326
     },
     {
       "lag": 4,
-      "acf": -0.06477155055799273
+      "acf": 0.6199184082530215
     },
     {
       "lag": 5,
-      "acf": -0.10343352653712717
+      "acf": 0.5650338393902538
     },
     {
       "lag": 6,
-      "acf": -0.03496055965472856
+      "acf": 0.5381372709432772
     },
     {
       "lag": 7,
-      "acf": -0.0319624168544715
+      "acf": 0.5180505309851484
     },
     {
       "lag": 8,
-      "acf": -0.04741045958661799
+      "acf": 0.5031991383131265
     },
     {
       "lag": 9,
-      "acf": -0.023896147076182175
+      "acf": 0.49513661252275215
     },
     {
       "lag": 10,
-      "acf": -0.016669282002201517
+      "acf": 0.4895814879486971
     },
     {
       "lag": 11,
-      "acf": -0.023128936327896626
+      "acf": 0.48386492590776875
     },
     {
       "lag": 12,
-      "acf": -0.019142397650297155
+      "acf": 0.47680938107734505
     },
     {
       "lag": 13,
-      "acf": -0.03251619328022935
+      "acf": 0.4673304967763973
     },
     {
       "lag": 14,
-      "acf": -0.06084981360724584
+      "acf": 0.4603241200063267
     },
     {
       "lag": 15,
-      "acf": -0.06126959187377229
+      "acf": 0.4625435135057979
     },
     {
       "lag": 16,
-      "acf": -0.07190544936017301
+      "acf": 0.4747676005833672
     },
     {
       "lag": 17,
-      "acf": -0.0689060659617875
+      "acf": 0.49939149221127843
     },
     {
       "lag": 18,
-      "acf": -0.05812268608240559
+      "acf": 0.5400096977738237
     },
     {
       "lag": 19,
-      "acf": -0.04397556407606682
+      "acf": 0.5959916941579996
     },
     {
       "lag": 20,
-      "acf": 0.10237768609246264
+      "acf": 0.6689485995814695
     }
   ],
   "ljung_box": [
     {
       "lag": 10,
-      "lb_stat": 100.59448265698751,
-      "p_value": 4.1434853422987607e-17
+      "lb_stat": 17214.578357029426,
+      "p_value": 0.0
     },
     {
       "lag": 20,
-      "lb_stat": 257.0587526628984,
-      "p_value": 4.2945603307795626e-43
+      "lb_stat": 29126.049280976662,
+      "p_value": 0.0
     }
   ],
   "vif_table": [
     {
-      "feature": "trend",
-      "vif": 23.53301835240303,
-      "flag": "high_multicollinearity_watch"
-    },
-    {
-      "feature": "gold_lag_1",
-      "vif": 18.514212557639645,
-      "flag": "high_multicollinearity_watch"
-    },
-    {
-      "feature": "gold_ma_20",
-      "vif": 31.264432500535392,
-      "flag": "high_multicollinearity_watch"
-    },
-    {
       "feature": "real_yield",
-      "vif": 32.39956189487733,
+      "vif": null,
       "flag": "high_multicollinearity_watch"
     },
     {
       "feature": "nominal_yield",
-      "vif": 34.044870846676815,
+      "vif": null,
       "flag": "high_multicollinearity_watch"
+    },
+    {
+      "feature": "tips_curve",
+      "vif": 3.763158915475599,
+      "flag": "ok_or_moderate"
+    },
+    {
+      "feature": "fed_bs",
+      "vif": 8.078227684598401,
+      "flag": "ok_or_moderate"
     },
     {
       "feature": "usd_index",
-      "vif": 17.860117632449985,
-      "flag": "high_multicollinearity_watch"
+      "vif": 9.99719446157374,
+      "flag": "ok_or_moderate"
     },
     {
       "feature": "vix_index",
-      "vif": 5.113357411407125,
-      "flag": "ok_or_moderate"
-    },
-    {
-      "feature": "fin_stress",
-      "vif": 6.601197922233008,
-      "flag": "ok_or_moderate"
-    },
-    {
-      "feature": "gpr_index",
-      "vif": 1.3921420192820353,
+      "vif": 4.913334133554603,
       "flag": "ok_or_moderate"
     },
     {
       "feature": "policy_unc",
-      "vif": 2.6780398699688477,
-      "flag": "ok_or_moderate"
-    },
-    {
-      "feature": "oil_wti",
-      "vif": 6.3319190677958455,
+      "vif": 2.598828175028415,
       "flag": "ok_or_moderate"
     },
     {
       "feature": "gld_tonnes",
-      "vif": 7.467997227877982,
+      "vif": 3.144540082498402,
       "flag": "ok_or_moderate"
     },
     {
-      "feature": "unrate",
-      "vif": 4.468757042730881,
+      "feature": "inflation",
+      "vif": null,
+      "flag": "high_multicollinearity_watch"
+    },
+    {
+      "feature": "fin_stress",
+      "vif": 4.87289063745287,
       "flag": "ok_or_moderate"
     }
   ],
   "diagnostic_notes": [
     "High VIF values indicate possible multicollinearity and should be discussed, not hidden.",
     "Residual autocorrelation means plain OLS may not fully capture time-series dependence.",
-    "Regression is treated as one classical forecasting candidate, not the final selected model."
+    "Regression is treated as one classical forecasting candidate, not the final selected model.",
+    "Removing non-significant factors improves interpretability but may reduce forecast accuracy compared with autoregressive gold features."
   ]
 }
