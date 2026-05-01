@@ -1,7 +1,7 @@
 {
   "artifact_name": "regression_results",
   "notebook": "06_regression_based_forecasting.ipynb",
-  "generated_at_utc": "2026-04-30T20:39:40.431670+00:00",
+  "generated_at_utc": "2026-05-01T03:15:49.779140+00:00",
   "model_family": "Regression-Based Forecasting",
   "professor_reference": "Chapter 17 - Regression-based forecasting (2).ipynb",
   "dataset": {
@@ -12,7 +12,7 @@
     "official_forecast_cutoff": "2026-03-31",
     "rows_before_missing_drop": 5282,
     "rows_after_missing_drop": 5282,
-    "rows_dropped_due_to_missing_selected_model_values": 0
+    "rows_dropped_due_to_missing_raw_factor_values": 0
   },
   "splits": {
     "train": {
@@ -31,370 +31,1366 @@
       "rows": 847
     }
   },
-  "excluded_from_main_regression": [
-    "high_yield"
+  "feature_policy": {
+    "regression_feature_rule": "Use only raw non-engineered factors.",
+    "hard_excluded_terms": [
+      "gold_lag_1",
+      "gold_ma_20",
+      "high_yield",
+      "trend"
+    ],
+    "excluded_engineered_features": [
+      "gold_lag_1",
+      "gold_ma_20",
+      "trend"
+    ],
+    "excluded_late_start_factor": "high_yield",
+    "significance_alpha": 0.05,
+    "selection_method": "First fit all raw factors on training period, remove non-significant factors, then refit using significant factors only."
+  },
+  "excluded_column_audit": [
+    {
+      "column": "date",
+      "reason": "hard_excluded_or_engineered_name_pattern"
+    },
+    {
+      "column": "dataset_id",
+      "reason": "non_numeric_or_all_missing"
+    },
+    {
+      "column": "split",
+      "reason": "non_numeric_or_all_missing"
+    },
+    {
+      "column": "gold_price",
+      "reason": "hard_excluded_or_engineered_name_pattern"
+    },
+    {
+      "column": "gold_lag_1",
+      "reason": "hard_excluded_or_engineered_name_pattern"
+    },
+    {
+      "column": "gold_lag_5",
+      "reason": "hard_excluded_or_engineered_name_pattern"
+    },
+    {
+      "column": "gold_lag_20",
+      "reason": "hard_excluded_or_engineered_name_pattern"
+    },
+    {
+      "column": "gold_return_1",
+      "reason": "hard_excluded_or_engineered_name_pattern"
+    },
+    {
+      "column": "gold_return_5",
+      "reason": "hard_excluded_or_engineered_name_pattern"
+    },
+    {
+      "column": "gold_ma_5",
+      "reason": "hard_excluded_or_engineered_name_pattern"
+    },
+    {
+      "column": "gold_ma_20",
+      "reason": "hard_excluded_or_engineered_name_pattern"
+    },
+    {
+      "column": "gold_ma_60",
+      "reason": "hard_excluded_or_engineered_name_pattern"
+    },
+    {
+      "column": "gold_volatility_20",
+      "reason": "hard_excluded_or_engineered_name_pattern"
+    }
   ],
-  "selected_predictors_requested": [
-    "gold_lag_1",
-    "gold_ma_20",
+  "all_raw_factors_first_regression": [
     "real_yield",
     "nominal_yield",
+    "tips_curve",
+    "fed_bs",
     "usd_index",
     "vix_index",
     "fin_stress",
     "gpr_index",
     "policy_unc",
-    "oil_wti",
     "gld_tonnes",
-    "unrate"
+    "oil_wti",
+    "unrate",
+    "inflation",
+    "m2_supply",
+    "eur_usd",
+    "jpy_usd",
+    "ppi_index",
+    "ind_prod",
+    "cap_util"
+  ],
+  "factor_selection_table": [
+    {
+      "factor": "real_yield",
+      "coefficient_in_first_regression": -13.05737477763603,
+      "p_value_in_first_regression": 0.031696634108702784,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "nominal_yield",
+      "coefficient_in_first_regression": 37.4646542540531,
+      "p_value_in_first_regression": 1.0019788323494746e-11,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "tips_curve",
+      "coefficient_in_first_regression": 15.070803604356025,
+      "p_value_in_first_regression": 0.05636897598538578,
+      "significant_at_0_05": false,
+      "decision": "remove_as_non_significant"
+    },
+    {
+      "factor": "fed_bs",
+      "coefficient_in_first_regression": 6.771624618989505e-05,
+      "p_value_in_first_regression": 2.994136345445623e-08,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "usd_index",
+      "coefficient_in_first_regression": -6.305501722296977,
+      "p_value_in_first_regression": 0.00026375664739766935,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "vix_index",
+      "coefficient_in_first_regression": 0.22911073667045873,
+      "p_value_in_first_regression": 0.684765694297143,
+      "significant_at_0_05": false,
+      "decision": "remove_as_non_significant"
+    },
+    {
+      "factor": "fin_stress",
+      "coefficient_in_first_regression": -11.033880647055733,
+      "p_value_in_first_regression": 0.01573663558410761,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "gpr_index",
+      "coefficient_in_first_regression": -0.26977025060124316,
+      "p_value_in_first_regression": 0.029294495404952298,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "policy_unc",
+      "coefficient_in_first_regression": -0.025435426778516367,
+      "p_value_in_first_regression": 0.6703768720836271,
+      "significant_at_0_05": false,
+      "decision": "remove_as_non_significant"
+    },
+    {
+      "factor": "gld_tonnes",
+      "coefficient_in_first_regression": 0.42589867701633033,
+      "p_value_in_first_regression": 2.87175586870006e-32,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "oil_wti",
+      "coefficient_in_first_regression": -4.693064941256981,
+      "p_value_in_first_regression": 1.3528887015341187e-41,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "unrate",
+      "coefficient_in_first_regression": -22.963444928470498,
+      "p_value_in_first_regression": 0.0009437474837462917,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "inflation",
+      "coefficient_in_first_regression": 50.52202760488932,
+      "p_value_in_first_regression": 8.743679521192807e-08,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "m2_supply",
+      "coefficient_in_first_regression": -0.006245960584930732,
+      "p_value_in_first_regression": 0.5333265127570406,
+      "significant_at_0_05": false,
+      "decision": "remove_as_non_significant"
+    },
+    {
+      "factor": "eur_usd",
+      "coefficient_in_first_regression": -443.8211587061684,
+      "p_value_in_first_regression": 2.315562659476736e-10,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "jpy_usd",
+      "coefficient_in_first_regression": -9.634592374440592,
+      "p_value_in_first_regression": 2.039794279943335e-60,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "ppi_index",
+      "coefficient_in_first_regression": 10.72283962916682,
+      "p_value_in_first_regression": 1.6199964075701448e-52,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "ind_prod",
+      "coefficient_in_first_regression": -18.956290251501795,
+      "p_value_in_first_regression": 1.333257378324482e-06,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    },
+    {
+      "factor": "cap_util",
+      "coefficient_in_first_regression": 23.646204252364022,
+      "p_value_in_first_regression": 2.3113525589057434e-07,
+      "significant_at_0_05": true,
+      "decision": "keep_for_second_regression"
+    }
+  ],
+  "removed_non_significant_factors": [
+    "tips_curve",
+    "vix_index",
+    "policy_unc",
+    "m2_supply"
   ],
   "selected_predictors_used": [
-    "gold_lag_1",
-    "gold_ma_20",
     "real_yield",
     "nominal_yield",
+    "fed_bs",
     "usd_index",
-    "vix_index",
     "fin_stress",
     "gpr_index",
-    "policy_unc",
-    "oil_wti",
     "gld_tonnes",
-    "unrate"
+    "oil_wti",
+    "unrate",
+    "inflation",
+    "eur_usd",
+    "jpy_usd",
+    "ppi_index",
+    "ind_prod",
+    "cap_util"
   ],
+  "second_stage_status": "significant_factors_selected_and_refit",
   "candidate_models": [
     {
-      "model_id": "trend_only_ols",
-      "model_name": "Trend-Only OLS Benchmark",
-      "formula": "gold_price ~ trend",
+      "model_id": "all_raw_factors_ols",
+      "model_name": "All Raw Factors OLS Regression",
+      "selection_stage": "stage_1_all_raw_factors",
+      "formula": "gold_price ~ real_yield + nominal_yield + tips_curve + fed_bs + usd_index + vix_index + fin_stress + gpr_index + policy_unc + gld_tonnes + oil_wti + unrate + inflation + m2_supply + eur_usd + jpy_usd + ppi_index + ind_prod + cap_util",
       "selected_predictors": [
-        "trend"
+        "real_yield",
+        "nominal_yield",
+        "tips_curve",
+        "fed_bs",
+        "usd_index",
+        "vix_index",
+        "fin_stress",
+        "gpr_index",
+        "policy_unc",
+        "gld_tonnes",
+        "oil_wti",
+        "unrate",
+        "inflation",
+        "m2_supply",
+        "eur_usd",
+        "jpy_usd",
+        "ppi_index",
+        "ind_prod",
+        "cap_util"
       ],
       "metrics": {
         "train_from_train_fit": {
           "n": 3391,
-          "mae": 220.74696495714426,
-          "mse": 74728.12189237829,
-          "rmse": 273.36444884508717,
-          "mape": 19.732707248124083,
-          "bias_mean_error": 1.6435811065952534e-12,
+          "mae": 81.34923390546771,
+          "mse": 11288.353553495806,
+          "rmse": 106.24666372877695,
+          "mape": 7.236711559881083,
+          "bias_mean_error": -7.77305507223885e-10,
           "mean_actual": 1183.1069595989384,
-          "mean_prediction": 1183.1069595989368,
-          "directional_accuracy_pct": 18.4070796460177
+          "mean_prediction": 1183.1069595997158,
+          "directional_accuracy_pct": 23.392330383480825
         },
         "validation_from_train_fit": {
           "n": 1044,
-          "mae": 209.6939966981971,
-          "mse": 57608.21228681619,
-          "rmse": 240.01710832108654,
-          "mape": 11.876075679644115,
-          "bias_mean_error": 168.29913340155366,
+          "mae": 211.93948698189425,
+          "mse": 68359.61466123837,
+          "rmse": 261.4567166114467,
+          "mape": 12.300477048805462,
+          "bias_mean_error": 82.67867960656162,
           "mean_actual": 1704.3777777777777,
-          "mean_prediction": 1536.078644376224,
-          "directional_accuracy_pct": 42.1455938697318
+          "mean_prediction": 1621.6990981712163,
+          "directional_accuracy_pct": 39.6551724137931
         },
         "test_from_train_validation_fit": {
           "n": 847,
-          "mae": 937.8711880680166,
-          "mse": 1627679.8201926814,
-          "rmse": 1275.8055573607921,
-          "mape": 28.018645856260292,
-          "bias_mean_error": 937.8711880680166,
+          "mae": 1089.518531184253,
+          "mse": 1865387.3319955962,
+          "rmse": 1365.791833331711,
+          "mape": 34.38896112083758,
+          "bias_mean_error": 1089.518531184253,
           "mean_actual": 2783.111157024793,
-          "mean_prediction": 1845.239968956777,
+          "mean_prediction": 1693.5926258405402,
           "directional_accuracy_pct": 31.16883116883117
         }
       },
       "fit_statistics_validation_fit": {
-        "r_squared": 0.24522306966987228,
-        "adjusted_r_squared": 0.2450003559105538,
-        "f_statistic": 1101.068341804914,
-        "f_p_value": 2.542996035839482e-209,
-        "aic": 47679.72662628736,
-        "bic": 47691.98438657161,
-        "df_model": 1.0,
-        "df_resid": 3389.0,
-        "condition_number": 3917.3226833273166,
+        "r_squared": 0.8859841699774105,
+        "adjusted_r_squared": 0.8853755445502436,
+        "f_statistic": 1455.7133672539237,
+        "f_p_value": 0.0,
+        "aic": 41304.448559226206,
+        "bic": 41420.89728192659,
+        "df_model": 18.0,
+        "df_resid": 3372.0,
+        "condition_number": 6.557047434638108e+20,
         "nobs": 3391
       },
       "fit_statistics_test_fit": {
-        "r_squared": 0.5096224894112342,
-        "adjusted_r_squared": 0.5095118696254033,
-        "f_statistic": 4606.9741103085535,
+        "r_squared": 0.9097905603375357,
+        "adjusted_r_squared": 0.9094228588171724,
+        "f_statistic": 2474.2637980898785,
         "f_p_value": 0.0,
-        "aic": 61793.421791929024,
-        "bic": 61806.21635771851,
-        "df_model": 1.0,
-        "df_resid": 4433.0,
-        "condition_number": 5122.829784802548,
+        "aic": 54318.78296082909,
+        "bic": 54440.33133582922,
+        "df_model": 18.0,
+        "df_resid": 4416.0,
+        "condition_number": 4.943958093492506e+21,
         "nobs": 4435
-      }
+      },
+      "coefficient_table_validation_fit": [
+        {
+          "term": "Intercept",
+          "coefficient": 1162.6625500493628,
+          "std_error": 369.4233835159068,
+          "t_value": 3.147235941006156,
+          "p_value": 0.0016625989776047072,
+          "conf_low_95": 438.34603464883514,
+          "conf_high_95": 1886.9790654498906,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "real_yield",
+          "coefficient": -13.05737477763603,
+          "std_error": 6.075712066113868,
+          "t_value": -2.149110200672784,
+          "p_value": 0.031696634108702784,
+          "conf_low_95": -24.969827504427343,
+          "conf_high_95": -1.1449220508447144,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "nominal_yield",
+          "coefficient": 37.4646542540531,
+          "std_error": 5.485171361556027,
+          "t_value": 6.8301702507659074,
+          "p_value": 1.0019788323494746e-11,
+          "conf_low_95": 26.710055643740827,
+          "conf_high_95": 48.21925286436537,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "tips_curve",
+          "coefficient": 15.070803604356025,
+          "std_error": 7.895313977422896,
+          "t_value": 1.9088289138914365,
+          "p_value": 0.05636897598538578,
+          "conf_low_95": -0.40928391390957053,
+          "conf_high_95": 30.55089112262162,
+          "significant_at_0_05": false,
+          "direction": "positive"
+        },
+        {
+          "term": "fed_bs",
+          "coefficient": 6.771624618989505e-05,
+          "std_error": 1.2190505692655809e-05,
+          "t_value": 5.55483487700521,
+          "p_value": 2.994136345445623e-08,
+          "conf_low_95": 4.381471478102971e-05,
+          "conf_high_95": 9.16177775987604e-05,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "usd_index",
+          "coefficient": -6.305501722296977,
+          "std_error": 1.7264024953512753,
+          "t_value": -3.6523937721799813,
+          "p_value": 0.00026375664739766935,
+          "conf_low_95": -9.690403424269961,
+          "conf_high_95": -2.920600020323993,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "vix_index",
+          "coefficient": 0.22911073667045873,
+          "std_error": 0.5643071125662866,
+          "t_value": 0.40600363094581077,
+          "p_value": 0.684765694297143,
+          "conf_low_95": -0.8773080219356717,
+          "conf_high_95": 1.3355294952765893,
+          "significant_at_0_05": false,
+          "direction": "positive"
+        },
+        {
+          "term": "fin_stress",
+          "coefficient": -11.033880647055733,
+          "std_error": 4.5666428678613595,
+          "t_value": -2.4161908356593464,
+          "p_value": 0.01573663558410761,
+          "conf_low_95": -19.98755005922923,
+          "conf_high_95": -2.08021123488224,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "gpr_index",
+          "coefficient": -0.26977025060124316,
+          "std_error": 0.12372340502903031,
+          "t_value": -2.180430214783893,
+          "p_value": 0.029294495404952298,
+          "conf_low_95": -0.5123507411788156,
+          "conf_high_95": -0.02718976002367071,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "policy_unc",
+          "coefficient": -0.025435426778516367,
+          "std_error": 0.05975412885125034,
+          "t_value": -0.4256681047402491,
+          "p_value": 0.6703768720836271,
+          "conf_low_95": -0.14259342034788708,
+          "conf_high_95": 0.09172256679085436,
+          "significant_at_0_05": false,
+          "direction": "negative"
+        },
+        {
+          "term": "gld_tonnes",
+          "coefficient": 0.42589867701633033,
+          "std_error": 0.035638935328086326,
+          "t_value": 11.950375988945106,
+          "p_value": 2.87175586870006e-32,
+          "conf_low_95": 0.3560225657541077,
+          "conf_high_95": 0.495774788278553,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "oil_wti",
+          "coefficient": -4.693064941256981,
+          "std_error": 0.34264377057969203,
+          "t_value": -13.696629981969771,
+          "p_value": 1.3528887015341187e-41,
+          "conf_low_95": -5.364875533125739,
+          "conf_high_95": -4.021254349388224,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "unrate",
+          "coefficient": -22.963444928470498,
+          "std_error": 6.938206571426178,
+          "t_value": -3.309709028128614,
+          "p_value": 0.0009437474837462917,
+          "conf_low_95": -36.56696281928659,
+          "conf_high_95": -9.35992703765441,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "inflation",
+          "coefficient": 50.52202760488932,
+          "std_error": 9.420748035940562,
+          "t_value": 5.3628467094274885,
+          "p_value": 8.743679521192807e-08,
+          "conf_low_95": 32.051070718195604,
+          "conf_high_95": 68.99298449158303,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "m2_supply",
+          "coefficient": -0.006245960584930732,
+          "std_error": 0.010025615473772155,
+          "t_value": -0.6230002139290786,
+          "p_value": 0.5333265127570406,
+          "conf_low_95": -0.025902861552044472,
+          "conf_high_95": 0.013410940382183005,
+          "significant_at_0_05": false,
+          "direction": "negative"
+        },
+        {
+          "term": "eur_usd",
+          "coefficient": -443.8211587061684,
+          "std_error": 69.8028756525942,
+          "t_value": -6.358207374077918,
+          "p_value": 2.315562659476736e-10,
+          "conf_low_95": -580.6814060907153,
+          "conf_high_95": -306.96091132162144,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "jpy_usd",
+          "coefficient": -9.634592374440592,
+          "std_error": 0.5758992517062955,
+          "t_value": -16.729649059093003,
+          "p_value": 2.039794279943335e-60,
+          "conf_low_95": -10.763739466451117,
+          "conf_high_95": -8.505445282430067,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "ppi_index",
+          "coefficient": 10.72283962916682,
+          "std_error": 0.6909467667977924,
+          "t_value": 15.519053195461135,
+          "p_value": 1.6199964075701448e-52,
+          "conf_low_95": 9.368122584211033,
+          "conf_high_95": 12.077556674122608,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "ind_prod",
+          "coefficient": -18.956290251501795,
+          "std_error": 3.9137733319229833,
+          "t_value": -4.843481889174164,
+          "p_value": 1.333257378324482e-06,
+          "conf_low_95": -26.629899417403188,
+          "conf_high_95": -11.282681085600402,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "cap_util",
+          "coefficient": 23.646204252364022,
+          "std_error": 4.562228228983451,
+          "t_value": 5.183038433312407,
+          "p_value": 2.3113525589057434e-07,
+          "conf_low_95": 14.701190480281218,
+          "conf_high_95": 32.591218024446825,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        }
+      ],
+      "coefficient_table_test_fit": [
+        {
+          "term": "Intercept",
+          "coefficient": 1041.2044760548476,
+          "std_error": 287.71830226816553,
+          "t_value": 3.6188329621255773,
+          "p_value": 0.0002992485691412052,
+          "conf_low_95": 477.1323622512515,
+          "conf_high_95": 1605.276589858444,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "real_yield",
+          "coefficient": 16.57019480265584,
+          "std_error": 4.834534789443467,
+          "t_value": 3.4274641768713674,
+          "p_value": 0.0006148126632579655,
+          "conf_low_95": 7.092082925724574,
+          "conf_high_95": 26.048306679587107,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "nominal_yield",
+          "coefficient": -1.149828348429045,
+          "std_error": 4.6058607659275825,
+          "t_value": -0.2496446173395081,
+          "p_value": 0.8028738024976738,
+          "conf_low_95": -10.179624498485367,
+          "conf_high_95": 7.879967801627277,
+          "significant_at_0_05": false,
+          "direction": "negative"
+        },
+        {
+          "term": "tips_curve",
+          "coefficient": -2.8172947904499672,
+          "std_error": 5.030679223974479,
+          "t_value": -0.5600227454423478,
+          "p_value": 0.5754923292654865,
+          "conf_low_95": -12.679948091838822,
+          "conf_high_95": 7.045358510938888,
+          "significant_at_0_05": false,
+          "direction": "negative"
+        },
+        {
+          "term": "fed_bs",
+          "coefficient": -3.74206223520756e-05,
+          "std_error": 6.320646451406261e-06,
+          "t_value": -5.9203789738548025,
+          "p_value": 3.4555741503116957e-09,
+          "conf_low_95": -4.981225811644529e-05,
+          "conf_high_95": -2.502898658770591e-05,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "usd_index",
+          "coefficient": -10.056590393741757,
+          "std_error": 1.2718832567797276,
+          "t_value": -7.906850208252579,
+          "p_value": 3.309833544538188e-15,
+          "conf_low_95": -12.550119208236376,
+          "conf_high_95": -7.5630615792471385,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "vix_index",
+          "coefficient": 1.3927866181012014,
+          "std_error": 0.43538816958795856,
+          "t_value": 3.1989537506710457,
+          "p_value": 0.0013890254687528845,
+          "conf_low_95": 0.539207533251542,
+          "conf_high_95": 2.246365702950861,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "fin_stress",
+          "coefficient": -28.71436767105238,
+          "std_error": 3.327864095448733,
+          "t_value": -8.628467643953021,
+          "p_value": 8.551087654809547e-18,
+          "conf_low_95": -35.238649650935855,
+          "conf_high_95": -22.190085691168903,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "gpr_index",
+          "coefficient": 0.014831814740438709,
+          "std_error": 0.07724259528333749,
+          "t_value": 0.19201600730831708,
+          "p_value": 0.8477384953596179,
+          "conf_low_95": -0.13660239592210868,
+          "conf_high_95": 0.1662660254029861,
+          "significant_at_0_05": false,
+          "direction": "positive"
+        },
+        {
+          "term": "policy_unc",
+          "coefficient": 0.31474053567202626,
+          "std_error": 0.04464677246415596,
+          "t_value": 7.04956972925,
+          "p_value": 2.073363792891309e-12,
+          "conf_low_95": 0.22721047894698657,
+          "conf_high_95": 0.402270592397066,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "gld_tonnes",
+          "coefficient": 0.31730072122930336,
+          "std_error": 0.020936123089583397,
+          "t_value": 15.155657992246608,
+          "p_value": 1.279195576828242e-50,
+          "conf_low_95": 0.2762554241004935,
+          "conf_high_95": 0.35834601835811325,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "oil_wti",
+          "coefficient": -2.0594798033755155,
+          "std_error": 0.2813776174735361,
+          "t_value": -7.31927372854812,
+          "p_value": 2.946755364233065e-13,
+          "conf_low_95": -2.611120996216234,
+          "conf_high_95": -1.507838610534797,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "unrate",
+          "coefficient": 33.3009241924127,
+          "std_error": 2.7431266552513724,
+          "t_value": 12.139769094752607,
+          "p_value": 2.2003105859675358e-33,
+          "conf_low_95": 27.923020740805157,
+          "conf_high_95": 38.678827644020245,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "inflation",
+          "coefficient": -17.720024969444967,
+          "std_error": 7.617387492222928,
+          "t_value": -2.326260149892133,
+          "p_value": 0.02004970968670111,
+          "conf_low_95": -32.65392326693494,
+          "conf_high_95": -2.7861266719549977,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "m2_supply",
+          "coefficient": 0.07315844303385957,
+          "std_error": 0.004309950499930523,
+          "t_value": 16.974311662057115,
+          "p_value": 1.187848322228566e-62,
+          "conf_low_95": 0.0647087793533796,
+          "conf_high_95": 0.08160810671433955,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "eur_usd",
+          "coefficient": -670.3456048554114,
+          "std_error": 58.54141743816926,
+          "t_value": -11.450792177408793,
+          "p_value": 6.140700479145975e-30,
+          "conf_low_95": -785.1161315097406,
+          "conf_high_95": -555.5750782010821,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "jpy_usd",
+          "coefficient": -8.479887210320232,
+          "std_error": 0.4102093390770333,
+          "t_value": -20.672096908860947,
+          "p_value": 1.072903787312162e-90,
+          "conf_low_95": -9.2841031645055,
+          "conf_high_95": -7.675671256134963,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "ppi_index",
+          "coefficient": 4.942309821043743,
+          "std_error": 0.38349294081019014,
+          "t_value": 12.887616159510847,
+          "p_value": 2.470365266425823e-37,
+          "conf_low_95": 4.190471401150857,
+          "conf_high_95": 5.694148240936629,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "ind_prod",
+          "coefficient": 3.396961210689605,
+          "std_error": 2.1958248203217625,
+          "t_value": 1.5470092054938314,
+          "p_value": 0.12193268252595801,
+          "conf_low_95": -0.9079562664991347,
+          "conf_high_95": 7.701878687878345,
+          "significant_at_0_05": false,
+          "direction": "positive"
+        },
+        {
+          "term": "cap_util",
+          "coefficient": 7.675262740285641,
+          "std_error": 3.19203131012873,
+          "t_value": 2.4045073480109784,
+          "p_value": 0.016235200289547443,
+          "conf_low_95": 1.417281116463183,
+          "conf_high_95": 13.933244364108099,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        }
+      ]
     },
     {
-      "model_id": "selected_factor_ols",
-      "model_name": "Selected-Factor OLS Regression",
-      "formula": "gold_price ~ gold_lag_1 + gold_ma_20 + real_yield + nominal_yield + usd_index + vix_index + fin_stress + gpr_index + policy_unc + oil_wti + gld_tonnes + unrate",
+      "model_id": "significant_raw_factors_ols",
+      "model_name": "Significant Raw Factors OLS Regression",
+      "selection_stage": "stage_2_significant_raw_factors_only",
+      "formula": "gold_price ~ real_yield + nominal_yield + fed_bs + usd_index + fin_stress + gpr_index + gld_tonnes + oil_wti + unrate + inflation + eur_usd + jpy_usd + ppi_index + ind_prod + cap_util",
       "selected_predictors": [
-        "gold_lag_1",
-        "gold_ma_20",
         "real_yield",
         "nominal_yield",
+        "fed_bs",
         "usd_index",
-        "vix_index",
         "fin_stress",
         "gpr_index",
-        "policy_unc",
-        "oil_wti",
         "gld_tonnes",
-        "unrate"
+        "oil_wti",
+        "unrate",
+        "inflation",
+        "eur_usd",
+        "jpy_usd",
+        "ppi_index",
+        "ind_prod",
+        "cap_util"
       ],
       "metrics": {
         "train_from_train_fit": {
           "n": 3391,
-          "mae": 28.297629328527808,
-          "mse": 3188.2659769155425,
-          "rmse": 56.46473215127778,
-          "mape": 2.507836051699979,
-          "bias_mean_error": 3.8978392256054985e-12,
+          "mae": 81.40567418890703,
+          "mse": 11305.942064761653,
+          "rmse": 106.32940357568857,
+          "mape": 7.245717400494198,
+          "bias_mean_error": 2.891129437103193e-09,
           "mean_actual": 1183.1069595989384,
-          "mean_prediction": 1183.1069595989345,
-          "directional_accuracy_pct": 24.15929203539823
+          "mean_prediction": 1183.1069595960473,
+          "directional_accuracy_pct": 23.36283185840708
         },
         "validation_from_train_fit": {
           "n": 1044,
-          "mae": 36.25945620242312,
-          "mse": 4093.503325808385,
-          "rmse": 63.98049175966362,
-          "mape": 2.1211190880215702,
-          "bias_mean_error": 9.20620965300895,
+          "mae": 212.0741938771585,
+          "mse": 63671.78900504123,
+          "rmse": 252.3326950774339,
+          "mape": 12.304375638470633,
+          "bias_mean_error": 45.976252246736834,
           "mean_actual": 1704.3777777777777,
-          "mean_prediction": 1695.1715681247688,
-          "directional_accuracy_pct": 45.689655172413794
+          "mean_prediction": 1658.4015255310408,
+          "directional_accuracy_pct": 40.229885057471265
         },
         "test_from_train_validation_fit": {
           "n": 847,
-          "mae": 96.2203994636466,
-          "mse": 31067.665682144627,
-          "rmse": 176.26022149692378,
-          "mape": 3.265948503701268,
-          "bias_mean_error": 32.13004494181052,
+          "mae": 1232.373164906499,
+          "mse": 2324489.0850104736,
+          "rmse": 1524.6275233677482,
+          "mape": 39.18053672796741,
+          "bias_mean_error": 1232.373164906499,
           "mean_actual": 2783.111157024793,
-          "mean_prediction": 2750.9811120829827,
-          "directional_accuracy_pct": 38.84297520661157
+          "mean_prediction": 1550.7379921182944,
+          "directional_accuracy_pct": 31.16883116883117
         }
       },
       "fit_statistics_validation_fit": {
-        "r_squared": 0.9677975366409184,
-        "adjusted_r_squared": 0.9676831406787192,
-        "f_statistic": 8460.067278908557,
+        "r_squared": 0.8858065206239123,
+        "adjusted_r_squared": 0.8853329694653622,
+        "f_statistic": 1870.5614053104405,
         "f_p_value": 0.0,
-        "aic": 37005.2264280658,
-        "bic": 37084.90186991343,
-        "df_model": 12.0,
-        "df_resid": 3378.0,
-        "condition_number": 84087.06263366579,
+        "aic": 41301.72800274218,
+        "bic": 41393.661204874064,
+        "df_model": 14.0,
+        "df_resid": 3376.0,
+        "condition_number": 6.514588557421218e+20,
         "nobs": 3391
       },
       "fit_statistics_test_fit": {
-        "r_squared": 0.9747933632907801,
-        "adjusted_r_squared": 0.9747249599347171,
-        "f_statistic": 14250.665747932311,
+        "r_squared": 0.899885201716287,
+        "adjusted_r_squared": 0.8995680960203658,
+        "f_statistic": 2837.8083815300747,
         "f_p_value": 0.0,
-        "aic": 48652.03931194254,
-        "bic": 48735.20398957421,
-        "df_model": 12.0,
-        "df_resid": 4422.0,
-        "condition_number": 58312.332422921136,
+        "aic": 54772.836500494486,
+        "bic": 54868.79574391564,
+        "df_model": 14.0,
+        "df_resid": 4420.0,
+        "condition_number": 5.709353318059533e+21,
         "nobs": 4435
-      }
-    },
-    {
-      "model_id": "selected_factor_plus_trend_ols",
-      "model_name": "Selected-Factor OLS Regression + Trend",
-      "formula": "gold_price ~ trend + gold_lag_1 + gold_ma_20 + real_yield + nominal_yield + usd_index + vix_index + fin_stress + gpr_index + policy_unc + oil_wti + gld_tonnes + unrate",
-      "selected_predictors": [
-        "trend",
-        "gold_lag_1",
-        "gold_ma_20",
-        "real_yield",
-        "nominal_yield",
-        "usd_index",
-        "vix_index",
-        "fin_stress",
-        "gpr_index",
-        "policy_unc",
-        "oil_wti",
-        "gld_tonnes",
-        "unrate"
+      },
+      "coefficient_table_validation_fit": [
+        {
+          "term": "Intercept",
+          "coefficient": 1299.6753415117464,
+          "std_error": 322.2290674008519,
+          "t_value": 4.0333895138484035,
+          "p_value": 5.619477869831242e-05,
+          "conf_low_95": 667.8914686455645,
+          "conf_high_95": 1931.4592143779282,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "real_yield",
+          "coefficient": -12.349557038923974,
+          "std_error": 5.981400104934645,
+          "t_value": -2.064659916118236,
+          "p_value": 0.03903139192968707,
+          "conf_low_95": -24.077090355329574,
+          "conf_high_95": -0.6220237225183727,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "nominal_yield",
+          "coefficient": 39.65727220011764,
+          "std_error": 5.069652457887776,
+          "t_value": 7.822483400891838,
+          "p_value": 6.8724848589087e-15,
+          "conf_low_95": 29.717372333959787,
+          "conf_high_95": 49.59717206627549,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "fed_bs",
+          "coefficient": 7.213073412146624e-05,
+          "std_error": 6.764311469651879e-06,
+          "t_value": 10.663425900046322,
+          "p_value": 3.914387359006509e-26,
+          "conf_low_95": 5.8868172391572784e-05,
+          "conf_high_95": 8.53932958513597e-05,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "usd_index",
+          "coefficient": -7.6415593162218,
+          "std_error": 1.1731243389366677,
+          "t_value": -6.5138528479838635,
+          "p_value": 8.411921663787545e-11,
+          "conf_low_95": -9.941665399714838,
+          "conf_high_95": -5.341453232728762,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "fin_stress",
+          "coefficient": -6.8385031323554,
+          "std_error": 3.107274262143454,
+          "t_value": -2.200804485033798,
+          "p_value": 0.027817337947806945,
+          "conf_low_95": -12.930832987105212,
+          "conf_high_95": -0.746173277605588,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "gpr_index",
+          "coefficient": -0.2804931889141881,
+          "std_error": 0.12182082642884641,
+          "t_value": -2.3025060421669337,
+          "p_value": 0.02136719893676424,
+          "conf_low_95": -0.519343253366108,
+          "conf_high_95": -0.04164312446226823,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "gld_tonnes",
+          "coefficient": 0.4067648167457067,
+          "std_error": 0.028505394832606966,
+          "t_value": 14.269748555821213,
+          "p_value": 6.660629593504836e-45,
+          "conf_low_95": 0.3508752320779131,
+          "conf_high_95": 0.4626544014135003,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "oil_wti",
+          "coefficient": -4.503748199560686,
+          "std_error": 0.3099945930979417,
+          "t_value": -14.528473398688417,
+          "p_value": 1.958544589560038e-46,
+          "conf_low_95": -5.1115443433870205,
+          "conf_high_95": -3.8959520557343517,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "unrate",
+          "coefficient": -15.17056830968489,
+          "std_error": 5.466771865057124,
+          "t_value": -2.7750505571035693,
+          "p_value": 0.005549696697204476,
+          "conf_low_95": -25.88908706046268,
+          "conf_high_95": -4.4520495589071025,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "inflation",
+          "coefficient": 52.00682814385255,
+          "std_error": 9.08673728328341,
+          "t_value": 5.723377547134317,
+          "p_value": 1.1354564252250026e-08,
+          "conf_low_95": 34.19076294881316,
+          "conf_high_95": 69.82289333889194,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "eur_usd",
+          "coefficient": -464.37202265842177,
+          "std_error": 56.313992988332615,
+          "t_value": -8.246121399252091,
+          "p_value": 2.316701327181681e-16,
+          "conf_low_95": -574.7850058002205,
+          "conf_high_95": -353.959039516623,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "jpy_usd",
+          "coefficient": -9.361178077174875,
+          "std_error": 0.5547193237058485,
+          "t_value": -16.87552186687269,
+          "p_value": 2.0946173697867886e-61,
+          "conf_low_95": -10.448797904620845,
+          "conf_high_95": -8.273558249728906,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "ppi_index",
+          "coefficient": 10.309280063390664,
+          "std_error": 0.5580929063959943,
+          "t_value": 18.47233667592206,
+          "p_value": 1.170822207924652e-72,
+          "conf_low_95": 9.21504576396485,
+          "conf_high_95": 11.403514362816479,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "ind_prod",
+          "coefficient": -19.46279533967709,
+          "std_error": 3.763149378496299,
+          "t_value": -5.17194333312757,
+          "p_value": 2.4516167110069986e-07,
+          "conf_low_95": -26.84107783820401,
+          "conf_high_95": -12.084512841150168,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "cap_util",
+          "coefficient": 23.781966026671245,
+          "std_error": 4.3156549589188975,
+          "t_value": 5.5106272983020865,
+          "p_value": 3.8436584620590496e-08,
+          "conf_low_95": 15.320404113921484,
+          "conf_high_95": 32.24352793942101,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        }
       ],
-      "metrics": {
-        "train_from_train_fit": {
-          "n": 3391,
-          "mae": 28.390880566595126,
-          "mse": 3187.376058578645,
-          "rmse": 56.45685129883392,
-          "mape": 2.515001814497339,
-          "bias_mean_error": -4.767002088458018e-12,
-          "mean_actual": 1183.1069595989384,
-          "mean_prediction": 1183.1069595989431,
-          "directional_accuracy_pct": 24.30678466076696
+      "coefficient_table_test_fit": [
+        {
+          "term": "Intercept",
+          "coefficient": -3172.503981036835,
+          "std_error": 200.6975846456776,
+          "t_value": -15.80738496000211,
+          "p_value": 8.554633670063178e-55,
+          "conf_low_95": -3565.9717647203506,
+          "conf_high_95": -2779.036197353319,
+          "significant_at_0_05": true,
+          "direction": "negative"
         },
-        "validation_from_train_fit": {
-          "n": 1044,
-          "mae": 36.24307251781034,
-          "mse": 4090.763416728463,
-          "rmse": 63.95907610909075,
-          "mape": 2.120696725020787,
-          "bias_mean_error": 9.214380978958559,
-          "mean_actual": 1704.3777777777777,
-          "mean_prediction": 1695.1633967988191,
-          "directional_accuracy_pct": 45.593869731800766
+        {
+          "term": "real_yield",
+          "coefficient": -30.191380964823338,
+          "std_error": 4.411675307833512,
+          "t_value": -6.843518359389358,
+          "p_value": 8.785937359688931e-12,
+          "conf_low_95": -38.84047412042415,
+          "conf_high_95": -21.54228780922253,
+          "significant_at_0_05": true,
+          "direction": "negative"
         },
-        "test_from_train_validation_fit": {
-          "n": 847,
-          "mae": 96.70508070900749,
-          "mse": 31225.08563985977,
-          "rmse": 176.7062127936077,
-          "mape": 3.269478583997846,
-          "bias_mean_error": 33.111892185363075,
-          "mean_actual": 2783.111157024793,
-          "mean_prediction": 2749.9992648394305,
-          "directional_accuracy_pct": 38.961038961038966
+        {
+          "term": "nominal_yield",
+          "coefficient": -10.32049188129772,
+          "std_error": 4.694061868266992,
+          "t_value": -2.1986271529710275,
+          "p_value": 0.027956085707921297,
+          "conf_low_95": -19.523204126395456,
+          "conf_high_95": -1.1177796361999857,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "fed_bs",
+          "coefficient": 2.1860371441566887e-05,
+          "std_error": 3.6566530165004884e-06,
+          "t_value": 5.978246047115466,
+          "p_value": 2.43324010463299e-09,
+          "conf_low_95": 1.4691500123846842e-05,
+          "conf_high_95": 2.9029242759286932e-05,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "usd_index",
+          "coefficient": 12.88256601912785,
+          "std_error": 0.6837332619501377,
+          "t_value": 18.84150843032605,
+          "p_value": 3.118352597861024e-76,
+          "conf_low_95": 11.542106383376995,
+          "conf_high_95": 14.223025654878706,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "fin_stress",
+          "coefficient": -17.0620348390999,
+          "std_error": 2.516772265235547,
+          "t_value": -6.779332033644709,
+          "p_value": 1.3664053410635242e-11,
+          "conf_low_95": -21.9961689841951,
+          "conf_high_95": -12.127900694004701,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "gpr_index",
+          "coefficient": -0.18266105207234415,
+          "std_error": 0.07891787891571281,
+          "t_value": -2.3145712300178882,
+          "p_value": 0.020682016292498228,
+          "conf_low_95": -0.33737962013478406,
+          "conf_high_95": -0.027942484009904206,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "gld_tonnes",
+          "coefficient": 0.4291560845371277,
+          "std_error": 0.02135939586845666,
+          "t_value": 20.092145263850888,
+          "p_value": 5.379075155043389e-86,
+          "conf_low_95": 0.3872809709525882,
+          "conf_high_95": 0.47103119812166727,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "oil_wti",
+          "coefficient": -2.952298025839022,
+          "std_error": 0.28656109009681013,
+          "t_value": -10.302508358136253,
+          "p_value": 1.3006013958736021e-24,
+          "conf_low_95": -3.5141012842558266,
+          "conf_high_95": -2.3904947674222172,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "unrate",
+          "coefficient": 39.466847283008185,
+          "std_error": 2.4577829085881033,
+          "t_value": 16.057906149929366,
+          "p_value": 1.9341019288174392e-56,
+          "conf_low_95": 34.64836182128884,
+          "conf_high_95": 44.28533274472753,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "inflation",
+          "coefficient": 19.870889216459474,
+          "std_error": 7.629278141920201,
+          "t_value": 2.6045569248912193,
+          "p_value": 0.009230118481454488,
+          "conf_low_95": 4.913682995437405,
+          "conf_high_95": 34.828095437481544,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "eur_usd",
+          "coefficient": 266.5441762520914,
+          "std_error": 40.419879746154514,
+          "t_value": 6.5943832076207505,
+          "p_value": 4.772104400763255e-11,
+          "conf_low_95": 187.30096797655943,
+          "conf_high_95": 345.7873845276234,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "jpy_usd",
+          "coefficient": -8.020925903353747,
+          "std_error": 0.398421989542675,
+          "t_value": -20.131734979187502,
+          "p_value": 2.5889518326607566e-86,
+          "conf_low_95": -8.8020325493201,
+          "conf_high_95": -7.239819257387396,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "ppi_index",
+          "coefficient": 7.596350931695251,
+          "std_error": 0.37768551149351937,
+          "t_value": 20.112900020062312,
+          "p_value": 3.6667399848766765e-86,
+          "conf_low_95": 6.855898168404208,
+          "conf_high_95": 8.336803694986294,
+          "significant_at_0_05": true,
+          "direction": "positive"
+        },
+        {
+          "term": "ind_prod",
+          "coefficient": -7.293889850598947,
+          "std_error": 1.977237967716639,
+          "t_value": -3.688928682176836,
+          "p_value": 0.00022790869137269567,
+          "conf_low_95": -11.170266551125023,
+          "conf_high_95": -3.4175131500728706,
+          "significant_at_0_05": true,
+          "direction": "negative"
+        },
+        {
+          "term": "cap_util",
+          "coefficient": 31.374072698926174,
+          "std_error": 2.529641919196827,
+          "t_value": 12.402574633522672,
+          "p_value": 9.521764621287874e-35,
+          "conf_low_95": 26.414707586403743,
+          "conf_high_95": 36.333437811448604,
+          "significant_at_0_05": true,
+          "direction": "positive"
         }
-      },
-      "fit_statistics_validation_fit": {
-        "r_squared": 0.967806525088822,
-        "adjusted_r_squared": 0.9676825940334932,
-        "f_statistic": 7809.2333073517975,
-        "f_p_value": 0.0,
-        "aic": 37006.279789881526,
-        "bic": 37092.084111871285,
-        "df_model": 13.0,
-        "df_resid": 3377.0,
-        "condition_number": 134333.38766001753,
-        "nobs": 3391
-      },
-      "fit_statistics_test_fit": {
-        "r_squared": 0.9748106472697751,
-        "adjusted_r_squared": 0.9747365776960377,
-        "f_statistic": 13160.743313120016,
-        "f_p_value": 0.0,
-        "aic": 48650.99722662183,
-        "bic": 48740.55918714825,
-        "df_model": 13.0,
-        "df_resid": 4421.0,
-        "condition_number": 119504.26469111862,
-        "nobs": 4435
-      }
+      ]
     }
   ],
   "candidate_metric_table": [
     {
-      "model_id": "trend_only_ols",
-      "model_name": "Trend-Only OLS Benchmark",
-      "formula": "gold_price ~ trend",
-      "validation_rmse": 240.01710832108654,
-      "validation_mae": 209.6939966981971,
-      "validation_mape": 11.876075679644115,
-      "test_rmse": 1275.8055573607921,
-      "test_mae": 937.8711880680166,
-      "test_mape": 28.018645856260292,
-      "adj_r_squared_test_fit": 0.5095118696254033
+      "model_id": "all_raw_factors_ols",
+      "model_name": "All Raw Factors OLS Regression",
+      "selection_stage": "stage_1_all_raw_factors",
+      "formula": "gold_price ~ real_yield + nominal_yield + tips_curve + fed_bs + usd_index + vix_index + fin_stress + gpr_index + policy_unc + gld_tonnes + oil_wti + unrate + inflation + m2_supply + eur_usd + jpy_usd + ppi_index + ind_prod + cap_util",
+      "predictor_count": 19,
+      "selected_predictors": [
+        "real_yield",
+        "nominal_yield",
+        "tips_curve",
+        "fed_bs",
+        "usd_index",
+        "vix_index",
+        "fin_stress",
+        "gpr_index",
+        "policy_unc",
+        "gld_tonnes",
+        "oil_wti",
+        "unrate",
+        "inflation",
+        "m2_supply",
+        "eur_usd",
+        "jpy_usd",
+        "ppi_index",
+        "ind_prod",
+        "cap_util"
+      ],
+      "validation_rmse": 261.4567166114467,
+      "validation_mae": 211.93948698189425,
+      "validation_mape": 12.300477048805462,
+      "test_rmse": 1365.791833331711,
+      "test_mae": 1089.518531184253,
+      "test_mape": 34.38896112083758,
+      "adj_r_squared_test_fit": 0.9094228588171724
     },
     {
-      "model_id": "selected_factor_ols",
-      "model_name": "Selected-Factor OLS Regression",
-      "formula": "gold_price ~ gold_lag_1 + gold_ma_20 + real_yield + nominal_yield + usd_index + vix_index + fin_stress + gpr_index + policy_unc + oil_wti + gld_tonnes + unrate",
-      "validation_rmse": 63.98049175966362,
-      "validation_mae": 36.25945620242312,
-      "validation_mape": 2.1211190880215702,
-      "test_rmse": 176.26022149692378,
-      "test_mae": 96.2203994636466,
-      "test_mape": 3.265948503701268,
-      "adj_r_squared_test_fit": 0.9747249599347171
-    },
-    {
-      "model_id": "selected_factor_plus_trend_ols",
-      "model_name": "Selected-Factor OLS Regression + Trend",
-      "formula": "gold_price ~ trend + gold_lag_1 + gold_ma_20 + real_yield + nominal_yield + usd_index + vix_index + fin_stress + gpr_index + policy_unc + oil_wti + gld_tonnes + unrate",
-      "validation_rmse": 63.95907610909075,
-      "validation_mae": 36.24307251781034,
-      "validation_mape": 2.120696725020787,
-      "test_rmse": 176.7062127936077,
-      "test_mae": 96.70508070900749,
-      "test_mape": 3.269478583997846,
-      "adj_r_squared_test_fit": 0.9747365776960377
+      "model_id": "significant_raw_factors_ols",
+      "model_name": "Significant Raw Factors OLS Regression",
+      "selection_stage": "stage_2_significant_raw_factors_only",
+      "formula": "gold_price ~ real_yield + nominal_yield + fed_bs + usd_index + fin_stress + gpr_index + gld_tonnes + oil_wti + unrate + inflation + eur_usd + jpy_usd + ppi_index + ind_prod + cap_util",
+      "predictor_count": 15,
+      "selected_predictors": [
+        "real_yield",
+        "nominal_yield",
+        "fed_bs",
+        "usd_index",
+        "fin_stress",
+        "gpr_index",
+        "gld_tonnes",
+        "oil_wti",
+        "unrate",
+        "inflation",
+        "eur_usd",
+        "jpy_usd",
+        "ppi_index",
+        "ind_prod",
+        "cap_util"
+      ],
+      "validation_rmse": 252.3326950774339,
+      "validation_mae": 212.0741938771585,
+      "validation_mape": 12.304375638470633,
+      "test_rmse": 1524.6275233677482,
+      "test_mae": 1232.373164906499,
+      "test_mape": 39.18053672796741,
+      "adj_r_squared_test_fit": 0.8995680960203658
     }
   ],
-  "main_regression_model_id": "selected_factor_plus_trend_ols",
-  "main_regression_model_name": "Selected-Factor OLS Regression + Trend",
-  "main_regression_formula": "gold_price ~ trend + gold_lag_1 + gold_ma_20 + real_yield + nominal_yield + usd_index + vix_index + fin_stress + gpr_index + policy_unc + oil_wti + gld_tonnes + unrate",
+  "main_regression_model_id": "significant_raw_factors_ols",
+  "main_regression_model_name": "Significant Raw Factors OLS Regression",
+  "main_regression_formula": "gold_price ~ real_yield + nominal_yield + fed_bs + usd_index + fin_stress + gpr_index + gld_tonnes + oil_wti + unrate + inflation + eur_usd + jpy_usd + ppi_index + ind_prod + cap_util",
   "main_metrics": {
     "train_from_train_fit": {
       "n": 3391,
-      "mae": 28.390880566595126,
-      "mse": 3187.376058578645,
-      "rmse": 56.45685129883392,
-      "mape": 2.515001814497339,
-      "bias_mean_error": -4.767002088458018e-12,
+      "mae": 81.40567418890703,
+      "mse": 11305.942064761653,
+      "rmse": 106.32940357568857,
+      "mape": 7.245717400494198,
+      "bias_mean_error": 2.891129437103193e-09,
       "mean_actual": 1183.1069595989384,
-      "mean_prediction": 1183.1069595989431,
-      "directional_accuracy_pct": 24.30678466076696
+      "mean_prediction": 1183.1069595960473,
+      "directional_accuracy_pct": 23.36283185840708
     },
     "validation_from_train_fit": {
       "n": 1044,
-      "mae": 36.24307251781034,
-      "mse": 4090.763416728463,
-      "rmse": 63.95907610909075,
-      "mape": 2.120696725020787,
-      "bias_mean_error": 9.214380978958559,
+      "mae": 212.0741938771585,
+      "mse": 63671.78900504123,
+      "rmse": 252.3326950774339,
+      "mape": 12.304375638470633,
+      "bias_mean_error": 45.976252246736834,
       "mean_actual": 1704.3777777777777,
-      "mean_prediction": 1695.1633967988191,
-      "directional_accuracy_pct": 45.593869731800766
+      "mean_prediction": 1658.4015255310408,
+      "directional_accuracy_pct": 40.229885057471265
     },
     "test_from_train_validation_fit": {
       "n": 847,
-      "mae": 96.70508070900749,
-      "mse": 31225.08563985977,
-      "rmse": 176.7062127936077,
-      "mape": 3.269478583997846,
-      "bias_mean_error": 33.111892185363075,
+      "mae": 1232.373164906499,
+      "mse": 2324489.0850104736,
+      "rmse": 1524.6275233677482,
+      "mape": 39.18053672796741,
+      "bias_mean_error": 1232.373164906499,
       "mean_actual": 2783.111157024793,
-      "mean_prediction": 2749.9992648394305,
-      "directional_accuracy_pct": 38.961038961038966
+      "mean_prediction": 1550.7379921182944,
+      "directional_accuracy_pct": 31.16883116883117
     }
   },
   "main_fit_statistics": {
     "validation_fit_train_only": {
-      "r_squared": 0.967806525088822,
-      "adjusted_r_squared": 0.9676825940334932,
-      "f_statistic": 7809.2333073517975,
+      "r_squared": 0.8858065206239123,
+      "adjusted_r_squared": 0.8853329694653622,
+      "f_statistic": 1870.5614053104405,
       "f_p_value": 0.0,
-      "aic": 37006.279789881526,
-      "bic": 37092.084111871285,
-      "df_model": 13.0,
-      "df_resid": 3377.0,
-      "condition_number": 134333.38766001753,
+      "aic": 41301.72800274218,
+      "bic": 41393.661204874064,
+      "df_model": 14.0,
+      "df_resid": 3376.0,
+      "condition_number": 6.514588557421218e+20,
       "nobs": 3391
     },
     "test_fit_train_plus_validation": {
-      "r_squared": 0.9748106472697751,
-      "adjusted_r_squared": 0.9747365776960377,
-      "f_statistic": 13160.743313120016,
+      "r_squared": 0.899885201716287,
+      "adjusted_r_squared": 0.8995680960203658,
+      "f_statistic": 2837.8083815300747,
       "f_p_value": 0.0,
-      "aic": 48650.99722662183,
-      "bic": 48740.55918714825,
-      "df_model": 13.0,
-      "df_resid": 4421.0,
-      "condition_number": 119504.26469111862,
+      "aic": 54772.836500494486,
+      "bic": 54868.79574391564,
+      "df_model": 14.0,
+      "df_resid": 4420.0,
+      "condition_number": 5.709353318059533e+21,
       "nobs": 4435
     }
   },
   "methodology_notes": [
+    "The first regression uses all available raw non-engineered factors.",
+    "gold_lag_1, gold_ma_20, and trend are hard-excluded.",
+    "high_yield is excluded because it starts too late for the core multivariate model window.",
+    "Non-significant raw factors are removed using training-period p-values only.",
     "The validation forecast is generated from coefficients fitted on the training period only.",
     "The test forecast is generated from coefficients fitted on training plus validation only.",
-    "The test period is not used to estimate regression coefficients.",
-    "The main model excludes high_yield because it starts too late for the core multivariate window.",
-    "The selected factor set is intentionally limited to keep the regression readable and reduce blind multicollinearity risk."
+    "The test period is not used to estimate regression coefficients."
   ]
 }

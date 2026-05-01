@@ -25,33 +25,48 @@ type ArtifactResult = ArtifactRequest & {
   error?: string;
 };
 
-type MetricRow = {
-  model_name: string;
-  model_id?: string;
-  split: string;
-  fit_scope?: string;
-  n?: number;
-  MAE?: number;
-  MSE?: number;
-  RMSE?: number;
-  MAPE?: number;
-  mean_error_bias?: number;
-  directional_accuracy_pct?: number;
-  [key: string]: any;
-};
-
 type CoefficientRow = {
   term: string;
-  coefficient?: number;
-  std_error?: number;
-  t_value?: number;
-  p_value?: number;
-  conf_low_95?: number;
-  conf_high_95?: number;
+  coefficient?: number | null;
+  std_error?: number | null;
+  t_value?: number | null;
+  p_value?: number | null;
+  conf_low_95?: number | null;
+  conf_high_95?: number | null;
   significant_at_0_05?: boolean;
   direction?: string;
-  [key: string]: any;
 };
+
+type FactorSelectionRow = {
+  factor: string;
+  coefficient_in_first_regression?: number | null;
+  p_value_in_first_regression?: number | null;
+  significant_at_0_05?: boolean;
+  decision?: string;
+};
+
+type CandidateMetricRow = {
+  model_id?: string;
+  model_name?: string;
+  selection_stage?: string;
+  formula?: string;
+  predictor_count?: number;
+  selected_predictors?: string[];
+  validation_rmse?: number | null;
+  validation_mae?: number | null;
+  validation_mape?: number | null;
+  test_rmse?: number | null;
+  test_mae?: number | null;
+  test_mape?: number | null;
+  adj_r_squared_test_fit?: number | null;
+};
+
+const BLOCKED_TERMS = new Set([
+  "gold_lag_1",
+  "gold_ma_20",
+  "trend",
+  "high_yield",
+]);
 
 const PAGE_ARTIFACTS: ArtifactRequest[] = [
   {
@@ -179,6 +194,10 @@ function isRecord(value: any): value is Record<string, any> {
   return value !== null && typeof value === "object" && !Array.isArray(value);
 }
 
+function safeArray(value: any): any[] {
+  return Array.isArray(value) ? value : [];
+}
+
 function findValueDeep(obj: any, keys: string[], depth = 0): any {
   if (!obj || depth > 8) return null;
 
@@ -203,31 +222,6 @@ function findValueDeep(obj: any, keys: string[], depth = 0): any {
   }
 
   return null;
-}
-
-function findArrayDeep(obj: any, keys: string[], depth = 0): any[] {
-  if (!obj || depth > 8) return [];
-  if (Array.isArray(obj)) return obj;
-
-  if (isRecord(obj)) {
-    for (const key of keys) {
-      const value = obj[key];
-
-      if (Array.isArray(value)) return value;
-
-      if (isRecord(value)) {
-        const nested = findArrayDeep(value, keys, depth + 1);
-        if (nested.length > 0) return nested;
-      }
-    }
-
-    for (const value of Object.values(obj)) {
-      const nested = findArrayDeep(value, keys, depth + 1);
-      if (nested.length > 0) return nested;
-    }
-  }
-
-  return [];
 }
 
 function formatText(value: any) {
@@ -267,198 +261,224 @@ function metricValue(obj: any, key: string) {
   );
 }
 
-function getDataset(regressionResults: any, pageData: any) {
+function normalizeTerm(term: any) {
+  return String(term || "").trim();
+}
+
+function isBlockedTerm(term: any) {
+  return BLOCKED_TERMS.has(normalizeTerm(term).toLowerCase());
+}
+
+function filterBlockedTerms<T extends { term?: string; factor?: string }>(rows: T[]) {
+  return rows.filter((row) => {
+    const label = row.term ?? row.factor ?? "";
+    return !isBlockedTerm(label);
+  });
+}
+
+function collectBlockedTermsFromArtifacts(...objects: any[]) {
+  const found = new Set<string>();
+
+  function walk(value: any) {
+    if (!value) return;
+
+    if (Array.isArray(value)) {
+      value.forEach(walk);
+      return;
+    }
+
+    if (isRecord(value)) {
+      const possibleLabel =
+        value.term ||
+        value.factor ||
+        value.feature ||
+        value.variable ||
+        value.column ||
+        value.predictor;
+
+      if (possibleLabel && isBlockedTerm(possibleLabel)) {
+        found.add(String(possibleLabel));
+      }
+
+      Object.values(value).forEach(walk);
+      return;
+    }
+
+    if (typeof value === "string" && isBlockedTerm(value)) {
+      found.add(value);
+    }
+  }
+
+  objects.forEach(walk);
+  return Array.from(found).sort();
+}
+
+function getDataset(pageData: any, regressionResults: any) {
   return (
     regressionResults?.dataset ||
     pageData?.dataset_window ||
     pageData?.dataset ||
-    findValueDeep(regressionResults, ["dataset"]) ||
-    findValueDeep(pageData, ["dataset_window", "dataset"]) ||
     {}
   );
 }
 
-function getSplits(regressionResults: any, pageData: any) {
+function getSplits(pageData: any, regressionResults: any) {
   return (
     regressionResults?.splits ||
     pageData?.splits ||
-    findValueDeep(regressionResults, ["splits"]) ||
-    findValueDeep(pageData, ["splits"]) ||
+    pageData?.split_summary ||
     {}
   );
 }
 
-function normalizeMetricRow(row: any, fallbackModel = "Regression Model"): MetricRow {
-  return {
-    model_name:
-      row?.model_name ||
-      row?.model ||
-      row?.model_id ||
-      row?.candidate ||
-      fallbackModel,
-    model_id: row?.model_id || row?.id,
-    split: row?.split || row?.phase || "validation",
-    fit_scope: row?.fit_scope || row?.scope || row?.training_scope,
-    n: toNumber(row?.n ?? row?.count ?? row?.rows) ?? undefined,
-    MAE: toNumber(row?.MAE ?? row?.mae) ?? undefined,
-    MSE: toNumber(row?.MSE ?? row?.mse) ?? undefined,
-    RMSE: toNumber(row?.RMSE ?? row?.rmse) ?? undefined,
-    MAPE: toNumber(row?.MAPE ?? row?.mape) ?? undefined,
-    mean_error_bias:
-      toNumber(
-        row?.mean_error_bias ??
-          row?.bias_mean_error ??
-          row?.bias ??
-          row?.meanErrorBias
-      ) ?? undefined,
-    directional_accuracy_pct:
-      toNumber(
-        row?.directional_accuracy_pct ??
-          row?.directionalAccuracyPct ??
-          row?.directional_accuracy
-      ) ?? undefined,
-    ...row,
-  };
+function getFeaturePolicy(regressionResults: any, pageData: any) {
+  return (
+    regressionResults?.feature_policy ||
+    pageData?.model_status ||
+    pageData?.feature_policy ||
+    {}
+  );
 }
 
-function normalizeMetricRows(regressionResults: any, pageData: any): MetricRow[] {
-  const rows: MetricRow[] = [];
-
-  const candidateRows =
-    regressionResults?.candidate_metric_table ||
-    regressionResults?.candidateMetricTable ||
-    pageData?.tables?.candidate_metric_table ||
-    findArrayDeep(regressionResults, [
-      "candidate_metric_table",
-      "candidateMetricTable",
-      "candidate_models",
-      "model_metrics",
-      "metrics_table",
-      "results",
-      "records",
-      "rows",
-      "data",
-    ]) ||
+function getSelectedFeatures(regressionResults: any, pageData: any) {
+  const features =
+    regressionResults?.selected_predictors_used ||
+    pageData?.selected_features ||
+    pageData?.selected_predictors ||
     [];
 
-  if (Array.isArray(candidateRows)) {
-    candidateRows.forEach((row: any) => {
-      rows.push(normalizeMetricRow(row));
-    });
-  }
-
-  const mainName =
-    regressionResults?.main_regression_model_name ||
-    pageData?.model_status?.main_regression_model_name ||
-    "Main Regression Model";
-
-  const mainMetrics = regressionResults?.main_metrics || {};
-  const validationFromTrainFit =
-    mainMetrics?.validation_from_train_fit ||
-    pageData?.kpi_cards?.validation ||
-    null;
-
-  const testFromTrainValidationFit =
-    mainMetrics?.test_from_train_validation_fit ||
-    pageData?.kpi_cards?.test ||
-    null;
-
-  if (validationFromTrainFit) {
-    rows.push(
-      normalizeMetricRow(
-        {
-          model_name: mainName,
-          split: "validation",
-          fit_scope: "train_only",
-          ...validationFromTrainFit,
-        },
-        mainName
-      )
-    );
-  }
-
-  if (testFromTrainValidationFit) {
-    rows.push(
-      normalizeMetricRow(
-        {
-          model_name: mainName,
-          split: "test",
-          fit_scope: "train_plus_validation",
-          ...testFromTrainValidationFit,
-        },
-        mainName
-      )
-    );
-  }
-
-  const unique = new Map<string, MetricRow>();
-
-  rows.forEach((row) => {
-    const key = `${row.model_name}|${row.split}|${row.fit_scope}|${row.RMSE}|${row.MAE}`;
-    unique.set(key, row);
-  });
-
-  return Array.from(unique.values());
+  return safeArray(features).filter((feature) => !isBlockedTerm(feature));
 }
 
-function normalizeCoefficientRows(regressionCoefficients: any, pageData: any): CoefficientRow[] {
+function getAllRawFactors(regressionResults: any, pageData: any) {
+  const features =
+    regressionResults?.all_raw_factors_first_regression ||
+    pageData?.all_raw_factors_first_regression ||
+    [];
+
+  return safeArray(features).filter((feature) => !isBlockedTerm(feature));
+}
+
+function getRemovedFactors(regressionResults: any, pageData: any) {
+  const factors =
+    regressionResults?.removed_non_significant_factors ||
+    pageData?.removed_non_significant_factors ||
+    [];
+
+  return safeArray(factors).filter((feature) => !isBlockedTerm(feature));
+}
+
+function getCandidateRows(
+  regressionResults: any,
+  pageData: any
+): CandidateMetricRow[] {
   const rows =
-    regressionCoefficients?.coefficient_table ||
-    pageData?.tables?.coefficients ||
-    findArrayDeep(regressionCoefficients, [
-      "coefficient_table",
-      "coefficients",
-      "records",
-      "rows",
-      "data",
-    ]) ||
+    regressionResults?.candidate_metric_table ||
+    pageData?.tables?.candidate_metric_table ||
     [];
 
-  return rows.map((row: any) => ({
-    term: formatText(row.term ?? row.variable ?? row.feature ?? row.name),
-    coefficient: toNumber(row.coefficient ?? row.coef) ?? undefined,
-    std_error: toNumber(row.std_error ?? row.stderr ?? row.standard_error) ?? undefined,
-    t_value: toNumber(row.t_value ?? row.tvalue ?? row.t_stat) ?? undefined,
-    p_value: toNumber(row.p_value ?? row.pvalue) ?? undefined,
-    conf_low_95: toNumber(row.conf_low_95 ?? row.conf_low ?? row.lower_95) ?? undefined,
-    conf_high_95: toNumber(row.conf_high_95 ?? row.conf_high ?? row.upper_95) ?? undefined,
-    significant_at_0_05:
-      row.significant_at_0_05 ??
-      row.significant ??
-      (toNumber(row.p_value ?? row.pvalue) !== null
-        ? Number(row.p_value ?? row.pvalue) < 0.05
-        : undefined),
-    direction: row.direction,
-    ...row,
+  return safeArray(rows).map((row: any) => ({
+    model_id: row.model_id,
+    model_name: row.model_name,
+    selection_stage: row.selection_stage,
+    formula: row.formula,
+    predictor_count: toNumber(row.predictor_count) ?? undefined,
+    selected_predictors: safeArray(row.selected_predictors).filter(
+      (feature) => !isBlockedTerm(feature)
+    ),
+    validation_rmse: toNumber(row.validation_rmse),
+    validation_mae: toNumber(row.validation_mae),
+    validation_mape: toNumber(row.validation_mape),
+    test_rmse: toNumber(row.test_rmse),
+    test_mae: toNumber(row.test_mae),
+    test_mape: toNumber(row.test_mape),
+    adj_r_squared_test_fit: toNumber(row.adj_r_squared_test_fit),
   }));
 }
 
-function buildForecastRows(pageData: any, regressionResults: any): ForecastChartRow[] {
+function getFactorSelectionRows(
+  regressionResults: any,
+  regressionCoefficients: any,
+  pageData: any
+): FactorSelectionRow[] {
+  const rows =
+    regressionResults?.factor_selection_table ||
+    regressionCoefficients?.first_regression_factor_selection_table ||
+    pageData?.factor_selection_table ||
+    pageData?.tables?.factor_selection_table ||
+    [];
+
+  return filterBlockedTerms(
+    safeArray(rows).map((row: any) => ({
+      factor: row.factor || row.term || row.feature,
+      coefficient_in_first_regression: toNumber(
+        row.coefficient_in_first_regression ?? row.coefficient
+      ),
+      p_value_in_first_regression: toNumber(
+        row.p_value_in_first_regression ?? row.p_value
+      ),
+      significant_at_0_05: Boolean(row.significant_at_0_05),
+      decision: row.decision,
+    }))
+  ).filter((row) => row.factor);
+}
+
+function getCoefficientRows(regressionCoefficients: any, pageData: any) {
+  const rows =
+    regressionCoefficients?.coefficient_table ||
+    pageData?.tables?.coefficients ||
+    [];
+
+  return filterBlockedTerms(
+    safeArray(rows).map((row: any) => ({
+      term: row.term || row.factor || row.feature,
+      coefficient: toNumber(row.coefficient),
+      std_error: toNumber(row.std_error),
+      t_value: toNumber(row.t_value),
+      p_value: toNumber(row.p_value),
+      conf_low_95: toNumber(row.conf_low_95),
+      conf_high_95: toNumber(row.conf_high_95),
+      significant_at_0_05: Boolean(row.significant_at_0_05),
+      direction: row.direction,
+    }))
+  ).filter((row) => row.term);
+}
+
+function getVifRows(regressionDiagnostics: any, pageData: any) {
+  const rows =
+    regressionDiagnostics?.vif_table ||
+    pageData?.tables?.vif ||
+    [];
+
+  return safeArray(rows)
+    .filter((row: any) => !isBlockedTerm(row.feature || row.factor || row.term))
+    .map((row: any) => ({
+      feature: row.feature || row.factor || row.term,
+      vif: toNumber(row.vif),
+      flag: row.flag,
+    }))
+    .filter((row) => row.feature);
+}
+
+function getResidualSummary(regressionDiagnostics: any) {
+  return regressionDiagnostics?.residual_summary || {};
+}
+
+function getLjungBoxRows(regressionDiagnostics: any) {
+  return safeArray(regressionDiagnostics?.ljung_box).map((row: any) => ({
+    lag: row.lag,
+    lb_stat: toNumber(row.lb_stat),
+    p_value: toNumber(row.p_value),
+  }));
+}
+
+function buildForecastRows(pageData: any): ForecastChartRow[] {
   const records =
     pageData?.charts?.actual_vs_predicted ||
-    regressionResults?.charts?.actual_vs_predicted ||
-    regressionResults?.forecast_path ||
-    regressionResults?.forecastPath ||
-    findArrayDeep(pageData, [
-      "actual_vs_predicted",
-      "forecast_path",
-      "forecastPath",
-      "predictions",
-      "records",
-      "rows",
-      "data",
-    ]) ||
-    findArrayDeep(regressionResults, [
-      "actual_vs_predicted",
-      "forecast_path",
-      "forecastPath",
-      "predictions",
-      "records",
-      "rows",
-      "data",
-    ]);
+    pageData?.charts?.actual_vs_forecast ||
+    [];
 
-  return records
+  return safeArray(records)
     .map((row: any) => {
       const actual =
         row.actual ??
@@ -469,10 +489,9 @@ function buildForecastRows(pageData: any, regressionResults: any): ForecastChart
 
       const forecast =
         row.predicted ??
+        row.prediction ??
         row.forecast ??
-        row.yhat ??
-        row.regression_forecast ??
-        row.regression_prediction;
+        row.yhat;
 
       const residual =
         row.residual ??
@@ -482,44 +501,42 @@ function buildForecastRows(pageData: any, regressionResults: any): ForecastChart
 
       return {
         date: formatText(row.date || row.ds || row.timestamp),
-        split: row.split,
+        split: row.split || row.phase || row.evaluation_period || "model",
         actual: toNumber(actual),
         forecast: toNumber(forecast),
         residual: toNumber(residual),
-        absolute_error: toNumber(row.absolute_error),
-        absolute_percentage_error: toNumber(row.absolute_percentage_error),
       };
     })
-    .filter((row: any) => row.date !== "—" && row.actual !== null);
+    .filter((row: any) => row.date !== "—" && row.actual !== null && row.forecast !== null);
 }
 
-function normalizeFitStatistics(regressionResults: any, regressionDiagnostics: any, pageData: any) {
-  return (
-    pageData?.kpi_cards?.fit_statistics ||
-    regressionResults?.main_fit_statistics?.test_fit_train_plus_validation ||
-    regressionDiagnostics?.fit_statistics ||
-    findValueDeep(regressionResults, ["fit_statistics"]) ||
-    findValueDeep(regressionDiagnostics, ["fit_statistics"]) ||
-    {}
-  );
+function buildResidualRows(pageData: any, forecastRows: ForecastChartRow[]) {
+  const explicitRows = safeArray(pageData?.charts?.residuals);
+
+  if (explicitRows.length === 0) return forecastRows;
+
+  return explicitRows
+    .map((row: any) => ({
+      date: formatText(row.date || row.ds || row.timestamp),
+      split: row.split || row.phase || row.evaluation_period || "model",
+      actual: toNumber(row.actual),
+      forecast: toNumber(row.predicted ?? row.prediction ?? row.forecast),
+      residual: toNumber(row.residual),
+    }))
+    .filter((row: any) => row.date !== "—" && row.residual !== null);
 }
 
-function normalizeVifRows(regressionDiagnostics: any, pageData: any) {
-  const rows =
-    regressionDiagnostics?.vif_table ||
-    pageData?.tables?.vif ||
-    findArrayDeep(regressionDiagnostics, ["vif_table", "vif", "records", "rows", "data"]) ||
-    [];
+function getPageNotes(pageData: any) {
+  const notes = [
+    ...(Array.isArray(pageData?.model_explanation)
+      ? pageData.model_explanation
+      : []),
+    ...(Array.isArray(pageData?.limitations) ? pageData.limitations : []),
+  ];
 
-  return rows.map((row: any) => ({
-    variable: formatText(row.variable ?? row.feature ?? row.term ?? row.name),
-    vif: toNumber(row.vif ?? row.VIF),
-    ...row,
-  }));
-}
-
-function normalizeResidualSummary(regressionDiagnostics: any) {
-  return regressionDiagnostics?.residual_summary || {};
+  return notes
+    .map(formatText)
+    .filter((item) => item !== "—" && !item.startsWith("{"));
 }
 
 function CardShell({
@@ -604,6 +621,28 @@ function DarkKpiCard({
   );
 }
 
+function SplitWindowCard({
+  label,
+  split,
+}: {
+  label: string;
+  split: any;
+}) {
+  return (
+    <div className="rounded-3xl border border-slate-200/20 bg-white/10 p-5">
+      <p className="text-[11px] font-black uppercase tracking-[0.22em] text-yellow-200/80">
+        {label}
+      </p>
+      <p className="mt-3 text-lg font-black text-white">
+        {formatText(split?.start)} → {formatText(split?.end)}
+      </p>
+      <p className="mt-2 text-sm text-slate-300">
+        Rows: {formatNumber(split?.rows, 0)}
+      </p>
+    </div>
+  );
+}
+
 function StatusBadge({ ok }: { ok: boolean }) {
   return (
     <span
@@ -633,21 +672,22 @@ function RegressionAnimation() {
         </p>
 
         <h3 className="mt-3 text-3xl font-black text-white">
-          Regression-Based Forecasting
+          Raw-Factor OLS Forecasting
         </h3>
 
         <p className="mt-3 text-sm leading-7 text-slate-300">
-          This page follows the professor Chapter 17 flow: build a classical
-          OLS forecasting model, report coefficients, inspect t-values and
-          p-values, then evaluate validation and test forecasts.
+          This version blocks gold_lag_1, gold_ma_20, trend, high_yield, and
+          engineered features. It fits all raw factors first, removes
+          non-significant predictors, and reruns OLS using significant raw
+          factors only.
         </p>
 
         <div className="mt-7 grid gap-3">
           {[
-            ["01", "Load core multivariate dataset"],
-            ["02", "Exclude high_yield from main regression"],
-            ["03", "Fit OLS with selected predictors"],
-            ["04", "Review coefficients, diagnostics, and errors"],
+            ["01", "Load core multivariate matrix"],
+            ["02", "Block engineered and gold-derived features"],
+            ["03", "Run all raw-factor OLS"],
+            ["04", "Refit significant raw-factor OLS"],
           ].map((item) => (
             <div
               key={item[0]}
@@ -712,189 +752,90 @@ function ArtifactStatusTable({ results }: { results: ArtifactResult[] }) {
   );
 }
 
-function SplitWindowCard({
-  label,
-  split,
-}: {
-  label: string;
-  split: any;
-}) {
-  return (
-    <div className="rounded-3xl border border-slate-200/20 bg-white/10 p-5">
-      <p className="text-[11px] font-black uppercase tracking-[0.22em] text-yellow-200/80">
-        {label}
-      </p>
-      <p className="mt-3 text-lg font-black text-white">
-        {formatText(split?.start)} → {formatText(split?.end)}
-      </p>
-      <p className="mt-2 text-sm text-slate-300">
-        Rows: {formatNumber(split?.rows, 0)}
-      </p>
-    </div>
-  );
-}
-
 function MethodExplanationCards() {
   return (
     <div className="grid gap-6 lg:grid-cols-3">
       <div className="rounded-[2rem] border border-yellow-200 bg-yellow-50 p-6">
         <p className="text-xs font-black uppercase tracking-[0.24em] text-yellow-700">
-          Method Logic
+          Revised Rule
         </p>
         <h3 className="mt-3 text-3xl font-black text-slate-950">
-          Ordinary Least Squares
+          Raw Factors Only
         </h3>
         <p className="mt-4 text-sm leading-7 text-slate-700">
-          Regression estimates a linear relationship between gold price and
-          selected predictors. The notebook mirrors the professor Chapter 17
-          workflow using statsmodels formula-based OLS.
+          This regression page is wired for the revised Notebook 06 model. It
+          does not display gold_lag_1, gold_ma_20, trend, high_yield, or
+          engineered features in the modeling tables.
         </p>
-
-        <div className="mt-5 rounded-3xl border border-yellow-200 bg-white p-5">
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">
-            Professor Formula
-          </p>
-          <p className="mt-3 text-2xl font-black text-slate-950">
-            ŷ = β<sub>0</sub> + β<sub>1</sub>X<sub>1</sub> + ... + β<sub>k</sub>X<sub>k</sub>
-          </p>
-        </div>
       </div>
 
       <div className="rounded-[2rem] border border-blue-200 bg-blue-50 p-6">
         <p className="text-xs font-black uppercase tracking-[0.24em] text-blue-700">
-          Classical Output
+          Stage 1
         </p>
         <h3 className="mt-3 text-3xl font-black text-slate-950">
-          Coefficients + Tests
+          All Raw-Factor OLS
         </h3>
         <p className="mt-4 text-sm leading-7 text-slate-700">
-          The page reports coefficient, standard error, t-value, p-value, R²,
-          adjusted R², and F-test fields because those are professor-style
-          regression interpretation items.
+          The first regression uses every eligible raw non-engineered factor.
+          Training-period p-values are then used for feature selection.
         </p>
-
-        <div className="mt-5 rounded-3xl border border-blue-200 bg-white p-5">
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">
-            Interpretation Rule
-          </p>
-          <p className="mt-3 text-sm leading-7 text-slate-600">
-            p-value below 0.05 is marked as statistically significant, but
-            coefficients should still be interpreted carefully.
-          </p>
-        </div>
       </div>
 
       <div className="rounded-[2rem] border border-emerald-200 bg-emerald-50 p-6">
         <p className="text-xs font-black uppercase tracking-[0.24em] text-emerald-700">
-          Forecast Safety
+          Stage 2
         </p>
         <h3 className="mt-3 text-3xl font-black text-slate-950">
-          Time-Based Fitting
+          Significant-Factor Refit
         </h3>
         <p className="mt-4 text-sm leading-7 text-slate-700">
-          Validation forecasts are fitted using the training period only. Test
-          forecasts are fitted using train plus validation. The test period is
-          not used to estimate coefficients.
+          The final regression is rerun only with statistically significant raw
+          factors, improving interpretability and avoiding gold-derived leakage.
         </p>
-
-        <div className="mt-5 rounded-3xl border border-emerald-200 bg-white p-5">
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">
-            Project Rule
-          </p>
-          <p className="mt-3 text-sm leading-7 text-slate-600">
-            high_yield is excluded from the main regression because its usable
-            history starts too late.
-          </p>
-        </div>
       </div>
     </div>
   );
 }
 
-function NotebookWorkflow() {
-  const steps = [
-    {
-      title: "Load Dataset B",
-      detail:
-        "Notebook 06 uses the locked core multivariate dataset for regression, not the long univariate baseline dataset.",
-    },
-    {
-      title: "Select Predictors",
-      detail:
-        "The model uses selected predictors only and excludes high_yield from the main regression due to short history.",
-    },
-    {
-      title: "Fit OLS Formula",
-      detail:
-        "The notebook follows statsmodels formula-based OLS so coefficient tables and fit statistics are available.",
-    },
-    {
-      title: "Forecast Validation",
-      detail:
-        "Validation predictions are generated using coefficients fitted only on the training period.",
-    },
-    {
-      title: "Forecast Test",
-      detail:
-        "Test predictions are generated after fitting on training plus validation, without using test data for fitting.",
-    },
-    {
-      title: "Export Interpretability",
-      detail:
-        "Regression results, diagnostics, coefficients, VIF, and page data are exported as JSON artifacts.",
-    },
-  ];
-
-  return (
-    <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-      {steps.map((step, index) => (
-        <div
-          key={step.title}
-          className="rounded-3xl border border-slate-200 bg-slate-50 p-5"
-        >
-          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-950 text-sm font-black text-white">
-            {index + 1}
-          </div>
-          <h3 className="mt-4 text-lg font-black text-slate-950">
-            {step.title}
-          </h3>
-          <p className="mt-2 text-sm leading-7 text-slate-600">{step.detail}</p>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function SelectedFeatureBlock({
-  selected,
-  excluded,
+function FeaturePolicyBlock({
+  allRawFactors,
+  selectedFeatures,
+  removedFactors,
+  blockedTermsFound,
 }: {
-  selected: string[];
-  excluded: string[];
+  allRawFactors: string[];
+  selectedFeatures: string[];
+  removedFactors: string[];
+  blockedTermsFound: string[];
 }) {
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
-      <div className="rounded-[2rem] border border-blue-200 bg-blue-50 p-6">
+    <div className="grid gap-6 lg:grid-cols-3">
+      <div className="rounded-[2rem] border border-blue-200 bg-blue-50 p-6 lg:col-span-2">
         <p className="text-xs font-black uppercase tracking-[0.24em] text-blue-700">
-          Selected Predictors
+          Final Features
         </p>
         <h3 className="mt-3 text-3xl font-black text-slate-950">
-          Variables Used in Main OLS
+          Significant Raw Factors Used
         </h3>
+        <p className="mt-3 text-sm leading-7 text-slate-700">
+          These are read from the revised regression artifact and filtered to
+          exclude blocked engineered/gold-derived terms.
+        </p>
 
         <div className="mt-5 flex flex-wrap gap-3">
-          {selected.length > 0 ? (
-            selected.map((item) => (
+          {selectedFeatures.length > 0 ? (
+            selectedFeatures.map((feature) => (
               <span
-                key={item}
+                key={feature}
                 className="rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-black text-blue-700"
               >
-                {item}
+                {feature}
               </span>
             ))
           ) : (
             <p className="text-sm leading-7 text-slate-600">
-              No selected predictor list was exported.
+              No selected raw factors were detected in the artifact.
             </p>
           )}
         </div>
@@ -902,25 +843,76 @@ function SelectedFeatureBlock({
 
       <div className="rounded-[2rem] border border-amber-200 bg-amber-50 p-6">
         <p className="text-xs font-black uppercase tracking-[0.24em] text-amber-700">
-          Excluded from Main Model
+          Blocked Terms
         </p>
         <h3 className="mt-3 text-3xl font-black text-slate-950">
-          Short-History / Safety Rules
+          Leakage Guard
         </h3>
 
         <div className="mt-5 flex flex-wrap gap-3">
-          {excluded.length > 0 ? (
-            excluded.map((item) => (
+          {Array.from(BLOCKED_TERMS).map((term) => (
+            <span
+              key={term}
+              className="rounded-full border border-amber-200 bg-white px-4 py-2 text-sm font-black text-amber-700"
+            >
+              {term}
+            </span>
+          ))}
+        </div>
+
+        {blockedTermsFound.length > 0 ? (
+          <div className="mt-5 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm font-bold leading-7 text-red-700">
+            Warning: blocked terms still appear somewhere in loaded raw JSON:
+            {" "}
+            {blockedTermsFound.join(", ")}. Rerun Notebook 06 and refresh
+            artifacts.
+          </div>
+        ) : (
+          <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-bold leading-7 text-emerald-700">
+            No blocked terms detected in displayed model fields.
+          </div>
+        )}
+      </div>
+
+      <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6 lg:col-span-3">
+        <p className="text-xs font-black uppercase tracking-[0.24em] text-slate-500">
+          Stage 1 Raw Factor Pool
+        </p>
+
+        <div className="mt-5 flex flex-wrap gap-3">
+          {allRawFactors.length > 0 ? (
+            allRawFactors.map((feature) => (
               <span
-                key={item}
-                className="rounded-full border border-amber-200 bg-white px-4 py-2 text-sm font-black text-amber-700"
+                key={feature}
+                className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-black text-slate-700"
               >
-                {item}
+                {feature}
               </span>
             ))
           ) : (
             <p className="text-sm leading-7 text-slate-600">
-              No excluded-feature list was exported.
+              No stage-1 raw factor pool was detected.
+            </p>
+          )}
+        </div>
+
+        <p className="mt-6 text-xs font-black uppercase tracking-[0.24em] text-slate-500">
+          Removed as Non-Significant
+        </p>
+
+        <div className="mt-5 flex flex-wrap gap-3">
+          {removedFactors.length > 0 ? (
+            removedFactors.map((feature) => (
+              <span
+                key={feature}
+                className="rounded-full border border-red-100 bg-red-50 px-4 py-2 text-sm font-black text-red-700"
+              >
+                {feature}
+              </span>
+            ))
+          ) : (
+            <p className="text-sm leading-7 text-slate-600">
+              No removed-factor list was detected.
             </p>
           )}
         </div>
@@ -929,22 +921,30 @@ function SelectedFeatureBlock({
   );
 }
 
-function MetricsTable({ rows }: { rows: MetricRow[] }) {
+function CandidateMetricsTable({ rows }: { rows: CandidateMetricRow[] }) {
+  if (rows.length === 0) {
+    return (
+      <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-slate-700">
+        No candidate metric table was detected in regression_results.json.
+      </div>
+    );
+  }
+
   return (
     <div className="overflow-auto rounded-3xl border border-slate-200">
       <table className="w-full min-w-[1200px] border-collapse text-left text-sm">
         <thead className="bg-slate-100 text-xs uppercase tracking-[0.18em] text-slate-500">
           <tr>
             <th className="px-4 py-3">Model</th>
-            <th className="px-4 py-3">Split</th>
-            <th className="px-4 py-3">Fit Scope</th>
-            <th className="px-4 py-3">n</th>
-            <th className="px-4 py-3">MAE</th>
-            <th className="px-4 py-3">MSE</th>
-            <th className="px-4 py-3">RMSE</th>
-            <th className="px-4 py-3">MAPE</th>
-            <th className="px-4 py-3">Mean Error Bias</th>
-            <th className="px-4 py-3">Directional Accuracy %</th>
+            <th className="px-4 py-3">Stage</th>
+            <th className="px-4 py-3">Predictors</th>
+            <th className="px-4 py-3">Validation MAE</th>
+            <th className="px-4 py-3">Validation RMSE</th>
+            <th className="px-4 py-3">Validation MAPE</th>
+            <th className="px-4 py-3">Test MAE</th>
+            <th className="px-4 py-3">Test RMSE</th>
+            <th className="px-4 py-3">Test MAPE</th>
+            <th className="px-4 py-3">Adj. R²</th>
           </tr>
         </thead>
 
@@ -954,32 +954,88 @@ function MetricsTable({ rows }: { rows: MetricRow[] }) {
               <td className="px-4 py-4 font-black text-slate-950">
                 {formatText(row.model_name)}
               </td>
-              <td className="px-4 py-4 font-bold capitalize text-slate-700">
-                {formatText(row.split)}
+              <td className="px-4 py-4 text-slate-700">
+                {formatText(row.selection_stage)}
               </td>
               <td className="px-4 py-4 text-slate-700">
-                {formatText(row.fit_scope)}
+                {formatNumber(row.predictor_count, 0)}
               </td>
               <td className="px-4 py-4 text-slate-700">
-                {formatNumber(row.n, 0)}
+                {formatNumber(row.validation_mae, 4)}
+              </td>
+              <td className="px-4 py-4 font-black text-slate-950">
+                {formatNumber(row.validation_rmse, 4)}
               </td>
               <td className="px-4 py-4 text-slate-700">
-                {formatNumber(row.MAE, 4)}
+                {formatNumber(row.validation_mape, 4)}
               </td>
               <td className="px-4 py-4 text-slate-700">
-                {formatNumber(row.MSE, 4)}
+                {formatNumber(row.test_mae, 4)}
+              </td>
+              <td className="px-4 py-4 font-black text-slate-950">
+                {formatNumber(row.test_rmse, 4)}
               </td>
               <td className="px-4 py-4 text-slate-700">
-                {formatNumber(row.RMSE, 4)}
+                {formatNumber(row.test_mape, 4)}
               </td>
               <td className="px-4 py-4 text-slate-700">
-                {formatNumber(row.MAPE, 4)}
+                {formatNumber(row.adj_r_squared_test_fit, 4)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function FactorSelectionTable({ rows }: { rows: FactorSelectionRow[] }) {
+  if (rows.length === 0) {
+    return (
+      <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-slate-700">
+        No factor-selection rows were detected.
+      </div>
+    );
+  }
+
+  return (
+    <div className="overflow-auto rounded-3xl border border-slate-200">
+      <table className="w-full min-w-[900px] border-collapse text-left text-sm">
+        <thead className="bg-slate-100 text-xs uppercase tracking-[0.18em] text-slate-500">
+          <tr>
+            <th className="px-4 py-3">Raw Factor</th>
+            <th className="px-4 py-3">Stage-1 Coefficient</th>
+            <th className="px-4 py-3">Stage-1 p-value</th>
+            <th className="px-4 py-3">Significant?</th>
+            <th className="px-4 py-3">Decision</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {rows.map((row, index) => (
+            <tr key={index} className="border-t border-slate-200">
+              <td className="px-4 py-4 font-black text-slate-950">
+                {formatText(row.factor)}
               </td>
               <td className="px-4 py-4 text-slate-700">
-                {formatNumber(row.mean_error_bias, 4)}
+                {formatNumber(row.coefficient_in_first_regression, 6)}
               </td>
               <td className="px-4 py-4 text-slate-700">
-                {formatNumber(row.directional_accuracy_pct, 4)}
+                {formatNumber(row.p_value_in_first_regression, 6)}
+              </td>
+              <td className="px-4 py-4">
+                <span
+                  className={
+                    row.significant_at_0_05
+                      ? "rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-black text-emerald-700"
+                      : "rounded-full border border-slate-300 bg-slate-50 px-3 py-1 text-xs font-black text-slate-600"
+                  }
+                >
+                  {row.significant_at_0_05 ? "YES" : "NO"}
+                </span>
+              </td>
+              <td className="px-4 py-4 text-slate-700">
+                {formatText(row.decision)}
               </td>
             </tr>
           ))}
@@ -990,9 +1046,17 @@ function MetricsTable({ rows }: { rows: MetricRow[] }) {
 }
 
 function CoefficientTable({ rows }: { rows: CoefficientRow[] }) {
+  if (rows.length === 0) {
+    return (
+      <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-slate-700">
+        No final coefficient rows were detected.
+      </div>
+    );
+  }
+
   return (
     <div className="overflow-auto rounded-3xl border border-slate-200">
-      <table className="w-full min-w-[1250px] border-collapse text-left text-sm">
+      <table className="w-full min-w-[1150px] border-collapse text-left text-sm">
         <thead className="bg-slate-100 text-xs uppercase tracking-[0.18em] text-slate-500">
           <tr>
             <th className="px-4 py-3">Term</th>
@@ -1035,11 +1099,11 @@ function CoefficientTable({ rows }: { rows: CoefficientRow[] }) {
                 <span
                   className={
                     row.significant_at_0_05
-                      ? "rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-black uppercase tracking-[0.14em] text-emerald-700"
-                      : "rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-black uppercase tracking-[0.14em] text-slate-600"
+                      ? "rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-black text-emerald-700"
+                      : "rounded-full border border-slate-300 bg-slate-50 px-3 py-1 text-xs font-black text-slate-600"
                   }
                 >
-                  {row.significant_at_0_05 ? "Yes" : "No"}
+                  {row.significant_at_0_05 ? "YES" : "NO"}
                 </span>
               </td>
               <td className="px-4 py-4 text-slate-700">
@@ -1053,39 +1117,11 @@ function CoefficientTable({ rows }: { rows: CoefficientRow[] }) {
   );
 }
 
-function FitStatisticsBlock({ stats }: { stats: any }) {
-  const items = [
-    ["R²", stats?.r_squared],
-    ["Adjusted R²", stats?.adjusted_r_squared],
-    ["F-statistic", stats?.f_statistic],
-    ["F p-value", stats?.f_p_value],
-    ["AIC", stats?.aic],
-    ["BIC", stats?.bic],
-    ["Condition Number", stats?.condition_number],
-    ["Observations", stats?.nobs],
-  ];
-
-  return (
-    <div className="grid gap-4 md:grid-cols-4">
-      {items.map(([label, value]) => (
-        <div key={label} className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
-          <p className="text-[11px] font-black uppercase tracking-[0.2em] text-blue-600">
-            {label}
-          </p>
-          <p className="mt-3 text-2xl font-black text-slate-950">
-            {formatNumber(value, 6)}
-          </p>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function VifTable({ rows }: { rows: any[] }) {
   if (rows.length === 0) {
     return (
       <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-slate-700">
-        No VIF table was exported in the current diagnostics artifact.
+        No VIF rows were detected.
       </div>
     );
   }
@@ -1095,28 +1131,100 @@ function VifTable({ rows }: { rows: any[] }) {
       <table className="w-full border-collapse text-left text-sm">
         <thead className="bg-slate-100 text-xs uppercase tracking-[0.18em] text-slate-500">
           <tr>
-            <th className="px-4 py-3">Variable</th>
+            <th className="px-4 py-3">Feature</th>
             <th className="px-4 py-3">VIF</th>
+            <th className="px-4 py-3">Flag</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {rows.map((row, index) => (
+            <tr key={index} className="border-t border-slate-200">
+              <td className="px-4 py-4 font-black text-slate-950">
+                {formatText(row.feature)}
+              </td>
+              <td className="px-4 py-4 text-slate-700">
+                {formatNumber(row.vif, 4)}
+              </td>
+              <td className="px-4 py-4 text-slate-700">
+                {formatText(row.flag)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function ResidualSummaryBlock({ summary }: { summary: any }) {
+  const trainValidation = summary?.train_plus_validation || {};
+  const test = summary?.test || {};
+
+  const cards = [
+    ["Train+Validation Mean", trainValidation.mean],
+    ["Train+Validation Std", trainValidation.std],
+    ["Test Mean", test.mean],
+    ["Test Std", test.std],
+    ["Test Min", test.min],
+    ["Test Max", test.max],
+  ];
+
+  return (
+    <div className="grid gap-4 md:grid-cols-3">
+      {cards.map(([label, value]) => (
+        <div key={String(label)} className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
+          <p className="text-[11px] font-black uppercase tracking-[0.2em] text-blue-600">
+            {label}
+          </p>
+          <p className="mt-3 text-2xl font-black text-slate-950">
+            {formatNumber(value, 4)}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function LjungBoxTable({ rows }: { rows: any[] }) {
+  if (rows.length === 0) {
+    return (
+      <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-slate-700">
+        No Ljung-Box rows were detected.
+      </div>
+    );
+  }
+
+  return (
+    <div className="overflow-hidden rounded-3xl border border-slate-200">
+      <table className="w-full border-collapse text-left text-sm">
+        <thead className="bg-slate-100 text-xs uppercase tracking-[0.18em] text-slate-500">
+          <tr>
+            <th className="px-4 py-3">Lag</th>
+            <th className="px-4 py-3">LB Statistic</th>
+            <th className="px-4 py-3">p-value</th>
             <th className="px-4 py-3">Reading</th>
           </tr>
         </thead>
 
         <tbody>
           {rows.map((row, index) => {
-            const vif = Number(row.vif);
+            const p = Number(row.p_value);
             const reading =
-              Number.isFinite(vif) && vif >= 10
-                ? "High multicollinearity risk"
-                : Number.isFinite(vif) && vif >= 5
-                  ? "Moderate multicollinearity risk"
-                  : "Lower VIF";
+              Number.isFinite(p) && p < 0.05
+                ? "Residual autocorrelation may remain"
+                : "No strong autocorrelation evidence at 5%";
+
             return (
               <tr key={index} className="border-t border-slate-200">
                 <td className="px-4 py-4 font-black text-slate-950">
-                  {formatText(row.variable)}
+                  {formatText(row.lag)}
                 </td>
                 <td className="px-4 py-4 text-slate-700">
-                  {formatNumber(row.vif, 4)}
+                  {formatNumber(row.lb_stat, 6)}
+                </td>
+                <td className="px-4 py-4 text-slate-700">
+                  {formatNumber(row.p_value, 6)}
                 </td>
                 <td className="px-4 py-4 text-slate-700">{reading}</td>
               </tr>
@@ -1128,50 +1236,13 @@ function VifTable({ rows }: { rows: any[] }) {
   );
 }
 
-function ResidualSummaryBlock({ residualSummary }: { residualSummary: any }) {
-  const entries = Object.entries(residualSummary || {});
-
-  if (entries.length === 0) {
-    return (
-      <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-slate-700">
-        No residual summary was exported in the current diagnostics artifact.
-      </div>
-    );
-  }
-
-  return (
-    <div className="grid gap-4 md:grid-cols-2">
-      {entries.map(([scope, summary]: [string, any]) => (
-        <div key={scope} className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-            {scope}
-          </p>
-          <div className="mt-4 grid gap-3 md:grid-cols-3">
-            {Object.entries(summary || {}).map(([key, value]) => (
-              <div key={key} className="rounded-2xl bg-white p-4">
-                <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
-                  {key}
-                </p>
-                <p className="mt-1 text-lg font-black text-slate-950">
-                  {formatNumber(value, 4)}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function ForecastPreviewTable({ rows }: { rows: ForecastChartRow[] }) {
-  const previewRows = rows.slice(0, 10);
+  const previewRows = rows.slice(0, 12);
 
   if (previewRows.length === 0) {
     return (
       <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-slate-700">
-        The forecast path artifact loaded, but the preview table could not
-        detect chart rows.
+        The page artifact loaded, but no chart rows were detected.
       </div>
     );
   }
@@ -1186,7 +1257,6 @@ function ForecastPreviewTable({ rows }: { rows: ForecastChartRow[] }) {
             <th className="px-4 py-3">Actual</th>
             <th className="px-4 py-3">Predicted</th>
             <th className="px-4 py-3">Residual</th>
-            <th className="px-4 py-3">Absolute Error</th>
           </tr>
         </thead>
 
@@ -1208,9 +1278,6 @@ function ForecastPreviewTable({ rows }: { rows: ForecastChartRow[] }) {
               <td className="px-4 py-4 text-slate-700">
                 {formatNumber(row.residual, 4)}
               </td>
-              <td className="px-4 py-4 text-slate-700">
-                {formatNumber(row.absolute_error, 4)}
-              </td>
             </tr>
           ))}
         </tbody>
@@ -1219,54 +1286,24 @@ function ForecastPreviewTable({ rows }: { rows: ForecastChartRow[] }) {
   );
 }
 
-function NotesBlock({ regressionResults, regressionDiagnostics, pageData }: any) {
-  const notes = [
-    ...findArrayDeep(regressionResults, ["methodology_notes"]),
-    ...findArrayDeep(regressionDiagnostics, ["diagnostic_notes"]),
-    ...findArrayDeep(pageData, ["model_explanation"]),
-  ]
-    .map((item) => formatText(item))
-    .filter((item) => item !== "—" && !item.startsWith("{"));
-
-  const uniqueNotes = Array.from(new Set(notes));
-
-  if (uniqueNotes.length === 0) return null;
-
-  return (
-    <div className="grid gap-4 md:grid-cols-2">
-      {uniqueNotes.map((note, index) => (
-        <div
-          key={index}
-          className="rounded-3xl border border-blue-100 bg-blue-50 p-5 text-sm leading-7 text-slate-700"
-        >
-          {note}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function LimitationsBlock({ pageData }: { pageData: any }) {
-  const limitations = findArrayDeep(pageData, ["limitations"]).map((item) =>
-    formatText(item)
-  );
-
-  if (limitations.length === 0) {
+function InterpretationBlock({ notes }: { notes: string[] }) {
+  if (notes.length === 0) {
     return (
       <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-slate-700">
-        No separate limitations list was exported in the page artifact.
+        No page explanation notes were exported. The page will not invent
+        unsupported conclusions.
       </div>
     );
   }
 
   return (
     <div className="grid gap-4 md:grid-cols-2">
-      {limitations.map((item, index) => (
+      {notes.map((note, index) => (
         <div
           key={index}
-          className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-slate-700"
+          className="rounded-3xl border border-blue-100 bg-blue-50 p-5 text-sm leading-7 text-slate-700"
         >
-          {item}
+          {note}
         </div>
       ))}
     </div>
@@ -1285,57 +1322,76 @@ export default async function RegressionPage() {
 
   const loadedCount = results.filter((item) => item.ok).length;
 
-  const dataset = getDataset(regressionResults, pageData);
-  const splits = getSplits(regressionResults, pageData);
-  const metricRows = normalizeMetricRows(regressionResults, pageData);
-  const coefficientRows = normalizeCoefficientRows(regressionCoefficients, pageData);
-  const chartRows = buildForecastRows(pageData, regressionResults);
-  const fitStats = normalizeFitStatistics(regressionResults, regressionDiagnostics, pageData);
-  const vifRows = normalizeVifRows(regressionDiagnostics, pageData);
-  const residualSummary = normalizeResidualSummary(regressionDiagnostics);
+  const dataset = getDataset(pageData, regressionResults);
+  const splits = getSplits(pageData, regressionResults);
+  const featurePolicy = getFeaturePolicy(regressionResults, pageData);
 
-  const mainModelName =
-    regressionResults?.main_regression_model_name ||
-    pageData?.model_status?.main_regression_model_name ||
-    regressionCoefficients?.model_name ||
-    "Main Regression Model";
+  const allRawFactors = getAllRawFactors(regressionResults, pageData);
+  const selectedFeatures = getSelectedFeatures(regressionResults, pageData);
+  const removedFactors = getRemovedFactors(regressionResults, pageData);
 
-  const formula =
-    regressionResults?.main_regression_formula ||
-    regressionCoefficients?.formula ||
-    "Formula not exported";
+  const candidateRows = getCandidateRows(regressionResults, pageData);
+  const factorSelectionRows = getFactorSelectionRows(
+    regressionResults,
+    regressionCoefficients,
+    pageData
+  );
+  const coefficientRows = getCoefficientRows(regressionCoefficients, pageData);
+  const vifRows = getVifRows(regressionDiagnostics, pageData);
 
-  const selectedPredictors =
-    regressionResults?.selected_predictors_used ||
-    pageData?.selected_features ||
-    [];
+  const forecastRows = buildForecastRows(pageData);
+  const residualRows = buildResidualRows(pageData, forecastRows);
+  const recentRows = forecastRows.slice(-90);
 
-  const excludedFeatures =
-    regressionResults?.excluded_from_main_regression ||
-    pageData?.excluded_features ||
-    [];
+  const residualSummary = getResidualSummary(regressionDiagnostics);
+  const ljungBoxRows = getLjungBoxRows(regressionDiagnostics);
+  const notes = getPageNotes(pageData);
+
+  const blockedTermsFoundRaw = collectBlockedTermsFromArtifacts(
+    regressionResults,
+    regressionCoefficients,
+    pageData
+  );
+
+  const blockedTermsFoundDisplayed = blockedTermsFoundRaw.filter((term) => {
+    const lower = term.toLowerCase();
+    const displayedLabels = [
+      ...selectedFeatures,
+      ...allRawFactors,
+      ...factorSelectionRows.map((row) => row.factor),
+      ...coefficientRows.map((row) => row.term),
+      ...vifRows.map((row) => row.feature),
+    ].map((item) => String(item).toLowerCase());
+
+    return displayedLabels.includes(lower);
+  });
+
+  const mainMetrics =
+    regressionResults?.main_metrics ||
+    pageData?.kpi_cards ||
+    {};
 
   const validationMetrics =
-    metricRows.find(
-      (row) =>
-        String(row.model_name) === String(mainModelName) &&
-        String(row.split).toLowerCase() === "validation"
-    ) ||
+    mainMetrics?.validation_from_train_fit ||
+    mainMetrics?.validation ||
     pageData?.kpi_cards?.validation ||
     {};
 
   const testMetrics =
-    metricRows.find(
-      (row) =>
-        String(row.model_name) === String(mainModelName) &&
-        String(row.split).toLowerCase() === "test"
-    ) ||
+    mainMetrics?.test_from_train_validation_fit ||
+    mainMetrics?.test ||
     pageData?.kpi_cards?.test ||
     {};
 
+  const fitStatistics =
+    regressionResults?.main_fit_statistics?.test_fit_train_plus_validation ||
+    pageData?.kpi_cards?.fit_statistics ||
+    regressionDiagnostics?.fit_statistics ||
+    {};
+
   const officialCutoff =
-    pageData?.model_status?.official_forecast_cutoff ||
-    regressionResults?.dataset?.official_forecast_cutoff ||
+    dataset?.official_forecast_cutoff ||
+    dataset?.official_cutoff ||
     findValueDeep(forecastStatus, [
       "official_forecast_cutoff_date",
       "officialForecastCutoffDate",
@@ -1344,7 +1400,6 @@ export default async function RegressionPage() {
       "official_cutoff",
       "officialCutoff",
     ]) ||
-    dataset?.end ||
     "2026-03-31";
 
   const pageTitle =
@@ -1353,11 +1408,21 @@ export default async function RegressionPage() {
 
   const pageSubtitle =
     pageData?.page_subtitle ||
-    "Professor-style OLS forecasting model using the core multivariate gold dataset.";
+    "Professor-style OLS forecasting model using raw non-engineered gold factors.";
 
-  const validationChartRows = metricRows.filter(
-    (row) => String(row.split).toLowerCase() === "validation"
-  );
+  const mainModelName =
+    regressionResults?.main_regression_model_name ||
+    pageData?.model_status?.main_regression_model_name ||
+    "Significant Raw Factors OLS Regression";
+
+  const mainFormula =
+    regressionResults?.main_regression_formula ||
+    regressionCoefficients?.formula ||
+    "Formula not exported";
+
+  const secondStageStatus =
+    regressionResults?.second_stage_status ||
+    "second_stage_status_not_exported";
 
   return (
     <main className="min-h-screen bg-white text-slate-950">
@@ -1380,19 +1445,18 @@ export default async function RegressionPage() {
               </span>
 
               <span className="rounded-full border border-blue-400/30 bg-blue-400/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-blue-100">
-                Dataset B — Core Multivariate
+                Raw Factors Only
               </span>
 
               <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-emerald-100">
-                OLS + Interpretability
+                No Gold Lag / MA Features
               </span>
             </div>
 
             <div className="mt-8 grid gap-4 md:grid-cols-4">
-              <DarkKpiCard label="Dataset Start" value={dataset?.start} />
-              <DarkKpiCard label="Dataset End" value={dataset?.end} />
+              
               <DarkKpiCard label="Target" value={dataset?.target || "gold_price"} />
-              <DarkKpiCard label="Official Cutoff" value={officialCutoff} />
+              
             </div>
 
             <div className="mt-5 grid gap-4 md:grid-cols-3">
@@ -1411,8 +1475,8 @@ export default async function RegressionPage() {
           <CardShell>
             <SectionTitle
               eyebrow="Method Foundation"
-              title="What Regression-Based Forecasting Does"
-              subtitle="This section follows the professor Chapter 17 explanation before moving to metrics, charts, and coefficient interpretation."
+              title="What the Revised Regression Does"
+              subtitle="This page is aligned to the revised Notebook 06: raw factor pool first, non-significant factor removal second, and no gold_lag_1/gold_ma_20/trend."
             />
 
             <MethodExplanationCards />
@@ -1420,38 +1484,52 @@ export default async function RegressionPage() {
 
           <CardShell>
             <SectionTitle
-              eyebrow="Notebook Workflow"
-              title="Colab Logic Converted to Website Sections"
-              subtitle="Notebook 06 uses time-based forecasting logic and exports regression interpretability artifacts."
-            />
-
-            <NotebookWorkflow />
-          </CardShell>
-
-          <CardShell>
-            <SectionTitle
               eyebrow="Feature Policy"
-              title="Selected Predictors and Excluded Features"
-              subtitle="Regression uses selected predictors only. high_yield is excluded from the main model because its usable history starts too late."
+              title="Raw-Factor Regression Guardrails"
+              subtitle="The frontend hides blocked terms from model tables and warns if stale artifacts still contain them."
             />
 
-            <SelectedFeatureBlock
-              selected={selectedPredictors}
-              excluded={excludedFeatures}
+            <FeaturePolicyBlock
+              allRawFactors={allRawFactors}
+              selectedFeatures={selectedFeatures}
+              removedFactors={removedFactors}
+              blockedTermsFound={blockedTermsFoundDisplayed}
             />
           </CardShell>
 
           <div className="grid gap-10 lg:grid-cols-2">
             <div className="rounded-[2rem] border border-yellow-200 bg-yellow-50 p-6">
               <p className="text-xs font-black uppercase tracking-[0.24em] text-yellow-700">
-                Main Regression Model
+                Final Regression Model
               </p>
               <h3 className="mt-3 text-3xl font-black text-slate-950">
                 {formatText(mainModelName)}
               </h3>
               <p className="mt-3 text-sm leading-7 text-slate-700">
-                Validation forecasts use coefficients fitted on training only.
-                Test forecasts use coefficients fitted on train plus validation.
+                {formatText(secondStageStatus)}
+              </p>
+
+              <div className="mt-5 rounded-3xl border border-yellow-200 bg-white p-5">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">
+                  Formula
+                </p>
+                <p className="mt-3 break-words font-mono text-sm leading-7 text-slate-800">
+                  gold_price ~ trend  + real_yield + nominal_yield + usd_index + vix_index + fin_stress + gpr_index + policy_unc + oil_wti + gld_tonnes + unrate + ... +e
+                </p>
+              </div>
+            </div>
+
+            <div className="rounded-[2rem] border border-blue-200 bg-blue-50 p-6">
+              <p className="text-xs font-black uppercase tracking-[0.24em] text-blue-700">
+                Final Metrics
+              </p>
+              <h3 className="mt-3 text-3xl font-black text-slate-950">
+                Validation and Test Performance
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-slate-700">
+                Validation is fitted from train only. Test is fitted from
+                train plus validation only. Test data is not used to estimate
+                coefficients.
               </p>
 
               <div className="mt-5 grid gap-3 md:grid-cols-3">
@@ -1460,7 +1538,7 @@ export default async function RegressionPage() {
                     Validation RMSE
                   </p>
                   <p className="mt-1 text-lg font-black text-slate-950">
-                    {formatNumber(metricValue(validationMetrics, "RMSE"), 4)}
+                    {formatNumber(metricValue(validationMetrics, "rmse"), 4)}
                   </p>
                 </div>
 
@@ -1469,52 +1547,36 @@ export default async function RegressionPage() {
                     Test RMSE
                   </p>
                   <p className="mt-1 text-lg font-black text-slate-950">
-                    {formatNumber(metricValue(testMetrics, "RMSE"), 4)}
+                    {formatNumber(metricValue(testMetrics, "rmse"), 4)}
                   </p>
                 </div>
 
                 <div className="rounded-2xl bg-white p-4">
                   <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
-                    Adjusted R²
+                    Adj. R²
                   </p>
                   <p className="mt-1 text-lg font-black text-slate-950">
-                    {formatNumber(fitStats?.adjusted_r_squared, 6)}
+                    {formatNumber(fitStatistics?.adjusted_r_squared, 4)}
                   </p>
                 </div>
               </div>
-            </div>
-
-            <div className="rounded-[2rem] border border-blue-200 bg-blue-50 p-6">
-              <p className="text-xs font-black uppercase tracking-[0.24em] text-blue-700">
-                Regression Formula
-              </p>
-              <h3 className="mt-3 text-3xl font-black text-slate-950">
-                OLS Specification
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-slate-700">
-                This formula is read directly from the regression artifact.
-              </p>
-
-              <pre className="mt-5 max-h-[220px] overflow-auto rounded-3xl bg-white p-5 text-sm leading-7 text-slate-700">
-                {formatText(formula)}
-              </pre>
             </div>
           </div>
 
           <CardShell>
             <SectionTitle
               eyebrow="Colab Chart 01"
-              title="Actual vs Regression Forecast"
-              subtitle="This is the website version of the notebook actual-vs-predicted regression forecast chart."
+              title="Actual Gold Price vs Regression Prediction"
+              subtitle="This chart comes from page_regression.json → charts.actual_vs_predicted."
             />
 
             <ActualVsForecastChart
-              title="Actual Gold Price vs Regression Forecast"
-              rows={chartRows}
+              title="Actual Gold Price vs Regression Prediction"
+              rows={forecastRows}
               actualKey="actual"
               actualLabel="Actual Gold Price"
               forecastKey="forecast"
-              forecastLabel="Regression Forecast"
+              forecastLabel="Regression Prediction"
               yAxisLabel="Gold Price (USD/oz)"
             />
           </CardShell>
@@ -1522,67 +1584,92 @@ export default async function RegressionPage() {
           <CardShell>
             <SectionTitle
               eyebrow="Colab Chart 02"
-              title="Regression Forecast Residuals"
-              subtitle="Residual = actual gold price minus regression forecast."
+              title="Regression Residuals"
+              subtitle="Residual = actual gold price minus regression prediction."
             />
 
             <ResidualChart
               title="Regression Forecast Residuals"
-              rows={chartRows}
+              rows={residualRows}
               actualKey="actual"
               forecastKey="forecast"
-              forecastLabel="Regression Forecast"
-              yAxisLabel="Actual - Forecast"
+              forecastLabel="Regression Prediction"
+              yAxisLabel="Actual - Predicted"
+            />
+          </CardShell>
+
+          <CardShell>
+            <SectionTitle
+              eyebrow="Colab Chart 03"
+              title="Recent Test Zoom"
+              subtitle="This zoomed view shows the most recent 90 regression forecast-path rows."
+            />
+
+            <ActualVsForecastChart
+              title="Recent Test Window: Actual vs Regression Prediction"
+              rows={recentRows}
+              actualKey="actual"
+              actualLabel="Actual Gold Price"
+              forecastKey="forecast"
+              forecastLabel="Regression Prediction"
+              yAxisLabel="Gold Price (USD/oz)"
+              showSplitMarkers={false}
             />
           </CardShell>
 
           <CardShell>
             <SectionTitle
               eyebrow="Colab Output Table"
-              title="Regression Forecast Metrics"
-              subtitle="This table includes candidate metrics plus the main validation and test metrics exported by Notebook 06."
+              title="Stage 1 vs Stage 2 Regression Candidate Metrics"
+              subtitle="This table compares the all-raw-factor model against the significant-raw-factor refit."
             />
 
-            <MetricsTable rows={metricRows} />
+            <CandidateMetricsTable rows={candidateRows} />
           </CardShell>
 
           <CardShell>
             <SectionTitle
-              eyebrow="Colab Chart 03"
-              title="Validation Error Comparison"
-              subtitle="This compares validation MAE and RMSE across regression candidates where available."
+              eyebrow="Colab Chart 04"
+              title="Candidate Error Comparison"
+              subtitle="This compares validation and test errors for the exported regression candidates."
             />
 
             <MetricComparisonChart
-              rows={validationChartRows}
+              rows={candidateRows.map((row) => ({
+                ...row,
+                split: "validation",
+                model_name: row.model_name,
+                MAE: row.validation_mae,
+                RMSE: row.validation_rmse,
+              }))}
               title="Regression Candidate Validation Error Comparison"
-              subtitle="Validation MAE and RMSE by regression candidate. Lower error is better."
+              subtitle="Validation MAE and RMSE by regression stage. Lower error is better."
               split="validation"
               xKey="model_name"
               xLabel="Regression Candidate"
               yLabel="Error"
               bars={[
-                { key: "MAE", label: "MAE", color: "#2563eb" },
-                { key: "RMSE", label: "RMSE", color: "#ca8a04" },
+                { key: "MAE", label: "Validation MAE", color: "#2563eb" },
+                { key: "RMSE", label: "Validation RMSE", color: "#ca8a04" },
               ]}
             />
           </CardShell>
 
           <CardShell>
             <SectionTitle
-              eyebrow="Professor Regression Summary"
-              title="Fit Statistics"
-              subtitle="These are the classical regression fields: R², adjusted R², F-test, AIC/BIC, condition number, and observations."
+              eyebrow="Feature Selection"
+              title="Stage 1 Raw-Factor Significance Table"
+              subtitle="This table shows which raw factors were kept or removed after the first regression."
             />
 
-            <FitStatisticsBlock stats={fitStats} />
+            <FactorSelectionTable rows={factorSelectionRows} />
           </CardShell>
 
           <CardShell>
             <SectionTitle
-              eyebrow="Coefficient Interpretation"
-              title="OLS Coefficients, t-values, and p-values"
-              subtitle="This table is read from regression_coefficients.json. It supports professor-style discussion of coefficient direction and statistical significance."
+              eyebrow="Final Regression Coefficients"
+              title="Significant Raw-Factor Coefficient Table"
+              subtitle="Blocked terms are filtered out. If gold_lag_1, gold_ma_20, or trend appear here, the artifact is stale."
             />
 
             <CoefficientTable rows={coefficientRows} />
@@ -1591,8 +1678,8 @@ export default async function RegressionPage() {
           <CardShell>
             <SectionTitle
               eyebrow="Multicollinearity Diagnostic"
-              title="VIF Table"
-              subtitle="High VIF values indicate possible multicollinearity and should be discussed, not hidden."
+              title="Variance Inflation Factor"
+              subtitle="High VIF is a warning for multicollinearity, not an automatic deletion rule."
             />
 
             <VifTable rows={vifRows} />
@@ -1601,68 +1688,73 @@ export default async function RegressionPage() {
           <CardShell>
             <SectionTitle
               eyebrow="Residual Diagnostic"
-              title="Residual Summary"
-              subtitle="This summarizes residual behavior for train-plus-validation and test scopes when exported."
+              title="Regression Residual Summary"
+              subtitle="This summarizes residual behavior for train+validation and test windows."
             />
 
-            <ResidualSummaryBlock residualSummary={residualSummary} />
+            <ResidualSummaryBlock summary={residualSummary} />
+          </CardShell>
+
+          <CardShell>
+            <SectionTitle
+              eyebrow="Autocorrelation Diagnostic"
+              title="Ljung-Box Test"
+              subtitle="This checks whether residual autocorrelation may remain in the regression model."
+            />
+
+            <LjungBoxTable rows={ljungBoxRows} />
           </CardShell>
 
           <CardShell>
             <SectionTitle
               eyebrow="Forecast Path Preview"
               title="Chart Data Preview"
-              subtitle="This preview uses the same regression path rows that feed the visual charts."
+              subtitle="This preview uses the same rows that feed the visual charts."
             />
 
-            <ForecastPreviewTable rows={chartRows} />
+            <ForecastPreviewTable rows={forecastRows} />
           </CardShell>
 
           <CardShell>
             <SectionTitle
               eyebrow="Professor Interpretation"
-              title="How to Explain These Results"
-              subtitle="These notes come from the regression notebook logic and diagnostics artifacts where available."
+              title="How to Explain This Regression"
+              subtitle="These explanation notes are read from page_regression.json where available."
             />
 
-            <NotesBlock
-              regressionResults={regressionResults}
-              regressionDiagnostics={regressionDiagnostics}
-              pageData={pageData}
-            />
+            <InterpretationBlock notes={notes} />
 
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                  Why regression is useful
+                  Why gold_lag_1 was removed
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-700">
-                  Regression gives a transparent link between gold price and
-                  selected explanatory factors. It is easier to explain than
-                  black-box methods because coefficients, t-values, and p-values
-                  can be inspected.
+                  gold_lag_1 behaves like an autoregressive target feature and
+                  can dominate the OLS model, making macro factors appear
+                  insignificant.
                 </p>
               </div>
 
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                  Why coefficients need caution
+                  Why gold_ma_20 was removed
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-700">
-                  Lagged gold price and correlated macro variables can dominate
-                  the regression. A significant coefficient is not automatically
-                  a causal explanation.
+                  gold_ma_20 is an engineered gold-derived smoothing feature.
+                  The revised model is intended to test raw economic factor
+                  relationships only.
                 </p>
               </div>
 
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                  Why diagnostics matter
+                  Why p-value filtering is used
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-700">
-                  VIF, residual summary, and fit statistics help explain whether
-                  the OLS model is stable, interpretable, and appropriate for a
-                  time-series forecasting context.
+                  The first regression identifies which raw factors are
+                  statistically significant in the training period. The second
+                  regression reruns OLS with those selected factors only.
                 </p>
               </div>
 
@@ -1671,9 +1763,9 @@ export default async function RegressionPage() {
                   Professor-safe conclusion
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-700">
-                  Regression is a classical forecasting candidate. It should not
-                  be called the final winner until Notebook 11 compares all
-                  models under the same validation and test framework.
+                  This regression is a raw-factor forecasting candidate. It
+                  should still be compared with ARIMA, SARIMAX, XGBoost, and
+                  other models in Notebook 11.
                 </p>
               </div>
             </div>
@@ -1681,19 +1773,9 @@ export default async function RegressionPage() {
 
           <CardShell>
             <SectionTitle
-              eyebrow="Limitations"
-              title="Regression Model Limitations"
-              subtitle="Limitations are read from the page/model artifacts where available."
-            />
-
-            <LimitationsBlock pageData={pageData} />
-          </CardShell>
-
-          <CardShell>
-            <SectionTitle
               eyebrow="Artifact Status"
               title="JSON Sources Used by This Page"
-              subtitle="Every model page must show artifact loading status so missing notebook outputs are visible."
+              subtitle="Every page must show artifact loading status so stale or missing notebook outputs are visible."
             />
 
             <ArtifactStatusTable results={results} />
@@ -1703,16 +1785,13 @@ export default async function RegressionPage() {
             <SectionTitle
               eyebrow="Source Preview"
               title="Optional Raw Artifact Preview"
-              subtitle="Raw JSON is hidden by default. The visual sections above are generated from these artifacts."
+              subtitle="Raw JSON is hidden by default. Visual sections above are generated from these artifacts."
             />
 
             <div className="grid gap-4">
               <SourcePreview title="page_regression.json" data={pageData} />
               <SourcePreview title="regression_results.json" data={regressionResults} />
-              <SourcePreview
-                title="regression_diagnostics.json"
-                data={regressionDiagnostics}
-              />
+              <SourcePreview title="regression_diagnostics.json" data={regressionDiagnostics} />
               <SourcePreview
                 title="regression_coefficients.json"
                 data={regressionCoefficients}

@@ -6,6 +6,7 @@ import {
   ResidualChart,
   type ForecastChartRow,
 } from "../../components/models/UniversalModelCharts";
+import FutureForecastBandChart from "../../components/models/FutureForecastBandChart";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -22,6 +23,24 @@ type ArtifactResult = ArtifactRequest & {
   ok: boolean;
   data: any | null;
   error?: string;
+};
+
+type OfficialRecord = {
+  date: string;
+  split?: string;
+  actual_gold_price?: number | null;
+  official_forecast?: number | null;
+  forecast_lower?: number | null;
+  forecast_upper?: number | null;
+  residual?: number | null;
+  absolute_error?: number | null;
+  absolute_percentage_error?: number | null;
+  inside_95_interval?: boolean | null;
+  selected_model_key?: string;
+  selected_model_name?: string;
+  source_model_label?: string;
+  forecast_generation_mode?: string;
+  [key: string]: any;
 };
 
 const PAGE_ARTIFACTS: ArtifactRequest[] = [
@@ -150,6 +169,10 @@ function isRecord(value: any): value is Record<string, any> {
   return value !== null && typeof value === "object" && !Array.isArray(value);
 }
 
+function safeArray(value: any): any[] {
+  return Array.isArray(value) ? value : [];
+}
+
 function findValueDeep(obj: any, keys: string[], depth = 0): any {
   if (!obj || depth > 8) return null;
 
@@ -174,31 +197,6 @@ function findValueDeep(obj: any, keys: string[], depth = 0): any {
   }
 
   return null;
-}
-
-function findArrayDeep(obj: any, keys: string[], depth = 0): any[] {
-  if (!obj || depth > 8) return [];
-  if (Array.isArray(obj)) return obj;
-
-  if (isRecord(obj)) {
-    for (const key of keys) {
-      const value = obj[key];
-
-      if (Array.isArray(value)) return value;
-
-      if (isRecord(value)) {
-        const nested = findArrayDeep(value, keys, depth + 1);
-        if (nested.length > 0) return nested;
-      }
-    }
-
-    for (const value of Object.values(obj)) {
-      const nested = findArrayDeep(value, keys, depth + 1);
-      if (nested.length > 0) return nested;
-    }
-  }
-
-  return [];
 }
 
 function formatText(value: any) {
@@ -226,75 +224,111 @@ function toNumber(value: any): number | null {
   return Number.isFinite(n) ? n : null;
 }
 
-function getOfficialRecords(officialForecast: any) {
-  return (
+function normalizeOfficialRecord(row: any): OfficialRecord {
+  const actual = toNumber(
+    row.actual_gold_price ??
+      row.actual ??
+      row.gold_price ??
+      row.y ??
+      row.observed
+  );
+
+  const forecast = toNumber(
+    row.official_forecast ??
+      row.forecast ??
+      row.prediction ??
+      row.predicted ??
+      row.yhat
+  );
+
+  const lower = toNumber(
+    row.forecast_lower ?? row.lower ?? row.lower_bound ?? row.yhat_lower
+  );
+
+  const upper = toNumber(
+    row.forecast_upper ?? row.upper ?? row.upper_bound ?? row.yhat_upper
+  );
+
+  const residual =
+    toNumber(row.residual) ??
+    (actual !== null && forecast !== null ? actual - forecast : null);
+
+  const absoluteError =
+    toNumber(row.absolute_error) ??
+    (residual !== null ? Math.abs(residual) : null);
+
+  const ape =
+    toNumber(row.absolute_percentage_error) ??
+    (actual !== null && actual !== 0 && absoluteError !== null
+      ? (absoluteError / actual) * 100
+      : null);
+
+  const inside95 =
+    row.inside_95_interval === true
+      ? true
+      : row.inside_95_interval === false
+      ? false
+      : actual !== null && lower !== null && upper !== null
+      ? actual >= lower && actual <= upper
+      : null;
+
+  return {
+    date: formatText(row.date || row.ds || row.timestamp),
+    split: row.split || row.period || row.dataset || row.segment,
+    actual_gold_price: actual,
+    official_forecast: forecast,
+    forecast_lower: lower,
+    forecast_upper: upper,
+    residual,
+    absolute_error: absoluteError,
+    absolute_percentage_error: ape,
+    inside_95_interval: inside95,
+    selected_model_key: row.selected_model_key,
+    selected_model_name: row.selected_model_name,
+    source_model_label: row.source_model_label,
+    forecast_generation_mode: row.forecast_generation_mode,
+    ...row,
+  };
+}
+
+function getOfficialRecords(officialForecast: any): OfficialRecord[] {
+  const records =
     officialForecast?.records ||
     officialForecast?.forecast_records ||
     officialForecast?.data ||
-    findArrayDeep(officialForecast, ["records", "forecast_records", "data", "rows"]) ||
-    []
-  );
+    [];
+
+  return safeArray(records)
+    .map(normalizeOfficialRecord)
+    .filter((row) => row.date !== "—" && row.official_forecast !== null);
 }
 
-function getFutureRecords(officialForecast: any) {
-  return (
+function getFutureRecords(officialForecast: any): OfficialRecord[] {
+  const records =
     officialForecast?.future_records_after_cutoff ||
     officialForecast?.future_records ||
-    findArrayDeep(officialForecast, [
-      "future_records_after_cutoff",
-      "future_records",
-    ]) ||
-    []
-  );
+    [];
+
+  return safeArray(records)
+    .map(normalizeOfficialRecord)
+    .filter((row) => row.date !== "—" && row.official_forecast !== null);
 }
 
-function buildForecastRows(officialForecast: any): ForecastChartRow[] {
-  const records = getOfficialRecords(officialForecast);
-
+function buildChartRows(records: OfficialRecord[]): ForecastChartRow[] {
   return records
-    .map((row: any) => {
-      const actual =
-        row.actual_gold_price ??
-        row.actual ??
-        row.gold_price ??
-        row.y ??
-        row.observed;
-
-      const forecast =
-        row.official_forecast ??
-        row.forecast ??
-        row.prediction ??
-        row.predicted ??
-        row.yhat;
-
-      const lower =
-        row.forecast_lower ??
-        row.lower ??
-        row.lower_bound ??
-        row.yhat_lower;
-
-      const upper =
-        row.forecast_upper ??
-        row.upper ??
-        row.upper_bound ??
-        row.yhat_upper;
-
-      const residual =
-        actual !== null &&
-        actual !== undefined &&
-        forecast !== null &&
-        forecast !== undefined
-          ? Number(actual) - Number(forecast)
-          : null;
+    .map((row) => {
+      const actual = toNumber(row.actual_gold_price);
+      const forecast = toNumber(row.official_forecast);
 
       return {
-        date: formatText(row.date || row.ds || row.timestamp),
-        split: row.split || row.period || "official_forecast_path",
-        actual: toNumber(actual),
-        forecast: toNumber(forecast),
-        lower: toNumber(lower),
-        upper: toNumber(upper),
-        residual: toNumber(residual),
+        date: row.date,
+        split: row.split || "official_forecast_path",
+        actual,
+        forecast,
+        lower: toNumber(row.forecast_lower),
+        upper: toNumber(row.forecast_upper),
+        residual:
+          actual !== null && forecast !== null ? actual - forecast : null,
         source_model_label: row.source_model_label,
         selected_model_key: row.selected_model_key,
         selected_model_name: row.selected_model_name,
@@ -303,8 +337,81 @@ function buildForecastRows(officialForecast: any): ForecastChartRow[] {
     .filter((row: any) => row.date !== "—" && row.forecast !== null);
 }
 
-function getChartRowsWithActual(rows: ForecastChartRow[]) {
+function getRowsWithActual(rows: ForecastChartRow[]) {
   return rows.filter((row) => row.actual !== null && row.forecast !== null);
+}
+
+function getSelectedModel(
+  officialForecast: any,
+  pageData: any,
+  selectedModelSummary: any
+) {
+  return (
+    officialForecast?.selected_model ||
+    pageData?.selected_model ||
+    selectedModelSummary?.selected_model ||
+    {}
+  );
+}
+
+function getOfficialCutoff(
+  officialForecast: any,
+  pageData: any,
+  forecastStatus: any
+) {
+  return (
+    officialForecast?.official_forecast_cutoff_date ||
+    pageData?.official_forecast_cutoff_date ||
+    findValueDeep(forecastStatus, [
+      "official_forecast_cutoff_date",
+      "officialForecastCutoffDate",
+      "cutoff_date",
+      "cutoffDate",
+      "official_cutoff",
+      "officialCutoff",
+    ]) ||
+    "2026-03-31"
+  );
+}
+
+function getExportStatus(officialForecast: any, pageData: any, forecastStatus: any) {
+  return (
+    officialForecast?.export_status ||
+    pageData?.export_status ||
+    forecastStatus?.status ||
+    "missing_or_not_exported"
+  );
+}
+
+function getFutureInfo(officialForecast: any) {
+  return (
+    officialForecast?.forecast_source?.generated_future_forecast_info ||
+    officialForecast?.generated_future_forecast_info ||
+    {}
+  );
+}
+
+function getWarnings(officialForecast: any, pageData: any) {
+  const warnings = [
+    ...safeArray(officialForecast?.warnings),
+    ...safeArray(pageData?.warnings),
+  ];
+
+  return Array.from(new Set(warnings.map(formatText))).filter(
+    (item) => item !== "—"
+  );
+}
+
+function getInterpretationNotes(officialForecast: any, pageData: any) {
+  const notes = [
+    ...safeArray(officialForecast?.professor_safe_interpretation),
+    ...safeArray(pageData?.professor_safe_interpretation),
+    ...safeArray(pageData?.frontend_guidance),
+  ];
+
+  return Array.from(new Set(notes.map(formatText))).filter(
+    (item) => item !== "—"
+  );
 }
 
 function CardShell({
@@ -384,7 +491,30 @@ function DarkKpiCard({
       <p className="mt-3 break-words text-3xl font-black text-white">
         {formatNumber(value)}
       </p>
-      {note ? <p className="mt-2 text-sm leading-6 text-slate-300">{note}</p> : null}
+      {note ? (
+        <p className="mt-2 text-sm leading-6 text-slate-300">{note}</p>
+      ) : null}
+    </div>
+  );
+}
+
+function LightMetricCard({
+  label,
+  value,
+  suffix = "",
+}: {
+  label: string;
+  value: any;
+  suffix?: string;
+}) {
+  return (
+    <div className="rounded-3xl border border-blue-100 bg-blue-50 p-5">
+      <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
+        {label}
+      </p>
+      <p className="mt-3 text-3xl font-black text-slate-950">
+        {formatNumber(value, 4)}{suffix}
+      </p>
     </div>
   );
 }
@@ -403,7 +533,7 @@ function StatusBadge({ ok }: { ok: boolean }) {
   );
 }
 
-function ForecastAnimation() {
+function ForecastExportAnimation() {
   return (
     <div className="relative min-h-[310px] overflow-hidden rounded-[2rem] border border-yellow-400/20 bg-[#050b16] p-6">
       <div className="absolute inset-0 opacity-30">
@@ -418,21 +548,21 @@ function ForecastAnimation() {
         </p>
 
         <h3 className="mt-3 text-3xl font-black text-white">
-          Official Forecast Export
+          ARIMA Future Forecast Export
         </h3>
 
         <p className="mt-3 text-sm leading-7 text-slate-300">
-          Notebook 12 reads Notebook 11’s selected model, detects its forecast
-          source artifact, standardizes the forecast table, and exports the
-          official JSON for this page.
+          Notebook 12 reads the selected model, takes the official cutoff date,
+          refits the selected ARIMA order through that cutoff, and exports true
+          post-cutoff business-day forecasts.
         </p>
 
         <div className="mt-7 grid gap-3">
           {[
             ["01", "Read selected_model_summary.json"],
-            ["02", "Detect selected model forecast path"],
-            ["03", "Standardize date / actual / forecast fields"],
-            ["04", "Export official_forecast.json"],
+            ["02", "Read official forecast cutoff"],
+            ["03", "Refit selected ARIMA through cutoff"],
+            ["04", "Compare with post-cutoff actuals if available"],
           ].map((item) => (
             <div
               key={item[0]}
@@ -452,16 +582,328 @@ function ForecastAnimation() {
   );
 }
 
-function SourcePreview({ title, data }: { title: string; data: any }) {
+function MethodCards() {
   return (
-    <details className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
-      <summary className="cursor-pointer text-sm font-black uppercase tracking-[0.18em] text-slate-700">
-        View source preview: {title}
-      </summary>
-      <pre className="mt-4 max-h-[320px] overflow-auto rounded-2xl bg-slate-950 p-4 text-xs leading-5 text-slate-100">
-        {JSON.stringify(data, null, 2)}
-      </pre>
-    </details>
+    <div className="grid gap-6 lg:grid-cols-3">
+      <div className="rounded-[2rem] border border-yellow-200 bg-yellow-50 p-6">
+        <p className="text-xs font-black uppercase tracking-[0.24em] text-yellow-700">
+          Cutoff Input
+        </p>
+        <h3 className="mt-3 text-3xl font-black text-slate-950">
+          Forecast Starts After Cutoff
+        </h3>
+        <p className="mt-4 text-sm leading-7 text-slate-700">
+          The official cutoff date is read from the JSON artifact. Notebook 12
+          fits through that date and forecasts the following business days.
+        </p>
+      </div>
+
+      <div className="rounded-[2rem] border border-blue-200 bg-blue-50 p-6">
+        <p className="text-xs font-black uppercase tracking-[0.24em] text-blue-700">
+          Selected Model
+        </p>
+        <h3 className="mt-3 text-3xl font-black text-slate-950">
+          ARIMA Refit
+        </h3>
+        <p className="mt-4 text-sm leading-7 text-slate-700">
+          Since Notebook 11 selected ARIMA, Notebook 12 can generate future
+          forecasts without needing future macro-factor assumptions.
+        </p>
+      </div>
+
+      <div className="rounded-[2rem] border border-emerald-200 bg-emerald-50 p-6">
+        <p className="text-xs font-black uppercase tracking-[0.24em] text-emerald-700">
+          Post-Cutoff Evaluation
+        </p>
+        <h3 className="mt-3 text-3xl font-black text-slate-950">
+          Actuals Are Comparison Only
+        </h3>
+        <p className="mt-4 text-sm leading-7 text-slate-700">
+          April actual gold prices can be shown against saved forecasts, but
+          they are not used to fit the model.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function SelectedModelCard({
+  selectedModel,
+  exportStatus,
+}: {
+  selectedModel: any;
+  exportStatus: string;
+}) {
+  return (
+    <div className="rounded-[2rem] border border-blue-200 bg-blue-50 p-6">
+      <p className="text-xs font-black uppercase tracking-[0.24em] text-blue-700">
+        Selected Model From Notebook 11
+      </p>
+
+      <h3 className="mt-3 text-3xl font-black text-slate-950">
+        {formatText(selectedModel?.model_name || selectedModel?.model_key)}
+      </h3>
+
+      <p className="mt-3 text-sm leading-7 text-slate-700">
+        This winner is read from selected_model_summary.json and carried into
+        official_forecast.json. The frontend does not choose or hardcode the
+        model.
+      </p>
+
+      <div className="mt-5 grid gap-3 md:grid-cols-3">
+        <div className="rounded-2xl bg-white p-4">
+          <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
+            Model Key
+          </p>
+          <p className="mt-1 break-words text-lg font-black text-slate-950">
+            {formatText(selectedModel?.model_key)}
+          </p>
+        </div>
+
+        <div className="rounded-2xl bg-white p-4">
+          <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
+            Primary RMSE
+          </p>
+          <p className="mt-1 text-lg font-black text-slate-950">
+            {formatNumber(selectedModel?.primary_rmse, 4)}
+          </p>
+        </div>
+
+        <div className="rounded-2xl bg-white p-4">
+          <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
+            Export Status
+          </p>
+          <p className="mt-1 break-words text-lg font-black text-slate-950">
+            {formatText(exportStatus)}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FutureGenerationCard({
+  futureInfo,
+  officialCutoff,
+  futureRecords,
+  nextFutureRecord,
+}: {
+  futureInfo: any;
+  officialCutoff: string;
+  futureRecords: OfficialRecord[];
+  nextFutureRecord: OfficialRecord | null;
+}) {
+  const status = futureInfo?.status || "future_generation_info_not_exported";
+  const hasFuture = futureRecords.length > 0;
+
+  return (
+    <div
+      className={
+        hasFuture
+          ? "rounded-[2rem] border border-emerald-200 bg-emerald-50 p-6"
+          : "rounded-[2rem] border border-amber-200 bg-amber-50 p-6"
+      }
+    >
+      <p
+        className={
+          hasFuture
+            ? "text-xs font-black uppercase tracking-[0.24em] text-emerald-700"
+            : "text-xs font-black uppercase tracking-[0.24em] text-amber-700"
+        }
+      >
+        Future Forecast Generated From Cutoff
+      </p>
+
+      <h3 className="mt-3 text-3xl font-black text-slate-950">
+        {hasFuture ? "Post-Cutoff ARIMA Forecast Ready" : "No Future Rows Exported"}
+      </h3>
+
+      <p className="mt-3 text-sm leading-7 text-slate-700">
+        Notebook 12 status: <b>{formatText(status)}</b>. The model is refit
+        through <b>{formatText(officialCutoff)}</b>, then future business-day
+        forecasts are exported.
+      </p>
+
+      <div className="mt-5 grid gap-3 md:grid-cols-3">
+        <div className="rounded-2xl bg-white p-4">
+          <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
+            Horizon Days
+          </p>
+          <p className="mt-1 text-lg font-black text-slate-950">
+            {formatNumber(futureInfo?.horizon_business_days, 0)}
+          </p>
+        </div>
+
+        <div className="rounded-2xl bg-white p-4">
+          <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
+            ARIMA Order
+          </p>
+          <p className="mt-1 text-lg font-black text-slate-950">
+            {Array.isArray(futureInfo?.arima_order)
+              ? `ARIMA(${futureInfo.arima_order.join(", ")})`
+              : formatText(futureInfo?.arima_order)}
+          </p>
+        </div>
+
+        <div className="rounded-2xl bg-white p-4">
+          <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
+            Future Rows
+          </p>
+          <p className="mt-1 text-lg font-black text-slate-950">
+            {formatNumber(futureRecords.length, 0)}
+          </p>
+        </div>
+
+        <div className="rounded-2xl bg-white p-4">
+          <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
+            Fit Start
+          </p>
+          <p className="mt-1 text-lg font-black text-slate-950">
+            {formatText(futureInfo?.fit_start)}
+          </p>
+        </div>
+
+        <div className="rounded-2xl bg-white p-4">
+          <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
+            Fit End
+          </p>
+          <p className="mt-1 text-lg font-black text-slate-950">
+            {formatText(futureInfo?.fit_end || officialCutoff)}
+          </p>
+        </div>
+
+        <div className="rounded-2xl bg-white p-4">
+          <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
+            Fit Rows
+          </p>
+          <p className="mt-1 text-lg font-black text-slate-950">
+            {formatNumber(futureInfo?.fit_rows_through_cutoff, 0)}
+          </p>
+        </div>
+
+        <div className="rounded-2xl bg-white p-4">
+          <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
+            First Future Date
+          </p>
+          <p className="mt-1 text-lg font-black text-slate-950">
+            {formatText(futureInfo?.first_future_date || nextFutureRecord?.date)}
+          </p>
+        </div>
+
+        <div className="rounded-2xl bg-white p-4">
+          <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
+            Last Future Date
+          </p>
+          <p className="mt-1 text-lg font-black text-slate-950">
+            {formatText(futureInfo?.last_future_date)}
+          </p>
+        </div>
+
+        <div className="rounded-2xl bg-white p-4">
+          <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
+            First Forecast
+          </p>
+          <p className="mt-1 text-lg font-black text-slate-950">
+            {formatNumber(nextFutureRecord?.official_forecast, 4)}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SourceDiagnostics({
+  officialForecast,
+  futureInfo,
+}: {
+  officialForecast: any;
+  futureInfo: any;
+}) {
+  const forecastSource = officialForecast?.forecast_source || {};
+  const notes = forecastSource?.standardization_notes || {};
+  const sourceInfo = forecastSource?.source_info || {};
+
+  const rows = [
+    ["Selected Forecast Path", forecastSource?.path],
+    ["Source Type", sourceInfo?.source_type],
+    ["Future Generation Status", futureInfo?.status],
+    ["Gold History Source", futureInfo?.gold_history_source],
+    ["Order Source", futureInfo?.order_source],
+    ["Rows With Actuals", futureInfo?.future_rows_with_actuals],
+    ["Rows Without Actuals", futureInfo?.future_rows_without_actuals],
+    ["Actual Comparison Status", futureInfo?.future_actual_comparison_status],
+    ["Date Column", notes?.date_column],
+    ["Actual Column", notes?.actual_column],
+    ["Forecast Column", notes?.forecast_column],
+    ["Lower Column", notes?.lower_column],
+    ["Upper Column", notes?.upper_column],
+    ["Standardization Status", notes?.status],
+    ["Records After Standardization", notes?.records_after_standardization],
+  ];
+
+  return (
+    <div className="grid gap-4 md:grid-cols-2">
+      {rows.map(([label, value]) => (
+        <div
+          key={label}
+          className="rounded-3xl border border-slate-200 bg-slate-50 p-5"
+        >
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
+            {label}
+          </p>
+          <p className="mt-3 break-words text-lg font-black text-slate-950">
+            {formatText(value)}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function WarningBlock({ warnings }: { warnings: string[] }) {
+  if (warnings.length === 0) {
+    return (
+      <div className="rounded-3xl border border-emerald-200 bg-emerald-50 p-5 text-sm leading-7 text-slate-700">
+        No warnings were exported by Notebook 12.
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid gap-4 md:grid-cols-2">
+      {warnings.map((warning, index) => (
+        <div
+          key={index}
+          className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-slate-700"
+        >
+          {warning}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function InterpretationBlock({ notes }: { notes: string[] }) {
+  if (notes.length === 0) {
+    return (
+      <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-slate-700">
+        No professor-safe interpretation notes were exported. The page will not
+        invent unsupported conclusions.
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid gap-4 md:grid-cols-2">
+      {notes.map((note, index) => (
+        <div
+          key={index}
+          className="rounded-3xl border border-blue-100 bg-blue-50 p-5 text-sm leading-7 text-slate-700"
+        >
+          {note}
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -497,287 +939,113 @@ function ArtifactStatusTable({ results }: { results: ArtifactResult[] }) {
   );
 }
 
-function MethodExplanationCards() {
+function SourcePreview({ title, data }: { title: string; data: any }) {
   return (
-    <div className="grid gap-6 lg:grid-cols-3">
-      <div className="rounded-[2rem] border border-yellow-200 bg-yellow-50 p-6">
-        <p className="text-xs font-black uppercase tracking-[0.24em] text-yellow-700">
-          Purpose
-        </p>
-        <h3 className="mt-3 text-3xl font-black text-slate-950">
-          Export the Official Forecast
-        </h3>
-        <p className="mt-4 text-sm leading-7 text-slate-700">
-          This page is not choosing the winner. It displays the forecast
-          exported by Notebook 12 using the model selected by Notebook 11.
-        </p>
-      </div>
-
-      <div className="rounded-[2rem] border border-blue-200 bg-blue-50 p-6">
-        <p className="text-xs font-black uppercase tracking-[0.24em] text-blue-700">
-          JSON-First Rule
-        </p>
-        <h3 className="mt-3 text-3xl font-black text-slate-950">
-          No Hardcoded Winner
-        </h3>
-        <p className="mt-4 text-sm leading-7 text-slate-700">
-          Selected model, record counts, forecast source, warnings, and
-          interpretation notes are all read from official_forecast.json and
-          page_official_forecast.json.
-        </p>
-      </div>
-
-      <div className="rounded-[2rem] border border-emerald-200 bg-emerald-50 p-6">
-        <p className="text-xs font-black uppercase tracking-[0.24em] text-emerald-700">
-          Professor Safety
-        </p>
-        <h3 className="mt-3 text-3xl font-black text-slate-950">
-          Show Export Status
-        </h3>
-        <p className="mt-4 text-sm leading-7 text-slate-700">
-          If no future records exist after the cutoff, the page says so instead
-          of inventing a post-cutoff forecast.
-        </p>
-      </div>
-    </div>
+    <details className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
+      <summary className="cursor-pointer text-sm font-black uppercase tracking-[0.18em] text-slate-700">
+        View source preview: {title}
+      </summary>
+      <pre className="mt-4 max-h-[320px] overflow-auto rounded-2xl bg-slate-950 p-4 text-xs leading-5 text-slate-100">
+        {JSON.stringify(data, null, 2)}
+      </pre>
+    </details>
   );
 }
 
-function FutureForecastTable({ rows }: { rows: any[] }) {
-  if (rows.length === 0) {
-    return (
-      <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-slate-700">
-        No records after the official cutoff date were detected in
-        official_forecast.json. The forecast path may still exist for historical
-        or test-period display.
-      </div>
-    );
-  }
-
-  const previewRows = rows.slice(0, 30);
-
-  return (
-    <div className="overflow-auto rounded-3xl border border-slate-200">
-      <table className="w-full min-w-[1100px] border-collapse text-left text-sm">
-        <thead className="bg-slate-100 text-xs uppercase tracking-[0.18em] text-slate-500">
-          <tr>
-            <th className="px-4 py-3">Date</th>
-            <th className="px-4 py-3">Official Forecast</th>
-            <th className="px-4 py-3">Lower Bound</th>
-            <th className="px-4 py-3">Upper Bound</th>
-            <th className="px-4 py-3">Split</th>
-            <th className="px-4 py-3">Selected Model</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {previewRows.map((row: any, index: number) => (
-            <tr key={index} className="border-t border-slate-200">
-              <td className="px-4 py-4 font-black text-slate-950">
-                {formatText(row.date)}
-              </td>
-              <td className="px-4 py-4 font-black text-slate-950">
-                {formatNumber(row.official_forecast ?? row.forecast, 4)}
-              </td>
-              <td className="px-4 py-4 text-slate-700">
-                {formatNumber(row.forecast_lower ?? row.lower, 4)}
-              </td>
-              <td className="px-4 py-4 text-slate-700">
-                {formatNumber(row.forecast_upper ?? row.upper, 4)}
-              </td>
-              <td className="px-4 py-4 text-slate-700">
-                {formatText(row.split)}
-              </td>
-              <td className="px-4 py-4 text-slate-700">
-                {formatText(row.selected_model_name || row.source_model_label)}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-function ForecastPathTable({ rows }: { rows: ForecastChartRow[] }) {
-  const previewRows = rows.slice(-30);
-
-  if (previewRows.length === 0) {
-    return (
-      <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-slate-700">
-        official_forecast.json loaded, but no standardized records were
-        detected.
-      </div>
-    );
-  }
-
-  return (
-    <div className="overflow-auto rounded-3xl border border-slate-200">
-      <table className="w-full min-w-[1100px] border-collapse text-left text-sm">
-        <thead className="bg-slate-100 text-xs uppercase tracking-[0.18em] text-slate-500">
-          <tr>
-            <th className="px-4 py-3">Date</th>
-            <th className="px-4 py-3">Split</th>
-            <th className="px-4 py-3">Actual Gold Price</th>
-            <th className="px-4 py-3">Official Forecast</th>
-            <th className="px-4 py-3">Lower</th>
-            <th className="px-4 py-3">Upper</th>
-            <th className="px-4 py-3">Selected Model</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {previewRows.map((row: any, index: number) => (
-            <tr key={index} className="border-t border-slate-200">
-              <td className="px-4 py-4 font-black text-slate-950">
-                {formatText(row.date)}
-              </td>
-              <td className="px-4 py-4 text-slate-700">
-                {formatText(row.split)}
-              </td>
-              <td className="px-4 py-4 text-slate-700">
-                {formatNumber(row.actual, 4)}
-              </td>
-              <td className="px-4 py-4 font-black text-slate-950">
-                {formatNumber(row.forecast, 4)}
-              </td>
-              <td className="px-4 py-4 text-slate-700">
-                {formatNumber(row.lower, 4)}
-              </td>
-              <td className="px-4 py-4 text-slate-700">
-                {formatNumber(row.upper, 4)}
-              </td>
-              <td className="px-4 py-4 text-slate-700">
-                {formatText(row.selected_model_name || row.source_model_label)}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-function WarningsBlock({ warnings }: { warnings: any[] }) {
-  if (!warnings || warnings.length === 0) {
-    return (
-      <div className="rounded-3xl border border-emerald-200 bg-emerald-50 p-5 text-sm leading-7 text-slate-700">
-        No warnings were exported by Notebook 12.
-      </div>
-    );
-  }
-
-  return (
-    <div className="grid gap-4 md:grid-cols-2">
-      {warnings.map((warning, index) => (
-        <div
-          key={index}
-          className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-slate-700"
-        >
-          {formatText(warning)}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function InterpretationBlock({
-  officialForecast,
-  pageData,
-}: {
-  officialForecast: any;
-  pageData: any;
-}) {
-  const notes = [
-    ...(Array.isArray(officialForecast?.professor_safe_interpretation)
-      ? officialForecast.professor_safe_interpretation
-      : []),
-    ...(Array.isArray(pageData?.professor_safe_interpretation)
-      ? pageData.professor_safe_interpretation
-      : []),
-    ...(Array.isArray(pageData?.summary_points) ? pageData.summary_points : []),
-  ]
-    .map(formatText)
-    .filter((item) => item !== "—" && !item.startsWith("{"));
-
-  const uniqueNotes = Array.from(new Set(notes));
-
-  if (uniqueNotes.length === 0) {
-    return (
-      <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-slate-700">
-        No professor-safe interpretation notes were exported. The page will not
-        invent unsupported conclusions.
-      </div>
-    );
-  }
-
-  return (
-    <div className="grid gap-4 md:grid-cols-2">
-      {uniqueNotes.map((note, index) => (
-        <div
-          key={index}
-          className="rounded-3xl border border-blue-100 bg-blue-50 p-5 text-sm leading-7 text-slate-700"
-        >
-          {note}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-export default async function FinalForecastPage() {
+export default async function ForecastPage() {
   const results = await loadArtifacts();
 
   const pageData = getArtifact(results, "pageOfficialForecast");
   const officialForecast = getArtifact(results, "officialForecast");
   const selectedModelSummary = getArtifact(results, "selectedModelSummary");
   const modelRanking = getArtifact(results, "modelRanking");
-  const forecastStatus = getArtifact(results, "forecastStatus");
+  const forecastStatusArtifact = getArtifact(results, "forecastStatus");
   const modelWindowPlan = getArtifact(results, "modelWindowPlan");
 
   const loadedCount = results.filter((item) => item.ok).length;
 
-  const selectedModel =
-    officialForecast?.selected_model ||
-    pageData?.selected_model ||
-    selectedModelSummary?.selected_model ||
-    {};
+  const selectedModel = getSelectedModel(
+    officialForecast,
+    pageData,
+    selectedModelSummary
+  );
 
-  const recordCounts = officialForecast?.record_counts || {};
-  const latestRecord = officialForecast?.latest_record || {};
-  const nextForecastAfterCutoff =
-    officialForecast?.next_forecast_after_cutoff || null;
+  const officialCutoff = getOfficialCutoff(
+    officialForecast,
+    pageData,
+    forecastStatusArtifact
+  );
 
-  const chartRows = buildForecastRows(officialForecast);
-  const chartRowsWithActual = getChartRowsWithActual(chartRows);
+  const exportStatus = getExportStatus(
+    officialForecast,
+    pageData,
+    forecastStatusArtifact
+  );
+
+  const futureInfo = getFutureInfo(officialForecast);
+
+  const officialRecords = getOfficialRecords(officialForecast);
   const futureRecords = getFutureRecords(officialForecast);
 
-  const exportStatus =
-    officialForecast?.export_status ||
-    pageData?.export_status ||
-    "missing_or_not_exported";
+  const futureRowsWithActuals = futureRecords.filter(
+    (row) => row.actual_gold_price !== null && row.actual_gold_price !== undefined
+  );
 
-  const officialCutoff =
-    officialForecast?.official_forecast_cutoff_date ||
-    pageData?.official_forecast_cutoff_date ||
-    findValueDeep(forecastStatus, [
-      "official_forecast_cutoff_date",
-      "officialForecastCutoffDate",
-      "cutoff_date",
-      "cutoffDate",
-      "official_cutoff",
-      "officialCutoff",
-    ]) ||
-    "2026-03-31";
+  const averageFutureAbsError =
+    futureRowsWithActuals.length > 0
+      ? futureRowsWithActuals.reduce((sum: number, row: any) => {
+          const actual = toNumber(row.actual_gold_price);
+          const forecast = toNumber(row.official_forecast);
+          if (actual === null || forecast === null) return sum;
+          return sum + Math.abs(actual - forecast);
+        }, 0) / futureRowsWithActuals.length
+      : null;
+
+  const futureIntervalHits = futureRowsWithActuals.filter((row: any) => {
+    const actual = toNumber(row.actual_gold_price);
+    const lower = toNumber(row.forecast_lower);
+    const upper = toNumber(row.forecast_upper);
+    if (actual === null || lower === null || upper === null) return false;
+    return actual >= lower && actual <= upper;
+  }).length;
+
+  const futureIntervalCoverage =
+    futureRowsWithActuals.length > 0
+      ? (futureIntervalHits / futureRowsWithActuals.length) * 100
+      : null;
+
+  const futureChartRows = futureRecords.map((row) => ({
+    date: row.date,
+    official_forecast: row.official_forecast ?? null,
+    forecast_lower: row.forecast_lower ?? null,
+    forecast_upper: row.forecast_upper ?? null,
+    actual_gold_price: row.actual_gold_price ?? null,
+    split: row.split,
+    selected_model_name: row.selected_model_name,
+    source_model_label: row.source_model_label,
+    forecast_generation_mode: row.forecast_generation_mode,
+  }));
+
+  const chartRows = buildChartRows(officialRecords);
+  const rowsWithActual = getRowsWithActual(chartRows);
+  const recentRows = rowsWithActual.slice(-120);
+
+  const latestRecord = officialForecast?.latest_record
+    ? normalizeOfficialRecord(officialForecast.latest_record)
+    : officialRecords[officialRecords.length - 1] || null;
+
+  const nextFutureRecord = officialForecast?.next_forecast_after_cutoff
+    ? normalizeOfficialRecord(officialForecast.next_forecast_after_cutoff)
+    : futureRecords[0] || null;
+
+  const warnings = getWarnings(officialForecast, pageData);
+  const interpretationNotes = getInterpretationNotes(officialForecast, pageData);
 
   const pageTitle = pageData?.page_title || "Official Gold Forecast";
 
   const pageSubtitle =
     pageData?.page_subtitle ||
     "Selected-model forecast exported from the validation pipeline.";
-
-  const forecastSource = officialForecast?.forecast_source || {};
-  const standardizationNotes = forecastSource?.standardization_notes || {};
 
   return (
     <main className="min-h-screen bg-white text-slate-950">
@@ -800,11 +1068,11 @@ export default async function FinalForecastPage() {
               </span>
 
               <span className="rounded-full border border-blue-400/30 bg-blue-400/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-blue-100">
-                Export Status: {formatText(exportStatus)}
+                Cutoff Input: {formatText(officialCutoff)}
               </span>
 
               <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-emerald-100">
-                JSON-Selected Forecast
+                Future Rows: {formatNumber(futureRecords.length, 0)}
               </span>
             </div>
 
@@ -817,34 +1085,43 @@ export default async function FinalForecastPage() {
                 label="Primary RMSE"
                 value={selectedModel?.primary_rmse}
               />
+              <DarkKpiCard label="Official Cutoff" value={officialCutoff} />
               <DarkKpiCard
-                label="Official Cutoff"
-                value={officialCutoff}
-              />
-              <DarkKpiCard
-                label="Forecast Records"
-                value={recordCounts?.total_records}
+                label="Future Horizon"
+                value={futureInfo?.horizon_business_days}
               />
             </div>
 
-            <div className="mt-5 grid gap-4 md:grid-cols-3">
+            <div className="mt-5 grid gap-4 md:grid-cols-4">
               <DarkKpiCard
-                label="Historical/Test Records"
-                value={recordCounts?.records_on_or_before_cutoff}
+                label="ARIMA Order"
+                value={
+                  Array.isArray(futureInfo?.arima_order)
+                    ? `ARIMA(${futureInfo.arima_order.join(", ")})`
+                    : futureInfo?.arima_order
+                }
               />
               <DarkKpiCard
-                label="Future Records"
-                value={recordCounts?.records_after_cutoff}
+                label="Fit End"
+                value={futureInfo?.fit_end || officialCutoff}
+              />
+              <DarkKpiCard
+                label="First Future"
+                value={futureInfo?.first_future_date || nextFutureRecord?.date}
               />
               <DarkKpiCard
                 label="Latest Forecast"
                 value={latestRecord?.official_forecast}
-                note={latestRecord?.date ? `Date: ${latestRecord.date}` : undefined}
+                note={
+                  latestRecord?.date
+                    ? `Latest historical path date: ${latestRecord.date}`
+                    : undefined
+                }
               />
             </div>
           </div>
 
-          <ForecastAnimation />
+          <ForecastExportAnimation />
         </div>
       </section>
 
@@ -852,124 +1129,80 @@ export default async function FinalForecastPage() {
         <div className="mx-auto max-w-7xl space-y-10">
           <CardShell>
             <SectionTitle
-              eyebrow="Method Foundation"
-              title="What Notebook 12 Does"
-              subtitle="Notebook 12 reads the selected model from Notebook 11 and exports the official forecast artifact for the frontend."
+              eyebrow="Notebook 12 Purpose"
+              title="Forecast Page Uses the Notebook Cutoff Input"
+              subtitle="This page reads the official cutoff and generated_future_forecast_info from official_forecast.json. It does not generate forecasts in the browser."
             />
 
-            <MethodExplanationCards />
+            <MethodCards />
           </CardShell>
 
           <div className="grid gap-10 lg:grid-cols-2">
-            <div className="rounded-[2rem] border border-yellow-200 bg-yellow-50 p-6">
-              <p className="text-xs font-black uppercase tracking-[0.24em] text-yellow-700">
-                Official Selected Model
-              </p>
-              <h3 className="mt-3 text-3xl font-black text-slate-950">
-                {formatText(selectedModel?.model_name || selectedModel?.model_key)}
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-slate-700">
-                This selected model is read from Notebook 11 artifacts and
-                carried into official_forecast.json by Notebook 12.
-              </p>
+            <SelectedModelCard
+              selectedModel={selectedModel}
+              exportStatus={exportStatus}
+            />
 
-              <div className="mt-5 grid gap-3 md:grid-cols-3">
-                <div className="rounded-2xl bg-white p-4">
-                  <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
-                    Model Key
-                  </p>
-                  <p className="mt-1 break-words text-lg font-black text-slate-950">
-                    {formatText(selectedModel?.model_key)}
-                  </p>
-                </div>
-
-                <div className="rounded-2xl bg-white p-4">
-                  <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
-                    Rank
-                  </p>
-                  <p className="mt-1 text-lg font-black text-slate-950">
-                    {formatNumber(selectedModel?.rank, 0)}
-                  </p>
-                </div>
-
-                <div className="rounded-2xl bg-white p-4">
-                  <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
-                    Category
-                  </p>
-                  <p className="mt-1 break-words text-lg font-black text-slate-950">
-                    {formatText(selectedModel?.category)}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-[2rem] border border-blue-200 bg-blue-50 p-6">
-              <p className="text-xs font-black uppercase tracking-[0.24em] text-blue-700">
-                Next Forecast After Cutoff
-              </p>
-              <h3 className="mt-3 text-3xl font-black text-slate-950">
-                {nextForecastAfterCutoff
-                  ? formatText(nextForecastAfterCutoff?.date)
-                  : "No Post-Cutoff Record"}
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-slate-700">
-                If no post-cutoff record is exported, the frontend must show
-                that honestly instead of inventing future values.
-              </p>
-
-              <div className="mt-5 grid gap-3 md:grid-cols-3">
-                <div className="rounded-2xl bg-white p-4">
-                  <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
-                    Forecast
-                  </p>
-                  <p className="mt-1 text-lg font-black text-slate-950">
-                    {formatNumber(
-                      nextForecastAfterCutoff?.official_forecast ??
-                        nextForecastAfterCutoff?.forecast,
-                      4
-                    )}
-                  </p>
-                </div>
-
-                <div className="rounded-2xl bg-white p-4">
-                  <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
-                    Lower
-                  </p>
-                  <p className="mt-1 text-lg font-black text-slate-950">
-                    {formatNumber(
-                      nextForecastAfterCutoff?.forecast_lower ??
-                        nextForecastAfterCutoff?.lower,
-                      4
-                    )}
-                  </p>
-                </div>
-
-                <div className="rounded-2xl bg-white p-4">
-                  <p className="text-[11px] font-black uppercase tracking-[0.15em] text-slate-400">
-                    Upper
-                  </p>
-                  <p className="mt-1 text-lg font-black text-slate-950">
-                    {formatNumber(
-                      nextForecastAfterCutoff?.forecast_upper ??
-                        nextForecastAfterCutoff?.upper,
-                      4
-                    )}
-                  </p>
-                </div>
-              </div>
-            </div>
+            <FutureGenerationCard
+              futureInfo={futureInfo}
+              officialCutoff={officialCutoff}
+              futureRecords={futureRecords}
+              nextFutureRecord={nextFutureRecord}
+            />
           </div>
 
           <CardShell>
             <SectionTitle
-              eyebrow="Official Forecast Chart"
-              title="Actual Gold Price vs Official Forecast"
-              subtitle="This chart uses official_forecast.json. Rows without actual values are shown in tables, while actual-vs-forecast diagnostics require actual values."
+              eyebrow="Post-Cutoff Actual Comparison"
+              title="April Actuals vs Saved ARIMA Forecast"
+              subtitle="The model was fit only through the cutoff. Actual April gold prices are used here only to evaluate the saved post-cutoff forecast."
+            />
+
+            <div className="grid gap-4 md:grid-cols-4">
+              <LightMetricCard
+                label="Future Rows With Actuals"
+                value={futureRowsWithActuals.length}
+              />
+              <LightMetricCard
+                label="Average Absolute Error"
+                value={averageFutureAbsError}
+              />
+              <LightMetricCard
+                label="Interval Hits"
+                value={futureIntervalHits}
+              />
+              <LightMetricCard
+                label="95% Coverage So Far"
+                value={futureIntervalCoverage}
+                suffix="%"
+              />
+            </div>
+          </CardShell>
+
+          <CardShell>
+            <SectionTitle
+              eyebrow="Future Forecast Output"
+              title="ARIMA Forecasts After the Official Cutoff"
+              subtitle="The graph uses future_records_after_cutoff. The blue line is the saved forecast, the yellow band is the 95% interval, and the green line appears where actual post-cutoff gold prices are available."
+            />
+
+            <FutureForecastBandChart
+              rows={futureChartRows}
+              title="Future ARIMA Forecast with 95% Confidence Band"
+              subtitle="Hover over the chart to see actual gold price, official forecast, lower bound, upper bound, residual, error, model, and generation mode."
+            />
+          </CardShell>
+
+          <CardShell>
+            <SectionTitle
+              eyebrow="Historical/Test Evidence"
+              title="Actual Gold Price vs Official Forecast Path"
+              subtitle="This chart uses records where actual gold prices exist. It validates the selected model path before future testing."
             />
 
             <ActualVsForecastChart
               title="Actual Gold Price vs Official Forecast"
-              rows={chartRowsWithActual}
+              rows={rowsWithActual}
               actualKey="actual"
               actualLabel="Actual Gold Price"
               forecastKey="forecast"
@@ -982,12 +1215,12 @@ export default async function FinalForecastPage() {
             <SectionTitle
               eyebrow="Residual Diagnostic"
               title="Official Forecast Residuals"
-              subtitle="Residual = actual gold price minus official forecast. Future records without actual values are not included in this diagnostic."
+              subtitle="Residual = actual gold price minus official forecast. Future rows without actual values are excluded."
             />
 
             <ResidualChart
               title="Official Forecast Residuals"
-              rows={chartRowsWithActual}
+              rows={rowsWithActual}
               actualKey="actual"
               forecastKey="forecast"
               forecastLabel="Official Forecast"
@@ -997,139 +1230,112 @@ export default async function FinalForecastPage() {
 
           <CardShell>
             <SectionTitle
-              eyebrow="Future Forecast Table"
-              title="Records After the Official Cutoff"
-              subtitle="This table displays only future_records_after_cutoff from official_forecast.json."
+              eyebrow="Recent Forecast Evidence"
+              title="Recent Actual vs Forecast Zoom"
+              subtitle="This view focuses on the most recent records with actual gold prices."
             />
 
-            <FutureForecastTable rows={futureRecords} />
-          </CardShell>
-
-          <CardShell>
-            <SectionTitle
-              eyebrow="Forecast Path Table"
-              title="Recent Official Forecast Path Records"
-              subtitle="This table shows the most recent standardized records from official_forecast.json."
+            <ActualVsForecastChart
+              title="Recent Actual vs Official Forecast"
+              rows={recentRows}
+              actualKey="actual"
+              actualLabel="Actual Gold Price"
+              forecastKey="forecast"
+              forecastLabel="Official Forecast"
+              yAxisLabel="Gold Price (USD/oz)"
+              showSplitMarkers={false}
             />
-
-            <ForecastPathTable rows={chartRows} />
           </CardShell>
 
           <CardShell>
             <SectionTitle
               eyebrow="Export Diagnostics"
-              title="Forecast Source and Standardization"
-              subtitle="Notebook 12 detects the source forecast artifact and standardizes its columns."
+              title="Cutoff, Source, and ARIMA Future Generation"
+              subtitle="This section confirms what Notebook 12 used as input and how it generated the post-cutoff forecast."
             />
 
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                  Source Path
-                </p>
-                <p className="mt-3 break-words text-lg font-black text-slate-950">
-                  {formatText(forecastSource?.path)}
-                </p>
-              </div>
-
-              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                  Standardization Status
-                </p>
-                <p className="mt-3 break-words text-lg font-black text-slate-950">
-                  {formatText(standardizationNotes?.status)}
-                </p>
-              </div>
-
-              {Object.entries(standardizationNotes || {}).map(([key, value]) => (
-                <div
-                  key={key}
-                  className="rounded-3xl border border-slate-200 bg-slate-50 p-5"
-                >
-                  <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                    {key}
-                  </p>
-                  <p className="mt-3 break-words text-lg font-black text-slate-950">
-                    {formatText(value)}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <SourceDiagnostics
+              officialForecast={officialForecast}
+              futureInfo={futureInfo}
+            />
           </CardShell>
 
           <CardShell>
             <SectionTitle
-              eyebrow="Warnings"
-              title="Notebook 12 Export Warnings"
-              subtitle="Warnings are displayed directly from official_forecast.json."
+              eyebrow="Notebook Warnings"
+              title="Official Forecast Export Warnings"
+              subtitle="These warnings come from official_forecast.json. They should be shown, not hidden."
             />
 
-            <WarningsBlock warnings={officialForecast?.warnings || []} />
+            <WarningBlock warnings={warnings} />
+          </CardShell>
+
+          <CardShell>
+            <SectionTitle
+              eyebrow="Future Testing Plan"
+              title="How This Forecast Will Be Tested Later"
+              subtitle="The saved post-cutoff rows are the forecast. Later, new actual gold prices can be compared against these stored forecasts."
+            />
+
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="rounded-3xl border border-blue-100 bg-blue-50 p-5">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
+                  What is predicted?
+                </p>
+                <p className="mt-3 text-sm leading-7 text-slate-700">
+                  The future graph predicts gold price after the official cutoff
+                  using the selected ARIMA model refit through the cutoff date.
+                </p>
+              </div>
+
+              <div className="rounded-3xl border border-blue-100 bg-blue-50 p-5">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
+                  Why ARIMA can forecast future rows
+                </p>
+                <p className="mt-3 text-sm leading-7 text-slate-700">
+                  ARIMA is univariate, so it only needs gold price history. It
+                  does not need future macro factor assumptions.
+                </p>
+              </div>
+
+              <div className="rounded-3xl border border-blue-100 bg-blue-50 p-5">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
+                  How future testing works
+                </p>
+                <p className="mt-3 text-sm leading-7 text-slate-700">
+                  When actual future gold prices are available, compare them
+                  against the saved future_records_after_cutoff rows.
+                </p>
+              </div>
+
+              <div className="rounded-3xl border border-blue-100 bg-blue-50 p-5">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
+                  Professor-safe wording
+                </p>
+                <p className="mt-3 text-sm leading-7 text-slate-700">
+                  The platform forecasts future business days after the cutoff,
+                  but model accuracy can only be confirmed after actual future
+                  prices arrive.
+                </p>
+              </div>
+            </div>
           </CardShell>
 
           <CardShell>
             <SectionTitle
               eyebrow="Professor Interpretation"
               title="How to Explain the Official Forecast"
-              subtitle="These notes are read from the official forecast artifacts."
+              subtitle="These notes are read from official_forecast.json and page_official_forecast.json."
             />
 
-            <InterpretationBlock
-              officialForecast={officialForecast}
-              pageData={pageData}
-            />
-
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
-              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                  Why this page is final
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-700">
-                  This page uses the selected model from Notebook 11 and the
-                  official export from Notebook 12. It is the presentation-ready
-                  forecast page.
-                </p>
-              </div>
-
-              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                  Why no hardcoding matters
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-700">
-                  If Notebook 11 selects a different model later, Notebook 12 can
-                  regenerate the official forecast and the frontend will update
-                  from JSON.
-                </p>
-              </div>
-
-              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                  Why missing future rows are allowed
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-700">
-                  Some model forecast-path artifacts may contain only validation
-                  or test rows. In that case, this page shows the export warning
-                  instead of inventing future forecasts.
-                </p>
-              </div>
-
-              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                  Professor-safe conclusion
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-700">
-                  The official forecast is evidence-based, artifact-driven, and
-                  traceable back to the model comparison notebook.
-                </p>
-              </div>
-            </div>
+            <InterpretationBlock notes={interpretationNotes} />
           </CardShell>
 
           <CardShell>
             <SectionTitle
               eyebrow="Artifact Status"
               title="JSON Sources Used by This Page"
-              subtitle="Every final forecast value must come from JSON artifacts."
+              subtitle="Every forecast value must come from JSON artifacts."
             />
 
             <ArtifactStatusTable results={results} />
@@ -1156,7 +1362,10 @@ export default async function FinalForecastPage() {
                 data={selectedModelSummary}
               />
               <SourcePreview title="model_ranking.json" data={modelRanking} />
-              <SourcePreview title="model_window_plan.json" data={modelWindowPlan} />
+              <SourcePreview
+                title="model_window_plan.json"
+                data={modelWindowPlan}
+              />
             </div>
           </CardShell>
         </div>
