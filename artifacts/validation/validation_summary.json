@@ -1,6 +1,6 @@
 {
   "artifact_type": "validation_summary",
-  "generated_at_utc": "2026-04-30T23:10:08.991577+00:00",
+  "generated_at_utc": "2026-05-01T03:06:25.740455+00:00",
   "official_forecast_cutoff_date": "2026-03-31",
   "models_expected": [
     "naive",

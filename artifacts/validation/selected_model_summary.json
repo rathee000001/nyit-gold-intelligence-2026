@@ -1,6 +1,6 @@
 {
   "artifact_type": "selected_model_summary",
-  "generated_at_utc": "2026-04-30T23:10:08.991577+00:00",
+  "generated_at_utc": "2026-05-01T03:06:25.740455+00:00",
   "selection_rule": {
     "primary_metric": "test_rmse_if_available_else_validation_rmse",
     "direction": "lower_is_better",

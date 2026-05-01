@@ -1,6 +1,6 @@
 {
   "artifact_type": "validation_by_model",
-  "generated_at_utc": "2026-04-30T23:10:08.991577+00:00",
+  "generated_at_utc": "2026-05-01T03:06:25.740455+00:00",
   "records": [
     {
       "model_key": "arima",
@@ -153,31 +153,6 @@
       "rank": 6
     },
     {
-      "model_key": "regression",
-      "model_name": "Regression",
-      "category": "explainable",
-      "artifact_available": true,
-      "source_artifact": "artifacts/models/regression_results.json",
-      "candidate_name": "Trend-Only OLS Benchmark",
-      "validation_mae": 209.6939966981971,
-      "validation_mse": 240.01710832108654,
-      "validation_rmse": 240.01710832108654,
-      "validation_mape": 11.876075679644115,
-      "validation_bias": null,
-      "validation_directional_accuracy": null,
-      "test_mae": 937.8711880680166,
-      "test_mse": 1275.8055573607921,
-      "test_rmse": 1275.8055573607921,
-      "test_mape": 28.018645856260292,
-      "test_bias": null,
-      "test_directional_accuracy": null,
-      "primary_rmse": 1275.8055573607921,
-      "primary_mae": 937.8711880680166,
-      "primary_mape": 28.018645856260292,
-      "ranking_basis": "test_rmse_primary",
-      "rank": 7
-    },
-    {
       "model_key": "prophet_optional",
       "model_name": "Prophet Optional",
       "category": "optional_benchmark",
@@ -199,6 +174,31 @@
       "primary_rmse": 1407.1405677019056,
       "primary_mae": 1099.4313441478928,
       "primary_mape": 34.20080965684771,
+      "ranking_basis": "test_rmse_primary",
+      "rank": 7
+    },
+    {
+      "model_key": "regression",
+      "model_name": "Regression",
+      "category": "explainable",
+      "artifact_available": true,
+      "source_artifact": "artifacts/models/regression_results.json",
+      "candidate_name": "All Raw Factors OLS Regression",
+      "validation_mae": 214.7673248669686,
+      "validation_mse": 243.23931240616525,
+      "validation_rmse": 243.23931240616525,
+      "validation_mape": 12.682520746682382,
+      "validation_bias": null,
+      "validation_directional_accuracy": null,
+      "test_mae": 1202.5257569499852,
+      "test_mse": 1494.959968116017,
+      "test_rmse": 1494.959968116017,
+      "test_mape": 38.064580878169366,
+      "test_bias": null,
+      "test_directional_accuracy": null,
+      "primary_rmse": 1494.959968116017,
+      "primary_mae": 1202.5257569499852,
+      "primary_mape": 38.064580878169366,
       "ranking_basis": "test_rmse_primary",
       "rank": 8
     }
@@ -295,19 +295,6 @@
       }
     },
     {
-      "model_key": "regression",
-      "metric_sources": {
-        "validation_mae": "candidate_metric_table[0].validation_mae",
-        "validation_mse": "candidate_metric_table[0].validation_rmse",
-        "validation_rmse": "candidate_metric_table[0].validation_rmse",
-        "validation_mape": "candidate_metric_table[0].validation_mape",
-        "test_mae": "candidate_metric_table[0].test_mae",
-        "test_mse": "candidate_metric_table[0].test_rmse",
-        "test_rmse": "candidate_metric_table[0].test_rmse",
-        "test_mape": "candidate_metric_table[0].test_mape"
-      }
-    },
-    {
       "model_key": "prophet_optional",
       "metric_sources": {
         "validation_mae": "selected_candidate.validation_metrics.mae",
@@ -320,6 +307,19 @@
         "test_rmse": "selected_candidate.test_metrics.rmse",
         "test_mape": "selected_candidate.test_metrics.mape",
         "test_bias": "selected_candidate.test_metrics.mean_error"
+      }
+    },
+    {
+      "model_key": "regression",
+      "metric_sources": {
+        "validation_mae": "candidate_metric_table[0].validation_mae",
+        "validation_mse": "candidate_metric_table[0].validation_rmse",
+        "validation_rmse": "candidate_metric_table[0].validation_rmse",
+        "validation_mape": "candidate_metric_table[0].validation_mape",
+        "test_mae": "candidate_metric_table[0].test_mae",
+        "test_mse": "candidate_metric_table[0].test_rmse",
+        "test_rmse": "candidate_metric_table[0].test_rmse",
+        "test_mape": "candidate_metric_table[0].test_mape"
       }
     }
   ]
