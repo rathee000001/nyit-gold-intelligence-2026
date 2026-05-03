@@ -171,15 +171,15 @@ export default function HomePage() {
                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Model.</span>
                </h1>
                <p className="text-xl text-slate-500 font-medium max-w-lg leading-relaxed">
-                 A quantitative framework merging 19 institutional factors to predict precious metal valuation in real-time.
+                 A quantitative framework merging 20 institutional factors to predict precious metal valuation in real-time.
                </p>
              </div>
 
              {/* Action Buttons */}
              <div className="flex flex-wrap gap-4">
-               <Link href="/intelligence">
+               <Link href="/model3">
                  <button className="px-8 py-4 bg-slate-900 text-white rounded-full font-black uppercase tracking-widest text-xs shadow-xl hover:bg-blue-600 hover:scale-105 transition-all duration-300 flex items-center gap-3">
-                    Launch Terminal <span className="text-lg">→</span>
+                    Launch Intelligence <span className="text-lg">→</span>
                  </button>
                </Link>
                <Link href="/history">
@@ -190,44 +190,106 @@ export default function HomePage() {
              </div>
 
              {/* Metadata Cards */}
-             <div className="grid grid-cols-2 gap-4 pt-8 border-t border-slate-100">
-                <div>
-                   <span className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Course</span>
-                   <span className="font-bold text-slate-800">Supply Chain Management</span>
-                </div>
-                <div>
-                   <span className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Professor</span>
-                   <span className="font-bold text-slate-800">Dr. Shaya Sheik</span>
-                </div>
-                <div className="col-span-2 pt-4">
-                   <span className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Developed By</span>
-                   <div className="flex gap-3">
-                      <span className="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-md">Praveen Rathee</span>
-                    
-                   </div>
-                </div>
-                 <div className="col-span-2 pt-4">
-                   <div className="flex gap-3">
-                      <span className="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-md">Sarthak</span>
-                    
-                   </div>
-                </div>
-                 <div className="col-span-2 pt-4">
-                   <div className="flex gap-3">
-                      <span className="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-md">Abhimanyu</span>
-                    
-                   </div>
-                </div>
-                 <div className="col-span-2 pt-4">
-                   <div className="flex gap-3">
-                      <span className="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-md">Himashu</span>
-                    
-                   </div>
-                </div>
-             </div>
+<div className="grid grid-cols-2 gap-4 pt-8 border-t border-slate-100">
+  <div className="col-span-2">
+    <span className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+      Courses
+    </span>
 
-          </div>
+    <div className="grid gap-3">
+      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+        <span className="block text-[10px] font-black uppercase tracking-widest text-blue-600 mb-1">
+          QANT 750
+        </span>
+        <span className="block font-bold text-slate-800">
+          Spring 2026 - M01 - Managerial Decision Modelling
+        </span>
+        <span className="block mt-1 text-xs font-semibold text-slate-500">
+          QANT_750-M01-2026SP-S | Term: Spring 2026
+        </span>
+      </div>
 
+      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+        <span className="block text-[10px] font-black uppercase tracking-widest text-blue-600 mb-1">
+          QANT 760
+        </span>
+        <span className="block font-bold text-slate-800">
+          Spring 2026 - M01 - Operations Management Applications
+        </span>
+        <span className="block mt-1 text-xs font-semibold text-slate-500">
+          QANT_760-M01-2026SP-S, QANT_760-W01-2026SP-S | Term: Spring 2026
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div className="col-span-2 md:col-span-1">
+    <span className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">
+      Professors
+    </span>
+    <div className="flex flex-wrap gap-2">
+      <span className="px-3 py-1 bg-amber-50 text-amber-700 text-xs font-bold rounded-md border border-amber-100">
+        Dr. Shaya Sheikh
+      </span>
+      <span className="px-3 py-1 bg-amber-50 text-amber-700 text-xs font-bold rounded-md border border-amber-100">
+        Dr. Rajendra Tibrewala
+      </span>
+    </div>
+  </div>
+
+  <div className="col-span-2 md:col-span-1">
+    <span className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">
+      Project
+    </span>
+    <span className="font-bold text-slate-800">
+      Gold Nexus Alpha Forecasting Platform
+    </span>
+  </div>
+
+  <div className="col-span-2 pt-4">
+    <span className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+      Developed By
+    </span>
+
+    <div className="grid gap-3 sm:grid-cols-2">
+      <div className="rounded-xl border border-blue-100 bg-blue-50 p-3">
+        <span className="block text-sm font-black text-blue-800">
+          Praveen Rathee
+        </span>
+        <span className="block mt-1 text-[11px] font-bold uppercase tracking-widest text-blue-500">
+          Student ID: 1356370
+        </span>
+      </div>
+
+      <div className="rounded-xl border border-blue-100 bg-blue-50 p-3">
+        <span className="block text-sm font-black text-blue-800">
+          Sarthak Pareek
+        </span>
+        <span className="block mt-1 text-[11px] font-bold uppercase tracking-widest text-blue-500">
+          Student ID: 1360682
+        </span>
+      </div>
+
+      <div className="rounded-xl border border-blue-100 bg-blue-50 p-3">
+        <span className="block text-sm font-black text-blue-800">
+          Abhimanyu Chandrasekharan Menon
+        </span>
+        <span className="block mt-1 text-[11px] font-bold uppercase tracking-widest text-blue-500">
+          Student ID: 1360346
+        </span>
+      </div>
+
+      <div className="rounded-xl border border-blue-100 bg-blue-50 p-3">
+        <span className="block text-sm font-black text-blue-800">
+          Himanshu Mukeshbhai Patel
+        </span>
+        <span className="block mt-1 text-[11px] font-bold uppercase tracking-widest text-blue-500">
+          Student ID: 1360346
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
           {/* RIGHT: IMMERSIVE VISUALS (GOLD + CHART) */}
           <div className="relative h-[600px] w-full hidden lg:block animate-in fade-in slide-in-from-right-8 duration-1000 delay-200">
              
