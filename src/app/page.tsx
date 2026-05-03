@@ -164,7 +164,7 @@ export default function HomePage() {
                     </span>
                     <span className="mt-1 block text-xs font-semibold text-slate-500">
                      Professor: Dr. Rajendra Tibrewala
-                      Spring 2026
+                    
                     </span>
                   </div>
                 </div>
