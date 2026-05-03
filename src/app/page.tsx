@@ -148,10 +148,10 @@ export default function HomePage() {
                       QANT 750
                     </span>
                     <span className="block font-bold text-slate-800">
-                      Spring 2026 - M01 - Managerial Decision Modelling
+                      Spring 2026 - Managerial Decision Modelling
                     </span>
                     <span className="mt-1 block text-xs font-semibold text-slate-500">
-                      QANT_750-M01-2026SP-S | Term: Spring 2026
+                     Professor: Dr. Shaya Sheikh
                     </span>
                   </div>
 
@@ -160,10 +160,10 @@ export default function HomePage() {
                       QANT 760
                     </span>
                     <span className="block font-bold text-slate-800">
-                      Spring 2026 - M01 - Operations Management Applications
+                      Spring 2026 - Operations Management Applications
                     </span>
                     <span className="mt-1 block text-xs font-semibold text-slate-500">
-                      QANT_760-M01-2026SP-S, QANT_760-W01-2026SP-S | Term:
+                      QANT_760 | Professor: Dr. Rajendra Tibrewala
                       Spring 2026
                     </span>
                   </div>
@@ -189,7 +189,7 @@ export default function HomePage() {
                   Project
                 </span>
                 <span className="font-bold text-slate-800">
-                  Gold Nexus Alpha Forecasting Platform
+                  Gold Forecasting Platform
                 </span>
               </div>
 
