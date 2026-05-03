@@ -163,7 +163,7 @@ export default function HomePage() {
                       Spring 2026 - Operations Management Applications
                     </span>
                     <span className="mt-1 block text-xs font-semibold text-slate-500">
-                      QANT_760 | Professor: Dr. Rajendra Tibrewala
+                     Professor: Dr. Rajendra Tibrewala
                       Spring 2026
                     </span>
                   </div>
