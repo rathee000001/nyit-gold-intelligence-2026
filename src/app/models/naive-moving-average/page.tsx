@@ -460,7 +460,7 @@ function BaselineAnimation() {
         </p>
 
         <h3 className="mt-3 text-3xl font-black text-white">
-          Professor-Style Baseline Forecast
+         Baseline Forecast
         </h3>
 
         <p className="mt-3 text-sm leading-7 text-slate-300">
