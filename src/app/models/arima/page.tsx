@@ -823,7 +823,7 @@ function MethodExplanationCards() {
 
         <div className="mt-5 rounded-3xl border border-yellow-200 bg-white p-5">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">
-            Professor Formula
+            Formula
           </p>
           <p className="mt-3 text-2xl font-black text-slate-950">
             ARIMA(p, d, q)
@@ -868,7 +868,7 @@ function MethodExplanationCards() {
 
         <div className="mt-5 rounded-3xl border border-emerald-200 bg-white p-5">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">
-            Professor-Safe Point
+           Point
           </p>
           <p className="mt-3 text-sm leading-7 text-slate-600">
             Static flattening is a diagnostic behavior, not the primary model
@@ -1776,7 +1776,7 @@ export default async function ArimaPage() {
 
           <CardShell>
             <SectionTitle
-              eyebrow="Professor Interpretation"
+              eyebrow="Interpretation"
               title="How to Explain These Results"
               subtitle="This page keeps the ARIMA explanation clean: ARIMA candidates, diagnostic benchmarks, forecast path, and residual diagnostics."
             />
@@ -1818,7 +1818,7 @@ export default async function ArimaPage() {
 
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                  Professor-safe conclusion
+                  Conclusion
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-700">
                   ARIMA is evaluated as a classical univariate candidate, but
