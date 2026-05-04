@@ -579,7 +579,7 @@ function MethodExplanationCards() {
 
         <div className="mt-5 rounded-3xl border border-yellow-200 bg-white p-5">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">
-            Professor Formula
+            Formula
           </p>
           <p className="mt-3 text-2xl font-black text-slate-950">
             ŷ<sub>t</sub> = y<sub>t-1</sub>
@@ -606,7 +606,7 @@ function MethodExplanationCards() {
 
         <div className="mt-5 rounded-3xl border border-blue-200 bg-white p-5">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">
-            Professor Formula
+            Formula
           </p>
           <p className="mt-3 text-2xl font-black text-slate-950">
             ŷ<sub>t</sub> = average(y<sub>t-1</sub>, ..., y<sub>t-k</sub>)
@@ -631,7 +631,7 @@ function NotebookWorkflow() {
     {
       title: "Create Time Series",
       detail:
-        "The date column is parsed and used as the time index, matching the professor-style time-series setup.",
+        "The date column is parsed and used as the time index in time-series setup.",
     },
     {
       title: "Split Chronologically",
@@ -982,7 +982,7 @@ export default async function NaiveMovingAveragePage() {
 
   const pageSubtitle =
     findValueDeep(pageData, ["page_subtitle", "pageSubtitle", "subtitle", "summary"]) ||
-    "Professor-style baseline time-series forecasts for gold price.";
+    "Baseline time-series forecasts for gold price.";
 
   const datasetWindow = getDatasetWindow(naiveResults, pageData);
   const splits = getDatasetSplits(naiveResults, pageData);
@@ -1272,7 +1272,7 @@ export default async function NaiveMovingAveragePage() {
 
           <CardShell>
             <SectionTitle
-              eyebrow="Professor Interpretation"
+              eyebrow="Interpretation"
               title="How to Explain These Baseline Results"
               subtitle="This interpretation keeps the page conservative and does not claim a final winner before model comparison."
             />
@@ -1313,7 +1313,7 @@ export default async function NaiveMovingAveragePage() {
 
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                  Professor-safe conclusion
+                  Conclusion
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-700">
                   These methods establish fair baselines. They should not be
