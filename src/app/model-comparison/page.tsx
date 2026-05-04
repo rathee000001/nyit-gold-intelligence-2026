@@ -638,7 +638,7 @@ function MethodExplanationCards() {
 
       <div className="rounded-[2rem] border border-emerald-200 bg-emerald-50 p-6">
         <p className="text-xs font-black uppercase tracking-[0.24em] text-emerald-700">
-          Professor Safety
+          Safety
         </p>
         <h3 className="mt-3 text-3xl font-black text-slate-950">
           No Visual Winner
@@ -914,7 +914,7 @@ export default async function ModelComparisonPage() {
 
   const pageSubtitle =
     pageData?.page_subtitle ||
-    "Professor-style comparison of completed gold forecasting models using exported validation and test metrics.";
+    "Comparison of completed gold forecasting models using exported validation and test metrics.";
 
   return (
     <main className="min-h-screen bg-white text-slate-950">
@@ -1127,7 +1127,7 @@ export default async function ModelComparisonPage() {
 
           <CardShell>
             <SectionTitle
-              eyebrow="Professor Interpretation"
+              eyebrow="Interpretation"
               title="How to Explain the Model Selection"
               subtitle="These notes are read from selected_model_summary.json and page_model_comparison.json when available."
             />
@@ -1167,7 +1167,7 @@ export default async function ModelComparisonPage() {
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-700">
                   Test metrics show how the model performs outside the training
-                  and validation periods. They are central for professor-safe
+                  and validation periods. They are central for unbaised
                   model selection.
                 </p>
               </div>
@@ -1184,7 +1184,7 @@ export default async function ModelComparisonPage() {
 
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                  Professor-safe conclusion
+                  Conclusion
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-700">
                   The selected model is evidence-based and JSON-driven. Final
