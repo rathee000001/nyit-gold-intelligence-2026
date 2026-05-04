@@ -1408,7 +1408,7 @@ export default async function RegressionPage() {
 
   const pageSubtitle =
     pageData?.page_subtitle ||
-    "Professor-style OLS forecasting model using raw non-engineered gold factors.";
+    "OLS forecasting model using raw non-engineered gold factors.";
 
   const mainModelName =
     regressionResults?.main_regression_model_name ||
@@ -1717,7 +1717,7 @@ export default async function RegressionPage() {
 
           <CardShell>
             <SectionTitle
-              eyebrow="Professor Interpretation"
+              eyebrow="Interpretation"
               title="How to Explain This Regression"
               subtitle="These explanation notes are read from page_regression.json where available."
             />
@@ -1760,7 +1760,7 @@ export default async function RegressionPage() {
 
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                  Professor-safe conclusion
+                  Conclusion
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-700">
                   This regression is a raw-factor forecasting candidate. It
