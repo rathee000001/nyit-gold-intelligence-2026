@@ -115,8 +115,7 @@ export default function HomePage() {
 
             <p className="mt-8 max-w-2xl text-xl font-medium leading-9 text-slate-600">
               A quantitative framework merging institutional factors, forecasting
-              models, validation artifacts, and a JSON-first web platform for
-              professor-safe gold price forecasting.
+              models, validation artifacts, and a JSON-first web platform for gold price forecasting.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
