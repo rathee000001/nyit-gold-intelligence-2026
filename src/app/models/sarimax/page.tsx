@@ -745,7 +745,7 @@ function MethodExplanationCards() {
 
         <div className="mt-5 rounded-3xl border border-yellow-200 bg-white p-5">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">
-            Professor Formula
+            Formula
           </p>
           <p className="mt-3 text-2xl font-black text-slate-950">
             SARIMAX(p, d, q) + X<sub>t-1</sub>
@@ -762,7 +762,7 @@ function MethodExplanationCards() {
         </h3>
         <p className="mt-4 text-sm leading-7 text-slate-700">
           Notebook 08 uses lagged exogenous factors. This keeps the page
-          professor-safe because the forecast does not depend on same-day factor
+          safe because the forecast does not depend on same-day factor
           information.
         </p>
 
@@ -1407,7 +1407,7 @@ export default async function SarimaxPage() {
             <SectionTitle
               eyebrow="Method Foundation"
               title="What SARIMAX Forecasting Does"
-              subtitle="Notebook 08 extends ARIMA with lagged exogenous drivers while preserving professor-safe time-based evaluation."
+              subtitle="Notebook 08 extends ARIMA with lagged exogenous drivers while preserving safe time-based evaluation."
             />
 
             <MethodExplanationCards />
@@ -1662,9 +1662,9 @@ export default async function SarimaxPage() {
 
           <CardShell>
             <SectionTitle
-              eyebrow="Professor Interpretation"
+              eyebrow="Interpretation"
               title="How to Explain These Results"
-              subtitle="These notes are read from the SARIMAX notebook artifacts and kept professor-safe."
+              subtitle="These notes are read from the SARIMAX notebook artifacts."
             />
 
             <NotesBlock sarimaxResults={sarimaxResults} pageData={pageData} />
@@ -1688,7 +1688,7 @@ export default async function SarimaxPage() {
                 <p className="mt-3 text-sm leading-7 text-slate-700">
                   Lagged exogenous factors reduce same-day information
                   dependency and make the forecast design safer for a
-                  professor-style time-series project.
+                   time-series project.
                 </p>
               </div>
 
@@ -1705,7 +1705,7 @@ export default async function SarimaxPage() {
 
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                  Professor-safe conclusion
+                  Conclusion
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-700">
                   SARIMAX is a strong classical candidate, but final model
