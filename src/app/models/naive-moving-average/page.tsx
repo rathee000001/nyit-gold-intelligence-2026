@@ -1084,7 +1084,7 @@ export default async function NaiveMovingAveragePage() {
             <SectionTitle
               eyebrow="Method Foundation"
               title="What These Forecasting Methods Are"
-              subtitle="This section mirrors the professor-style explanation before looking at model results."
+              subtitle="This section mirrors the class notes explanation before looking at model results."
             />
             <MethodExplanationCards />
           </CardShell>
