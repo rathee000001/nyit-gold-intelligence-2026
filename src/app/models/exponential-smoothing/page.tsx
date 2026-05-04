@@ -721,7 +721,7 @@ function MethodExplanationCards() {
 
         <div className="mt-5 rounded-3xl border border-yellow-200 bg-white p-5">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">
-            Professor Formula
+           Formula
           </p>
           <p className="mt-3 text-2xl font-black text-slate-950">
             F<sub>t+1</sub> = αY<sub>t</sub> + (1 − α)F<sub>t</sub>
@@ -790,7 +790,7 @@ function NotebookWorkflow() {
     {
       title: "Show Gold Series",
       detail:
-        "The notebook first plots the gold price series before modeling, following professor-style explanation order.",
+        "The notebook first plots the gold price series before modeling.",
     },
     {
       title: "Fit Smoothing Candidates",
@@ -1123,7 +1123,7 @@ export default async function ExponentialSmoothingPage() {
 
   const pageSubtitle =
     pageData?.page_subtitle ||
-    "Professor-style smoothing model with static diagnostics and one-step rolling evaluation.";
+    "Smoothing model with static diagnostics and one-step rolling evaluation.";
 
   return (
     <main className="min-h-screen bg-white text-slate-950">
@@ -1397,7 +1397,7 @@ export default async function ExponentialSmoothingPage() {
 
           <CardShell>
             <SectionTitle
-              eyebrow="Professor Interpretation"
+              eyebrow=" Interpretation"
               title="How to Explain These Results"
               subtitle="These notes come from the notebook logic and artifact interpretation fields where available."
             />
@@ -1441,7 +1441,7 @@ export default async function ExponentialSmoothingPage() {
 
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                  Professor-safe conclusion
+                  Conclusion
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-700">
                   Exponential smoothing is a serious baseline method. It should
