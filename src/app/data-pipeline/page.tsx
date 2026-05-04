@@ -702,13 +702,13 @@ function FrequencyMixSection({
 
           const professorNoteMap: Record<string, string> = {
             Daily:
-              "Professor-safe point: daily factors require less frequency conversion, but still must follow the same cutoff and weekday-clean rule.",
+              "Safe point: daily factors require less frequency conversion, but still must follow the same cutoff and weekday-clean rule.",
             Weekly:
-              "Professor-safe point: weekly data is not randomly interpolated; it is held constant until a new valid weekly observation is available.",
+              "Safe point: weekly data is not randomly interpolated; it is held constant until a new valid weekly observation is available.",
             Monthly:
-              "Professor-safe point: monthly data is not backfilled from the future; it is only carried forward after the value is available in the dataset.",
+              "Safe point: monthly data is not backfilled from the future; it is only carried forward after the value is available in the dataset.",
             Unknown:
-              "Professor-safe point: every factor should have documented frequency before final submission.",
+              "Safe point: every factor should have documented frequency before final submission.",
           };
 
           const frequencyKey = frequency in explanationMap ? frequency : "Unknown";
@@ -762,7 +762,7 @@ function FrequencyMixSection({
 
                 <div className="rounded-2xl bg-yellow-50 p-4">
                   <p className="text-xs font-black uppercase tracking-[0.18em] text-yellow-700">
-                    Professor-Safe Note
+                    Note
                   </p>
                   <p className="mt-2 text-sm leading-7 text-slate-700">
                     {professorNoteMap[frequencyKey]}
@@ -991,8 +991,7 @@ export default async function DataPipelinePage() {
             </h1>
 
             <p className="mt-5 max-w-4xl text-base leading-8 text-slate-300 md:text-lg">
-              This page turns exported JSON artifacts into a professor-facing
-              pipeline dashboard: matrix cleaning, factor coverage, cutoff
+              This page turns exported JSON artifacts into a pipeline dashboard: matrix cleaning, factor coverage, cutoff
               governance, model windows, and artifact status.
             </p>
 
@@ -1130,7 +1129,7 @@ export default async function DataPipelinePage() {
               <LightMetricCard label="Clean Rows" value={weekdayRows} tone="green" />
               <LightMetricCard label="Removed Rows" value={weekendRemoved} tone="gold" />
               <LightMetricCard
-                label="Professor Wording"
+                label="Wording"
                 value={findValueDeep(weekdayCleaningAudit, [
                   "professor_safe_wording",
                   "professorSafeWording",
@@ -1218,7 +1217,7 @@ export default async function DataPipelinePage() {
             <SectionTitle
               eyebrow="Feature Engineering"
               title="Model-Ready Feature Build"
-              subtitle="The feature-engineering audit is summarized into professor-readable cards."
+              subtitle="The feature-engineering audit is summarized into readable cards."
             />
 
             <div className="grid gap-4 md:grid-cols-4">
@@ -1335,7 +1334,7 @@ export default async function DataPipelinePage() {
             <SectionTitle
               eyebrow="Source Preview"
               title="Optional Raw Artifact Preview"
-              subtitle="Raw JSON is hidden by default. This keeps the page professor-friendly while still proving the source artifacts exist."
+              subtitle="Raw JSON is hidden by default. This keeps the page friendly while still proving the source artifacts exist."
             />
 
             <div className="grid gap-4">
