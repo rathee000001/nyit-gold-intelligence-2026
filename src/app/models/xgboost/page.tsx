@@ -836,7 +836,7 @@ function MethodExplanationCards() {
 
         <div className="mt-5 rounded-3xl border border-blue-200 bg-white p-5">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">
-            Professor-Safe Rule
+            Rule
           </p>
           <p className="mt-3 text-sm leading-7 text-slate-600">
             Performance is only meaningful if compared with the same validation
@@ -1476,7 +1476,7 @@ export default async function XgboostPage() {
             <SectionTitle
               eyebrow="Method Foundation"
               title="What XGBoost Forecasting Does"
-              subtitle="Notebook 09 adds a nonlinear tree-based candidate while preserving the JSON-first and professor-safe workflow."
+              subtitle="Notebook 09 adds a nonlinear tree-based candidate while preserving the JSON-first and safe workflow."
             />
 
             <MethodExplanationCards />
@@ -1713,7 +1713,7 @@ export default async function XgboostPage() {
 
           <CardShell>
             <SectionTitle
-              eyebrow="Professor Interpretation"
+              eyebrow="Interpretation"
               title="How to Explain These Results"
               subtitle="This page keeps XGBoost interpretation conservative and does not claim final model superiority before Notebook 11."
             />
@@ -1756,7 +1756,7 @@ export default async function XgboostPage() {
 
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                  Professor-safe conclusion
+                  Conclusion
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-700">
                   XGBoost is a candidate model. Final ranking still belongs to
