@@ -1,0 +1,673 @@
+{
+  "artifact_type": "deep_ml_alpha_shap_latest_forecast_explanation",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:18:03Z",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "run_id": "deepml_run_20260505_100053_alpha_structural_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "model_key": "alpha_structural",
+  "model_version": "alpha_structural_v4_consistent_timed_xgboost_optuna_rolling_shap",
+  "latest_explanations_by_horizon": {
+    "1": {
+      "horizon": 1,
+      "origin_date": "2026-05-05",
+      "top_local_drivers": [
+        {
+          "feature": "gold_ma_ratio_20",
+          "shap_value": 0.0010989743750542402,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "alpha_day_of_year_cos",
+          "shap_value": -0.0005132196820341051,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "m2_supply_chg_20",
+          "shap_value": -0.0002475949877407402,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gold_return_20",
+          "shap_value": 0.0001637214154470712,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "alpha_month",
+          "shap_value": -0.00011701780022121966,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "jpy_usd",
+          "shap_value": 3.204566746717319e-05,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "real_yield",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "nominal_yield",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "tips_curve",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "fed_bs",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "m2_supply",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "inflation",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "usd_index",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "eur_usd",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "vix_index",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "fin_stress",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "gpr_index",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "policy_unc",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "oil_wti",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "ppi_index",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "gld_tonnes",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "unrate",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "ind_prod",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "cap_util",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "gold_lag_1",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        }
+      ],
+      "note": "SHAP explains predicted log-return output, not direct causality."
+    },
+    "5": {
+      "horizon": 5,
+      "origin_date": "2026-05-05",
+      "top_local_drivers": [
+        {
+          "feature": "gold_ma_ratio_20",
+          "shap_value": 0.03054147958755493,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "gold_return_60",
+          "shap_value": 0.024037500843405724,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "gold_ma_ratio_60",
+          "shap_value": 0.006820872891694307,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "m2_supply",
+          "shap_value": -0.003368331817910075,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "alpha_day_of_year_cos",
+          "shap_value": -0.0018900432623922825,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "alpha_month",
+          "shap_value": 0.0017065498977899551,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "gld_tonnes_chg_5",
+          "shap_value": 0.0014350384008139372,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "ppi_index",
+          "shap_value": -0.0010389006929472089,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "unrate",
+          "shap_value": -0.0007761579472571611,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "tips_curve",
+          "shap_value": -0.0007137925713323057,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gld_tonnes",
+          "shap_value": 0.0006723572150804102,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "gpr_index_z60",
+          "shap_value": -0.0006290160235948861,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "alpha_quarter",
+          "shap_value": -0.0005047942977398634,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "ind_prod",
+          "shap_value": -0.000271788943791762,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "fin_stress_chg_20",
+          "shap_value": -0.00024985658819787204,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "oil_wti",
+          "shap_value": -0.00016637089720461518,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "fin_stress_z60",
+          "shap_value": -0.0001273786328965798,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "ppi_index_chg_5",
+          "shap_value": -0.00010785451013362035,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "inflation",
+          "shap_value": -0.00010126315464731306,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "unrate_z60",
+          "shap_value": -8.551111386623234e-05,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gld_tonnes_chg_20",
+          "shap_value": 8.422780956607312e-05,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "fed_bs_chg_20",
+          "shap_value": -7.306625775527209e-05,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "jpy_usd",
+          "shap_value": -7.231649215100333e-05,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gold_return_20",
+          "shap_value": 6.514348206110299e-05,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "m2_supply_chg_20",
+          "shap_value": -6.289772863965482e-05,
+          "direction": "pushes_forecast_down"
+        }
+      ],
+      "note": "SHAP explains predicted log-return output, not direct causality."
+    },
+    "10": {
+      "horizon": 10,
+      "origin_date": "2026-05-05",
+      "top_local_drivers": [
+        {
+          "feature": "gold_ma_ratio_20",
+          "shap_value": 0.06696461886167526,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "gold_return_5",
+          "shap_value": 0.004253795836120844,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "m2_supply",
+          "shap_value": -0.0025593144819140434,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gold_drawdown_252",
+          "shap_value": 0.0014022808754816651,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "alpha_day_of_year_cos",
+          "shap_value": -0.0012373296776786447,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gold_volatility_20",
+          "shap_value": 0.0006485942285507917,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "gold_ma_ratio_60",
+          "shap_value": 0.0005961779970675707,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "alpha_time_index",
+          "shap_value": -0.0005727087846025825,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "ppi_index",
+          "shap_value": -0.0005598418647423387,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "unrate",
+          "shap_value": -0.0004497116897255182,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gold_return_60",
+          "shap_value": -0.00043749503674916923,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "fin_stress_chg_20",
+          "shap_value": -0.00032497424399480224,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "real_yield",
+          "shap_value": 0.00023913172481115907,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "gld_tonnes",
+          "shap_value": 0.00014404728426598012,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "cap_util",
+          "shap_value": 7.748205098323524e-05,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "inflation",
+          "shap_value": -5.393976971390657e-05,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gold_lag_5",
+          "shap_value": -5.2978648454882205e-05,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "ind_prod",
+          "shap_value": -5.233753836364485e-05,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gpr_index_z60",
+          "shap_value": 3.939184171031229e-05,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "tips_curve",
+          "shap_value": 3.729090531123802e-05,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "vix_index_chg_20",
+          "shap_value": -2.6017081836471334e-05,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "eur_usd",
+          "shap_value": 1.96677847270621e-05,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "policy_unc_chg_20",
+          "shap_value": 1.811287620512303e-05,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "nominal_yield",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "fed_bs",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        }
+      ],
+      "note": "SHAP explains predicted log-return output, not direct causality."
+    },
+    "20": {
+      "horizon": 20,
+      "origin_date": "2026-05-05",
+      "top_local_drivers": [
+        {
+          "feature": "gold_return_1",
+          "shap_value": -0.012295153923332691,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gold_drawdown_252",
+          "shap_value": 0.007133345119655132,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "alpha_month",
+          "shap_value": -0.0031636154744774103,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "policy_unc",
+          "shap_value": -0.0014357019681483507,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gold_return_5",
+          "shap_value": -0.0011103240540251136,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gold_ma_20",
+          "shap_value": -0.001108931959606707,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gold_log_price",
+          "shap_value": -0.0008021531393751502,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "alpha_day_of_year_cos",
+          "shap_value": 0.000694224436301738,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "inflation",
+          "shap_value": -0.000578271341510117,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gld_tonnes",
+          "shap_value": 0.000557436200324446,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "real_yield",
+          "shap_value": 0.00047901461948640645,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "ppi_index_z60",
+          "shap_value": -0.0003464654728304595,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "eur_usd_chg_20",
+          "shap_value": -0.00031559463241137564,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gold_ma_ratio_60",
+          "shap_value": 0.0003034237015526742,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "fed_bs",
+          "shap_value": -0.00025081654894165695,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gpr_index",
+          "shap_value": 0.00017559502157382667,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "usd_index_z60",
+          "shap_value": 0.0001752473326632753,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "alpha_time_index",
+          "shap_value": -0.0001710261421976611,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "ind_prod_chg_20",
+          "shap_value": -0.00015818924293853343,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "oil_wti",
+          "shap_value": -0.0001240308629348874,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "unrate_chg_20",
+          "shap_value": 0.00011500329856062308,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "policy_unc_chg_5",
+          "shap_value": -0.00011348189582349733,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "fin_stress",
+          "shap_value": -0.00010373035911470652,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gold_lag_20",
+          "shap_value": -9.710875747259706e-05,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gold_ma_ratio_20",
+          "shap_value": -9.088207298191264e-05,
+          "direction": "pushes_forecast_down"
+        }
+      ],
+      "note": "SHAP explains predicted log-return output, not direct causality."
+    },
+    "30": {
+      "horizon": 30,
+      "origin_date": "2026-05-05",
+      "top_local_drivers": [
+        {
+          "feature": "gold_ma_ratio_20",
+          "shap_value": 0.04966428503394127,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "gold_ma_ratio_60",
+          "shap_value": 0.004838510416448116,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "m2_supply",
+          "shap_value": -0.004459315445274115,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gold_drawdown_252",
+          "shap_value": 0.0033687492832541466,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "alpha_time_index",
+          "shap_value": -0.002759387483820319,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "ind_prod",
+          "shap_value": -0.0024247297551482916,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "ppi_index",
+          "shap_value": -0.0016723740845918655,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "alpha_day_of_year_cos",
+          "shap_value": -0.001465801615267992,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gold_return_60",
+          "shap_value": 0.0011948859319090843,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "alpha_month",
+          "shap_value": -0.0010691287461668253,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "gld_tonnes",
+          "shap_value": 0.0009501984459348023,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "gold_return_5",
+          "shap_value": 0.0004435475275386125,
+          "direction": "pushes_forecast_up"
+        },
+        {
+          "feature": "unrate_chg_20",
+          "shap_value": -0.0003006217011716217,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "inflation",
+          "shap_value": -0.00023826010874472558,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "cap_util_chg_20",
+          "shap_value": -7.028271647868678e-05,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "ind_prod_z60",
+          "shap_value": -5.4502070270245895e-05,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "nominal_yield_chg_20",
+          "shap_value": -3.519001620588824e-05,
+          "direction": "pushes_forecast_down"
+        },
+        {
+          "feature": "real_yield",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "nominal_yield",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "tips_curve",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "fed_bs",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "usd_index",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "eur_usd",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "jpy_usd",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        },
+        {
+          "feature": "vix_index",
+          "shap_value": 0.0,
+          "direction": "neutral"
+        }
+      ],
+      "note": "SHAP explains predicted log-return output, not direct causality."
+    }
+  },
+  "note": "SHAP explains predicted log-return output; it is interpretability, not causality."
+}

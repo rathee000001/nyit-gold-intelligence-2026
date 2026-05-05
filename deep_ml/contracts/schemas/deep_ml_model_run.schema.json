@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "deep_ml_model_run.schema.json",
+  "title": "Deep ML Model Run Artifact",
+  "type": "object",
+  "required": [
+    "artifact_type",
+    "schema_version",
+    "project",
+    "phase",
+    "mode",
+    "run",
+    "data_signature",
+    "model",
+    "features",
+    "forecast",
+    "uncertainty",
+    "evaluation",
+    "interpretability",
+    "diagnostics",
+    "limitations",
+    "professor_safe_summary",
+    "ai_grounding"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "deep_ml_model_run"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "project": {
+      "const": "Gold Nexus Alpha"
+    },
+    "phase": {
+      "const": "phase_2_deep_ml"
+    },
+    "mode": {
+      "type": "object",
+      "required": [
+        "name",
+        "display_label",
+        "official_research_cutoff_date",
+        "live_mode"
+      ],
+      "properties": {
+        "name": {
+          "enum": [
+            "official_research_mode",
+            "live_market_update_mode"
+          ]
+        },
+        "display_label": {
+          "type": "string"
+        },
+        "official_research_cutoff_date": {
+          "type": "string"
+        },
+        "live_mode": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "run": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "run_id",
+        "generated_at_utc",
+        "generated_at_local",
+        "timezone_local",
+        "code_version",
+        "python_version"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "generated_at_utc": {
+          "type": "string"
+        },
+        "generated_at_local": {
+          "type": "string"
+        },
+        "timezone_local": {
+          "type": "string"
+        },
+        "git_commit_sha": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "code_version": {
+          "type": "string"
+        },
+        "python_version": {
+          "type": "string"
+        },
+        "cuda_available": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "device": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "data_signature": {
+      "type": "object",
+      "required": [
+        "matrix_snapshot_id",
+        "effective_data_through_date",
+        "forecast_start_date",
+        "matrix_hash",
+        "feature_hash",
+        "factor_state_table_hash"
+      ],
+      "properties": {
+        "matrix_snapshot_id": {
+          "type": "string"
+        },
+        "matrix_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "effective_data_through_date": {
+          "type": "string"
+        },
+        "forecast_start_date": {
+          "type": "string"
+        },
+        "matrix_row_count": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "matrix_hash": {
+          "type": "string"
+        },
+        "feature_hash": {
+          "type": "string"
+        },
+        "factor_state_table_hash": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "model": {
+      "type": "object",
+      "required": [
+        "model_key",
+        "model_name",
+        "family",
+        "target",
+        "horizons",
+        "training_window"
+      ],
+      "properties": {
+        "model_key": {
+          "type": "string"
+        },
+        "model_name": {
+          "type": "string"
+        },
+        "family": {
+          "type": "string"
+        },
+        "target": {
+          "const": "gold_price"
+        },
+        "horizons": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "training_window": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    },
+    "features": {
+      "type": "object"
+    },
+    "forecast": {
+      "type": "object"
+    },
+    "uncertainty": {
+      "type": "object"
+    },
+    "evaluation": {
+      "type": "object"
+    },
+    "interpretability": {
+      "type": "object"
+    },
+    "diagnostics": {
+      "type": "object"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "professor_safe_summary": {
+      "type": "string"
+    },
+    "ai_grounding": {
+      "type": "object",
+      "required": [
+        "allowed_claims",
+        "forbidden_claims",
+        "source_artifacts"
+      ],
+      "properties": {
+        "allowed_claims": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "forbidden_claims": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source_artifacts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

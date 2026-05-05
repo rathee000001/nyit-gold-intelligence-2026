@@ -1,0 +1,10 @@
+{
+  "artifact_type": "deep_ml_progress_checkpoint",
+  "phase_key": "phase11_governed_feature_store_refresh",
+  "step": "completed",
+  "status": "ready",
+  "updated_at_utc": "2026-05-05T09:32:08.561444Z",
+  "payload": {
+    "send_me_this_json": "artifacts\\deep_ml\\feature_refresh\\phase11_governed_feature_store_refresh_report.json"
+  }
+}

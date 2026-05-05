@@ -1,0 +1,21 @@
+{
+  "artifact_type": "gold_live_update_summary",
+  "schema_version": "1.0.0",
+  "status": "completed",
+  "provider_requested": "yahoo",
+  "provider_used": "yahoo_chart",
+  "symbol": "GC=F",
+  "instrument_label": "COMEX Gold Futures",
+  "source_type": "comex_futures_proxy_delayed",
+  "official_target_warning": "This live extension is a public market proxy after the approved cutoff; it is not silently treated as the original official LBMA-style historical target.",
+  "start_date": "2026-04-01",
+  "end_date": null,
+  "row_count": 24,
+  "first_valid_date": "2026-04-01",
+  "last_valid_date": "2026-05-05",
+  "latest_gold_price": 4561.7001953125,
+  "output_csv": "artifacts\\deep_ml\\source_update\\gold_live_pulled\\gold_live_GC_F.csv",
+  "output_csv_hash": "sha256:403b5493f0cc7dfefc2a4da987c4749a05c5db0e222008067f5de9e981a51661",
+  "runtime_seconds": 0.219,
+  "generated_at_utc": "2026-05-05T08:47:16.878479Z"
+}

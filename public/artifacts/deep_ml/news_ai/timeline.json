@@ -1,0 +1,47 @@
+[
+  {
+    "timestamp_utc": "2026-05-05T18:21:16.468169Z",
+    "elapsed_seconds": 0.0,
+    "event": "phase12_news_ai_context_started",
+    "status": "ok",
+    "details": {
+      "run_id": "deepml_run_20260505_182116_news_ai_context"
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T18:21:16.578806Z",
+    "elapsed_seconds": 0.111,
+    "event": "project_artifacts_loaded",
+    "status": "ok",
+    "details": {
+      "feature_rows": 5306,
+      "effective_date": "2026-05-05"
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T18:21:16.578806Z",
+    "elapsed_seconds": 0.111,
+    "event": "news_items_loaded_or_fallback_created",
+    "status": "ok",
+    "details": {
+      "input_mode": "fallback_project_context",
+      "items": 6
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T18:21:16.595893Z",
+    "elapsed_seconds": 0.128,
+    "event": "news_items_scored",
+    "status": "ok",
+    "details": {
+      "scored_items": 6
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T18:21:16.598426Z",
+    "elapsed_seconds": 0.13,
+    "event": "theme_and_factor_exposure_built",
+    "status": "ok",
+    "details": {}
+  }
+]

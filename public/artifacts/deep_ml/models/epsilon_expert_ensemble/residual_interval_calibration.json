@@ -1,0 +1,51 @@
+{
+  "artifact_type": "epsilon_residual_interval_calibration",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "target_coverage_pct": 80.0,
+  "p50_preserved": true,
+  "professor_safe_note": "Intervals use validation residual behavior. They estimate uncertainty but do not guarantee future ranges.",
+  "by_horizon": {
+    "1": {
+      "status": "ready",
+      "method": "validation_residual_empirical_quantiles",
+      "target_coverage_pct": 80.0,
+      "lower_residual_p10": -46.179036706220536,
+      "upper_residual_p90": 51.00284083797378,
+      "median_abs_residual": 9.90543494919666
+    },
+    "5": {
+      "status": "ready",
+      "method": "validation_residual_empirical_quantiles",
+      "target_coverage_pct": 80.0,
+      "lower_residual_p10": -152.1009777012468,
+      "upper_residual_p90": 162.58601689850587,
+      "median_abs_residual": 45.76984843042385
+    },
+    "10": {
+      "status": "ready",
+      "method": "validation_residual_empirical_quantiles",
+      "target_coverage_pct": 80.0,
+      "lower_residual_p10": -151.72713046472265,
+      "upper_residual_p90": 158.85009000890642,
+      "median_abs_residual": 58.288538391464385
+    },
+    "20": {
+      "status": "ready",
+      "method": "validation_residual_empirical_quantiles",
+      "target_coverage_pct": 80.0,
+      "lower_residual_p10": -99.50412376220947,
+      "upper_residual_p90": 126.33614965700131,
+      "median_abs_residual": 52.48317796993922
+    },
+    "30": {
+      "status": "ready",
+      "method": "validation_residual_empirical_quantiles",
+      "target_coverage_pct": 80.0,
+      "lower_residual_p10": -116.55880482701814,
+      "upper_residual_p90": 167.5381738191489,
+      "median_abs_residual": 67.94323272251722
+    }
+  },
+  "generated_at_utc": "2026-05-05T18:14:26.267180Z"
+}

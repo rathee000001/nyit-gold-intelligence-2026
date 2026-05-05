@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "factor_state_table.schema.json",
+  "title": "Deep ML Factor State Table",
+  "type": "object",
+  "required": [
+    "artifact_type",
+    "schema_version",
+    "generated_at_utc",
+    "mode",
+    "rows"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "deep_ml_factor_state_table"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "generated_at_utc": {
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "official_research_mode",
+        "live_market_update_mode"
+      ]
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "factor_key",
+          "display_name",
+          "source_type",
+          "current_state",
+          "last_observed_date",
+          "valid_through_date",
+          "research_mode_eligible",
+          "live_mode_eligible",
+          "warning_level",
+          "interpretation",
+          "action_needed"
+        ],
+        "properties": {
+          "factor_key": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "source_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_type": {
+            "type": "string"
+          },
+          "expected_frequency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "first_valid_date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "last_observed_date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "valid_through_date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "current_state": {
+            "enum": [
+              "api_live",
+              "manual_current",
+              "manual_stale",
+              "carried_forward",
+              "official_cutoff_locked",
+              "unavailable",
+              "derived_feature"
+            ]
+          },
+          "staleness_days": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "carry_forward_policy": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "research_mode_eligible": {
+            "type": "boolean"
+          },
+          "live_mode_eligible": {
+            "type": "boolean"
+          },
+          "alpha_eligible": {
+            "type": "boolean"
+          },
+          "beta_eligible": {
+            "type": "boolean"
+          },
+          "delta_eligible": {
+            "type": "boolean"
+          },
+          "epsilon_eligible": {
+            "type": "boolean"
+          },
+          "gamma_eligible": {
+            "type": "boolean"
+          },
+          "omega_eligible": {
+            "type": "boolean"
+          },
+          "warning_level": {
+            "enum": [
+              "none",
+              "info",
+              "caution",
+              "severe"
+            ]
+          },
+          "interpretation": {
+            "type": "string"
+          },
+          "action_needed": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

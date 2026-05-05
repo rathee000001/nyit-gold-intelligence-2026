@@ -1,0 +1,349 @@
+{
+  "artifact_type": "phase11_governed_feature_store_refresh_report",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "Phase 11 \u2014 Governed Cutoff + Factor State + Feature Store Refresh",
+  "phase_key": "phase11_governed_feature_store_refresh",
+  "status": "ready",
+  "refresh_id": "deepml_feature_refresh_20260505_093208",
+  "run": {
+    "run_id": "deepml_feature_refresh_20260505_093208",
+    "started_at_utc": "2026-05-05T09:32:08.097615Z",
+    "completed_at_utc": "2026-05-05T09:32:08.506758Z",
+    "script_version": "governed_feature_store_refresh_v2_yahoo_gold_plus_fred_registry",
+    "git_commit_sha": "be6e3bf",
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "base_source": {
+    "base_source_type": "existing_deep_ml_numeric_feature_store_official_rows_only",
+    "path": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+    "hash": "sha256:d8535a105a2dba2a09bbf6917fb3dccd22e37c385c0f00db1ce5454a782f0a19",
+    "original_row_count": 5306,
+    "official_row_count_used": 5282,
+    "original_last_date": "2026-05-05",
+    "official_last_date_used": "2026-03-31",
+    "date_column": "date",
+    "gold_column": "gold_price"
+  },
+  "gold_live_source": {
+    "path": "artifacts\\deep_ml\\source_update\\gold_live_pulled\\gold_live_GC_F.csv",
+    "hash": "sha256:403b5493f0cc7dfefc2a4da987c4749a05c5db0e222008067f5de9e981a51661",
+    "row_count": 24,
+    "first_date": "2026-04-01",
+    "last_date": "2026-05-05",
+    "source_type": "yahoo_gc_f_comex_futures_proxy_delayed"
+  },
+  "fred_merge_summary": {
+    "fred_pull_report_path": "artifacts\\deep_ml\\source_update\\fred_registry_pull_report.json",
+    "fred_pull_report_hash": "sha256:88f7efe21b64caf6d0256b24ef989a4bc383f9f09ef7f16c2703b2869098fe61",
+    "fred_pull_status": "ready",
+    "fred_report_script_version": "fred_registry_pull_v2_retry_long_window",
+    "fred_series_attempted": 17,
+    "fred_series_valid_pulled": 17,
+    "fred_series_failed": 0,
+    "fred_latest_valid_observation_date": "2026-05-04",
+    "fred_series_used_in_merge": 16,
+    "fred_series_skipped_in_merge": 1,
+    "fred_columns_updated": [
+      "cap_util",
+      "eur_usd",
+      "fed_bs",
+      "fin_stress",
+      "ind_prod",
+      "inflation",
+      "jpy_usd",
+      "m2_supply",
+      "nominal_yield",
+      "oil_wti",
+      "ppi_index",
+      "real_yield",
+      "tips_curve",
+      "unrate",
+      "usd_index",
+      "vix_index"
+    ],
+    "merge_policy": "FRED values are forward-filled onto post-cutoff Yahoo gold dates; manual factors remain carried forward.",
+    "details": [
+      {
+        "factor_key": "real_yield",
+        "series_id": "DFII10",
+        "target_columns_applied": [
+          "real_yield"
+        ],
+        "status": "merged_forward_filled",
+        "first_fred_valid_date": "2025-01-02",
+        "last_fred_valid_date": "2026-05-01",
+        "post_cutoff_unique_values": {
+          "real_yield": 11
+        }
+      },
+      {
+        "factor_key": "nominal_yield",
+        "series_id": "DGS10",
+        "target_columns_applied": [
+          "nominal_yield"
+        ],
+        "status": "merged_forward_filled",
+        "first_fred_valid_date": "2025-01-02",
+        "last_fred_valid_date": "2026-05-01",
+        "post_cutoff_unique_values": {
+          "nominal_yield": 12
+        }
+      },
+      {
+        "factor_key": "tips_curve",
+        "series_id": "T10Y2Y",
+        "target_columns_applied": [
+          "tips_curve"
+        ],
+        "status": "merged_forward_filled",
+        "first_fred_valid_date": "2025-01-02",
+        "last_fred_valid_date": "2026-05-04",
+        "post_cutoff_unique_values": {
+          "tips_curve": 7
+        }
+      },
+      {
+        "factor_key": "fed_bs",
+        "series_id": "WALCL",
+        "target_columns_applied": [
+          "fed_bs"
+        ],
+        "status": "merged_forward_filled",
+        "first_fred_valid_date": "2025-01-01",
+        "last_fred_valid_date": "2026-04-29",
+        "post_cutoff_unique_values": {
+          "fed_bs": 5
+        }
+      },
+      {
+        "factor_key": "m2_supply",
+        "series_id": "M2SL",
+        "target_columns_applied": [
+          "m2_supply"
+        ],
+        "status": "merged_forward_filled",
+        "first_fred_valid_date": "2025-01-01",
+        "last_fred_valid_date": "2026-03-01",
+        "post_cutoff_unique_values": {
+          "m2_supply": 1
+        }
+      },
+      {
+        "factor_key": "inflation",
+        "series_id": "CPIAUCSL",
+        "target_columns_applied": [
+          "inflation"
+        ],
+        "status": "merged_forward_filled",
+        "first_fred_valid_date": "2025-01-01",
+        "last_fred_valid_date": "2026-03-01",
+        "post_cutoff_unique_values": {
+          "inflation": 1
+        }
+      },
+      {
+        "factor_key": "usd_index",
+        "series_id": "DTWEXBGS",
+        "target_columns_applied": [
+          "usd_index"
+        ],
+        "status": "merged_forward_filled",
+        "first_fred_valid_date": "2025-01-02",
+        "last_fred_valid_date": "2026-05-01",
+        "post_cutoff_unique_values": {
+          "usd_index": 22
+        }
+      },
+      {
+        "factor_key": "eur_usd",
+        "series_id": "DEXUSEU",
+        "target_columns_applied": [
+          "eur_usd"
+        ],
+        "status": "merged_forward_filled",
+        "first_fred_valid_date": "2025-01-02",
+        "last_fred_valid_date": "2026-05-01",
+        "post_cutoff_unique_values": {
+          "eur_usd": 22
+        }
+      },
+      {
+        "factor_key": "jpy_usd",
+        "series_id": "DEXJPUS",
+        "target_columns_applied": [
+          "jpy_usd"
+        ],
+        "status": "merged_forward_filled",
+        "first_fred_valid_date": "2025-01-02",
+        "last_fred_valid_date": "2026-05-01",
+        "post_cutoff_unique_values": {
+          "jpy_usd": 22
+        }
+      },
+      {
+        "factor_key": "vix_index",
+        "series_id": "VIXCLS",
+        "target_columns_applied": [
+          "vix_index"
+        ],
+        "status": "merged_forward_filled",
+        "first_fred_valid_date": "2025-01-02",
+        "last_fred_valid_date": "2026-05-01",
+        "post_cutoff_unique_values": {
+          "vix_index": 22
+        }
+      },
+      {
+        "factor_key": "fin_stress",
+        "series_id": "STLFSI4",
+        "target_columns_applied": [
+          "fin_stress"
+        ],
+        "status": "merged_forward_filled",
+        "first_fred_valid_date": "2025-01-03",
+        "last_fred_valid_date": "2026-04-24",
+        "post_cutoff_unique_values": {
+          "fin_stress": 5
+        }
+      },
+      {
+        "factor_key": "oil_wti",
+        "series_id": "DCOILWTICO",
+        "target_columns_applied": [
+          "oil_wti"
+        ],
+        "status": "merged_forward_filled",
+        "first_fred_valid_date": "2025-01-02",
+        "last_fred_valid_date": "2026-04-27",
+        "post_cutoff_unique_values": {
+          "oil_wti": 18
+        }
+      },
+      {
+        "factor_key": "ppi_index",
+        "series_id": "PPIACO",
+        "target_columns_applied": [
+          "ppi_index"
+        ],
+        "status": "merged_forward_filled",
+        "first_fred_valid_date": "2025-01-01",
+        "last_fred_valid_date": "2026-03-01",
+        "post_cutoff_unique_values": {
+          "ppi_index": 1
+        }
+      },
+      {
+        "factor_key": "unrate",
+        "series_id": "UNRATE",
+        "target_columns_applied": [
+          "unrate"
+        ],
+        "status": "merged_forward_filled",
+        "first_fred_valid_date": "2025-01-01",
+        "last_fred_valid_date": "2026-03-01",
+        "post_cutoff_unique_values": {
+          "unrate": 1
+        }
+      },
+      {
+        "factor_key": "ind_prod",
+        "series_id": "INDPRO",
+        "target_columns_applied": [
+          "ind_prod"
+        ],
+        "status": "merged_forward_filled",
+        "first_fred_valid_date": "2025-01-01",
+        "last_fred_valid_date": "2026-03-01",
+        "post_cutoff_unique_values": {
+          "ind_prod": 1
+        }
+      },
+      {
+        "factor_key": "cap_util",
+        "series_id": "TCU",
+        "target_columns_applied": [
+          "cap_util"
+        ],
+        "status": "merged_forward_filled",
+        "first_fred_valid_date": "2025-01-01",
+        "last_fred_valid_date": "2026-03-01",
+        "post_cutoff_unique_values": {
+          "cap_util": 1
+        }
+      },
+      {
+        "factor_key": "high_yield",
+        "series_id": "BAMLH0A0HYM2",
+        "target_column": "high_yield",
+        "status": "target_column_not_in_feature_store_skipped"
+      }
+    ]
+  },
+  "refresh_summary": {
+    "official_cutoff": "2026-03-31",
+    "row_count": 5306,
+    "column_count": 56,
+    "first_date": "2006-01-02",
+    "last_date": "2026-05-05",
+    "post_cutoff_row_count": 24,
+    "gold_column": "gold_price",
+    "post_cutoff_policy": "Yahoo GC=F updates gold_price; FRED registry CSVs update mapped API factors; manual/local factors carried forward.",
+    "fred_api_factors_updated": 16,
+    "fred_columns_updated": [
+      "cap_util",
+      "eur_usd",
+      "fed_bs",
+      "fin_stress",
+      "ind_prod",
+      "inflation",
+      "jpy_usd",
+      "m2_supply",
+      "nominal_yield",
+      "oil_wti",
+      "ppi_index",
+      "real_yield",
+      "tips_curve",
+      "unrate",
+      "usd_index",
+      "vix_index"
+    ]
+  },
+  "quality_review": {
+    "artifact_type": "phase11_quality_review",
+    "schema_version": "1.0.0",
+    "status": "ready",
+    "blocking_flags": [],
+    "warnings": [],
+    "acceptance_gate": {
+      "gold_price_extended_after_cutoff": true,
+      "fred_columns_updated_after_cutoff": true,
+      "raw_gold_price_anchor_preserved": true,
+      "source_flags_exported": true,
+      "frontend_code_not_modified": true,
+      "all_required_outputs_exist": true
+    },
+    "generated_at_utc": "2026-05-05T09:32:08.506758Z"
+  },
+  "outputs": {
+    "numeric_feature_store": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+    "refreshed_matrix_csv": "artifacts\\deep_ml\\feature_refresh\\deep_ml_refreshed_matrix.csv",
+    "refreshed_matrix_parquet": "artifacts\\deep_ml\\feature_refresh\\deep_ml_refreshed_matrix.parquet",
+    "factor_state_table": "artifacts\\deep_ml\\data\\factor_state_table.json",
+    "model_feature_plan": "artifacts\\deep_ml\\features\\model_feature_plan.json",
+    "target_plan": "artifacts\\deep_ml\\features\\target_plan.json"
+  },
+  "next_step": {
+    "instruction": "Review this Phase 11 V2 report before rerunning models.",
+    "rerun_order": [
+      "py .\\deep_ml\\scripts\\06_train_alpha_structural.py",
+      "py .\\deep_ml\\scripts\\07_train_beta_temporal.py",
+      "py .\\deep_ml\\scripts\\08_train_delta_tft.py",
+      "py .\\deep_ml\\scripts\\09_train_epsilon_expert_ensemble.py"
+    ]
+  },
+  "professor_safe_summary": "Phase 11 V2 refreshed Deep ML artifacts using Yahoo GC=F for post-cutoff gold and FRED registry CSVs for mapped API factors. Manual/local factors remain carried forward. Frontend code was not modified.",
+  "final_instruction": "Send me artifacts/deep_ml/feature_refresh/phase11_governed_feature_store_refresh_report.json for review before model reruns.",
+  "generated_at_utc": "2026-05-05T09:32:08.557933Z"
+}

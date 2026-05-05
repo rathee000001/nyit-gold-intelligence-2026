@@ -1,0 +1,12 @@
+{
+  "artifact_type": "latest_deep_ml_pointer",
+  "schema_version": "1.0.0",
+  "updated_at_utc": "2026-05-05T03:45:02Z",
+  "latest_study_id": "deepml_study_20260505_000000_research_20260331",
+  "latest_run_id": "deepml_run_20260505_000000_alpha_structural_research_20260331",
+  "mode": "official_research_mode",
+  "effective_data_through_date": "2026-03-31",
+  "forecast_start_date": "2026-04-01",
+  "artifact_root": "artifacts/deep_ml",
+  "page_bundle_root": "artifacts/deep_ml/pages"
+}

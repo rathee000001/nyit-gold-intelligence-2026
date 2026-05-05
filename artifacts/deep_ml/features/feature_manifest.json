@@ -1,0 +1,974 @@
+{
+  "artifact_type": "deep_ml_feature_manifest",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T04:01:50Z",
+  "mode": "official_research_mode",
+  "study_id": "deepml_study_20260505_035349_officialresearch_20260331",
+  "run_batch_id": "deepml_batch_20260505_035349_officialresearch_20260331",
+  "effective_data_through_date": "2026-03-31",
+  "forecast_start_date": "2026-04-01",
+  "target": "gold_price",
+  "base_features": [
+    {
+      "feature_key": "gold_price",
+      "source_factor": "gold_price",
+      "display_name": "Gold Price",
+      "category": "target",
+      "role": "target",
+      "source_type": "baseline_target",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "trading_day",
+      "include_in_alpha_structural": false,
+      "include_in_beta_temporal": false,
+      "include_in_delta_tft": false,
+      "include_in_epsilon_fast_expert": true,
+      "include_in_gamma_news_sensitivity": false,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Target variable. In future live mode, this may be updated from a Yahoo-style API source."
+    },
+    {
+      "feature_key": "real_yield",
+      "source_factor": "real_yield",
+      "display_name": "Real Yield",
+      "category": "rates",
+      "role": "exogenous_factor",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "daily_or_market",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": true,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Core rate factor."
+    },
+    {
+      "feature_key": "nominal_yield",
+      "source_factor": "nominal_yield",
+      "display_name": "Nominal Yield",
+      "category": "rates",
+      "role": "exogenous_factor",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "daily_or_market",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": false,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Core rate factor."
+    },
+    {
+      "feature_key": "tips_curve",
+      "source_factor": "tips_curve",
+      "display_name": "TIPS Curve",
+      "category": "rates",
+      "role": "exogenous_factor",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "daily_or_market",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": false,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Yield curve factor."
+    },
+    {
+      "feature_key": "fed_bs",
+      "source_factor": "fed_bs",
+      "display_name": "Federal Reserve Balance Sheet",
+      "category": "liquidity",
+      "role": "exogenous_factor",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "weekly",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": false,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Liquidity factor."
+    },
+    {
+      "feature_key": "m2_supply",
+      "source_factor": "m2_supply",
+      "display_name": "M2 Money Supply",
+      "category": "liquidity",
+      "role": "exogenous_factor",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "weekly_or_monthly",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": false,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Money supply factor."
+    },
+    {
+      "feature_key": "inflation",
+      "source_factor": "inflation",
+      "display_name": "Inflation",
+      "category": "macro",
+      "role": "exogenous_factor",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "monthly",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": true,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Inflation proxy."
+    },
+    {
+      "feature_key": "usd_index",
+      "source_factor": "usd_index",
+      "display_name": "US Dollar Index",
+      "category": "currency",
+      "role": "exogenous_factor",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "daily_or_market",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": true,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Currency factor."
+    },
+    {
+      "feature_key": "eur_usd",
+      "source_factor": "eur_usd",
+      "display_name": "EUR/USD",
+      "category": "currency",
+      "role": "exogenous_factor",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "daily_or_market",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": false,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Currency factor."
+    },
+    {
+      "feature_key": "jpy_usd",
+      "source_factor": "jpy_usd",
+      "display_name": "JPY/USD",
+      "category": "currency",
+      "role": "exogenous_factor",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "daily_or_market",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": false,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Currency factor."
+    },
+    {
+      "feature_key": "vix_index",
+      "source_factor": "vix_index",
+      "display_name": "VIX Index",
+      "category": "risk",
+      "role": "exogenous_factor",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "daily_or_market",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": true,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Risk and volatility factor."
+    },
+    {
+      "feature_key": "high_yield",
+      "source_factor": "high_yield",
+      "display_name": "High Yield",
+      "category": "credit",
+      "role": "sensitivity_only",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "daily_or_market",
+      "include_in_alpha_structural": false,
+      "include_in_beta_temporal": false,
+      "include_in_delta_tft": false,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": false,
+      "include_in_omega_fusion": false,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Excluded from main models because it starts too late. Sensitivity-only factor."
+    },
+    {
+      "feature_key": "fin_stress",
+      "source_factor": "fin_stress",
+      "display_name": "Financial Stress",
+      "category": "risk",
+      "role": "exogenous_factor",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "weekly",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": true,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Financial stress factor."
+    },
+    {
+      "feature_key": "gpr_index",
+      "source_factor": "gpr_index",
+      "display_name": "Geopolitical Risk Index",
+      "category": "geopolitical",
+      "role": "exogenous_factor",
+      "source_type": "manual_csv",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "monthly",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": true,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Manual/local factor and cutoff-sensitive geopolitical risk variable."
+    },
+    {
+      "feature_key": "policy_unc",
+      "source_factor": "policy_unc",
+      "display_name": "Policy Uncertainty",
+      "category": "policy",
+      "role": "exogenous_factor",
+      "source_type": "manual_csv",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "monthly",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": true,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Manual/local factor and cutoff-sensitive policy uncertainty variable."
+    },
+    {
+      "feature_key": "oil_wti",
+      "source_factor": "oil_wti",
+      "display_name": "WTI Oil",
+      "category": "commodity",
+      "role": "exogenous_factor",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "daily_or_market",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": true,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Commodity factor."
+    },
+    {
+      "feature_key": "ppi_index",
+      "source_factor": "ppi_index",
+      "display_name": "PPI Index",
+      "category": "macro",
+      "role": "exogenous_factor",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "monthly",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": false,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Producer price factor."
+    },
+    {
+      "feature_key": "gld_tonnes",
+      "source_factor": "gld_tonnes",
+      "display_name": "GLD Tonnes",
+      "category": "gold_etf",
+      "role": "exogenous_factor",
+      "source_type": "manual_csv",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "daily_or_irregular",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": true,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Manual/local ETF holdings factor."
+    },
+    {
+      "feature_key": "unrate",
+      "source_factor": "unrate",
+      "display_name": "Unemployment Rate",
+      "category": "macro",
+      "role": "exogenous_factor",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "monthly",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": false,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Labor macro factor."
+    },
+    {
+      "feature_key": "ind_prod",
+      "source_factor": "ind_prod",
+      "display_name": "Industrial Production",
+      "category": "macro",
+      "role": "exogenous_factor",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "monthly",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": false,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Industrial activity factor."
+    },
+    {
+      "feature_key": "cap_util",
+      "source_factor": "cap_util",
+      "display_name": "Capacity Utilization",
+      "category": "macro",
+      "role": "exogenous_factor",
+      "source_type": "baseline_factor",
+      "current_state": "official_cutoff_locked",
+      "valid_through_date": "2026-03-31",
+      "expected_frequency": "monthly",
+      "include_in_alpha_structural": true,
+      "include_in_beta_temporal": true,
+      "include_in_delta_tft": true,
+      "include_in_epsilon_fast_expert": false,
+      "include_in_gamma_news_sensitivity": false,
+      "include_in_omega_fusion": true,
+      "leakage_risk": "low_if_lagged_or_observed_before_forecast_date",
+      "notes": "Capacity utilization factor."
+    }
+  ],
+  "engineered_feature_plan": [
+    {
+      "feature_key": "gold_lag_1",
+      "source_factor": "gold_price",
+      "feature_type": "lag",
+      "parameters": {
+        "lag_trading_days": 1
+      },
+      "eligible_models": [
+        "alpha_structural",
+        "beta_temporal",
+        "delta_tft",
+        "epsilon_fast_expert"
+      ],
+      "leakage_rule": "Use only gold_price observed at t-1 or earlier."
+    },
+    {
+      "feature_key": "gold_lag_5",
+      "source_factor": "gold_price",
+      "feature_type": "lag",
+      "parameters": {
+        "lag_trading_days": 5
+      },
+      "eligible_models": [
+        "alpha_structural",
+        "beta_temporal",
+        "delta_tft",
+        "epsilon_fast_expert"
+      ],
+      "leakage_rule": "Use only gold_price observed at t-5 or earlier."
+    },
+    {
+      "feature_key": "gold_lag_20",
+      "source_factor": "gold_price",
+      "feature_type": "lag",
+      "parameters": {
+        "lag_trading_days": 20
+      },
+      "eligible_models": [
+        "alpha_structural",
+        "beta_temporal",
+        "delta_tft",
+        "epsilon_fast_expert"
+      ],
+      "leakage_rule": "Use only gold_price observed at t-20 or earlier."
+    },
+    {
+      "feature_key": "gold_return_1",
+      "source_factor": "gold_price",
+      "feature_type": "return",
+      "parameters": {
+        "period_trading_days": 1
+      },
+      "eligible_models": [
+        "alpha_structural",
+        "beta_temporal",
+        "delta_tft",
+        "epsilon_fast_expert"
+      ],
+      "leakage_rule": "Return must be calculated using past and current observed values only inside each split."
+    },
+    {
+      "feature_key": "gold_return_5",
+      "source_factor": "gold_price",
+      "feature_type": "return",
+      "parameters": {
+        "period_trading_days": 5
+      },
+      "eligible_models": [
+        "alpha_structural",
+        "beta_temporal",
+        "delta_tft",
+        "epsilon_fast_expert"
+      ],
+      "leakage_rule": "Return must be calculated using past and current observed values only inside each split."
+    },
+    {
+      "feature_key": "gold_ma_5",
+      "source_factor": "gold_price",
+      "feature_type": "rolling_mean",
+      "parameters": {
+        "window_trading_days": 5
+      },
+      "eligible_models": [
+        "alpha_structural",
+        "beta_temporal",
+        "delta_tft",
+        "epsilon_fast_expert"
+      ],
+      "leakage_rule": "Rolling mean must use historical window only."
+    },
+    {
+      "feature_key": "gold_ma_20",
+      "source_factor": "gold_price",
+      "feature_type": "rolling_mean",
+      "parameters": {
+        "window_trading_days": 20
+      },
+      "eligible_models": [
+        "alpha_structural",
+        "beta_temporal",
+        "delta_tft",
+        "epsilon_fast_expert"
+      ],
+      "leakage_rule": "Rolling mean must use historical window only."
+    },
+    {
+      "feature_key": "gold_ma_60",
+      "source_factor": "gold_price",
+      "feature_type": "rolling_mean",
+      "parameters": {
+        "window_trading_days": 60
+      },
+      "eligible_models": [
+        "alpha_structural",
+        "beta_temporal",
+        "delta_tft"
+      ],
+      "leakage_rule": "Rolling mean must use historical window only."
+    },
+    {
+      "feature_key": "gold_volatility_20",
+      "source_factor": "gold_price",
+      "feature_type": "rolling_volatility",
+      "parameters": {
+        "window_trading_days": 20
+      },
+      "eligible_models": [
+        "alpha_structural",
+        "beta_temporal",
+        "delta_tft"
+      ],
+      "leakage_rule": "Rolling volatility must use historical returns only."
+    },
+    {
+      "feature_key": "days_since_factor_start",
+      "source_factor": "all_factors",
+      "feature_type": "inception_metadata",
+      "parameters": {},
+      "eligible_models": [
+        "beta_temporal",
+        "delta_tft"
+      ],
+      "leakage_rule": "Inception metadata is allowed because it is calendar/source metadata, not future target information."
+    },
+    {
+      "feature_key": "observed_mask",
+      "source_factor": "all_factors",
+      "feature_type": "mask",
+      "parameters": {},
+      "eligible_models": [
+        "beta_temporal",
+        "delta_tft"
+      ],
+      "leakage_rule": "Mask must indicate whether value was observed or carried as of that date."
+    },
+    {
+      "feature_key": "availability_mask",
+      "source_factor": "all_factors",
+      "feature_type": "mask",
+      "parameters": {},
+      "eligible_models": [
+        "beta_temporal",
+        "delta_tft"
+      ],
+      "leakage_rule": "Mask must indicate whether factor was available as of that date."
+    }
+  ],
+  "model_feature_sets": {
+    "alpha_structural": {
+      "base_features": [
+        "real_yield",
+        "nominal_yield",
+        "tips_curve",
+        "fed_bs",
+        "m2_supply",
+        "inflation",
+        "usd_index",
+        "eur_usd",
+        "jpy_usd",
+        "vix_index",
+        "fin_stress",
+        "gpr_index",
+        "policy_unc",
+        "oil_wti",
+        "ppi_index",
+        "gld_tonnes",
+        "unrate",
+        "ind_prod",
+        "cap_util"
+      ],
+      "engineered_features": [
+        "gold_lag_1",
+        "gold_lag_5",
+        "gold_lag_20",
+        "gold_return_1",
+        "gold_return_5",
+        "gold_ma_5",
+        "gold_ma_20",
+        "gold_ma_60",
+        "gold_volatility_20"
+      ],
+      "all_features": [
+        "real_yield",
+        "nominal_yield",
+        "tips_curve",
+        "fed_bs",
+        "m2_supply",
+        "inflation",
+        "usd_index",
+        "eur_usd",
+        "jpy_usd",
+        "vix_index",
+        "fin_stress",
+        "gpr_index",
+        "policy_unc",
+        "oil_wti",
+        "ppi_index",
+        "gld_tonnes",
+        "unrate",
+        "ind_prod",
+        "cap_util",
+        "gold_lag_1",
+        "gold_lag_5",
+        "gold_lag_20",
+        "gold_return_1",
+        "gold_return_5",
+        "gold_ma_5",
+        "gold_ma_20",
+        "gold_ma_60",
+        "gold_volatility_20"
+      ],
+      "feature_count": 28
+    },
+    "beta_temporal": {
+      "base_features": [
+        "real_yield",
+        "nominal_yield",
+        "tips_curve",
+        "fed_bs",
+        "m2_supply",
+        "inflation",
+        "usd_index",
+        "eur_usd",
+        "jpy_usd",
+        "vix_index",
+        "fin_stress",
+        "gpr_index",
+        "policy_unc",
+        "oil_wti",
+        "ppi_index",
+        "gld_tonnes",
+        "unrate",
+        "ind_prod",
+        "cap_util"
+      ],
+      "engineered_features": [
+        "gold_lag_1",
+        "gold_lag_5",
+        "gold_lag_20",
+        "gold_return_1",
+        "gold_return_5",
+        "gold_ma_5",
+        "gold_ma_20",
+        "gold_ma_60",
+        "gold_volatility_20",
+        "days_since_factor_start",
+        "observed_mask",
+        "availability_mask"
+      ],
+      "all_features": [
+        "real_yield",
+        "nominal_yield",
+        "tips_curve",
+        "fed_bs",
+        "m2_supply",
+        "inflation",
+        "usd_index",
+        "eur_usd",
+        "jpy_usd",
+        "vix_index",
+        "fin_stress",
+        "gpr_index",
+        "policy_unc",
+        "oil_wti",
+        "ppi_index",
+        "gld_tonnes",
+        "unrate",
+        "ind_prod",
+        "cap_util",
+        "gold_lag_1",
+        "gold_lag_5",
+        "gold_lag_20",
+        "gold_return_1",
+        "gold_return_5",
+        "gold_ma_5",
+        "gold_ma_20",
+        "gold_ma_60",
+        "gold_volatility_20",
+        "days_since_factor_start",
+        "observed_mask",
+        "availability_mask"
+      ],
+      "feature_count": 31
+    },
+    "delta_tft": {
+      "base_features": [
+        "real_yield",
+        "nominal_yield",
+        "tips_curve",
+        "fed_bs",
+        "m2_supply",
+        "inflation",
+        "usd_index",
+        "eur_usd",
+        "jpy_usd",
+        "vix_index",
+        "fin_stress",
+        "gpr_index",
+        "policy_unc",
+        "oil_wti",
+        "ppi_index",
+        "gld_tonnes",
+        "unrate",
+        "ind_prod",
+        "cap_util"
+      ],
+      "engineered_features": [
+        "gold_lag_1",
+        "gold_lag_5",
+        "gold_lag_20",
+        "gold_return_1",
+        "gold_return_5",
+        "gold_ma_5",
+        "gold_ma_20",
+        "gold_ma_60",
+        "gold_volatility_20",
+        "days_since_factor_start",
+        "observed_mask",
+        "availability_mask"
+      ],
+      "all_features": [
+        "real_yield",
+        "nominal_yield",
+        "tips_curve",
+        "fed_bs",
+        "m2_supply",
+        "inflation",
+        "usd_index",
+        "eur_usd",
+        "jpy_usd",
+        "vix_index",
+        "fin_stress",
+        "gpr_index",
+        "policy_unc",
+        "oil_wti",
+        "ppi_index",
+        "gld_tonnes",
+        "unrate",
+        "ind_prod",
+        "cap_util",
+        "gold_lag_1",
+        "gold_lag_5",
+        "gold_lag_20",
+        "gold_return_1",
+        "gold_return_5",
+        "gold_ma_5",
+        "gold_ma_20",
+        "gold_ma_60",
+        "gold_volatility_20",
+        "days_since_factor_start",
+        "observed_mask",
+        "availability_mask"
+      ],
+      "feature_count": 31
+    },
+    "epsilon_fast_expert": {
+      "base_features": [
+        "gold_price"
+      ],
+      "engineered_features": [
+        "gold_lag_1",
+        "gold_lag_5",
+        "gold_lag_20",
+        "gold_return_1",
+        "gold_return_5",
+        "gold_ma_5",
+        "gold_ma_20"
+      ],
+      "all_features": [
+        "gold_price",
+        "gold_lag_1",
+        "gold_lag_5",
+        "gold_lag_20",
+        "gold_return_1",
+        "gold_return_5",
+        "gold_ma_5",
+        "gold_ma_20"
+      ],
+      "feature_count": 8
+    },
+    "gamma_news_sensitivity": {
+      "base_features": [
+        "real_yield",
+        "inflation",
+        "usd_index",
+        "vix_index",
+        "fin_stress",
+        "gpr_index",
+        "policy_unc",
+        "oil_wti",
+        "gld_tonnes"
+      ],
+      "engineered_features": [
+        "news_war_escalation_score",
+        "news_sanctions_score",
+        "news_oil_supply_disruption_score",
+        "news_safe_haven_demand_score",
+        "news_fed_rates_pressure_score",
+        "news_inflation_pressure_score",
+        "news_central_bank_buying_score",
+        "news_reserve_movement_score",
+        "news_supply_chain_disruption_score",
+        "gold_news_sensitivity_index"
+      ],
+      "all_features": [
+        "real_yield",
+        "inflation",
+        "usd_index",
+        "vix_index",
+        "fin_stress",
+        "gpr_index",
+        "policy_unc",
+        "oil_wti",
+        "gld_tonnes",
+        "news_war_escalation_score",
+        "news_sanctions_score",
+        "news_oil_supply_disruption_score",
+        "news_safe_haven_demand_score",
+        "news_fed_rates_pressure_score",
+        "news_inflation_pressure_score",
+        "news_central_bank_buying_score",
+        "news_reserve_movement_score",
+        "news_supply_chain_disruption_score",
+        "gold_news_sensitivity_index"
+      ],
+      "feature_count": 19
+    },
+    "omega_fusion": {
+      "base_features": [
+        "alpha_structural_forecast",
+        "beta_temporal_forecast",
+        "delta_tft_forecast",
+        "epsilon_fast_expert_forecast",
+        "gamma_news_sensitivity_index"
+      ],
+      "engineered_features": [
+        "model_disagreement",
+        "prior_study_weight",
+        "interval_width",
+        "recent_error_signal"
+      ],
+      "all_features": [
+        "alpha_structural_forecast",
+        "beta_temporal_forecast",
+        "delta_tft_forecast",
+        "epsilon_fast_expert_forecast",
+        "gamma_news_sensitivity_index",
+        "model_disagreement",
+        "prior_study_weight",
+        "interval_width",
+        "recent_error_signal"
+      ],
+      "feature_count": 9
+    }
+  },
+  "input_dataset_detection": {
+    "candidate_count": 7,
+    "found_count": 7,
+    "candidates": [
+      {
+        "relative_path": "data/aligned/model_ready_multivariate.csv",
+        "exists": true,
+        "kind": "csv"
+      },
+      {
+        "relative_path": "data/aligned/model_ready_univariate.csv",
+        "exists": true,
+        "kind": "csv"
+      },
+      {
+        "relative_path": "data/aligned/weekday_clean_matrix.csv",
+        "exists": true,
+        "kind": "csv"
+      },
+      {
+        "relative_path": "artifacts/data/model_ready_dataset_preview.json",
+        "exists": true,
+        "kind": "json"
+      },
+      {
+        "relative_path": "artifacts/data/weekday_matrix_preview.json",
+        "exists": true,
+        "kind": "json"
+      },
+      {
+        "relative_path": "public/artifacts/data/model_ready_dataset_preview.json",
+        "exists": true,
+        "kind": "json"
+      },
+      {
+        "relative_path": "public/artifacts/data/weekday_matrix_preview.json",
+        "exists": true,
+        "kind": "json"
+      }
+    ],
+    "found": [
+      {
+        "relative_path": "data/aligned/model_ready_multivariate.csv",
+        "exists": true,
+        "kind": "csv"
+      },
+      {
+        "relative_path": "data/aligned/model_ready_univariate.csv",
+        "exists": true,
+        "kind": "csv"
+      },
+      {
+        "relative_path": "data/aligned/weekday_clean_matrix.csv",
+        "exists": true,
+        "kind": "csv"
+      },
+      {
+        "relative_path": "artifacts/data/model_ready_dataset_preview.json",
+        "exists": true,
+        "kind": "json"
+      },
+      {
+        "relative_path": "artifacts/data/weekday_matrix_preview.json",
+        "exists": true,
+        "kind": "json"
+      },
+      {
+        "relative_path": "public/artifacts/data/model_ready_dataset_preview.json",
+        "exists": true,
+        "kind": "json"
+      },
+      {
+        "relative_path": "public/artifacts/data/weekday_matrix_preview.json",
+        "exists": true,
+        "kind": "json"
+      }
+    ],
+    "note": "Phase 4 does not require raw/model-ready data yet. Actual matrix loading happens in the next data-loader phase before model training."
+  },
+  "source_artifacts": [
+    "artifacts/deep_ml/governance/deep_ml_mode_status.json",
+    "artifacts/deep_ml/governance/effective_data_window.json",
+    "artifacts/deep_ml/data/factor_state_table.json",
+    "artifacts/deep_ml/data/data_quality_flags.json"
+  ],
+  "professor_safe_summary": "The Deep ML feature manifest defines allowed feature groups before model training. It prevents each model from inventing its own undocumented feature universe."
+}

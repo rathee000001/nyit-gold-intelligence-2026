@@ -1,0 +1,31 @@
+{
+  "artifact_type": "deep_ml_data_quality_flags",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T03:55:49Z",
+  "mode": "official_research_mode",
+  "study_id": "deepml_study_20260505_035349_officialresearch_20260331",
+  "flags": [
+    {
+      "flag_id": "high_yield_sensitivity_only",
+      "severity": "caution",
+      "message": "high_yield is excluded from main Deep ML research models because it starts too late.",
+      "affected_factors": [
+        "high_yield"
+      ],
+      "professor_safe_note": "This protects the main study from short-history bias."
+    },
+    {
+      "flag_id": "manual_csv_factors",
+      "severity": "info",
+      "message": "Some factors are manual CSV factors and must be tracked explicitly in live mode.",
+      "affected_factors": [
+        "gpr_index",
+        "policy_unc",
+        "gld_tonnes"
+      ],
+      "professor_safe_note": "Manual factors are allowed only when their valid-through dates are visible."
+    }
+  ],
+  "blocking_flags": [],
+  "professor_safe_summary": "Data flags are advisory in official research mode and protective in live market update mode."
+}

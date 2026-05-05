@@ -1,0 +1,62 @@
+{
+  "artifact_type": "deep_ml_page_bundle",
+  "schema_version": "1.0.0",
+  "page_key": "page_delta_tft",
+  "route": "/deep-ml/models/delta-tft",
+  "title": "Delta TFT Multi-Horizon Expert",
+  "subtitle": "Calibrated temporal-fusion quantile forecasting for Gold Nexus Alpha Phase 2.",
+  "model_key": "delta_tft",
+  "delta_version": "v2_calibrated",
+  "status": "ready",
+  "summary_cards": [
+    {
+      "label": "Backend",
+      "value": "custom_tft_style_pytorch_v2_calibrated"
+    },
+    {
+      "label": "Device",
+      "value": "cuda"
+    },
+    {
+      "label": "Sequence Length",
+      "value": 20
+    },
+    {
+      "label": "Quantiles",
+      "value": "p10 / p50 / p90"
+    },
+    {
+      "label": "Interval Policy",
+      "value": "Validation-calibrated p10-p90"
+    }
+  ],
+  "chart_artifacts": {
+    "forecast_latest": "artifacts/deep_ml/models/delta_tft/forecast_latest.json",
+    "evaluation_by_horizon": "artifacts/deep_ml/models/delta_tft/evaluation_by_horizon.json",
+    "uncertainty_latest": "artifacts/deep_ml/models/delta_tft/uncertainty_latest.json",
+    "interval_calibration_summary": "artifacts/deep_ml/models/delta_tft/interval_calibration_summary.json",
+    "variable_selection_summary": "artifacts/deep_ml/models/delta_tft/variable_selection_summary.json",
+    "temporal_attention_summary": "artifacts/deep_ml/models/delta_tft/temporal_attention_summary.json"
+  },
+  "limitations": [
+    "Delta TFT is a Phase 2 expert and is not the final Deep ML winner until evaluation and Omega Fusion are complete.",
+    "Calibrated quantile intervals are uncertainty estimates, not guarantees.",
+    "Attention and variable selection explain model behavior, not causality.",
+    "Rolling-origin evaluation does not re-optimize the model at every origin in this phase."
+  ],
+  "source_artifacts": [
+    "run_summary.json",
+    "forecast_latest.json",
+    "evaluation_by_horizon.json",
+    "uncertainty_latest.json",
+    "interpretability_latest.json",
+    "diagnostics_latest.json",
+    "interval_calibration_summary.json",
+    "quality_review.json",
+    "phase8_delta_tft_report.json",
+    "variable_selection_summary.json",
+    "temporal_attention_summary.json",
+    "quantile_coverage_summary.json"
+  ],
+  "generated_at_utc": "2026-05-05T17:57:13.000806Z"
+}

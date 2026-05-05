@@ -1,0 +1,66 @@
+{
+  "artifact_type": "epsilon_dataset_manifest",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "date_column": "date",
+  "gold_column": "gold_price",
+  "feature_count": 29,
+  "features_used": [
+    "gold_price",
+    "gold_lag_1",
+    "gold_lag_5",
+    "gold_lag_20",
+    "gold_return_1",
+    "gold_return_5",
+    "gold_ma_5",
+    "gold_ma_20",
+    "gold_ma_60",
+    "gold_volatility_20",
+    "real_yield",
+    "nominal_yield",
+    "tips_curve",
+    "fed_bs",
+    "m2_supply",
+    "inflation",
+    "usd_index",
+    "eur_usd",
+    "jpy_usd",
+    "vix_index",
+    "fin_stress",
+    "gpr_index",
+    "policy_unc",
+    "oil_wti",
+    "ppi_index",
+    "gld_tonnes",
+    "unrate",
+    "ind_prod",
+    "cap_util"
+  ],
+  "excluded_features": [
+    "dataset_id and *_id columns excluded as identifiers",
+    "high_yield excluded from official core mode when detected"
+  ],
+  "horizons": [
+    1,
+    5,
+    10,
+    20,
+    30
+  ],
+  "rows": 5306,
+  "split_origin_counts": {
+    "train": 3391,
+    "validation": 1044,
+    "test": 841
+  },
+  "training_window": {
+    "train_start": "2006-01-02",
+    "train_end": "2018-12-31",
+    "validation_start": "2019-01-01",
+    "validation_end": "2022-12-30",
+    "test_start": "2023-01-02",
+    "test_end": "2026-05-05"
+  },
+  "feature_store_hash": "sha256:faee8e504db2fa957ec3b2209284f4af4662a36f54ab9928402722133da47331",
+  "generated_at_utc": "2026-05-05T18:13:10.062792Z"
+}

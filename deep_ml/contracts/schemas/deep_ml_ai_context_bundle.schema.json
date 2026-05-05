@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "deep_ml_ai_context_bundle.schema.json",
+  "title": "Deep ML AI Context Bundle",
+  "type": "object",
+  "required": [
+    "artifact_type",
+    "schema_version",
+    "generated_at_utc",
+    "ai_name",
+    "scope",
+    "latest_study_id",
+    "latest_run_id",
+    "allowed_artifacts",
+    "forbidden_behaviors",
+    "context_sections"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "deep_ml_ai_context_bundle"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "generated_at_utc": {
+      "type": "string"
+    },
+    "ai_name": {
+      "type": "string"
+    },
+    "scope": {
+      "const": "deep_ml_phase_2_only"
+    },
+    "latest_study_id": {
+      "type": "string"
+    },
+    "latest_run_id": {
+      "type": "string"
+    },
+    "allowed_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "forbidden_behaviors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "context_sections": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "additionalProperties": true
+}

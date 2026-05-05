@@ -1,0 +1,501 @@
+{
+  "artifact_type": "deep_ml_factor_state_table",
+  "schema_version": "2.0.0",
+  "phase_key": "phase11_governed_feature_store_refresh",
+  "official_cutoff": "2026-03-31",
+  "refreshed_matrix_end_date": "2026-05-05",
+  "fred_merge_summary": {
+    "fred_pull_report_path": "artifacts\\deep_ml\\source_update\\fred_registry_pull_report.json",
+    "fred_pull_report_hash": "sha256:88f7efe21b64caf6d0256b24ef989a4bc383f9f09ef7f16c2703b2869098fe61",
+    "fred_pull_status": "ready",
+    "fred_report_script_version": "fred_registry_pull_v2_retry_long_window",
+    "fred_series_attempted": 17,
+    "fred_series_valid_pulled": 17,
+    "fred_series_failed": 0,
+    "fred_latest_valid_observation_date": "2026-05-04",
+    "fred_series_used_in_merge": 16,
+    "fred_series_skipped_in_merge": 1,
+    "fred_columns_updated": [
+      "cap_util",
+      "eur_usd",
+      "fed_bs",
+      "fin_stress",
+      "ind_prod",
+      "inflation",
+      "jpy_usd",
+      "m2_supply",
+      "nominal_yield",
+      "oil_wti",
+      "ppi_index",
+      "real_yield",
+      "tips_curve",
+      "unrate",
+      "usd_index",
+      "vix_index"
+    ],
+    "merge_policy": "FRED values are forward-filled onto post-cutoff Yahoo gold dates; manual factors remain carried forward."
+  },
+  "factors": [
+    {
+      "factor_key": "dataset_id",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 5306,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "split",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 5306,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "gold_price",
+      "status": "live_extension_after_cutoff",
+      "source_type": "yahoo_gc_f_comex_futures_proxy_delayed",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 24,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "gold_lag_1",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 1,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "gold_lag_5",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 5,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "gold_lag_20",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 20,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "gold_return_1",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 1,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "gold_return_5",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 5,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "gold_ma_5",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 4,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "gold_ma_20",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 19,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "gold_ma_60",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 59,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "gold_volatility_20",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 20,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "real_yield",
+      "status": "fred_api_updated_after_cutoff",
+      "source_type": "fred_api_forward_filled_to_post_cutoff_dates",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 11,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "nominal_yield",
+      "status": "fred_api_updated_after_cutoff",
+      "source_type": "fred_api_forward_filled_to_post_cutoff_dates",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 12,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "tips_curve",
+      "status": "fred_api_updated_after_cutoff",
+      "source_type": "fred_api_forward_filled_to_post_cutoff_dates",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 7,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "fed_bs",
+      "status": "fred_api_updated_after_cutoff",
+      "source_type": "fred_api_forward_filled_to_post_cutoff_dates",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 5,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "m2_supply",
+      "status": "fred_api_updated_after_cutoff",
+      "source_type": "fred_api_forward_filled_to_post_cutoff_dates",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "inflation",
+      "status": "fred_api_updated_after_cutoff",
+      "source_type": "fred_api_forward_filled_to_post_cutoff_dates",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "usd_index",
+      "status": "fred_api_updated_after_cutoff",
+      "source_type": "fred_api_forward_filled_to_post_cutoff_dates",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 22,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "eur_usd",
+      "status": "fred_api_updated_after_cutoff",
+      "source_type": "fred_api_forward_filled_to_post_cutoff_dates",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 22,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "jpy_usd",
+      "status": "fred_api_updated_after_cutoff",
+      "source_type": "fred_api_forward_filled_to_post_cutoff_dates",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 22,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "vix_index",
+      "status": "fred_api_updated_after_cutoff",
+      "source_type": "fred_api_forward_filled_to_post_cutoff_dates",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 22,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "fin_stress",
+      "status": "fred_api_updated_after_cutoff",
+      "source_type": "fred_api_forward_filled_to_post_cutoff_dates",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 5,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "gpr_index",
+      "status": "manual_stale_or_carried_forward",
+      "source_type": "manual_or_local_source_not_refreshed_this_run",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "policy_unc",
+      "status": "manual_stale_or_carried_forward",
+      "source_type": "manual_or_local_source_not_refreshed_this_run",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "oil_wti",
+      "status": "fred_api_updated_after_cutoff",
+      "source_type": "fred_api_forward_filled_to_post_cutoff_dates",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 18,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "ppi_index",
+      "status": "fred_api_updated_after_cutoff",
+      "source_type": "fred_api_forward_filled_to_post_cutoff_dates",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "gld_tonnes",
+      "status": "manual_stale_or_carried_forward",
+      "source_type": "manual_or_local_source_not_refreshed_this_run",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "unrate",
+      "status": "fred_api_updated_after_cutoff",
+      "source_type": "fred_api_forward_filled_to_post_cutoff_dates",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "ind_prod",
+      "status": "fred_api_updated_after_cutoff",
+      "source_type": "fred_api_forward_filled_to_post_cutoff_dates",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "cap_util",
+      "status": "fred_api_updated_after_cutoff",
+      "source_type": "fred_api_forward_filled_to_post_cutoff_dates",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 1,
+      "missing_count": 0,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "target_gold_t_plus_1",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 25,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "target_return_t_plus_1",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 25,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "target_direction_t_plus_1",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 25,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "target_gold_t_plus_5",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 29,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "target_return_t_plus_5",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 29,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "target_direction_t_plus_5",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 29,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "target_gold_t_plus_10",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 34,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "target_return_t_plus_10",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 34,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "target_direction_t_plus_10",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 34,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "target_gold_t_plus_20",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 44,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "target_return_t_plus_20",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 44,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "target_direction_t_plus_20",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 44,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "target_gold_t_plus_30",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 54,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "target_return_t_plus_30",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 54,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    },
+    {
+      "factor_key": "target_direction_t_plus_30",
+      "status": "carried_forward_after_cutoff",
+      "source_type": "base_matrix_carried_forward",
+      "official_cutoff": "2026-03-31",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "post_cutoff_unique_values": 0,
+      "missing_count": 54,
+      "professor_safe_note": "Factor-state status describes refresh handling and availability, not causality."
+    }
+  ],
+  "generated_at_utc": "2026-05-05T09:32:08.479555Z"
+}

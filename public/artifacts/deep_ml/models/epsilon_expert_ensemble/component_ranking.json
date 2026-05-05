@@ -1,0 +1,99 @@
+{
+  "artifact_type": "epsilon_component_ranking",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "ranking_basis": "validation_average_mape_pct",
+  "ranking": [
+    {
+      "rank": 1,
+      "component_key": "rolling_mean_20_gap",
+      "validation_average_mape_pct": 4.291199382430322,
+      "test_average_mape_pct": 6.290168153678293
+    },
+    {
+      "rank": 2,
+      "component_key": "rolling_mean_60_gap",
+      "validation_average_mape_pct": 4.32547387471195,
+      "test_average_mape_pct": 6.341524475961073
+    },
+    {
+      "rank": 3,
+      "component_key": "rolling_median_60_gap",
+      "validation_average_mape_pct": 4.352165527514963,
+      "test_average_mape_pct": 6.347890200849258
+    },
+    {
+      "rank": 4,
+      "component_key": "arima_like",
+      "validation_average_mape_pct": 4.492334038175935,
+      "test_average_mape_pct": 6.722406430109563
+    },
+    {
+      "rank": 5,
+      "component_key": "naive_last_value",
+      "validation_average_mape_pct": 4.5908928551268415,
+      "test_average_mape_pct": 6.661738104311402
+    },
+    {
+      "rank": 6,
+      "component_key": "ets_like",
+      "validation_average_mape_pct": 4.591187700441659,
+      "test_average_mape_pct": 6.685937685258843
+    },
+    {
+      "rank": 7,
+      "component_key": "theta_like_252",
+      "validation_average_mape_pct": 4.6750343750505685,
+      "test_average_mape_pct": 6.733419491358046
+    },
+    {
+      "rank": 8,
+      "component_key": "drift_252",
+      "validation_average_mape_pct": 4.787560464298922,
+      "test_average_mape_pct": 6.885079095721049
+    },
+    {
+      "rank": 9,
+      "component_key": "momentum_20",
+      "validation_average_mape_pct": 5.476231097487159,
+      "test_average_mape_pct": 7.871497055142963
+    },
+    {
+      "rank": 10,
+      "component_key": "elasticnet_lag_expert",
+      "validation_average_mape_pct": 6.426514947052186,
+      "test_average_mape_pct": 24.601932795295244
+    },
+    {
+      "rank": 11,
+      "component_key": "ridge_lag_expert",
+      "validation_average_mape_pct": 6.6238026972909365,
+      "test_average_mape_pct": 25.064712458450572
+    },
+    {
+      "rank": 12,
+      "component_key": "gradient_boosting_lag_expert",
+      "validation_average_mape_pct": 7.080925813285494,
+      "test_average_mape_pct": 10.272393391221673
+    },
+    {
+      "rank": 13,
+      "component_key": "extratrees_lag_expert",
+      "validation_average_mape_pct": 7.34672502533368,
+      "test_average_mape_pct": 10.041956009067246
+    },
+    {
+      "rank": 14,
+      "component_key": "xgboost_lag_expert",
+      "validation_average_mape_pct": 7.638655581569239,
+      "test_average_mape_pct": 11.81323264144624
+    },
+    {
+      "rank": 15,
+      "component_key": "random_forest_lag_expert",
+      "validation_average_mape_pct": 10.165455994823924,
+      "test_average_mape_pct": 13.214143954712728
+    }
+  ],
+  "generated_at_utc": "2026-05-05T18:14:26.230441Z"
+}

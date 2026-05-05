@@ -1,0 +1,14 @@
+{
+  "artifact_type": "news_input_inventory",
+  "schema_version": "1.0.0",
+  "news_raw_inputs_dir": "artifacts\\deep_ml\\news\\raw_inputs",
+  "supported_extensions": [
+    ".csv",
+    ".json",
+    ".md",
+    ".txt"
+  ],
+  "file_count": 0,
+  "files": [],
+  "generated_at_utc": "2026-05-05T08:47:16.890526Z"
+}

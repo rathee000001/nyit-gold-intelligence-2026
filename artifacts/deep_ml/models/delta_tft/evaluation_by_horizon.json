@@ -1,0 +1,197 @@
+{
+  "artifact_type": "delta_tft_evaluation_by_horizon",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "delta_version": "v2_calibrated",
+  "point_forecast": "p50",
+  "metrics_note": "Point metrics use p50 forecast prices reconstructed from unscaled raw gold price anchors. Calibration preserves p50.",
+  "train": {
+    "1": {
+      "count": 3372,
+      "mae": 25.963928933003533,
+      "rmse": 55.85695950400926,
+      "mape_pct": 2.2991872123658053,
+      "smape_pct": 2.2803993424804294,
+      "bias_mean_error": -2.9298680671323223,
+      "directional_accuracy_pct": 71.5909090909091
+    },
+    "5": {
+      "count": 3372,
+      "mae": 38.460571422782394,
+      "rmse": 62.03651252809505,
+      "mape_pct": 3.2921104069831832,
+      "smape_pct": 3.319093576198594,
+      "bias_mean_error": -9.403417983166541,
+      "directional_accuracy_pct": 88.0354505169867
+    },
+    "10": {
+      "count": 3372,
+      "mae": 44.96603183287918,
+      "rmse": 68.16391690938266,
+      "mape_pct": 3.8589139452032573,
+      "smape_pct": 3.8684643684204154,
+      "bias_mean_error": -7.113051408483754,
+      "directional_accuracy_pct": 84.04952658412236
+    },
+    "20": {
+      "count": 3372,
+      "mae": 44.88645387493769,
+      "rmse": 71.80786975081324,
+      "mape_pct": 3.7882536863177467,
+      "smape_pct": 3.8251610578905746,
+      "bias_mean_error": -11.277235661793672,
+      "directional_accuracy_pct": 65.25096525096525
+    },
+    "30": {
+      "count": 3372,
+      "mae": 53.89934268449462,
+      "rmse": 82.83464169096744,
+      "mape_pct": 4.531056923714521,
+      "smape_pct": 4.582188954353051,
+      "bias_mean_error": -13.380496415948947,
+      "directional_accuracy_pct": 77.6393831553974
+    }
+  },
+  "validation": {
+    "1": {
+      "count": 1044,
+      "mae": 37.03442341238426,
+      "rmse": 66.78045963581984,
+      "mape_pct": 2.156577437778507,
+      "smape_pct": 2.1633049911391207,
+      "bias_mean_error": -11.643493166764062,
+      "directional_accuracy_pct": 52.261904761904766
+    },
+    "5": {
+      "count": 1044,
+      "mae": 74.00685019670424,
+      "rmse": 103.56431516119798,
+      "mape_pct": 4.290047019075056,
+      "smape_pct": 4.3690796894538115,
+      "bias_mean_error": -29.907439184875425,
+      "directional_accuracy_pct": 63.02681992337165
+    },
+    "10": {
+      "count": 1044,
+      "mae": 77.47187432486216,
+      "rmse": 103.17119582775695,
+      "mape_pct": 4.5191371992932305,
+      "smape_pct": 4.56905871880644,
+      "bias_mean_error": -21.70724023132801,
+      "directional_accuracy_pct": 65.29242569511025
+    },
+    "20": {
+      "count": 1044,
+      "mae": 73.45742548805084,
+      "rmse": 97.6596151337396,
+      "mape_pct": 4.220979231515817,
+      "smape_pct": 4.311876790761309,
+      "bias_mean_error": -36.927175838916575,
+      "directional_accuracy_pct": 56.03448275862068
+    },
+    "30": {
+      "count": 1044,
+      "mae": 86.41434814740342,
+      "rmse": 116.34719993546088,
+      "mape_pct": 4.955145677507278,
+      "smape_pct": 5.102797909866287,
+      "bias_mean_error": -47.22344587385385,
+      "directional_accuracy_pct": 63.31417624521073
+    }
+  },
+  "test": {
+    "1": {
+      "count": 841,
+      "mae": 89.40502345023344,
+      "rmse": 181.4299988206014,
+      "mape_pct": 3.1312557944211417,
+      "smape_pct": 3.0929801257346945,
+      "bias_mean_error": -28.27784505121275,
+      "directional_accuracy_pct": 43.54304635761589
+    },
+    "5": {
+      "count": 841,
+      "mae": 209.9134295029594,
+      "rmse": 322.272703956368,
+      "mape_pct": 6.962221728663406,
+      "smape_pct": 7.155172501038499,
+      "bias_mean_error": -96.78417629679284,
+      "directional_accuracy_pct": 57.724550898203596
+    },
+    "10": {
+      "count": 841,
+      "mae": 224.02897939323879,
+      "rmse": 346.9245176872661,
+      "mape_pct": 7.405705244408951,
+      "smape_pct": 7.4975241030883994,
+      "bias_mean_error": -57.99696236840664,
+      "directional_accuracy_pct": 60.40428061831153
+    },
+    "20": {
+      "count": 841,
+      "mae": 204.97083520358402,
+      "rmse": 313.6090791043367,
+      "mape_pct": 6.52118600489038,
+      "smape_pct": 6.767059177273681,
+      "bias_mean_error": -101.59519973677929,
+      "directional_accuracy_pct": 48.989298454221164
+    },
+    "30": {
+      "count": 841,
+      "mae": 270.0689586818839,
+      "rmse": 403.1377834302467,
+      "mape_pct": 8.451159114632247,
+      "smape_pct": 8.858618919397168,
+      "bias_mean_error": -155.21746229783972,
+      "directional_accuracy_pct": 53.62663495838288
+    }
+  },
+  "naive_baseline_test": {
+    "1": {
+      "count": 841,
+      "mae": 76.46653909036861,
+      "rmse": 181.30243344604654,
+      "mape_pct": 2.6868154209782737,
+      "smape_pct": 2.6201878389798154,
+      "bias_mean_error": -2.9836385139528834,
+      "directional_accuracy_pct": 0.0
+    },
+    "5": {
+      "count": 841,
+      "mae": 212.84974929864,
+      "rmse": 349.84514498482383,
+      "mape_pct": 7.1792406439883685,
+      "smape_pct": 7.159727719440954,
+      "bias_mean_error": -15.090939334683412,
+      "directional_accuracy_pct": 0.0
+    },
+    "10": {
+      "count": 841,
+      "mae": 243.27263961592413,
+      "rmse": 379.46336788146573,
+      "mape_pct": 8.147543309980913,
+      "smape_pct": 8.174809907852758,
+      "bias_mean_error": -31.085885681805514,
+      "directional_accuracy_pct": 0.0
+    },
+    "20": {
+      "count": 841,
+      "mae": 202.02899960983947,
+      "rmse": 317.557832809475,
+      "mape_pct": 6.486116931556498,
+      "smape_pct": 6.677740595631515,
+      "bias_mean_error": -64.7934953505871,
+      "directional_accuracy_pct": 0.0
+    },
+    "30": {
+      "count": 841,
+      "mae": 276.9936469732368,
+      "rmse": 417.8873176421281,
+      "mape_pct": 8.808974393432175,
+      "smape_pct": 9.075281480188343,
+      "bias_mean_error": -96.69706256154318,
+      "directional_accuracy_pct": 0.0
+    }
+  },
+  "generated_at_utc": "2026-05-05T17:56:25.829582Z"
+}

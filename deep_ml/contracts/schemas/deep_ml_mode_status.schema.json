@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "deep_ml_mode_status.schema.json",
+  "title": "Deep ML Mode Status",
+  "type": "object",
+  "required": [
+    "artifact_type",
+    "schema_version",
+    "generated_at_utc",
+    "mode",
+    "official_research_cutoff_date",
+    "effective_model_data_through_date",
+    "forecast_start_date",
+    "status_summary"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "deep_ml_mode_status"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "generated_at_utc": {
+      "type": "string"
+    },
+    "generated_at_local": {
+      "type": "string"
+    },
+    "timezone_local": {
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "official_research_mode",
+        "live_market_update_mode"
+      ]
+    },
+    "official_research_cutoff_date": {
+      "type": "string"
+    },
+    "live_gold_price_through_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "manual_csv_valid_through_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "effective_model_data_through_date": {
+      "type": "string"
+    },
+    "forecast_start_date": {
+      "type": "string"
+    },
+    "status_summary": {
+      "type": "string"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

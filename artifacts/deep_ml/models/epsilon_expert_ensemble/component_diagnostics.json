@@ -1,0 +1,113 @@
+{
+  "artifact_type": "epsilon_component_diagnostics",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "component_count": 15,
+  "component_keys": [
+    "naive_last_value",
+    "drift_252",
+    "rolling_mean_20_gap",
+    "rolling_mean_60_gap",
+    "rolling_median_60_gap",
+    "momentum_20",
+    "theta_like_252",
+    "ets_like",
+    "arima_like",
+    "ridge_lag_expert",
+    "elasticnet_lag_expert",
+    "random_forest_lag_expert",
+    "extratrees_lag_expert",
+    "gradient_boosting_lag_expert",
+    "xgboost_lag_expert"
+  ],
+  "selected_ensemble_strategy": "best_validation_component::rolling_mean_20_gap",
+  "component_training_log": [
+    {
+      "component_key": "ridge_lag_expert",
+      "component_family": "lag_feature_ml",
+      "status": "completed",
+      "runtime_seconds": 0.083,
+      "horizons": [
+        1,
+        5,
+        10,
+        20,
+        30
+      ]
+    },
+    {
+      "component_key": "elasticnet_lag_expert",
+      "component_family": "lag_feature_ml",
+      "status": "completed",
+      "runtime_seconds": 0.215,
+      "horizons": [
+        1,
+        5,
+        10,
+        20,
+        30
+      ]
+    },
+    {
+      "component_key": "random_forest_lag_expert",
+      "component_family": "lag_feature_ml",
+      "status": "completed",
+      "runtime_seconds": 3.658,
+      "horizons": [
+        1,
+        5,
+        10,
+        20,
+        30
+      ]
+    },
+    {
+      "component_key": "extratrees_lag_expert",
+      "component_family": "lag_feature_ml",
+      "status": "completed",
+      "runtime_seconds": 1.36,
+      "horizons": [
+        1,
+        5,
+        10,
+        20,
+        30
+      ]
+    },
+    {
+      "component_key": "gradient_boosting_lag_expert",
+      "component_family": "lag_feature_ml",
+      "status": "completed",
+      "runtime_seconds": 6.981,
+      "horizons": [
+        1,
+        5,
+        10,
+        20,
+        30
+      ]
+    },
+    {
+      "component_key": "xgboost_lag_expert",
+      "component_family": "lag_feature_ml",
+      "status": "completed",
+      "runtime_seconds": 0.808,
+      "horizons": [
+        1,
+        5,
+        10,
+        20,
+        30
+      ]
+    }
+  ],
+  "dependency_precheck": {
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "statsmodels_available": true,
+    "xgboost_available": true,
+    "selected_backend": "sklearn_statsmodels_optional_xgboost",
+    "professor_safe_note": "Epsilon is a benchmark and expert-ensemble layer, not a causal model."
+  },
+  "generated_at_utc": "2026-05-05T18:14:27.166539Z"
+}

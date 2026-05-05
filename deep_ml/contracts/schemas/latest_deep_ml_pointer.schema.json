@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "latest_deep_ml_pointer.schema.json",
+  "title": "Latest Deep ML Pointer",
+  "type": "object",
+  "required": [
+    "artifact_type",
+    "schema_version",
+    "updated_at_utc",
+    "latest_study_id",
+    "latest_run_id",
+    "mode",
+    "effective_data_through_date",
+    "forecast_start_date",
+    "artifact_root",
+    "page_bundle_root"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "latest_deep_ml_pointer"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "updated_at_utc": {
+      "type": "string"
+    },
+    "latest_study_id": {
+      "type": "string"
+    },
+    "latest_run_id": {
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "official_research_mode",
+        "live_market_update_mode"
+      ]
+    },
+    "effective_data_through_date": {
+      "type": "string"
+    },
+    "forecast_start_date": {
+      "type": "string"
+    },
+    "artifact_root": {
+      "type": "string"
+    },
+    "page_bundle_root": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

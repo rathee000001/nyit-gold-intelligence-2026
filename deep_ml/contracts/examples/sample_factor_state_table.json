@@ -1,0 +1,32 @@
+{
+  "artifact_type": "deep_ml_factor_state_table",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T03:45:02Z",
+  "mode": "official_research_mode",
+  "rows": [
+    {
+      "factor_key": "gold_price",
+      "display_name": "Gold Price",
+      "source_name": "Baseline matrix",
+      "source_type": "baseline_artifact",
+      "expected_frequency": "trading_day",
+      "first_valid_date": "1968-01-04",
+      "last_observed_date": "2026-03-31",
+      "valid_through_date": "2026-03-31",
+      "current_state": "official_cutoff_locked",
+      "staleness_days": 0,
+      "carry_forward_policy": "not_required_in_official_research_mode",
+      "research_mode_eligible": true,
+      "live_mode_eligible": true,
+      "alpha_eligible": true,
+      "beta_eligible": true,
+      "delta_eligible": true,
+      "epsilon_eligible": true,
+      "gamma_eligible": false,
+      "omega_eligible": true,
+      "warning_level": "none",
+      "interpretation": "Gold price is the target variable and is valid through the official research cutoff in this placeholder contract.",
+      "action_needed": "No action for Phase 0."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "timestamp_utc": "2026-05-05T19:19:39.568571Z",
+    "elapsed_seconds": 0.0,
+    "event": "phase12_unified_source_news_update_started",
+    "status": "ok",
+    "details": {
+      "run_id": "deepml_run_20260505_191939_source_news_update"
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T19:19:39.682717Z",
+    "elapsed_seconds": 0.114,
+    "event": "historical_daily_index_ready",
+    "status": "ok",
+    "details": {
+      "rows": 7422,
+      "end": "2026-04-28",
+      "cache_used": true
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T19:22:32.669658Z",
+    "elapsed_seconds": 173.101,
+    "event": "recent_news_sources_pulled",
+    "status": "ok",
+    "details": {
+      "gdelt": 30,
+      "rss": 312,
+      "newsapi": 0,
+      "manual": 0
+    }
+  }
+]

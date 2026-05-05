@@ -1,0 +1,75 @@
+{
+  "artifact_type": "deep_ml_page_bundle",
+  "schema_version": "1.0.0",
+  "page_id": "beta_temporal",
+  "page_title": "Beta Temporal Expert",
+  "page_subtitle": "PyTorch sequence forecasting with raw-price anchoring, Optuna, calibrated MC dropout, rolling-origin validation, and temporal interpretability.",
+  "generated_at_utc": "2026-05-05T10:33:29Z",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "run_id": "deepml_run_20260505_102020_beta_temporal_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "effective_data_through_date": "2026-05-05",
+  "forecast_start_date": "2026-05-06",
+  "model_key": "beta_temporal",
+  "model_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+  "quality_status": "ready",
+  "quality_flags": [],
+  "kpi_cards": [
+    {
+      "label": "Features Used",
+      "value": 41,
+      "note": "Sequence feature set."
+    },
+    {
+      "label": "Best Architecture",
+      "value": "gru_attention",
+      "note": "Selected by Optuna."
+    },
+    {
+      "label": "Sequence Length",
+      "value": 20,
+      "note": "Trading days."
+    },
+    {
+      "label": "Price Anchor",
+      "value": "Raw Gold",
+      "note": "Forecasts reconstructed from raw gold price."
+    }
+  ],
+  "charts": [
+    {
+      "chart_id": "beta_forecast_path",
+      "source_artifact": "artifacts/deep_ml/models/beta_temporal/forecast_latest.json",
+      "type": "forecast_path_with_intervals"
+    },
+    {
+      "chart_id": "beta_static_metrics",
+      "source_artifact": "artifacts/deep_ml/models/beta_temporal/evaluation_by_horizon.json",
+      "type": "metrics_table"
+    },
+    {
+      "chart_id": "beta_rolling_metrics",
+      "source_artifact": "artifacts/deep_ml/models/beta_temporal/rolling_origin_metrics.json",
+      "type": "metrics_table"
+    },
+    {
+      "chart_id": "beta_occlusion",
+      "source_artifact": "artifacts/deep_ml/models/beta_temporal/feature_occlusion_importance.csv",
+      "type": "bar_chart"
+    }
+  ],
+  "allowed_frontend_claims": [
+    "Beta V2 uses a PyTorch recurrent sequence model.",
+    "Beta V2 includes Optuna tuning.",
+    "Beta V2 preserves raw gold price for forecast reconstruction.",
+    "Beta V2 includes calibrated MC-dropout uncertainty.",
+    "Beta V2 includes rolling-origin sequence evaluation.",
+    "Beta V2 includes attention/occlusion interpretability."
+  ],
+  "forbidden_frontend_claims": [
+    "Do not claim Beta is the final Deep ML winner.",
+    "Do not claim attention proves causality.",
+    "Do not claim Beta beats Alpha until model comparison is performed.",
+    "Do not claim this is the official Final Forecast."
+  ]
+}

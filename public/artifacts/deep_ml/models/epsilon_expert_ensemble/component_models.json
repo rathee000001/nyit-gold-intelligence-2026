@@ -1,0 +1,163 @@
+{
+  "artifact_type": "epsilon_component_models",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "components": [
+    {
+      "component_key": "naive_last_value",
+      "family": "benchmark",
+      "status": "completed"
+    },
+    {
+      "component_key": "drift_252",
+      "family": "benchmark",
+      "status": "completed"
+    },
+    {
+      "component_key": "rolling_mean_20_gap",
+      "family": "benchmark",
+      "status": "completed"
+    },
+    {
+      "component_key": "rolling_mean_60_gap",
+      "family": "benchmark",
+      "status": "completed"
+    },
+    {
+      "component_key": "rolling_median_60_gap",
+      "family": "benchmark",
+      "status": "completed"
+    },
+    {
+      "component_key": "momentum_20",
+      "family": "benchmark",
+      "status": "completed"
+    },
+    {
+      "component_key": "theta_like_252",
+      "family": "statistical",
+      "status": "completed"
+    },
+    {
+      "component_key": "ets_like",
+      "family": "statistical",
+      "status": "completed"
+    },
+    {
+      "component_key": "arima_like",
+      "family": "statistical",
+      "status": "completed"
+    },
+    {
+      "component_key": "ridge_lag_expert",
+      "family": "lag_feature_ml",
+      "status": "completed"
+    },
+    {
+      "component_key": "elasticnet_lag_expert",
+      "family": "lag_feature_ml",
+      "status": "completed"
+    },
+    {
+      "component_key": "random_forest_lag_expert",
+      "family": "lag_feature_ml",
+      "status": "completed"
+    },
+    {
+      "component_key": "extratrees_lag_expert",
+      "family": "lag_feature_ml",
+      "status": "completed"
+    },
+    {
+      "component_key": "gradient_boosting_lag_expert",
+      "family": "lag_feature_ml",
+      "status": "completed"
+    },
+    {
+      "component_key": "xgboost_lag_expert",
+      "family": "lag_feature_ml",
+      "status": "completed"
+    }
+  ],
+  "ml_training_log": [
+    {
+      "component_key": "ridge_lag_expert",
+      "component_family": "lag_feature_ml",
+      "status": "completed",
+      "runtime_seconds": 0.083,
+      "horizons": [
+        1,
+        5,
+        10,
+        20,
+        30
+      ]
+    },
+    {
+      "component_key": "elasticnet_lag_expert",
+      "component_family": "lag_feature_ml",
+      "status": "completed",
+      "runtime_seconds": 0.215,
+      "horizons": [
+        1,
+        5,
+        10,
+        20,
+        30
+      ]
+    },
+    {
+      "component_key": "random_forest_lag_expert",
+      "component_family": "lag_feature_ml",
+      "status": "completed",
+      "runtime_seconds": 3.658,
+      "horizons": [
+        1,
+        5,
+        10,
+        20,
+        30
+      ]
+    },
+    {
+      "component_key": "extratrees_lag_expert",
+      "component_family": "lag_feature_ml",
+      "status": "completed",
+      "runtime_seconds": 1.36,
+      "horizons": [
+        1,
+        5,
+        10,
+        20,
+        30
+      ]
+    },
+    {
+      "component_key": "gradient_boosting_lag_expert",
+      "component_family": "lag_feature_ml",
+      "status": "completed",
+      "runtime_seconds": 6.981,
+      "horizons": [
+        1,
+        5,
+        10,
+        20,
+        30
+      ]
+    },
+    {
+      "component_key": "xgboost_lag_expert",
+      "component_family": "lag_feature_ml",
+      "status": "completed",
+      "runtime_seconds": 0.808,
+      "horizons": [
+        1,
+        5,
+        10,
+        20,
+        30
+      ]
+    }
+  ],
+  "generated_at_utc": "2026-05-05T18:14:26.229740Z"
+}

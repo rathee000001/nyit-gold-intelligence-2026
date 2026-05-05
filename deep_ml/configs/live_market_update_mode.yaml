@@ -1,0 +1,16 @@
+mode:
+  name: live_market_update_mode
+  display_label: Live Market Update Mode
+  live_mode: true
+  uses_yahoo_gold_api: true
+  description: Experimental live mode. Gold spot may update daily, while manual/macro factors may be current, stale, carried, or unavailable.
+
+gold_api:
+  provider: yfinance
+  default_symbol: GC=F
+  source_state: api_live
+
+cutoff:
+  official_research_cutoff_date: "2026-03-31"
+  effective_data_through_policy: min_valid_date_across_required_factors
+  forecast_start_policy: next_trading_day_after_effective_data_through_date

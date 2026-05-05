@@ -1,0 +1,991 @@
+{
+  "artifact_type": "deep_ml_model_run",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "phase_2_deep_ml",
+  "mode": {
+    "name": "refreshed_yahoo_gold_plus_fred_registry_mode",
+    "display_label": "Live Market Update Mode",
+    "official_research_cutoff_date": "2026-03-31",
+    "live_mode": false
+  },
+  "run": {
+    "study_id": "deepml_feature_refresh_20260505_093208",
+    "run_id": "deepml_run_20260505_102020_beta_temporal_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+    "generated_at_utc": "2026-05-05T10:20:20Z",
+    "generated_at_local": null,
+    "timezone_local": "America/New_York",
+    "git_commit_sha": "be6e3bf",
+    "code_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+    "python_version": "3.12.10",
+    "cuda_available": true,
+    "device": "cuda",
+    "runtime_elapsed_seconds": 789.36,
+    "runtime_elapsed_hms": "00:13:09"
+  },
+  "data_signature": {
+    "matrix_snapshot_id": "unknown_matrix",
+    "matrix_name": null,
+    "effective_data_through_date": "2026-05-05",
+    "forecast_start_date": "2026-05-06",
+    "matrix_row_count": null,
+    "matrix_hash": "sha256:not_computed_phase7_beta_v2",
+    "feature_hash": "sha256:not_available",
+    "factor_state_table_hash": "sha256:not_computed_phase7_beta_v2"
+  },
+  "model": {
+    "model_key": "beta_temporal",
+    "model_name": "Beta Temporal Expert",
+    "family": "pytorch_sequence_model_raw_price_anchor",
+    "target": "gold_price",
+    "horizons": [
+      1,
+      5,
+      10,
+      20,
+      30
+    ],
+    "algorithm": "pytorch_recurrent_sequence_model_with_optuna",
+    "target_strategy": "anchored_future_log_return",
+    "price_anchor_policy": "raw_gold_price_anchor is used for all price reconstruction and metrics",
+    "validation_methods": [
+      "static_split",
+      "rolling_origin_sequence"
+    ],
+    "uncertainty_methods": [
+      "mc_dropout_plus_validation_residual_calibration"
+    ],
+    "interpretability_methods": [
+      "attention_summary",
+      "feature_occlusion"
+    ]
+  },
+  "features": {
+    "used": [
+      "gold_price",
+      "real_yield",
+      "nominal_yield",
+      "tips_curve",
+      "fed_bs",
+      "m2_supply",
+      "inflation",
+      "usd_index",
+      "eur_usd",
+      "jpy_usd",
+      "vix_index",
+      "fin_stress",
+      "gpr_index",
+      "policy_unc",
+      "oil_wti",
+      "ppi_index",
+      "gld_tonnes",
+      "unrate",
+      "ind_prod",
+      "cap_util",
+      "gold_lag_1",
+      "gold_lag_5",
+      "gold_lag_20",
+      "gold_return_1",
+      "gold_return_5",
+      "gold_ma_5",
+      "gold_ma_20",
+      "gold_ma_60",
+      "gold_volatility_20",
+      "beta_time_index",
+      "beta_year",
+      "beta_month",
+      "beta_quarter",
+      "beta_day_of_year_sin",
+      "beta_day_of_year_cos",
+      "gold_log_price",
+      "gold_return_20",
+      "gold_return_60",
+      "gold_ma_ratio_20",
+      "gold_ma_ratio_60",
+      "gold_drawdown_252"
+    ],
+    "excluded": [
+      "high_yield",
+      "target_*",
+      "date",
+      "split"
+    ],
+    "stale_or_carried": [],
+    "feature_groups": {
+      "beta_feature_count": 41
+    }
+  },
+  "forecast": {
+    "frequency": "trading_day",
+    "horizon_trading_days": 30,
+    "path": [
+      {
+        "horizon": 1,
+        "forecast_date": "2026-05-06",
+        "origin_date": "2026-05-05",
+        "origin_gold_price": 4561.7001953125,
+        "p10": 4492.65673828125,
+        "p50": 4567.82958984375,
+        "p90": 4663.865234375,
+        "expected_change": 6.12939453125,
+        "expected_change_pct": 0.13436644822797383
+      },
+      {
+        "horizon": 5,
+        "forecast_date": "2026-05-12",
+        "origin_date": "2026-05-05",
+        "origin_gold_price": 4561.7001953125,
+        "p10": 4401.8232421875,
+        "p50": 4533.7998046875,
+        "p90": 4731.34130859375,
+        "expected_change": -27.900390625,
+        "expected_change_pct": -0.6116226281961623
+      },
+      {
+        "horizon": 10,
+        "forecast_date": "2026-05-19",
+        "origin_date": "2026-05-05",
+        "origin_gold_price": 4561.7001953125,
+        "p10": 4361.4140625,
+        "p50": 4536.447265625,
+        "p90": 4776.4853515625,
+        "expected_change": -25.2529296875,
+        "expected_change_pct": -0.5535859132840271
+      },
+      {
+        "horizon": 20,
+        "forecast_date": "2026-06-02",
+        "origin_date": "2026-05-05",
+        "origin_gold_price": 4561.7001953125,
+        "p10": 4380.2744140625,
+        "p50": 4508.126953125,
+        "p90": 4661.69677734375,
+        "expected_change": -53.5732421875,
+        "expected_change_pct": -1.1744139223035854
+      },
+      {
+        "horizon": 30,
+        "forecast_date": "2026-06-16",
+        "origin_date": "2026-05-05",
+        "origin_gold_price": 4561.7001953125,
+        "p10": 4187.46240234375,
+        "p50": 4353.2333984375,
+        "p90": 4625.63623046875,
+        "expected_change": -208.466796875,
+        "expected_change_pct": -4.569936382255369
+      }
+    ]
+  },
+  "uncertainty": {
+    "method": "mc_dropout_plus_validation_residual_quantile_calibration",
+    "p10_path": [
+      {
+        "date": "2026-05-06",
+        "value": 4492.65673828125,
+        "horizon": 1
+      },
+      {
+        "date": "2026-05-12",
+        "value": 4401.8232421875,
+        "horizon": 5
+      },
+      {
+        "date": "2026-05-19",
+        "value": 4361.4140625,
+        "horizon": 10
+      },
+      {
+        "date": "2026-06-02",
+        "value": 4380.2744140625,
+        "horizon": 20
+      },
+      {
+        "date": "2026-06-16",
+        "value": 4187.46240234375,
+        "horizon": 30
+      }
+    ],
+    "p50_path": [
+      {
+        "date": "2026-05-06",
+        "value": 4567.82958984375,
+        "horizon": 1
+      },
+      {
+        "date": "2026-05-12",
+        "value": 4533.7998046875,
+        "horizon": 5
+      },
+      {
+        "date": "2026-05-19",
+        "value": 4536.447265625,
+        "horizon": 10
+      },
+      {
+        "date": "2026-06-02",
+        "value": 4508.126953125,
+        "horizon": 20
+      },
+      {
+        "date": "2026-06-16",
+        "value": 4353.2333984375,
+        "horizon": 30
+      }
+    ],
+    "p90_path": [
+      {
+        "date": "2026-05-06",
+        "value": 4663.865234375,
+        "horizon": 1
+      },
+      {
+        "date": "2026-05-12",
+        "value": 4731.34130859375,
+        "horizon": 5
+      },
+      {
+        "date": "2026-05-19",
+        "value": 4776.4853515625,
+        "horizon": 10
+      },
+      {
+        "date": "2026-06-02",
+        "value": 4661.69677734375,
+        "horizon": 20
+      },
+      {
+        "date": "2026-06-16",
+        "value": 4625.63623046875,
+        "horizon": 30
+      }
+    ],
+    "coverage_by_horizon": {
+      "1": 67.80905752753978,
+      "5": 64.50428396572828,
+      "10": 59.118727050183594,
+      "20": 58.50673194614443,
+      "30": 57.2827417380661
+    }
+  },
+  "evaluation": {
+    "by_horizon": {
+      "1": {
+        "train": {
+          "n": 3372,
+          "mae": 25.92580858187602,
+          "rmse": 46.337828517552296,
+          "mape": 2.30106795018349,
+          "smape": 2.270170979975853,
+          "bias_mean_error": 5.096545598402283,
+          "directional_accuracy": 77.7972027972028
+        },
+        "validation": {
+          "n": 1044,
+          "mae": 39.18805036873653,
+          "rmse": 62.105032160252804,
+          "mape": 2.3208348903616964,
+          "smape": 2.307273274827768,
+          "bias_mean_error": 0.3817338614628233,
+          "directional_accuracy": 58.69047619047619
+        },
+        "test": {
+          "n": 817,
+          "mae": 96.38846090403152,
+          "rmse": 173.3714912427733,
+          "mape": 3.359087282217979,
+          "smape": 3.322358073418996,
+          "bias_mean_error": -27.242400861574357,
+          "directional_accuracy": 55.51724137931034
+        }
+      },
+      "5": {
+        "train": {
+          "n": 3372,
+          "mae": 26.72654615517613,
+          "rmse": 41.540367837756364,
+          "mape": 2.315368782360192,
+          "smape": 2.3258567883801815,
+          "bias_mean_error": -5.209822377558988,
+          "directional_accuracy": 90.94042343673068
+        },
+        "validation": {
+          "n": 1044,
+          "mae": 64.07678058960428,
+          "rmse": 86.8472300981133,
+          "mape": 3.7504249776195215,
+          "smape": 3.7724730880046367,
+          "bias_mean_error": -15.543227857100096,
+          "directional_accuracy": 67.33716475095785
+        },
+        "test": {
+          "n": 817,
+          "mae": 193.6420438245869,
+          "rmse": 295.74282841587365,
+          "mape": 6.375634561515832,
+          "smape": 6.542248078888065,
+          "bias_mean_error": -99.61645836520808,
+          "directional_accuracy": 63.13193588162762
+        }
+      },
+      "10": {
+        "train": {
+          "n": 3372,
+          "mae": 29.332792632803233,
+          "rmse": 43.615947130520176,
+          "mape": 2.5469282933065656,
+          "smape": 2.544449418564389,
+          "bias_mean_error": -2.0827778265286736,
+          "directional_accuracy": 86.19810633648945
+        },
+        "validation": {
+          "n": 1044,
+          "mae": 77.33022451583453,
+          "rmse": 102.26500791671322,
+          "mape": 4.4801443711195965,
+          "smape": 4.559774488661525,
+          "bias_mean_error": -35.72401235295438,
+          "directional_accuracy": 66.82646212847555
+        },
+        "test": {
+          "n": 817,
+          "mae": 241.5814368856143,
+          "rmse": 356.3029290801383,
+          "mape": 7.737106060586631,
+          "smape": 8.085025214725748,
+          "bias_mean_error": -163.2058123398294,
+          "directional_accuracy": 59.97552019583844
+        }
+      },
+      "20": {
+        "train": {
+          "n": 3372,
+          "mae": 30.250090358096084,
+          "rmse": 44.598885778025426,
+          "mape": 2.587015073228316,
+          "smape": 2.5687880966109184,
+          "bias_mean_error": 6.880760654435887,
+          "directional_accuracy": 67.35966735966737
+        },
+        "validation": {
+          "n": 1044,
+          "mae": 67.15801744716835,
+          "rmse": 87.3415187959922,
+          "mape": 3.9088813239503253,
+          "smape": 3.9467219720402182,
+          "bias_mean_error": -18.774408683923014,
+          "directional_accuracy": 60.82375478927203
+        },
+        "test": {
+          "n": 817,
+          "mae": 200.65326353561048,
+          "rmse": 310.6414395106062,
+          "mape": 6.250502466480472,
+          "smape": 6.5552331824206265,
+          "bias_mean_error": -147.68011452197445,
+          "directional_accuracy": 54.467564259485926
+        }
+      },
+      "30": {
+        "train": {
+          "n": 3372,
+          "mae": 37.69002463271751,
+          "rmse": 55.329129552990736,
+          "mape": 3.2272987908781454,
+          "smape": 3.2444850531036926,
+          "bias_mean_error": -4.12397731722179,
+          "directional_accuracy": 82.47330960854093
+        },
+        "validation": {
+          "n": 1044,
+          "mae": 86.83316355738147,
+          "rmse": 113.11191021632104,
+          "mape": 4.991402666552762,
+          "smape": 5.118268870367953,
+          "bias_mean_error": -49.055615187604765,
+          "directional_accuracy": 68.77394636015326
+        },
+        "test": {
+          "n": 817,
+          "mae": 290.44588221126264,
+          "rmse": 437.08234910911943,
+          "mape": 8.768574777084899,
+          "smape": 9.366263172890472,
+          "bias_mean_error": -231.57712318672543,
+          "directional_accuracy": 55.32435740514076
+        }
+      }
+    },
+    "baseline_metrics_by_horizon": {
+      "1": {
+        "test": {
+          "naive_current_price": {
+            "n": 817,
+            "mae": 76.40762280542381,
+            "rmse": 183.1737228345424,
+            "mape": 2.7190712145038645,
+            "smape": 2.650806838624,
+            "bias_mean_error": -3.6907096872131273,
+            "directional_accuracy": 0.0
+          }
+        }
+      },
+      "5": {
+        "test": {
+          "naive_current_price": {
+            "n": 817,
+            "mae": 213.16403799628978,
+            "rmse": 352.0594730947383,
+            "mape": 7.264319952342148,
+            "smape": 7.2482524159881825,
+            "bias_mean_error": -19.314026999502754,
+            "directional_accuracy": 0.0
+          }
+        }
+      },
+      "10": {
+        "test": {
+          "naive_current_price": {
+            "n": 817,
+            "mae": 241.49334022027043,
+            "rmse": 379.06530555363094,
+            "mape": 8.192946864312304,
+            "smape": 8.230712630235299,
+            "bias_mean_error": -38.984235000143435,
+            "directional_accuracy": 0.0
+          }
+        }
+      },
+      "20": {
+        "test": {
+          "naive_current_price": {
+            "n": 817,
+            "mae": 195.07609238735466,
+            "rmse": 310.9565804677158,
+            "mape": 6.396141767137091,
+            "smape": 6.608272583079472,
+            "bias_mean_error": -77.5925953373623,
+            "directional_accuracy": 0.0
+          }
+        }
+      },
+      "30": {
+        "test": {
+          "naive_current_price": {
+            "n": 817,
+            "mae": 274.88405964920247,
+            "rmse": 419.02986482547703,
+            "mape": 8.850268745052304,
+            "smape": 9.133249197051175,
+            "bias_mean_error": -109.33756385905944,
+            "directional_accuracy": 0.0
+          }
+        }
+      }
+    },
+    "test_improvement_vs_naive_by_horizon": {
+      "1": {
+        "mae_improvement_pct_vs_naive": -26.150320301797635,
+        "rmse_improvement_pct_vs_naive": 5.351330660360757,
+        "mape_improvement_pct_vs_naive": -23.538039912312303,
+        "smape_improvement_pct_vs_naive": -25.33384270064695
+      },
+      "5": {
+        "mae_improvement_pct_vs_naive": 9.15820246004285,
+        "rmse_improvement_pct_vs_naive": 15.996344078976103,
+        "mape_improvement_pct_vs_naive": 12.233566206562635,
+        "smape_improvement_pct_vs_naive": 9.740338726929743
+      },
+      "10": {
+        "mae_improvement_pct_vs_naive": -0.03647995645077189,
+        "rmse_improvement_pct_vs_naive": 6.004869382664237,
+        "mape_improvement_pct_vs_naive": 5.563819847425997,
+        "smape_improvement_pct_vs_naive": 1.7700461922868271
+      },
+      "20": {
+        "mae_improvement_pct_vs_naive": -2.8589721477409196,
+        "rmse_improvement_pct_vs_naive": 0.10134564659658404,
+        "mape_improvement_pct_vs_naive": 2.2769867516836926,
+        "smape_improvement_pct_vs_naive": 0.8026212598229298
+      },
+      "30": {
+        "mae_improvement_pct_vs_naive": -5.661231350380823,
+        "rmse_improvement_pct_vs_naive": -4.30816173237703,
+        "mape_improvement_pct_vs_naive": 0.9230676527543409,
+        "smape_improvement_pct_vs_naive": -2.551271412965822
+      }
+    },
+    "rolling_origin_by_horizon": {
+      "1": {
+        "metrics": {
+          "n": 817,
+          "mae": 96.38846090403152,
+          "rmse": 173.3714912427733,
+          "mape": 3.359087282217979,
+          "smape": 3.322358073418996,
+          "bias_mean_error": -27.242400861574357,
+          "directional_accuracy": 55.51724137931034
+        },
+        "naive_metrics": {
+          "n": 817,
+          "mae": 76.40762280542381,
+          "rmse": 183.1737228345424,
+          "mape": 2.7190712145038645,
+          "smape": 2.650806838624,
+          "bias_mean_error": -3.6907096872131273,
+          "directional_accuracy": 0.0
+        },
+        "improvement_vs_naive": {
+          "mae_improvement_pct_vs_naive": -26.150320301797635,
+          "rmse_improvement_pct_vs_naive": 5.351330660360757,
+          "mape_improvement_pct_vs_naive": -23.538039912312303,
+          "smape_improvement_pct_vs_naive": -25.33384270064695
+        },
+        "prediction_count": 817,
+        "rolling_config": {
+          "method": "sequence_origin_evaluation",
+          "refit_policy": "fixed_evaluation_model_after_train_validation_selection",
+          "max_origins": 900,
+          "sequence_length": 20,
+          "raw_anchor_safe": true
+        }
+      },
+      "5": {
+        "metrics": {
+          "n": 817,
+          "mae": 193.6420438245869,
+          "rmse": 295.74282841587365,
+          "mape": 6.375634561515832,
+          "smape": 6.542248078888065,
+          "bias_mean_error": -99.61645836520808,
+          "directional_accuracy": 63.13193588162762
+        },
+        "naive_metrics": {
+          "n": 817,
+          "mae": 213.16403799628978,
+          "rmse": 352.0594730947383,
+          "mape": 7.264319952342148,
+          "smape": 7.2482524159881825,
+          "bias_mean_error": -19.314026999502754,
+          "directional_accuracy": 0.0
+        },
+        "improvement_vs_naive": {
+          "mae_improvement_pct_vs_naive": 9.15820246004285,
+          "rmse_improvement_pct_vs_naive": 15.996344078976103,
+          "mape_improvement_pct_vs_naive": 12.233566206562635,
+          "smape_improvement_pct_vs_naive": 9.740338726929743
+        },
+        "prediction_count": 817,
+        "rolling_config": {
+          "method": "sequence_origin_evaluation",
+          "refit_policy": "fixed_evaluation_model_after_train_validation_selection",
+          "max_origins": 900,
+          "sequence_length": 20,
+          "raw_anchor_safe": true
+        }
+      },
+      "10": {
+        "metrics": {
+          "n": 817,
+          "mae": 241.5814368856143,
+          "rmse": 356.3029290801383,
+          "mape": 7.737106060586631,
+          "smape": 8.085025214725748,
+          "bias_mean_error": -163.2058123398294,
+          "directional_accuracy": 59.97552019583844
+        },
+        "naive_metrics": {
+          "n": 817,
+          "mae": 241.49334022027043,
+          "rmse": 379.06530555363094,
+          "mape": 8.192946864312304,
+          "smape": 8.230712630235299,
+          "bias_mean_error": -38.984235000143435,
+          "directional_accuracy": 0.0
+        },
+        "improvement_vs_naive": {
+          "mae_improvement_pct_vs_naive": -0.03647995645077189,
+          "rmse_improvement_pct_vs_naive": 6.004869382664237,
+          "mape_improvement_pct_vs_naive": 5.563819847425997,
+          "smape_improvement_pct_vs_naive": 1.7700461922868271
+        },
+        "prediction_count": 817,
+        "rolling_config": {
+          "method": "sequence_origin_evaluation",
+          "refit_policy": "fixed_evaluation_model_after_train_validation_selection",
+          "max_origins": 900,
+          "sequence_length": 20,
+          "raw_anchor_safe": true
+        }
+      },
+      "20": {
+        "metrics": {
+          "n": 817,
+          "mae": 200.65326353561048,
+          "rmse": 310.6414395106062,
+          "mape": 6.250502466480472,
+          "smape": 6.5552331824206265,
+          "bias_mean_error": -147.68011452197445,
+          "directional_accuracy": 54.467564259485926
+        },
+        "naive_metrics": {
+          "n": 817,
+          "mae": 195.07609238735466,
+          "rmse": 310.9565804677158,
+          "mape": 6.396141767137091,
+          "smape": 6.608272583079472,
+          "bias_mean_error": -77.5925953373623,
+          "directional_accuracy": 0.0
+        },
+        "improvement_vs_naive": {
+          "mae_improvement_pct_vs_naive": -2.8589721477409196,
+          "rmse_improvement_pct_vs_naive": 0.10134564659658404,
+          "mape_improvement_pct_vs_naive": 2.2769867516836926,
+          "smape_improvement_pct_vs_naive": 0.8026212598229298
+        },
+        "prediction_count": 817,
+        "rolling_config": {
+          "method": "sequence_origin_evaluation",
+          "refit_policy": "fixed_evaluation_model_after_train_validation_selection",
+          "max_origins": 900,
+          "sequence_length": 20,
+          "raw_anchor_safe": true
+        }
+      },
+      "30": {
+        "metrics": {
+          "n": 817,
+          "mae": 290.44588221126264,
+          "rmse": 437.08234910911943,
+          "mape": 8.768574777084899,
+          "smape": 9.366263172890472,
+          "bias_mean_error": -231.57712318672543,
+          "directional_accuracy": 55.32435740514076
+        },
+        "naive_metrics": {
+          "n": 817,
+          "mae": 274.88405964920247,
+          "rmse": 419.02986482547703,
+          "mape": 8.850268745052304,
+          "smape": 9.133249197051175,
+          "bias_mean_error": -109.33756385905944,
+          "directional_accuracy": 0.0
+        },
+        "improvement_vs_naive": {
+          "mae_improvement_pct_vs_naive": -5.661231350380823,
+          "rmse_improvement_pct_vs_naive": -4.30816173237703,
+          "mape_improvement_pct_vs_naive": 0.9230676527543409,
+          "smape_improvement_pct_vs_naive": -2.551271412965822
+        },
+        "prediction_count": 817,
+        "rolling_config": {
+          "method": "sequence_origin_evaluation",
+          "refit_policy": "fixed_evaluation_model_after_train_validation_selection",
+          "max_origins": 900,
+          "sequence_length": 20,
+          "raw_anchor_safe": true
+        }
+      }
+    }
+  },
+  "interpretability": {
+    "methods": [
+      "attention_summary",
+      "feature_occlusion_importance"
+    ],
+    "attention_available": true,
+    "top_occlusion_features": [
+      {
+        "feature": "jpy_usd",
+        "horizon": 30,
+        "mean_abs_price_change_when_occluded": 86.87837219238281,
+        "sample_rows": 400
+      },
+      {
+        "feature": "jpy_usd",
+        "horizon": 10,
+        "mean_abs_price_change_when_occluded": 74.01486206054688,
+        "sample_rows": 400
+      },
+      {
+        "feature": "jpy_usd",
+        "horizon": 5,
+        "mean_abs_price_change_when_occluded": 63.77030944824219,
+        "sample_rows": 400
+      },
+      {
+        "feature": "jpy_usd",
+        "horizon": 20,
+        "mean_abs_price_change_when_occluded": 63.269920349121094,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_ma_ratio_20",
+        "horizon": 5,
+        "mean_abs_price_change_when_occluded": 53.90085983276367,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_ma_ratio_20",
+        "horizon": 30,
+        "mean_abs_price_change_when_occluded": 52.10888671875,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_ma_ratio_20",
+        "horizon": 10,
+        "mean_abs_price_change_when_occluded": 50.658084869384766,
+        "sample_rows": 400
+      },
+      {
+        "feature": "policy_unc",
+        "horizon": 30,
+        "mean_abs_price_change_when_occluded": 49.80891418457031,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_ma_ratio_20",
+        "horizon": 20,
+        "mean_abs_price_change_when_occluded": 37.58155822753906,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_return_1",
+        "horizon": 20,
+        "mean_abs_price_change_when_occluded": 36.649391174316406,
+        "sample_rows": 400
+      },
+      {
+        "feature": "usd_index",
+        "horizon": 30,
+        "mean_abs_price_change_when_occluded": 34.55990982055664,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_drawdown_252",
+        "horizon": 30,
+        "mean_abs_price_change_when_occluded": 32.26335525512695,
+        "sample_rows": 400
+      },
+      {
+        "feature": "policy_unc",
+        "horizon": 10,
+        "mean_abs_price_change_when_occluded": 31.899389266967773,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_return_1",
+        "horizon": 5,
+        "mean_abs_price_change_when_occluded": 29.593055725097656,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_lag_20",
+        "horizon": 5,
+        "mean_abs_price_change_when_occluded": 29.40152359008789,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_drawdown_252",
+        "horizon": 20,
+        "mean_abs_price_change_when_occluded": 28.973548889160156,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_ma_5",
+        "horizon": 5,
+        "mean_abs_price_change_when_occluded": 28.719158172607422,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_drawdown_252",
+        "horizon": 10,
+        "mean_abs_price_change_when_occluded": 27.683887481689453,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_ma_60",
+        "horizon": 30,
+        "mean_abs_price_change_when_occluded": 27.175600051879883,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_return_1",
+        "horizon": 30,
+        "mean_abs_price_change_when_occluded": 26.7830867767334,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_ma_ratio_60",
+        "horizon": 30,
+        "mean_abs_price_change_when_occluded": 25.07697296142578,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_return_20",
+        "horizon": 5,
+        "mean_abs_price_change_when_occluded": 24.496809005737305,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_ma_60",
+        "horizon": 5,
+        "mean_abs_price_change_when_occluded": 24.450326919555664,
+        "sample_rows": 400
+      },
+      {
+        "feature": "gold_return_1",
+        "horizon": 10,
+        "mean_abs_price_change_when_occluded": 24.39727020263672,
+        "sample_rows": 400
+      },
+      {
+        "feature": "usd_index",
+        "horizon": 10,
+        "mean_abs_price_change_when_occluded": 23.690149307250977,
+        "sample_rows": 400
+      }
+    ]
+  },
+  "diagnostics": {
+    "artifact_type": "deep_ml_beta_diagnostics_latest",
+    "schema_version": "1.0.0",
+    "generated_at_utc": "2026-05-05T10:33:29Z",
+    "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+    "study_id": "deepml_feature_refresh_20260505_093208",
+    "run_id": "deepml_run_20260505_102020_beta_temporal_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+    "model_key": "beta_temporal",
+    "model_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+    "selected_feature_count": 41,
+    "selected_features": [
+      "gold_price",
+      "real_yield",
+      "nominal_yield",
+      "tips_curve",
+      "fed_bs",
+      "m2_supply",
+      "inflation",
+      "usd_index",
+      "eur_usd",
+      "jpy_usd",
+      "vix_index",
+      "fin_stress",
+      "gpr_index",
+      "policy_unc",
+      "oil_wti",
+      "ppi_index",
+      "gld_tonnes",
+      "unrate",
+      "ind_prod",
+      "cap_util",
+      "gold_lag_1",
+      "gold_lag_5",
+      "gold_lag_20",
+      "gold_return_1",
+      "gold_return_5",
+      "gold_ma_5",
+      "gold_ma_20",
+      "gold_ma_60",
+      "gold_volatility_20",
+      "beta_time_index",
+      "beta_year",
+      "beta_month",
+      "beta_quarter",
+      "beta_day_of_year_sin",
+      "beta_day_of_year_cos",
+      "gold_log_price",
+      "gold_return_20",
+      "gold_return_60",
+      "gold_ma_ratio_20",
+      "gold_ma_ratio_60",
+      "gold_drawdown_252"
+    ],
+    "horizons": [
+      1,
+      5,
+      10,
+      20,
+      30
+    ],
+    "device_info": {
+      "torch_available": true,
+      "torch_version": "2.10.0+cu130",
+      "device": "cuda",
+      "cuda_available": true,
+      "cuda_device_name": "NVIDIA GeForce RTX 5060",
+      "cuda_device_count": 1
+    },
+    "best_config": {
+      "architecture": "gru_attention",
+      "model_type": "gru",
+      "use_attention": true,
+      "sequence_length": 20,
+      "hidden_size": 256,
+      "num_layers": 3,
+      "dropout": 0.15150642766347186,
+      "bidirectional": true,
+      "dense_size": 128,
+      "learning_rate": 0.003532801747321698,
+      "weight_decay": 3.427922620143494e-07,
+      "batch_size": 128,
+      "loss": "huber"
+    },
+    "quality_status": "ready",
+    "quality_flags": [],
+    "sanity_checks": {
+      "artifact_type": "deep_ml_beta_price_anchor_sanity_checks",
+      "schema_version": "1.0.0",
+      "generated_at_utc": "2026-05-05T10:32:34Z",
+      "raw_origin_gold_min": 1827.300048828125,
+      "raw_origin_gold_max": 5414.47998046875,
+      "target_gold_min": 1827.300048828125,
+      "target_gold_max": 5414.47998046875,
+      "naive_mape_by_horizon": {
+        "1": 2.7190712145038645,
+        "5": 7.264319952342148,
+        "10": 8.192946864312304,
+        "20": 6.396141767137091,
+        "30": 8.850268745052304
+      },
+      "price_anchor_valid": true,
+      "blocking_reason": null
+    },
+    "runtime_elapsed_seconds": 789.328,
+    "runtime_elapsed_hms": "00:13:09",
+    "has_static_prediction_table": true,
+    "has_rolling_prediction_table": true,
+    "attention_available": true,
+    "occlusion_available": true
+  },
+  "limitations": [
+    "Beta Temporal is one expert, not the final Deep ML winner.",
+    "MC dropout intervals are approximate and are calibrated with validation residual quantiles.",
+    "Attention and occlusion explain model behavior, not economic causality.",
+    "Rolling-origin sequence evaluation uses the trained evaluation model over test origins and does not retrain at every test origin.",
+    "Final winner status requires comparison with Alpha, Delta, Epsilon, Gamma, and Omega."
+  ],
+  "professor_safe_summary": "Beta Temporal V2 uses PyTorch CUDA sequence modeling with Optuna tuning, raw-price anchoring, calibrated MC-dropout uncertainty, rolling-origin sequence evaluation, and temporal interpretability.",
+  "ai_grounding": {
+    "allowed_claims": [
+      "Beta V2 uses a PyTorch recurrent sequence model.",
+      "Beta V2 includes Optuna tuning.",
+      "Beta V2 preserves raw gold price for forecast reconstruction.",
+      "Beta V2 includes calibrated MC-dropout uncertainty.",
+      "Beta V2 includes rolling-origin sequence evaluation.",
+      "Beta V2 includes attention/occlusion interpretability."
+    ],
+    "forbidden_claims": [
+      "Do not claim Beta is the final Deep ML winner.",
+      "Do not claim attention proves causality.",
+      "Do not claim Beta beats Alpha until model comparison is performed.",
+      "Do not claim this is the official Final Forecast."
+    ],
+    "source_artifacts": [
+      "artifacts/deep_ml/models/beta_temporal/run_summary.json",
+      "artifacts/deep_ml/models/beta_temporal/evaluation_by_horizon.json",
+      "artifacts/deep_ml/models/beta_temporal/rolling_origin_metrics.json",
+      "artifacts/deep_ml/models/beta_temporal/mc_dropout_summary.json",
+      "artifacts/deep_ml/models/beta_temporal/sanity_checks.json",
+      "artifacts/deep_ml/models/beta_temporal/quality_review.json"
+    ]
+  }
+}

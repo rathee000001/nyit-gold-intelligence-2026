@@ -1,0 +1,72 @@
+{
+  "artifact_type": "deep_ml_beta_forecast_latest",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:33:29Z",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "run_batch_id": "deepml_feature_refresh_20260505_093208",
+  "run_id": "deepml_run_20260505_102020_beta_temporal_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "model_key": "beta_temporal",
+  "model_name": "Beta Temporal Expert",
+  "model_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+  "effective_data_through_date": "2026-05-05",
+  "forecast_start_date": "2026-05-06",
+  "forecast_points": [
+    {
+      "horizon": 1,
+      "forecast_date": "2026-05-06",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "p10": 4492.65673828125,
+      "p50": 4567.82958984375,
+      "p90": 4663.865234375,
+      "expected_change": 6.12939453125,
+      "expected_change_pct": 0.13436644822797383
+    },
+    {
+      "horizon": 5,
+      "forecast_date": "2026-05-12",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "p10": 4401.8232421875,
+      "p50": 4533.7998046875,
+      "p90": 4731.34130859375,
+      "expected_change": -27.900390625,
+      "expected_change_pct": -0.6116226281961623
+    },
+    {
+      "horizon": 10,
+      "forecast_date": "2026-05-19",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "p10": 4361.4140625,
+      "p50": 4536.447265625,
+      "p90": 4776.4853515625,
+      "expected_change": -25.2529296875,
+      "expected_change_pct": -0.5535859132840271
+    },
+    {
+      "horizon": 20,
+      "forecast_date": "2026-06-02",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "p10": 4380.2744140625,
+      "p50": 4508.126953125,
+      "p90": 4661.69677734375,
+      "expected_change": -53.5732421875,
+      "expected_change_pct": -1.1744139223035854
+    },
+    {
+      "horizon": 30,
+      "forecast_date": "2026-06-16",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "p10": 4187.46240234375,
+      "p50": 4353.2333984375,
+      "p90": 4625.63623046875,
+      "expected_change": -208.466796875,
+      "expected_change_pct": -4.569936382255369
+    }
+  ],
+  "professor_safe_summary": "Beta V2 forecast uses PyTorch sequence modeling with raw-price anchoring and calibrated MC-dropout uncertainty."
+}

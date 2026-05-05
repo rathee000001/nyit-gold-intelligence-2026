@@ -1,0 +1,18 @@
+{
+  "artifact_type": "deep_ml_beta_price_anchor_sanity_checks",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:32:34Z",
+  "raw_origin_gold_min": 1827.300048828125,
+  "raw_origin_gold_max": 5414.47998046875,
+  "target_gold_min": 1827.300048828125,
+  "target_gold_max": 5414.47998046875,
+  "naive_mape_by_horizon": {
+    "1": 2.7190712145038645,
+    "5": 7.264319952342148,
+    "10": 8.192946864312304,
+    "20": 6.396141767137091,
+    "30": 8.850268745052304
+  },
+  "price_anchor_valid": true,
+  "blocking_reason": null
+}

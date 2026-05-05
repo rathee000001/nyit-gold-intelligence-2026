@@ -1,0 +1,19 @@
+{
+  "artifact_type": "deep_ml_mode_status",
+  "schema_version": "2.0.0",
+  "phase_key": "phase11_governed_feature_store_refresh",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "official_model_cutoff": "2026-03-31",
+  "effective_data_through_date": "2026-05-05",
+  "forecast_start_date": "2026-05-06",
+  "gold_live_source": "yahoo_gc_f",
+  "fred_registry_merge_applied": true,
+  "manual_factor_policy": "manual/local factors carried forward unless source CSVs are added",
+  "frontend_policy": "RecursiveClientView.tsx and model3 frontend were not modified.",
+  "generated_at_utc": "2026-05-05T09:32:08.481268Z",
+  "effective_model_data_through_date": "2026-05-05",
+  "refreshed_matrix_end_date": "2026-05-05",
+  "official_research_cutoff_date": "2026-03-31",
+  "official_cutoff": "2026-03-31"
+}

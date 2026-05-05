@@ -1,0 +1,17 @@
+{
+  "artifact_type": "deep_ml_feature_store_status",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T04:02:28Z",
+  "mode": "official_research_mode",
+  "study_id": "deepml_study_20260505_035349_officialresearch_20260331",
+  "run_batch_id": "deepml_batch_20260505_035349_officialresearch_20260331",
+  "status": "numeric_feature_store_ready",
+  "actual_numeric_feature_store_built": true,
+  "selected_input_path": "D:\\nyit-gold-intelligence-2026\\data\\aligned\\model_ready_multivariate.csv",
+  "row_count": 5282,
+  "column_count": 47,
+  "date_min": "2006-01-02",
+  "date_max": "2026-03-31",
+  "feature_hash": "sha256:74b3a38f3b7dfe1c0a774c6d789928e07739e2d38c0c6aed76754c2d89b138f5",
+  "next_required_input": "Proceed to Phase 6 Alpha Structural foundation."
+}

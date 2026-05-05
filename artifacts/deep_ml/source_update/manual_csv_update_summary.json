@@ -1,0 +1,11 @@
+{
+  "artifact_type": "manual_csv_update_summary",
+  "schema_version": "1.0.0",
+  "status": "no_manual_csv_files_found",
+  "file_count": 0,
+  "files_with_date_column": 0,
+  "files_with_warnings": 0,
+  "latest_manual_valid_date": null,
+  "note": "Phase 10 inventories manual CSV files only. Phase 11 decides governed merging and feature-store refresh.",
+  "generated_at_utc": "2026-05-05T08:47:16.881879Z"
+}

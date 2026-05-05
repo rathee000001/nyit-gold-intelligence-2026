@@ -1,0 +1,15 @@
+{
+  "artifact_type": "fred_update_summary",
+  "schema_version": "1.0.0",
+  "fred_api_key_status": "missing",
+  "status": "no_fred_registry_entries_found",
+  "series_count": 0,
+  "registry_metadata": {
+    "registry_source": "derived_from_factor_state_table_and_model_feature_plan",
+    "registry_path": "artifacts\\deep_ml\\source_inputs\\fred_series_registry.json",
+    "series_count": 0,
+    "manual_registry_exists": false
+  },
+  "professor_safe_note": "No FRED series were pulled because no registry entries were available.",
+  "generated_at_utc": "2026-05-05T08:40:32.836050Z"
+}

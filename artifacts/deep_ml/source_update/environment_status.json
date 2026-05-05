@@ -1,0 +1,13 @@
+{
+  "artifact_type": "source_update_environment_status",
+  "schema_version": "1.0.0",
+  "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "script_version": "source_update_refresh_v2_yahoo_gold_intelligence_delegated_fred",
+  "git_commit_sha": "be6e3bf",
+  "fred_refresh_policy": "delegated_to_main_intelligence_pipeline",
+  "gold_live_provider": "yahoo",
+  "gold_live_symbol": "GC=F",
+  "secret_policy": "Phase 10 V2 does not require API keys; no secret values are written.",
+  "generated_at_utc": "2026-05-05T08:47:16.535069Z"
+}

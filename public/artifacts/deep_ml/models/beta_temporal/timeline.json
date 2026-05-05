@@ -1,0 +1,183 @@
+{
+  "artifact_type": "deep_ml_beta_timeline",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:33:29Z",
+  "run_id": "deepml_run_20260505_102020_beta_temporal_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "model_key": "beta_temporal",
+  "model_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+  "elapsed_seconds": 789.375,
+  "elapsed_hms": "00:13:09",
+  "events": [
+    {
+      "timestamp_utc": "2026-05-05T10:20:20Z",
+      "elapsed_seconds": 0.0,
+      "elapsed_hms": "00:00:00",
+      "stage": "startup",
+      "message": "Phase 7 Beta Temporal V2 started",
+      "extra": {
+        "model_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+        "n_trials": 70,
+        "max_epochs_per_trial": 90,
+        "mc_samples_latest": 120,
+        "mc_samples_eval": 40
+      }
+    },
+    {
+      "timestamp_utc": "2026-05-05T10:20:20Z",
+      "elapsed_seconds": 0.016,
+      "elapsed_hms": "00:00:00",
+      "stage": "environment",
+      "message": "Compute environment checked",
+      "extra": {
+        "torch_available": true,
+        "torch_version": "2.10.0+cu130",
+        "device": "cuda",
+        "cuda_available": true,
+        "cuda_device_name": "NVIDIA GeForce RTX 5060",
+        "cuda_device_count": 1
+      }
+    },
+    {
+      "timestamp_utc": "2026-05-05T10:20:20Z",
+      "elapsed_seconds": 0.016,
+      "elapsed_hms": "00:00:00",
+      "stage": "load_inputs",
+      "message": "START — Loading governance, feature, and numeric feature-store artifacts",
+      "extra": {}
+    },
+    {
+      "timestamp_utc": "2026-05-05T10:20:20Z",
+      "elapsed_seconds": 0.063,
+      "elapsed_hms": "00:00:00",
+      "stage": "load_inputs",
+      "message": "END — Loaded feature store with 5306 rows and 56 columns",
+      "extra": {
+        "stage_elapsed_hms": "00:00:00"
+      }
+    },
+    {
+      "timestamp_utc": "2026-05-05T10:20:20Z",
+      "elapsed_seconds": 0.078,
+      "elapsed_hms": "00:00:00",
+      "stage": "data_prep",
+      "message": "START — Preparing raw-anchor dataframe, targets, scaled features, and sanity checks",
+      "extra": {}
+    },
+    {
+      "timestamp_utc": "2026-05-05T10:20:21Z",
+      "elapsed_seconds": 1.375,
+      "elapsed_hms": "00:00:01",
+      "stage": "data_prep",
+      "message": "END — Prepared 41 features and passed raw-price-anchor sanity checks",
+      "extra": {
+        "stage_elapsed_hms": "00:00:01"
+      }
+    },
+    {
+      "timestamp_utc": "2026-05-05T10:20:21Z",
+      "elapsed_seconds": 1.375,
+      "elapsed_hms": "00:00:01",
+      "stage": "optuna",
+      "message": "START — Starting Beta V2 Optuna study with 70 trials",
+      "extra": {}
+    },
+    {
+      "timestamp_utc": "2026-05-05T10:32:23Z",
+      "elapsed_seconds": 723.282,
+      "elapsed_hms": "00:12:03",
+      "stage": "optuna",
+      "message": "END — Optuna complete; best=91.6616",
+      "extra": {
+        "stage_elapsed_hms": "00:12:01"
+      }
+    },
+    {
+      "timestamp_utc": "2026-05-05T10:32:23Z",
+      "elapsed_seconds": 723.282,
+      "elapsed_hms": "00:12:03",
+      "stage": "final_training",
+      "message": "START — Training final Beta V2 temporal models",
+      "extra": {}
+    },
+    {
+      "timestamp_utc": "2026-05-05T10:33:28Z",
+      "elapsed_seconds": 787.875,
+      "elapsed_hms": "00:13:07",
+      "stage": "final_training",
+      "message": "END — Final Beta V2 models trained",
+      "extra": {
+        "stage_elapsed_hms": "00:01:04"
+      }
+    },
+    {
+      "timestamp_utc": "2026-05-05T10:33:28Z",
+      "elapsed_seconds": 787.875,
+      "elapsed_hms": "00:13:07",
+      "stage": "evaluation",
+      "message": "START — Evaluating static split and sequence-origin metrics",
+      "extra": {}
+    },
+    {
+      "timestamp_utc": "2026-05-05T10:33:29Z",
+      "elapsed_seconds": 788.719,
+      "elapsed_hms": "00:13:08",
+      "stage": "evaluation",
+      "message": "END — Evaluation complete",
+      "extra": {
+        "stage_elapsed_hms": "00:00:00"
+      }
+    },
+    {
+      "timestamp_utc": "2026-05-05T10:33:29Z",
+      "elapsed_seconds": 788.735,
+      "elapsed_hms": "00:13:08",
+      "stage": "forecast_uncertainty",
+      "message": "START — Creating latest calibrated MC-dropout forecast",
+      "extra": {}
+    },
+    {
+      "timestamp_utc": "2026-05-05T10:33:29Z",
+      "elapsed_seconds": 789.032,
+      "elapsed_hms": "00:13:09",
+      "stage": "forecast_uncertainty",
+      "message": "END — Latest forecast and calibrated MC dropout intervals created",
+      "extra": {
+        "stage_elapsed_hms": "00:00:00"
+      }
+    },
+    {
+      "timestamp_utc": "2026-05-05T10:33:29Z",
+      "elapsed_seconds": 789.032,
+      "elapsed_hms": "00:13:09",
+      "stage": "interpretability",
+      "message": "START — Creating attention and occlusion interpretability artifacts",
+      "extra": {}
+    },
+    {
+      "timestamp_utc": "2026-05-05T10:33:29Z",
+      "elapsed_seconds": 789.328,
+      "elapsed_hms": "00:13:09",
+      "stage": "interpretability",
+      "message": "END — Interpretability artifacts created",
+      "extra": {
+        "stage_elapsed_hms": "00:00:00"
+      }
+    },
+    {
+      "timestamp_utc": "2026-05-05T10:33:29Z",
+      "elapsed_seconds": 789.375,
+      "elapsed_hms": "00:13:09",
+      "stage": "finish",
+      "message": "Phase 7 Beta Temporal V2 complete",
+      "extra": {
+        "status": "ready",
+        "runtime_elapsed_hms": "00:13:09",
+        "send_for_review": [
+          "artifacts/deep_ml/models/beta_temporal/phase7_beta_temporal_report.json",
+          "artifacts/deep_ml/models/beta_temporal/quality_review.json",
+          "artifacts/deep_ml/models/beta_temporal/sanity_checks.json"
+        ]
+      }
+    }
+  ]
+}

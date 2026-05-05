@@ -1,0 +1,25 @@
+{
+  "artifact_type": "deep_ml_quality_review",
+  "schema_version": "1.0.0",
+  "phase_key": "phase12_news_ai_context",
+  "model_key": "news_ai_context",
+  "status": "ready_with_warnings",
+  "blocking_flags": [],
+  "warnings": [
+    "No manual/API news file was provided; used clearly labeled project-context fallback items."
+  ],
+  "acceptance_gate": {
+    "news_or_context_items_scored": true,
+    "input_mode_labeled": true,
+    "theme_scores_exported": true,
+    "factor_exposure_exported": true,
+    "gamma_ready_artifact_exported": true,
+    "timeline_exported": true,
+    "progress_checkpoint_exported": true,
+    "professor_safe_no_causality_claims": true,
+    "frontend_claims_not_hardcoded": true,
+    "required_outputs_exist": true
+  },
+  "professor_safe_summary": "News AI context is reviewed as a narrative classification layer. It summarizes market-relevant signals and does not claim causality.",
+  "generated_at_utc": "2026-05-05T18:21:16.662616Z"
+}

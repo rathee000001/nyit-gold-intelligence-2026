@@ -1,0 +1,55 @@
+{
+  "artifact_type": "epsilon_rolling_origin_metrics",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "method_note": "Each test origin is evaluated with the available features and raw price anchor at that origin. Component models are trained on the fixed training split for Phase 9.",
+  "metrics_by_horizon": {
+    "1": {
+      "count": 841,
+      "mae": 76.83296647652638,
+      "rmse": 180.39901246611296,
+      "mape_pct": 2.6968669409615678,
+      "smape_pct": 2.631288506983979,
+      "bias_mean_error": -3.508720261585214,
+      "directional_accuracy_pct": 54.80132450331126
+    },
+    "5": {
+      "count": 841,
+      "mae": 207.7053694798343,
+      "rmse": 340.6795073508072,
+      "mape_pct": 7.000097868151533,
+      "smape_pct": 6.986191968127821,
+      "bias_mean_error": -17.68844674183934,
+      "directional_accuracy_pct": 65.38922155688623
+    },
+    "10": {
+      "count": 841,
+      "mae": 230.92031906136378,
+      "rmse": 360.22238882184536,
+      "mape_pct": 7.718813018174093,
+      "smape_pct": 7.755681010821676,
+      "bias_mean_error": -36.21122331955034,
+      "directional_accuracy_pct": 70.03567181926277
+    },
+    "20": {
+      "count": 841,
+      "mae": 193.34631602029498,
+      "rmse": 299.6560886128633,
+      "mape_pct": 6.1510643391551545,
+      "smape_pct": 6.329462752370891,
+      "bias_mean_error": -74.76593055459733,
+      "directional_accuracy_pct": 63.614744351961946
+    },
+    "30": {
+      "count": 841,
+      "mae": 252.83081762659708,
+      "rmse": 380.09359383275165,
+      "mape_pct": 7.883998601949116,
+      "smape_pct": 8.14915494663158,
+      "bias_mean_error": -111.23919981197541,
+      "directional_accuracy_pct": 66.94411414982164
+    }
+  },
+  "origin_count": 841,
+  "generated_at_utc": "2026-05-05T18:14:26.986123Z"
+}

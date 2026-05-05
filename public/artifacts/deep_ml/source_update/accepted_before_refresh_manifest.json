@@ -1,0 +1,50 @@
+{
+  "artifact_type": "accepted_before_refresh_manifest",
+  "schema_version": "1.0.0",
+  "refresh_id": "deepml_refresh_20260505_084716",
+  "purpose": "Protect accepted Alpha/Beta/Delta/Epsilon artifacts before the refreshed source-update cycle.",
+  "accepted_models": [
+    {
+      "model_key": "alpha_structural_v4",
+      "path": "artifacts/deep_ml/models/alpha_structural/run_summary.json",
+      "exists": true,
+      "hash": "sha256:fdbabb3e82015f7c1597e92373d697829dad98bd95f7a85873aab9e478344296",
+      "status": null,
+      "code_version": "alpha_structural_v4_consistent_timed_xgboost_optuna_rolling_shap",
+      "run_id": "deepml_run_20260505_045746_alpha_structural_official_research_mode_20260331",
+      "completed_at_utc": null
+    },
+    {
+      "model_key": "beta_temporal_v2",
+      "path": "artifacts/deep_ml/models/beta_temporal/run_summary.json",
+      "exists": true,
+      "hash": "sha256:4043949f41a4e5d32ca9063bdf861e9d3094761c419a073374c57d4b3da7b118",
+      "status": null,
+      "code_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+      "run_id": "deepml_run_20260505_055242_beta_temporal_official_research_mode_20260331",
+      "completed_at_utc": null
+    },
+    {
+      "model_key": "delta_tft_v2",
+      "path": "artifacts/deep_ml/models/delta_tft/run_summary.json",
+      "exists": true,
+      "hash": "sha256:3c93f4e1a88148e3deb978269d03b14a8bf1bfa8c539b09c65a2b54fe56d7da8",
+      "status": "completed_pending_quality_review",
+      "code_version": "delta_tft_v2_calibrated_custom_tft_style",
+      "run_id": "deepml_run_20260505_072148_delta_tft_v2",
+      "completed_at_utc": "2026-05-05T07:55:33.996933Z"
+    },
+    {
+      "model_key": "epsilon_expert_ensemble_v2",
+      "path": "artifacts/deep_ml/models/epsilon_expert_ensemble/run_summary.json",
+      "exists": true,
+      "hash": "sha256:cb59e7e826d189ba691df7d7c879864425554bfa9988a3912c9230876618e6a2",
+      "status": "completed_pending_quality_review",
+      "code_version": "epsilon_expert_ensemble_v2_best_validation_component",
+      "run_id": "deepml_run_20260505_081752_epsilon_expert_ensemble",
+      "completed_at_utc": "2026-05-05T08:19:06.489906Z"
+    }
+  ],
+  "all_expected_accepted_artifacts_found": true,
+  "generated_at_utc": "2026-05-05T08:47:16.659275Z"
+}

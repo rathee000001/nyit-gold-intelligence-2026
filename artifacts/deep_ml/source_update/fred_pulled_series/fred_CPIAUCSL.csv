@@ -1,0 +1,16 @@
+date,value,value_raw,series_id,factor_key,target_columns,frequency_handling,source_role,official_core,model_policy,pulled_at_utc
+2025-01-01,318.961,318.961,CPIAUCSL,inflation,inflation,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:24.421298Z
+2025-02-01,319.679,319.679,CPIAUCSL,inflation,inflation,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:24.421298Z
+2025-03-01,319.785,319.785,CPIAUCSL,inflation,inflation,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:24.421298Z
+2025-04-01,320.302,320.302,CPIAUCSL,inflation,inflation,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:24.421298Z
+2025-05-01,320.62,320.620,CPIAUCSL,inflation,inflation,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:24.421298Z
+2025-06-01,321.435,321.435,CPIAUCSL,inflation,inflation,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:24.421298Z
+2025-07-01,322.169,322.169,CPIAUCSL,inflation,inflation,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:24.421298Z
+2025-08-01,323.291,323.291,CPIAUCSL,inflation,inflation,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:24.421298Z
+2025-09-01,324.245,324.245,CPIAUCSL,inflation,inflation,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:24.421298Z
+2025-10-01,,.,CPIAUCSL,inflation,inflation,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:24.421298Z
+2025-11-01,325.063,325.063,CPIAUCSL,inflation,inflation,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:24.421298Z
+2025-12-01,326.031,326.031,CPIAUCSL,inflation,inflation,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:24.421298Z
+2026-01-01,326.588,326.588,CPIAUCSL,inflation,inflation,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:24.421298Z
+2026-02-01,327.46,327.460,CPIAUCSL,inflation,inflation,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:24.421298Z
+2026-03-01,330.293,330.293,CPIAUCSL,inflation,inflation,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:24.421298Z

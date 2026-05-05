@@ -1,0 +1,14 @@
+{
+  "artifact_type": "deep_ml_forecast_start_decision",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T03:53:49Z",
+  "mode": "official_research_mode",
+  "effective_model_data_through_date": "2026-03-31",
+  "forecast_start_date": "2026-04-01",
+  "decision_rule": "next_weekday_after_effective_model_data_through_date",
+  "holiday_calendar_applied": false,
+  "notes": [
+    "Weekend-only logic is used for now.",
+    "Official market-holiday filtering can be added later if required."
+  ]
+}

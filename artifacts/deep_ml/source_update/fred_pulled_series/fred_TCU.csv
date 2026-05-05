@@ -1,0 +1,16 @@
+date,value,value_raw,series_id,factor_key,target_columns,frequency_handling,source_role,official_core,model_policy,pulled_at_utc
+2025-01-01,75.5781,75.5781,TCU,cap_util,cap_util,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:34.575418Z
+2025-02-01,76.2685,76.2685,TCU,cap_util,cap_util,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:34.575418Z
+2025-03-01,76.1318,76.1318,TCU,cap_util,cap_util,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:34.575418Z
+2025-04-01,76.1048,76.1048,TCU,cap_util,cap_util,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:34.575418Z
+2025-05-01,75.8894,75.8894,TCU,cap_util,cap_util,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:34.575418Z
+2025-06-01,76.181,76.181,TCU,cap_util,cap_util,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:34.575418Z
+2025-07-01,76.3997,76.3997,TCU,cap_util,cap_util,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:34.575418Z
+2025-08-01,76.1055,76.1055,TCU,cap_util,cap_util,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:34.575418Z
+2025-09-01,76.0461,76.0461,TCU,cap_util,cap_util,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:34.575418Z
+2025-10-01,75.6194,75.6194,TCU,cap_util,cap_util,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:34.575418Z
+2025-11-01,75.4249,75.4249,TCU,cap_util,cap_util,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:34.575418Z
+2025-12-01,75.7296,75.7296,TCU,cap_util,cap_util,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:34.575418Z
+2026-01-01,75.6564,75.6564,TCU,cap_util,cap_util,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:34.575418Z
+2026-02-01,76.1407,76.1407,TCU,cap_util,cap_util,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:34.575418Z
+2026-03-01,75.6596,75.6596,TCU,cap_util,cap_util,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:34.575418Z

@@ -1,0 +1,82 @@
+{
+  "artifact_type": "deep_ml_alpha_forecast_latest",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:18:03Z",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "run_batch_id": "deepml_feature_refresh_20260505_093208",
+  "run_id": "deepml_run_20260505_100053_alpha_structural_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "model_key": "alpha_structural",
+  "model_name": "Alpha Structural Expert",
+  "model_version": "alpha_structural_v4_consistent_timed_xgboost_optuna_rolling_shap",
+  "effective_data_through_date": "2026-05-05",
+  "forecast_start_date": "2026-05-06",
+  "forecast_points": [
+    {
+      "horizon": 1,
+      "forecast_date": "2026-05-06",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "predicted_log_return": 0.0011006837012246251,
+      "predicted_return_pct": 0.1101289675838002,
+      "p10": 4517.170568265169,
+      "p50": 4566.723948641866,
+      "p90": 4621.56890612468,
+      "expected_change": 5.023753329365718,
+      "expected_change_pct": 0.1101289675838002
+    },
+    {
+      "horizon": 5,
+      "forecast_date": "2026-05-12",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "predicted_log_return": 0.0497724749147892,
+      "predicted_return_pct": 5.103193303910247,
+      "p10": 4708.279654097234,
+      "p50": 4794.4925742241485,
+      "p90": 4922.2605930039035,
+      "expected_change": 232.79237891164848,
+      "expected_change_pct": 5.103193303910247
+    },
+    {
+      "horizon": 10,
+      "forecast_date": "2026-05-19",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "predicted_log_return": 0.06274283677339554,
+      "predicted_return_pct": 6.475298870655988,
+      "p10": 4758.5563525555035,
+      "p50": 4857.083916542282,
+      "p90": 4967.455498754731,
+      "expected_change": 295.38372122978217,
+      "expected_change_pct": 6.475298870655988
+    },
+    {
+      "horizon": 20,
+      "forecast_date": "2026-06-02",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "predicted_log_return": -0.01167683582752943,
+      "predicted_return_pct": -1.1608926160407207,
+      "p10": 4418.838932927624,
+      "p50": 4508.743754579202,
+      "p90": 4625.3159713939585,
+      "expected_change": -52.95644073329822,
+      "expected_change_pct": -1.1608926160407318
+    },
+    {
+      "horizon": 30,
+      "forecast_date": "2026-06-16",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "predicted_log_return": 0.049708880484104156,
+      "predicted_return_pct": 5.09650953869627,
+      "p10": 4688.450257546093,
+      "p50": 4794.1876808933275,
+      "p90": 4929.557261543657,
+      "expected_change": 232.48748558082752,
+      "expected_change_pct": 5.09650953869627
+    }
+  ],
+  "professor_safe_summary": "Alpha V4 is an anchored-return XGBoost + Optuna structural expert with rolling-origin validation and SHAP."
+}

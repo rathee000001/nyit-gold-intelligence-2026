@@ -1,0 +1,16 @@
+{
+  "artifact_type": "phase11_quality_review",
+  "schema_version": "1.0.0",
+  "status": "ready",
+  "blocking_flags": [],
+  "warnings": [],
+  "acceptance_gate": {
+    "gold_price_extended_after_cutoff": true,
+    "fred_columns_updated_after_cutoff": true,
+    "raw_gold_price_anchor_preserved": true,
+    "source_flags_exported": true,
+    "frontend_code_not_modified": true,
+    "all_required_outputs_exist": true
+  },
+  "generated_at_utc": "2026-05-05T09:32:08.506758Z"
+}

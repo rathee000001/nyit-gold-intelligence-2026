@@ -1,0 +1,115 @@
+{
+  "artifact_type": "deep_ml_beta_attention_summary",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:33:29Z",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "run_id": "deepml_run_20260505_102020_beta_temporal_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "model_key": "beta_temporal",
+  "model_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+  "attention_available": true,
+  "sample_rows": 400,
+  "temporal_attention": [
+    {
+      "sequence_position": 0,
+      "lag_from_origin": -19,
+      "mean_attention_weight": 5.927424240326218e-07
+    },
+    {
+      "sequence_position": 1,
+      "lag_from_origin": -18,
+      "mean_attention_weight": 1.3917035630583996e-06
+    },
+    {
+      "sequence_position": 2,
+      "lag_from_origin": -17,
+      "mean_attention_weight": 2.377548753429437e-06
+    },
+    {
+      "sequence_position": 3,
+      "lag_from_origin": -16,
+      "mean_attention_weight": 3.0980604606156703e-06
+    },
+    {
+      "sequence_position": 4,
+      "lag_from_origin": -15,
+      "mean_attention_weight": 3.6145627291261917e-06
+    },
+    {
+      "sequence_position": 5,
+      "lag_from_origin": -14,
+      "mean_attention_weight": 4.063047072122572e-06
+    },
+    {
+      "sequence_position": 6,
+      "lag_from_origin": -13,
+      "mean_attention_weight": 4.531947979558026e-06
+    },
+    {
+      "sequence_position": 7,
+      "lag_from_origin": -12,
+      "mean_attention_weight": 5.0627004384296015e-06
+    },
+    {
+      "sequence_position": 8,
+      "lag_from_origin": -11,
+      "mean_attention_weight": 5.695977961295284e-06
+    },
+    {
+      "sequence_position": 9,
+      "lag_from_origin": -10,
+      "mean_attention_weight": 6.47417664367822e-06
+    },
+    {
+      "sequence_position": 10,
+      "lag_from_origin": -9,
+      "mean_attention_weight": 7.415433628921164e-06
+    },
+    {
+      "sequence_position": 11,
+      "lag_from_origin": -8,
+      "mean_attention_weight": 8.569585588702466e-06
+    },
+    {
+      "sequence_position": 12,
+      "lag_from_origin": -7,
+      "mean_attention_weight": 1.0058911357191391e-05
+    },
+    {
+      "sequence_position": 13,
+      "lag_from_origin": -6,
+      "mean_attention_weight": 1.2155987860751338e-05
+    },
+    {
+      "sequence_position": 14,
+      "lag_from_origin": -5,
+      "mean_attention_weight": 1.5470432117581367e-05
+    },
+    {
+      "sequence_position": 15,
+      "lag_from_origin": -4,
+      "mean_attention_weight": 2.1879941414226778e-05
+    },
+    {
+      "sequence_position": 16,
+      "lag_from_origin": -3,
+      "mean_attention_weight": 4.0265978896059096e-05
+    },
+    {
+      "sequence_position": 17,
+      "lag_from_origin": -2,
+      "mean_attention_weight": 0.00016321949078701437
+    },
+    {
+      "sequence_position": 18,
+      "lag_from_origin": -1,
+      "mean_attention_weight": 0.005765565205365419
+    },
+    {
+      "sequence_position": 19,
+      "lag_from_origin": 0,
+      "mean_attention_weight": 0.9939186573028564
+    }
+  ],
+  "professor_safe_note": "Attention indicates model focus over the sequence; it does not prove economic causality."
+}

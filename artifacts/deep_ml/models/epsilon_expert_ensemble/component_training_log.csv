@@ -1,0 +1,7 @@
+component_key,component_family,status,runtime_seconds,horizons
+ridge_lag_expert,lag_feature_ml,completed,0.083,"[1, 5, 10, 20, 30]"
+elasticnet_lag_expert,lag_feature_ml,completed,0.215,"[1, 5, 10, 20, 30]"
+random_forest_lag_expert,lag_feature_ml,completed,3.658,"[1, 5, 10, 20, 30]"
+extratrees_lag_expert,lag_feature_ml,completed,1.36,"[1, 5, 10, 20, 30]"
+gradient_boosting_lag_expert,lag_feature_ml,completed,6.981,"[1, 5, 10, 20, 30]"
+xgboost_lag_expert,lag_feature_ml,completed,0.808,"[1, 5, 10, 20, 30]"

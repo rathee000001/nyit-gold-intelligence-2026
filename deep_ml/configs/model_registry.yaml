@@ -1,0 +1,36 @@
+models:
+  alpha_structural:
+    display_name: Alpha Structural Expert
+    family: tabular_structural_model
+    public_claim: Interpretable structural benchmark and feature-importance anchor.
+    forecast_eligible: true
+
+  beta_temporal:
+    display_name: Beta Temporal Deep Expert
+    family: deep_sequence_model
+    public_claim: Sequence model for temporal dependence and uncertainty using dropout-style sampling.
+    forecast_eligible: true
+
+  delta_tft:
+    display_name: Delta TFT Multi-Horizon Expert
+    family: temporal_fusion_transformer
+    public_claim: Multi-horizon deep forecasting candidate with quantile outputs and variable importance.
+    forecast_eligible: true
+
+  epsilon_fast_expert:
+    display_name: Epsilon Fast Expert Ensemble
+    family: fast_baseline_expert
+    public_claim: Lightweight benchmark ensemble and live-mode guardrail.
+    forecast_eligible: true
+
+  gamma_news_sensitivity:
+    display_name: Gamma News Sensitivity Expert
+    family: news_regime_overlay
+    public_claim: News and geopolitical sensitivity overlay; context, not causality.
+    forecast_eligible: false
+
+  omega_fusion:
+    display_name: Omega Fusion Ensemble
+    family: ensemble_fusion_model
+    public_claim: Final Phase 2 ensemble combining eligible numeric experts with transparent weights.
+    forecast_eligible: true

@@ -1,0 +1,12 @@
+{
+  "artifact_type": "deep_ml_progress_checkpoint",
+  "phase_key": "phase10_source_update_refresh",
+  "step": "completed",
+  "status": "ready_quality_review_required",
+  "updated_at_utc": "2026-05-05T08:47:17.028915Z",
+  "updated_at_local": "2026-05-05T04:47:17.028915-04:00",
+  "payload": {
+    "phase_report": "artifacts/deep_ml/source_update/phase10_source_update_refresh_report.json",
+    "send_me_this_json": "artifacts/deep_ml/source_update/phase10_source_update_refresh_report.json"
+  }
+}

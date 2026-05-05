@@ -1,0 +1,16 @@
+date,value,value_raw,series_id,factor_key,target_columns,frequency_handling,source_role,official_core,model_policy,pulled_at_utc
+2025-01-01,21548.1,21548.1,M2SL,m2_supply,m2_supply,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:23.978595Z
+2025-02-01,21613.5,21613.5,M2SL,m2_supply,m2_supply,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:23.978595Z
+2025-03-01,21693.6,21693.6,M2SL,m2_supply,m2_supply,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:23.978595Z
+2025-04-01,21775.6,21775.6,M2SL,m2_supply,m2_supply,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:23.978595Z
+2025-05-01,21833.9,21833.9,M2SL,m2_supply,m2_supply,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:23.978595Z
+2025-06-01,21938.8,21938.8,M2SL,m2_supply,m2_supply,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:23.978595Z
+2025-07-01,22020.0,22020.0,M2SL,m2_supply,m2_supply,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:23.978595Z
+2025-08-01,22087.0,22087.0,M2SL,m2_supply,m2_supply,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:23.978595Z
+2025-09-01,22170.3,22170.3,M2SL,m2_supply,m2_supply,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:23.978595Z
+2025-10-01,22245.1,22245.1,M2SL,m2_supply,m2_supply,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:23.978595Z
+2025-11-01,22277.5,22277.5,M2SL,m2_supply,m2_supply,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:23.978595Z
+2025-12-01,22353.6,22353.6,M2SL,m2_supply,m2_supply,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:23.978595Z
+2026-01-01,22429.3,22429.3,M2SL,m2_supply,m2_supply,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:23.978595Z
+2026-02-01,22627.3,22627.3,M2SL,m2_supply,m2_supply,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:23.978595Z
+2026-03-01,22686.0,22686.0,M2SL,m2_supply,m2_supply,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:23.978595Z

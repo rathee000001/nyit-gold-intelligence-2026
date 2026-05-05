@@ -1,0 +1,19 @@
+{
+  "artifact_type": "deep_ml_progress_checkpoint",
+  "model_key": "delta_tft",
+  "step": "final_evaluation_model_training",
+  "status": "running",
+  "updated_at_utc": "2026-05-05T17:55:53.881656Z",
+  "updated_at_local": "2026-05-05T13:55:53.881656-04:00",
+  "payload": {
+    "sequence_length": 20,
+    "hidden_size": 192,
+    "attention_heads": 4,
+    "dropout": 0.1719127734289254,
+    "learning_rate": 0.0009439627499961122,
+    "weight_decay": 7.758110844151547e-08,
+    "batch_size": 64,
+    "grn_depth": 1,
+    "best_validation_quantile_loss": 0.012854200267397305
+  }
+}

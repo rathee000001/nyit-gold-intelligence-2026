@@ -1,0 +1,18 @@
+{
+  "artifact_type": "historical_news_backfill_manifest",
+  "schema_version": "1.0.0",
+  "phase_key": "phase12_source_news_update",
+  "script_version": "source_news_update_v3_unified_historical_recent_safe_fallbacks",
+  "historical_start_date": "2006-01-02",
+  "historical_end_date": "2026-04-28",
+  "row_count": 7422,
+  "rows_with_loaded_public_source": 13,
+  "source_policy": "Fixed daily index. 2017 onward uses sampled GDELT DOC API where available. Pre-2017 rows are retained with explicit coverage notes unless a future bulk historical GDELT/GKG loader is added.",
+  "google_news_rss_policy": "Google News RSS is a recent fallback only, not a 2006 historical archive.",
+  "cache_used": false,
+  "generated_at_utc": "2026-05-05T19:13:39.866444Z",
+  "outputs": {
+    "historical_index_parquet": "artifacts\\deep_ml\\news\\historical\\historical_news_daily_index.parquet",
+    "historical_index_csv": "artifacts\\deep_ml\\news\\historical\\historical_news_daily_index.csv"
+  }
+}

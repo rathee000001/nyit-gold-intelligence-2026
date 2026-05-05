@@ -1,0 +1,43 @@
+{
+  "artifact_type": "epsilon_expert_sanity_checks",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "status": "pass",
+  "checks": [
+    {
+      "name": "raw_origin_gold_min_gt_100",
+      "status": "pass",
+      "value": 524.75
+    },
+    {
+      "name": "raw_origin_gold_max_lt_10000",
+      "status": "pass",
+      "value": 5414.48
+    },
+    {
+      "name": "target_gold_min_gt_100",
+      "status": "pass",
+      "value": 524.75
+    },
+    {
+      "name": "naive_mape_not_near_100pct",
+      "status": "pass",
+      "value": 6.661738104311402
+    },
+    {
+      "name": "split_origins_sufficient",
+      "status": "pass",
+      "value": {
+        "train": 3391,
+        "validation": 1044,
+        "test": 841
+      }
+    },
+    {
+      "name": "raw_price_anchor_preserved",
+      "status": "pass",
+      "value": "anchors are raw gold prices and are not scaled"
+    }
+  ],
+  "generated_at_utc": "2026-05-05T18:13:10.054723Z"
+}

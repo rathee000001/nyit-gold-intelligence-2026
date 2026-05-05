@@ -1,0 +1,58 @@
+{
+  "artifact_type": "deep_ml_page_bundle",
+  "schema_version": "1.0.0",
+  "page_key": "page_epsilon_expert_ensemble",
+  "route": "/deep-ml/models/epsilon-expert-ensemble",
+  "title": "Epsilon Expert Ensemble",
+  "subtitle": "Statistical and machine-learning benchmark ensemble for Gold Nexus Alpha Phase 2.",
+  "model_key": "epsilon_expert_ensemble",
+  "status": "ready",
+  "summary_cards": [
+    {
+      "label": "Components",
+      "value": 15
+    },
+    {
+      "label": "Selected Ensemble",
+      "value": "best_validation_component::rolling_mean_20_gap"
+    },
+    {
+      "label": "Uncertainty",
+      "value": "Validation residual intervals"
+    },
+    {
+      "label": "Horizons",
+      "value": "1, 5, 10, 20, 30"
+    }
+  ],
+  "chart_artifacts": {
+    "forecast_latest": "artifacts/deep_ml/models/epsilon_expert_ensemble/forecast_latest.json",
+    "evaluation_by_horizon": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_by_horizon.json",
+    "uncertainty_latest": "artifacts/deep_ml/models/epsilon_expert_ensemble/uncertainty_latest.json",
+    "component_ranking": "artifacts/deep_ml/models/epsilon_expert_ensemble/component_ranking.json",
+    "component_weights": "artifacts/deep_ml/models/epsilon_expert_ensemble/component_weights.json",
+    "expert_disagreement": "artifacts/deep_ml/models/epsilon_expert_ensemble/expert_disagreement.json"
+  },
+  "limitations": [
+    "Epsilon is a benchmark and ensemble expert, not the final Deep ML winner until Omega Fusion and evaluation are complete.",
+    "Residual intervals are uncertainty estimates, not guarantees.",
+    "Component weights explain model behavior and validation performance, not causality."
+  ],
+  "source_artifacts": [
+    "run_summary.json",
+    "forecast_latest.json",
+    "evaluation_by_horizon.json",
+    "uncertainty_latest.json",
+    "interpretability_latest.json",
+    "diagnostics_latest.json",
+    "component_models.json",
+    "component_evaluation_by_horizon.json",
+    "component_ranking.json",
+    "component_weights.json",
+    "expert_disagreement.json",
+    "residual_interval_calibration.json",
+    "quality_review.json",
+    "phase9_epsilon_expert_report.json"
+  ],
+  "generated_at_utc": "2026-05-05T18:14:27.208154Z"
+}

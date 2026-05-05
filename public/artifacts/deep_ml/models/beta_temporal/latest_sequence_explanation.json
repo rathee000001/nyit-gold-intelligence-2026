@@ -1,0 +1,272 @@
+{
+  "artifact_type": "deep_ml_beta_latest_sequence_explanation",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:33:29Z",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "run_id": "deepml_run_20260505_102020_beta_temporal_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "model_key": "beta_temporal",
+  "model_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+  "latest_origin_date": "2026-05-05",
+  "latest_raw_origin_gold_price": 4561.7001953125,
+  "attention": {
+    "attention_available": true,
+    "sample_rows": 400,
+    "temporal_attention": [
+      {
+        "sequence_position": 0,
+        "lag_from_origin": -19,
+        "mean_attention_weight": 5.927424240326218e-07
+      },
+      {
+        "sequence_position": 1,
+        "lag_from_origin": -18,
+        "mean_attention_weight": 1.3917035630583996e-06
+      },
+      {
+        "sequence_position": 2,
+        "lag_from_origin": -17,
+        "mean_attention_weight": 2.377548753429437e-06
+      },
+      {
+        "sequence_position": 3,
+        "lag_from_origin": -16,
+        "mean_attention_weight": 3.0980604606156703e-06
+      },
+      {
+        "sequence_position": 4,
+        "lag_from_origin": -15,
+        "mean_attention_weight": 3.6145627291261917e-06
+      },
+      {
+        "sequence_position": 5,
+        "lag_from_origin": -14,
+        "mean_attention_weight": 4.063047072122572e-06
+      },
+      {
+        "sequence_position": 6,
+        "lag_from_origin": -13,
+        "mean_attention_weight": 4.531947979558026e-06
+      },
+      {
+        "sequence_position": 7,
+        "lag_from_origin": -12,
+        "mean_attention_weight": 5.0627004384296015e-06
+      },
+      {
+        "sequence_position": 8,
+        "lag_from_origin": -11,
+        "mean_attention_weight": 5.695977961295284e-06
+      },
+      {
+        "sequence_position": 9,
+        "lag_from_origin": -10,
+        "mean_attention_weight": 6.47417664367822e-06
+      },
+      {
+        "sequence_position": 10,
+        "lag_from_origin": -9,
+        "mean_attention_weight": 7.415433628921164e-06
+      },
+      {
+        "sequence_position": 11,
+        "lag_from_origin": -8,
+        "mean_attention_weight": 8.569585588702466e-06
+      },
+      {
+        "sequence_position": 12,
+        "lag_from_origin": -7,
+        "mean_attention_weight": 1.0058911357191391e-05
+      },
+      {
+        "sequence_position": 13,
+        "lag_from_origin": -6,
+        "mean_attention_weight": 1.2155987860751338e-05
+      },
+      {
+        "sequence_position": 14,
+        "lag_from_origin": -5,
+        "mean_attention_weight": 1.5470432117581367e-05
+      },
+      {
+        "sequence_position": 15,
+        "lag_from_origin": -4,
+        "mean_attention_weight": 2.1879941414226778e-05
+      },
+      {
+        "sequence_position": 16,
+        "lag_from_origin": -3,
+        "mean_attention_weight": 4.0265978896059096e-05
+      },
+      {
+        "sequence_position": 17,
+        "lag_from_origin": -2,
+        "mean_attention_weight": 0.00016321949078701437
+      },
+      {
+        "sequence_position": 18,
+        "lag_from_origin": -1,
+        "mean_attention_weight": 0.005765565205365419
+      },
+      {
+        "sequence_position": 19,
+        "lag_from_origin": 0,
+        "mean_attention_weight": 0.9939186573028564
+      }
+    ],
+    "professor_safe_note": "Attention indicates model focus over the sequence; it does not prove economic causality."
+  },
+  "top_occlusion_features": [
+    {
+      "feature": "jpy_usd",
+      "horizon": 30,
+      "mean_abs_price_change_when_occluded": 86.87837219238281,
+      "sample_rows": 400
+    },
+    {
+      "feature": "jpy_usd",
+      "horizon": 10,
+      "mean_abs_price_change_when_occluded": 74.01486206054688,
+      "sample_rows": 400
+    },
+    {
+      "feature": "jpy_usd",
+      "horizon": 5,
+      "mean_abs_price_change_when_occluded": 63.77030944824219,
+      "sample_rows": 400
+    },
+    {
+      "feature": "jpy_usd",
+      "horizon": 20,
+      "mean_abs_price_change_when_occluded": 63.269920349121094,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_ma_ratio_20",
+      "horizon": 5,
+      "mean_abs_price_change_when_occluded": 53.90085983276367,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_ma_ratio_20",
+      "horizon": 30,
+      "mean_abs_price_change_when_occluded": 52.10888671875,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_ma_ratio_20",
+      "horizon": 10,
+      "mean_abs_price_change_when_occluded": 50.658084869384766,
+      "sample_rows": 400
+    },
+    {
+      "feature": "policy_unc",
+      "horizon": 30,
+      "mean_abs_price_change_when_occluded": 49.80891418457031,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_ma_ratio_20",
+      "horizon": 20,
+      "mean_abs_price_change_when_occluded": 37.58155822753906,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_return_1",
+      "horizon": 20,
+      "mean_abs_price_change_when_occluded": 36.649391174316406,
+      "sample_rows": 400
+    },
+    {
+      "feature": "usd_index",
+      "horizon": 30,
+      "mean_abs_price_change_when_occluded": 34.55990982055664,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_drawdown_252",
+      "horizon": 30,
+      "mean_abs_price_change_when_occluded": 32.26335525512695,
+      "sample_rows": 400
+    },
+    {
+      "feature": "policy_unc",
+      "horizon": 10,
+      "mean_abs_price_change_when_occluded": 31.899389266967773,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_return_1",
+      "horizon": 5,
+      "mean_abs_price_change_when_occluded": 29.593055725097656,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_lag_20",
+      "horizon": 5,
+      "mean_abs_price_change_when_occluded": 29.40152359008789,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_drawdown_252",
+      "horizon": 20,
+      "mean_abs_price_change_when_occluded": 28.973548889160156,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_ma_5",
+      "horizon": 5,
+      "mean_abs_price_change_when_occluded": 28.719158172607422,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_drawdown_252",
+      "horizon": 10,
+      "mean_abs_price_change_when_occluded": 27.683887481689453,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_ma_60",
+      "horizon": 30,
+      "mean_abs_price_change_when_occluded": 27.175600051879883,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_return_1",
+      "horizon": 30,
+      "mean_abs_price_change_when_occluded": 26.7830867767334,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_ma_ratio_60",
+      "horizon": 30,
+      "mean_abs_price_change_when_occluded": 25.07697296142578,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_return_20",
+      "horizon": 5,
+      "mean_abs_price_change_when_occluded": 24.496809005737305,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_ma_60",
+      "horizon": 5,
+      "mean_abs_price_change_when_occluded": 24.450326919555664,
+      "sample_rows": 400
+    },
+    {
+      "feature": "gold_return_1",
+      "horizon": 10,
+      "mean_abs_price_change_when_occluded": 24.39727020263672,
+      "sample_rows": 400
+    },
+    {
+      "feature": "usd_index",
+      "horizon": 10,
+      "mean_abs_price_change_when_occluded": 23.690149307250977,
+      "sample_rows": 400
+    }
+  ],
+  "professor_safe_note": "Attention and occlusion explain model usage of sequence information; they do not prove economic causality."
+}

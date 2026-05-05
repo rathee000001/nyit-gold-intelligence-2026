@@ -1,0 +1,10 @@
+{
+  "artifact_type": "deep_ml_progress_checkpoint",
+  "phase_key": "phase12_news_ai_context",
+  "step": "started",
+  "status": "running",
+  "updated_at_utc": "2026-05-05T18:21:16.468169Z",
+  "payload": {
+    "run_id": "deepml_run_20260505_182116_news_ai_context"
+  }
+}

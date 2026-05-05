@@ -1,0 +1,8 @@
+{
+  "artifact_type": "main_intelligence_matrix_snapshot_status",
+  "schema_version": "1.0.0",
+  "status": "not_found",
+  "delegation_policy": "FRED/API factor refresh is delegated to the main Intelligence pipeline. Export its latest matrix snapshot here if Phase 11 should consume it: artifacts/deep_ml/source_update/main_intelligence_snapshot/",
+  "snapshot_dir": "artifacts\\deep_ml\\source_update\\main_intelligence_snapshot",
+  "generated_at_utc": "2026-05-05T08:47:16.656910Z"
+}

@@ -1,0 +1,33 @@
+{
+  "artifact_type": "phase0_contract_validation_report",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T03:45:48Z",
+  "status": "passed",
+  "results": [
+    {
+      "artifact": "deep_ml/contracts/examples/sample_model_run.json",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "artifact": "deep_ml/contracts/examples/sample_factor_state_table.json",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "artifact": "deep_ml/contracts/examples/sample_mode_status.json",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "artifact": "deep_ml/contracts/examples/sample_latest_pointer.json",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "artifact": "deep_ml/contracts/examples/sample_deep_ml_ai_context_bundle.json",
+      "ok": true,
+      "errors": []
+    }
+  ]
+}

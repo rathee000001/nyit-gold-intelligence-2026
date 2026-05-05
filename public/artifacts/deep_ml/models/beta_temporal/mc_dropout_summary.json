@@ -1,0 +1,687 @@
+{
+  "artifact_type": "deep_ml_beta_mc_dropout_summary",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:33:29Z",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "run_id": "deepml_run_20260505_102020_beta_temporal_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "model_key": "beta_temporal",
+  "model_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+  "latest_forecast_mc_samples": 120,
+  "evaluation_mc_samples": 40,
+  "evaluation_interval_summary": {
+    "samples": 40,
+    "coverage_by_horizon": {
+      "1": 67.80905752753978,
+      "5": 64.50428396572828,
+      "10": 59.118727050183594,
+      "20": 58.50673194614443,
+      "30": 57.2827417380661
+    },
+    "mean_interval_width_by_horizon": {
+      "1": 158.99212646484375,
+      "5": 296.8798828125,
+      "10": 323.1421813964844,
+      "20": 287.14251708984375,
+      "30": 351.5087890625
+    },
+    "calibration_method": "mc_dropout_plus_validation_residual_quantiles"
+  },
+  "latest_sample_preview": {
+    "mc_samples": 120,
+    "sample_preview_rows": [
+      {
+        "sample": 0,
+        "horizon": 1,
+        "forecast_price": 4563.9208984375
+      },
+      {
+        "sample": 0,
+        "horizon": 5,
+        "forecast_price": 4514.76171875
+      },
+      {
+        "sample": 0,
+        "horizon": 10,
+        "forecast_price": 4545.8427734375
+      },
+      {
+        "sample": 0,
+        "horizon": 20,
+        "forecast_price": 4548.74267578125
+      },
+      {
+        "sample": 0,
+        "horizon": 30,
+        "forecast_price": 4423.29345703125
+      },
+      {
+        "sample": 1,
+        "horizon": 1,
+        "forecast_price": 4551.57470703125
+      },
+      {
+        "sample": 1,
+        "horizon": 5,
+        "forecast_price": 4512.51025390625
+      },
+      {
+        "sample": 1,
+        "horizon": 10,
+        "forecast_price": 4536.3544921875
+      },
+      {
+        "sample": 1,
+        "horizon": 20,
+        "forecast_price": 4468.31494140625
+      },
+      {
+        "sample": 1,
+        "horizon": 30,
+        "forecast_price": 4341.21240234375
+      },
+      {
+        "sample": 2,
+        "horizon": 1,
+        "forecast_price": 4560.95458984375
+      },
+      {
+        "sample": 2,
+        "horizon": 5,
+        "forecast_price": 4479.146484375
+      },
+      {
+        "sample": 2,
+        "horizon": 10,
+        "forecast_price": 4674.890625
+      },
+      {
+        "sample": 2,
+        "horizon": 20,
+        "forecast_price": 4532.79736328125
+      },
+      {
+        "sample": 2,
+        "horizon": 30,
+        "forecast_price": 4334.6650390625
+      },
+      {
+        "sample": 3,
+        "horizon": 1,
+        "forecast_price": 4588.46484375
+      },
+      {
+        "sample": 3,
+        "horizon": 5,
+        "forecast_price": 4526.00048828125
+      },
+      {
+        "sample": 3,
+        "horizon": 10,
+        "forecast_price": 4524.78125
+      },
+      {
+        "sample": 3,
+        "horizon": 20,
+        "forecast_price": 4532.39404296875
+      },
+      {
+        "sample": 3,
+        "horizon": 30,
+        "forecast_price": 4402.67431640625
+      },
+      {
+        "sample": 4,
+        "horizon": 1,
+        "forecast_price": 4553.95849609375
+      },
+      {
+        "sample": 4,
+        "horizon": 5,
+        "forecast_price": 4569.080078125
+      },
+      {
+        "sample": 4,
+        "horizon": 10,
+        "forecast_price": 4537.8671875
+      },
+      {
+        "sample": 4,
+        "horizon": 20,
+        "forecast_price": 4520.4912109375
+      },
+      {
+        "sample": 4,
+        "horizon": 30,
+        "forecast_price": 4501.16015625
+      },
+      {
+        "sample": 5,
+        "horizon": 1,
+        "forecast_price": 4596.79052734375
+      },
+      {
+        "sample": 5,
+        "horizon": 5,
+        "forecast_price": 4550.46337890625
+      },
+      {
+        "sample": 5,
+        "horizon": 10,
+        "forecast_price": 4536.3251953125
+      },
+      {
+        "sample": 5,
+        "horizon": 20,
+        "forecast_price": 4506.94970703125
+      },
+      {
+        "sample": 5,
+        "horizon": 30,
+        "forecast_price": 4403.166015625
+      },
+      {
+        "sample": 6,
+        "horizon": 1,
+        "forecast_price": 4553.9326171875
+      },
+      {
+        "sample": 6,
+        "horizon": 5,
+        "forecast_price": 4571.8671875
+      },
+      {
+        "sample": 6,
+        "horizon": 10,
+        "forecast_price": 4509.50048828125
+      },
+      {
+        "sample": 6,
+        "horizon": 20,
+        "forecast_price": 4429.580078125
+      },
+      {
+        "sample": 6,
+        "horizon": 30,
+        "forecast_price": 4435.10205078125
+      },
+      {
+        "sample": 7,
+        "horizon": 1,
+        "forecast_price": 4611.044921875
+      },
+      {
+        "sample": 7,
+        "horizon": 5,
+        "forecast_price": 4517.009765625
+      },
+      {
+        "sample": 7,
+        "horizon": 10,
+        "forecast_price": 4371.04150390625
+      },
+      {
+        "sample": 7,
+        "horizon": 20,
+        "forecast_price": 4478.05517578125
+      },
+      {
+        "sample": 7,
+        "horizon": 30,
+        "forecast_price": 4296.5283203125
+      },
+      {
+        "sample": 8,
+        "horizon": 1,
+        "forecast_price": 4640.97607421875
+      },
+      {
+        "sample": 8,
+        "horizon": 5,
+        "forecast_price": 4627.65283203125
+      },
+      {
+        "sample": 8,
+        "horizon": 10,
+        "forecast_price": 4575.52880859375
+      },
+      {
+        "sample": 8,
+        "horizon": 20,
+        "forecast_price": 4510.9384765625
+      },
+      {
+        "sample": 8,
+        "horizon": 30,
+        "forecast_price": 4513.8583984375
+      },
+      {
+        "sample": 9,
+        "horizon": 1,
+        "forecast_price": 4569.18212890625
+      },
+      {
+        "sample": 9,
+        "horizon": 5,
+        "forecast_price": 4534.5732421875
+      },
+      {
+        "sample": 9,
+        "horizon": 10,
+        "forecast_price": 4549.0810546875
+      },
+      {
+        "sample": 9,
+        "horizon": 20,
+        "forecast_price": 4530.4794921875
+      },
+      {
+        "sample": 9,
+        "horizon": 30,
+        "forecast_price": 4448.40771484375
+      },
+      {
+        "sample": 10,
+        "horizon": 1,
+        "forecast_price": 4570.53271484375
+      },
+      {
+        "sample": 10,
+        "horizon": 5,
+        "forecast_price": 4542.49462890625
+      },
+      {
+        "sample": 10,
+        "horizon": 10,
+        "forecast_price": 4556.94189453125
+      },
+      {
+        "sample": 10,
+        "horizon": 20,
+        "forecast_price": 4507.37744140625
+      },
+      {
+        "sample": 10,
+        "horizon": 30,
+        "forecast_price": 4368.78857421875
+      },
+      {
+        "sample": 11,
+        "horizon": 1,
+        "forecast_price": 4559.29736328125
+      },
+      {
+        "sample": 11,
+        "horizon": 5,
+        "forecast_price": 4474.75
+      },
+      {
+        "sample": 11,
+        "horizon": 10,
+        "forecast_price": 4515.4130859375
+      },
+      {
+        "sample": 11,
+        "horizon": 20,
+        "forecast_price": 4463.62646484375
+      },
+      {
+        "sample": 11,
+        "horizon": 30,
+        "forecast_price": 4276.27685546875
+      },
+      {
+        "sample": 12,
+        "horizon": 1,
+        "forecast_price": 4559.09619140625
+      },
+      {
+        "sample": 12,
+        "horizon": 5,
+        "forecast_price": 4514.02880859375
+      },
+      {
+        "sample": 12,
+        "horizon": 10,
+        "forecast_price": 4601.833984375
+      },
+      {
+        "sample": 12,
+        "horizon": 20,
+        "forecast_price": 4426.1171875
+      },
+      {
+        "sample": 12,
+        "horizon": 30,
+        "forecast_price": 4316.4111328125
+      },
+      {
+        "sample": 13,
+        "horizon": 1,
+        "forecast_price": 4554.38525390625
+      },
+      {
+        "sample": 13,
+        "horizon": 5,
+        "forecast_price": 4528.12109375
+      },
+      {
+        "sample": 13,
+        "horizon": 10,
+        "forecast_price": 4714.36474609375
+      },
+      {
+        "sample": 13,
+        "horizon": 20,
+        "forecast_price": 4511.27490234375
+      },
+      {
+        "sample": 13,
+        "horizon": 30,
+        "forecast_price": 4217.626953125
+      },
+      {
+        "sample": 14,
+        "horizon": 1,
+        "forecast_price": 4569.4296875
+      },
+      {
+        "sample": 14,
+        "horizon": 5,
+        "forecast_price": 4545.80322265625
+      },
+      {
+        "sample": 14,
+        "horizon": 10,
+        "forecast_price": 4600.32666015625
+      },
+      {
+        "sample": 14,
+        "horizon": 20,
+        "forecast_price": 4550.6826171875
+      },
+      {
+        "sample": 14,
+        "horizon": 30,
+        "forecast_price": 4389.33740234375
+      },
+      {
+        "sample": 15,
+        "horizon": 1,
+        "forecast_price": 4572.78857421875
+      },
+      {
+        "sample": 15,
+        "horizon": 5,
+        "forecast_price": 4552.3125
+      },
+      {
+        "sample": 15,
+        "horizon": 10,
+        "forecast_price": 4778.0419921875
+      },
+      {
+        "sample": 15,
+        "horizon": 20,
+        "forecast_price": 4524.0947265625
+      },
+      {
+        "sample": 15,
+        "horizon": 30,
+        "forecast_price": 4397.6953125
+      },
+      {
+        "sample": 16,
+        "horizon": 1,
+        "forecast_price": 4606.373046875
+      },
+      {
+        "sample": 16,
+        "horizon": 5,
+        "forecast_price": 4565.50927734375
+      },
+      {
+        "sample": 16,
+        "horizon": 10,
+        "forecast_price": 4341.048828125
+      },
+      {
+        "sample": 16,
+        "horizon": 20,
+        "forecast_price": 4518.40283203125
+      },
+      {
+        "sample": 16,
+        "horizon": 30,
+        "forecast_price": 4291.56298828125
+      },
+      {
+        "sample": 17,
+        "horizon": 1,
+        "forecast_price": 4605.94873046875
+      },
+      {
+        "sample": 17,
+        "horizon": 5,
+        "forecast_price": 4617.59326171875
+      },
+      {
+        "sample": 17,
+        "horizon": 10,
+        "forecast_price": 4621.58056640625
+      },
+      {
+        "sample": 17,
+        "horizon": 20,
+        "forecast_price": 4540.4501953125
+      },
+      {
+        "sample": 17,
+        "horizon": 30,
+        "forecast_price": 4409.041015625
+      },
+      {
+        "sample": 18,
+        "horizon": 1,
+        "forecast_price": 4561.529296875
+      },
+      {
+        "sample": 18,
+        "horizon": 5,
+        "forecast_price": 4485.74365234375
+      },
+      {
+        "sample": 18,
+        "horizon": 10,
+        "forecast_price": 4643.330078125
+      },
+      {
+        "sample": 18,
+        "horizon": 20,
+        "forecast_price": 4514.625
+      },
+      {
+        "sample": 18,
+        "horizon": 30,
+        "forecast_price": 4270.42529296875
+      },
+      {
+        "sample": 19,
+        "horizon": 1,
+        "forecast_price": 4560.59521484375
+      },
+      {
+        "sample": 19,
+        "horizon": 5,
+        "forecast_price": 4546.90771484375
+      },
+      {
+        "sample": 19,
+        "horizon": 10,
+        "forecast_price": 4512.16796875
+      },
+      {
+        "sample": 19,
+        "horizon": 20,
+        "forecast_price": 4525.458984375
+      },
+      {
+        "sample": 19,
+        "horizon": 30,
+        "forecast_price": 4395.8291015625
+      },
+      {
+        "sample": 20,
+        "horizon": 1,
+        "forecast_price": 4566.013671875
+      },
+      {
+        "sample": 20,
+        "horizon": 5,
+        "forecast_price": 4482.71337890625
+      },
+      {
+        "sample": 20,
+        "horizon": 10,
+        "forecast_price": 4536.53955078125
+      },
+      {
+        "sample": 20,
+        "horizon": 20,
+        "forecast_price": 4510.541015625
+      },
+      {
+        "sample": 20,
+        "horizon": 30,
+        "forecast_price": 4295.56689453125
+      },
+      {
+        "sample": 21,
+        "horizon": 1,
+        "forecast_price": 4569.564453125
+      },
+      {
+        "sample": 21,
+        "horizon": 5,
+        "forecast_price": 4533.6796875
+      },
+      {
+        "sample": 21,
+        "horizon": 10,
+        "forecast_price": 4437.33154296875
+      },
+      {
+        "sample": 21,
+        "horizon": 20,
+        "forecast_price": 4454.85986328125
+      },
+      {
+        "sample": 21,
+        "horizon": 30,
+        "forecast_price": 4237.16650390625
+      },
+      {
+        "sample": 22,
+        "horizon": 1,
+        "forecast_price": 4582.08203125
+      },
+      {
+        "sample": 22,
+        "horizon": 5,
+        "forecast_price": 4585.01123046875
+      },
+      {
+        "sample": 22,
+        "horizon": 10,
+        "forecast_price": 4432.72265625
+      },
+      {
+        "sample": 22,
+        "horizon": 20,
+        "forecast_price": 4522.22607421875
+      },
+      {
+        "sample": 22,
+        "horizon": 30,
+        "forecast_price": 4347.873046875
+      },
+      {
+        "sample": 23,
+        "horizon": 1,
+        "forecast_price": 4555.41259765625
+      },
+      {
+        "sample": 23,
+        "horizon": 5,
+        "forecast_price": 4496.9833984375
+      },
+      {
+        "sample": 23,
+        "horizon": 10,
+        "forecast_price": 4455.333984375
+      },
+      {
+        "sample": 23,
+        "horizon": 20,
+        "forecast_price": 4486.7109375
+      },
+      {
+        "sample": 23,
+        "horizon": 30,
+        "forecast_price": 4216.57080078125
+      },
+      {
+        "sample": 24,
+        "horizon": 1,
+        "forecast_price": 4563.27880859375
+      },
+      {
+        "sample": 24,
+        "horizon": 5,
+        "forecast_price": 4524.39404296875
+      },
+      {
+        "sample": 24,
+        "horizon": 10,
+        "forecast_price": 4482.6025390625
+      },
+      {
+        "sample": 24,
+        "horizon": 20,
+        "forecast_price": 4535.68505859375
+      },
+      {
+        "sample": 24,
+        "horizon": 30,
+        "forecast_price": 4421.84228515625
+      }
+    ]
+  },
+  "residual_quantiles_by_horizon": {
+    "1": {
+      "q10_residual": -57.98994140625,
+      "q90_residual": 53.858105468750026,
+      "residual_std": 62.103858969351066
+    },
+    "5": {
+      "q10_residual": -80.5336181640625,
+      "q90_residual": 123.17902832031251,
+      "residual_std": 85.44500830064273
+    },
+    "10": {
+      "q10_residual": -74.00511474609375,
+      "q90_residual": 154.69666748046876,
+      "residual_std": 95.82237100808652
+    },
+    "20": {
+      "q10_residual": -79.58294677734375,
+      "q90_residual": 118.64584960937503,
+      "residual_std": 85.29983871121735
+    },
+    "30": {
+      "q10_residual": -73.66318359374999,
+      "q90_residual": 182.85781250000005,
+      "residual_std": 101.92080676363739
+    }
+  }
+}

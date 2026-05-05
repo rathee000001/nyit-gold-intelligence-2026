@@ -1,0 +1,11 @@
+[
+  {
+    "timestamp_utc": "2026-05-05T19:26:45.818364Z",
+    "elapsed_seconds": 0.0,
+    "event": "phase12_unified_source_news_update_started",
+    "status": "ok",
+    "details": {
+      "run_id": "deepml_run_20260505_192645_source_news_update"
+    }
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "torch_version": "2.10.0+cu130",
+  "cuda_available": true,
+  "cuda_device_name": "NVIDIA GeForce RTX 5060",
+  "optuna_available": true,
+  "pytorch_forecasting_available": false,
+  "lightning_available": false,
+  "selected_backend": "custom_tft_style_pytorch_v2_calibrated",
+  "backend_note": "V2 uses a controlled custom TFT-style PyTorch model plus validation-based interval calibration. This avoids dependency instability while preserving the required JSON contract."
+}

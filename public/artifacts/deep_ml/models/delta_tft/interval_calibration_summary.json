@@ -1,0 +1,72 @@
+{
+  "artifact_type": "delta_tft_interval_calibration_summary",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "calibration_version": "v2_validation_residual_interval_calibration",
+  "target_coverage_pct": 80.0,
+  "p50_preserved": true,
+  "professor_safe_note": "Calibration uses validation residual behavior to widen intervals. It improves empirical interval behavior but does not guarantee future coverage.",
+  "by_horizon": {
+    "1": {
+      "horizon_trading_days": 1,
+      "status": "ready",
+      "method": "validation_residual_symmetric_interval_widening",
+      "target_coverage_pct": 80.0,
+      "native_validation_coverage_pct": 82.75862068965517,
+      "required_validation_half_width_price": 46.97454118342433,
+      "median_native_half_width_price": 68.20920209634278,
+      "raw_scale_factor": 0.6886833409526572,
+      "scale_factor": 1.0,
+      "scale_factor_cap": 4.0
+    },
+    "5": {
+      "horizon_trading_days": 5,
+      "status": "ready",
+      "method": "validation_residual_symmetric_interval_widening",
+      "target_coverage_pct": 80.0,
+      "native_validation_coverage_pct": 72.89272030651341,
+      "required_validation_half_width_price": 119.97167427539831,
+      "median_native_half_width_price": 90.54563269019127,
+      "raw_scale_factor": 1.3249857636523505,
+      "scale_factor": 1.3249857636523505,
+      "scale_factor_cap": 4.0
+    },
+    "10": {
+      "horizon_trading_days": 10,
+      "status": "ready",
+      "method": "validation_residual_symmetric_interval_widening",
+      "target_coverage_pct": 80.0,
+      "native_validation_coverage_pct": 74.04214559386973,
+      "required_validation_half_width_price": 118.47035063814403,
+      "median_native_half_width_price": 102.23682382284642,
+      "raw_scale_factor": 1.158783559663656,
+      "scale_factor": 1.158783559663656,
+      "scale_factor_cap": 4.0
+    },
+    "20": {
+      "horizon_trading_days": 20,
+      "status": "ready",
+      "method": "validation_residual_symmetric_interval_widening",
+      "target_coverage_pct": 80.0,
+      "native_validation_coverage_pct": 73.08429118773945,
+      "required_validation_half_width_price": 115.25858442928005,
+      "median_native_half_width_price": 91.61392365074425,
+      "raw_scale_factor": 1.2580902534932932,
+      "scale_factor": 1.2580902534932932,
+      "scale_factor_cap": 4.0
+    },
+    "30": {
+      "horizon_trading_days": 30,
+      "status": "ready",
+      "method": "validation_residual_symmetric_interval_widening",
+      "target_coverage_pct": 80.0,
+      "native_validation_coverage_pct": 69.73180076628353,
+      "required_validation_half_width_price": 143.04531635499444,
+      "median_native_half_width_price": 99.9784593151926,
+      "raw_scale_factor": 1.430761359344707,
+      "scale_factor": 1.430761359344707,
+      "scale_factor_cap": 4.0
+    }
+  },
+  "generated_at_utc": "2026-05-05T17:56:25.828077Z"
+}

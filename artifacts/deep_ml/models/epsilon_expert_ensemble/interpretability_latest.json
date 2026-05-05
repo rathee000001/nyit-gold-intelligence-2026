@@ -1,0 +1,233 @@
+{
+  "artifact_type": "epsilon_interpretability_latest",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "methods": [
+    "component_ranking",
+    "horizon_specific_component_weights",
+    "expert_disagreement",
+    "ensemble_vs_naive_comparison"
+  ],
+  "selected_ensemble_strategy": "best_validation_component::rolling_mean_20_gap",
+  "top_components_by_validation": [
+    {
+      "rank": 1,
+      "component_key": "rolling_mean_20_gap",
+      "validation_average_mape_pct": 4.291199382430322,
+      "test_average_mape_pct": 6.290168153678293
+    },
+    {
+      "rank": 2,
+      "component_key": "rolling_mean_60_gap",
+      "validation_average_mape_pct": 4.32547387471195,
+      "test_average_mape_pct": 6.341524475961073
+    },
+    {
+      "rank": 3,
+      "component_key": "rolling_median_60_gap",
+      "validation_average_mape_pct": 4.352165527514963,
+      "test_average_mape_pct": 6.347890200849258
+    },
+    {
+      "rank": 4,
+      "component_key": "arima_like",
+      "validation_average_mape_pct": 4.492334038175935,
+      "test_average_mape_pct": 6.722406430109563
+    },
+    {
+      "rank": 5,
+      "component_key": "naive_last_value",
+      "validation_average_mape_pct": 4.5908928551268415,
+      "test_average_mape_pct": 6.661738104311402
+    },
+    {
+      "rank": 6,
+      "component_key": "ets_like",
+      "validation_average_mape_pct": 4.591187700441659,
+      "test_average_mape_pct": 6.685937685258843
+    },
+    {
+      "rank": 7,
+      "component_key": "theta_like_252",
+      "validation_average_mape_pct": 4.6750343750505685,
+      "test_average_mape_pct": 6.733419491358046
+    },
+    {
+      "rank": 8,
+      "component_key": "drift_252",
+      "validation_average_mape_pct": 4.787560464298922,
+      "test_average_mape_pct": 6.885079095721049
+    },
+    {
+      "rank": 9,
+      "component_key": "momentum_20",
+      "validation_average_mape_pct": 5.476231097487159,
+      "test_average_mape_pct": 7.871497055142963
+    },
+    {
+      "rank": 10,
+      "component_key": "elasticnet_lag_expert",
+      "validation_average_mape_pct": 6.426514947052186,
+      "test_average_mape_pct": 24.601932795295244
+    }
+  ],
+  "weights_by_horizon": {
+    "1": {
+      "naive_last_value": 0.0844628466324067,
+      "drift_252": 0.08396263662386035,
+      "rolling_mean_20_gap": 0.08446993013427115,
+      "rolling_mean_60_gap": 0.08444375279111556,
+      "rolling_median_60_gap": 0.08444444419987127,
+      "momentum_20": 0.08171726987027332,
+      "theta_like_252": 0.08421798880549172,
+      "ets_like": 0.08381548141506,
+      "arima_like": 0.07590382015928866,
+      "ridge_lag_expert": 0.0488651963163474,
+      "elasticnet_lag_expert": 0.055764966885138344,
+      "random_forest_lag_expert": 0.028000247746468223,
+      "extratrees_lag_expert": 0.06062528892098422,
+      "gradient_boosting_lag_expert": 0.02551993660939293,
+      "xgboost_lag_expert": 0.033786192890030126
+    },
+    "5": {
+      "naive_last_value": 0.07857907598798955,
+      "drift_252": 0.0776248613064588,
+      "rolling_mean_20_gap": 0.08070513142367877,
+      "rolling_mean_60_gap": 0.08056312485792992,
+      "rolling_median_60_gap": 0.08057584782959948,
+      "momentum_20": 0.07386038288747131,
+      "theta_like_252": 0.07814549486558911,
+      "ets_like": 0.07863205055636041,
+      "arima_like": 0.0801885545800309,
+      "ridge_lag_expert": 0.05401901399845495,
+      "elasticnet_lag_expert": 0.06205369551944446,
+      "random_forest_lag_expert": 0.028202078486606316,
+      "extratrees_lag_expert": 0.05322676727706566,
+      "gradient_boosting_lag_expert": 0.04660001671830785,
+      "xgboost_lag_expert": 0.04702390370501245
+    },
+    "10": {
+      "naive_last_value": 0.07822924805698521,
+      "drift_252": 0.0762122377228907,
+      "rolling_mean_20_gap": 0.08268828918220862,
+      "rolling_mean_60_gap": 0.08244009591701634,
+      "rolling_median_60_gap": 0.08237528731011376,
+      "momentum_20": 0.06963255199732947,
+      "theta_like_252": 0.07729009362160803,
+      "ets_like": 0.07824744694669222,
+      "arima_like": 0.08489844451461642,
+      "ridge_lag_expert": 0.052665466749765126,
+      "elasticnet_lag_expert": 0.05947590323281457,
+      "random_forest_lag_expert": 0.02792849216693305,
+      "extratrees_lag_expert": 0.048747425383440374,
+      "gradient_boosting_lag_expert": 0.04979966109068523,
+      "xgboost_lag_expert": 0.0493693561069008
+    },
+    "20": {
+      "naive_last_value": 0.07185498617567912,
+      "drift_252": 0.06766581350182178,
+      "rolling_mean_20_gap": 0.07688827439560711,
+      "rolling_mean_60_gap": 0.07592268317303714,
+      "rolling_median_60_gap": 0.07479460775924687,
+      "momentum_20": 0.05801172184317352,
+      "theta_like_252": 0.07003209632259719,
+      "ets_like": 0.07195851915881361,
+      "arima_like": 0.0695310578871871,
+      "ridge_lag_expert": 0.0512749437303858,
+      "elasticnet_lag_expert": 0.04653735468995557,
+      "random_forest_lag_expert": 0.07356971176559003,
+      "extratrees_lag_expert": 0.06273010535840051,
+      "gradient_boosting_lag_expert": 0.08025177665413466,
+      "xgboost_lag_expert": 0.04897634758436993
+    },
+    "30": {
+      "naive_last_value": 0.07737088874367912,
+      "drift_252": 0.0714798937895853,
+      "rolling_mean_20_gap": 0.08905426557229777,
+      "rolling_mean_60_gap": 0.08746580736493596,
+      "rolling_median_60_gap": 0.08636856334416243,
+      "momentum_20": 0.05575924363082733,
+      "theta_like_252": 0.07479280720997039,
+      "ets_like": 0.07740385656156547,
+      "arima_like": 0.08195596575304401,
+      "ridge_lag_expert": 0.05819042462503627,
+      "elasticnet_lag_expert": 0.05346045554187689,
+      "random_forest_lag_expert": 0.04199843759591763,
+      "extratrees_lag_expert": 0.03655730241844781,
+      "gradient_boosting_lag_expert": 0.05984569408867675,
+      "xgboost_lag_expert": 0.04829639375997695
+    }
+  },
+  "expert_disagreement": {
+    "artifact_type": "epsilon_expert_disagreement",
+    "schema_version": "1.0.0",
+    "model_key": "epsilon_expert_ensemble",
+    "test_disagreement_by_horizon": {
+      "1": {
+        "component_count": 15,
+        "mean_price_disagreement_std": 147.0848184890393,
+        "median_price_disagreement_std": 101.75491723911837,
+        "mean_disagreement_pct_of_forecast": 4.975061449052455
+      },
+      "5": {
+        "component_count": 15,
+        "mean_price_disagreement_std": 305.3567187334331,
+        "median_price_disagreement_std": 206.0243868851536,
+        "mean_disagreement_pct_of_forecast": 10.394664003352826
+      },
+      "10": {
+        "component_count": 15,
+        "mean_price_disagreement_std": 326.18395839095245,
+        "median_price_disagreement_std": 220.73572156867152,
+        "mean_disagreement_pct_of_forecast": 11.186093296286515
+      },
+      "20": {
+        "component_count": 15,
+        "mean_price_disagreement_std": 248.2241733299967,
+        "median_price_disagreement_std": 178.7287314398156,
+        "mean_disagreement_pct_of_forecast": 8.211200709035097
+      },
+      "30": {
+        "component_count": 15,
+        "mean_price_disagreement_std": 418.2587933551633,
+        "median_price_disagreement_std": 304.45431044250466,
+        "mean_disagreement_pct_of_forecast": 14.372256168153292
+      }
+    },
+    "validation_disagreement_by_horizon": {
+      "1": {
+        "component_count": 15,
+        "mean_price_disagreement_std": 42.552680699097955,
+        "median_price_disagreement_std": 49.43290884055685,
+        "mean_disagreement_pct_of_forecast": 2.420056181324198
+      },
+      "5": {
+        "component_count": 15,
+        "mean_price_disagreement_std": 85.27698482001055,
+        "median_price_disagreement_std": 94.30134817119276,
+        "mean_disagreement_pct_of_forecast": 5.017129248465291
+      },
+      "10": {
+        "component_count": 15,
+        "mean_price_disagreement_std": 91.3435525085796,
+        "median_price_disagreement_std": 100.82743660663425,
+        "mean_disagreement_pct_of_forecast": 5.381772568196318
+      },
+      "20": {
+        "component_count": 15,
+        "mean_price_disagreement_std": 51.92680266341305,
+        "median_price_disagreement_std": 51.737541299406175,
+        "mean_disagreement_pct_of_forecast": 3.015793111496834
+      },
+      "30": {
+        "component_count": 15,
+        "mean_price_disagreement_std": 88.70166296221618,
+        "median_price_disagreement_std": 91.1121644106922,
+        "mean_disagreement_pct_of_forecast": 5.247193341383198
+      }
+    },
+    "generated_at_utc": "2026-05-05T18:14:26.986123Z"
+  },
+  "professor_safe_note": "Epsilon interpretability explains component behavior, weighting, and disagreement. It does not identify causal drivers of gold prices.",
+  "generated_at_utc": "2026-05-05T18:14:27.166539Z"
+}

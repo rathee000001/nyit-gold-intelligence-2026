@@ -1,0 +1,26 @@
+{
+  "artifact_type": "deep_ml_ai_context_bundle",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T03:45:02Z",
+  "ai_name": "Deep ML Research AI",
+  "scope": "deep_ml_phase_2_only",
+  "latest_study_id": "deepml_study_20260505_000000_research_20260331",
+  "latest_run_id": "deepml_run_20260505_000000_alpha_structural_research_20260331",
+  "allowed_artifacts": [
+    "deep_ml/contracts/examples/sample_model_run.json",
+    "deep_ml/contracts/examples/sample_factor_state_table.json"
+  ],
+  "forbidden_behaviors": [
+    "invent_missing_metrics",
+    "claim_deep_ml_beats_baseline_without_artifact",
+    "claim_news_causality",
+    "claim_all_factors_are_live"
+  ],
+  "context_sections": [
+    {
+      "section_id": "phase0",
+      "title": "Phase 0 Contract Context",
+      "content": "Phase 0 defines schemas and examples only. No trained Deep ML results exist yet."
+    }
+  ]
+}

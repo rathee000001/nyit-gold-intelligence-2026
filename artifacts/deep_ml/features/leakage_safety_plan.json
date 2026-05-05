@@ -1,0 +1,37 @@
+{
+  "artifact_type": "deep_ml_leakage_safety_plan",
+  "schema_version": "1.0.0",
+  "rules": [
+    {
+      "rule_id": "time_split_only",
+      "severity": "blocking",
+      "rule": "Never use random train/test split for Phase 2 forecasting models."
+    },
+    {
+      "rule_id": "fit_scalers_on_train_only",
+      "severity": "blocking",
+      "rule": "Any scaler/transformer must be fitted on the training segment only inside each walk-forward window."
+    },
+    {
+      "rule_id": "rolling_features_past_only",
+      "severity": "blocking",
+      "rule": "Lag, rolling mean, rolling volatility, and returns must use only historical observations available at the forecast origin."
+    },
+    {
+      "rule_id": "no_future_exogenous_values_without_policy",
+      "severity": "blocking",
+      "rule": "Future exogenous values must be either known, scenario-defined, or explicitly held/forecasted with disclosure."
+    },
+    {
+      "rule_id": "mode_separation",
+      "severity": "blocking",
+      "rule": "Do not compare official research mode and live market update mode as if they are the same experiment."
+    },
+    {
+      "rule_id": "manual_factor_disclosure",
+      "severity": "blocking",
+      "rule": "Manual CSV factor validity dates must be visible in factor_state_table.json."
+    }
+  ],
+  "professor_safe_summary": "These rules prevent leakage and protect Deep ML claims from being stronger than the data supports."
+}

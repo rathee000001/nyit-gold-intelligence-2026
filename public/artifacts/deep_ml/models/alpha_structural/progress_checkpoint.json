@@ -1,0 +1,36 @@
+{
+  "artifact_type": "deep_ml_alpha_progress_checkpoint",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:18:03Z",
+  "status": "horizon_complete",
+  "stage": "horizon",
+  "run_id": "deepml_run_20260505_100053_alpha_structural_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "model_key": "alpha_structural",
+  "model_version": "alpha_structural_v4_consistent_timed_xgboost_optuna_rolling_shap",
+  "horizon": 30,
+  "completed_trials": 120,
+  "total_trials": 120,
+  "percent_complete": 100.0,
+  "elapsed_seconds": 1029.906,
+  "elapsed_hms": "00:17:09",
+  "extra": {
+    "test_metrics": {
+      "n": 817,
+      "mae": 234.339759051516,
+      "rmse": 357.6335842315711,
+      "mape": 7.274183528492449,
+      "smape": 7.5455080926804365,
+      "bias_mean_error": -132.23467057703394,
+      "directional_accuracy": 71.1138310893513
+    },
+    "rolling_metrics": {
+      "n": 817,
+      "mae": 219.89216456899663,
+      "rmse": 335.43269331026175,
+      "mape": 6.909053707604524,
+      "smape": 7.106178396145903,
+      "bias_mean_error": -105.06184110997721,
+      "directional_accuracy": 70.99143206854345
+    }
+  }
+}

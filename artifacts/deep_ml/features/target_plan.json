@@ -1,0 +1,37 @@
+{
+  "artifact_type": "deep_ml_target_plan",
+  "schema_version": "2.0.0",
+  "target": "gold_price",
+  "target_type": "price_level",
+  "frequency": "trading_day",
+  "effective_data_through_date": "2026-03-31",
+  "forecast_start_date": "2026-04-01",
+  "horizons_trading_days": [
+    1,
+    5,
+    10,
+    20,
+    30
+  ],
+  "primary_public_horizon_trading_days": 30,
+  "evaluation_targets": [
+    "level_forecast",
+    "directional_accuracy",
+    "interval_coverage",
+    "bias"
+  ],
+  "notes": [
+    "Future versions may add return target as a secondary target.",
+    "Phase 4 defines target contract only; it does not train a model."
+  ],
+  "phase_key": "phase11_governed_feature_store_refresh",
+  "gold_column": "gold_price",
+  "target_strategy": "anchored_future_log_return",
+  "forecast_reconstruction": "raw_gold_price_anchor * exp(predicted_log_return)",
+  "raw_gold_price_anchor_scaled": false,
+  "official_model_cutoff": "2026-03-31",
+  "refreshed_matrix_end_date": "2026-05-05",
+  "post_cutoff_gold_source": "Yahoo GC=F COMEX futures delayed public market proxy",
+  "professor_safe_note": "Post-cutoff gold values are a live market proxy and are clearly labeled; raw gold anchors remain unscaled.",
+  "generated_at_utc": "2026-05-05T09:32:08.480618Z"
+}

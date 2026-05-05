@@ -1,0 +1,219 @@
+{
+  "artifact_type": "deep_ml_cutoff_governance",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T03:53:49Z",
+  "phase": "phase_2_cutoff_governance",
+  "mode": "official_research_mode",
+  "study_id": "deepml_study_20260505_035349_officialresearch_20260331",
+  "run_batch_id": "deepml_batch_20260505_035349_officialresearch_20260331",
+  "official_research_cutoff_date": "2026-03-31",
+  "live_gold_price_through_date": null,
+  "manual_csv_valid_through_date": null,
+  "effective_model_data_through_date": "2026-03-31",
+  "forecast_start_date": "2026-04-01",
+  "cutoff_policy": {
+    "official_research_mode": "Use validated baseline cutoff. Do not use provisional post-cutoff rows for academic claims.",
+    "live_market_update_mode": "Use daily API gold plus manual CSV factors only after source states are explicitly computed. Effective model date cannot exceed required factor validity.",
+    "weekday_policy": "Forecast start is next weekday after effective data-through date. Full market-holiday calendar is not yet applied."
+  },
+  "baseline_inspection": {
+    "source_artifacts": {
+      "forecast_status": {
+        "path": "D:\\nyit-gold-intelligence-2026\\artifacts\\governance\\forecast_status.json",
+        "exists": true,
+        "readable": true
+      },
+      "model_window_plan": {
+        "path": "D:\\nyit-gold-intelligence-2026\\artifacts\\governance\\model_window_plan.json",
+        "exists": true,
+        "readable": true
+      },
+      "cutoff_decision_log": {
+        "path": "D:\\nyit-gold-intelligence-2026\\artifacts\\governance\\cutoff_decision_log.json",
+        "exists": true,
+        "readable": true
+      },
+      "selected_model_summary": {
+        "path": "D:\\nyit-gold-intelligence-2026\\artifacts\\validation\\selected_model_summary.json",
+        "exists": true,
+        "readable": true
+      }
+    },
+    "possible_cutoff_dates": [
+      {
+        "artifact": "forecast_status",
+        "path": "matrix_date_range.end",
+        "date": "2026-04-29"
+      },
+      {
+        "artifact": "forecast_status",
+        "path": "official_forecast_cutoff_date",
+        "date": "2026-03-31"
+      },
+      {
+        "artifact": "forecast_status",
+        "path": "display_only_date_range_after_cutoff.end",
+        "date": "2026-04-29"
+      },
+      {
+        "artifact": "forecast_status",
+        "path": "cutoff_reason",
+        "date": "2026-03-31"
+      },
+      {
+        "artifact": "forecast_status",
+        "path": "cutoff_drivers[0].source_valid_through_for_this_run",
+        "date": "2026-03-31"
+      },
+      {
+        "artifact": "forecast_status",
+        "path": "cutoff_drivers[1].source_valid_through_for_this_run",
+        "date": "2026-03-31"
+      },
+      {
+        "artifact": "model_window_plan",
+        "path": "official_forecast_cutoff_date",
+        "date": "2026-03-31"
+      },
+      {
+        "artifact": "model_window_plan",
+        "path": "datasets.long_univariate.end_date",
+        "date": "2026-03-31"
+      },
+      {
+        "artifact": "model_window_plan",
+        "path": "datasets.long_univariate.train_end",
+        "date": "2018-12-31"
+      },
+      {
+        "artifact": "model_window_plan",
+        "path": "datasets.long_univariate.validation_end",
+        "date": "2022-12-30"
+      },
+      {
+        "artifact": "model_window_plan",
+        "path": "datasets.long_univariate.test_end",
+        "date": "2026-03-31"
+      },
+      {
+        "artifact": "model_window_plan",
+        "path": "datasets.long_univariate.actual_date_range_in_matrix.end",
+        "date": "2026-03-31"
+      },
+      {
+        "artifact": "model_window_plan",
+        "path": "datasets.core_multivariate.end_date",
+        "date": "2026-03-31"
+      },
+      {
+        "artifact": "model_window_plan",
+        "path": "datasets.core_multivariate.train_end",
+        "date": "2018-12-31"
+      },
+      {
+        "artifact": "model_window_plan",
+        "path": "datasets.core_multivariate.validation_end",
+        "date": "2022-12-30"
+      },
+      {
+        "artifact": "model_window_plan",
+        "path": "datasets.core_multivariate.test_end",
+        "date": "2026-03-31"
+      },
+      {
+        "artifact": "model_window_plan",
+        "path": "datasets.core_multivariate.actual_date_range_in_matrix.end",
+        "date": "2026-03-31"
+      },
+      {
+        "artifact": "model_window_plan",
+        "path": "datasets.high_yield_sensitivity.end_date",
+        "date": "2026-03-31"
+      },
+      {
+        "artifact": "model_window_plan",
+        "path": "datasets.high_yield_sensitivity.train_end",
+        "date": "2024-12-31"
+      },
+      {
+        "artifact": "model_window_plan",
+        "path": "datasets.high_yield_sensitivity.validation_end",
+        "date": "2025-12-31"
+      },
+      {
+        "artifact": "model_window_plan",
+        "path": "datasets.high_yield_sensitivity.test_end",
+        "date": "2026-03-31"
+      },
+      {
+        "artifact": "model_window_plan",
+        "path": "datasets.high_yield_sensitivity.actual_date_range_in_matrix.end",
+        "date": "2026-03-31"
+      }
+    ],
+    "forecast_status_loaded": true,
+    "model_window_plan_loaded": true,
+    "selected_model_loaded": true,
+    "raw_selected_model_summary": {
+      "artifact_type": "selected_model_summary",
+      "generated_at_utc": "2026-05-01T03:16:20.080008+00:00",
+      "selection_rule": {
+        "primary_metric": "test_rmse_if_available_else_validation_rmse",
+        "direction": "lower_is_better",
+        "tie_breakers": [
+          "mae",
+          "mape"
+        ],
+        "warning": "This notebook selects based on available JSON metrics. A model without exported RMSE cannot be ranked."
+      },
+      "selected_model": {
+        "rank": 1,
+        "model_key": "arima",
+        "model_name": "ARIMA",
+        "category": "classical",
+        "candidate_name": null,
+        "ranking_basis": "test_rmse_primary",
+        "primary_rmse": 173.8306655765098,
+        "primary_mae": 90.06936008027932,
+        "primary_mape": 3.0794405113156684,
+        "validation_metrics": {
+          "mae": 34.92506209724155,
+          "rmse": 63.30395349646531,
+          "mape": 2.05343947804817,
+          "bias": 2.789380485861699,
+          "directional_accuracy": null
+        },
+        "test_metrics": {
+          "mae": 90.06936008027932,
+          "rmse": 173.8306655765098,
+          "mape": 3.0794405113156684,
+          "bias": 20.304196046331022,
+          "directional_accuracy": null
+        },
+        "source_artifact": "artifacts/models/arima_results.json"
+      },
+      "professor_safe_interpretation": [
+        "The selected model is chosen by exported validation/test metrics, not by visual appearance or model complexity.",
+        "Lower RMSE is the primary ranking criterion because it penalizes large forecast errors.",
+        "Model comparison should be interpreted with the same cutoff date and the same test-period discipline.",
+        "No model should be called final until this comparison artifact has been generated."
+      ],
+      "limitations": [
+        "Metrics depend on the forecast mode exported by each model notebook.",
+        "If one model uses static holdout and another uses walk-forward one-step forecasts, check forecast mode before making a final academic claim.",
+        "Notebook 12 should use this selected_model_summary artifact rather than hardcoding a model winner."
+      ]
+    }
+  },
+  "cutoff_selection_notes": [
+    "Detected official baseline cutoff 2026-03-31 from forecast_status at official_forecast_cutoff_date."
+  ],
+  "warnings": [
+    "Official research mode uses the validated baseline cutoff and does not depend on live API data.",
+    "This phase does not pull Yahoo/yfinance data yet.",
+    "This phase does not read manual CSV factor updates yet.",
+    "This phase does not train any model."
+  ],
+  "professor_safe_summary": "Deep ML Phase 2 inherits the baseline cutoff discipline and separates official research mode from future live market update mode.",
+  "next_step": "Build factor-state/data-intelligence table from baseline factor registry and future source-update logs."
+}

@@ -1,0 +1,28 @@
+{
+  "artifact_type": "source_update_quality_review",
+  "schema_version": "1.0.0",
+  "phase_key": "phase10_source_update_refresh",
+  "status": "ready_quality_review_required",
+  "blocking_flags": [],
+  "warnings": [
+    "No saved main Intelligence matrix snapshot found; Phase 11 may need to use existing feature-store fallback plus Yahoo gold extension.",
+    "No manual CSV source files found; manual factors should be marked stale/carried-forward in Phase 11 if needed.",
+    "No raw news input files found; Gamma will likely run proxy-regime mode unless inputs are added."
+  ],
+  "acceptance_gate": {
+    "source_update_manifest_exists": true,
+    "fred_refresh_delegated_to_main_intelligence": true,
+    "main_intelligence_snapshot_status_logged": true,
+    "gold_live_status_logged": true,
+    "manual_csv_status_logged": true,
+    "news_input_status_logged": true,
+    "accepted_previous_model_artifacts_inventoried": true,
+    "no_source_silently_merged_without_status": true,
+    "api_key_not_written_into_artifacts": true,
+    "timeline_exists": true,
+    "progress_checkpoint_exists": true,
+    "phase10_report_exists": true
+  },
+  "professor_safe_summary": "Phase 10 stages and audits source updates only. It does not train models and does not make forecast claims.",
+  "generated_at_utc": "2026-05-05T08:47:16.974169Z"
+}

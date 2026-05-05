@@ -1,0 +1,21 @@
+{
+  "artifact_type": "deep_ml_progress_checkpoint",
+  "model_key": "epsilon_expert_ensemble",
+  "step": "ml_component_completed",
+  "status": "running",
+  "updated_at_utc": "2026-05-05T18:14:26.204488Z",
+  "updated_at_local": "2026-05-05T14:14:26.204488-04:00",
+  "payload": {
+    "component_key": "xgboost_lag_expert",
+    "component_family": "lag_feature_ml",
+    "status": "completed",
+    "runtime_seconds": 0.808,
+    "horizons": [
+      1,
+      5,
+      10,
+      20,
+      30
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "artifact_type": "deep_ml_progress_checkpoint",
+  "phase_key": "phase12_news_ai_context",
+  "step": "completed",
+  "status": "ready_with_warnings",
+  "updated_at_utc": "2026-05-05T18:21:16.672688Z",
+  "payload": {
+    "send_me_this_json": "artifacts\\deep_ml\\news_ai\\phase12_news_ai_context_report.json"
+  }
+}

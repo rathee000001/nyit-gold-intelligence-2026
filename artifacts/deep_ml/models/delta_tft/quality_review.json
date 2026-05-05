@@ -1,0 +1,22 @@
+{
+  "artifact_type": "deep_ml_quality_review",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "status": "ready",
+  "generated_at_utc": "2026-05-05T17:57:13.000806Z",
+  "blocking_flags": [],
+  "warnings": [],
+  "acceptance_gate": {
+    "raw_price_anchor_passes": true,
+    "cuda_used_or_fallback_stated": true,
+    "static_metrics_exported": true,
+    "rolling_origin_metrics_exported": true,
+    "native_quantile_coverage_exported": true,
+    "calibrated_quantile_coverage_exported": true,
+    "interval_calibration_exported": true,
+    "interpretability_exported": true,
+    "quantile_order_checked": true,
+    "all_shared_contract_files_exist": true
+  },
+  "professor_safe_summary": "Delta TFT V2 is reviewed as a calibrated temporal-fusion quantile expert. Interpretability explains model behavior and does not imply causality."
+}

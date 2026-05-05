@@ -1,0 +1,62 @@
+{
+  "artifact_type": "deep_ml_page_bundle",
+  "schema_version": "1.0.0",
+  "page_id": "deep_ml_feature_foundation",
+  "page_title": "Deep ML Feature Foundation",
+  "page_subtitle": "Feature groups, sequence-window plan, target plan, and leakage-safety rules.",
+  "generated_at_utc": "2026-05-05T04:01:50Z",
+  "mode": "official_research_mode",
+  "study_id": "deepml_study_20260505_035349_officialresearch_20260331",
+  "run_batch_id": "deepml_batch_20260505_035349_officialresearch_20260331",
+  "effective_data_through_date": "2026-03-31",
+  "forecast_start_date": "2026-04-01",
+  "kpi_cards": [
+    {
+      "label": "Base Features",
+      "value": 21,
+      "note": "Derived from factor-state table."
+    },
+    {
+      "label": "Engineered Features Planned",
+      "value": 12,
+      "note": "Lag, return, rolling, volatility, and mask features."
+    },
+    {
+      "label": "Default Sequence Window",
+      "value": 60,
+      "note": "Trading days."
+    },
+    {
+      "label": "Forecast Horizons",
+      "value": "1, 5, 10, 20, 30",
+      "note": "Trading-day horizons."
+    }
+  ],
+  "sections": [
+    {
+      "section_id": "model_feature_sets",
+      "title": "Model Feature Sets",
+      "source_artifact": "artifacts/deep_ml/features/model_feature_plan.json"
+    },
+    {
+      "section_id": "sequence_windows",
+      "title": "Sequence Window Plan",
+      "source_artifact": "artifacts/deep_ml/features/sequence_window_plan.json"
+    },
+    {
+      "section_id": "leakage_safety",
+      "title": "Leakage Safety Rules",
+      "source_artifact": "artifacts/deep_ml/features/leakage_safety_plan.json"
+    }
+  ],
+  "allowed_frontend_claims": [
+    "Feature groups are defined before training.",
+    "Scaling and rolling features must avoid leakage.",
+    "Numeric feature-store creation is separate from this foundation contract."
+  ],
+  "forbidden_frontend_claims": [
+    "Do not claim models have been trained.",
+    "Do not claim numeric feature tensors exist unless feature_store_status says they were built.",
+    "Do not claim live-mode features are all current."
+  ]
+}

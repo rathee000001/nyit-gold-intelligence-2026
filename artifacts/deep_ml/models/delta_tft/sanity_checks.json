@@ -1,0 +1,65 @@
+{
+  "artifact_type": "delta_tft_sanity_checks",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "status": "pass",
+  "generated_at_utc": "2026-05-05T17:31:27.682422Z",
+  "checks": [
+    {
+      "name": "raw_origin_gold_min_gt_100",
+      "status": "pass",
+      "value": 524.75,
+      "threshold": "> 100"
+    },
+    {
+      "name": "raw_origin_gold_max_lt_10000",
+      "status": "pass",
+      "value": 5414.48,
+      "threshold": "< 10000"
+    },
+    {
+      "name": "target_gold_min_gt_100",
+      "status": "pass",
+      "value": 524.75,
+      "threshold": "> 100"
+    },
+    {
+      "name": "naive_mape_not_near_100pct",
+      "status": "pass",
+      "value": 6.6617381399872455,
+      "threshold": "< 50% rough sanity bound"
+    },
+    {
+      "name": "price_anchor_valid",
+      "status": "pass",
+      "value": {
+        "raw_gold_min": 524.75,
+        "raw_gold_max": 5414.48
+      }
+    },
+    {
+      "name": "sequence_count_sufficient",
+      "status": "pass",
+      "value": {
+        "train": 3332,
+        "validation": 1044,
+        "test": 841
+      },
+      "threshold": "each split > 30 valid origins"
+    },
+    {
+      "name": "train_validation_test_non_empty",
+      "status": "pass",
+      "value": {
+        "train": 3332,
+        "validation": 1044,
+        "test": 841
+      }
+    },
+    {
+      "name": "quantile_order_and_calibration",
+      "status": "pass",
+      "value": "native quantiles are sorted; V2 calibrated intervals are derived from validation residuals"
+    }
+  ]
+}

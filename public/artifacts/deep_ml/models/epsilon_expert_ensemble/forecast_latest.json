@@ -1,0 +1,82 @@
+{
+  "artifact_type": "epsilon_forecast_latest",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "phase_2_deep_ml",
+  "model_key": "epsilon_expert_ensemble",
+  "model_name": "Epsilon Expert Ensemble",
+  "frequency": "trading_day",
+  "target": "anchored_future_log_return",
+  "forecast_reconstruction": "raw_gold_price_anchor * exp(predicted_log_return)",
+  "raw_price_anchor_scaled": false,
+  "selected_ensemble_strategy": "best_validation_component::rolling_mean_20_gap",
+  "latest_origin": {
+    "origin_index": 5305,
+    "origin_date": "2026-05-05",
+    "raw_gold_price_anchor": 4561.7001953125
+  },
+  "path": [
+    {
+      "horizon_trading_days": 1,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-05-06",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "predicted_log_return_p10": -0.009808147385671488,
+      "predicted_log_return_p50": 0.00036293704773311957,
+      "predicted_log_return_p90": 0.011477547949632917,
+      "forecast_price_p10": 4517.177069085264,
+      "forecast_price_p50": 4563.356105791484,
+      "forecast_price_p90": 4614.358946629458
+    },
+    {
+      "horizon_trading_days": 5,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-05-12",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "predicted_log_return_p10": -0.032034378178009554,
+      "predicted_log_return_p50": 0.0018146852386654074,
+      "predicted_log_return_p90": 0.036773367094459206,
+      "forecast_price_p10": 4417.8847831919265,
+      "forecast_price_p50": 4569.985760893173,
+      "forecast_price_p90": 4732.571777791679
+    },
+    {
+      "horizon_trading_days": 10,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-05-19",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "predicted_log_return_p10": -0.030072815661485584,
+      "predicted_log_return_p50": 0.0036293704773306063,
+      "predicted_log_return_p90": 0.03773742813446531,
+      "forecast_price_p10": 4426.559245353457,
+      "forecast_price_p50": 4578.28637581818,
+      "forecast_price_p90": 4737.136465827087
+    },
+    {
+      "horizon_trading_days": 20,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-06-02",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "predicted_log_return_p10": -0.014634359123884859,
+      "predicted_log_return_p50": 0.007258740954661231,
+      "predicted_log_return_p90": 0.03438221820985889,
+      "forecast_price_p10": 4495.42873932711,
+      "forecast_price_p50": 4594.932863089319,
+      "forecast_price_p90": 4721.26901274632
+    },
+    {
+      "horizon_trading_days": 30,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-06-16",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "predicted_log_return_p10": -0.014711700178493353,
+      "predicted_log_return_p50": 0.01088811143199194,
+      "predicted_log_return_p90": 0.04657317181166813,
+      "forecast_price_p10": 4495.081071572162,
+      "forecast_price_p50": 4611.63987639918,
+      "forecast_price_p90": 4779.178050218329
+    }
+  ],
+  "generated_at_utc": "2026-05-05T18:14:27.166539Z",
+  "generated_at_local": "2026-05-05T14:14:27.166539-04:00"
+}

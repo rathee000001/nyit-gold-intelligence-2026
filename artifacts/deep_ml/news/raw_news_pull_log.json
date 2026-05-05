@@ -1,0 +1,172 @@
+{
+  "artifact_type": "raw_news_pull_log",
+  "schema_version": "1.0.0",
+  "phase_key": "phase12_source_news_update",
+  "run_id": "deepml_run_20260505_191939_source_news_update",
+  "historical_manifest": {
+    "artifact_type": "historical_news_backfill_manifest",
+    "schema_version": "1.0.0",
+    "phase_key": "phase12_source_news_update",
+    "script_version": "source_news_update_v3_unified_historical_recent_safe_fallbacks",
+    "historical_start_date": "2006-01-02",
+    "historical_end_date": "2026-04-28",
+    "row_count": 7422,
+    "rows_with_loaded_public_source": 13,
+    "source_policy": "Fixed daily index. 2017 onward uses sampled GDELT DOC API where available. Pre-2017 rows are retained with explicit coverage notes unless a future bulk historical GDELT/GKG loader is added.",
+    "google_news_rss_policy": "Google News RSS is a recent fallback only, not a 2006 historical archive.",
+    "cache_used": true,
+    "generated_at_utc": "2026-05-05T19:13:39.866444Z",
+    "outputs": {
+      "historical_index_parquet": "artifacts\\deep_ml\\news\\historical\\historical_news_daily_index.parquet",
+      "historical_index_csv": "artifacts\\deep_ml\\news\\historical\\historical_news_daily_index.csv"
+    },
+    "cache_reason": "Existing historical index covers requested window. Use --force-historical to rebuild."
+  },
+  "historical_logs_preview": [],
+  "gdelt_logs": [
+    {
+      "ok": true,
+      "status_code": 200,
+      "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22gold+price%22+OR+%22COMEX+gold%22+OR+%22XAUUSD%22%29&mode=artlist&format=json&maxrecords=30&sort=hybridrel&timespan=7d",
+      "elapsed_seconds": 13.073343,
+      "content_type": "application/json; charset=utf-8",
+      "query_key": "gold_general",
+      "query": "(\"gold price\" OR \"COMEX gold\" OR \"XAUUSD\")",
+      "rows_returned": 30,
+      "start": null,
+      "end": null,
+      "timespan": "7d",
+      "attempt": 2
+    },
+    {
+      "ok": false,
+      "status_code": 429,
+      "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22gold+inflation%22+OR+%22gold+yields%22+OR+%22gold+dollar%22%29&mode=artlist&format=json&maxrecords=30&sort=hybridrel&timespan=7d",
+      "elapsed_seconds": 6.736321,
+      "content_type": "",
+      "text_preview": "Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries.\n\n",
+      "query_key": "inflation_yields",
+      "query": "(\"gold inflation\" OR \"gold yields\" OR \"gold dollar\")",
+      "rows_returned": 0,
+      "start": null,
+      "end": null,
+      "timespan": "7d",
+      "attempt": 2
+    },
+    {
+      "ok": false,
+      "status_code": 429,
+      "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22gold+geopolitical+risk%22+OR+%22gold+safe+haven%22%29&mode=artlist&format=json&maxrecords=30&sort=hybridrel&timespan=7d",
+      "elapsed_seconds": 5.766842,
+      "content_type": "",
+      "text_preview": "Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries.\n\n",
+      "query_key": "geopolitical_safe_haven",
+      "query": "(\"gold geopolitical risk\" OR \"gold safe haven\")",
+      "rows_returned": 0,
+      "start": null,
+      "end": null,
+      "timespan": "7d",
+      "attempt": 2
+    },
+    {
+      "ok": false,
+      "status_code": 429,
+      "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22Federal+Reserve+rates+gold%22+OR+%22dollar+yields+gold%22%29&mode=artlist&format=json&maxrecords=30&sort=hybridrel&timespan=7d",
+      "elapsed_seconds": 7.553781,
+      "content_type": "",
+      "text_preview": "Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries.\n\n",
+      "query_key": "fed_usd_rates",
+      "query": "(\"Federal Reserve rates gold\" OR \"dollar yields gold\")",
+      "rows_returned": 0,
+      "start": null,
+      "end": null,
+      "timespan": "7d",
+      "attempt": 2
+    },
+    {
+      "ok": false,
+      "status_code": 429,
+      "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22central+bank+gold+buying%22+OR+%22gold+reserves%22%29&mode=artlist&format=json&maxrecords=30&sort=hybridrel&timespan=7d",
+      "elapsed_seconds": 7.663844,
+      "content_type": "",
+      "text_preview": "Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries.\n\n",
+      "query_key": "central_bank_gold",
+      "query": "(\"central bank gold buying\" OR \"gold reserves\")",
+      "rows_returned": 0,
+      "start": null,
+      "end": null,
+      "timespan": "7d",
+      "attempt": 2
+    }
+  ],
+  "rss_logs": [
+    {
+      "ok": true,
+      "status_code": 200,
+      "url": "https://news.google.com/rss/search?q=gold+price+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+      "elapsed_seconds": 0.914735,
+      "content_type": "application/xml; charset=utf-8",
+      "query_key": "gold_general",
+      "query": "gold price",
+      "source_key": "google_news_rss_search",
+      "rows_returned": 100
+    },
+    {
+      "ok": true,
+      "status_code": 200,
+      "url": "https://news.google.com/rss/search?q=gold+inflation+yields+dollar+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+      "elapsed_seconds": 1.069529,
+      "content_type": "application/xml; charset=utf-8",
+      "query_key": "inflation_yields",
+      "query": "gold inflation yields dollar",
+      "source_key": "google_news_rss_search",
+      "rows_returned": 46
+    },
+    {
+      "ok": true,
+      "status_code": 200,
+      "url": "https://news.google.com/rss/search?q=gold+geopolitical+risk+safe+haven+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+      "elapsed_seconds": 0.801399,
+      "content_type": "application/xml; charset=utf-8",
+      "query_key": "geopolitical_safe_haven",
+      "query": "gold geopolitical risk safe haven",
+      "source_key": "google_news_rss_search",
+      "rows_returned": 49
+    },
+    {
+      "ok": true,
+      "status_code": 200,
+      "url": "https://news.google.com/rss/search?q=Federal+Reserve+rates+gold+dollar+yields+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+      "elapsed_seconds": 0.809892,
+      "content_type": "application/xml; charset=utf-8",
+      "query_key": "fed_usd_rates",
+      "query": "Federal Reserve rates gold dollar yields",
+      "source_key": "google_news_rss_search",
+      "rows_returned": 45
+    },
+    {
+      "ok": true,
+      "status_code": 200,
+      "url": "https://news.google.com/rss/search?q=central+bank+gold+reserves+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+      "elapsed_seconds": 0.893942,
+      "content_type": "application/xml; charset=utf-8",
+      "query_key": "central_bank_gold",
+      "query": "central bank gold reserves",
+      "source_key": "google_news_rss_search",
+      "rows_returned": 100
+    }
+  ],
+  "newsapi_logs": [
+    {
+      "ok": false,
+      "skipped": true,
+      "reason": "NEWS_API_KEY not provided"
+    }
+  ],
+  "manual_meta": {
+    "manual_news_file_exists": false,
+    "manual_news_rows_loaded": 0,
+    "manual_news_template": "artifacts\\deep_ml\\news\\raw_inputs\\manual_news_items_template.csv"
+  },
+  "generated_at_utc": "2026-05-05T19:22:32.855031Z"
+}

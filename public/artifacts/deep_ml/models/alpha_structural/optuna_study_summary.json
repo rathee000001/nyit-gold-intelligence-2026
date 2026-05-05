@@ -1,0 +1,123 @@
+{
+  "artifact_type": "deep_ml_alpha_optuna_study_summary",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:18:03Z",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "run_id": "deepml_run_20260505_100053_alpha_structural_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "model_key": "alpha_structural",
+  "model_version": "alpha_structural_v4_consistent_timed_xgboost_optuna_rolling_shap",
+  "n_trials_per_horizon": 120,
+  "max_estimators": 1200,
+  "early_stopping_rounds": 75,
+  "compute_device": "xgboost_cuda",
+  "gpu_test": {
+    "gpu_requested": true,
+    "gpu_usable": true,
+    "reason": "tiny XGBoost CUDA fit succeeded"
+  },
+  "torch_cuda": {
+    "torch_installed": true,
+    "torch_version": "2.10.0+cu130",
+    "cuda_available": true,
+    "device_name": "NVIDIA GeForce RTX 5060",
+    "cuda_version": "13.0"
+  },
+  "summary_by_horizon": {
+    "1": {
+      "best_value_objective": 59.284690147971766,
+      "best_params": {
+        "n_estimators": 1087,
+        "max_depth": 8,
+        "learning_rate": 0.030084863015303612,
+        "subsample": 0.6564160394846041,
+        "colsample_bytree": 0.9660273961081018,
+        "min_child_weight": 4.746867205438153,
+        "reg_alpha": 6.167666274033674e-06,
+        "reg_lambda": 8.628708341061387,
+        "gamma": 0.15427677940781123,
+        "max_delta_step": 1.3744578089108839,
+        "max_bin": 512
+      },
+      "trial_count": 120,
+      "compute_device": "xgboost_cuda",
+      "target_strategy": "anchored_future_log_return"
+    },
+    "5": {
+      "best_value_objective": 93.18937795950113,
+      "best_params": {
+        "n_estimators": 1112,
+        "max_depth": 2,
+        "learning_rate": 0.10136705721461998,
+        "subsample": 0.6322729574034172,
+        "colsample_bytree": 0.8208685165864541,
+        "min_child_weight": 1.1874228310552963,
+        "reg_alpha": 0.5602691312041455,
+        "reg_lambda": 0.00028851581004491486,
+        "gamma": 0.13922049905192224,
+        "max_delta_step": 1.631511201527185,
+        "max_bin": 256
+      },
+      "trial_count": 120,
+      "compute_device": "xgboost_cuda",
+      "target_strategy": "anchored_future_log_return"
+    },
+    "10": {
+      "best_value_objective": 92.60879865528553,
+      "best_params": {
+        "n_estimators": 441,
+        "max_depth": 8,
+        "learning_rate": 0.060071142562161534,
+        "subsample": 0.6113722448844929,
+        "colsample_bytree": 0.9077332224005927,
+        "min_child_weight": 9.74262080922428,
+        "reg_alpha": 0.015134236039094988,
+        "reg_lambda": 0.001906643763824354,
+        "gamma": 0.23877904791039903,
+        "max_delta_step": 0.19036475569060596,
+        "max_bin": 512
+      },
+      "trial_count": 120,
+      "compute_device": "xgboost_cuda",
+      "target_strategy": "anchored_future_log_return"
+    },
+    "20": {
+      "best_value_objective": 91.6106687212439,
+      "best_params": {
+        "n_estimators": 882,
+        "max_depth": 8,
+        "learning_rate": 0.054079696627388534,
+        "subsample": 0.8973866791309593,
+        "colsample_bytree": 0.672176319410515,
+        "min_child_weight": 29.291025214518594,
+        "reg_alpha": 3.5327373541172036e-07,
+        "reg_lambda": 0.0015544509200072702,
+        "gamma": 0.1681245747953333,
+        "max_delta_step": 6.599247470441659,
+        "max_bin": 256
+      },
+      "trial_count": 120,
+      "compute_device": "xgboost_cuda",
+      "target_strategy": "anchored_future_log_return"
+    },
+    "30": {
+      "best_value_objective": 106.76416921712311,
+      "best_params": {
+        "n_estimators": 597,
+        "max_depth": 2,
+        "learning_rate": 0.02669463846821442,
+        "subsample": 0.907759902849646,
+        "colsample_bytree": 0.9079160861383174,
+        "min_child_weight": 22.50198179519618,
+        "reg_alpha": 0.016455343687589497,
+        "reg_lambda": 0.25136671085758355,
+        "gamma": 0.552038560548934,
+        "max_delta_step": 2.478149461721546,
+        "max_bin": 128
+      },
+      "trial_count": 120,
+      "compute_device": "xgboost_cuda",
+      "target_strategy": "anchored_future_log_return"
+    }
+  }
+}

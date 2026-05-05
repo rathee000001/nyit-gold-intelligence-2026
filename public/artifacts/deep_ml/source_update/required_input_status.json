@@ -1,0 +1,44 @@
+{
+  "artifact_type": "phase10_required_input_status",
+  "schema_version": "1.0.0",
+  "checks": [
+    {
+      "name": "feature_store",
+      "path": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+      "exists": true,
+      "hash": "sha256:f6908e0be4dbc18c3f83852d5f1a279f21f149cfcbc854bff77f3192d3903ddc"
+    },
+    {
+      "name": "governance_mode_status",
+      "path": "artifacts\\deep_ml\\governance\\deep_ml_mode_status.json",
+      "exists": true,
+      "hash": "sha256:c02342bf2f30281f234bb70fc00962facb2ce8ae36a3c22a653e7473e69d5896"
+    },
+    {
+      "name": "study_context",
+      "path": "artifacts\\deep_ml\\governance\\study_context.json",
+      "exists": true,
+      "hash": "sha256:08073e19fac1c2adbffcb46d25d4414c03fe1ace77d77eedf353199ebb146ffd"
+    },
+    {
+      "name": "factor_state_table",
+      "path": "artifacts\\deep_ml\\data\\factor_state_table.json",
+      "exists": true,
+      "hash": "sha256:60c62c3458079c79915f68b89963b15369b5640bfcbf21e495800a74fe502979"
+    },
+    {
+      "name": "model_feature_plan",
+      "path": "artifacts\\deep_ml\\features\\model_feature_plan.json",
+      "exists": true,
+      "hash": "sha256:91f0fb93a9b1583b0c01a6a986131420c625ddaceb1397e633c159cc2376da1c"
+    },
+    {
+      "name": "target_plan",
+      "path": "artifacts\\deep_ml\\features\\target_plan.json",
+      "exists": true,
+      "hash": "sha256:ddcb4320ee72d46233b1c6adaf569c7a71d422405b4397dd14fb0b53b20cd112"
+    }
+  ],
+  "all_required_exist": true,
+  "generated_at_utc": "2026-05-05T08:47:16.535069Z"
+}

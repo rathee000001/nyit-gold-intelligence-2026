@@ -1,0 +1,163 @@
+{
+  "artifact_type": "deep_ml_model_run",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "phase_2_deep_ml",
+  "model_key": "delta_tft",
+  "model_name": "Delta TFT Multi-Horizon Expert",
+  "family": "temporal_fusion_quantile_model",
+  "status": "completed_pending_quality_review",
+  "delta_version": "v2_calibrated",
+  "run": {
+    "run_id": "deepml_run_20260505_173127_delta_tft_v2",
+    "study_id": "deepml_feature_refresh_20260505_093208",
+    "generated_at_utc": "2026-05-05T17:31:27.442063Z",
+    "completed_at_utc": "2026-05-05T17:57:12.938683Z",
+    "generated_at_local": "2026-05-05T13:31:27.442063-04:00",
+    "timezone_local": "America/New_York",
+    "git_commit_sha": "be6e3bf",
+    "code_version": "delta_tft_v2_calibrated_custom_tft_style",
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "cuda_available": true,
+    "device": "cuda",
+    "cuda_device_name": "NVIDIA GeForce RTX 5060"
+  },
+  "data_signature": {
+    "feature_store_path": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+    "feature_store_hash": "sha256:faee8e504db2fa957ec3b2209284f4af4662a36f54ab9928402722133da47331",
+    "model_feature_plan_hash": "sha256:85724e0a89c330d95593cd64d6ab105ae39f5e3a252e41b54f2ab93c1f695712",
+    "target_plan_hash": "sha256:e0e880e347304630f181bd52057d517baacc58dc2498f488a3a796dcc92c8553",
+    "factor_state_table_hash": "sha256:7a7d74ab2fc2b9c5e7061f305694921b0aac27dc4ef6de1b9b67d6a1a3c03e04",
+    "effective_data_through_date": "2026-05-05",
+    "forecast_start_date": "2026-05-06"
+  },
+  "model": {
+    "target": "anchored_future_log_return_quantiles",
+    "forecast_reconstruction": "raw_gold_price_anchor * exp(predicted_log_return_quantile)",
+    "horizons": [
+      1,
+      5,
+      10,
+      20,
+      30
+    ],
+    "quantiles": [
+      0.1,
+      0.5,
+      0.9
+    ],
+    "training_window": {
+      "train_start": "2006-01-02",
+      "train_end": "2018-12-31",
+      "validation_start": "2019-01-01",
+      "validation_end": "2022-12-30",
+      "test_start": "2023-01-02",
+      "test_end": "2026-05-05"
+    },
+    "selected_config": {
+      "sequence_length": 20,
+      "hidden_size": 192,
+      "attention_heads": 4,
+      "dropout": 0.1719127734289254,
+      "learning_rate": 0.0009439627499961122,
+      "weight_decay": 7.758110844151547e-08,
+      "batch_size": 64,
+      "grn_depth": 1,
+      "best_validation_quantile_loss": 0.012854200267397305
+    },
+    "backend": "custom_tft_style_pytorch_v2_calibrated",
+    "interval_calibration": "validation_residual_symmetric_interval_widening",
+    "p50_preserved_by_calibration": true
+  },
+  "features": {
+    "used_count": 32,
+    "used": [
+      "gold_price",
+      "gold_lag_1",
+      "gold_lag_5",
+      "gold_lag_20",
+      "gold_return_1",
+      "gold_return_5",
+      "gold_ma_5",
+      "gold_ma_20",
+      "gold_ma_60",
+      "gold_volatility_20",
+      "real_yield",
+      "nominal_yield",
+      "tips_curve",
+      "fed_bs",
+      "m2_supply",
+      "inflation",
+      "usd_index",
+      "eur_usd",
+      "jpy_usd",
+      "vix_index",
+      "fin_stress",
+      "gpr_index",
+      "policy_unc",
+      "oil_wti",
+      "ppi_index",
+      "gld_tonnes",
+      "unrate",
+      "ind_prod",
+      "cap_util",
+      "gold_price_is_live_extension",
+      "gold_price_is_proxy",
+      "fred_api_update_applied"
+    ],
+    "excluded": [
+      "dataset_id",
+      "dataset_id excluded as an identifier if detected",
+      "delta_target_gold_price_h1",
+      "delta_target_gold_price_h10",
+      "delta_target_gold_price_h20",
+      "delta_target_gold_price_h30",
+      "delta_target_gold_price_h5",
+      "delta_target_log_return_h1",
+      "delta_target_log_return_h10",
+      "delta_target_log_return_h20",
+      "delta_target_log_return_h30",
+      "delta_target_log_return_h5",
+      "high_yield excluded from official core mode when detected",
+      "target_direction_t_plus_1",
+      "target_direction_t_plus_10",
+      "target_direction_t_plus_20",
+      "target_direction_t_plus_30",
+      "target_direction_t_plus_5",
+      "target_gold_t_plus_1",
+      "target_gold_t_plus_10",
+      "target_gold_t_plus_20",
+      "target_gold_t_plus_30",
+      "target_gold_t_plus_5",
+      "target_return_t_plus_1",
+      "target_return_t_plus_10",
+      "target_return_t_plus_20",
+      "target_return_t_plus_30",
+      "target_return_t_plus_5"
+    ]
+  },
+  "professor_safe_summary": "Delta TFT V2 is a calibrated temporal-fusion quantile expert. It forecasts anchored future log-return quantiles, reconstructs prices from the unscaled raw gold anchor, preserves p50, and applies validation-based interval calibration to p10/p90.",
+  "ai_grounding": {
+    "allowed_claims": [
+      "Delta TFT V2 produced multi-horizon p10/p50/p90 forecasts from exported artifacts.",
+      "Calibrated intervals use validation residual behavior and are uncertainty estimates, not guarantees.",
+      "Variable-selection and attention artifacts explain model behavior, not causality.",
+      "The raw gold price anchor was used unscaled for reconstruction and metrics."
+    ],
+    "forbidden_claims": [
+      "Delta proves which macro factor caused gold to move.",
+      "Delta guarantees future gold prices.",
+      "Delta is the final Deep ML winner before Omega Fusion and evaluation.",
+      "All factors are live unless factor-state artifacts say so."
+    ],
+    "source_artifacts": [
+      "run_summary.json",
+      "forecast_latest.json",
+      "evaluation_by_horizon.json",
+      "uncertainty_latest.json",
+      "interval_calibration_summary.json",
+      "interpretability_latest.json",
+      "diagnostics_latest.json"
+    ]
+  }
+}

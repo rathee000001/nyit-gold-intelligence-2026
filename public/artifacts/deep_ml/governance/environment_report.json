@@ -1,0 +1,236 @@
+{
+  "artifact_type": "deep_ml_environment_report",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T03:51:48Z",
+  "phase": "phase_1_local_runtime_foundation",
+  "repo_root": "D:\\nyit-gold-intelligence-2026",
+  "platform": {
+    "system": "Windows",
+    "release": "11",
+    "version": "10.0.26200",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel"
+  },
+  "python": {
+    "executable": "D:\\nyit-gold-intelligence-2026\\.venv\\Scripts\\python.exe",
+    "version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "version_info": {
+      "major": 3,
+      "minor": 12,
+      "micro": 10
+    },
+    "in_virtual_environment": true,
+    "prefix": "D:\\nyit-gold-intelligence-2026\\.venv",
+    "base_prefix": "C:\\Users\\rathe\\AppData\\Local\\Programs\\Python\\Python312",
+    "recommended": "Python 3.11 or 3.12 recommended for this project.",
+    "ok": true
+  },
+  "paths": {
+    "ok": true,
+    "paths": {
+      "repo_root": {
+        "path": "D:\\nyit-gold-intelligence-2026",
+        "exists": true,
+        "is_dir": true
+      },
+      "deep_ml_root": {
+        "path": "D:\\nyit-gold-intelligence-2026\\deep_ml",
+        "exists": true,
+        "is_dir": true
+      },
+      "deep_ml_scripts": {
+        "path": "D:\\nyit-gold-intelligence-2026\\deep_ml\\scripts",
+        "exists": true,
+        "is_dir": true
+      },
+      "deep_ml_configs": {
+        "path": "D:\\nyit-gold-intelligence-2026\\deep_ml\\configs",
+        "exists": true,
+        "is_dir": true
+      },
+      "deep_ml_contracts": {
+        "path": "D:\\nyit-gold-intelligence-2026\\deep_ml\\contracts",
+        "exists": true,
+        "is_dir": true
+      },
+      "deep_ml_src": {
+        "path": "D:\\nyit-gold-intelligence-2026\\deep_ml\\src",
+        "exists": true,
+        "is_dir": true
+      },
+      "artifact_root": {
+        "path": "D:\\nyit-gold-intelligence-2026\\artifacts\\deep_ml",
+        "exists": true,
+        "is_dir": true
+      },
+      "public_artifact_root": {
+        "path": "D:\\nyit-gold-intelligence-2026\\public\\artifacts\\deep_ml",
+        "exists": true,
+        "is_dir": true
+      },
+      "schemas_root": {
+        "path": "D:\\nyit-gold-intelligence-2026\\deep_ml\\contracts\\schemas",
+        "exists": true,
+        "is_dir": true
+      },
+      "examples_root": {
+        "path": "D:\\nyit-gold-intelligence-2026\\deep_ml\\contracts\\examples",
+        "exists": true,
+        "is_dir": true
+      }
+    }
+  },
+  "phase0_contracts": {
+    "ok": true,
+    "phase0_status": "ready",
+    "expected_files": [
+      {
+        "path": "deep_ml\\contracts\\schemas\\deep_ml_model_run.schema.json",
+        "exists": true
+      },
+      {
+        "path": "deep_ml\\contracts\\schemas\\factor_state_table.schema.json",
+        "exists": true
+      },
+      {
+        "path": "deep_ml\\contracts\\schemas\\deep_ml_mode_status.schema.json",
+        "exists": true
+      },
+      {
+        "path": "deep_ml\\contracts\\schemas\\latest_deep_ml_pointer.schema.json",
+        "exists": true
+      },
+      {
+        "path": "deep_ml\\contracts\\schemas\\deep_ml_ai_context_bundle.schema.json",
+        "exists": true
+      },
+      {
+        "path": "deep_ml\\contracts\\examples\\sample_model_run.json",
+        "exists": true
+      },
+      {
+        "path": "deep_ml\\contracts\\examples\\sample_factor_state_table.json",
+        "exists": true
+      },
+      {
+        "path": "deep_ml\\contracts\\examples\\sample_mode_status.json",
+        "exists": true
+      },
+      {
+        "path": "deep_ml\\contracts\\examples\\sample_latest_pointer.json",
+        "exists": true
+      },
+      {
+        "path": "deep_ml\\contracts\\examples\\sample_deep_ml_ai_context_bundle.json",
+        "exists": true
+      }
+    ],
+    "phase0_validation_report_exists": true,
+    "phase0_validation_report_path": "D:\\nyit-gold-intelligence-2026\\artifacts\\deep_ml\\governance\\phase0_contract_validation_report.json"
+  },
+  "git": {
+    "git_available": true,
+    "ok": true,
+    "branch": "main",
+    "commit": "be6e3bf",
+    "status_short": "?? artifacts/deep_ml/\n?? create_phase0_deepml.py\n?? deep_ml/\n?? public/artifacts/deep_ml/",
+    "remote": "origin\thttps://github.com/rathee000001/nyit-gold-intelligence-2026.git (fetch)\norigin\thttps://github.com/rathee000001/nyit-gold-intelligence-2026.git (push)",
+    "commands": {
+      "branch": {
+        "ok": true,
+        "returncode": 0,
+        "stdout": "main",
+        "stderr": ""
+      },
+      "commit": {
+        "ok": true,
+        "returncode": 0,
+        "stdout": "be6e3bf",
+        "stderr": ""
+      },
+      "status": {
+        "ok": true,
+        "returncode": 0,
+        "stdout": "?? artifacts/deep_ml/\n?? create_phase0_deepml.py\n?? deep_ml/\n?? public/artifacts/deep_ml/",
+        "stderr": ""
+      },
+      "remote": {
+        "ok": true,
+        "returncode": 0,
+        "stdout": "origin\thttps://github.com/rathee000001/nyit-gold-intelligence-2026.git (fetch)\norigin\thttps://github.com/rathee000001/nyit-gold-intelligence-2026.git (push)",
+        "stderr": ""
+      }
+    }
+  },
+  "frontend_context": {
+    "package_json_exists": true,
+    "next_config_exists": true,
+    "src_dir_exists": true,
+    "note": "Frontend is checked only for context. Phase 1 does not modify frontend.",
+    "ok": true
+  },
+  "artifact_writable": {
+    "ok": true,
+    "results": [
+      {
+        "path": "D:\\nyit-gold-intelligence-2026\\artifacts\\deep_ml\\governance",
+        "writable": true,
+        "error": null
+      },
+      {
+        "path": "D:\\nyit-gold-intelligence-2026\\public\\artifacts\\deep_ml\\governance",
+        "writable": true,
+        "error": null
+      }
+    ]
+  },
+  "nvidia_smi": {
+    "available": true,
+    "ok": true,
+    "stdout": "Mon May  4 23:51:48 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 591.74                 Driver Version: 591.74         CUDA Version: 13.1     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                  Driver-Model | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA GeForce RTX 5060      WDDM  |   00000000:02:00.0  On |                  N/A |\n|  0%   52C    P5             18W /  145W |    2200MiB /   8151MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|    0   N/A  N/A            5696    C+G   ...IA App\\CEF\\NVIDIA Overlay.exe      N/A      |\n|    0   N/A  N/A            6872    C+G   ...8wekyb3d8bbwe\\M365Copilot.exe      N/A      |\n|    0   N/A  N/A            8908    C+G   ....0.3912.98\\msedgewebview2.exe      N/A      |\n|    0   N/A  N/A           11100    C+G   ...y\\StartMenuExperienceHost.exe      N/A      |\n|    0   N/A  N/A           12072    C+G   ...UI3Apps\\PowerToys.Peek.UI.exe      N/A      |\n|    0   N/A  N/A           12240    C+G   ...8bbwe\\Microsoft.CmdPal.UI.exe      N/A      |\n|    0   N/A  N/A           12660    C+G   ..._8wekyb3d8bbwe\\XboxPcTray.exe      N/A      |\n|    0   N/A  N/A           14100    C+G   ...IA App\\CEF\\NVIDIA Overlay.exe      N/A      |\n|    0   N/A  N/A           14444    C+G   ...Chrome\\Application\\chrome.exe      N/A      |\n|    0   N/A  N/A           14940    C+G   ...lot\\Application\\mscopilot.exe      N/A      |\n|    0   N/A  N/A           15096    C+G   ...t\\Edge\\Application\\msedge.exe      N/A      |\n|    0   N/A  N/A           15216    C+G   ...__8wekyb3d8bbwe\\XboxPcApp.exe      N/A      |\n|    0   N/A  N/A           16672    C+G   ...ms\\Microsoft VS Code\\Code.exe      N/A      |\n|    0   N/A  N/A           16844    C+G   ...pps\\PowerToys.QuickAccess.exe      N/A      |\n|    0   N/A  N/A           17356    C+G   ....0.3912.98\\msedgewebview2.exe      N/A      |\n|    0   N/A  N/A           18572    C+G   ...2p2nqsd0c76g0\\app\\ChatGPT.exe      N/A      |\n|    0   N/A  N/A           19176    C+G   ...s\\PowerToys.PowerLauncher.exe      N/A      |\n|    0   N/A  N/A           19608    C+G   ...s\\PowerToys.ColorPickerUI.exe      N/A      |\n|    0   N/A  N/A           21932    C+G   ...Toys\\PowerToys.FancyZones.exe      N/A      |\n|    0   N/A  N/A           24360    C+G   ...Local\\PowerToys\\PowerToys.exe      N/A      |\n|    0   N/A  N/A           24672    C+G   ...em32\\ApplicationFrameHost.exe      N/A      |\n|    0   N/A  N/A           25288    C+G   ...2txyewy\\CrossDeviceResume.exe      N/A      |\n|    0   N/A  N/A           26412    C+G   ...xyewy\\ShellExperienceHost.exe      N/A      |\n|    0   N/A  N/A           28756    C+G   ...Chrome\\Application\\chrome.exe      N/A      |\n|    0   N/A  N/A           28904    C+G   ...ram Files\\NordVPN\\NordVPN.exe      N/A      |\n|    0   N/A  N/A           30376    C+G   C:\\Windows\\explorer.exe               N/A      |\n|    0   N/A  N/A           31592    C+G   ...indows\\System32\\ShellHost.exe      N/A      |\n|    0   N/A  N/A           32004    C+G   ....0.3912.98\\msedgewebview2.exe      N/A      |\n|    0   N/A  N/A           33544    C+G   ..._cw5n1h2txyewy\\SearchHost.exe      N/A      |\n|    0   N/A  N/A           33608    C+G   ...1g1gvanyjgm\\WhatsApp.Root.exe      N/A      |\n|    0   N/A  N/A           33820    C+G   ....0.3912.98\\msedgewebview2.exe      N/A      |\n|    0   N/A  N/A           34776    C+G   ...ice\\root\\Office16\\WINWORD.EXE      N/A      |\n|    0   N/A  N/A           35180    C+G   ....0.3912.98\\msedgewebview2.exe      N/A      |\n|    0   N/A  N/A           35820    C+G   ...SnippingTool\\SnippingTool.exe      N/A      |\n|    0   N/A  N/A           35992    C+G   ...5n1h2txyewy\\TextInputHost.exe      N/A      |\n|    0   N/A  N/A           38268    C+G   ....0.3912.98\\msedgewebview2.exe      N/A      |\n|    0   N/A  N/A           39120    C+G   ...crosoft OneDrive\\OneDrive.exe      N/A      |\n|    0   N/A  N/A           39760    C+G   ...ice\\root\\Office16\\WINWORD.EXE      N/A      |\n|    0   N/A  N/A           39964    C+G   ...s\\PowerToys.AdvancedPaste.exe      N/A      |\n+-----------------------------------------------------------------------------------------+",
+    "stderr": ""
+  },
+  "torch_cuda": {
+    "torch_installed": true,
+    "torch_version": "2.10.0+cu130",
+    "cuda_available": true,
+    "cuda_version": "13.0",
+    "device_count": 1,
+    "devices": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 5060",
+        "total_memory_gb": 7.96,
+        "major": 12,
+        "minor": 0
+      }
+    ],
+    "ok": true,
+    "note": "Torch is optional in Phase 1, but required before Beta/Delta deep models."
+  },
+  "environment_variables": {
+    "OPENROUTER_API_KEY": {
+      "present": false,
+      "value_preview": null
+    },
+    "NEWS_API_KEY": {
+      "present": false,
+      "value_preview": null
+    },
+    "GOLD_API_PROVIDER": {
+      "present": false,
+      "value_preview": null
+    },
+    "GOLD_API_SYMBOL": {
+      "present": false,
+      "value_preview": null
+    },
+    "DEEPML_MODE": {
+      "present": false,
+      "value_preview": null
+    }
+  },
+  "status": "ready",
+  "notes": [],
+  "next_step": "Proceed to Phase 2 cutoff/data governance only if status is ready or ready_with_warnings."
+}

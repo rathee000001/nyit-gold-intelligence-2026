@@ -1,0 +1,16 @@
+date,value,value_raw,series_id,factor_key,target_columns,frequency_handling,source_role,official_core,model_policy,pulled_at_utc
+2025-01-01,4.0,4.0,UNRATE,unrate,unrate,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.394060Z
+2025-02-01,4.2,4.2,UNRATE,unrate,unrate,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.394060Z
+2025-03-01,4.2,4.2,UNRATE,unrate,unrate,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.394060Z
+2025-04-01,4.2,4.2,UNRATE,unrate,unrate,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.394060Z
+2025-05-01,4.3,4.3,UNRATE,unrate,unrate,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.394060Z
+2025-06-01,4.1,4.1,UNRATE,unrate,unrate,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.394060Z
+2025-07-01,4.3,4.3,UNRATE,unrate,unrate,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.394060Z
+2025-08-01,4.3,4.3,UNRATE,unrate,unrate,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.394060Z
+2025-09-01,4.4,4.4,UNRATE,unrate,unrate,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.394060Z
+2025-10-01,,.,UNRATE,unrate,unrate,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.394060Z
+2025-11-01,4.5,4.5,UNRATE,unrate,unrate,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.394060Z
+2025-12-01,4.4,4.4,UNRATE,unrate,unrate,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.394060Z
+2026-01-01,4.3,4.3,UNRATE,unrate,unrate,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.394060Z
+2026-02-01,4.4,4.4,UNRATE,unrate,unrate,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.394060Z
+2026-03-01,4.3,4.3,UNRATE,unrate,unrate,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.394060Z

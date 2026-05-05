@@ -1,0 +1,60 @@
+{
+  "artifact_type": "deep_ml_factor_staleness_report",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T03:55:49Z",
+  "mode": "official_research_mode",
+  "study_id": "deepml_study_20260505_035349_officialresearch_20260331",
+  "effective_data_through_date": "2026-03-31",
+  "summary": {
+    "factor_count": 21,
+    "by_state": {
+      "official_cutoff_locked": 21
+    },
+    "by_warning": {
+      "none": 20,
+      "caution": 1
+    },
+    "by_category": {
+      "target": 1,
+      "rates": 3,
+      "liquidity": 2,
+      "macro": 5,
+      "currency": 3,
+      "risk": 2,
+      "credit": 1,
+      "geopolitical": 1,
+      "policy": 1,
+      "commodity": 1,
+      "gold_etf": 1
+    },
+    "main_model_factor_count": 20,
+    "manual_csv_factor_count": 3,
+    "sensitivity_only_factor_count": 1
+  },
+  "stale_or_manual_factors": [
+    {
+      "factor_key": "high_yield",
+      "current_state": "official_cutoff_locked",
+      "staleness_days": 0,
+      "action_needed": "Keep excluded from main models; sensitivity-only factor."
+    },
+    {
+      "factor_key": "gpr_index",
+      "current_state": "official_cutoff_locked",
+      "staleness_days": 0,
+      "action_needed": "No action required for official research mode."
+    },
+    {
+      "factor_key": "policy_unc",
+      "current_state": "official_cutoff_locked",
+      "staleness_days": 0,
+      "action_needed": "No action required for official research mode."
+    },
+    {
+      "factor_key": "gld_tonnes",
+      "current_state": "official_cutoff_locked",
+      "staleness_days": 0,
+      "action_needed": "No action required for official research mode."
+    }
+  ]
+}

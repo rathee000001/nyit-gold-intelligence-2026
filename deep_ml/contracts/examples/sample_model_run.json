@@ -1,0 +1,96 @@
+{
+  "artifact_type": "deep_ml_model_run",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "phase_2_deep_ml",
+  "mode": {
+    "name": "official_research_mode",
+    "display_label": "Official Research Mode",
+    "official_research_cutoff_date": "2026-03-31",
+    "live_mode": false
+  },
+  "run": {
+    "study_id": "deepml_study_20260505_000000_research_20260331",
+    "run_id": "deepml_run_20260505_000000_alpha_structural_research_20260331",
+    "generated_at_utc": "2026-05-05T03:45:02Z",
+    "generated_at_local": "2026-05-04T20:00:00-04:00",
+    "timezone_local": "America/New_York",
+    "git_commit_sha": null,
+    "code_version": "phase0_contract_v1",
+    "python_version": "3.12",
+    "cuda_available": null,
+    "device": null
+  },
+  "data_signature": {
+    "matrix_snapshot_id": "matrix_phase0_placeholder",
+    "matrix_name": null,
+    "effective_data_through_date": "2026-03-31",
+    "forecast_start_date": "2026-04-01",
+    "matrix_row_count": null,
+    "matrix_hash": "sha256:placeholder",
+    "feature_hash": "sha256:placeholder",
+    "factor_state_table_hash": "sha256:placeholder"
+  },
+  "model": {
+    "model_key": "alpha_structural",
+    "model_name": "Alpha Structural Expert",
+    "family": "tabular_structural_model",
+    "target": "gold_price",
+    "horizons": [
+      1,
+      5,
+      10,
+      20,
+      30
+    ],
+    "training_window": {
+      "train_start": "2006-01-02",
+      "train_end": "2018-12-31",
+      "validation_start": "2019-01-01",
+      "validation_end": "2022-12-30",
+      "test_start": "2023-01-02",
+      "test_end": "2026-03-31"
+    }
+  },
+  "features": {
+    "used": [],
+    "excluded": [],
+    "stale_or_carried": [],
+    "feature_groups": {}
+  },
+  "forecast": {
+    "frequency": "trading_day",
+    "horizon_trading_days": 30,
+    "path": []
+  },
+  "uncertainty": {
+    "method": "not_applicable_phase0",
+    "p10_path": [],
+    "p50_path": [],
+    "p90_path": [],
+    "coverage_target": 0.8
+  },
+  "evaluation": {
+    "train": {},
+    "validation": {},
+    "test": {},
+    "by_horizon": {}
+  },
+  "interpretability": {},
+  "diagnostics": {},
+  "limitations": [
+    "Phase 0 artifact is a schema example only and does not contain model results."
+  ],
+  "professor_safe_summary": "Phase 0 validates the Deep ML artifact contract before model training begins.",
+  "ai_grounding": {
+    "allowed_claims": [
+      "This is a Phase 0 contract example."
+    ],
+    "forbidden_claims": [
+      "Do not claim this contains trained model results."
+    ],
+    "source_artifacts": [
+      "deep_ml/contracts/examples/sample_model_run.json"
+    ]
+  }
+}

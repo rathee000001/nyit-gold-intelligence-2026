@@ -1,0 +1,2 @@
+source_layer,provider_used,symbol,status,row_count,first_valid_date,last_valid_date,latest_gold_price,output_csv
+gold_live_yahoo,yahoo_chart,GC=F,completed,24,2026-04-01,2026-05-05,4561.7001953125,artifacts\deep_ml\source_update\gold_live_pulled\gold_live_GC_F.csv

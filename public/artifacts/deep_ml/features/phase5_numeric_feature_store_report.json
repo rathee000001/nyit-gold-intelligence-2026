@@ -1,0 +1,31 @@
+{
+  "artifact_type": "deep_ml_phase5_numeric_feature_store_report",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T04:02:28Z",
+  "status": "ready",
+  "mode": "official_research_mode",
+  "study_id": "deepml_study_20260505_035349_officialresearch_20260331",
+  "run_batch_id": "deepml_batch_20260505_035349_officialresearch_20260331",
+  "selected_input_path": "D:\\nyit-gold-intelligence-2026\\data\\aligned\\model_ready_multivariate.csv",
+  "effective_data_through_date": "2026-03-31",
+  "forecast_start_date": "2026-04-01",
+  "row_count": 5282,
+  "column_count": 47,
+  "date_min": "2006-01-02",
+  "date_max": "2026-03-31",
+  "split_counts": {
+    "train": 3391,
+    "validation": 1044,
+    "test": 847
+  },
+  "engineered_column_count": 9,
+  "target_column_count": 15,
+  "outputs": [
+    "artifacts/deep_ml/features/deep_ml_numeric_feature_store.parquet",
+    "artifacts/deep_ml/features/deep_ml_numeric_feature_store_preview.csv",
+    "artifacts/deep_ml/features/deep_ml_numeric_feature_store_preview.json",
+    "artifacts/deep_ml/features/deep_ml_numeric_feature_store_manifest.json",
+    "artifacts/deep_ml/features/feature_store_status.json"
+  ],
+  "next_step": "Phase 6: Alpha Structural foundation."
+}

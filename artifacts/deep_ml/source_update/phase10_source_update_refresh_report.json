@@ -1,0 +1,272 @@
+{
+  "artifact_type": "phase10_source_update_refresh_report",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "Phase 10 \u2014 Source Update Refresh Layer",
+  "phase_key": "phase10_source_update_refresh",
+  "status": "ready_quality_review_required",
+  "refresh_id": "deepml_refresh_20260505_084716",
+  "run": {
+    "run_id": "deepml_refresh_20260505_084716",
+    "started_at_utc": "2026-05-05T08:47:16.481846Z",
+    "completed_at_utc": "2026-05-05T08:47:16.974169Z",
+    "completed_at_local": "2026-05-05T04:47:16.974169-04:00",
+    "script_version": "source_update_refresh_v2_yahoo_gold_intelligence_delegated_fred",
+    "git_commit_sha": "be6e3bf"
+  },
+  "source_update_manifest": {
+    "artifact_type": "source_update_manifest",
+    "schema_version": "1.0.0",
+    "refresh_id": "deepml_refresh_20260505_084716",
+    "phase": "Phase 10 \u2014 Source Update Refresh Layer",
+    "script_version": "source_update_refresh_v2_yahoo_gold_intelligence_delegated_fred",
+    "purpose": "Stage and audit source updates before Phase 11 governed cutoff and feature-store refresh.",
+    "source_folders": {
+      "main_intelligence_snapshot_dir": "artifacts\\deep_ml\\source_update\\main_intelligence_snapshot",
+      "manual_csv_dir": "artifacts\\deep_ml\\source_inputs\\manual_csv",
+      "news_raw_inputs_dir": "artifacts\\deep_ml\\news\\raw_inputs",
+      "gold_live_pulled_dir": "artifacts\\deep_ml\\source_update\\gold_live_pulled"
+    },
+    "input_status": {
+      "artifact_type": "phase10_required_input_status",
+      "schema_version": "1.0.0",
+      "checks": [
+        {
+          "name": "feature_store",
+          "path": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+          "exists": true,
+          "hash": "sha256:f6908e0be4dbc18c3f83852d5f1a279f21f149cfcbc854bff77f3192d3903ddc"
+        },
+        {
+          "name": "governance_mode_status",
+          "path": "artifacts\\deep_ml\\governance\\deep_ml_mode_status.json",
+          "exists": true,
+          "hash": "sha256:c02342bf2f30281f234bb70fc00962facb2ce8ae36a3c22a653e7473e69d5896"
+        },
+        {
+          "name": "study_context",
+          "path": "artifacts\\deep_ml\\governance\\study_context.json",
+          "exists": true,
+          "hash": "sha256:08073e19fac1c2adbffcb46d25d4414c03fe1ace77d77eedf353199ebb146ffd"
+        },
+        {
+          "name": "factor_state_table",
+          "path": "artifacts\\deep_ml\\data\\factor_state_table.json",
+          "exists": true,
+          "hash": "sha256:60c62c3458079c79915f68b89963b15369b5640bfcbf21e495800a74fe502979"
+        },
+        {
+          "name": "model_feature_plan",
+          "path": "artifacts\\deep_ml\\features\\model_feature_plan.json",
+          "exists": true,
+          "hash": "sha256:91f0fb93a9b1583b0c01a6a986131420c625ddaceb1397e633c159cc2376da1c"
+        },
+        {
+          "name": "target_plan",
+          "path": "artifacts\\deep_ml\\features\\target_plan.json",
+          "exists": true,
+          "hash": "sha256:ddcb4320ee72d46233b1c6adaf569c7a71d422405b4397dd14fb0b53b20cd112"
+        }
+      ],
+      "all_required_exist": true,
+      "generated_at_utc": "2026-05-05T08:47:16.535069Z"
+    },
+    "feature_store_status": {
+      "artifact_type": "feature_store_status",
+      "status": "readable",
+      "path": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+      "hash": "sha256:f6908e0be4dbc18c3f83852d5f1a279f21f149cfcbc854bff77f3192d3903ddc",
+      "row_count": 5282,
+      "column_count": 47,
+      "date_column_detected": "date",
+      "generated_at_utc": "2026-05-05T08:47:16.647694Z",
+      "first_valid_date": "2006-01-02",
+      "last_valid_date": "2026-03-31",
+      "valid_date_count": 5282
+    },
+    "main_intelligence_delegation_status": {
+      "status": "not_found",
+      "path": null,
+      "last_valid_date": null,
+      "policy": "FRED/API refresh is delegated to the main Intelligence pipeline and is not duplicated in Phase 10."
+    },
+    "gold_live_status": {
+      "status": "completed",
+      "provider_used": "yahoo_chart",
+      "symbol": "GC=F",
+      "source_type": "comex_futures_proxy_delayed",
+      "row_count": 24,
+      "last_valid_date": "2026-05-05",
+      "latest_gold_price": 4561.7001953125
+    },
+    "manual_csv_status": {
+      "status": "no_manual_csv_files_found",
+      "file_count": 0,
+      "latest_manual_valid_date": null
+    },
+    "news_input_status": {
+      "status": "no_news_raw_inputs_found",
+      "file_count": 0,
+      "gamma_mode_preview": "proxy_regime_sensitivity"
+    },
+    "secret_policy": "No API keys or secrets are written into artifacts.",
+    "modeling_policy": "Phase 10 does not train models and does not alter model feature-store artifacts. Phase 11 governs merging and cutoff refresh.",
+    "generated_at_utc": "2026-05-05T08:47:16.892553Z"
+  },
+  "accepted_before_refresh_manifest": {
+    "artifact_type": "accepted_before_refresh_manifest",
+    "schema_version": "1.0.0",
+    "refresh_id": "deepml_refresh_20260505_084716",
+    "purpose": "Protect accepted Alpha/Beta/Delta/Epsilon artifacts before the refreshed source-update cycle.",
+    "accepted_models": [
+      {
+        "model_key": "alpha_structural_v4",
+        "path": "artifacts/deep_ml/models/alpha_structural/run_summary.json",
+        "exists": true,
+        "hash": "sha256:fdbabb3e82015f7c1597e92373d697829dad98bd95f7a85873aab9e478344296",
+        "status": null,
+        "code_version": "alpha_structural_v4_consistent_timed_xgboost_optuna_rolling_shap",
+        "run_id": "deepml_run_20260505_045746_alpha_structural_official_research_mode_20260331",
+        "completed_at_utc": null
+      },
+      {
+        "model_key": "beta_temporal_v2",
+        "path": "artifacts/deep_ml/models/beta_temporal/run_summary.json",
+        "exists": true,
+        "hash": "sha256:4043949f41a4e5d32ca9063bdf861e9d3094761c419a073374c57d4b3da7b118",
+        "status": null,
+        "code_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+        "run_id": "deepml_run_20260505_055242_beta_temporal_official_research_mode_20260331",
+        "completed_at_utc": null
+      },
+      {
+        "model_key": "delta_tft_v2",
+        "path": "artifacts/deep_ml/models/delta_tft/run_summary.json",
+        "exists": true,
+        "hash": "sha256:3c93f4e1a88148e3deb978269d03b14a8bf1bfa8c539b09c65a2b54fe56d7da8",
+        "status": "completed_pending_quality_review",
+        "code_version": "delta_tft_v2_calibrated_custom_tft_style",
+        "run_id": "deepml_run_20260505_072148_delta_tft_v2",
+        "completed_at_utc": "2026-05-05T07:55:33.996933Z"
+      },
+      {
+        "model_key": "epsilon_expert_ensemble_v2",
+        "path": "artifacts/deep_ml/models/epsilon_expert_ensemble/run_summary.json",
+        "exists": true,
+        "hash": "sha256:cb59e7e826d189ba691df7d7c879864425554bfa9988a3912c9230876618e6a2",
+        "status": "completed_pending_quality_review",
+        "code_version": "epsilon_expert_ensemble_v2_best_validation_component",
+        "run_id": "deepml_run_20260505_081752_epsilon_expert_ensemble",
+        "completed_at_utc": "2026-05-05T08:19:06.489906Z"
+      }
+    ],
+    "all_expected_accepted_artifacts_found": true,
+    "generated_at_utc": "2026-05-05T08:47:16.659275Z"
+  },
+  "main_intelligence_matrix_snapshot_status": {
+    "artifact_type": "main_intelligence_matrix_snapshot_status",
+    "schema_version": "1.0.0",
+    "status": "not_found",
+    "delegation_policy": "FRED/API factor refresh is delegated to the main Intelligence pipeline. Export its latest matrix snapshot here if Phase 11 should consume it: artifacts/deep_ml/source_update/main_intelligence_snapshot/",
+    "snapshot_dir": "artifacts\\deep_ml\\source_update\\main_intelligence_snapshot",
+    "generated_at_utc": "2026-05-05T08:47:16.656910Z"
+  },
+  "gold_live_update_summary": {
+    "artifact_type": "gold_live_update_summary",
+    "schema_version": "1.0.0",
+    "status": "completed",
+    "provider_requested": "yahoo",
+    "provider_used": "yahoo_chart",
+    "symbol": "GC=F",
+    "instrument_label": "COMEX Gold Futures",
+    "source_type": "comex_futures_proxy_delayed",
+    "official_target_warning": "This live extension is a public market proxy after the approved cutoff; it is not silently treated as the original official LBMA-style historical target.",
+    "start_date": "2026-04-01",
+    "end_date": null,
+    "row_count": 24,
+    "first_valid_date": "2026-04-01",
+    "last_valid_date": "2026-05-05",
+    "latest_gold_price": 4561.7001953125,
+    "output_csv": "artifacts\\deep_ml\\source_update\\gold_live_pulled\\gold_live_GC_F.csv",
+    "output_csv_hash": "sha256:403b5493f0cc7dfefc2a4da987c4749a05c5db0e222008067f5de9e981a51661",
+    "runtime_seconds": 0.219,
+    "generated_at_utc": "2026-05-05T08:47:16.878479Z"
+  },
+  "manual_csv_update_summary": {
+    "artifact_type": "manual_csv_update_summary",
+    "schema_version": "1.0.0",
+    "status": "no_manual_csv_files_found",
+    "file_count": 0,
+    "files_with_date_column": 0,
+    "files_with_warnings": 0,
+    "latest_manual_valid_date": null,
+    "note": "Phase 10 inventories manual CSV files only. Phase 11 decides governed merging and feature-store refresh.",
+    "generated_at_utc": "2026-05-05T08:47:16.881879Z"
+  },
+  "manual_csv_schema_warnings": {
+    "artifact_type": "manual_csv_schema_warnings",
+    "schema_version": "1.0.0",
+    "warning_count": 0,
+    "warnings": [],
+    "generated_at_utc": "2026-05-05T08:47:16.881879Z"
+  },
+  "news_source_coverage_preview": {
+    "artifact_type": "news_source_coverage_preview",
+    "schema_version": "1.0.0",
+    "status": "no_news_raw_inputs_found",
+    "gamma_mode_preview": "proxy_regime_sensitivity",
+    "file_count": 0,
+    "latest_news_input_date": null,
+    "coverage_note": "Gamma later decides whether to run proxy-only or text-plus-proxy sensitivity mode.",
+    "generated_at_utc": "2026-05-05T08:47:16.890526Z"
+  },
+  "feature_store_status": {
+    "artifact_type": "feature_store_status",
+    "status": "readable",
+    "path": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+    "hash": "sha256:f6908e0be4dbc18c3f83852d5f1a279f21f149cfcbc854bff77f3192d3903ddc",
+    "row_count": 5282,
+    "column_count": 47,
+    "date_column_detected": "date",
+    "generated_at_utc": "2026-05-05T08:47:16.647694Z",
+    "first_valid_date": "2006-01-02",
+    "last_valid_date": "2026-03-31",
+    "valid_date_count": 5282
+  },
+  "quality_review": {
+    "artifact_type": "source_update_quality_review",
+    "schema_version": "1.0.0",
+    "phase_key": "phase10_source_update_refresh",
+    "status": "ready_quality_review_required",
+    "blocking_flags": [],
+    "warnings": [
+      "No saved main Intelligence matrix snapshot found; Phase 11 may need to use existing feature-store fallback plus Yahoo gold extension.",
+      "No manual CSV source files found; manual factors should be marked stale/carried-forward in Phase 11 if needed.",
+      "No raw news input files found; Gamma will likely run proxy-regime mode unless inputs are added."
+    ],
+    "acceptance_gate": {
+      "source_update_manifest_exists": true,
+      "fred_refresh_delegated_to_main_intelligence": true,
+      "main_intelligence_snapshot_status_logged": true,
+      "gold_live_status_logged": true,
+      "manual_csv_status_logged": true,
+      "news_input_status_logged": true,
+      "accepted_previous_model_artifacts_inventoried": true,
+      "no_source_silently_merged_without_status": true,
+      "api_key_not_written_into_artifacts": true,
+      "timeline_exists": true,
+      "progress_checkpoint_exists": true,
+      "phase10_report_exists": true
+    },
+    "professor_safe_summary": "Phase 10 stages and audits source updates only. It does not train models and does not make forecast claims.",
+    "generated_at_utc": "2026-05-05T08:47:16.974169Z"
+  },
+  "next_step": {
+    "phase": "Phase 11 \u2014 Governed Cutoff + Factor State + Feature Store Refresh",
+    "recommended_script": "deep_ml/scripts/11_governed_feature_store_refresh.py",
+    "instruction": "Review this Phase 10 report first. Do not rerun models until Phase 11 refresh is approved."
+  },
+  "professor_safe_summary": "Phase 10 V2 prepares and audits the source update layer. It delegates FRED/API factor refresh to the existing main Intelligence pipeline, stages Yahoo GC=F live gold extension data, inventories manual CSV and raw news inputs, and protects accepted pre-refresh model artifacts. It does not train models or make price forecasts.",
+  "final_instruction": "Send me artifacts/deep_ml/source_update/phase10_source_update_refresh_report.json for review before Phase 11.",
+  "generated_at_utc": "2026-05-05T08:47:17.011617Z"
+}

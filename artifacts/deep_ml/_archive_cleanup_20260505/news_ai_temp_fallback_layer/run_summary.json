@@ -1,0 +1,122 @@
+{
+  "artifact_type": "deep_ml_model_run",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "phase_2_deep_ml",
+  "phase_key": "phase12_news_ai_context",
+  "model_key": "news_ai_context",
+  "model_name": "News AI Context Layer",
+  "family": "narrative_context_classification_layer",
+  "status": "completed_pending_quality_review",
+  "run": {
+    "run_id": "deepml_run_20260505_182116_news_ai_context",
+    "study_id": "deepml_feature_refresh_20260505_093208",
+    "generated_at_utc": "2026-05-05T18:21:16.468169Z",
+    "completed_at_utc": "2026-05-05T18:21:16.600579Z",
+    "generated_at_local": "2026-05-05T14:21:16.468169-04:00",
+    "timezone_local": "America/New_York",
+    "git_commit_sha": "be6e3bf",
+    "code_version": "news_ai_context_v1_local_rule_based_api_ready",
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "data_signature": {
+    "feature_store_path": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+    "feature_store_hash": "sha256:faee8e504db2fa957ec3b2209284f4af4662a36f54ab9928402722133da47331",
+    "factor_state_table_hash": "sha256:7a7d74ab2fc2b9c5e7061f305694921b0aac27dc4ef6de1b9b67d6a1a3c03e04",
+    "target_plan_hash": "sha256:e0e880e347304630f181bd52057d517baacc58dc2498f488a3a796dcc92c8553",
+    "effective_data_through_date": "2026-05-05",
+    "forecast_start_date": "2026-05-06"
+  },
+  "news_context": {
+    "input_mode": "fallback_project_context",
+    "source_count": 6,
+    "net_gold_narrative_score": 0.116667,
+    "net_gold_narrative_label": "gold_supportive",
+    "dominant_themes": [
+      {
+        "theme": "real_yield_pressure",
+        "tagged_item_count": 1,
+        "raw_score_sum": 0.666667,
+        "confidence_freshness_weighted_score": 0.466667,
+        "direction_label": "gold_supportive",
+        "mapped_factor_exposures": [
+          "real_yield",
+          "tips_curve"
+        ]
+      },
+      {
+        "theme": "usd_strength",
+        "tagged_item_count": 1,
+        "raw_score_sum": 0.666667,
+        "confidence_freshness_weighted_score": 0.4,
+        "direction_label": "gold_supportive",
+        "mapped_factor_exposures": [
+          "usd_index",
+          "eur_usd",
+          "jpy_usd"
+        ]
+      },
+      {
+        "theme": "financial_stress",
+        "tagged_item_count": 1,
+        "raw_score_sum": -0.333333,
+        "confidence_freshness_weighted_score": -0.2,
+        "direction_label": "gold_pressure",
+        "mapped_factor_exposures": [
+          "vix_index",
+          "fin_stress",
+          "high_yield"
+        ]
+      },
+      {
+        "theme": "interest_rate_policy",
+        "tagged_item_count": 2,
+        "raw_score_sum": 0.0,
+        "confidence_freshness_weighted_score": 0.033333,
+        "direction_label": "mixed_or_neutral",
+        "mapped_factor_exposures": [
+          "nominal_yield",
+          "fed_bs"
+        ]
+      },
+      {
+        "theme": "inflation_pressure",
+        "tagged_item_count": 0,
+        "raw_score_sum": 0.0,
+        "confidence_freshness_weighted_score": 0.0,
+        "direction_label": "mixed_or_neutral",
+        "mapped_factor_exposures": [
+          "inflation",
+          "ppi_index",
+          "m2_supply"
+        ]
+      }
+    ],
+    "gamma_ready": true
+  },
+  "ai_grounding": {
+    "allowed_claims": [
+      "News AI summarizes and classifies market-relevant narrative signals from provided or fallback context artifacts.",
+      "Theme scores describe narrative pressure labels used as Gamma inputs.",
+      "Fallback context is clearly labeled when no manual/API news feed is provided.",
+      "Factor exposures map narrative themes to existing project factors for interpretation only."
+    ],
+    "forbidden_claims": [
+      "News AI proves news caused gold to move.",
+      "News AI guarantees future gold prices.",
+      "Fallback project-context items are live external news articles.",
+      "Gamma/Omega conclusions are final before their own artifacts exist."
+    ],
+    "source_artifacts": [
+      "run_summary.json",
+      "news_context_latest.json",
+      "news_items_scored.csv",
+      "news_factor_exposure.json",
+      "news_theme_summary.json",
+      "diagnostics_latest.json"
+    ]
+  },
+  "professor_safe_summary": "News AI Context Layer prepares structured narrative context for Gamma. It classifies text/context into gold-relevant themes and does not make causal claims.",
+  "generated_at_utc": "2026-05-05T18:21:16.662616Z"
+}

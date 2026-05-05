@@ -1,0 +1,43 @@
+{
+  "artifact_type": "deep_ml_effective_data_window",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T03:53:49Z",
+  "study_id": "deepml_study_20260505_035349_officialresearch_20260331",
+  "run_batch_id": "deepml_batch_20260505_035349_officialresearch_20260331",
+  "mode": "official_research_mode",
+  "effective_data_through_date": "2026-03-31",
+  "forecast_start_date": "2026-04-01",
+  "training_windows": {
+    "long_univariate": {
+      "description": "Gold-price-only long history for univariate/reference models.",
+      "train_start": "1968-01-04",
+      "train_end": "2018-12-31",
+      "validation_start": "2019-01-01",
+      "validation_end": "2022-12-30",
+      "test_start": "2023-01-02",
+      "test_end": "2026-03-31"
+    },
+    "core_multivariate": {
+      "description": "Core multivariate window for structural/deep models. High_yield excluded from main model.",
+      "train_start": "2006-01-02",
+      "train_end": "2018-12-31",
+      "validation_start": "2019-01-01",
+      "validation_end": "2022-12-30",
+      "test_start": "2023-01-02",
+      "test_end": "2026-03-31"
+    },
+    "live_mode_note": "If live mode uses post-cutoff spot API data, final effective_data_through_date must not exceed the latest valid required manual factor date."
+  },
+  "horizons_trading_days": [
+    1,
+    5,
+    10,
+    20,
+    30
+  ],
+  "target": "gold_price",
+  "notes": [
+    "Training windows are governance defaults for Phase 2.",
+    "Later scripts may create model-specific windows, but must preserve this artifact as the source of cutoff truth."
+  ]
+}

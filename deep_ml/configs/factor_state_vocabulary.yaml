@@ -1,0 +1,18 @@
+factor_states:
+  - api_live
+  - manual_current
+  - manual_stale
+  - carried_forward
+  - official_cutoff_locked
+  - unavailable
+  - derived_feature
+
+allowed_modes:
+  - official_research_mode
+  - live_market_update_mode
+
+warning_levels:
+  - none
+  - info
+  - caution
+  - severe

@@ -1,0 +1,24 @@
+{
+  "artifact_type": "deep_ml_phase4_feature_store_report",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T04:01:50Z",
+  "status": "ready",
+  "mode": "official_research_mode",
+  "study_id": "deepml_study_20260505_035349_officialresearch_20260331",
+  "run_batch_id": "deepml_batch_20260505_035349_officialresearch_20260331",
+  "effective_data_through_date": "2026-03-31",
+  "forecast_start_date": "2026-04-01",
+  "base_feature_count": 21,
+  "engineered_feature_count": 12,
+  "detected_input_dataset_count": 7,
+  "outputs": [
+    "artifacts/deep_ml/features/feature_manifest.json",
+    "artifacts/deep_ml/features/model_feature_plan.json",
+    "artifacts/deep_ml/features/sequence_window_plan.json",
+    "artifacts/deep_ml/features/target_plan.json",
+    "artifacts/deep_ml/features/leakage_safety_plan.json",
+    "artifacts/deep_ml/features/feature_store_status.json",
+    "artifacts/deep_ml/pages/page_deep_ml_feature_foundation.json"
+  ],
+  "next_step": "Phase 5: Build input matrix loader and numeric feature store."
+}

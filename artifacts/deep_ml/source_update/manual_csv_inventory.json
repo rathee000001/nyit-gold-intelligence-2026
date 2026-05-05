@@ -1,0 +1,8 @@
+{
+  "artifact_type": "manual_csv_inventory",
+  "schema_version": "1.0.0",
+  "manual_csv_dir": "artifacts\\deep_ml\\source_inputs\\manual_csv",
+  "file_count": 0,
+  "files": [],
+  "generated_at_utc": "2026-05-05T08:47:16.881879Z"
+}

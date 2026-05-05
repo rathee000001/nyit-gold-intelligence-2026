@@ -1,0 +1,19 @@
+{
+  "artifact_type": "deep_ml_phase3_factor_state_report",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T03:55:49Z",
+  "status": "ready",
+  "mode": "official_research_mode",
+  "study_id": "deepml_study_20260505_035349_officialresearch_20260331",
+  "run_batch_id": "deepml_batch_20260505_035349_officialresearch_20260331",
+  "effective_data_through_date": "2026-03-31",
+  "forecast_start_date": "2026-04-01",
+  "factor_count": 21,
+  "outputs": [
+    "artifacts/deep_ml/data/factor_state_table.json",
+    "artifacts/deep_ml/data/factor_staleness_report.json",
+    "artifacts/deep_ml/data/data_quality_flags.json",
+    "artifacts/deep_ml/pages/page_deep_ml_data_intelligence.json"
+  ],
+  "next_step": "Phase 4: Build Deep ML feature store foundation."
+}

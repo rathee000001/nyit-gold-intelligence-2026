@@ -1,0 +1,21 @@
+{
+  "artifact_type": "deep_ml_quality_review",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "status": "ready",
+  "generated_at_utc": "2026-05-05T18:14:27.208154Z",
+  "blocking_flags": [],
+  "warnings": [],
+  "acceptance_gate": {
+    "raw_price_anchor_passes": true,
+    "component_forecasts_exported": true,
+    "component_metrics_exported": true,
+    "ensemble_weights_exported": true,
+    "static_metrics_exported": true,
+    "rolling_origin_metrics_exported": true,
+    "uncertainty_intervals_exported": true,
+    "coverage_metrics_exported": true,
+    "all_shared_contract_files_exist": true
+  },
+  "professor_safe_summary": "Epsilon is reviewed as a statistical and machine-learning benchmark ensemble. It explains component behavior and disagreement, not causality."
+}

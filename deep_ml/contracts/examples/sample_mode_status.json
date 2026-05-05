@@ -1,0 +1,17 @@
+{
+  "artifact_type": "deep_ml_mode_status",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T03:45:02Z",
+  "generated_at_local": "2026-05-04T20:00:00-04:00",
+  "timezone_local": "America/New_York",
+  "mode": "official_research_mode",
+  "official_research_cutoff_date": "2026-03-31",
+  "live_gold_price_through_date": null,
+  "manual_csv_valid_through_date": null,
+  "effective_model_data_through_date": "2026-03-31",
+  "forecast_start_date": "2026-04-01",
+  "status_summary": "Phase 0 contract mode status placeholder.",
+  "warnings": [
+    "This is not a trained model artifact."
+  ]
+}

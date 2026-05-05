@@ -1,0 +1,144 @@
+{
+  "artifact_type": "epsilon_uncertainty_latest",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "method": "validation_residual_empirical_interval_calibration",
+  "coverage_target_pct": 80.0,
+  "coverage_by_horizon": {
+    "1": {
+      "count": 841,
+      "coverage_p10_p90_pct": 70.03567181926277,
+      "mean_interval_width_price": 97.18187754419434,
+      "median_interval_width_price": 97.18187754419432,
+      "mean_interval_width_pct_of_anchor": 3.8294160768144185,
+      "calibration_error_vs_80pct_abs": 9.964328180737226
+    },
+    "5": {
+      "count": 841,
+      "coverage_p10_p90_pct": 64.56599286563615,
+      "mean_interval_width_price": 314.6869945997528,
+      "median_interval_width_price": 314.6869945997528,
+      "mean_interval_width_pct_of_anchor": 12.400125072050495,
+      "calibration_error_vs_80pct_abs": 15.434007134363853
+    },
+    "10": {
+      "count": 841,
+      "coverage_p10_p90_pct": 60.523186682520816,
+      "mean_interval_width_price": 310.57722047362915,
+      "median_interval_width_price": 310.57722047362904,
+      "mean_interval_width_pct_of_anchor": 12.238180936905577,
+      "calibration_error_vs_80pct_abs": 19.476813317479184
+    },
+    "20": {
+      "count": 841,
+      "coverage_p10_p90_pct": 53.62663495838288,
+      "mean_interval_width_price": 225.84027341921086,
+      "median_interval_width_price": 225.84027341921092,
+      "mean_interval_width_pct_of_anchor": 8.899152760558652,
+      "calibration_error_vs_80pct_abs": 26.37336504161712
+    },
+    "30": {
+      "count": 841,
+      "coverage_p10_p90_pct": 52.318668252080855,
+      "mean_interval_width_price": 284.09697864616726,
+      "median_interval_width_price": 284.0969786461674,
+      "mean_interval_width_pct_of_anchor": 11.194736764653381,
+      "calibration_error_vs_80pct_abs": 27.681331747919145
+    }
+  },
+  "validation_coverage_by_horizon": {
+    "1": {
+      "count": 1044,
+      "coverage_p10_p90_pct": 79.88505747126436,
+      "mean_interval_width_price": 97.18187754419434,
+      "median_interval_width_price": 97.18187754419432,
+      "mean_interval_width_pct_of_anchor": 5.79205153654375,
+      "calibration_error_vs_80pct_abs": 0.11494252873563937
+    },
+    "5": {
+      "count": 1044,
+      "coverage_p10_p90_pct": 79.88505747126436,
+      "mean_interval_width_price": 314.68699459975284,
+      "median_interval_width_price": 314.6869945997528,
+      "mean_interval_width_pct_of_anchor": 18.755382553428763,
+      "calibration_error_vs_80pct_abs": 0.11494252873563937
+    },
+    "10": {
+      "count": 1044,
+      "coverage_p10_p90_pct": 79.88505747126436,
+      "mean_interval_width_price": 310.5772204736291,
+      "median_interval_width_price": 310.57722047362904,
+      "mean_interval_width_pct_of_anchor": 18.51043952347714,
+      "calibration_error_vs_80pct_abs": 0.11494252873563937
+    },
+    "20": {
+      "count": 1044,
+      "coverage_p10_p90_pct": 79.88505747126436,
+      "mean_interval_width_price": 225.84027341921066,
+      "median_interval_width_price": 225.8402734192107,
+      "mean_interval_width_pct_of_anchor": 13.460107334068944,
+      "calibration_error_vs_80pct_abs": 0.11494252873563937
+    },
+    "30": {
+      "count": 1044,
+      "coverage_p10_p90_pct": 79.88505747126436,
+      "mean_interval_width_price": 284.0969786461669,
+      "median_interval_width_price": 284.0969786461669,
+      "mean_interval_width_pct_of_anchor": 16.93221394026536,
+      "calibration_error_vs_80pct_abs": 0.11494252873563937
+    }
+  },
+  "residual_interval_calibration": {
+    "artifact_type": "epsilon_residual_interval_calibration",
+    "schema_version": "1.0.0",
+    "model_key": "epsilon_expert_ensemble",
+    "target_coverage_pct": 80.0,
+    "p50_preserved": true,
+    "professor_safe_note": "Intervals use validation residual behavior. They estimate uncertainty but do not guarantee future ranges.",
+    "by_horizon": {
+      "1": {
+        "status": "ready",
+        "method": "validation_residual_empirical_quantiles",
+        "target_coverage_pct": 80.0,
+        "lower_residual_p10": -46.179036706220536,
+        "upper_residual_p90": 51.00284083797378,
+        "median_abs_residual": 9.90543494919666
+      },
+      "5": {
+        "status": "ready",
+        "method": "validation_residual_empirical_quantiles",
+        "target_coverage_pct": 80.0,
+        "lower_residual_p10": -152.1009777012468,
+        "upper_residual_p90": 162.58601689850587,
+        "median_abs_residual": 45.76984843042385
+      },
+      "10": {
+        "status": "ready",
+        "method": "validation_residual_empirical_quantiles",
+        "target_coverage_pct": 80.0,
+        "lower_residual_p10": -151.72713046472265,
+        "upper_residual_p90": 158.85009000890642,
+        "median_abs_residual": 58.288538391464385
+      },
+      "20": {
+        "status": "ready",
+        "method": "validation_residual_empirical_quantiles",
+        "target_coverage_pct": 80.0,
+        "lower_residual_p10": -99.50412376220947,
+        "upper_residual_p90": 126.33614965700131,
+        "median_abs_residual": 52.48317796993922
+      },
+      "30": {
+        "status": "ready",
+        "method": "validation_residual_empirical_quantiles",
+        "target_coverage_pct": 80.0,
+        "lower_residual_p10": -116.55880482701814,
+        "upper_residual_p90": 167.5381738191489,
+        "median_abs_residual": 67.94323272251722
+      }
+    },
+    "generated_at_utc": "2026-05-05T18:14:26.267180Z"
+  },
+  "professor_safe_note": "Epsilon intervals are calibrated from validation residual behavior. They estimate uncertainty but do not guarantee future ranges.",
+  "generated_at_utc": "2026-05-05T18:14:26.269264Z"
+}

@@ -1,0 +1,93 @@
+{
+  "artifact_type": "deep_ml_alpha_uncertainty_latest",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:18:03Z",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "run_id": "deepml_run_20260505_100053_alpha_structural_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "model_key": "alpha_structural",
+  "model_version": "alpha_structural_v4_consistent_timed_xgboost_optuna_rolling_shap",
+  "method": "validation_price_residual_quantiles",
+  "p10_path": [
+    {
+      "date": "2026-05-06",
+      "value": 4517.170568265169,
+      "horizon": 1
+    },
+    {
+      "date": "2026-05-12",
+      "value": 4708.279654097234,
+      "horizon": 5
+    },
+    {
+      "date": "2026-05-19",
+      "value": 4758.5563525555035,
+      "horizon": 10
+    },
+    {
+      "date": "2026-06-02",
+      "value": 4418.838932927624,
+      "horizon": 20
+    },
+    {
+      "date": "2026-06-16",
+      "value": 4688.450257546093,
+      "horizon": 30
+    }
+  ],
+  "p50_path": [
+    {
+      "date": "2026-05-06",
+      "value": 4566.723948641866,
+      "horizon": 1
+    },
+    {
+      "date": "2026-05-12",
+      "value": 4794.4925742241485,
+      "horizon": 5
+    },
+    {
+      "date": "2026-05-19",
+      "value": 4857.083916542282,
+      "horizon": 10
+    },
+    {
+      "date": "2026-06-02",
+      "value": 4508.743754579202,
+      "horizon": 20
+    },
+    {
+      "date": "2026-06-16",
+      "value": 4794.1876808933275,
+      "horizon": 30
+    }
+  ],
+  "p90_path": [
+    {
+      "date": "2026-05-06",
+      "value": 4621.56890612468,
+      "horizon": 1
+    },
+    {
+      "date": "2026-05-12",
+      "value": 4922.2605930039035,
+      "horizon": 5
+    },
+    {
+      "date": "2026-05-19",
+      "value": 4967.455498754731,
+      "horizon": 10
+    },
+    {
+      "date": "2026-06-02",
+      "value": 4625.3159713939585,
+      "horizon": 20
+    },
+    {
+      "date": "2026-06-16",
+      "value": 4929.557261543657,
+      "horizon": 30
+    }
+  ],
+  "coverage_target": 0.8
+}

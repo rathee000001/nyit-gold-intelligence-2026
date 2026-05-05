@@ -1,0 +1,70 @@
+{
+  "artifact_type": "epsilon_expert_disagreement",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "test_disagreement_by_horizon": {
+    "1": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 147.0848184890393,
+      "median_price_disagreement_std": 101.75491723911837,
+      "mean_disagreement_pct_of_forecast": 4.975061449052455
+    },
+    "5": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 305.3567187334331,
+      "median_price_disagreement_std": 206.0243868851536,
+      "mean_disagreement_pct_of_forecast": 10.394664003352826
+    },
+    "10": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 326.18395839095245,
+      "median_price_disagreement_std": 220.73572156867152,
+      "mean_disagreement_pct_of_forecast": 11.186093296286515
+    },
+    "20": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 248.2241733299967,
+      "median_price_disagreement_std": 178.7287314398156,
+      "mean_disagreement_pct_of_forecast": 8.211200709035097
+    },
+    "30": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 418.2587933551633,
+      "median_price_disagreement_std": 304.45431044250466,
+      "mean_disagreement_pct_of_forecast": 14.372256168153292
+    }
+  },
+  "validation_disagreement_by_horizon": {
+    "1": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 42.552680699097955,
+      "median_price_disagreement_std": 49.43290884055685,
+      "mean_disagreement_pct_of_forecast": 2.420056181324198
+    },
+    "5": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 85.27698482001055,
+      "median_price_disagreement_std": 94.30134817119276,
+      "mean_disagreement_pct_of_forecast": 5.017129248465291
+    },
+    "10": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 91.3435525085796,
+      "median_price_disagreement_std": 100.82743660663425,
+      "mean_disagreement_pct_of_forecast": 5.381772568196318
+    },
+    "20": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 51.92680266341305,
+      "median_price_disagreement_std": 51.737541299406175,
+      "mean_disagreement_pct_of_forecast": 3.015793111496834
+    },
+    "30": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 88.70166296221618,
+      "median_price_disagreement_std": 91.1121644106922,
+      "mean_disagreement_pct_of_forecast": 5.247193341383198
+    }
+  },
+  "generated_at_utc": "2026-05-05T18:14:26.986123Z"
+}

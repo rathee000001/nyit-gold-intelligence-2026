@@ -1,0 +1,36 @@
+{
+  "artifact_type": "deep_ml_beta_optuna_study_summary",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:33:29Z",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "run_id": "deepml_run_20260505_102020_beta_temporal_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "model_key": "beta_temporal",
+  "model_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+  "n_trials": 70,
+  "max_epochs_per_trial": 90,
+  "best_value_objective": 91.66157202230231,
+  "best_config": {
+    "architecture": "gru_attention",
+    "model_type": "gru",
+    "use_attention": true,
+    "sequence_length": 20,
+    "hidden_size": 256,
+    "num_layers": 3,
+    "dropout": 0.15150642766347186,
+    "bidirectional": true,
+    "dense_size": 128,
+    "learning_rate": 0.003532801747321698,
+    "weight_decay": 3.427922620143494e-07,
+    "batch_size": 128,
+    "loss": "huber"
+  },
+  "device_info": {
+    "torch_available": true,
+    "torch_version": "2.10.0+cu130",
+    "device": "cuda",
+    "cuda_available": true,
+    "cuda_device_name": "NVIDIA GeForce RTX 5060",
+    "cuda_device_count": 1
+  }
+}

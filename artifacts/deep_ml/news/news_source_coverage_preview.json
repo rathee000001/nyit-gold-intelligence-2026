@@ -1,0 +1,44 @@
+{
+  "artifact_type": "news_source_coverage_preview",
+  "schema_version": "1.0.0",
+  "phase_key": "phase12_source_news_update",
+  "status": "ready",
+  "recent_row_count": 342,
+  "historical_daily_row_count": 7422,
+  "historical_rows_with_loaded_public_source": 13,
+  "source_type_counts": {
+    "gdelt_doc_api": 30,
+    "google_news_rss_search": 312
+  },
+  "top_sources": {
+    "MSN": 23,
+    "FXStreet": 21,
+    "KITCO": 15,
+    "MEXC": 12,
+    "IndexBox": 10,
+    "The Economic Times": 8,
+    "FXEmpire": 7,
+    "Gold Price": 7,
+    "Yahoo Finance": 7,
+    "Discovery Alert": 7,
+    "Investing.com": 6,
+    "CryptoRank": 6,
+    "Fortune": 5,
+    "FOREX.com": 5,
+    "Dailyhunt": 5
+  },
+  "sample_titles": [
+    "Gold , silver tumble in sharp selloff as precious metals lose momentum ( XAUUSD : CUR : Commodity )",
+    "Gold , silver listless - The HinduBusinessLine",
+    "Gold prices continue to drop on MCX as crude oil gains , silver too falls | Check city - wise rates",
+    "Gold , Silver Rate Today Live Updates : Gold prices hold steady as uncertainty on US - Iran talks persists",
+    "Comex Gold Settles 1 . 02 % Lower at $4545 . 20 Data Talk",
+    "Gold , Silver Rate Today Live Updates : Gold prices dip in international trade ; all eyes on US - Iran talks",
+    "Gold futures rise to Rs 1 . 50 lakh / 10g ahead of US Fed policy decision",
+    "Gold price rises over 1 % to \u20b91 . 5 lakh / 10g on Fed pause , geopolitical worries",
+    "Latest updates on metals prices worldwide at 0200 GMT , May 5",
+    "Why silver falls as crude surges , gold holds near \u20b91 . 5 lakh ?"
+  ],
+  "professor_safe_note": "Coverage preview describes source inventory only. It does not evaluate causal price impact.",
+  "generated_at_utc": "2026-05-05T19:22:32.855031Z"
+}

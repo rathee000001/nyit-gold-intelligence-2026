@@ -1,0 +1,9 @@
+{
+  "series": [],
+  "registry_metadata": {
+    "registry_source": "derived_from_factor_state_table_and_model_feature_plan",
+    "registry_path": "artifacts\\deep_ml\\source_inputs\\fred_series_registry.json",
+    "series_count": 0,
+    "manual_registry_exists": false
+  }
+}

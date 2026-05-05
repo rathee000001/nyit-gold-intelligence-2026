@@ -1,0 +1,10 @@
+{
+  "artifact_type": "news_source_coverage_preview",
+  "schema_version": "1.0.0",
+  "status": "no_news_raw_inputs_found",
+  "gamma_mode_preview": "proxy_regime_sensitivity",
+  "file_count": 0,
+  "latest_news_input_date": null,
+  "coverage_note": "Gamma later decides whether to run proxy-only or text-plus-proxy sensitivity mode.",
+  "generated_at_utc": "2026-05-05T08:47:16.890526Z"
+}

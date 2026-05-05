@@ -1,0 +1,1234 @@
+{
+  "artifact_type": "phase12_news_ai_context_report",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "Phase 12 \u2014 News AI Context Layer",
+  "phase_key": "phase12_news_ai_context",
+  "status": "ready_with_warnings",
+  "run_summary": {
+    "artifact_type": "deep_ml_model_run",
+    "schema_version": "1.0.0",
+    "project": "Gold Nexus Alpha",
+    "phase": "phase_2_deep_ml",
+    "phase_key": "phase12_news_ai_context",
+    "model_key": "news_ai_context",
+    "model_name": "News AI Context Layer",
+    "family": "narrative_context_classification_layer",
+    "status": "completed_pending_quality_review",
+    "run": {
+      "run_id": "deepml_run_20260505_182116_news_ai_context",
+      "study_id": "deepml_feature_refresh_20260505_093208",
+      "generated_at_utc": "2026-05-05T18:21:16.468169Z",
+      "completed_at_utc": "2026-05-05T18:21:16.600579Z",
+      "generated_at_local": "2026-05-05T14:21:16.468169-04:00",
+      "timezone_local": "America/New_York",
+      "git_commit_sha": "be6e3bf",
+      "code_version": "news_ai_context_v1_local_rule_based_api_ready",
+      "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+      "platform": "Windows-11-10.0.26200-SP0"
+    },
+    "data_signature": {
+      "feature_store_path": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+      "feature_store_hash": "sha256:faee8e504db2fa957ec3b2209284f4af4662a36f54ab9928402722133da47331",
+      "factor_state_table_hash": "sha256:7a7d74ab2fc2b9c5e7061f305694921b0aac27dc4ef6de1b9b67d6a1a3c03e04",
+      "target_plan_hash": "sha256:e0e880e347304630f181bd52057d517baacc58dc2498f488a3a796dcc92c8553",
+      "effective_data_through_date": "2026-05-05",
+      "forecast_start_date": "2026-05-06"
+    },
+    "news_context": {
+      "input_mode": "fallback_project_context",
+      "source_count": 6,
+      "net_gold_narrative_score": 0.116667,
+      "net_gold_narrative_label": "gold_supportive",
+      "dominant_themes": [
+        {
+          "theme": "real_yield_pressure",
+          "tagged_item_count": 1,
+          "raw_score_sum": 0.666667,
+          "confidence_freshness_weighted_score": 0.466667,
+          "direction_label": "gold_supportive",
+          "mapped_factor_exposures": [
+            "real_yield",
+            "tips_curve"
+          ]
+        },
+        {
+          "theme": "usd_strength",
+          "tagged_item_count": 1,
+          "raw_score_sum": 0.666667,
+          "confidence_freshness_weighted_score": 0.4,
+          "direction_label": "gold_supportive",
+          "mapped_factor_exposures": [
+            "usd_index",
+            "eur_usd",
+            "jpy_usd"
+          ]
+        },
+        {
+          "theme": "financial_stress",
+          "tagged_item_count": 1,
+          "raw_score_sum": -0.333333,
+          "confidence_freshness_weighted_score": -0.2,
+          "direction_label": "gold_pressure",
+          "mapped_factor_exposures": [
+            "vix_index",
+            "fin_stress",
+            "high_yield"
+          ]
+        },
+        {
+          "theme": "interest_rate_policy",
+          "tagged_item_count": 2,
+          "raw_score_sum": 0.0,
+          "confidence_freshness_weighted_score": 0.033333,
+          "direction_label": "mixed_or_neutral",
+          "mapped_factor_exposures": [
+            "nominal_yield",
+            "fed_bs"
+          ]
+        },
+        {
+          "theme": "inflation_pressure",
+          "tagged_item_count": 0,
+          "raw_score_sum": 0.0,
+          "confidence_freshness_weighted_score": 0.0,
+          "direction_label": "mixed_or_neutral",
+          "mapped_factor_exposures": [
+            "inflation",
+            "ppi_index",
+            "m2_supply"
+          ]
+        }
+      ],
+      "gamma_ready": true
+    },
+    "ai_grounding": {
+      "allowed_claims": [
+        "News AI summarizes and classifies market-relevant narrative signals from provided or fallback context artifacts.",
+        "Theme scores describe narrative pressure labels used as Gamma inputs.",
+        "Fallback context is clearly labeled when no manual/API news feed is provided.",
+        "Factor exposures map narrative themes to existing project factors for interpretation only."
+      ],
+      "forbidden_claims": [
+        "News AI proves news caused gold to move.",
+        "News AI guarantees future gold prices.",
+        "Fallback project-context items are live external news articles.",
+        "Gamma/Omega conclusions are final before their own artifacts exist."
+      ],
+      "source_artifacts": [
+        "run_summary.json",
+        "news_context_latest.json",
+        "news_items_scored.csv",
+        "news_factor_exposure.json",
+        "news_theme_summary.json",
+        "diagnostics_latest.json"
+      ]
+    },
+    "professor_safe_summary": "News AI Context Layer prepares structured narrative context for Gamma. It classifies text/context into gold-relevant themes and does not make causal claims.",
+    "generated_at_utc": "2026-05-05T18:21:16.662616Z"
+  },
+  "news_context_snapshot": {
+    "artifact_type": "news_context_latest",
+    "schema_version": "1.0.0",
+    "phase_key": "phase12_news_ai_context",
+    "model_key": "news_ai_context",
+    "run_id": "deepml_run_20260505_182116_news_ai_context",
+    "study_id": "deepml_feature_refresh_20260505_093208",
+    "run_batch_id": "deepml_feature_refresh_20260505_093208",
+    "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+    "official_research_cutoff_date": "2026-03-31",
+    "effective_data_through_date": "2026-05-05",
+    "forecast_start_date": "2026-05-06",
+    "news_input_mode": "fallback_project_context",
+    "source_count": 6,
+    "scored_items_preview": [
+      {
+        "news_item_id": "fallback_0001",
+        "published_at": "2026-05-05T00:00:00Z",
+        "source": "project_context_fallback",
+        "title": "Project context: refreshed gold and macro data are available through the latest study date",
+        "summary": "The Deep ML feature store is refreshed through 2026-05-05. Latest gold_price is approximately 4561.70 if available. This is a data-context item, not an external news article.",
+        "url": "",
+        "region": "global",
+        "importance_hint": "medium",
+        "input_mode": "fallback_project_context",
+        "theme_tags": "",
+        "theme_count": 0,
+        "gold_bullish_score": 0.0,
+        "gold_bearish_score": 0.0,
+        "net_gold_narrative_score": 0.0,
+        "confidence_score": 0.5,
+        "freshness_score": 1.0,
+        "theme_score__inflation_pressure": 0.0,
+        "theme_bullish_hits__inflation_pressure": 0,
+        "theme_bearish_hits__inflation_pressure": 0,
+        "theme_score__interest_rate_policy": 0.0,
+        "theme_bullish_hits__interest_rate_policy": 0,
+        "theme_bearish_hits__interest_rate_policy": 0,
+        "theme_score__real_yield_pressure": 0.0,
+        "theme_bullish_hits__real_yield_pressure": 0,
+        "theme_bearish_hits__real_yield_pressure": 0,
+        "theme_score__usd_strength": 0.0,
+        "theme_bullish_hits__usd_strength": 0,
+        "theme_bearish_hits__usd_strength": 0,
+        "theme_score__geopolitical_risk": 0.0,
+        "theme_bullish_hits__geopolitical_risk": 0,
+        "theme_bearish_hits__geopolitical_risk": 0,
+        "theme_score__financial_stress": 0.0,
+        "theme_bullish_hits__financial_stress": 0,
+        "theme_bearish_hits__financial_stress": 0,
+        "theme_score__central_bank_gold_demand": 0.0,
+        "theme_bullish_hits__central_bank_gold_demand": 0,
+        "theme_bearish_hits__central_bank_gold_demand": 0,
+        "theme_score__commodity_oil_pressure": 0.0,
+        "theme_bullish_hits__commodity_oil_pressure": 0,
+        "theme_bearish_hits__commodity_oil_pressure": 0,
+        "theme_score__risk_off_safe_haven": 0.0,
+        "theme_bullish_hits__risk_off_safe_haven": 0,
+        "theme_bearish_hits__risk_off_safe_haven": 0,
+        "theme_score__market_liquidity": 0.0,
+        "theme_bullish_hits__market_liquidity": 0,
+        "theme_bearish_hits__market_liquidity": 0
+      },
+      {
+        "news_item_id": "fallback_0002",
+        "published_at": "2026-05-05T00:00:00Z",
+        "source": "project_context_fallback",
+        "title": "Project context: real yields fall in recent refreshed data",
+        "summary": "Recent real yield movement is lower in the refreshed factor store. Lower real yield narratives are often classified as gold-supportive pressure in this system.",
+        "url": "",
+        "region": "global",
+        "importance_hint": "high",
+        "input_mode": "fallback_project_context",
+        "theme_tags": "interest_rate_policy|real_yield_pressure",
+        "theme_count": 2,
+        "gold_bullish_score": 0.55,
+        "gold_bearish_score": 0.0,
+        "net_gold_narrative_score": 0.55,
+        "confidence_score": 0.7,
+        "freshness_score": 1.0,
+        "theme_score__inflation_pressure": 0.0,
+        "theme_bullish_hits__inflation_pressure": 0,
+        "theme_bearish_hits__inflation_pressure": 0,
+        "theme_score__interest_rate_policy": 0.333333,
+        "theme_bullish_hits__interest_rate_policy": 1,
+        "theme_bearish_hits__interest_rate_policy": 0,
+        "theme_score__real_yield_pressure": 0.666667,
+        "theme_bullish_hits__real_yield_pressure": 2,
+        "theme_bearish_hits__real_yield_pressure": 0,
+        "theme_score__usd_strength": 0.0,
+        "theme_bullish_hits__usd_strength": 0,
+        "theme_bearish_hits__usd_strength": 0,
+        "theme_score__geopolitical_risk": 0.0,
+        "theme_bullish_hits__geopolitical_risk": 0,
+        "theme_bearish_hits__geopolitical_risk": 0,
+        "theme_score__financial_stress": 0.0,
+        "theme_bullish_hits__financial_stress": 0,
+        "theme_bearish_hits__financial_stress": 0,
+        "theme_score__central_bank_gold_demand": 0.0,
+        "theme_bullish_hits__central_bank_gold_demand": 0,
+        "theme_bearish_hits__central_bank_gold_demand": 0,
+        "theme_score__commodity_oil_pressure": 0.0,
+        "theme_bullish_hits__commodity_oil_pressure": 0,
+        "theme_bearish_hits__commodity_oil_pressure": 0,
+        "theme_score__risk_off_safe_haven": 0.0,
+        "theme_bullish_hits__risk_off_safe_haven": 0,
+        "theme_bearish_hits__risk_off_safe_haven": 0,
+        "theme_score__market_liquidity": 0.0,
+        "theme_bullish_hits__market_liquidity": 0,
+        "theme_bearish_hits__market_liquidity": 0
+      },
+      {
+        "news_item_id": "fallback_0003",
+        "published_at": "2026-05-05T00:00:00Z",
+        "source": "project_context_fallback",
+        "title": "Project context: yields rise",
+        "summary": "Recent nominal yield movement is higher. Rising yields are classified as a rate-policy pressure narrative for gold.",
+        "url": "",
+        "region": "global",
+        "importance_hint": "medium",
+        "input_mode": "fallback_project_context",
+        "theme_tags": "interest_rate_policy",
+        "theme_count": 1,
+        "gold_bullish_score": 0.0,
+        "gold_bearish_score": 0.333333,
+        "net_gold_narrative_score": -0.333333,
+        "confidence_score": 0.6,
+        "freshness_score": 1.0,
+        "theme_score__inflation_pressure": 0.0,
+        "theme_bullish_hits__inflation_pressure": 0,
+        "theme_bearish_hits__inflation_pressure": 0,
+        "theme_score__interest_rate_policy": -0.333333,
+        "theme_bullish_hits__interest_rate_policy": 0,
+        "theme_bearish_hits__interest_rate_policy": 1,
+        "theme_score__real_yield_pressure": 0.0,
+        "theme_bullish_hits__real_yield_pressure": 0,
+        "theme_bearish_hits__real_yield_pressure": 0,
+        "theme_score__usd_strength": 0.0,
+        "theme_bullish_hits__usd_strength": 0,
+        "theme_bearish_hits__usd_strength": 0,
+        "theme_score__geopolitical_risk": 0.0,
+        "theme_bullish_hits__geopolitical_risk": 0,
+        "theme_bearish_hits__geopolitical_risk": 0,
+        "theme_score__financial_stress": 0.0,
+        "theme_bullish_hits__financial_stress": 0,
+        "theme_bearish_hits__financial_stress": 0,
+        "theme_score__central_bank_gold_demand": 0.0,
+        "theme_bullish_hits__central_bank_gold_demand": 0,
+        "theme_bearish_hits__central_bank_gold_demand": 0,
+        "theme_score__commodity_oil_pressure": 0.0,
+        "theme_bullish_hits__commodity_oil_pressure": 0,
+        "theme_bearish_hits__commodity_oil_pressure": 0,
+        "theme_score__risk_off_safe_haven": 0.0,
+        "theme_bullish_hits__risk_off_safe_haven": 0,
+        "theme_bearish_hits__risk_off_safe_haven": 0,
+        "theme_score__market_liquidity": 0.0,
+        "theme_bullish_hits__market_liquidity": 0,
+        "theme_bearish_hits__market_liquidity": 0
+      },
+      {
+        "news_item_id": "fallback_0004",
+        "published_at": "2026-05-05T00:00:00Z",
+        "source": "project_context_fallback",
+        "title": "Project context: dollar weakens",
+        "summary": "The refreshed USD index is lower over the recent lookback. A weaker dollar narrative is classified as gold-supportive pressure.",
+        "url": "",
+        "region": "global",
+        "importance_hint": "medium",
+        "input_mode": "fallback_project_context",
+        "theme_tags": "usd_strength",
+        "theme_count": 1,
+        "gold_bullish_score": 0.666667,
+        "gold_bearish_score": 0.0,
+        "net_gold_narrative_score": 0.666667,
+        "confidence_score": 0.6,
+        "freshness_score": 1.0,
+        "theme_score__inflation_pressure": 0.0,
+        "theme_bullish_hits__inflation_pressure": 0,
+        "theme_bearish_hits__inflation_pressure": 0,
+        "theme_score__interest_rate_policy": 0.0,
+        "theme_bullish_hits__interest_rate_policy": 0,
+        "theme_bearish_hits__interest_rate_policy": 0,
+        "theme_score__real_yield_pressure": 0.0,
+        "theme_bullish_hits__real_yield_pressure": 0,
+        "theme_bearish_hits__real_yield_pressure": 0,
+        "theme_score__usd_strength": 0.666667,
+        "theme_bullish_hits__usd_strength": 2,
+        "theme_bearish_hits__usd_strength": 0,
+        "theme_score__geopolitical_risk": 0.0,
+        "theme_bullish_hits__geopolitical_risk": 0,
+        "theme_bearish_hits__geopolitical_risk": 0,
+        "theme_score__financial_stress": 0.0,
+        "theme_bullish_hits__financial_stress": 0,
+        "theme_bearish_hits__financial_stress": 0,
+        "theme_score__central_bank_gold_demand": 0.0,
+        "theme_bullish_hits__central_bank_gold_demand": 0,
+        "theme_bearish_hits__central_bank_gold_demand": 0,
+        "theme_score__commodity_oil_pressure": 0.0,
+        "theme_bullish_hits__commodity_oil_pressure": 0,
+        "theme_bearish_hits__commodity_oil_pressure": 0,
+        "theme_score__risk_off_safe_haven": 0.0,
+        "theme_bullish_hits__risk_off_safe_haven": 0,
+        "theme_bearish_hits__risk_off_safe_haven": 0,
+        "theme_score__market_liquidity": 0.0,
+        "theme_bullish_hits__market_liquidity": 0,
+        "theme_bearish_hits__market_liquidity": 0
+      },
+      {
+        "news_item_id": "fallback_0005",
+        "published_at": "2026-05-05T00:00:00Z",
+        "source": "project_context_fallback",
+        "title": "Project context: volatility falls",
+        "summary": "Recent VIX movement is lower. Lower volatility is classified as weaker risk-off narrative pressure.",
+        "url": "",
+        "region": "global",
+        "importance_hint": "medium",
+        "input_mode": "fallback_project_context",
+        "theme_tags": "financial_stress",
+        "theme_count": 1,
+        "gold_bullish_score": 0.0,
+        "gold_bearish_score": 0.333333,
+        "net_gold_narrative_score": -0.333333,
+        "confidence_score": 0.6,
+        "freshness_score": 1.0,
+        "theme_score__inflation_pressure": 0.0,
+        "theme_bullish_hits__inflation_pressure": 0,
+        "theme_bearish_hits__inflation_pressure": 0,
+        "theme_score__interest_rate_policy": 0.0,
+        "theme_bullish_hits__interest_rate_policy": 0,
+        "theme_bearish_hits__interest_rate_policy": 0,
+        "theme_score__real_yield_pressure": 0.0,
+        "theme_bullish_hits__real_yield_pressure": 0,
+        "theme_bearish_hits__real_yield_pressure": 0,
+        "theme_score__usd_strength": 0.0,
+        "theme_bullish_hits__usd_strength": 0,
+        "theme_bearish_hits__usd_strength": 0,
+        "theme_score__geopolitical_risk": 0.0,
+        "theme_bullish_hits__geopolitical_risk": 0,
+        "theme_bearish_hits__geopolitical_risk": 0,
+        "theme_score__financial_stress": -0.333333,
+        "theme_bullish_hits__financial_stress": 0,
+        "theme_bearish_hits__financial_stress": 1,
+        "theme_score__central_bank_gold_demand": 0.0,
+        "theme_bullish_hits__central_bank_gold_demand": 0,
+        "theme_bearish_hits__central_bank_gold_demand": 0,
+        "theme_score__commodity_oil_pressure": 0.0,
+        "theme_bullish_hits__commodity_oil_pressure": 0,
+        "theme_bearish_hits__commodity_oil_pressure": 0,
+        "theme_score__risk_off_safe_haven": 0.0,
+        "theme_bullish_hits__risk_off_safe_haven": 0,
+        "theme_bearish_hits__risk_off_safe_haven": 0,
+        "theme_score__market_liquidity": 0.0,
+        "theme_bullish_hits__market_liquidity": 0,
+        "theme_bearish_hits__market_liquidity": 0
+      },
+      {
+        "news_item_id": "fallback_0006",
+        "published_at": "2026-05-05T00:00:00Z",
+        "source": "project_context_fallback",
+        "title": "Project context: liquidity factors monitored",
+        "summary": "Liquidity-related factors are monitored from the refreshed FRED registry data. Recent fed_bs change: 24606.0000. Recent m2_supply change: 0.0000.",
+        "url": "",
+        "region": "global",
+        "importance_hint": "low",
+        "input_mode": "fallback_project_context",
+        "theme_tags": "market_liquidity",
+        "theme_count": 1,
+        "gold_bullish_score": 0.0,
+        "gold_bearish_score": 0.0,
+        "net_gold_narrative_score": 0.0,
+        "confidence_score": 0.6,
+        "freshness_score": 1.0,
+        "theme_score__inflation_pressure": 0.0,
+        "theme_bullish_hits__inflation_pressure": 0,
+        "theme_bearish_hits__inflation_pressure": 0,
+        "theme_score__interest_rate_policy": 0.0,
+        "theme_bullish_hits__interest_rate_policy": 0,
+        "theme_bearish_hits__interest_rate_policy": 0,
+        "theme_score__real_yield_pressure": 0.0,
+        "theme_bullish_hits__real_yield_pressure": 0,
+        "theme_bearish_hits__real_yield_pressure": 0,
+        "theme_score__usd_strength": 0.0,
+        "theme_bullish_hits__usd_strength": 0,
+        "theme_bearish_hits__usd_strength": 0,
+        "theme_score__geopolitical_risk": 0.0,
+        "theme_bullish_hits__geopolitical_risk": 0,
+        "theme_bearish_hits__geopolitical_risk": 0,
+        "theme_score__financial_stress": 0.0,
+        "theme_bullish_hits__financial_stress": 0,
+        "theme_bearish_hits__financial_stress": 0,
+        "theme_score__central_bank_gold_demand": 0.0,
+        "theme_bullish_hits__central_bank_gold_demand": 0,
+        "theme_bearish_hits__central_bank_gold_demand": 0,
+        "theme_score__commodity_oil_pressure": 0.0,
+        "theme_bullish_hits__commodity_oil_pressure": 0,
+        "theme_bearish_hits__commodity_oil_pressure": 0,
+        "theme_score__risk_off_safe_haven": 0.0,
+        "theme_bullish_hits__risk_off_safe_haven": 0,
+        "theme_bearish_hits__risk_off_safe_haven": 0,
+        "theme_score__market_liquidity": 0.0,
+        "theme_bullish_hits__market_liquidity": 0,
+        "theme_bearish_hits__market_liquidity": 0
+      }
+    ],
+    "theme_summary": {
+      "artifact_type": "news_theme_summary",
+      "schema_version": "1.0.0",
+      "phase_key": "phase12_news_ai_context",
+      "source_count": 6,
+      "average_confidence_score": 0.6,
+      "average_freshness_score": 1.0,
+      "net_gold_narrative_score": 0.116667,
+      "net_gold_narrative_label": "gold_supportive",
+      "dominant_themes": [
+        {
+          "theme": "real_yield_pressure",
+          "tagged_item_count": 1,
+          "raw_score_sum": 0.666667,
+          "confidence_freshness_weighted_score": 0.466667,
+          "direction_label": "gold_supportive",
+          "mapped_factor_exposures": [
+            "real_yield",
+            "tips_curve"
+          ]
+        },
+        {
+          "theme": "usd_strength",
+          "tagged_item_count": 1,
+          "raw_score_sum": 0.666667,
+          "confidence_freshness_weighted_score": 0.4,
+          "direction_label": "gold_supportive",
+          "mapped_factor_exposures": [
+            "usd_index",
+            "eur_usd",
+            "jpy_usd"
+          ]
+        },
+        {
+          "theme": "financial_stress",
+          "tagged_item_count": 1,
+          "raw_score_sum": -0.333333,
+          "confidence_freshness_weighted_score": -0.2,
+          "direction_label": "gold_pressure",
+          "mapped_factor_exposures": [
+            "vix_index",
+            "fin_stress",
+            "high_yield"
+          ]
+        },
+        {
+          "theme": "interest_rate_policy",
+          "tagged_item_count": 2,
+          "raw_score_sum": 0.0,
+          "confidence_freshness_weighted_score": 0.033333,
+          "direction_label": "mixed_or_neutral",
+          "mapped_factor_exposures": [
+            "nominal_yield",
+            "fed_bs"
+          ]
+        },
+        {
+          "theme": "inflation_pressure",
+          "tagged_item_count": 0,
+          "raw_score_sum": 0.0,
+          "confidence_freshness_weighted_score": 0.0,
+          "direction_label": "mixed_or_neutral",
+          "mapped_factor_exposures": [
+            "inflation",
+            "ppi_index",
+            "m2_supply"
+          ]
+        }
+      ],
+      "theme_rows": [
+        {
+          "theme": "inflation_pressure",
+          "tagged_item_count": 0,
+          "raw_score_sum": 0.0,
+          "confidence_freshness_weighted_score": 0.0,
+          "direction_label": "mixed_or_neutral",
+          "mapped_factor_exposures": [
+            "inflation",
+            "ppi_index",
+            "m2_supply"
+          ]
+        },
+        {
+          "theme": "interest_rate_policy",
+          "tagged_item_count": 2,
+          "raw_score_sum": 0.0,
+          "confidence_freshness_weighted_score": 0.033333,
+          "direction_label": "mixed_or_neutral",
+          "mapped_factor_exposures": [
+            "nominal_yield",
+            "fed_bs"
+          ]
+        },
+        {
+          "theme": "real_yield_pressure",
+          "tagged_item_count": 1,
+          "raw_score_sum": 0.666667,
+          "confidence_freshness_weighted_score": 0.466667,
+          "direction_label": "gold_supportive",
+          "mapped_factor_exposures": [
+            "real_yield",
+            "tips_curve"
+          ]
+        },
+        {
+          "theme": "usd_strength",
+          "tagged_item_count": 1,
+          "raw_score_sum": 0.666667,
+          "confidence_freshness_weighted_score": 0.4,
+          "direction_label": "gold_supportive",
+          "mapped_factor_exposures": [
+            "usd_index",
+            "eur_usd",
+            "jpy_usd"
+          ]
+        },
+        {
+          "theme": "geopolitical_risk",
+          "tagged_item_count": 0,
+          "raw_score_sum": 0.0,
+          "confidence_freshness_weighted_score": 0.0,
+          "direction_label": "mixed_or_neutral",
+          "mapped_factor_exposures": [
+            "gpr_index",
+            "policy_unc"
+          ]
+        },
+        {
+          "theme": "financial_stress",
+          "tagged_item_count": 1,
+          "raw_score_sum": -0.333333,
+          "confidence_freshness_weighted_score": -0.2,
+          "direction_label": "gold_pressure",
+          "mapped_factor_exposures": [
+            "vix_index",
+            "fin_stress",
+            "high_yield"
+          ]
+        },
+        {
+          "theme": "central_bank_gold_demand",
+          "tagged_item_count": 0,
+          "raw_score_sum": 0.0,
+          "confidence_freshness_weighted_score": 0.0,
+          "direction_label": "mixed_or_neutral",
+          "mapped_factor_exposures": [
+            "gld_tonnes",
+            "gold_price"
+          ]
+        },
+        {
+          "theme": "commodity_oil_pressure",
+          "tagged_item_count": 0,
+          "raw_score_sum": 0.0,
+          "confidence_freshness_weighted_score": 0.0,
+          "direction_label": "mixed_or_neutral",
+          "mapped_factor_exposures": [
+            "oil_wti",
+            "ppi_index"
+          ]
+        },
+        {
+          "theme": "risk_off_safe_haven",
+          "tagged_item_count": 0,
+          "raw_score_sum": 0.0,
+          "confidence_freshness_weighted_score": 0.0,
+          "direction_label": "mixed_or_neutral",
+          "mapped_factor_exposures": [
+            "vix_index",
+            "fin_stress",
+            "gold_price"
+          ]
+        },
+        {
+          "theme": "market_liquidity",
+          "tagged_item_count": 1,
+          "raw_score_sum": 0.0,
+          "confidence_freshness_weighted_score": 0.0,
+          "direction_label": "mixed_or_neutral",
+          "mapped_factor_exposures": [
+            "fed_bs",
+            "m2_supply",
+            "usd_index"
+          ]
+        }
+      ],
+      "professor_safe_note": "Theme scores summarize model-classified narrative pressure. They are not causal conclusions.",
+      "generated_at_utc": "2026-05-05T18:21:16.596920Z"
+    },
+    "factor_exposure": {
+      "artifact_type": "news_factor_exposure",
+      "schema_version": "1.0.0",
+      "phase_key": "phase12_news_ai_context",
+      "factor_exposures": [
+        {
+          "factor_key": "real_yield",
+          "news_exposure_score": 0.233333,
+          "direction_label": "gold_supportive",
+          "themes": [
+            "real_yield_pressure"
+          ]
+        },
+        {
+          "factor_key": "tips_curve",
+          "news_exposure_score": 0.233333,
+          "direction_label": "gold_supportive",
+          "themes": [
+            "real_yield_pressure"
+          ]
+        },
+        {
+          "factor_key": "usd_index",
+          "news_exposure_score": 0.133333,
+          "direction_label": "gold_supportive",
+          "themes": [
+            "market_liquidity",
+            "usd_strength"
+          ]
+        },
+        {
+          "factor_key": "eur_usd",
+          "news_exposure_score": 0.133333,
+          "direction_label": "gold_supportive",
+          "themes": [
+            "usd_strength"
+          ]
+        },
+        {
+          "factor_key": "jpy_usd",
+          "news_exposure_score": 0.133333,
+          "direction_label": "gold_supportive",
+          "themes": [
+            "usd_strength"
+          ]
+        },
+        {
+          "factor_key": "vix_index",
+          "news_exposure_score": -0.066667,
+          "direction_label": "gold_pressure",
+          "themes": [
+            "financial_stress",
+            "risk_off_safe_haven"
+          ]
+        },
+        {
+          "factor_key": "fin_stress",
+          "news_exposure_score": -0.066667,
+          "direction_label": "gold_pressure",
+          "themes": [
+            "financial_stress",
+            "risk_off_safe_haven"
+          ]
+        },
+        {
+          "factor_key": "high_yield",
+          "news_exposure_score": -0.066667,
+          "direction_label": "gold_pressure",
+          "themes": [
+            "financial_stress"
+          ]
+        },
+        {
+          "factor_key": "nominal_yield",
+          "news_exposure_score": 0.016667,
+          "direction_label": "mixed_or_neutral",
+          "themes": [
+            "interest_rate_policy"
+          ]
+        },
+        {
+          "factor_key": "fed_bs",
+          "news_exposure_score": 0.016667,
+          "direction_label": "mixed_or_neutral",
+          "themes": [
+            "interest_rate_policy",
+            "market_liquidity"
+          ]
+        },
+        {
+          "factor_key": "inflation",
+          "news_exposure_score": 0.0,
+          "direction_label": "mixed_or_neutral",
+          "themes": [
+            "inflation_pressure"
+          ]
+        },
+        {
+          "factor_key": "ppi_index",
+          "news_exposure_score": 0.0,
+          "direction_label": "mixed_or_neutral",
+          "themes": [
+            "commodity_oil_pressure",
+            "inflation_pressure"
+          ]
+        },
+        {
+          "factor_key": "m2_supply",
+          "news_exposure_score": 0.0,
+          "direction_label": "mixed_or_neutral",
+          "themes": [
+            "inflation_pressure",
+            "market_liquidity"
+          ]
+        },
+        {
+          "factor_key": "gpr_index",
+          "news_exposure_score": 0.0,
+          "direction_label": "mixed_or_neutral",
+          "themes": [
+            "geopolitical_risk"
+          ]
+        },
+        {
+          "factor_key": "policy_unc",
+          "news_exposure_score": 0.0,
+          "direction_label": "mixed_or_neutral",
+          "themes": [
+            "geopolitical_risk"
+          ]
+        },
+        {
+          "factor_key": "gld_tonnes",
+          "news_exposure_score": 0.0,
+          "direction_label": "mixed_or_neutral",
+          "themes": [
+            "central_bank_gold_demand"
+          ]
+        },
+        {
+          "factor_key": "gold_price",
+          "news_exposure_score": 0.0,
+          "direction_label": "mixed_or_neutral",
+          "themes": [
+            "central_bank_gold_demand",
+            "risk_off_safe_haven"
+          ]
+        },
+        {
+          "factor_key": "oil_wti",
+          "news_exposure_score": 0.0,
+          "direction_label": "mixed_or_neutral",
+          "themes": [
+            "commodity_oil_pressure"
+          ]
+        }
+      ],
+      "professor_safe_note": "Factor exposures map classified news themes to existing project factors. This describes narrative alignment, not causality.",
+      "generated_at_utc": "2026-05-05T18:21:16.596920Z"
+    },
+    "gamma_ready": true,
+    "gamma_input_contract": {
+      "net_gold_narrative_score": "theme_summary.net_gold_narrative_score",
+      "theme_rows": "theme_summary.theme_rows",
+      "factor_exposures": "factor_exposure.factor_exposures",
+      "news_items_scored_csv": "artifacts\\deep_ml\\news_ai\\news_items_scored.csv"
+    },
+    "professor_safe_summary": "News AI context classifies market-relevant narrative signals into gold-related themes. It prepares Gamma inputs but does not forecast gold directly or claim causality.",
+    "generated_at_utc": "2026-05-05T18:21:16.599580Z"
+  },
+  "theme_summary_snapshot": {
+    "artifact_type": "news_theme_summary",
+    "schema_version": "1.0.0",
+    "phase_key": "phase12_news_ai_context",
+    "source_count": 6,
+    "average_confidence_score": 0.6,
+    "average_freshness_score": 1.0,
+    "net_gold_narrative_score": 0.116667,
+    "net_gold_narrative_label": "gold_supportive",
+    "dominant_themes": [
+      {
+        "theme": "real_yield_pressure",
+        "tagged_item_count": 1,
+        "raw_score_sum": 0.666667,
+        "confidence_freshness_weighted_score": 0.466667,
+        "direction_label": "gold_supportive",
+        "mapped_factor_exposures": [
+          "real_yield",
+          "tips_curve"
+        ]
+      },
+      {
+        "theme": "usd_strength",
+        "tagged_item_count": 1,
+        "raw_score_sum": 0.666667,
+        "confidence_freshness_weighted_score": 0.4,
+        "direction_label": "gold_supportive",
+        "mapped_factor_exposures": [
+          "usd_index",
+          "eur_usd",
+          "jpy_usd"
+        ]
+      },
+      {
+        "theme": "financial_stress",
+        "tagged_item_count": 1,
+        "raw_score_sum": -0.333333,
+        "confidence_freshness_weighted_score": -0.2,
+        "direction_label": "gold_pressure",
+        "mapped_factor_exposures": [
+          "vix_index",
+          "fin_stress",
+          "high_yield"
+        ]
+      },
+      {
+        "theme": "interest_rate_policy",
+        "tagged_item_count": 2,
+        "raw_score_sum": 0.0,
+        "confidence_freshness_weighted_score": 0.033333,
+        "direction_label": "mixed_or_neutral",
+        "mapped_factor_exposures": [
+          "nominal_yield",
+          "fed_bs"
+        ]
+      },
+      {
+        "theme": "inflation_pressure",
+        "tagged_item_count": 0,
+        "raw_score_sum": 0.0,
+        "confidence_freshness_weighted_score": 0.0,
+        "direction_label": "mixed_or_neutral",
+        "mapped_factor_exposures": [
+          "inflation",
+          "ppi_index",
+          "m2_supply"
+        ]
+      }
+    ],
+    "theme_rows": [
+      {
+        "theme": "inflation_pressure",
+        "tagged_item_count": 0,
+        "raw_score_sum": 0.0,
+        "confidence_freshness_weighted_score": 0.0,
+        "direction_label": "mixed_or_neutral",
+        "mapped_factor_exposures": [
+          "inflation",
+          "ppi_index",
+          "m2_supply"
+        ]
+      },
+      {
+        "theme": "interest_rate_policy",
+        "tagged_item_count": 2,
+        "raw_score_sum": 0.0,
+        "confidence_freshness_weighted_score": 0.033333,
+        "direction_label": "mixed_or_neutral",
+        "mapped_factor_exposures": [
+          "nominal_yield",
+          "fed_bs"
+        ]
+      },
+      {
+        "theme": "real_yield_pressure",
+        "tagged_item_count": 1,
+        "raw_score_sum": 0.666667,
+        "confidence_freshness_weighted_score": 0.466667,
+        "direction_label": "gold_supportive",
+        "mapped_factor_exposures": [
+          "real_yield",
+          "tips_curve"
+        ]
+      },
+      {
+        "theme": "usd_strength",
+        "tagged_item_count": 1,
+        "raw_score_sum": 0.666667,
+        "confidence_freshness_weighted_score": 0.4,
+        "direction_label": "gold_supportive",
+        "mapped_factor_exposures": [
+          "usd_index",
+          "eur_usd",
+          "jpy_usd"
+        ]
+      },
+      {
+        "theme": "geopolitical_risk",
+        "tagged_item_count": 0,
+        "raw_score_sum": 0.0,
+        "confidence_freshness_weighted_score": 0.0,
+        "direction_label": "mixed_or_neutral",
+        "mapped_factor_exposures": [
+          "gpr_index",
+          "policy_unc"
+        ]
+      },
+      {
+        "theme": "financial_stress",
+        "tagged_item_count": 1,
+        "raw_score_sum": -0.333333,
+        "confidence_freshness_weighted_score": -0.2,
+        "direction_label": "gold_pressure",
+        "mapped_factor_exposures": [
+          "vix_index",
+          "fin_stress",
+          "high_yield"
+        ]
+      },
+      {
+        "theme": "central_bank_gold_demand",
+        "tagged_item_count": 0,
+        "raw_score_sum": 0.0,
+        "confidence_freshness_weighted_score": 0.0,
+        "direction_label": "mixed_or_neutral",
+        "mapped_factor_exposures": [
+          "gld_tonnes",
+          "gold_price"
+        ]
+      },
+      {
+        "theme": "commodity_oil_pressure",
+        "tagged_item_count": 0,
+        "raw_score_sum": 0.0,
+        "confidence_freshness_weighted_score": 0.0,
+        "direction_label": "mixed_or_neutral",
+        "mapped_factor_exposures": [
+          "oil_wti",
+          "ppi_index"
+        ]
+      },
+      {
+        "theme": "risk_off_safe_haven",
+        "tagged_item_count": 0,
+        "raw_score_sum": 0.0,
+        "confidence_freshness_weighted_score": 0.0,
+        "direction_label": "mixed_or_neutral",
+        "mapped_factor_exposures": [
+          "vix_index",
+          "fin_stress",
+          "gold_price"
+        ]
+      },
+      {
+        "theme": "market_liquidity",
+        "tagged_item_count": 1,
+        "raw_score_sum": 0.0,
+        "confidence_freshness_weighted_score": 0.0,
+        "direction_label": "mixed_or_neutral",
+        "mapped_factor_exposures": [
+          "fed_bs",
+          "m2_supply",
+          "usd_index"
+        ]
+      }
+    ],
+    "professor_safe_note": "Theme scores summarize model-classified narrative pressure. They are not causal conclusions.",
+    "generated_at_utc": "2026-05-05T18:21:16.596920Z"
+  },
+  "factor_exposure_snapshot": {
+    "artifact_type": "news_factor_exposure",
+    "schema_version": "1.0.0",
+    "phase_key": "phase12_news_ai_context",
+    "factor_exposures": [
+      {
+        "factor_key": "real_yield",
+        "news_exposure_score": 0.233333,
+        "direction_label": "gold_supportive",
+        "themes": [
+          "real_yield_pressure"
+        ]
+      },
+      {
+        "factor_key": "tips_curve",
+        "news_exposure_score": 0.233333,
+        "direction_label": "gold_supportive",
+        "themes": [
+          "real_yield_pressure"
+        ]
+      },
+      {
+        "factor_key": "usd_index",
+        "news_exposure_score": 0.133333,
+        "direction_label": "gold_supportive",
+        "themes": [
+          "market_liquidity",
+          "usd_strength"
+        ]
+      },
+      {
+        "factor_key": "eur_usd",
+        "news_exposure_score": 0.133333,
+        "direction_label": "gold_supportive",
+        "themes": [
+          "usd_strength"
+        ]
+      },
+      {
+        "factor_key": "jpy_usd",
+        "news_exposure_score": 0.133333,
+        "direction_label": "gold_supportive",
+        "themes": [
+          "usd_strength"
+        ]
+      },
+      {
+        "factor_key": "vix_index",
+        "news_exposure_score": -0.066667,
+        "direction_label": "gold_pressure",
+        "themes": [
+          "financial_stress",
+          "risk_off_safe_haven"
+        ]
+      },
+      {
+        "factor_key": "fin_stress",
+        "news_exposure_score": -0.066667,
+        "direction_label": "gold_pressure",
+        "themes": [
+          "financial_stress",
+          "risk_off_safe_haven"
+        ]
+      },
+      {
+        "factor_key": "high_yield",
+        "news_exposure_score": -0.066667,
+        "direction_label": "gold_pressure",
+        "themes": [
+          "financial_stress"
+        ]
+      },
+      {
+        "factor_key": "nominal_yield",
+        "news_exposure_score": 0.016667,
+        "direction_label": "mixed_or_neutral",
+        "themes": [
+          "interest_rate_policy"
+        ]
+      },
+      {
+        "factor_key": "fed_bs",
+        "news_exposure_score": 0.016667,
+        "direction_label": "mixed_or_neutral",
+        "themes": [
+          "interest_rate_policy",
+          "market_liquidity"
+        ]
+      },
+      {
+        "factor_key": "inflation",
+        "news_exposure_score": 0.0,
+        "direction_label": "mixed_or_neutral",
+        "themes": [
+          "inflation_pressure"
+        ]
+      },
+      {
+        "factor_key": "ppi_index",
+        "news_exposure_score": 0.0,
+        "direction_label": "mixed_or_neutral",
+        "themes": [
+          "commodity_oil_pressure",
+          "inflation_pressure"
+        ]
+      },
+      {
+        "factor_key": "m2_supply",
+        "news_exposure_score": 0.0,
+        "direction_label": "mixed_or_neutral",
+        "themes": [
+          "inflation_pressure",
+          "market_liquidity"
+        ]
+      },
+      {
+        "factor_key": "gpr_index",
+        "news_exposure_score": 0.0,
+        "direction_label": "mixed_or_neutral",
+        "themes": [
+          "geopolitical_risk"
+        ]
+      },
+      {
+        "factor_key": "policy_unc",
+        "news_exposure_score": 0.0,
+        "direction_label": "mixed_or_neutral",
+        "themes": [
+          "geopolitical_risk"
+        ]
+      },
+      {
+        "factor_key": "gld_tonnes",
+        "news_exposure_score": 0.0,
+        "direction_label": "mixed_or_neutral",
+        "themes": [
+          "central_bank_gold_demand"
+        ]
+      },
+      {
+        "factor_key": "gold_price",
+        "news_exposure_score": 0.0,
+        "direction_label": "mixed_or_neutral",
+        "themes": [
+          "central_bank_gold_demand",
+          "risk_off_safe_haven"
+        ]
+      },
+      {
+        "factor_key": "oil_wti",
+        "news_exposure_score": 0.0,
+        "direction_label": "mixed_or_neutral",
+        "themes": [
+          "commodity_oil_pressure"
+        ]
+      }
+    ],
+    "professor_safe_note": "Factor exposures map classified news themes to existing project factors. This describes narrative alignment, not causality.",
+    "generated_at_utc": "2026-05-05T18:21:16.596920Z"
+  },
+  "diagnostics_snapshot": {
+    "artifact_type": "news_ai_diagnostics_latest",
+    "schema_version": "1.0.0",
+    "phase_key": "phase12_news_ai_context",
+    "run_id": "deepml_run_20260505_182116_news_ai_context",
+    "input_meta": {
+      "news_input_mode": "fallback_project_context",
+      "manual_news_file_exists": false,
+      "manual_news_template_created": "artifacts\\deep_ml\\news_ai\\manual_news_items_template.csv",
+      "manual_news_rows_loaded": 0,
+      "fallback_items_created": 6
+    },
+    "feature_store": {
+      "path": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+      "hash": "sha256:faee8e504db2fa957ec3b2209284f4af4662a36f54ab9928402722133da47331",
+      "rows": 5306,
+      "columns": 56,
+      "first_date": "2006-01-02",
+      "last_date": "2026-05-05"
+    },
+    "governance": {
+      "study_context_path": "artifacts\\deep_ml\\governance\\study_context.json",
+      "study_context_hash": "sha256:3e1961b6f93e2c18cf8569ac6e37a67dca5043f49658d9bb7beef9c70c29acf6",
+      "mode_status_path": "artifacts\\deep_ml\\governance\\deep_ml_mode_status.json",
+      "mode_status_hash": "sha256:70200067cdf60401c74f80dc3ccd3b35fcc4cc7ac7adf769c5703a062c43eca4",
+      "factor_state_table_path": "artifacts\\deep_ml\\data\\factor_state_table.json",
+      "factor_state_table_hash": "sha256:7a7d74ab2fc2b9c5e7061f305694921b0aac27dc4ef6de1b9b67d6a1a3c03e04"
+    },
+    "scoring_method": {
+      "script_version": "news_ai_context_v1_local_rule_based_api_ready",
+      "method": "local rule-based theme scoring with freshness and importance weighting",
+      "themes": [
+        "inflation_pressure",
+        "interest_rate_policy",
+        "real_yield_pressure",
+        "usd_strength",
+        "geopolitical_risk",
+        "financial_stress",
+        "central_bank_gold_demand",
+        "commodity_oil_pressure",
+        "risk_off_safe_haven",
+        "market_liquidity"
+      ],
+      "causality_policy": "No causal claims are generated."
+    },
+    "generated_at_utc": "2026-05-05T18:21:16.600579Z"
+  },
+  "quality_review": {
+    "artifact_type": "deep_ml_quality_review",
+    "schema_version": "1.0.0",
+    "phase_key": "phase12_news_ai_context",
+    "model_key": "news_ai_context",
+    "status": "ready_with_warnings",
+    "blocking_flags": [],
+    "warnings": [
+      "No manual/API news file was provided; used clearly labeled project-context fallback items."
+    ],
+    "acceptance_gate": {
+      "news_or_context_items_scored": true,
+      "input_mode_labeled": true,
+      "theme_scores_exported": true,
+      "factor_exposure_exported": true,
+      "gamma_ready_artifact_exported": true,
+      "timeline_exported": true,
+      "progress_checkpoint_exported": true,
+      "professor_safe_no_causality_claims": true,
+      "frontend_claims_not_hardcoded": true,
+      "required_outputs_exist": true
+    },
+    "professor_safe_summary": "News AI context is reviewed as a narrative classification layer. It summarizes market-relevant signals and does not claim causality.",
+    "generated_at_utc": "2026-05-05T18:21:16.662616Z"
+  },
+  "required_common_artifacts": [
+    "run_summary.json",
+    "news_context_latest.json",
+    "news_items_scored.csv",
+    "news_factor_exposure.json",
+    "news_theme_summary.json",
+    "diagnostics_latest.json",
+    "quality_review.json",
+    "timeline.json",
+    "progress_checkpoint.json"
+  ],
+  "required_page_artifact": "artifacts/deep_ml/pages/page_news_ai_context.json",
+  "professor_safe_summary": "Phase 12 builds a governed narrative context layer for Gamma. It summarizes/classifies news or fallback project context and does not claim causality.",
+  "next_step": {
+    "phase": "Phase 13 \u2014 Gamma News Sensitivity",
+    "script": "deep_ml/scripts/13_build_gamma_news_sensitivity.py",
+    "instruction": "Review Phase 12 report before building Gamma. Gamma should consume news_context_latest.json and produce horizon-level news sensitivity overlays."
+  },
+  "final_instruction": "Send me artifacts/deep_ml/news_ai/phase12_news_ai_context_report.json for review before moving to Gamma.",
+  "generated_at_utc": "2026-05-05T18:21:16.662616Z"
+}

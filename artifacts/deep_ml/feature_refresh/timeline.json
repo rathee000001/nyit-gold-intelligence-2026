@@ -1,0 +1,115 @@
+[
+  {
+    "timestamp_utc": "2026-05-05T09:32:08.097615Z",
+    "event": "phase11_v2_started",
+    "status": "ok",
+    "details": {
+      "refresh_id": "deepml_feature_refresh_20260505_093208"
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T09:32:08.221465Z",
+    "event": "official_base_loaded",
+    "status": "ok",
+    "details": {
+      "base_source_type": "existing_deep_ml_numeric_feature_store_official_rows_only",
+      "path": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+      "hash": "sha256:d8535a105a2dba2a09bbf6917fb3dccd22e37c385c0f00db1ce5454a782f0a19",
+      "original_row_count": 5306,
+      "official_row_count_used": 5282,
+      "original_last_date": "2026-05-05",
+      "official_last_date_used": "2026-03-31",
+      "date_column": "date",
+      "gold_column": "gold_price"
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T09:32:08.238987Z",
+    "event": "yahoo_gold_live_loaded",
+    "status": "ok",
+    "details": {
+      "path": "artifacts\\deep_ml\\source_update\\gold_live_pulled\\gold_live_GC_F.csv",
+      "hash": "sha256:403b5493f0cc7dfefc2a4da987c4749a05c5db0e222008067f5de9e981a51661",
+      "row_count": 24,
+      "first_date": "2026-04-01",
+      "last_date": "2026-05-05",
+      "source_type": "yahoo_gc_f_comex_futures_proxy_delayed"
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T09:32:08.328085Z",
+    "event": "fred_registry_updates_merged",
+    "status": "ok",
+    "details": {
+      "fred_pull_report_path": "artifacts\\deep_ml\\source_update\\fred_registry_pull_report.json",
+      "fred_pull_report_hash": "sha256:88f7efe21b64caf6d0256b24ef989a4bc383f9f09ef7f16c2703b2869098fe61",
+      "fred_pull_status": "ready",
+      "fred_report_script_version": "fred_registry_pull_v2_retry_long_window",
+      "fred_series_attempted": 17,
+      "fred_series_valid_pulled": 17,
+      "fred_series_failed": 0,
+      "fred_latest_valid_observation_date": "2026-05-04",
+      "fred_series_used_in_merge": 16,
+      "fred_series_skipped_in_merge": 1,
+      "fred_columns_updated": [
+        "cap_util",
+        "eur_usd",
+        "fed_bs",
+        "fin_stress",
+        "ind_prod",
+        "inflation",
+        "jpy_usd",
+        "m2_supply",
+        "nominal_yield",
+        "oil_wti",
+        "ppi_index",
+        "real_yield",
+        "tips_curve",
+        "unrate",
+        "usd_index",
+        "vix_index"
+      ],
+      "merge_policy": "FRED values are forward-filled onto post-cutoff Yahoo gold dates; manual factors remain carried forward."
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T09:32:08.466611Z",
+    "event": "feature_store_outputs_written",
+    "status": "ok",
+    "details": {
+      "official_cutoff": "2026-03-31",
+      "row_count": 5306,
+      "column_count": 56,
+      "first_date": "2006-01-02",
+      "last_date": "2026-05-05",
+      "post_cutoff_row_count": 24,
+      "gold_column": "gold_price",
+      "post_cutoff_policy": "Yahoo GC=F updates gold_price; FRED registry CSVs update mapped API factors; manual/local factors carried forward.",
+      "fred_api_factors_updated": 16,
+      "fred_columns_updated": [
+        "cap_util",
+        "eur_usd",
+        "fed_bs",
+        "fin_stress",
+        "ind_prod",
+        "inflation",
+        "jpy_usd",
+        "m2_supply",
+        "nominal_yield",
+        "oil_wti",
+        "ppi_index",
+        "real_yield",
+        "tips_curve",
+        "unrate",
+        "usd_index",
+        "vix_index"
+      ]
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T09:32:08.561444Z",
+    "event": "phase11_v2_completed",
+    "status": "ready",
+    "details": {}
+  }
+]

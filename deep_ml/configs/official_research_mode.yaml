@@ -1,0 +1,11 @@
+mode:
+  name: official_research_mode
+  display_label: Official Research Mode
+  live_mode: false
+  uses_yahoo_gold_api: false
+  description: Frozen, validated research mode. Used for publishable metrics and professor-safe comparison.
+
+cutoff:
+  official_research_cutoff_date: "2026-03-31"
+  effective_data_through_date: "2026-03-31"
+  forecast_start_policy: next_trading_day_after_effective_data_through_date

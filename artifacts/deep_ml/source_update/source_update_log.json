@@ -1,0 +1,29 @@
+{
+  "artifact_type": "source_update_log",
+  "schema_version": "1.0.0",
+  "refresh_id": "deepml_refresh_20260505_084716",
+  "entry_count": 2,
+  "entries": [
+    {
+      "refresh_id": "deepml_refresh_20260505_084716",
+      "source_layer": "main_intelligence_delegated_fred_matrix",
+      "source_key": "main_intelligence_matrix_snapshot",
+      "source_path": null,
+      "status": "not_found",
+      "last_valid_date": null,
+      "observation_count": null,
+      "warning_or_error": null
+    },
+    {
+      "refresh_id": "deepml_refresh_20260505_084716",
+      "source_layer": "gold_live_yahoo",
+      "source_key": "GC=F",
+      "source_path": "artifacts\\deep_ml\\source_update\\gold_live_pulled\\gold_live_GC_F.csv",
+      "status": "completed",
+      "last_valid_date": "2026-05-05",
+      "observation_count": 24,
+      "warning_or_error": null
+    }
+  ],
+  "generated_at_utc": "2026-05-05T08:47:16.893626Z"
+}

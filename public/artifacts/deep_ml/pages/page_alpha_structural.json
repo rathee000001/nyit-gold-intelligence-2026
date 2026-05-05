@@ -1,0 +1,72 @@
+{
+  "artifact_type": "deep_ml_page_bundle",
+  "schema_version": "1.0.0",
+  "page_id": "alpha_structural",
+  "page_title": "Alpha Structural Expert",
+  "page_subtitle": "Anchored-return XGBoost + Optuna with rolling-origin validation, SHAP, and timestamped run lineage.",
+  "generated_at_utc": "2026-05-05T10:18:03Z",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "run_id": "deepml_run_20260505_100053_alpha_structural_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "effective_data_through_date": "2026-05-05",
+  "forecast_start_date": "2026-05-06",
+  "model_key": "alpha_structural",
+  "model_version": "alpha_structural_v4_consistent_timed_xgboost_optuna_rolling_shap",
+  "quality_status": "ready",
+  "quality_flags": [],
+  "kpi_cards": [
+    {
+      "label": "Features Used",
+      "value": 91,
+      "note": "Feature contract plus Alpha engineered features."
+    },
+    {
+      "label": "Optuna Trials / Horizon",
+      "value": 120,
+      "note": "Each horizon tuned separately."
+    },
+    {
+      "label": "Rolling-Origin",
+      "value": "Included",
+      "note": "Horizon 1 refits every origin; others use periodic refit."
+    },
+    {
+      "label": "SHAP",
+      "value": "Included",
+      "note": "XGBoost log-return interpretation."
+    }
+  ],
+  "charts": [
+    {
+      "chart_id": "alpha_forecast_path",
+      "source_artifact": "artifacts/deep_ml/models/alpha_structural/forecast_latest.json",
+      "type": "forecast_path_with_intervals"
+    },
+    {
+      "chart_id": "alpha_static_metrics",
+      "source_artifact": "artifacts/deep_ml/models/alpha_structural/evaluation_by_horizon.json",
+      "type": "metrics_table"
+    },
+    {
+      "chart_id": "alpha_rolling_metrics",
+      "source_artifact": "artifacts/deep_ml/models/alpha_structural/rolling_origin_metrics.json",
+      "type": "metrics_table"
+    },
+    {
+      "chart_id": "alpha_shap",
+      "source_artifact": "artifacts/deep_ml/models/alpha_structural/shap_summary.json",
+      "type": "bar_chart"
+    }
+  ],
+  "allowed_frontend_claims": [
+    "Alpha V4 uses XGBoost + Optuna.",
+    "Alpha V4 includes rolling-origin validation.",
+    "Alpha V4 includes SHAP interpretation.",
+    "Alpha V4 predicts future log returns and converts them into anchored price forecasts."
+  ],
+  "forbidden_frontend_claims": [
+    "Do not claim Alpha is the final Deep ML winner.",
+    "Do not claim SHAP proves causality.",
+    "Do not claim Deep ML beats baseline from Alpha alone."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "artifact_type": "news_ai_diagnostics_latest",
+  "schema_version": "1.0.0",
+  "phase_key": "phase12_news_ai_context",
+  "run_id": "deepml_run_20260505_182116_news_ai_context",
+  "input_meta": {
+    "news_input_mode": "fallback_project_context",
+    "manual_news_file_exists": false,
+    "manual_news_template_created": "artifacts\\deep_ml\\news_ai\\manual_news_items_template.csv",
+    "manual_news_rows_loaded": 0,
+    "fallback_items_created": 6
+  },
+  "feature_store": {
+    "path": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+    "hash": "sha256:faee8e504db2fa957ec3b2209284f4af4662a36f54ab9928402722133da47331",
+    "rows": 5306,
+    "columns": 56,
+    "first_date": "2006-01-02",
+    "last_date": "2026-05-05"
+  },
+  "governance": {
+    "study_context_path": "artifacts\\deep_ml\\governance\\study_context.json",
+    "study_context_hash": "sha256:3e1961b6f93e2c18cf8569ac6e37a67dca5043f49658d9bb7beef9c70c29acf6",
+    "mode_status_path": "artifacts\\deep_ml\\governance\\deep_ml_mode_status.json",
+    "mode_status_hash": "sha256:70200067cdf60401c74f80dc3ccd3b35fcc4cc7ac7adf769c5703a062c43eca4",
+    "factor_state_table_path": "artifacts\\deep_ml\\data\\factor_state_table.json",
+    "factor_state_table_hash": "sha256:7a7d74ab2fc2b9c5e7061f305694921b0aac27dc4ef6de1b9b67d6a1a3c03e04"
+  },
+  "scoring_method": {
+    "script_version": "news_ai_context_v1_local_rule_based_api_ready",
+    "method": "local rule-based theme scoring with freshness and importance weighting",
+    "themes": [
+      "inflation_pressure",
+      "interest_rate_policy",
+      "real_yield_pressure",
+      "usd_strength",
+      "geopolitical_risk",
+      "financial_stress",
+      "central_bank_gold_demand",
+      "commodity_oil_pressure",
+      "risk_off_safe_haven",
+      "market_liquidity"
+    ],
+    "causality_policy": "No causal claims are generated."
+  },
+  "generated_at_utc": "2026-05-05T18:21:16.600579Z"
+}

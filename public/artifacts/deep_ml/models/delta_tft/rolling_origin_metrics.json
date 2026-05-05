@@ -1,0 +1,56 @@
+{
+  "artifact_type": "delta_tft_rolling_origin_metrics",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "delta_version": "v2_calibrated",
+  "method_note": "Each test origin is evaluated with only the historical sequence available at that origin. The trained model is not re-optimized at every origin in Phase 8.",
+  "metrics_by_horizon": {
+    "1": {
+      "count": 841,
+      "mae": 89.40502345023344,
+      "rmse": 181.4299988206014,
+      "mape_pct": 3.1312557944211417,
+      "smape_pct": 3.0929801257346945,
+      "bias_mean_error": -28.27784505121275,
+      "directional_accuracy_pct": 43.54304635761589
+    },
+    "5": {
+      "count": 841,
+      "mae": 209.9134295029594,
+      "rmse": 322.272703956368,
+      "mape_pct": 6.962221728663406,
+      "smape_pct": 7.155172501038499,
+      "bias_mean_error": -96.78417629679284,
+      "directional_accuracy_pct": 57.724550898203596
+    },
+    "10": {
+      "count": 841,
+      "mae": 224.02897939323879,
+      "rmse": 346.9245176872661,
+      "mape_pct": 7.405705244408951,
+      "smape_pct": 7.4975241030883994,
+      "bias_mean_error": -57.99696236840664,
+      "directional_accuracy_pct": 60.40428061831153
+    },
+    "20": {
+      "count": 841,
+      "mae": 204.97083520358402,
+      "rmse": 313.6090791043367,
+      "mape_pct": 6.52118600489038,
+      "smape_pct": 6.767059177273681,
+      "bias_mean_error": -101.59519973677929,
+      "directional_accuracy_pct": 48.989298454221164
+    },
+    "30": {
+      "count": 841,
+      "mae": 270.0689586818839,
+      "rmse": 403.1377834302467,
+      "mape_pct": 8.451159114632247,
+      "smape_pct": 8.858618919397168,
+      "bias_mean_error": -155.21746229783972,
+      "directional_accuracy_pct": 53.62663495838288
+    }
+  },
+  "origin_count": 841,
+  "generated_at_utc": "2026-05-05T17:56:26.001366Z"
+}

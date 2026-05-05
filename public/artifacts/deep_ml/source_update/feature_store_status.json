@@ -1,0 +1,13 @@
+{
+  "artifact_type": "feature_store_status",
+  "status": "readable",
+  "path": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+  "hash": "sha256:f6908e0be4dbc18c3f83852d5f1a279f21f149cfcbc854bff77f3192d3903ddc",
+  "row_count": 5282,
+  "column_count": 47,
+  "date_column_detected": "date",
+  "generated_at_utc": "2026-05-05T08:47:16.647694Z",
+  "first_valid_date": "2006-01-02",
+  "last_valid_date": "2026-03-31",
+  "valid_date_count": 5282
+}

@@ -1,0 +1,50 @@
+{
+  "artifact_type": "delta_tft_diagnostics_latest",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "delta_version": "v2_calibrated",
+  "selected_backend": "custom_tft_style_pytorch_v2_calibrated",
+  "dependency_precheck": {
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch_version": "2.10.0+cu130",
+    "cuda_available": true,
+    "cuda_device_name": "NVIDIA GeForce RTX 5060",
+    "optuna_available": true,
+    "pytorch_forecasting_available": false,
+    "lightning_available": false,
+    "selected_backend": "custom_tft_style_pytorch_v2_calibrated",
+    "backend_note": "V2 uses a controlled custom TFT-style PyTorch model plus validation-based interval calibration. This avoids dependency instability while preserving the required JSON contract."
+  },
+  "selected_config": {
+    "sequence_length": 20,
+    "hidden_size": 192,
+    "attention_heads": 4,
+    "dropout": 0.1719127734289254,
+    "learning_rate": 0.0009439627499961122,
+    "weight_decay": 7.758110844151547e-08,
+    "batch_size": 64,
+    "grn_depth": 1,
+    "best_validation_quantile_loss": 0.012854200267397305
+  },
+  "parameter_count": 923811,
+  "split_sequence_counts": {
+    "train": 3372,
+    "validation": 1044,
+    "test": 841
+  },
+  "quantile_order_checked": true,
+  "interval_calibration_checked": true,
+  "native_quantile_crossing_count_before_ordering": 925,
+  "rolling_origin_metrics_exported": true,
+  "static_metrics_exported": true,
+  "raw_price_anchor_scaled": false,
+  "identifier_feature_cleanup": "dataset_id and *_id numeric identifiers are excluded from features in V2.",
+  "notes": [
+    "Forecast prices are reconstructed from unscaled raw gold price anchors.",
+    "Calibration preserves p50 and widens p10/p90 using validation residual behavior.",
+    "Rolling-origin evaluation uses historical sequences available at each origin and does not re-optimize the model at every origin.",
+    "Native and calibrated uncertainty artifacts are both retained for auditability."
+  ],
+  "generated_at_utc": "2026-05-05T17:57:12.938683Z"
+}

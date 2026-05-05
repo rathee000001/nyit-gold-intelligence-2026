@@ -1,0 +1,132 @@
+{
+  "artifact_type": "delta_tft_variable_selection_summary",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "method": "custom_feature_gate_average",
+  "professor_safe_note": "Variable-selection weights summarize model behavior only; they do not prove causality.",
+  "top_features": [
+    {
+      "feature": "eur_usd",
+      "mean_variable_selection_weight": 0.9327363148331642
+    },
+    {
+      "feature": "gold_return_1",
+      "mean_variable_selection_weight": 0.9125725105404854
+    },
+    {
+      "feature": "gold_lag_1",
+      "mean_variable_selection_weight": 0.8959256410598755
+    },
+    {
+      "feature": "fin_stress",
+      "mean_variable_selection_weight": 0.8524084538221359
+    },
+    {
+      "feature": "tips_curve",
+      "mean_variable_selection_weight": 0.8088589236140251
+    },
+    {
+      "feature": "ind_prod",
+      "mean_variable_selection_weight": 0.8079301193356514
+    },
+    {
+      "feature": "gold_ma_5",
+      "mean_variable_selection_weight": 0.7730282917618752
+    },
+    {
+      "feature": "gold_return_5",
+      "mean_variable_selection_weight": 0.7579067423939705
+    },
+    {
+      "feature": "cap_util",
+      "mean_variable_selection_weight": 0.7532812282443047
+    },
+    {
+      "feature": "fred_api_update_applied",
+      "mean_variable_selection_weight": 0.7305077463388443
+    },
+    {
+      "feature": "nominal_yield",
+      "mean_variable_selection_weight": 0.6842129305005074
+    },
+    {
+      "feature": "jpy_usd",
+      "mean_variable_selection_weight": 0.6668553203344345
+    },
+    {
+      "feature": "oil_wti",
+      "mean_variable_selection_weight": 0.6656881719827652
+    },
+    {
+      "feature": "real_yield",
+      "mean_variable_selection_weight": 0.6383149027824402
+    },
+    {
+      "feature": "gold_ma_60",
+      "mean_variable_selection_weight": 0.5830815955996513
+    },
+    {
+      "feature": "gpr_index",
+      "mean_variable_selection_weight": 0.5748972073197365
+    },
+    {
+      "feature": "gold_volatility_20",
+      "mean_variable_selection_weight": 0.5281297788023949
+    },
+    {
+      "feature": "fed_bs",
+      "mean_variable_selection_weight": 0.5022051557898521
+    },
+    {
+      "feature": "m2_supply",
+      "mean_variable_selection_weight": 0.47740092873573303
+    },
+    {
+      "feature": "gld_tonnes",
+      "mean_variable_selection_weight": 0.4711339399218559
+    },
+    {
+      "feature": "policy_unc",
+      "mean_variable_selection_weight": 0.4602462984621525
+    },
+    {
+      "feature": "gold_lag_20",
+      "mean_variable_selection_weight": 0.4512222558259964
+    },
+    {
+      "feature": "inflation",
+      "mean_variable_selection_weight": 0.40936893969774246
+    },
+    {
+      "feature": "usd_index",
+      "mean_variable_selection_weight": 0.3946009688079357
+    },
+    {
+      "feature": "gold_price",
+      "mean_variable_selection_weight": 0.38958224654197693
+    },
+    {
+      "feature": "gold_price_is_live_extension",
+      "mean_variable_selection_weight": 0.38715287670493126
+    },
+    {
+      "feature": "unrate",
+      "mean_variable_selection_weight": 0.3421773947775364
+    },
+    {
+      "feature": "vix_index",
+      "mean_variable_selection_weight": 0.16305378451943398
+    },
+    {
+      "feature": "gold_price_is_proxy",
+      "mean_variable_selection_weight": 0.125324129126966
+    },
+    {
+      "feature": "ppi_index",
+      "mean_variable_selection_weight": 0.09356309194117785
+    }
+  ],
+  "feature_count": 32,
+  "identifier_feature_policy": "dataset_id and *_id columns are excluded in V2 if detected.",
+  "generated_at_utc": "2026-05-05T17:56:26.078743Z"
+}

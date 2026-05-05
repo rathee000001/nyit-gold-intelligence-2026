@@ -1,0 +1,16 @@
+date,value,value_raw,series_id,factor_key,target_columns,frequency_handling,source_role,official_core,model_policy,pulled_at_utc
+2025-01-01,257.36,257.360,PPIACO,ppi_index,ppi_index,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.136856Z
+2025-02-01,259.498,259.498,PPIACO,ppi_index,ppi_index,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.136856Z
+2025-03-01,258.525,258.525,PPIACO,ppi_index,ppi_index,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.136856Z
+2025-04-01,258.392,258.392,PPIACO,ppi_index,ppi_index,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.136856Z
+2025-05-01,258.678,258.678,PPIACO,ppi_index,ppi_index,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.136856Z
+2025-06-01,260.491,260.491,PPIACO,ppi_index,ppi_index,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.136856Z
+2025-07-01,262.358,262.358,PPIACO,ppi_index,ppi_index,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.136856Z
+2025-08-01,262.11,262.110,PPIACO,ppi_index,ppi_index,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.136856Z
+2025-09-01,262.054,262.054,PPIACO,ppi_index,ppi_index,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.136856Z
+2025-10-01,260.591,260.591,PPIACO,ppi_index,ppi_index,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.136856Z
+2025-11-01,261.914,261.914,PPIACO,ppi_index,ppi_index,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.136856Z
+2025-12-01,261.349,261.349,PPIACO,ppi_index,ppi_index,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.136856Z
+2026-01-01,263.485,263.485,PPIACO,ppi_index,ppi_index,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.136856Z
+2026-02-01,269.296,269.296,PPIACO,ppi_index,ppi_index,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.136856Z
+2026-03-01,274.102,274.102,PPIACO,ppi_index,ppi_index,forward_fill_to_business_days,fred_api_factor,True,include_if_column_exists_and_not_excluded,2026-05-05T09:20:32.136856Z

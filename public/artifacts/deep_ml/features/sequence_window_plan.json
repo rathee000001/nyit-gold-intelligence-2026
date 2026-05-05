@@ -1,0 +1,28 @@
+{
+  "artifact_type": "deep_ml_sequence_window_plan",
+  "schema_version": "1.0.0",
+  "sequence_windows_trading_days": [
+    20,
+    60,
+    120
+  ],
+  "default_sequence_window_trading_days": 60,
+  "forecast_horizons_trading_days": [
+    1,
+    5,
+    10,
+    20,
+    30
+  ],
+  "default_forecast_horizon_trading_days": 30,
+  "models_using_sequences": [
+    "beta_temporal",
+    "delta_tft"
+  ],
+  "window_rules": [
+    "Sequence windows must be built after sorting by date.",
+    "No row may use target values later than its forecast origin.",
+    "Scaling must be fit on training windows only.",
+    "Validation/test transformations must use training-fitted scalers."
+  ]
+}

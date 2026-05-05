@@ -1,0 +1,67 @@
+{
+  "artifact_type": "deep_ml_numeric_feature_store_manifest",
+  "schema_version": "2.0.0",
+  "phase_key": "phase11_governed_feature_store_refresh",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "row_count": 5306,
+  "column_count": 56,
+  "date_range": {
+    "start": "2006-01-02",
+    "end": "2026-05-05"
+  },
+  "official_cutoff": "2026-03-31",
+  "post_cutoff_row_count": 24,
+  "gold_live_source": {
+    "path": "artifacts\\deep_ml\\source_update\\gold_live_pulled\\gold_live_GC_F.csv",
+    "hash": "sha256:403b5493f0cc7dfefc2a4da987c4749a05c5db0e222008067f5de9e981a51661",
+    "row_count": 24,
+    "first_date": "2026-04-01",
+    "last_date": "2026-05-05",
+    "source_type": "yahoo_gc_f_comex_futures_proxy_delayed"
+  },
+  "fred_merge_summary": {
+    "fred_pull_report_path": "artifacts\\deep_ml\\source_update\\fred_registry_pull_report.json",
+    "fred_pull_report_hash": "sha256:88f7efe21b64caf6d0256b24ef989a4bc383f9f09ef7f16c2703b2869098fe61",
+    "fred_pull_status": "ready",
+    "fred_report_script_version": "fred_registry_pull_v2_retry_long_window",
+    "fred_series_attempted": 17,
+    "fred_series_valid_pulled": 17,
+    "fred_series_failed": 0,
+    "fred_latest_valid_observation_date": "2026-05-04",
+    "fred_series_used_in_merge": 16,
+    "fred_series_skipped_in_merge": 1,
+    "fred_columns_updated": [
+      "cap_util",
+      "eur_usd",
+      "fed_bs",
+      "fin_stress",
+      "ind_prod",
+      "inflation",
+      "jpy_usd",
+      "m2_supply",
+      "nominal_yield",
+      "oil_wti",
+      "ppi_index",
+      "real_yield",
+      "tips_curve",
+      "unrate",
+      "usd_index",
+      "vix_index"
+    ],
+    "merge_policy": "FRED values are forward-filled onto post-cutoff Yahoo gold dates; manual factors remain carried forward."
+  },
+  "outputs": {
+    "numeric_feature_store": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+    "refreshed_matrix_csv": "artifacts\\deep_ml\\feature_refresh\\deep_ml_refreshed_matrix.csv",
+    "refreshed_matrix_parquet": "artifacts\\deep_ml\\feature_refresh\\deep_ml_refreshed_matrix.parquet",
+    "factor_state_table": "artifacts\\deep_ml\\data\\factor_state_table.json",
+    "model_feature_plan": "artifacts\\deep_ml\\features\\model_feature_plan.json",
+    "target_plan": "artifacts\\deep_ml\\features\\target_plan.json"
+  },
+  "hashes": {
+    "numeric_feature_store": "sha256:faee8e504db2fa957ec3b2209284f4af4662a36f54ab9928402722133da47331",
+    "refreshed_matrix_csv": "sha256:df95dd1954f3c08a6d1989103f94b7ae834e3b42dac8b33edcafa68a3c9add6d",
+    "refreshed_matrix_parquet": "sha256:faee8e504db2fa957ec3b2209284f4af4662a36f54ab9928402722133da47331"
+  },
+  "generated_at_utc": "2026-05-05T09:32:08.500313Z"
+}

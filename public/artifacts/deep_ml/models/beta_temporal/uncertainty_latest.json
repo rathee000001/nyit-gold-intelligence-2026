@@ -1,0 +1,135 @@
+{
+  "artifact_type": "deep_ml_beta_uncertainty_latest",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:33:29Z",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "run_id": "deepml_run_20260505_102020_beta_temporal_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "model_key": "beta_temporal",
+  "model_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+  "method": "mc_dropout_plus_validation_residual_quantile_calibration",
+  "mc_samples_latest": 120,
+  "mc_samples_eval": 40,
+  "residual_quantiles_by_horizon": {
+    "1": {
+      "q10_residual": -57.98994140625,
+      "q90_residual": 53.858105468750026,
+      "residual_std": 62.103858969351066
+    },
+    "5": {
+      "q10_residual": -80.5336181640625,
+      "q90_residual": 123.17902832031251,
+      "residual_std": 85.44500830064273
+    },
+    "10": {
+      "q10_residual": -74.00511474609375,
+      "q90_residual": 154.69666748046876,
+      "residual_std": 95.82237100808652
+    },
+    "20": {
+      "q10_residual": -79.58294677734375,
+      "q90_residual": 118.64584960937503,
+      "residual_std": 85.29983871121735
+    },
+    "30": {
+      "q10_residual": -73.66318359374999,
+      "q90_residual": 182.85781250000005,
+      "residual_std": 101.92080676363739
+    }
+  },
+  "p10_path": [
+    {
+      "date": "2026-05-06",
+      "value": 4492.65673828125,
+      "horizon": 1
+    },
+    {
+      "date": "2026-05-12",
+      "value": 4401.8232421875,
+      "horizon": 5
+    },
+    {
+      "date": "2026-05-19",
+      "value": 4361.4140625,
+      "horizon": 10
+    },
+    {
+      "date": "2026-06-02",
+      "value": 4380.2744140625,
+      "horizon": 20
+    },
+    {
+      "date": "2026-06-16",
+      "value": 4187.46240234375,
+      "horizon": 30
+    }
+  ],
+  "p50_path": [
+    {
+      "date": "2026-05-06",
+      "value": 4567.82958984375,
+      "horizon": 1
+    },
+    {
+      "date": "2026-05-12",
+      "value": 4533.7998046875,
+      "horizon": 5
+    },
+    {
+      "date": "2026-05-19",
+      "value": 4536.447265625,
+      "horizon": 10
+    },
+    {
+      "date": "2026-06-02",
+      "value": 4508.126953125,
+      "horizon": 20
+    },
+    {
+      "date": "2026-06-16",
+      "value": 4353.2333984375,
+      "horizon": 30
+    }
+  ],
+  "p90_path": [
+    {
+      "date": "2026-05-06",
+      "value": 4663.865234375,
+      "horizon": 1
+    },
+    {
+      "date": "2026-05-12",
+      "value": 4731.34130859375,
+      "horizon": 5
+    },
+    {
+      "date": "2026-05-19",
+      "value": 4776.4853515625,
+      "horizon": 10
+    },
+    {
+      "date": "2026-06-02",
+      "value": 4661.69677734375,
+      "horizon": 20
+    },
+    {
+      "date": "2026-06-16",
+      "value": 4625.63623046875,
+      "horizon": 30
+    }
+  ],
+  "coverage_by_horizon": {
+    "1": 67.80905752753978,
+    "5": 64.50428396572828,
+    "10": 59.118727050183594,
+    "20": 58.50673194614443,
+    "30": 57.2827417380661
+  },
+  "mean_interval_width_by_horizon": {
+    "1": 158.99212646484375,
+    "5": 296.8798828125,
+    "10": 323.1421813964844,
+    "20": 287.14251708984375,
+    "30": 351.5087890625
+  }
+}

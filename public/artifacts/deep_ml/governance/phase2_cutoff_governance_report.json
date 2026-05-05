@@ -1,0 +1,20 @@
+{
+  "artifact_type": "deep_ml_phase2_cutoff_governance_report",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T03:53:49Z",
+  "status": "ready",
+  "mode": "official_research_mode",
+  "study_id": "deepml_study_20260505_035349_officialresearch_20260331",
+  "run_batch_id": "deepml_batch_20260505_035349_officialresearch_20260331",
+  "official_research_cutoff_date": "2026-03-31",
+  "effective_model_data_through_date": "2026-03-31",
+  "forecast_start_date": "2026-04-01",
+  "outputs": [
+    "artifacts/deep_ml/governance/deep_ml_cutoff_governance.json",
+    "artifacts/deep_ml/governance/deep_ml_mode_status.json",
+    "artifacts/deep_ml/governance/effective_data_window.json",
+    "artifacts/deep_ml/governance/forecast_start_decision.json",
+    "artifacts/deep_ml/governance/study_context.json"
+  ],
+  "next_step": "Phase 3: Build factor-state/data-intelligence table."
+}

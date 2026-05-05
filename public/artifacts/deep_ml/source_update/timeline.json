@@ -1,0 +1,99 @@
+[
+  {
+    "timestamp_utc": "2026-05-05T08:47:16.481846Z",
+    "elapsed_seconds": 0.0,
+    "event": "phase10_source_update_refresh_started",
+    "status": "ok",
+    "details": {
+      "refresh_id": "deepml_refresh_20260505_084716",
+      "repo_root": "D:\\nyit-gold-intelligence-2026"
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T08:47:16.535069Z",
+    "elapsed_seconds": 0.053,
+    "event": "environment_status_logged",
+    "status": "ok",
+    "details": {}
+  },
+  {
+    "timestamp_utc": "2026-05-05T08:47:16.535069Z",
+    "elapsed_seconds": 0.053,
+    "event": "required_input_status_logged",
+    "status": "ok",
+    "details": {
+      "all_required_exist": true
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T08:47:16.656910Z",
+    "elapsed_seconds": 0.175,
+    "event": "feature_store_status_logged",
+    "status": "ok",
+    "details": {
+      "status": "readable"
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T08:47:16.656910Z",
+    "elapsed_seconds": 0.175,
+    "event": "main_intelligence_snapshot_status_logged",
+    "status": "ok",
+    "details": {
+      "status": "not_found"
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T08:47:16.659275Z",
+    "elapsed_seconds": 0.177,
+    "event": "accepted_model_manifest_created",
+    "status": "ok",
+    "details": {
+      "all_found": true
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T08:47:16.878479Z",
+    "elapsed_seconds": 0.397,
+    "event": "gold_live_update_layer_completed",
+    "status": "ok",
+    "details": {
+      "status": "completed",
+      "symbol": "GC=F"
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T08:47:16.889807Z",
+    "elapsed_seconds": 0.408,
+    "event": "manual_csv_inventory_completed",
+    "status": "ok",
+    "details": {
+      "file_count": 0
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T08:47:16.892553Z",
+    "elapsed_seconds": 0.411,
+    "event": "news_input_inventory_completed",
+    "status": "ok",
+    "details": {
+      "file_count": 0
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T08:47:16.894609Z",
+    "elapsed_seconds": 0.413,
+    "event": "source_update_manifest_and_log_created",
+    "status": "ok",
+    "details": {
+      "entry_count": 2
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T08:47:16.974169Z",
+    "elapsed_seconds": 0.492,
+    "event": "secret_leak_scan_completed",
+    "status": "pass",
+    "details": {}
+  }
+]
