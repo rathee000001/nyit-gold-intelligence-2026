@@ -1,11 +1,12 @@
 {
   "artifact_type": "deep_ml_progress_checkpoint",
   "model_key": "delta_tft",
-  "step": "started",
+  "step": "tuning_trial_completed",
   "status": "running",
-  "updated_at_utc": "2026-05-05T21:21:05.323851Z",
-  "updated_at_local": "2026-05-05T17:21:05.323851-04:00",
+  "updated_at_utc": "2026-05-05T21:27:39.207919Z",
+  "updated_at_local": "2026-05-05T17:27:39.207919-04:00",
   "payload": {
-    "run_id": "deepml_run_20260505_212105_delta_tft_v2"
+    "trial_number": 10,
+    "score": 0.014788628762794865
   }
 }
