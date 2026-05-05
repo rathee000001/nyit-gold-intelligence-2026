@@ -1,0 +1,1038 @@
+===== EPSILON EXPERT ENSEMBLE FILE LIST =====
+
+
+    Directory: D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\models\epsilon_expert_ensemble
+
+
+Mode                 LastWriteTime         Length Name                                                                                                                                                   
+----                 -------------         ------ ----                                                                                                                                                   
+-a----        05-05-2026     14:14           2753 component_diagnostics.json                                                                                                                             
+-a----        05-05-2026     14:14          69950 component_evaluation_by_horizon.json                                                                                                                   
+-a----        05-05-2026     14:14        5976440 component_forecasts.csv                                                                                                                                
+-a----        05-05-2026     14:14           3637 component_models.json                                                                                                                                  
+-a----        05-05-2026     14:14           3039 component_ranking.json                                                                                                                                 
+-a----        05-05-2026     14:14            515 component_training_log.csv                                                                                                                             
+-a----        05-05-2026     14:14           4035 component_weights.json                                                                                                                                 
+-a----        05-05-2026     14:13            380 dependency_precheck.json                                                                                                                               
+-a----        05-05-2026     14:14           1312 diagnostics_latest.json                                                                                                                                
+-a----        05-05-2026     14:14           3312 ensemble_forecast.json                                                                                                                                 
+-a----        05-05-2026     14:14          90974 ensemble_selection_details.json                                                                                                                        
+-a----        05-05-2026     14:13           1498 epsilon_dataset_manifest.json                                                                                                                          
+-a----        05-05-2026     14:14           6060 evaluation_by_horizon.json                                                                                                                             
+-a----        05-05-2026     14:14           2565 expert_disagreement.json                                                                                                                               
+-a----        05-05-2026     14:14           3312 forecast_latest.json                                                                                                                                   
+-a----        05-05-2026     14:14           8990 interpretability_latest.json                                                                                                                           
+-a----        05-05-2026     14:14           2280 page_bundle.json                                                                                                                                       
+-a----        05-05-2026     14:14         135159 phase9_epsilon_expert_report.json                                                                                                                      
+-a----        05-05-2026     14:14            515 progress_checkpoint.json                                                                                                                               
+-a----        05-05-2026     14:14            822 quality_review.json                                                                                                                                    
+-a----        05-05-2026     14:14           1852 residual_interval_calibration.json                                                                                                                     
+-a----        05-05-2026     14:14           1858 rolling_origin_metrics.json                                                                                                                            
+-a----        05-05-2026     14:14         726820 rolling_origin_predictions.csv                                                                                                                         
+-a----        05-05-2026     14:14           4249 run_summary.json                                                                                                                                       
+-a----        05-05-2026     14:13            999 sanity_checks.json                                                                                                                                     
+-a----        05-05-2026     14:14           2209 timeline.json                                                                                                                                          
+-a----        05-05-2026     14:14           5794 uncertainty_latest.json                                                                                                                                
+
+
+
+
+===== evaluation_rollforward.csv HEAD =====
+
+===== rolling_origin_predictions.csv HEAD =====
+split,origin_index,origin_date,horizon_trading_days,raw_gold_price_anchor,actual_gold_price,predicted_log_return_p10,predicted_log_return_p50,predicted_log_return_p90,forecast_price_p10,forecast_price_p50,forecast_price_p90
+test_rolling_origin,4435,2023-01-02,1,1961.7,1852.5,-0.02474015850521214,-0.0008967155944960095,0.02479308899192402,1913.7626647767272,1959.9417014829478,2010.9445423209215
+test_rolling_origin,4435,2023-01-02,5,1961.7,1974.4,-0.08556750865753301,-0.004483577972480272,0.07548460158738748,1800.8232754639175,1952.9242531651644,2115.5102700636703
+test_rolling_origin,4435,2023-01-02,10,1961.7,2005.9,-0.09022211221031003,-0.008967155944960552,0.06957145278515141,1792.4606345353866,1944.1877650001093,2103.037855009016
+test_rolling_origin,4435,2023-01-02,20,1961.7,1940.8,-0.07095679640899012,-0.017934311889921013,0.045572528048726545,1827.327739201608,1926.8318629638175,2053.168012620819
+test_rolling_origin,4435,2023-01-02,30,1961.7,1868.5,-0.08988104214592607,-0.026901467834881582,0.05719449940523283,1793.0720934686547,1909.6308982956728,2077.1690721148216
+test_rolling_origin,4436,2023-01-03,1,1852.5,1852.5,-0.025480338809374857,-0.00023052620925313386,0.026935362329504827,1805.8939627104419,1852.0729994166625,1903.0758402546362
+test_rolling_origin,4436,2023-01-03,5,1852.5,1974.4,-0.08692893451984679,-0.0011526310462657387,0.08306622217916154,1698.2650033900336,1850.3659810912804,2012.9519979897864
+
+===== forecast_latest.json HEAD =====
+{
+  "artifact_type": "epsilon_forecast_latest",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "phase_2_deep_ml",
+  "model_key": "epsilon_expert_ensemble",
+  "model_name": "Epsilon Expert Ensemble",
+  "frequency": "trading_day",
+  "target": "anchored_future_log_return",
+  "forecast_reconstruction": "raw_gold_price_anchor * exp(predicted_log_return)",
+  "raw_price_anchor_scaled": false,
+  "selected_ensemble_strategy": "best_validation_component::rolling_mean_20_gap",
+  "latest_origin": {
+    "origin_index": 5305,
+    "origin_date": "2026-05-05",
+    "raw_gold_price_anchor": 4561.7001953125
+  },
+  "path": [
+    {
+      "horizon_trading_days": 1,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-05-06",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "predicted_log_return_p10": -0.009808147385671488,
+      "predicted_log_return_p50": 0.00036293704773311957,
+      "predicted_log_return_p90": 0.011477547949632917,
+      "forecast_price_p10": 4517.177069085264,
+      "forecast_price_p50": 4563.356105791484,
+      "forecast_price_p90": 4614.358946629458
+    },
+    {
+      "horizon_trading_days": 5,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-05-12",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "predicted_log_return_p10": -0.032034378178009554,
+      "predicted_log_return_p50": 0.0018146852386654074,
+      "predicted_log_return_p90": 0.036773367094459206,
+      "forecast_price_p10": 4417.8847831919265,
+      "forecast_price_p50": 4569.985760893173,
+      "forecast_price_p90": 4732.571777791679
+    },
+    {
+      "horizon_trading_days": 10,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-05-19",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "predicted_log_return_p10": -0.030072815661485584,
+      "predicted_log_return_p50": 0.0036293704773306063,
+      "predicted_log_return_p90": 0.03773742813446531,
+      "forecast_price_p10": 4426.559245353457,
+      "forecast_price_p50": 4578.28637581818,
+      "forecast_price_p90": 4737.136465827087
+    },
+    {
+      "horizon_trading_days": 20,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-06-02",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "predicted_log_return_p10": -0.014634359123884859,
+      "predicted_log_return_p50": 0.007258740954661231,
+      "predicted_log_return_p90": 0.03438221820985889,
+      "forecast_price_p10": 4495.42873932711,
+      "forecast_price_p50": 4594.932863089319,
+      "forecast_price_p90": 4721.26901274632
+    },
+    {
+      "horizon_trading_days": 30,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-06-16",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "predicted_log_return_p10": -0.014711700178493353,
+      "predicted_log_return_p50": 0.01088811143199194,
+      "predicted_log_return_p90": 0.04657317181166813,
+      "forecast_price_p10": 4495.081071572162,
+      "forecast_price_p50": 4611.63987639918,
+      "forecast_price_p90": 4779.178050218329
+    }
+  ],
+  "generated_at_utc": "2026-05-05T18:14:27.166539Z",
+  "generated_at_local": "2026-05-05T14:14:27.166539-04:00"
+}
+
+===== evaluation_by_horizon.json HEAD =====
+{
+  "artifact_type": "epsilon_evaluation_by_horizon",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "point_forecast": "ensemble_p50",
+  "selected_ensemble_strategy": "best_validation_component::rolling_mean_20_gap",
+  "train": {
+    "1": {
+      "count": 3391,
+      "mae": 23.55633096969374,
+      "rmse": 59.082457250680854,
+      "mape_pct": 2.0908317541642276,
+      "smape_pct": 2.0667184267557444,
+      "bias_mean_error": -0.26768983820723935,
+      "directional_accuracy_pct": 70.67014795474326
+    },
+    "5": {
+      "count": 3391,
+      "mae": 69.14256600677444,
+      "rmse": 112.68698319199927,
+      "mape_pct": 6.076961500745253,
+      "smape_pct": 6.023836331326126,
+      "bias_mean_error": -1.361949129155802,
+      "directional_accuracy_pct": 84.26470588235294
+    },
+    "10": {
+      "count": 3391,
+      "mae": 82.91724396148862,
+      "rmse": 121.84685667102012,
+      "mape_pct": 7.328467132792765,
+      "smape_pct": 7.293494393625282,
+      "bias_mean_error": -2.821314008242785,
+      "directional_accuracy_pct": 79.20289855072464
+    },
+    "20": {
+      "count": 3391,
+      "mae": 54.85989757973573,
+      "rmse": 90.37822829678075,
+      "mape_pct": 4.696071694861655,
+      "smape_pct": 4.735971416417158,
+      "bias_mean_error": -5.1759118421581345,
+      "directional_accuracy_pct": 59.06674542232723
+    },
+    "30": {
+      "count": 3391,
+      "mae": 85.04824914978596,
+      "rmse": 122.36834364568276,
+      "mape_pct": 7.378745937450469,
+      "smape_pct": 7.396621962071247,
+      "bias_mean_error": -7.696653326152035,
+      "directional_accuracy_pct": 74.43232084930699
+    }
+  },
+  "validation": {
+    "1": {
+      "count": 1044,
+      "mae": 33.48925680073467,
+      "rmse": 67.02756247650179,
+      "mape_pct": 1.9623782354787942,
+      "smape_pct": 1.9554137458453698,
+      "bias_mean_error": -0.7329546455820379,
+      "directional_accuracy_pct": 57.85714285714286
+    },
+    "5": {
+      "count": 1044,
+      "mae": 84.51793482029323,
+      "rmse": 124.85980994566063,
+      "mape_pct": 5.0138678867192175,
+      "smape_pct": 5.016344696715523,
+      "bias_mean_error": -3.383923793868974,
+      "directional_accuracy_pct": 68.19923371647509
+    },
+    "10": {
+      "count": 1044,
+      "mae": 87.67192670605817,
+      "rmse": 120.7533938438067,
+      "mape_pct": 5.169695853483079,
+      "smape_pct": 5.177651512037836,
+      "bias_mean_error": -6.394810448531383,
+      "directional_accuracy_pct": 71.0450623202301
+    },
+    "20": {
+      "count": 1044,
+      "mae": 71.91048030061174,
+      "rmse": 98.44327994337554,
+      "mape_pct": 4.173672052738827,
+      "smape_pct": 4.215436185521511,
+      "bias_mean_error": -13.391251176384808,
+      "directional_accuracy_pct": 64.36781609195403
+    },
+    "30": {
+      "count": 1044,
+      "mae": 88.16934616734503,
+      "rmse": 116.7719642082381,
+      "mape_pct": 5.136382883731691,
+      "smape_pct": 5.201442018653529,
+      "bias_mean_error": -19.7424847814979,
+      "directional_accuracy_pct": 70.88122605363985
+    }
+  },
+  "test": {
+    "1": {
+      "count": 841,
+      "mae": 76.83296647652638,
+      "rmse": 180.39901246611296,
+      "mape_pct": 2.6968669409615678,
+      "smape_pct": 2.631288506983979,
+      "bias_mean_error": -3.508720261585214,
+      "directional_accuracy_pct": 54.80132450331126
+    },
+    "5": {
+      "count": 841,
+      "mae": 207.7053694798343,
+      "rmse": 340.6795073508072,
+      "mape_pct": 7.000097868151533,
+      "smape_pct": 6.986191968127821,
+      "bias_mean_error": -17.68844674183934,
+      "directional_accuracy_pct": 65.38922155688623
+    },
+    "10": {
+      "count": 841,
+      "mae": 230.92031906136378,
+      "rmse": 360.22238882184536,
+      "mape_pct": 7.718813018174093,
+      "smape_pct": 7.755681010821676,
+      "bias_mean_error": -36.21122331955034,
+      "directional_accuracy_pct": 70.03567181926277
+    },
+    "20": {
+      "count": 841,
+      "mae": 193.34631602029498,
+      "rmse": 299.6560886128633,
+      "mape_pct": 6.1510643391551545,
+      "smape_pct": 6.329462752370891,
+      "bias_mean_error": -74.76593055459733,
+      "directional_accuracy_pct": 63.614744351961946
+    },
+    "30": {
+      "count": 841,
+      "mae": 252.83081762659708,
+      "rmse": 380.09359383275165,
+      "mape_pct": 7.883998601949116,
+      "smape_pct": 8.14915494663158,
+      "bias_mean_error": -111.23919981197541,
+      "directional_accuracy_pct": 66.94411414982164
+    }
+  },
+  "naive_baseline_test": {
+    "1": {
+      "count": 841,
+      "mae": 76.46653983353151,
+      "rmse": 181.30243894372768,
+      "mape_pct": 2.6868154882257254,
+      "smape_pct": 2.6201878923748327,
+      "bias_mean_error": -2.9836385255648037,
+      "directional_accuracy_pct": 0.0
+    },
+    "5": {
+      "count": 841,
+      "mae": 212.84975029726513,
+      "rmse": 349.8451422263255,
+      "mape_pct": 7.179240632900696,
+      "smape_pct": 7.15972770861588,
+      "bias_mean_error": -15.090939357907253,
+      "directional_accuracy_pct": 0.0
+    },
+    "10": {
+      "count": 841,
+      "mae": 243.27263936626784,
+      "rmse": 379.46335907638183,
+      "mape_pct": 8.147543265231237,
+      "smape_pct": 8.174809868440695,
+      "bias_mean_error": -31.08588596629756,
+      "directional_accuracy_pct": 0.0
+    },
+    "20": {
+      "count": 841,
+      "mae": 202.02900130517983,
+      "rmse": 317.55783389836364,
+      "mape_pct": 6.486117002309358,
+      "smape_pct": 6.677740664515223,
+      "bias_mean_error": -64.79349595440695,
+      "directional_accuracy_pct": 0.0
+    },
+    "30": {
+      "count": 841,
+      "mae": 276.9936385255648,
+      "rmse": 417.8873113705281,
+      "mape_pct": 8.808974132889997,
+      "smape_pct": 9.075281221810975,
+      "bias_mean_error": -96.69706348469084,
+      "directional_accuracy_pct": 0.0
+    }
+  },
+  "generated_at_utc": "2026-05-05T18:14:26.262332Z"
+}
+
+===== component_ranking.json HEAD =====
+{
+  "artifact_type": "epsilon_component_ranking",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "ranking_basis": "validation_average_mape_pct",
+  "ranking": [
+    {
+      "rank": 1,
+      "component_key": "rolling_mean_20_gap",
+      "validation_average_mape_pct": 4.291199382430322,
+      "test_average_mape_pct": 6.290168153678293
+    },
+    {
+      "rank": 2,
+      "component_key": "rolling_mean_60_gap",
+      "validation_average_mape_pct": 4.32547387471195,
+      "test_average_mape_pct": 6.341524475961073
+    },
+    {
+      "rank": 3,
+      "component_key": "rolling_median_60_gap",
+      "validation_average_mape_pct": 4.352165527514963,
+      "test_average_mape_pct": 6.347890200849258
+    },
+    {
+      "rank": 4,
+      "component_key": "arima_like",
+      "validation_average_mape_pct": 4.492334038175935,
+      "test_average_mape_pct": 6.722406430109563
+    },
+    {
+      "rank": 5,
+      "component_key": "naive_last_value",
+      "validation_average_mape_pct": 4.5908928551268415,
+      "test_average_mape_pct": 6.661738104311402
+    },
+    {
+      "rank": 6,
+      "component_key": "ets_like",
+      "validation_average_mape_pct": 4.591187700441659,
+      "test_average_mape_pct": 6.685937685258843
+    },
+    {
+      "rank": 7,
+      "component_key": "theta_like_252",
+      "validation_average_mape_pct": 4.6750343750505685,
+      "test_average_mape_pct": 6.733419491358046
+    },
+    {
+      "rank": 8,
+      "component_key": "drift_252",
+      "validation_average_mape_pct": 4.787560464298922,
+      "test_average_mape_pct": 6.885079095721049
+    },
+    {
+      "rank": 9,
+      "component_key": "momentum_20",
+      "validation_average_mape_pct": 5.476231097487159,
+      "test_average_mape_pct": 7.871497055142963
+    },
+    {
+      "rank": 10,
+      "component_key": "elasticnet_lag_expert",
+      "validation_average_mape_pct": 6.426514947052186,
+      "test_average_mape_pct": 24.601932795295244
+    },
+    {
+      "rank": 11,
+      "component_key": "ridge_lag_expert",
+      "validation_average_mape_pct": 6.6238026972909365,
+      "test_average_mape_pct": 25.064712458450572
+    },
+    {
+      "rank": 12,
+      "component_key": "gradient_boosting_lag_expert",
+      "validation_average_mape_pct": 7.080925813285494,
+      "test_average_mape_pct": 10.272393391221673
+    },
+    {
+      "rank": 13,
+      "component_key": "extratrees_lag_expert",
+      "validation_average_mape_pct": 7.34672502533368,
+      "test_average_mape_pct": 10.041956009067246
+    },
+    {
+      "rank": 14,
+      "component_key": "xgboost_lag_expert",
+      "validation_average_mape_pct": 7.638655581569239,
+      "test_average_mape_pct": 11.81323264144624
+    },
+    {
+      "rank": 15,
+      "component_key": "random_forest_lag_expert",
+      "validation_average_mape_pct": 10.165455994823924,
+      "test_average_mape_pct": 13.214143954712728
+    }
+  ],
+  "generated_at_utc": "2026-05-05T18:14:26.230441Z"
+}
+
+===== component_weights.json HEAD =====
+{
+  "artifact_type": "epsilon_component_weights",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "method": "horizon_specific_inverse_validation_mape",
+  "weights_by_horizon": {
+    "1": {
+      "naive_last_value": 0.0844628466324067,
+      "drift_252": 0.08396263662386035,
+      "rolling_mean_20_gap": 0.08446993013427115,
+      "rolling_mean_60_gap": 0.08444375279111556,
+      "rolling_median_60_gap": 0.08444444419987127,
+      "momentum_20": 0.08171726987027332,
+      "theta_like_252": 0.08421798880549172,
+      "ets_like": 0.08381548141506,
+      "arima_like": 0.07590382015928866,
+      "ridge_lag_expert": 0.0488651963163474,
+      "elasticnet_lag_expert": 0.055764966885138344,
+      "random_forest_lag_expert": 0.028000247746468223,
+      "extratrees_lag_expert": 0.06062528892098422,
+      "gradient_boosting_lag_expert": 0.02551993660939293,
+      "xgboost_lag_expert": 0.033786192890030126
+    },
+    "5": {
+      "naive_last_value": 0.07857907598798955,
+      "drift_252": 0.0776248613064588,
+      "rolling_mean_20_gap": 0.08070513142367877,
+      "rolling_mean_60_gap": 0.08056312485792992,
+      "rolling_median_60_gap": 0.08057584782959948,
+      "momentum_20": 0.07386038288747131,
+      "theta_like_252": 0.07814549486558911,
+      "ets_like": 0.07863205055636041,
+      "arima_like": 0.0801885545800309,
+      "ridge_lag_expert": 0.05401901399845495,
+      "elasticnet_lag_expert": 0.06205369551944446,
+      "random_forest_lag_expert": 0.028202078486606316,
+      "extratrees_lag_expert": 0.05322676727706566,
+      "gradient_boosting_lag_expert": 0.04660001671830785,
+      "xgboost_lag_expert": 0.04702390370501245
+    },
+    "10": {
+      "naive_last_value": 0.07822924805698521,
+      "drift_252": 0.0762122377228907,
+      "rolling_mean_20_gap": 0.08268828918220862,
+      "rolling_mean_60_gap": 0.08244009591701634,
+      "rolling_median_60_gap": 0.08237528731011376,
+      "momentum_20": 0.06963255199732947,
+      "theta_like_252": 0.07729009362160803,
+      "ets_like": 0.07824744694669222,
+      "arima_like": 0.08489844451461642,
+      "ridge_lag_expert": 0.052665466749765126,
+      "elasticnet_lag_expert": 0.05947590323281457,
+      "random_forest_lag_expert": 0.02792849216693305,
+      "extratrees_lag_expert": 0.048747425383440374,
+      "gradient_boosting_lag_expert": 0.04979966109068523,
+      "xgboost_lag_expert": 0.0493693561069008
+    },
+    "20": {
+      "naive_last_value": 0.07185498617567912,
+      "drift_252": 0.06766581350182178,
+      "rolling_mean_20_gap": 0.07688827439560711,
+      "rolling_mean_60_gap": 0.07592268317303714,
+      "rolling_median_60_gap": 0.07479460775924687,
+      "momentum_20": 0.05801172184317352,
+      "theta_like_252": 0.07003209632259719,
+      "ets_like": 0.07195851915881361,
+      "arima_like": 0.0695310578871871,
+      "ridge_lag_expert": 0.0512749437303858,
+      "elasticnet_lag_expert": 0.04653735468995557,
+      "random_forest_lag_expert": 0.07356971176559003,
+      "extratrees_lag_expert": 0.06273010535840051,
+      "gradient_boosting_lag_expert": 0.08025177665413466,
+      "xgboost_lag_expert": 0.04897634758436993
+    },
+    "30": {
+      "naive_last_value": 0.07737088874367912,
+      "drift_252": 0.0714798937895853,
+      "rolling_mean_20_gap": 0.08905426557229777,
+      "rolling_mean_60_gap": 0.08746580736493596,
+      "rolling_median_60_gap": 0.08636856334416243,
+      "momentum_20": 0.05575924363082733,
+      "theta_like_252": 0.07479280720997039,
+      "ets_like": 0.07740385656156547,
+      "arima_like": 0.08195596575304401,
+      "ridge_lag_expert": 0.05819042462503627,
+      "elasticnet_lag_expert": 0.05346045554187689,
+      "random_forest_lag_expert": 0.04199843759591763,
+      "extratrees_lag_expert": 0.03655730241844781,
+      "gradient_boosting_lag_expert": 0.05984569408867675,
+      "xgboost_lag_expert": 0.04829639375997695
+    }
+  },
+  "generated_at_utc": "2026-05-05T18:14:26.231105Z"
+}
+
+===== expert_disagreement.json HEAD =====
+{
+  "artifact_type": "epsilon_expert_disagreement",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "test_disagreement_by_horizon": {
+    "1": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 147.0848184890393,
+      "median_price_disagreement_std": 101.75491723911837,
+      "mean_disagreement_pct_of_forecast": 4.975061449052455
+    },
+    "5": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 305.3567187334331,
+      "median_price_disagreement_std": 206.0243868851536,
+      "mean_disagreement_pct_of_forecast": 10.394664003352826
+    },
+    "10": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 326.18395839095245,
+      "median_price_disagreement_std": 220.73572156867152,
+      "mean_disagreement_pct_of_forecast": 11.186093296286515
+    },
+    "20": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 248.2241733299967,
+      "median_price_disagreement_std": 178.7287314398156,
+      "mean_disagreement_pct_of_forecast": 8.211200709035097
+    },
+    "30": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 418.2587933551633,
+      "median_price_disagreement_std": 304.45431044250466,
+      "mean_disagreement_pct_of_forecast": 14.372256168153292
+    }
+  },
+  "validation_disagreement_by_horizon": {
+    "1": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 42.552680699097955,
+      "median_price_disagreement_std": 49.43290884055685,
+      "mean_disagreement_pct_of_forecast": 2.420056181324198
+    },
+    "5": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 85.27698482001055,
+      "median_price_disagreement_std": 94.30134817119276,
+      "mean_disagreement_pct_of_forecast": 5.017129248465291
+    },
+    "10": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 91.3435525085796,
+      "median_price_disagreement_std": 100.82743660663425,
+      "mean_disagreement_pct_of_forecast": 5.381772568196318
+    },
+    "20": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 51.92680266341305,
+      "median_price_disagreement_std": 51.737541299406175,
+      "mean_disagreement_pct_of_forecast": 3.015793111496834
+    },
+    "30": {
+      "component_count": 15,
+      "mean_price_disagreement_std": 88.70166296221618,
+      "median_price_disagreement_std": 91.1121644106922,
+      "mean_disagreement_pct_of_forecast": 5.247193341383198
+    }
+  },
+  "generated_at_utc": "2026-05-05T18:14:26.986123Z"
+}
+
+===== residual_interval_summary.json HEAD =====
+
+===== uncertainty_latest.json HEAD =====
+{
+  "artifact_type": "epsilon_uncertainty_latest",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "method": "validation_residual_empirical_interval_calibration",
+  "coverage_target_pct": 80.0,
+  "coverage_by_horizon": {
+    "1": {
+      "count": 841,
+      "coverage_p10_p90_pct": 70.03567181926277,
+      "mean_interval_width_price": 97.18187754419434,
+      "median_interval_width_price": 97.18187754419432,
+      "mean_interval_width_pct_of_anchor": 3.8294160768144185,
+      "calibration_error_vs_80pct_abs": 9.964328180737226
+    },
+    "5": {
+      "count": 841,
+      "coverage_p10_p90_pct": 64.56599286563615,
+      "mean_interval_width_price": 314.6869945997528,
+      "median_interval_width_price": 314.6869945997528,
+      "mean_interval_width_pct_of_anchor": 12.400125072050495,
+      "calibration_error_vs_80pct_abs": 15.434007134363853
+    },
+    "10": {
+      "count": 841,
+      "coverage_p10_p90_pct": 60.523186682520816,
+      "mean_interval_width_price": 310.57722047362915,
+      "median_interval_width_price": 310.57722047362904,
+      "mean_interval_width_pct_of_anchor": 12.238180936905577,
+      "calibration_error_vs_80pct_abs": 19.476813317479184
+    },
+    "20": {
+      "count": 841,
+      "coverage_p10_p90_pct": 53.62663495838288,
+      "mean_interval_width_price": 225.84027341921086,
+      "median_interval_width_price": 225.84027341921092,
+      "mean_interval_width_pct_of_anchor": 8.899152760558652,
+      "calibration_error_vs_80pct_abs": 26.37336504161712
+    },
+    "30": {
+      "count": 841,
+      "coverage_p10_p90_pct": 52.318668252080855,
+      "mean_interval_width_price": 284.09697864616726,
+      "median_interval_width_price": 284.0969786461674,
+      "mean_interval_width_pct_of_anchor": 11.194736764653381,
+      "calibration_error_vs_80pct_abs": 27.681331747919145
+    }
+  },
+  "validation_coverage_by_horizon": {
+    "1": {
+      "count": 1044,
+      "coverage_p10_p90_pct": 79.88505747126436,
+      "mean_interval_width_price": 97.18187754419434,
+      "median_interval_width_price": 97.18187754419432,
+      "mean_interval_width_pct_of_anchor": 5.79205153654375,
+      "calibration_error_vs_80pct_abs": 0.11494252873563937
+    },
+    "5": {
+      "count": 1044,
+      "coverage_p10_p90_pct": 79.88505747126436,
+      "mean_interval_width_price": 314.68699459975284,
+      "median_interval_width_price": 314.6869945997528,
+      "mean_interval_width_pct_of_anchor": 18.755382553428763,
+      "calibration_error_vs_80pct_abs": 0.11494252873563937
+    },
+    "10": {
+      "count": 1044,
+      "coverage_p10_p90_pct": 79.88505747126436,
+      "mean_interval_width_price": 310.5772204736291,
+      "median_interval_width_price": 310.57722047362904,
+      "mean_interval_width_pct_of_anchor": 18.51043952347714,
+      "calibration_error_vs_80pct_abs": 0.11494252873563937
+    },
+    "20": {
+      "count": 1044,
+      "coverage_p10_p90_pct": 79.88505747126436,
+      "mean_interval_width_price": 225.84027341921066,
+      "median_interval_width_price": 225.8402734192107,
+      "mean_interval_width_pct_of_anchor": 13.460107334068944,
+      "calibration_error_vs_80pct_abs": 0.11494252873563937
+    },
+    "30": {
+      "count": 1044,
+      "coverage_p10_p90_pct": 79.88505747126436,
+      "mean_interval_width_price": 284.0969786461669,
+      "median_interval_width_price": 284.0969786461669,
+      "mean_interval_width_pct_of_anchor": 16.93221394026536,
+      "calibration_error_vs_80pct_abs": 0.11494252873563937
+    }
+  },
+  "residual_interval_calibration": {
+    "artifact_type": "epsilon_residual_interval_calibration",
+    "schema_version": "1.0.0",
+    "model_key": "epsilon_expert_ensemble",
+    "target_coverage_pct": 80.0,
+    "p50_preserved": true,
+    "professor_safe_note": "Intervals use validation residual behavior. They estimate uncertainty but do not guarantee future ranges.",
+    "by_horizon": {
+      "1": {
+        "status": "ready",
+        "method": "validation_residual_empirical_quantiles",
+        "target_coverage_pct": 80.0,
+        "lower_residual_p10": -46.179036706220536,
+        "upper_residual_p90": 51.00284083797378,
+        "median_abs_residual": 9.90543494919666
+      },
+      "5": {
+        "status": "ready",
+        "method": "validation_residual_empirical_quantiles",
+        "target_coverage_pct": 80.0,
+        "lower_residual_p10": -152.1009777012468,
+        "upper_residual_p90": 162.58601689850587,
+        "median_abs_residual": 45.76984843042385
+      },
+      "10": {
+        "status": "ready",
+        "method": "validation_residual_empirical_quantiles",
+        "target_coverage_pct": 80.0,
+        "lower_residual_p10": -151.72713046472265,
+        "upper_residual_p90": 158.85009000890642,
+        "median_abs_residual": 58.288538391464385
+      },
+      "20": {
+        "status": "ready",
+        "method": "validation_residual_empirical_quantiles",
+        "target_coverage_pct": 80.0,
+        "lower_residual_p10": -99.50412376220947,
+        "upper_residual_p90": 126.33614965700131,
+        "median_abs_residual": 52.48317796993922
+      },
+      "30": {
+        "status": "ready",
+        "method": "validation_residual_empirical_quantiles",
+        "target_coverage_pct": 80.0,
+        "lower_residual_p10": -116.55880482701814,
+        "upper_residual_p90": 167.5381738191489,
+        "median_abs_residual": 67.94323272251722
+      }
+    },
+    "generated_at_utc": "2026-05-05T18:14:26.267180Z"
+  },
+  "professor_safe_note": "Epsilon intervals are calibrated from validation residual behavior. They estimate uncertainty but do not guarantee future ranges.",
+  "generated_at_utc": "2026-05-05T18:14:26.269264Z"
+}
+
+===== component_forecast_table.csv HEAD =====
+
+===== latest_component_forecasts.csv HEAD =====
+
+===== quality_review.json HEAD =====
+{
+  "artifact_type": "deep_ml_quality_review",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "status": "ready",
+  "generated_at_utc": "2026-05-05T18:14:27.208154Z",
+  "blocking_flags": [],
+  "warnings": [],
+  "acceptance_gate": {
+    "raw_price_anchor_passes": true,
+    "component_forecasts_exported": true,
+    "component_metrics_exported": true,
+    "ensemble_weights_exported": true,
+    "static_metrics_exported": true,
+    "rolling_origin_metrics_exported": true,
+    "uncertainty_intervals_exported": true,
+    "coverage_metrics_exported": true,
+    "all_shared_contract_files_exist": true
+  },
+  "professor_safe_summary": "Epsilon is reviewed as a statistical and machine-learning benchmark ensemble. It explains component behavior and disagreement, not causality."
+}
+
+===== phase9_epsilon_expert_report.json HEAD =====
+{
+  "artifact_type": "phase9_epsilon_expert_report",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "Phase 9 \u2014 Epsilon Expert Ensemble",
+  "model_key": "epsilon_expert_ensemble",
+  "model_name": "Epsilon Expert Ensemble",
+  "status": "ready",
+  "accepted_previous_checkpoints": {
+    "alpha_structural_v4": {
+      "status": "accepted",
+      "source_status": "read_if_available"
+    },
+    "beta_temporal_v2": {
+      "status": "accepted",
+      "source_status": "read_if_available"
+    },
+    "delta_tft_v2": {
+      "status": "accepted",
+      "source_status": "completed_pending_quality_review"
+    }
+  },
+  "run_summary": {
+    "artifact_type": "deep_ml_model_run",
+    "schema_version": "1.0.0",
+    "project": "Gold Nexus Alpha",
+    "phase": "phase_2_deep_ml",
+    "model_key": "epsilon_expert_ensemble",
+    "model_name": "Epsilon Expert Ensemble",
+    "family": "statistical_ml_benchmark_ensemble",
+    "status": "completed_pending_quality_review",
+    "run": {
+      "run_id": "deepml_run_20260505_181309_epsilon_expert_ensemble",
+      "study_id": "deepml_feature_refresh_20260505_093208",
+      "generated_at_utc": "2026-05-05T18:13:09.545801Z",
+      "completed_at_utc": "2026-05-05T18:14:27.166539Z",
+      "generated_at_local": "2026-05-05T14:13:09.545801-04:00",
+      "timezone_local": "America/New_York",
+      "git_commit_sha": "be6e3bf",
+      "code_version": "epsilon_expert_ensemble_v2_best_validation_component",
+      "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+    },
+    "data_signature": {
+      "feature_store_path": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+      "feature_store_hash": "sha256:faee8e504db2fa957ec3b2209284f4af4662a36f54ab9928402722133da47331",
+      "model_feature_plan_hash": "sha256:85724e0a89c330d95593cd64d6ab105ae39f5e3a252e41b54f2ab93c1f695712",
+      "target_plan_hash": "sha256:e0e880e347304630f181bd52057d517baacc58dc2498f488a3a796dcc92c8553",
+      "factor_state_table_hash": "sha256:7a7d74ab2fc2b9c5e7061f305694921b0aac27dc4ef6de1b9b67d6a1a3c03e04",
+      "effective_data_through_date": "2026-05-05",
+      "forecast_start_date": "2026-05-06"
+    },
+    "model": {
+      "target": "anchored_future_log_return",
+      "forecast_reconstruction": "raw_gold_price_anchor * exp(predicted_log_return)",
+      "horizons": [
+        1,
+        5,
+        10,
+        20,
+        30
+      ],
+      "training_window": {
+        "train_start": "2006-01-02",
+        "train_end": "2018-12-31",
+        "validation_start": "2019-01-01",
+        "validation_end": "2022-12-30",
+        "test_start": "2023-01-02",
+        "test_end": "2026-05-05"
+      },
+      "component_count": 15,
+      "selected_ensemble_strategy": "best_validation_component::rolling_mean_20_gap",
+      "uncertainty_method": "validation_residual_empirical_interval_calibration"
+    },
+    "features": {
+      "used_count": 29,
+      "used": [
+        "gold_price",
+        "gold_lag_1",
+        "gold_lag_5",
+        "gold_lag_20",
+        "gold_return_1",
+        "gold_return_5",
+        "gold_ma_5",
+        "gold_ma_20",
+        "gold_ma_60",
+        "gold_volatility_20",
+        "real_yield",
+        "nominal_yield",
+        "tips_curve",
+        "fed_bs",
+        "m2_supply",
+        "inflation",
+        "usd_index",
+        "eur_usd",
+        "jpy_usd",
+        "vix_index",
+        "fin_stress",
+        "gpr_index",
+        "policy_unc",
+        "oil_wti",
+        "ppi_index",
+        "gld_tonnes",
+        "unrate",
+        "ind_prod",
+        "cap_util"
+      ],
+      "excluded": [
+        "dataset_id and *_id columns excluded as identifiers",
+        "high_yield excluded from official core mode when detected"
+      ]
+    },
+    "professor_safe_summary": "Epsilon Expert Ensemble is a rigorous statistical and machine-learning benchmark layer. It compares classical benchmarks, statistical models, lag-feature ML components, and ensemble combinations under the shared Deep ML artifact contract.",
+    "ai_grounding": {
+      "allowed_claims": [
+        "Epsilon compares benchmark, statistical, and lag-feature ML components.",
+        "Epsilon component weights are based on validation performance and are horizon-specific.",
+        "Epsilon residual intervals estimate uncertainty but do not guarantee future prices.",
+        "Epsilon explains component behavior and disagreement, not causality."
+      ],
+      "forbidden_claims": [
+        "Epsilon proves causal drivers of gold prices.",
+        "Epsilon guarantees future price ranges.",
+        "Epsilon is the final Deep ML winner before Omega Fusion and final evaluation."
+      ],
+      "source_artifacts": [
+        "run_summary.json",
+        "forecast_latest.json",
+        "evaluation_by_horizon.json",
+        "uncertainty_latest.json",
+        "interpretability_latest.json",
+        "diagnostics_latest.json",
+        "component_ranking.json",
+        "component_weights.json"
+      ]
+    }
+  },
+  "sanity_checks": {
+    "artifact_type": "epsilon_expert_sanity_checks",
+    "schema_version": "1.0.0",
+    "model_key": "epsilon_expert_ensemble",
+    "status": "pass",
+    "checks": [
+      {
+        "name": "raw_origin_gold_min_gt_100",
+        "status": "pass",
+        "value": 524.75
+      },
+      {
+        "name": "raw_origin_gold_max_lt_10000",
+        "status": "pass",
+        "value": 5414.48
+      },
+      {
+        "name": "target_gold_min_gt_100",
+        "status": "pass",
+        "value": 524.75
+      },
+      {
+        "name": "naive_mape_not_near_100pct",
+        "status": "pass",
+        "value": 6.661738104311402
+      },
+      {
+        "name": "split_origins_sufficient",
+        "status": "pass",
+        "value": {
+          "train": 3391,
+          "validation": 1044,
+          "test": 841
+        }
+      },
+      {
+        "name": "raw_price_anchor_preserved",
+        "status": "pass",
+        "value": "anchors are raw gold prices and are not scaled"
+      }
+    ],
+    "generated_at_utc": "2026-05-05T18:13:10.054723Z"
+  },
+  "component_summary": {
+    "component_count": 15,
+    "component_keys": [
+      "naive_last_value",
+      "drift_252",
+      "rolling_mean_20_gap",
+      "rolling_mean_60_gap",
+      "rolling_median_60_gap",
+      "momentum_20",
+      "theta_like_252",
+      "ets_like",
+      "arima_like",
+      "ridge_lag_expert",
+      "elasticnet_lag_expert",
+      "random_forest_lag_expert",
+      "extratrees_lag_expert",
+      "gradient_boosting_lag_expert",
+      "xgboost_lag_expert"
+    ],
+    "selected_ensemble_strategy": "best_validation_component::rolling_mean_20_gap",
+    "top_components_by_validation": [
+      {
+        "rank": 1,
+        "component_key": "rolling_mean_20_gap",
+        "validation_average_mape_pct": 4.291199382430322,
+        "test_average_mape_pct": 6.290168153678293
+      },
+      {
+        "rank": 2,
+        "component_key": "rolling_mean_60_gap",
+        "validation_average_mape_pct": 4.32547387471195,
+        "test_average_mape_pct": 6.341524475961073
+      },
+      {
+        "rank": 3,
+        "component_key": "rolling_median_60_gap",
+        "validation_average_mape_pct": 4.352165527514963,
+        "test_average_mape_pct": 6.347890200849258
+      },
+      {
+        "rank": 4,
+        "component_key": "arima_like",
+        "validation_average_mape_pct": 4.492334038175935,
+        "test_average_mape_pct": 6.722406430109563
+      },
+      {
+        "rank": 5,
+        "component_key": "naive_last_value",
+        "validation_average_mape_pct": 4.5908928551268415,
+        "test_average_mape_pct": 6.661738104311402
+      },
+      {
+        "rank": 6,
+        "component_key": "ets_like",
+        "validation_average_mape_pct": 4.591187700441659,
+        "test_average_mape_pct": 6.685937685258843
+      },
+      {
+        "rank": 7,
+        "component_key": "theta_like_252",
+        "validation_average_mape_pct": 4.6750343750505685,
+        "test_average_mape_pct": 6.733419491358046
+      },
+      {
+        "rank": 8,
+        "component_key": "drift_252",
+        "validation_average_mape_pct": 4.787560464298922,
+        "test_average_mape_pct": 6.885079095721049
+      },
+      {
+        "rank": 9,
+        "component_key": "momentum_20",
+        "validation_average_mape_pct": 5.476231097487159,
+        "test_average_mape_pct": 7.871497055142963
+      },
+      {
+        "rank": 10,
+        "component_key": "elasticnet_lag_expert",
+        "validation_average_mape_pct": 6.426514947052186,
+        "test_average_mape_pct": 24.601932795295244
+      }

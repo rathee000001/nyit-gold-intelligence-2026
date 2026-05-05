@@ -1,17 +1,17 @@
 [
   {
-    "timestamp_utc": "2026-05-05T17:31:27.442063Z",
+    "timestamp_utc": "2026-05-05T21:21:05.322851Z",
     "elapsed_seconds": 0.0,
     "event": "phase8_delta_tft_v2_started",
     "status": "ok",
     "details": {
-      "run_id": "deepml_run_20260505_173127_delta_tft_v2",
+      "run_id": "deepml_run_20260505_212105_delta_tft_v2",
       "repo_root": "D:\\nyit-gold-intelligence-2026"
     }
   },
   {
-    "timestamp_utc": "2026-05-05T17:31:27.482650Z",
-    "elapsed_seconds": 0.041,
+    "timestamp_utc": "2026-05-05T21:21:05.374105Z",
+    "elapsed_seconds": 0.051,
     "event": "dependency_precheck_completed",
     "status": "ok",
     "details": {
@@ -28,8 +28,8 @@
     }
   },
   {
-    "timestamp_utc": "2026-05-05T17:31:27.653957Z",
-    "elapsed_seconds": 0.212,
+    "timestamp_utc": "2026-05-05T21:21:05.578047Z",
+    "elapsed_seconds": 0.255,
     "event": "effective_data_filter_applied",
     "status": "ok",
     "details": {
@@ -39,8 +39,8 @@
     }
   },
   {
-    "timestamp_utc": "2026-05-05T17:31:27.682944Z",
-    "elapsed_seconds": 0.241,
+    "timestamp_utc": "2026-05-05T21:21:05.607783Z",
+    "elapsed_seconds": 0.285,
     "event": "pre_training_sanity_checks_completed",
     "status": "ok",
     "details": {
@@ -48,107 +48,12 @@
     }
   },
   {
-    "timestamp_utc": "2026-05-05T17:31:27.687513Z",
-    "elapsed_seconds": 0.245,
+    "timestamp_utc": "2026-05-05T21:21:05.615752Z",
+    "elapsed_seconds": 0.293,
     "event": "optuna_tuning_started",
     "status": "ok",
     "details": {
       "max_trials": 70
     }
-  },
-  {
-    "timestamp_utc": "2026-05-05T17:55:53.877395Z",
-    "elapsed_seconds": 1466.435,
-    "event": "tuning_completed",
-    "status": "ok",
-    "details": {
-      "sequence_length": 20,
-      "hidden_size": 192,
-      "attention_heads": 4,
-      "dropout": 0.1719127734289254,
-      "learning_rate": 0.0009439627499961122,
-      "weight_decay": 7.758110844151547e-08,
-      "batch_size": 64,
-      "grn_depth": 1,
-      "best_validation_quantile_loss": 0.012854200267397305
-    }
-  },
-  {
-    "timestamp_utc": "2026-05-05T17:55:53.881656Z",
-    "elapsed_seconds": 1466.44,
-    "event": "final_evaluation_model_training_started",
-    "status": "ok",
-    "details": {
-      "sequence_length": 20,
-      "hidden_size": 192,
-      "attention_heads": 4,
-      "dropout": 0.1719127734289254,
-      "learning_rate": 0.0009439627499961122,
-      "weight_decay": 7.758110844151547e-08,
-      "batch_size": 64,
-      "grn_depth": 1,
-      "best_validation_quantile_loss": 0.012854200267397305
-    }
-  },
-  {
-    "timestamp_utc": "2026-05-05T17:56:25.574293Z",
-    "elapsed_seconds": 1498.132,
-    "event": "final_evaluation_model_training_completed",
-    "status": "ok",
-    "details": {
-      "best_validation_loss": 0.013693928115946405,
-      "epochs": 58
-    }
-  },
-  {
-    "timestamp_utc": "2026-05-05T17:56:25.576297Z",
-    "elapsed_seconds": 1498.134,
-    "event": "static_evaluation_started",
-    "status": "ok",
-    "details": {}
-  },
-  {
-    "timestamp_utc": "2026-05-05T17:56:26.007379Z",
-    "elapsed_seconds": 1498.565,
-    "event": "static_rolling_uncertainty_calibration_completed",
-    "status": "ok",
-    "details": {}
-  },
-  {
-    "timestamp_utc": "2026-05-05T17:56:26.007379Z",
-    "elapsed_seconds": 1498.565,
-    "event": "interpretability_export_started",
-    "status": "ok",
-    "details": {}
-  },
-  {
-    "timestamp_utc": "2026-05-05T17:56:26.095781Z",
-    "elapsed_seconds": 1498.654,
-    "event": "final_forecast_model_training_started",
-    "status": "ok",
-    "details": {}
-  },
-  {
-    "timestamp_utc": "2026-05-05T17:57:12.928569Z",
-    "elapsed_seconds": 1545.487,
-    "event": "final_forecast_model_training_completed",
-    "status": "ok",
-    "details": {
-      "epochs": 60
-    }
-  },
-  {
-    "timestamp_utc": "2026-05-05T17:57:13.019562Z",
-    "elapsed_seconds": 1545.577,
-    "event": "public_artifacts_copied",
-    "status": "ok",
-    "details": {}
-  },
-  {
-    "timestamp_utc": "2026-05-05T17:57:13.020378Z",
-    "elapsed_seconds": 1545.578,
-    "event": "phase8_delta_tft_v2_completed",
-    "status": "ready",
-    "details": {}
   }
 ]

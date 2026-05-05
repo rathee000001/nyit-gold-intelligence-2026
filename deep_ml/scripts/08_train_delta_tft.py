@@ -1030,21 +1030,45 @@ def prediction_rows(predictions: Dict[str, Any], df: pd.DataFrame, date_col: str
     for i, idx in enumerate(origin_indices):
         origin_date = pd.Timestamp(df.loc[int(idx), date_col]).date().isoformat()
         for hi, h in enumerate(HORIZONS):
+            actual_value = safe_float(actual[i, hi])
+            p10_value = safe_float(prices[i, hi, 0])
+            p50_value = safe_float(prices[i, hi, 1])
+            p90_value = safe_float(prices[i, hi, 2])
+            p10_log = safe_float(logs[i, hi, 0])
+            p50_log = safe_float(logs[i, hi, 1])
+            p90_log = safe_float(logs[i, hi, 2])
+            anchor_value = safe_float(anchors[i])
+
             rows.append(
                 {
+                    # Standard frontend-compatible fields
+                    "date": origin_date,
                     "split": split_name,
+                    "horizon": int(h),
+                    "gold_price": anchor_value,
+                    "actual_target": actual_value,
+                    "prediction": p50_value,
+                    "naive_prediction": anchor_value,
+                    "predicted_log_return": p50_log,
+                    "error": safe_float(p50_value - actual_value) if p50_value is not None and actual_value is not None else None,
+
+                    # Delta-specific quantile fields
                     "interval_type": interval_type,
                     "origin_index": int(idx),
                     "origin_date": origin_date,
                     "horizon_trading_days": int(h),
-                    "raw_gold_price_anchor": float(anchors[i]),
-                    "actual_gold_price": safe_float(actual[i, hi]),
-                    "predicted_log_return_p10": safe_float(logs[i, hi, 0]),
-                    "predicted_log_return_p50": safe_float(logs[i, hi, 1]),
-                    "predicted_log_return_p90": safe_float(logs[i, hi, 2]),
-                    "forecast_price_p10": safe_float(prices[i, hi, 0]),
-                    "forecast_price_p50": safe_float(prices[i, hi, 1]),
-                    "forecast_price_p90": safe_float(prices[i, hi, 2]),
+                    "raw_gold_price_anchor": anchor_value,
+                    "actual_gold_price": actual_value,
+                    "predicted_log_return_p10": p10_log,
+                    "predicted_log_return_p50": p50_log,
+                    "predicted_log_return_p90": p90_log,
+                    "forecast_price_p10": p10_value,
+                    "forecast_price_p50": p50_value,
+                    "forecast_price_p90": p90_value,
+                    "p10": p10_value,
+                    "p50": p50_value,
+                    "p90": p90_value,
+                    "interval_width_price": safe_float(p90_value - p10_value) if p90_value is not None and p10_value is not None else None,
                 }
             )
     return rows
@@ -1641,6 +1665,52 @@ def main() -> None:
         }
         write_json(paths.model_dir / "evaluation_by_horizon.json", evaluation_by_horizon)
 
+        # Full professor-style static split forecast paths for frontend:
+        # train -> validation -> test. These are the main Delta page graph sources.
+        evaluation_rollforward_rows: List[Dict[str, Any]] = []
+        native_evaluation_rollforward_rows: List[Dict[str, Any]] = []
+
+        for split_name, calibrated_pred, native_pred in [
+            ("train", pred_train_cal, pred_train_native),
+            ("validation", pred_val_cal, pred_val_native),
+            ("test", pred_test_cal, pred_test_native),
+        ]:
+            evaluation_rollforward_rows.extend(
+                prediction_rows(calibrated_pred, df, date_col, split_name, "calibrated")
+            )
+            native_evaluation_rollforward_rows.extend(
+                prediction_rows(native_pred, df, date_col, split_name, "native")
+            )
+
+        write_csv_dicts(paths.model_dir / "evaluation_rollforward.csv", evaluation_rollforward_rows)
+        write_csv_dicts(paths.model_dir / "native_evaluation_rollforward.csv", native_evaluation_rollforward_rows)
+
+        write_json(
+            paths.model_dir / "evaluation_rollforward_summary.json",
+            {
+                "artifact_type": "delta_tft_evaluation_rollforward_summary",
+                "schema_version": "1.0.0",
+                "model_key": MODEL_KEY,
+                "delta_version": "v2_calibrated",
+                "purpose": "Frontend-ready static split forecast path for train, validation, and test.",
+                "main_frontend_source": "evaluation_rollforward.csv",
+                "native_audit_source": "native_evaluation_rollforward.csv",
+                "rows": len(evaluation_rollforward_rows),
+                "native_rows": len(native_evaluation_rollforward_rows),
+                "splits": {
+                    "train": int(sum(1 for r in evaluation_rollforward_rows if r.get("split") == "train")),
+                    "validation": int(sum(1 for r in evaluation_rollforward_rows if r.get("split") == "validation")),
+                    "test": int(sum(1 for r in evaluation_rollforward_rows if r.get("split") == "test")),
+                },
+                "horizons": HORIZONS,
+                "quantiles": QUANTILE_KEYS,
+                "p50_preserved_by_calibration": True,
+                "professor_safe_note": "This artifact supports frontend train/validation/test graphing. p10/p90 intervals are calibrated estimates, not guarantees.",
+                "generated_at_utc": iso_utc(),
+            },
+        )
+
+        # Keep original test and rolling-origin tables for audit/backward compatibility.
         write_csv_dicts(paths.model_dir / "rolling_origin_predictions.csv", prediction_rows(pred_test_cal, df, date_col, "test_rolling_origin", "calibrated"))
         write_csv_dicts(paths.model_dir / "native_quantile_forecast_table.csv", prediction_rows(pred_test_native, df, date_col, "test", "native"))
         write_csv_dicts(paths.model_dir / "calibrated_quantile_forecast_table.csv", prediction_rows(pred_test_cal, df, date_col, "test", "calibrated"))
@@ -1862,6 +1932,25 @@ def main() -> None:
             ),
             "rolling_origin_metrics_exported": True,
             "static_metrics_exported": True,
+            "evaluation_rollforward_exported": True,
+            "native_evaluation_rollforward_exported": True,
+            "evaluation_rollforward_contract": {
+                "main_frontend_source": "evaluation_rollforward.csv",
+                "splits": ["train", "validation", "test"],
+                "fields": [
+                    "date",
+                    "split",
+                    "horizon",
+                    "gold_price",
+                    "actual_target",
+                    "prediction",
+                    "naive_prediction",
+                    "forecast_price_p10",
+                    "forecast_price_p50",
+                    "forecast_price_p90",
+                    "interval_width_price",
+                ],
+            },
             "raw_price_anchor_scaled": False,
             "identifier_feature_cleanup": "dataset_id and *_id numeric identifiers are excluded from features in V2.",
             "notes": [
@@ -1970,8 +2059,14 @@ def main() -> None:
                 {"label": "Interval Policy", "value": "Validation-calibrated p10-p90"},
             ],
             "chart_artifacts": {
+                "evaluation_rollforward": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv",
+                "native_evaluation_rollforward": "artifacts/deep_ml/models/delta_tft/native_evaluation_rollforward.csv",
+                "evaluation_rollforward_summary": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward_summary.json",
                 "forecast_latest": "artifacts/deep_ml/models/delta_tft/forecast_latest.json",
                 "evaluation_by_horizon": "artifacts/deep_ml/models/delta_tft/evaluation_by_horizon.json",
+                "rolling_origin_predictions": "artifacts/deep_ml/models/delta_tft/rolling_origin_predictions.csv",
+                "calibrated_quantile_forecast_table": "artifacts/deep_ml/models/delta_tft/calibrated_quantile_forecast_table.csv",
+                "native_quantile_forecast_table": "artifacts/deep_ml/models/delta_tft/native_quantile_forecast_table.csv",
                 "uncertainty_latest": "artifacts/deep_ml/models/delta_tft/uncertainty_latest.json",
                 "interval_calibration_summary": "artifacts/deep_ml/models/delta_tft/interval_calibration_summary.json",
                 "variable_selection_summary": "artifacts/deep_ml/models/delta_tft/variable_selection_summary.json",
@@ -2030,6 +2125,9 @@ def main() -> None:
                 "optuna_trials.csv",
                 "training_history.csv",
                 "tft_dataset_manifest.json",
+                "evaluation_rollforward.csv",
+                "native_evaluation_rollforward.csv",
+                "evaluation_rollforward_summary.json",
                 "rolling_origin_predictions.csv",
                 "rolling_origin_metrics.json",
                 "native_quantile_forecast_table.csv",

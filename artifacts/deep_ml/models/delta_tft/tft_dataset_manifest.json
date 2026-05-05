@@ -94,11 +94,5 @@
   "feature_store_hash": "sha256:faee8e504db2fa957ec3b2209284f4af4662a36f54ab9928402722133da47331",
   "model_feature_plan_hash": "sha256:85724e0a89c330d95593cd64d6ab105ae39f5e3a252e41b54f2ab93c1f695712",
   "target_plan_hash": "sha256:e0e880e347304630f181bd52057d517baacc58dc2498f488a3a796dcc92c8553",
-  "generated_at_utc": "2026-05-05T17:31:27.687513Z",
-  "selected_sequence_length": 20,
-  "sequence_counts": {
-    "train": 3372,
-    "validation": 1044,
-    "test": 841
-  }
+  "generated_at_utc": "2026-05-05T21:21:05.607783Z"
 }
