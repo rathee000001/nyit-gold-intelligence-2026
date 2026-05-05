@@ -1,0 +1,42 @@
+{
+  "artifact_type": "epsilon_evaluation_rollforward_summary",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "script_version": "epsilon_expert_ensemble_v2_best_validation_component",
+  "purpose": "Frontend-ready static split forecast path for train, validation, and test.",
+  "main_frontend_source": "evaluation_rollforward.csv",
+  "rows": 26380,
+  "splits": {
+    "train": 16955,
+    "validation": 5220,
+    "test": 4205
+  },
+  "horizons": [
+    1,
+    5,
+    10,
+    20,
+    30
+  ],
+  "selected_ensemble_strategy": "best_validation_component::rolling_mean_20_gap",
+  "selected_component_key": "rolling_mean_20_gap",
+  "standard_frontend_fields": [
+    "date",
+    "split",
+    "horizon",
+    "gold_price",
+    "actual_target",
+    "prediction",
+    "naive_prediction",
+    "predicted_log_return",
+    "error"
+  ],
+  "epsilon_interval_fields": [
+    "forecast_price_p10",
+    "forecast_price_p50",
+    "forecast_price_p90",
+    "interval_width_price"
+  ],
+  "professor_safe_note": "This artifact supports frontend train/validation/test graphing. Epsilon residual intervals are uncertainty estimates, not guarantees.",
+  "generated_at_utc": "2026-05-05T21:53:53.818174Z"
+}

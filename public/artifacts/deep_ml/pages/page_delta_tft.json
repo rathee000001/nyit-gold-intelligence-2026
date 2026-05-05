@@ -7,7 +7,7 @@
   "subtitle": "Calibrated temporal-fusion quantile forecasting for Gold Nexus Alpha Phase 2.",
   "model_key": "delta_tft",
   "delta_version": "v2_calibrated",
-  "status": "ready",
+  "status": "ready_quality_review_required",
   "summary_cards": [
     {
       "label": "Backend",
@@ -31,8 +31,14 @@
     }
   ],
   "chart_artifacts": {
+    "evaluation_rollforward": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv",
+    "native_evaluation_rollforward": "artifacts/deep_ml/models/delta_tft/native_evaluation_rollforward.csv",
+    "evaluation_rollforward_summary": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward_summary.json",
     "forecast_latest": "artifacts/deep_ml/models/delta_tft/forecast_latest.json",
     "evaluation_by_horizon": "artifacts/deep_ml/models/delta_tft/evaluation_by_horizon.json",
+    "rolling_origin_predictions": "artifacts/deep_ml/models/delta_tft/rolling_origin_predictions.csv",
+    "calibrated_quantile_forecast_table": "artifacts/deep_ml/models/delta_tft/calibrated_quantile_forecast_table.csv",
+    "native_quantile_forecast_table": "artifacts/deep_ml/models/delta_tft/native_quantile_forecast_table.csv",
     "uncertainty_latest": "artifacts/deep_ml/models/delta_tft/uncertainty_latest.json",
     "interval_calibration_summary": "artifacts/deep_ml/models/delta_tft/interval_calibration_summary.json",
     "variable_selection_summary": "artifacts/deep_ml/models/delta_tft/variable_selection_summary.json",
@@ -58,5 +64,5 @@
     "temporal_attention_summary.json",
     "quantile_coverage_summary.json"
   ],
-  "generated_at_utc": "2026-05-05T17:57:13.000806Z"
+  "generated_at_utc": "2026-05-05T21:50:28.879514Z"
 }

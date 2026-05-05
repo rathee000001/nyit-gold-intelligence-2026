@@ -18,16 +18,16 @@
   },
   "selected_config": {
     "sequence_length": 20,
-    "hidden_size": 192,
-    "attention_heads": 4,
-    "dropout": 0.1719127734289254,
-    "learning_rate": 0.0009439627499961122,
-    "weight_decay": 7.758110844151547e-08,
+    "hidden_size": 128,
+    "attention_heads": 2,
+    "dropout": 0.35866006974821746,
+    "learning_rate": 0.0018085126845320196,
+    "weight_decay": 1.4566369505688751e-06,
     "batch_size": 64,
-    "grn_depth": 1,
-    "best_validation_quantile_loss": 0.012854200267397305
+    "grn_depth": 3,
+    "best_validation_quantile_loss": 0.013257150099996258
   },
-  "parameter_count": 923811,
+  "parameter_count": 527395,
   "split_sequence_counts": {
     "train": 3372,
     "validation": 1044,
@@ -35,9 +35,32 @@
   },
   "quantile_order_checked": true,
   "interval_calibration_checked": true,
-  "native_quantile_crossing_count_before_ordering": 925,
+  "native_quantile_crossing_count_before_ordering": 3587,
   "rolling_origin_metrics_exported": true,
   "static_metrics_exported": true,
+  "evaluation_rollforward_exported": true,
+  "native_evaluation_rollforward_exported": true,
+  "evaluation_rollforward_contract": {
+    "main_frontend_source": "evaluation_rollforward.csv",
+    "splits": [
+      "train",
+      "validation",
+      "test"
+    ],
+    "fields": [
+      "date",
+      "split",
+      "horizon",
+      "gold_price",
+      "actual_target",
+      "prediction",
+      "naive_prediction",
+      "forecast_price_p10",
+      "forecast_price_p50",
+      "forecast_price_p90",
+      "interval_width_price"
+    ]
+  },
   "raw_price_anchor_scaled": false,
   "identifier_feature_cleanup": "dataset_id and *_id numeric identifiers are excluded from features in V2.",
   "notes": [
@@ -46,5 +69,5 @@
     "Rolling-origin evaluation uses historical sequences available at each origin and does not re-optimize the model at every origin.",
     "Native and calibrated uncertainty artifacts are both retained for auditability."
   ],
-  "generated_at_utc": "2026-05-05T17:57:12.938683Z"
+  "generated_at_utc": "2026-05-05T21:50:28.824512Z"
 }

@@ -137,8 +137,8 @@
         "median_abs_residual": 67.94323272251722
       }
     },
-    "generated_at_utc": "2026-05-05T18:14:26.267180Z"
+    "generated_at_utc": "2026-05-05T21:53:53.303939Z"
   },
   "professor_safe_note": "Epsilon intervals are calibrated from validation residual behavior. They estimate uncertainty but do not guarantee future ranges.",
-  "generated_at_utc": "2026-05-05T18:14:26.269264Z"
+  "generated_at_utc": "2026-05-05T21:53:53.305940Z"
 }

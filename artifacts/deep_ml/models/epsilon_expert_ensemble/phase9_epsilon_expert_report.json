@@ -30,13 +30,13 @@
     "family": "statistical_ml_benchmark_ensemble",
     "status": "completed_pending_quality_review",
     "run": {
-      "run_id": "deepml_run_20260505_181309_epsilon_expert_ensemble",
+      "run_id": "deepml_run_20260505_215232_epsilon_expert_ensemble",
       "study_id": "deepml_feature_refresh_20260505_093208",
-      "generated_at_utc": "2026-05-05T18:13:09.545801Z",
-      "completed_at_utc": "2026-05-05T18:14:27.166539Z",
-      "generated_at_local": "2026-05-05T14:13:09.545801-04:00",
+      "generated_at_utc": "2026-05-05T21:52:32.892570Z",
+      "completed_at_utc": "2026-05-05T21:53:54.576613Z",
+      "generated_at_local": "2026-05-05T17:52:32.892570-04:00",
       "timezone_local": "America/New_York",
-      "git_commit_sha": "be6e3bf",
+      "git_commit_sha": "a1af654",
       "code_version": "epsilon_expert_ensemble_v2_best_validation_component",
       "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
     },
@@ -175,7 +175,7 @@
         "value": "anchors are raw gold prices and are not scaled"
       }
     ],
-    "generated_at_utc": "2026-05-05T18:13:10.054723Z"
+    "generated_at_utc": "2026-05-05T21:52:33.350984Z"
   },
   "component_summary": {
     "component_count": 15,
@@ -323,7 +323,7 @@
         "arima_like": 0.0695310578871871,
         "ridge_lag_expert": 0.0512749437303858,
         "elasticnet_lag_expert": 0.04653735468995557,
-        "random_forest_lag_expert": 0.07356971176559003,
+        "random_forest_lag_expert": 0.07356971176559002,
         "extratrees_lag_expert": 0.06273010535840051,
         "gradient_boosting_lag_expert": 0.08025177665413466,
         "xgboost_lag_expert": 0.04897634758436993
@@ -452,7 +452,7 @@
               "rmse": 53.56752605581247,
               "mape_pct": 2.099314399470927,
               "smape_pct": 2.078742496122009,
-              "bias_mean_error": -0.4621870699328001,
+              "bias_mean_error": -0.46218706993280007,
               "directional_accuracy_pct": 78.85117493472585
             },
             "5": {
@@ -622,7 +622,7 @@
               "rmse": 78.97307501519252,
               "mape_pct": 4.205966263898966,
               "smape_pct": 4.23296820832365,
-              "bias_mean_error": -3.037150090413311,
+              "bias_mean_error": -3.03715009041331,
               "directional_accuracy_pct": 63.851151801535735
             },
             "30": {
@@ -2451,7 +2451,7 @@
             "1": {
               "count": 3391,
               "mae": 20.94757023984597,
-              "rmse": 43.11872410596883,
+              "rmse": 43.11872410596884,
               "mape_pct": 1.851539001087245,
               "smape_pct": 1.8390499669894849,
               "bias_mean_error": -0.9252986549144121,
@@ -2459,11 +2459,11 @@
             },
             "5": {
               "count": 3391,
-              "mae": 33.609026508593,
+              "mae": 33.609026508593004,
               "rmse": 48.6701174708997,
               "mape_pct": 2.963983999904566,
               "smape_pct": 2.960094306870236,
-              "bias_mean_error": -1.7303218009113932,
+              "bias_mean_error": -1.7303218009113923,
               "directional_accuracy_pct": 91.27450980392156
             },
             "10": {
@@ -2472,7 +2472,7 @@
               "rmse": 49.94568731805867,
               "mape_pct": 3.0115135087000926,
               "smape_pct": 3.0077373474635896,
-              "bias_mean_error": -2.204965768899597,
+              "bias_mean_error": -2.2049657688995974,
               "directional_accuracy_pct": 85.28985507246377
             },
             "20": {
@@ -2481,23 +2481,23 @@
               "rmse": 53.54049218705043,
               "mape_pct": 3.085320595209938,
               "smape_pct": 3.086913676612548,
-              "bias_mean_error": -1.8392155002631174,
+              "bias_mean_error": -1.8392155002631172,
               "directional_accuracy_pct": 65.88895451860603
             },
             "30": {
               "count": 3391,
-              "mae": 38.54058527719509,
+              "mae": 38.5405852771951,
               "rmse": 55.61720709449428,
               "mape_pct": 3.2803773398550424,
               "smape_pct": 3.28105665435463,
-              "bias_mean_error": -2.0871105584727037,
+              "bias_mean_error": -2.0871105584727045,
               "directional_accuracy_pct": 82.42406369802418
             }
           },
           "validation": {
             "1": {
               "count": 1044,
-              "mae": 105.9259394145603,
+              "mae": 105.92593941456028,
               "rmse": 127.90964631444139,
               "mape_pct": 5.920017349447068,
               "smape_pct": 6.144239283722049,
@@ -2506,7 +2506,7 @@
             },
             "5": {
               "count": 1044,
-              "mae": 255.09922860314208,
+              "mae": 255.09922860314214,
               "rmse": 286.4394564025353,
               "mape_pct": 14.348051223629145,
               "smape_pct": 15.719861092110634,
@@ -2515,26 +2515,26 @@
             },
             "10": {
               "count": 1044,
-              "mae": 274.3850451540704,
+              "mae": 274.38504515407044,
               "rmse": 310.4057337273307,
               "mape_pct": 15.305993003911471,
-              "smape_pct": 16.895728918971376,
+              "smape_pct": 16.895728918971372,
               "bias_mean_error": -269.23449385798955,
               "directional_accuracy_pct": 53.02013422818792
             },
             "20": {
               "count": 1044,
-              "mae": 76.41344568953937,
+              "mae": 76.41344568953939,
               "rmse": 101.27972777051737,
-              "mape_pct": 4.361936921144142,
+              "mape_pct": 4.361936921144143,
               "smape_pct": 4.474703100762413,
-              "bias_mean_error": -45.93983085259132,
+              "bias_mean_error": -45.93983085259133,
               "directional_accuracy_pct": 53.735632183908045
             },
             "30": {
               "count": 1044,
               "mae": 193.93350279248662,
-              "rmse": 223.84544989569207,
+              "rmse": 223.84544989569204,
               "mape_pct": 10.891281475987787,
               "smape_pct": 11.693645750470527,
               "bias_mean_error": -185.31923578926825,
@@ -2544,11 +2544,11 @@
           "test": {
             "1": {
               "count": 841,
-              "mae": 237.84860750232804,
+              "mae": 237.84860750232806,
               "rmse": 280.345142177292,
-              "mape_pct": 8.420121670655005,
+              "mape_pct": 8.420121670655007,
               "smape_pct": 8.769330426052692,
-              "bias_mean_error": -208.54951693094293,
+              "bias_mean_error": -208.549516930943,
               "directional_accuracy_pct": 43.54304635761589
             },
             "5": {
@@ -2556,7 +2556,7 @@
               "mae": 497.9816004670764,
               "rmse": 586.7409285373849,
               "mape_pct": 17.394901115245645,
-              "smape_pct": 19.367855656048725,
+              "smape_pct": 19.36785565604872,
               "bias_mean_error": -479.9711474584529,
               "directional_accuracy_pct": 46.706586826347305
             },
@@ -2564,7 +2564,7 @@
               "count": 841,
               "mae": 545.0176810883012,
               "rmse": 640.5862394176,
-              "mape_pct": 18.885684843598625,
+              "mape_pct": 18.88568484359862,
               "smape_pct": 21.200028460283985,
               "bias_mean_error": -520.1274037746075,
               "directional_accuracy_pct": 45.65992865636147
@@ -2593,11 +2593,11 @@
           "train": {
             "1": {
               "count": 3391,
-              "mae": 20.991339470748233,
-              "rmse": 42.620339203275385,
-              "mape_pct": 1.8646966142960428,
+              "mae": 20.99133947074823,
+              "rmse": 42.62033920327539,
+              "mape_pct": 1.8646966142960426,
               "smape_pct": 1.8535646691222982,
-              "bias_mean_error": -0.8527553154213382,
+              "bias_mean_error": -0.8527553154213381,
               "directional_accuracy_pct": 81.3751087902524
             },
             "5": {
@@ -2606,7 +2606,7 @@
               "rmse": 59.85128215302866,
               "mape_pct": 3.6303209038541926,
               "smape_pct": 3.622541985243376,
-              "bias_mean_error": -2.2161084311783674,
+              "bias_mean_error": -2.2161084311783665,
               "directional_accuracy_pct": 90.34313725490196
             },
             "10": {
@@ -2615,32 +2615,32 @@
               "rmse": 60.64673465170318,
               "mape_pct": 3.6114997626870973,
               "smape_pct": 3.604841062125891,
-              "bias_mean_error": -2.3247673320148907,
+              "bias_mean_error": -2.324767332014891,
               "directional_accuracy_pct": 83.73188405797102
             },
             "20": {
               "count": 3391,
               "mae": 35.72688152339108,
               "rmse": 54.20918274325044,
-              "mape_pct": 3.0950673687819217,
+              "mape_pct": 3.095067368781921,
               "smape_pct": 3.1001322897964574,
-              "bias_mean_error": -1.6425763875378419,
+              "bias_mean_error": -1.642576387537841,
               "directional_accuracy_pct": 71.76609568812758
             },
             "30": {
               "count": 3391,
               "mae": 44.33700165495317,
-              "rmse": 63.08521132987385,
+              "rmse": 63.08521132987384,
               "mape_pct": 3.814720477861543,
               "smape_pct": 3.8145044476044636,
-              "bias_mean_error": -2.6839946570489155,
+              "bias_mean_error": -2.683994657048915,
               "directional_accuracy_pct": 81.59834856974344
             }
           },
           "validation": {
             "1": {
               "count": 1044,
-              "mae": 47.610596053745496,
+              "mae": 47.61059605374549,
               "rmse": 69.3773790665292,
               "mape_pct": 2.7342047419180693,
               "smape_pct": 2.7701094702677374,
@@ -2668,10 +2668,10 @@
             "20": {
               "count": 1044,
               "mae": 90.67542685454733,
-              "rmse": 115.48763381904297,
+              "rmse": 115.48763381904295,
               "mape_pct": 5.115668787654691,
-              "smape_pct": 5.291077498692942,
-              "bias_mean_error": -70.01850560382778,
+              "smape_pct": 5.291077498692941,
+              "bias_mean_error": -70.01850560382776,
               "directional_accuracy_pct": 53.9272030651341
             },
             "30": {
@@ -2687,7 +2687,7 @@
           "test": {
             "1": {
               "count": 841,
-              "mae": 123.72387370578377,
+              "mae": 123.72387370578376,
               "rmse": 194.95964435645496,
               "mape_pct": 4.316029317516467,
               "smape_pct": 4.348620980808134,
@@ -2716,14 +2716,14 @@
               "count": 841,
               "mae": 211.6261487167276,
               "rmse": 306.32666320552477,
-              "mape_pct": 6.786784358589114,
+              "mape_pct": 6.786784358589113,
               "smape_pct": 7.109273911765245,
               "bias_mean_error": -150.37015556105268,
               "directional_accuracy_pct": 49.22711058263972
             },
             "30": {
               "count": 841,
-              "mae": 506.7469718612951,
+              "mae": 506.74697186129515,
               "rmse": 627.5129042312069,
               "mape_pct": 16.800435324336412,
               "smape_pct": 18.741725034379122,
@@ -3182,10 +3182,10 @@
           "median_abs_residual": 67.94323272251722
         }
       },
-      "generated_at_utc": "2026-05-05T18:14:26.267180Z"
+      "generated_at_utc": "2026-05-05T21:53:53.303939Z"
     },
     "professor_safe_note": "Epsilon intervals are calibrated from validation residual behavior. They estimate uncertainty but do not guarantee future ranges.",
-    "generated_at_utc": "2026-05-05T18:14:26.269264Z"
+    "generated_at_utc": "2026-05-05T21:53:53.305940Z"
   },
   "interpretability_snapshot": {
     "artifact_type": "epsilon_interpretability_latest",
@@ -3324,7 +3324,7 @@
         "arima_like": 0.0695310578871871,
         "ridge_lag_expert": 0.0512749437303858,
         "elasticnet_lag_expert": 0.04653735468995557,
-        "random_forest_lag_expert": 0.07356971176559003,
+        "random_forest_lag_expert": 0.07356971176559002,
         "extratrees_lag_expert": 0.06273010535840051,
         "gradient_boosting_lag_expert": 0.08025177665413466,
         "xgboost_lag_expert": 0.04897634758436993
@@ -3386,7 +3386,7 @@
       "validation_disagreement_by_horizon": {
         "1": {
           "component_count": 15,
-          "mean_price_disagreement_std": 42.552680699097955,
+          "mean_price_disagreement_std": 42.55268069909795,
           "median_price_disagreement_std": 49.43290884055685,
           "mean_disagreement_pct_of_forecast": 2.420056181324198
         },
@@ -3415,22 +3415,23 @@
           "mean_disagreement_pct_of_forecast": 5.247193341383198
         }
       },
-      "generated_at_utc": "2026-05-05T18:14:26.986123Z"
+      "generated_at_utc": "2026-05-05T21:53:54.411551Z"
     },
     "professor_safe_note": "Epsilon interpretability explains component behavior, weighting, and disagreement. It does not identify causal drivers of gold prices.",
-    "generated_at_utc": "2026-05-05T18:14:27.166539Z"
+    "generated_at_utc": "2026-05-05T21:53:54.575612Z"
   },
   "quality_review": {
     "artifact_type": "deep_ml_quality_review",
     "schema_version": "1.0.0",
     "model_key": "epsilon_expert_ensemble",
     "status": "ready",
-    "generated_at_utc": "2026-05-05T18:14:27.208154Z",
+    "generated_at_utc": "2026-05-05T21:53:54.607334Z",
     "blocking_flags": [],
     "warnings": [],
     "acceptance_gate": {
       "raw_price_anchor_passes": true,
       "component_forecasts_exported": true,
+      "evaluation_rollforward_exported": true,
       "component_metrics_exported": true,
       "ensemble_weights_exported": true,
       "static_metrics_exported": true,
@@ -3451,6 +3452,8 @@
   ],
   "required_epsilon_specific_artifacts": [
     "component_models.json",
+    "evaluation_rollforward.csv",
+    "evaluation_rollforward_summary.json",
     "component_forecasts.csv",
     "component_evaluation_by_horizon.json",
     "component_ranking.json",
@@ -3467,5 +3470,5 @@
   ],
   "professor_safe_summary": "Phase 9 Epsilon Expert Ensemble provides a rigorous benchmark and ensemble guardrail. V2 compares ensemble candidates against the best validation component so the final Epsilon output does not ignore a stronger benchmark component. It evaluates classical, statistical, and lag-feature ML components under the same horizon-level contract used by Alpha, Beta, and Delta.",
   "final_instruction": "Send me artifacts/deep_ml/models/epsilon_expert_ensemble/phase9_epsilon_expert_report.json for review before moving to Gamma or Omega.",
-  "generated_at_utc": "2026-05-05T18:14:27.208154Z"
+  "generated_at_utc": "2026-05-05T21:53:54.607334Z"
 }

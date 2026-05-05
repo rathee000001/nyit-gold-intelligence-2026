@@ -8,13 +8,13 @@
   "family": "statistical_ml_benchmark_ensemble",
   "status": "completed_pending_quality_review",
   "run": {
-    "run_id": "deepml_run_20260505_181309_epsilon_expert_ensemble",
+    "run_id": "deepml_run_20260505_215232_epsilon_expert_ensemble",
     "study_id": "deepml_feature_refresh_20260505_093208",
-    "generated_at_utc": "2026-05-05T18:13:09.545801Z",
-    "completed_at_utc": "2026-05-05T18:14:27.166539Z",
-    "generated_at_local": "2026-05-05T14:13:09.545801-04:00",
+    "generated_at_utc": "2026-05-05T21:52:32.892570Z",
+    "completed_at_utc": "2026-05-05T21:53:54.576613Z",
+    "generated_at_local": "2026-05-05T17:52:32.892570-04:00",
     "timezone_local": "America/New_York",
-    "git_commit_sha": "be6e3bf",
+    "git_commit_sha": "a1af654",
     "code_version": "epsilon_expert_ensemble_v2_best_validation_component",
     "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
   },

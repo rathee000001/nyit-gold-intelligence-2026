@@ -12,11 +12,11 @@
       "status": "ready",
       "method": "validation_residual_symmetric_interval_widening",
       "target_coverage_pct": 80.0,
-      "native_validation_coverage_pct": 82.75862068965517,
-      "required_validation_half_width_price": 46.97454118342433,
-      "median_native_half_width_price": 68.20920209634278,
-      "raw_scale_factor": 0.6886833409526572,
-      "scale_factor": 1.0,
+      "native_validation_coverage_pct": 75.09578544061303,
+      "required_validation_half_width_price": 53.82303720642235,
+      "median_native_half_width_price": 47.025569311717845,
+      "raw_scale_factor": 1.1445483381529356,
+      "scale_factor": 1.1445483381529356,
       "scale_factor_cap": 4.0
     },
     "5": {
@@ -24,11 +24,11 @@
       "status": "ready",
       "method": "validation_residual_symmetric_interval_widening",
       "target_coverage_pct": 80.0,
-      "native_validation_coverage_pct": 72.89272030651341,
-      "required_validation_half_width_price": 119.97167427539831,
-      "median_native_half_width_price": 90.54563269019127,
-      "raw_scale_factor": 1.3249857636523505,
-      "scale_factor": 1.3249857636523505,
+      "native_validation_coverage_pct": 56.03448275862068,
+      "required_validation_half_width_price": 126.07533196726877,
+      "median_native_half_width_price": 59.093981529213124,
+      "raw_scale_factor": 2.133471610893969,
+      "scale_factor": 2.133471610893969,
       "scale_factor_cap": 4.0
     },
     "10": {
@@ -36,11 +36,11 @@
       "status": "ready",
       "method": "validation_residual_symmetric_interval_widening",
       "target_coverage_pct": 80.0,
-      "native_validation_coverage_pct": 74.04214559386973,
-      "required_validation_half_width_price": 118.47035063814403,
-      "median_native_half_width_price": 102.23682382284642,
-      "raw_scale_factor": 1.158783559663656,
-      "scale_factor": 1.158783559663656,
+      "native_validation_coverage_pct": 50.09578544061303,
+      "required_validation_half_width_price": 128.48613846330554,
+      "median_native_half_width_price": 60.34331994826789,
+      "raw_scale_factor": 2.129252062588804,
+      "scale_factor": 2.129252062588804,
       "scale_factor_cap": 4.0
     },
     "20": {
@@ -48,11 +48,11 @@
       "status": "ready",
       "method": "validation_residual_symmetric_interval_widening",
       "target_coverage_pct": 80.0,
-      "native_validation_coverage_pct": 73.08429118773945,
-      "required_validation_half_width_price": 115.25858442928005,
-      "median_native_half_width_price": 91.61392365074425,
-      "raw_scale_factor": 1.2580902534932932,
-      "scale_factor": 1.2580902534932932,
+      "native_validation_coverage_pct": 54.214559386973185,
+      "required_validation_half_width_price": 110.0685028514883,
+      "median_native_half_width_price": 60.21604630582988,
+      "raw_scale_factor": 1.827893221226514,
+      "scale_factor": 1.827893221226514,
       "scale_factor_cap": 4.0
     },
     "30": {
@@ -60,13 +60,13 @@
       "status": "ready",
       "method": "validation_residual_symmetric_interval_widening",
       "target_coverage_pct": 80.0,
-      "native_validation_coverage_pct": 69.73180076628353,
-      "required_validation_half_width_price": 143.04531635499444,
-      "median_native_half_width_price": 99.9784593151926,
-      "raw_scale_factor": 1.430761359344707,
-      "scale_factor": 1.430761359344707,
+      "native_validation_coverage_pct": 45.40229885057471,
+      "required_validation_half_width_price": 139.15777959638515,
+      "median_native_half_width_price": 60.30718140289173,
+      "raw_scale_factor": 2.307482730236047,
+      "scale_factor": 2.307482730236047,
       "scale_factor_cap": 4.0
     }
   },
-  "generated_at_utc": "2026-05-05T17:56:25.828077Z"
+  "generated_at_utc": "2026-05-05T21:49:36.628293Z"
 }

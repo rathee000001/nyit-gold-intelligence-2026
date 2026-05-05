@@ -4,10 +4,10 @@
   "model_key": "delta_tft",
   "delta_version": "v2_calibrated",
   "summary": {
-    "native_test_crossing_count_before_ordering": 0,
+    "native_test_crossing_count_before_ordering": 3068,
     "ordering_rule": "native p10/p50/p90 are sorted before reconstruction",
     "calibration_rule": "V2 widens intervals around p50 using validation residuals",
     "coverage_target_pct": 80.0
   },
-  "generated_at_utc": "2026-05-05T17:56:26.093776Z"
+  "generated_at_utc": "2026-05-05T21:49:38.042990Z"
 }

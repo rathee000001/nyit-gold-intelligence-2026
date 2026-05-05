@@ -67,7 +67,7 @@
       "arima_like": 0.0695310578871871,
       "ridge_lag_expert": 0.0512749437303858,
       "elasticnet_lag_expert": 0.04653735468995557,
-      "random_forest_lag_expert": 0.07356971176559003,
+      "random_forest_lag_expert": 0.07356971176559002,
       "extratrees_lag_expert": 0.06273010535840051,
       "gradient_boosting_lag_expert": 0.08025177665413466,
       "xgboost_lag_expert": 0.04897634758436993
@@ -90,5 +90,5 @@
       "xgboost_lag_expert": 0.04829639375997695
     }
   },
-  "generated_at_utc": "2026-05-05T18:14:26.231105Z"
+  "generated_at_utc": "2026-05-05T21:53:53.273293Z"
 }

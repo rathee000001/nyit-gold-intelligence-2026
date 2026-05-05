@@ -1,0 +1,31 @@
+{
+  "artifact_type": "delta_tft_evaluation_rollforward_summary",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "delta_version": "v2_calibrated",
+  "purpose": "Frontend-ready static split forecast path for train, validation, and test.",
+  "main_frontend_source": "evaluation_rollforward.csv",
+  "native_audit_source": "native_evaluation_rollforward.csv",
+  "rows": 26285,
+  "native_rows": 26285,
+  "splits": {
+    "train": 16860,
+    "validation": 5220,
+    "test": 4205
+  },
+  "horizons": [
+    1,
+    5,
+    10,
+    20,
+    30
+  ],
+  "quantiles": [
+    "p10",
+    "p50",
+    "p90"
+  ],
+  "p50_preserved_by_calibration": true,
+  "professor_safe_note": "This artifact supports frontend train/validation/test graphing. p10/p90 intervals are calibrated estimates, not guarantees.",
+  "generated_at_utc": "2026-05-05T21:49:37.595237Z"
+}

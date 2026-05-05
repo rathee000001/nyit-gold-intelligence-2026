@@ -29,6 +29,31 @@
   "raw_price_anchor_scaled": false,
   "rolling_origin_metrics_exported": true,
   "static_metrics_exported": true,
+  "evaluation_rollforward_exported": true,
+  "evaluation_rollforward_contract": {
+    "main_frontend_source": "evaluation_rollforward.csv",
+    "splits": [
+      "train",
+      "validation",
+      "test"
+    ],
+    "fields": [
+      "date",
+      "split",
+      "horizon",
+      "gold_price",
+      "actual_target",
+      "prediction",
+      "naive_prediction",
+      "predicted_log_return",
+      "error",
+      "forecast_price_p10",
+      "forecast_price_p50",
+      "forecast_price_p90",
+      "interval_width_price",
+      "selected_ensemble_strategy"
+    ]
+  },
   "uncertainty_calibration_exported": true,
   "notes": [
     "Epsilon is a benchmark and expert-ensemble layer, not a causal model.",
@@ -36,5 +61,5 @@
     "Component weights are horizon-specific and based on validation performance.",
     "Residual intervals are calibrated from validation residual behavior."
   ],
-  "generated_at_utc": "2026-05-05T18:14:27.166539Z"
+  "generated_at_utc": "2026-05-05T21:53:54.575612Z"
 }

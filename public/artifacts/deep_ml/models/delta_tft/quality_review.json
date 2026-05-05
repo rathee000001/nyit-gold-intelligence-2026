@@ -2,10 +2,13 @@
   "artifact_type": "deep_ml_quality_review",
   "schema_version": "1.0.0",
   "model_key": "delta_tft",
-  "status": "ready",
-  "generated_at_utc": "2026-05-05T17:57:13.000806Z",
+  "status": "ready_quality_review_required",
+  "generated_at_utc": "2026-05-05T21:50:28.878514Z",
   "blocking_flags": [],
-  "warnings": [],
+  "warnings": [
+    "Average calibrated p10-p90 coverage is outside the rough 60%-95% review band.",
+    "Native quantile intervals were under-covered; V2 calibrated intervals should be used for uncertainty display."
+  ],
   "acceptance_gate": {
     "raw_price_anchor_passes": true,
     "cuda_used_or_fallback_stated": true,

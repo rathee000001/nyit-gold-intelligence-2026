@@ -1044,27 +1044,64 @@ def ensemble_prediction_rows(
     df: pd.DataFrame,
     date_col: str,
     origin_idx: np.ndarray,
+    selected_strategy: Optional[str] = None,
 ) -> List[Dict[str, Any]]:
+    """Return frontend-ready Epsilon prediction rows.
+
+    The first fields intentionally mirror Alpha/Beta's rollforward contract:
+    date, split, horizon, gold_price, actual_target, prediction,
+    naive_prediction, predicted_log_return, and error.
+
+    Epsilon-specific residual interval fields are preserved in the same row so
+    the frontend can display p10/p50/p90 and uncertainty diagnostics without
+    guessing or hardcoding claims.
+    """
+
     rows: List[Dict[str, Any]] = []
     prices_q = quantile_payload["pred_prices_quantiles"]
     logs_q = quantile_payload["pred_log_returns_quantiles"]
     for i, idx in enumerate(origin_idx):
         origin_date = pd.Timestamp(df.loc[int(idx), date_col]).date().isoformat()
+        anchor_value = safe_float(ensemble_payload["anchors"][i])
         for hi, h in enumerate(HORIZONS):
+            actual_value = safe_float(ensemble_payload["actual_prices"][i, hi])
+            p10_value = safe_float(prices_q[i, hi, 0])
+            p50_value = safe_float(prices_q[i, hi, 1])
+            p90_value = safe_float(prices_q[i, hi, 2])
+            p10_log = safe_float(logs_q[i, hi, 0])
+            p50_log = safe_float(logs_q[i, hi, 1])
+            p90_log = safe_float(logs_q[i, hi, 2])
+
             rows.append(
                 {
+                    # Standard frontend-compatible rollforward fields
+                    "date": origin_date,
                     "split": split,
+                    "horizon": int(h),
+                    "gold_price": anchor_value,
+                    "actual_target": actual_value,
+                    "prediction": p50_value,
+                    "naive_prediction": anchor_value,
+                    "predicted_log_return": p50_log,
+                    "error": safe_float(p50_value - actual_value) if p50_value is not None and actual_value is not None else None,
+
+                    # Epsilon-specific audit and uncertainty fields
+                    "selected_ensemble_strategy": selected_strategy,
                     "origin_index": int(idx),
                     "origin_date": origin_date,
                     "horizon_trading_days": int(h),
-                    "raw_gold_price_anchor": safe_float(ensemble_payload["anchors"][i]),
-                    "actual_gold_price": safe_float(ensemble_payload["actual_prices"][i, hi]),
-                    "predicted_log_return_p10": safe_float(logs_q[i, hi, 0]),
-                    "predicted_log_return_p50": safe_float(logs_q[i, hi, 1]),
-                    "predicted_log_return_p90": safe_float(logs_q[i, hi, 2]),
-                    "forecast_price_p10": safe_float(prices_q[i, hi, 0]),
-                    "forecast_price_p50": safe_float(prices_q[i, hi, 1]),
-                    "forecast_price_p90": safe_float(prices_q[i, hi, 2]),
+                    "raw_gold_price_anchor": anchor_value,
+                    "actual_gold_price": actual_value,
+                    "predicted_log_return_p10": p10_log,
+                    "predicted_log_return_p50": p50_log,
+                    "predicted_log_return_p90": p90_log,
+                    "forecast_price_p10": p10_value,
+                    "forecast_price_p50": p50_value,
+                    "forecast_price_p90": p90_value,
+                    "p10": p10_value,
+                    "p50": p50_value,
+                    "p90": p90_value,
+                    "interval_width_price": safe_float(p90_value - p10_value) if p90_value is not None and p10_value is not None else None,
                 }
             )
     return rows
@@ -1213,6 +1250,7 @@ def build_quality_review(
         "acceptance_gate": {
             "raw_price_anchor_passes": not any("anchor" in b for b in blocking),
             "component_forecasts_exported": True,
+            "evaluation_rollforward_exported": True,
             "component_metrics_exported": bool(component_eval),
             "ensemble_weights_exported": True,
             "static_metrics_exported": bool(evaluation_by_horizon.get("test")),
@@ -1500,8 +1538,77 @@ def main() -> None:
         }
         write_json(paths.model_dir / "uncertainty_latest.json", uncertainty_latest)
 
+        # Full professor-style static split forecast path for frontend:
+        # train -> validation -> test. This is the main Epsilon page graph source.
+        evaluation_rollforward_rows: List[Dict[str, Any]] = []
+        for split_name in ["train", "validation", "test"]:
+            evaluation_rollforward_rows.extend(
+                ensemble_prediction_rows(
+                    ensemble_by_split[split_name],
+                    quantile_by_split[split_name],
+                    split_name,
+                    df,
+                    date_col,
+                    origin_indices[split_name],
+                    selected_strategy,
+                )
+            )
+
+        write_csv_dicts(paths.model_dir / "evaluation_rollforward.csv", evaluation_rollforward_rows)
+        write_json(
+            paths.model_dir / "evaluation_rollforward_summary.json",
+            {
+                "artifact_type": "epsilon_evaluation_rollforward_summary",
+                "schema_version": "1.0.0",
+                "model_key": MODEL_KEY,
+                "script_version": SCRIPT_VERSION,
+                "purpose": "Frontend-ready static split forecast path for train, validation, and test.",
+                "main_frontend_source": "evaluation_rollforward.csv",
+                "rows": len(evaluation_rollforward_rows),
+                "splits": {
+                    "train": int(sum(1 for r in evaluation_rollforward_rows if r.get("split") == "train")),
+                    "validation": int(sum(1 for r in evaluation_rollforward_rows if r.get("split") == "validation")),
+                    "test": int(sum(1 for r in evaluation_rollforward_rows if r.get("split") == "test")),
+                },
+                "horizons": HORIZONS,
+                "selected_ensemble_strategy": selected_strategy,
+                "selected_component_key": ensemble_selection_details.get("selected_component_key"),
+                "standard_frontend_fields": [
+                    "date",
+                    "split",
+                    "horizon",
+                    "gold_price",
+                    "actual_target",
+                    "prediction",
+                    "naive_prediction",
+                    "predicted_log_return",
+                    "error",
+                ],
+                "epsilon_interval_fields": [
+                    "forecast_price_p10",
+                    "forecast_price_p50",
+                    "forecast_price_p90",
+                    "interval_width_price",
+                ],
+                "professor_safe_note": "This artifact supports frontend train/validation/test graphing. Epsilon residual intervals are uncertainty estimates, not guarantees.",
+                "generated_at_utc": iso_utc(),
+            },
+        )
+
+        # Keep original test component and rolling-origin tables for audit/backward compatibility.
         write_csv_dicts(paths.model_dir / "component_forecasts.csv", component_forecast_rows(component_preds, "test", df, date_col, origin_indices["test"]))
-        write_csv_dicts(paths.model_dir / "rolling_origin_predictions.csv", ensemble_prediction_rows(ensemble_by_split["test"], quantile_by_split["test"], "test_rolling_origin", df, date_col, origin_indices["test"]))
+        write_csv_dicts(
+            paths.model_dir / "rolling_origin_predictions.csv",
+            ensemble_prediction_rows(
+                ensemble_by_split["test"],
+                quantile_by_split["test"],
+                "test_rolling_origin",
+                df,
+                date_col,
+                origin_indices["test"],
+                selected_strategy,
+            ),
+        )
         rolling_metrics = {
             "artifact_type": "epsilon_rolling_origin_metrics",
             "schema_version": "1.0.0",
@@ -1602,6 +1709,27 @@ def main() -> None:
             "raw_price_anchor_scaled": False,
             "rolling_origin_metrics_exported": True,
             "static_metrics_exported": True,
+            "evaluation_rollforward_exported": True,
+            "evaluation_rollforward_contract": {
+                "main_frontend_source": "evaluation_rollforward.csv",
+                "splits": ["train", "validation", "test"],
+                "fields": [
+                    "date",
+                    "split",
+                    "horizon",
+                    "gold_price",
+                    "actual_target",
+                    "prediction",
+                    "naive_prediction",
+                    "predicted_log_return",
+                    "error",
+                    "forecast_price_p10",
+                    "forecast_price_p50",
+                    "forecast_price_p90",
+                    "interval_width_price",
+                    "selected_ensemble_strategy",
+                ],
+            },
             "uncertainty_calibration_exported": True,
             "notes": [
                 "Epsilon is a benchmark and expert-ensemble layer, not a causal model.",
@@ -1713,6 +1841,9 @@ def main() -> None:
                 {"label": "Horizons", "value": ", ".join(str(h) for h in HORIZONS)},
             ],
             "chart_artifacts": {
+                "evaluation_rollforward": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_rollforward.csv",
+                "evaluation_rollforward_summary": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_rollforward_summary.json",
+                "rolling_origin_predictions": "artifacts/deep_ml/models/epsilon_expert_ensemble/rolling_origin_predictions.csv",
                 "forecast_latest": "artifacts/deep_ml/models/epsilon_expert_ensemble/forecast_latest.json",
                 "evaluation_by_horizon": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_by_horizon.json",
                 "uncertainty_latest": "artifacts/deep_ml/models/epsilon_expert_ensemble/uncertainty_latest.json",
@@ -1728,6 +1859,8 @@ def main() -> None:
             "source_artifacts": [p.name for p in required_common]
             + [
                 "component_models.json",
+                "evaluation_rollforward.csv",
+                "evaluation_rollforward_summary.json",
                 "component_evaluation_by_horizon.json",
                 "component_ranking.json",
                 "component_weights.json",
@@ -1774,6 +1907,8 @@ def main() -> None:
             "required_common_artifacts": [p.name for p in required_common],
             "required_epsilon_specific_artifacts": [
                 "component_models.json",
+                "evaluation_rollforward.csv",
+                "evaluation_rollforward_summary.json",
                 "component_forecasts.csv",
                 "component_evaluation_by_horizon.json",
                 "component_ranking.json",

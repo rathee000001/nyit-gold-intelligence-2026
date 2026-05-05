@@ -33,8 +33,9 @@ const ARTIFACTS: ArtifactRequest[] = [
   { key: "runSummary", label: "Run Summary", path: "artifacts/deep_ml/models/delta_tft/run_summary.json", kind: "json" },
   { key: "forecast", label: "Latest Forecast", path: "artifacts/deep_ml/models/delta_tft/forecast_latest.json", kind: "json" },
   { key: "evaluation", label: "Evaluation by Horizon", path: "artifacts/deep_ml/models/delta_tft/evaluation_by_horizon.json", kind: "json" },
-  { key: "calibratedTable", label: "Calibrated Quantile Forecast Table", path: "artifacts/deep_ml/models/delta_tft/calibrated_quantile_forecast_table.csv", kind: "csv" },
-  { key: "nativeTable", label: "Native Quantile Forecast Table", path: "artifacts/deep_ml/models/delta_tft/native_quantile_forecast_table.csv", kind: "csv" },
+  { key: "evaluationRollforward", label: "Evaluation Rollforward", path: "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv", kind: "csv" },
+  { key: "evaluationRollforwardSummary", label: "Evaluation Rollforward Summary", path: "artifacts/deep_ml/models/delta_tft/evaluation_rollforward_summary.json", kind: "json" },
+  { key: "nativeEvaluationRollforward", label: "Native Evaluation Rollforward", path: "artifacts/deep_ml/models/delta_tft/native_evaluation_rollforward.csv", kind: "csv" },
   { key: "rollingOriginPredictions", label: "Rolling-Origin Predictions", path: "artifacts/deep_ml/models/delta_tft/rolling_origin_predictions.csv", kind: "csv" },
   { key: "coverage", label: "Quantile Coverage Summary", path: "artifacts/deep_ml/models/delta_tft/quantile_coverage_summary.json", kind: "json" },
   { key: "calibration", label: "Interval Calibration Summary", path: "artifacts/deep_ml/models/delta_tft/interval_calibration_summary.json", kind: "json" },
@@ -112,7 +113,7 @@ function parseCsv(text: string) {
 
   const headers = splitCsvLine(lines[0]).map((header) => header.trim());
 
-  return lines.slice(1).map((line) => {
+  return lines.slice(1).filter(Boolean).map((line) => {
     const cells = splitCsvLine(line);
     const row: Record<string, any> = {};
 
@@ -173,16 +174,16 @@ function getArtifact(results: ArtifactResult[], key: string) {
   return results.find((item) => item.key === key)?.data;
 }
 
-function asNumber(value: any) {
-  const numeric = Number(value);
-  return Number.isFinite(numeric) ? numeric : null;
-}
-
 function firstValue(...values: any[]) {
   for (const value of values) {
     if (value !== undefined && value !== null && value !== "") return value;
   }
   return null;
+}
+
+function asNumber(value: any) {
+  const numeric = Number(value);
+  return Number.isFinite(numeric) ? numeric : null;
 }
 
 function formatNumber(value: any, digits = 0) {
@@ -252,6 +253,12 @@ function formatDateTime(value: any) {
   }).format(date);
 }
 
+function average(values: any[]) {
+  const nums = values.map(Number).filter((value) => Number.isFinite(value));
+  if (!nums.length) return null;
+  return nums.reduce((sum, value) => sum + value, 0) / nums.length;
+}
+
 function statusClass(status: any) {
   const text = String(status || "").toLowerCase();
 
@@ -273,13 +280,16 @@ function statusClass(status: any) {
 function StatusPill({ status }: { status: any }) {
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-widest ${statusClass(
-        status
-      )}`}
+      className={`inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-widest ${statusClass(status)}`}
     >
       {status || "Not in artifact"}
     </span>
   );
+}
+
+function ConditionalSection({ show, children }: { show: boolean; children: ReactNode }) {
+  if (!show) return null;
+  return <>{children}</>;
 }
 
 function SectionHeader({
@@ -332,7 +342,7 @@ function MetricCard({
 
 function InfoLine({ label, value }: { label: string; value: ReactNode }) {
   return (
-    <div className="grid grid-cols-[180px_1fr] gap-3 border-b border-slate-100 pb-3 last:border-b-0">
+    <div className="grid grid-cols-[185px_1fr] gap-3 border-b border-slate-100 pb-3 last:border-b-0">
       <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
         {label}
       </span>
@@ -353,17 +363,6 @@ function DownloadButton({ href, children }: { href: string; children: ReactNode 
       {children}
     </a>
   );
-}
-
-function ConditionalSection({
-  show,
-  children,
-}: {
-  show: boolean;
-  children: ReactNode;
-}) {
-  if (!show) return null;
-  return <>{children}</>;
 }
 
 function DeltaHero() {
@@ -492,9 +491,8 @@ function DeltaHero() {
             Delta TFT
           </h1>
           <p className="mt-5 max-w-2xl text-sm font-semibold leading-7 text-cyan-50/80">
-            Calibrated temporal-fusion quantile expert. This page focuses on
-            p10 / p50 / p90, validation-based interval calibration, empirical
-            coverage, pinball loss, variable selection, and attention behavior.
+            Calibrated temporal-fusion quantile expert. This page now uses the full
+            train, validation, and test rollforward artifact for the main p50 graph.
           </p>
         </div>
 
@@ -507,9 +505,9 @@ function DeltaHero() {
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur">
             <div className="text-[9px] font-black uppercase tracking-widest text-white/50">
-              Main Price Source
+              Main Graph Source
             </div>
-            <div className="mt-2 text-sm font-black text-white">calibrated quantile table</div>
+            <div className="mt-2 text-sm font-black text-white">evaluation_rollforward.csv</div>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur">
             <div className="text-[9px] font-black uppercase tracking-widest text-white/50">
@@ -523,40 +521,60 @@ function DeltaHero() {
   );
 }
 
-function getHorizon(row: any) {
+function rowHorizon(row: any) {
   return Number(firstValue(row.horizon, row.horizon_trading_days));
 }
 
-function buildQuantileRows(rows: any[], horizon = 10): ForecastChartRow[] {
+function buildSplitRows(rows: any[], horizon = 10): ForecastChartRow[] {
   return rows
-    .filter((row) => getHorizon(row) === horizon)
+    .filter((row) => rowHorizon(row) === horizon)
     .map((row) => {
-      const p10 = asNumber(row.forecast_price_p10);
-      const p50 = asNumber(row.forecast_price_p50);
-      const p90 = asNumber(row.forecast_price_p90);
+      const p10 = asNumber(firstValue(row.forecast_price_p10, row.p10));
+      const p50 = asNumber(firstValue(row.prediction, row.forecast_price_p50, row.p50));
+      const p90 = asNumber(firstValue(row.forecast_price_p90, row.p90));
 
       return {
-        date: String(firstValue(row.origin_date, row.date)),
+        date: String(firstValue(row.date, row.origin_date)),
         split: String(firstValue(row.split, "test")),
-        actual: asNumber(row.actual_gold_price),
+        actual: asNumber(firstValue(row.actual_target, row.actual_gold_price)),
         forecast: p50,
+        naiveForecast: asNumber(row.naive_prediction),
         p10,
         p50,
         p90,
-        currentGold: asNumber(row.raw_gold_price_anchor),
-        intervalWidth: p10 !== null && p90 !== null ? p90 - p10 : null,
+        currentGold: asNumber(firstValue(row.gold_price, row.raw_gold_price_anchor)),
+        predictedLogReturn: asNumber(firstValue(row.predicted_log_return, row.predicted_log_return_p50)),
+        intervalWidth: asNumber(row.interval_width_price),
+        deltaError: asNumber(row.error),
       };
     })
+    .filter((row) => row.actual !== null && row.forecast !== null);
+}
+
+function buildRollingRows(rows: any[], horizon = 10): ForecastChartRow[] {
+  return rows
+    .filter((row) => rowHorizon(row) === horizon)
+    .map((row) => ({
+      date: String(firstValue(row.date, row.origin_date)),
+      split: "rolling_test",
+      actual: asNumber(firstValue(row.actual_target, row.actual_gold_price)),
+      forecast: asNumber(firstValue(row.prediction, row.forecast_price_p50, row.p50)),
+      naiveForecast: asNumber(row.naive_prediction),
+      currentGold: asNumber(firstValue(row.gold_price, row.raw_gold_price_anchor)),
+      predictedLogReturn: asNumber(firstValue(row.predicted_log_return, row.predicted_log_return_p50)),
+      intervalWidth: asNumber(row.interval_width_price),
+      deltaError: asNumber(row.error),
+    }))
     .filter((row) => row.actual !== null && row.forecast !== null);
 }
 
 function buildTrainingRows(rows: any[]): ForecastChartRow[] {
   return rows
     .map((row, index) => ({
-      date: String(firstValue(row.epoch, index + 1)),
+      date: String(firstValue(row.epoch, row.Epoch, index + 1)),
       split: "training",
-      actual: asNumber(row.train_quantile_loss),
-      forecast: asNumber(row.validation_quantile_loss),
+      actual: asNumber(firstValue(row.train_quantile_loss, row.train_loss, row.training_loss, row.loss)),
+      forecast: asNumber(firstValue(row.validation_quantile_loss, row.val_loss, row.validation_loss, row.valid_loss)),
     }))
     .filter((row) => row.actual !== null || row.forecast !== null);
 }
@@ -613,6 +631,21 @@ function buildNaiveRows(evaluation: any): MetricChartRow[] {
   }
 
   return rows;
+}
+
+function buildLatestQuantileRows(forecast: any): MetricChartRow[] {
+  const rows = forecast?.path || [];
+
+  return rows.map((row: any) => ({
+    split: "latest",
+    horizon: `${row.horizon_trading_days}D`,
+    label: `${row.horizon_trading_days}D`,
+    P10: row.calibrated_forecast_price_p10,
+    P50: row.calibrated_forecast_price_p50,
+    P90: row.calibrated_forecast_price_p90,
+    NativeP10: row.native_forecast_price_p10,
+    NativeP90: row.native_forecast_price_p90,
+  }));
 }
 
 function buildCoverageRows(coverage: any, splitKey: string, splitLabel: string): MetricChartRow[] {
@@ -678,27 +711,6 @@ function buildPinballRows(pinball: any, splitKey: string, splitLabel: string): M
     .filter((row) => Number.isFinite(Number(row.Mean)));
 }
 
-function buildLatestQuantileRows(forecast: any): MetricChartRow[] {
-  const rows = forecast?.path || [];
-
-  return rows.map((row: any) => ({
-    split: "latest",
-    horizon: `${row.horizon_trading_days}D`,
-    label: `${row.horizon_trading_days}D`,
-    P10: row.calibrated_forecast_price_p10,
-    P50: row.calibrated_forecast_price_p50,
-    P90: row.calibrated_forecast_price_p90,
-    NativeP10: row.native_forecast_price_p10,
-    NativeP90: row.native_forecast_price_p90,
-  }));
-}
-
-function average(values: any[]) {
-  const nums = values.map(Number).filter((value) => Number.isFinite(value));
-  if (!nums.length) return null;
-  return nums.reduce((sum, value) => sum + value, 0) / nums.length;
-}
-
 function splitMetricAverage(metricRows: MetricChartRow[], split: string, key: string) {
   return average(
     metricRows
@@ -714,7 +726,6 @@ function getVariableRows(variableSelection: any) {
 
 function getAttentionRows(attention: any) {
   const byHorizon = attention?.by_horizon || [];
-
   if (!Array.isArray(byHorizon)) return [];
 
   return byHorizon.flatMap((row: any) => {
@@ -764,9 +775,7 @@ function FeatureBars({
           return (
             <div key={`${row[featureKey]}-${index}`}>
               <div className="mb-2 flex items-center justify-between gap-4">
-                <div className="truncate text-xs font-black text-slate-700">
-                  {row[featureKey]}
-                </div>
+                <div className="truncate text-xs font-black text-slate-700">{row[featureKey]}</div>
                 <div className="text-xs font-black text-slate-500">
                   {valueFormatter ? valueFormatter(value) : formatNumber(value, 6)}
                 </div>
@@ -864,7 +873,8 @@ export default async function DeltaTftPage() {
   const runSummary = getArtifact(results, "runSummary");
   const forecast = getArtifact(results, "forecast");
   const evaluation = getArtifact(results, "evaluation");
-  const calibratedTable = getArtifact(results, "calibratedTable") || [];
+  const evaluationRollforward = getArtifact(results, "evaluationRollforward") || [];
+  const evaluationRollforwardSummary = getArtifact(results, "evaluationRollforwardSummary");
   const rollingOriginPredictions = getArtifact(results, "rollingOriginPredictions") || [];
   const coverage = getArtifact(results, "coverage");
   const calibration = getArtifact(results, "calibration");
@@ -881,9 +891,9 @@ export default async function DeltaTftPage() {
   const loadedCount = results.filter((item) => item.ok).length;
 
   const selectedHorizon = 10;
-  const p50Rows = buildQuantileRows(calibratedTable, selectedHorizon);
-  const recentP50Rows = p50Rows.slice(-180);
-  const rollingRows = buildQuantileRows(rollingOriginPredictions, selectedHorizon).slice(-180);
+  const splitRows = buildSplitRows(evaluationRollforward, selectedHorizon);
+  const recentTestRows = splitRows.filter((row) => row.split === "test").slice(-180);
+  const rollingRows = buildRollingRows(rollingOriginPredictions, selectedHorizon).slice(-180);
   const trainingRows = buildTrainingRows(trainingHistory);
 
   const metricRows = buildMetricRows(evaluation);
@@ -894,7 +904,6 @@ export default async function DeltaTftPage() {
   const calibrationRows = buildCalibrationRows(calibration);
   const calibratedPinballRows = buildPinballRows(pinball, "calibrated_test_pinball_by_horizon", "calibrated_pinball");
   const nativePinballRows = buildPinballRows(pinball, "native_test_pinball_by_horizon", "native_pinball");
-
   const variableRows = getVariableRows(variableSelection);
   const attentionRows = getAttentionRows(temporalAttention);
 
@@ -907,8 +916,8 @@ export default async function DeltaTftPage() {
   const avgTestWidth = average(testCoverageRows.map((row) => row.Width));
   const avgScaleFactor = average(calibrationRows.map((row) => row.ScaleFactor));
 
-  const path = forecast?.path || [];
-  const latestOneDay = path[0];
+  const pathRows = forecast?.path || [];
+  const latestOneDay = pathRows[0];
 
   const modelName = firstValue(report?.model_name, runSummary?.model_name, "Delta TFT Multi-Horizon Expert");
   const modelVersion = firstValue(report?.delta_version, runSummary?.delta_version, "v2_calibrated");
@@ -941,9 +950,9 @@ export default async function DeltaTftPage() {
             note="Latest calibrated p50 from forecast_latest.json."
           />
           <MetricCard
-            label="Avg Test Coverage"
-            value={avgTestCoverage === null ? "Not in artifact" : formatPercent(avgTestCoverage)}
-            note="Average calibrated test p10-p90 coverage."
+            label="Rollforward Rows"
+            value={formatNumber(evaluationRollforwardSummary?.rows)}
+            note={`Train ${formatNumber(evaluationRollforwardSummary?.splits?.train)} / Validation ${formatNumber(evaluationRollforwardSummary?.splits?.validation)} / Test ${formatNumber(evaluationRollforwardSummary?.splits?.test)}`}
           />
         </section>
 
@@ -952,7 +961,7 @@ export default async function DeltaTftPage() {
             <SectionHeader
               eyebrow="Model Identity"
               title="Delta TFT artifact summary"
-              description="Delta is displayed as a calibrated quantile expert. The page uses calibrated p10/p50/p90 outputs, validation residual calibration, coverage, pinball loss, and interpretability artifacts."
+              description="Delta is displayed as a calibrated quantile expert. The main page graph now uses evaluation_rollforward.csv for train, validation, and test split behavior."
             />
 
             <div className="grid gap-3">
@@ -961,6 +970,7 @@ export default async function DeltaTftPage() {
               <InfoLine label="Version" value={modelVersion} />
               <InfoLine label="Family" value={firstValue(report?.run_summary?.family, runSummary?.family)} />
               <InfoLine label="Backend" value={firstValue(report?.run_summary?.model?.backend, runSummary?.model?.backend)} />
+              <InfoLine label="Target" value={firstValue(report?.run_summary?.model?.target, runSummary?.model?.target)} />
               <InfoLine label="Study ID" value={firstValue(report?.run_summary?.run?.study_id, runSummary?.run?.study_id)} />
               <InfoLine label="Run ID" value={firstValue(report?.run_summary?.run?.run_id, runSummary?.run?.run_id)} />
               <InfoLine label="Device" value={firstValue(report?.run_summary?.run?.device, runSummary?.run?.device)} />
@@ -991,65 +1001,65 @@ export default async function DeltaTftPage() {
           </div>
         </section>
 
-        <ConditionalSection show={p50Rows.length > 0}>
+        <ConditionalSection show={splitRows.length > 0}>
           <section className="mt-14">
             <SectionHeader
-              eyebrow="Calibrated p50 Forecast"
-              title={`Actual vs Delta calibrated p50 — test split (${selectedHorizon}-day horizon)`}
-              description="The calibrated quantile table contains test split rows. Therefore this chart is labeled as test split, not train/validation/test."
+              eyebrow="Main Split Forecast Graph"
+              title={`Actual vs Delta p50 — train, validation, and test (${selectedHorizon}-day horizon)`}
+              description="This is the main professor-style graph. It uses evaluation_rollforward.csv and displays the calibrated p50 forecast path."
             />
 
             <ActualVsForecastChart
-              rows={p50Rows}
+              rows={splitRows}
               forecastKey="forecast"
               forecastLabel="Delta calibrated p50"
               actualKey="actual"
-              actualLabel="Actual Gold"
-              title={`Actual vs Delta p50 — Test Split (${selectedHorizon}D Horizon)`}
-              subtitle="Source: calibrated_quantile_forecast_table.csv."
+              actualLabel="Actual Target Gold"
+              title={`Actual vs Delta p50 — Train / Validation / Test (${selectedHorizon}D Horizon)`}
+              subtitle="Static split predictions from evaluation_rollforward.csv. Use the brush to zoom across the full model window."
               yAxisLabel="Gold Price (USD/oz)"
-              showSplitMarkers={false}
+              showSplitMarkers={true}
             />
           </section>
         </ConditionalSection>
 
-        <ConditionalSection show={p50Rows.length > 0}>
+        <ConditionalSection show={splitRows.length > 0}>
           <section className="mt-14">
             <SectionHeader
-              eyebrow="Residual Diagnostic"
-              title={`Delta p50 residuals — test split (${selectedHorizon}-day horizon)`}
-              description="Residual equals actual gold price minus calibrated p50."
+              eyebrow="Split Residual Diagnostic"
+              title={`Delta p50 residuals across train, validation, and test (${selectedHorizon}-day horizon)`}
+              description="Residual equals actual target gold price minus calibrated p50."
             />
 
             <ResidualChart
-              rows={p50Rows}
+              rows={splitRows}
               forecastKey="forecast"
               forecastLabel="Delta calibrated p50"
               actualKey="actual"
-              title={`Delta Residuals — Test Split (${selectedHorizon}D Horizon)`}
-              subtitle="Residual = actual price minus calibrated p50."
-              yAxisLabel="Actual - p50"
-              showSplitMarkers={false}
+              title={`Delta Residuals — Train / Validation / Test (${selectedHorizon}D Horizon)`}
+              subtitle="Residual = actual target price minus calibrated p50."
+              yAxisLabel="Actual - Delta p50"
+              showSplitMarkers={true}
             />
           </section>
         </ConditionalSection>
 
-        <ConditionalSection show={recentP50Rows.length > 0}>
+        <ConditionalSection show={recentTestRows.length > 0}>
           <section className="mt-14">
             <SectionHeader
               eyebrow="Recent Test Zoom"
-              title={`Recent Delta calibrated p50 window (${selectedHorizon}-day horizon)`}
-              description="Focused view of the latest rows from the calibrated quantile table."
+              title={`Recent test window — Delta calibrated p50 (${selectedHorizon}-day horizon)`}
+              description="This zoomed chart focuses only on recent test rows from evaluation_rollforward.csv."
             />
 
             <ActualVsForecastChart
-              rows={recentP50Rows}
+              rows={recentTestRows}
               forecastKey="forecast"
               forecastLabel="Delta calibrated p50"
               actualKey="actual"
-              actualLabel="Actual Gold"
-              title={`Recent Actual vs Delta p50 (${selectedHorizon}D Horizon)`}
-              subtitle="Recent calibrated test rows."
+              actualLabel="Actual Target Gold"
+              title={`Recent Test Actual vs Delta p50 (${selectedHorizon}D Horizon)`}
+              subtitle="Recent test rows from the static split prediction file."
               yAxisLabel="Gold Price (USD/oz)"
               showSplitMarkers={false}
             />
@@ -1061,7 +1071,7 @@ export default async function DeltaTftPage() {
             <SectionHeader
               eyebrow="Rolling-Origin Validation"
               title={`Rolling-origin Delta p50 — recent test origins (${selectedHorizon}-day horizon)`}
-              description="Rolling-origin rows are test-forward validation rows and are kept separate from the main p50 display."
+              description="This uses rolling_origin_predictions.csv and is intentionally separated from the full train/validation/test graph."
             />
 
             <ActualVsForecastChart
@@ -1069,7 +1079,7 @@ export default async function DeltaTftPage() {
               forecastKey="forecast"
               forecastLabel="Delta rolling p50"
               actualKey="actual"
-              actualLabel="Actual Gold"
+              actualLabel="Actual Target Gold"
               title={`Rolling-Origin Actual vs Delta p50 (${selectedHorizon}D Horizon)`}
               subtitle="Source: rolling_origin_predictions.csv."
               yAxisLabel="Gold Price (USD/oz)"
@@ -1105,7 +1115,7 @@ export default async function DeltaTftPage() {
             <SectionHeader
               eyebrow="Train / Validation / Test Metrics"
               title="Split-based p50 error metrics"
-              description="Delta does not export train/validation/test p50 prediction rows in the calibrated table, but it does export train/validation/test point metrics by horizon."
+              description="These charts use evaluation_by_horizon.json. Point metrics are based on p50."
             />
 
             <div className="grid gap-6">
@@ -1184,7 +1194,7 @@ export default async function DeltaTftPage() {
             <SectionHeader
               eyebrow="Delta vs Naive"
               title="Naive benchmark comparison"
-              description="Benchmark comparison is displayed where naive baseline rows exist in evaluation_by_horizon.json. This is not a final model ranking."
+              description="Benchmark comparison is displayed where naive baseline rows exist. This is not a final model ranking."
             />
 
             <div className="grid gap-6">
@@ -1277,9 +1287,9 @@ export default async function DeltaTftPage() {
                   split="test_coverage"
                   xKey="horizon"
                   xLabel="Forecast Horizon"
-                  yLabel="Coverage / Width"
-                  title="Delta Test Coverage and Interval Width"
-                  subtitle="Observed coverage, target coverage, interval width, and calibration error."
+                  yLabel="Coverage / Error"
+                  title="Delta Test Coverage"
+                  subtitle="Observed coverage, target coverage, and coverage error."
                   bars={[
                     { key: "Coverage", label: "Coverage %", color: "#2563eb" },
                     { key: "Target", label: "Target %", color: "#ca8a04" },
@@ -1318,19 +1328,19 @@ export default async function DeltaTftPage() {
 
         <section className="mt-14 grid gap-5 md:grid-cols-3">
           <MetricCard
+            label="Avg Test Coverage"
+            value={avgTestCoverage === null ? "Not in artifact" : formatPercent(avgTestCoverage)}
+            note="Average calibrated test p10-p90 coverage."
+          />
+          <MetricCard
             label="Avg Test Width"
             value={avgTestWidth === null ? "Not in artifact" : formatUsd(avgTestWidth)}
             note="Average calibrated test interval width."
           />
           <MetricCard
-            label="Calibrated Rows"
-            value={formatNumber(calibratedTable.length)}
-            note="Rows loaded from calibrated table."
-          />
-          <MetricCard
-            label="Native Rows"
-            value={formatNumber((getArtifact(results, "nativeTable") || []).length)}
-            note="Native table kept for audit/download."
+            label="p50 Preserved"
+            value={<span className="text-2xl">{String(calibration?.p50_preserved ?? forecast?.interval_calibration_summary?.p50_preserved ?? "Not in artifact")}</span>}
+            note="Calibration should preserve p50."
           />
         </section>
 
@@ -1382,7 +1392,7 @@ export default async function DeltaTftPage() {
           </section>
         </ConditionalSection>
 
-        <ConditionalSection show={(forecast?.path || []).length > 0}>
+        <ConditionalSection show={pathRows.length > 0}>
           <section className="mt-14 rounded-[3rem] border border-slate-200 bg-white p-8 shadow-sm">
             <SectionHeader
               eyebrow="Latest Forecast"
@@ -1445,14 +1455,15 @@ export default async function DeltaTftPage() {
             />
 
             <div className="grid gap-3">
-              <InfoLine label="Quality status" value={<StatusPill status={qualityReview?.status} />} />
+              <InfoLine label="Quality status" value={<StatusPill status={qualityReview?.status || status} />} />
+              <InfoLine label="Blocking flags" value={Array.isArray(qualityReview?.blocking_flags) ? qualityReview.blocking_flags.length : "Not in artifact"} />
               <InfoLine label="Dataset rows" value={formatNumber(datasetManifest?.row_count)} />
-              <InfoLine label="Feature count" value={formatNumber(datasetManifest?.feature_count)} />
+              <InfoLine label="Feature count" value={formatNumber(firstValue(datasetManifest?.feature_count, report?.run_summary?.features?.used_count))} />
               <InfoLine label="Matrix rows" value={formatNumber(matrixManifest?.row_count)} />
               <InfoLine label="Matrix columns" value={formatNumber(matrixManifest?.column_count)} />
               <InfoLine label="Effective through" value={formatDate(firstValue(modeStatus?.effective_data_through_date, report?.run_summary?.data_signature?.effective_data_through_date))} />
+              <InfoLine label="Forecast start" value={formatDate(firstValue(modeStatus?.forecast_start_date, report?.run_summary?.data_signature?.forecast_start_date))} />
               <InfoLine label="Official cutoff" value={formatDate(matrixManifest?.official_cutoff)} />
-              <InfoLine label="Gold source" value={matrixManifest?.gold_live_source?.source_type} />
             </div>
           </div>
 
@@ -1465,13 +1476,16 @@ export default async function DeltaTftPage() {
 
             <div className="grid gap-3 text-sm font-semibold leading-6 text-slate-600">
               <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                Add news-aware tooltips after Gamma/Omega/news context artifacts are accepted.
+                Add news-aware chart tooltips after Gamma/Omega/news context artifacts are accepted.
               </div>
               <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                Add Deep ML-only true quantile band chart if we later want shaded p10-p90 areas.
+                Add p10-p90 shaded chart bands if we later create a Deep ML-only custom chart component.
               </div>
               <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                Keep calibrated intervals as official Delta uncertainty display unless later artifacts supersede them.
+                Keep calibrated intervals as Delta uncertainty estimates, not guaranteed ranges.
+              </div>
+              <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                Patch Overview date-only display together with Gamma/Omega activation.
               </div>
             </div>
           </div>
@@ -1481,7 +1495,7 @@ export default async function DeltaTftPage() {
           <SectionHeader
             eyebrow="Artifact Downloads"
             title="Source files used on this page"
-            description="The Delta page uses only sections supported by real artifact rows and drops empty graph sections automatically."
+            description="The Delta page uses only sections supported by real artifact rows and drops unsupported graph sections."
           />
 
           <ArtifactDownloads results={results} />

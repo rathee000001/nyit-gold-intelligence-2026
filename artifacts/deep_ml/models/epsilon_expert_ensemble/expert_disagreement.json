@@ -37,7 +37,7 @@
   "validation_disagreement_by_horizon": {
     "1": {
       "component_count": 15,
-      "mean_price_disagreement_std": 42.552680699097955,
+      "mean_price_disagreement_std": 42.55268069909795,
       "median_price_disagreement_std": 49.43290884055685,
       "mean_disagreement_pct_of_forecast": 2.420056181324198
     },
@@ -66,5 +66,5 @@
       "mean_disagreement_pct_of_forecast": 5.247193341383198
     }
   },
-  "generated_at_utc": "2026-05-05T18:14:26.986123Z"
+  "generated_at_utc": "2026-05-05T21:53:54.411551Z"
 }

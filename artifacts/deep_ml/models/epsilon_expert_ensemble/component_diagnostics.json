@@ -26,7 +26,7 @@
       "component_key": "ridge_lag_expert",
       "component_family": "lag_feature_ml",
       "status": "completed",
-      "runtime_seconds": 0.083,
+      "runtime_seconds": 0.064,
       "horizons": [
         1,
         5,
@@ -39,7 +39,7 @@
       "component_key": "elasticnet_lag_expert",
       "component_family": "lag_feature_ml",
       "status": "completed",
-      "runtime_seconds": 0.215,
+      "runtime_seconds": 0.197,
       "horizons": [
         1,
         5,
@@ -52,7 +52,7 @@
       "component_key": "random_forest_lag_expert",
       "component_family": "lag_feature_ml",
       "status": "completed",
-      "runtime_seconds": 3.658,
+      "runtime_seconds": 3.111,
       "horizons": [
         1,
         5,
@@ -65,7 +65,7 @@
       "component_key": "extratrees_lag_expert",
       "component_family": "lag_feature_ml",
       "status": "completed",
-      "runtime_seconds": 1.36,
+      "runtime_seconds": 1.011,
       "horizons": [
         1,
         5,
@@ -78,7 +78,7 @@
       "component_key": "gradient_boosting_lag_expert",
       "component_family": "lag_feature_ml",
       "status": "completed",
-      "runtime_seconds": 6.981,
+      "runtime_seconds": 6.715,
       "horizons": [
         1,
         5,
@@ -91,7 +91,7 @@
       "component_key": "xgboost_lag_expert",
       "component_family": "lag_feature_ml",
       "status": "completed",
-      "runtime_seconds": 0.808,
+      "runtime_seconds": 0.637,
       "horizons": [
         1,
         5,
@@ -109,5 +109,5 @@
     "selected_backend": "sklearn_statsmodels_optional_xgboost",
     "professor_safe_note": "Epsilon is a benchmark and expert-ensemble layer, not a causal model."
   },
-  "generated_at_utc": "2026-05-05T18:14:27.166539Z"
+  "generated_at_utc": "2026-05-05T21:53:54.575612Z"
 }

@@ -1,0 +1,274 @@
+===== EPSILON SCRIPT SEARCH =====
+
+
+FullName      : D:\nyit-gold-intelligence-2026\deep_ml\scripts\09_train_epsilon_expert_ensemble.py
+Name          : 09_train_epsilon_expert_ensemble.py
+Length        : 86061
+LastWriteTime : 05-05-2026 04:17:23
+
+
+
+
+
+===== EPSILON SCRIPT CONTENT PREVIEW =====
+FOUND SCRIPT: D:\nyit-gold-intelligence-2026\deep_ml\scripts\09_train_epsilon_expert_ensemble.py
+"""
+Gold Nexus Alpha — Deep ML Phase 9
+Epsilon Expert Ensemble: statistical + machine-learning benchmark ensemble
+
+Script path expected:
+    deep_ml/scripts/09_train_epsilon_expert_ensemble.py
+
+Primary review artifact:
+    artifacts/deep_ml/models/epsilon_expert_ensemble/phase9_epsilon_expert_report.json
+
+Windows / PowerShell commands:
+    code .\deep_ml\scripts\09_train_epsilon_expert_ensemble.py
+    py .\deep_ml\scripts\09_train_epsilon_expert_ensemble.py --smoke
+    py .\deep_ml\scripts\09_train_epsilon_expert_ensemble.py
+
+Purpose:
+    Build a rigorous benchmark and expert-ensemble layer using classical,
+    statistical, and lag-feature ML components. Epsilon protects the Deep ML
+    system from overconfidence and gives Omega Fusion a strong benchmark layer.
+
+Locked rule:
+    Raw gold price anchor is never scaled for forecast reconstruction or metrics.
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import hashlib
+import importlib.util
+import json
+import math
+import platform
+import random
+import shutil
+import subprocess
+import sys
+import time
+import traceback
+import warnings
+from dataclasses import dataclass
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
+
+import numpy as np
+import pandas as pd
+
+from sklearn.ensemble import ExtraTreesRegressor, GradientBoostingRegressor, RandomForestRegressor
+from sklearn.impute import SimpleImputer
+from sklearn.linear_model import ElasticNet, Ridge
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+
+warnings.filterwarnings("ignore")
+
+try:
+    from tqdm.auto import tqdm
+except Exception:  # pragma: no cover
+    tqdm = None
+
+try:
+    from statsmodels.tsa.holtwinters import ExponentialSmoothing, SimpleExpSmoothing
+except Exception:  # pragma: no cover
+    ExponentialSmoothing = None
+    SimpleExpSmoothing = None
+
+try:
+    from statsmodels.tsa.arima.model import ARIMA
+except Exception:  # pragma: no cover
+    ARIMA = None
+
+try:
+    import xgboost as xgb
+except Exception:  # pragma: no cover
+    xgb = None
+
+
+MODEL_KEY = "epsilon_expert_ensemble"
+MODEL_NAME = "Epsilon Expert Ensemble"
+MODEL_FAMILY = "statistical_ml_benchmark_ensemble"
+SCRIPT_VERSION = "epsilon_expert_ensemble_v2_best_validation_component"
+TIMEZONE_LOCAL = "America/New_York"
+HORIZONS = [1, 5, 10, 20, 30]
+TARGET_COVERAGE = 0.80
+RANDOM_SEED = 2026
+DEFAULT_TRAIN_END = "2018-12-31"
+DEFAULT_VALIDATION_END = "2022-12-30"
+
+DATE_COLUMN_CANDIDATES = ["date", "Date", "ds", "timestamp", "time"]
+GOLD_COLUMN_CANDIDATES = [
+    "gold_price",
+    "gold",
+    "gold_close",
+    "gold_spot",
+    "lbma_gold_price_usd",
+    "xau_usd",
+    "xauusd",
+    "price_gold",
+    "Gold Price",
+    "Gold_Price",
+]
+TARGET_COLUMN_PATTERNS = (
+    "target",
+    "future",
+    "lead",
+    "horizon",
+    "return_h",
+    "log_return_h",
+    "y_h",
+    "direction_t_plus",
+    "gold_t_plus",
+)
+NON_FEATURE_COLUMNS = {
+    "split",
+    "split_label",
+    "dataset_split",
+    "mode",
+    "study_id",
+    "run_id",
+    "source",
+    "dataset_id",
+}
+
+
+# -----------------------------------------------------------------------------
+# Utility helpers
+# -----------------------------------------------------------------------------
+
+
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+def iso_utc(dt: Optional[datetime] = None) -> str:
+    return (dt or utc_now()).isoformat().replace("+00:00", "Z")
+
+
+def local_iso_from_utc(dt: Optional[datetime] = None) -> str:
+    dt = dt or utc_now()
+    try:
+        from zoneinfo import ZoneInfo
+
+        return dt.astimezone(ZoneInfo(TIMEZONE_LOCAL)).isoformat()
+    except Exception:
+        return dt.isoformat()
+
+
+def safe_float(x: Any) -> Optional[float]:
+    try:
+        if x is None:
+            return None
+        val = float(x)
+        if math.isnan(val) or math.isinf(val):
+            return None
+        return val
+    except Exception:
+        return None
+
+
+def safe_mean(values: Iterable[Any]) -> Optional[float]:
+    vals = [safe_float(v) for v in values]
+    vals = [v for v in vals if v is not None]
+    return float(np.mean(vals)) if vals else None
+
+
+def stable_hash_file(path: Path) -> str:
+    if not path.exists() or not path.is_file():
+        return "missing"
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return "sha256:" + h.hexdigest()
+
+
+def read_json(path: Path, default: Any = None) -> Any:
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return default
+
+
+def write_json(path: Path, data: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, indent=2, default=str), encoding="utf-8")
+
+
+def write_csv_dicts(path: Path, rows: List[Dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if not rows:
+        path.write_text("", encoding="utf-8")
+        return
+    keys: List[str] = []
+    for row in rows:
+        for key in row.keys():
+            if key not in keys:
+                keys.append(key)
+    with path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=keys)
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({k: row.get(k) for k in keys})
+
+
+def detect_repo_root(start: Path) -> Path:
+    current = start.resolve()
+    for candidate in [current, *current.parents]:
+        if (candidate / ".git").exists() or (candidate / "artifacts").exists() or (candidate / "deep_ml").exists():
+            return candidate
+    return current
+
+
+def get_git_commit(repo_root: Path) -> Optional[str]:
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"],
+            cwd=str(repo_root),
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+    except Exception:
+        return None
+
+
+def print_step(message: str) -> None:
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] {message}", flush=True)
+
+
+def set_seed(seed: int = RANDOM_SEED) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+
+
+@dataclass
+class RunPaths:
+    repo_root: Path
+    artifacts_root: Path
+    public_artifacts_root: Path
+    model_dir: Path
+    pages_dir: Path
+    public_model_dir: Path
+    public_pages_dir: Path
+    feature_store_path: Path
+    model_feature_plan_path: Path
+    target_plan_path: Path
+    mode_status_path: Path
+    study_context_path: Path
+    factor_state_table_path: Path
+    alpha_summary_path: Path
+    beta_summary_path: Path
+    delta_summary_path: Path
+
+
+def build_paths(repo_root: Path) -> RunPaths:
+    artifacts_root = repo_root / "artifacts" / "deep_ml"
+    public_root = repo_root / "public" / "artifacts" / "deep_ml"
+    return RunPaths(

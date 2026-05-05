@@ -7,44 +7,44 @@
   "model_behavior_summary": {
     "top_variable_selection_features": [
       {
-        "feature": "eur_usd",
-        "mean_variable_selection_weight": 0.9327363148331642
+        "feature": "usd_index",
+        "mean_variable_selection_weight": 0.8987363427877426
       },
       {
-        "feature": "gold_return_1",
-        "mean_variable_selection_weight": 0.9125725105404854
-      },
-      {
-        "feature": "gold_lag_1",
-        "mean_variable_selection_weight": 0.8959256410598755
-      },
-      {
-        "feature": "fin_stress",
-        "mean_variable_selection_weight": 0.8524084538221359
-      },
-      {
-        "feature": "tips_curve",
-        "mean_variable_selection_weight": 0.8088589236140251
-      },
-      {
-        "feature": "ind_prod",
-        "mean_variable_selection_weight": 0.8079301193356514
-      },
-      {
-        "feature": "gold_ma_5",
-        "mean_variable_selection_weight": 0.7730282917618752
-      },
-      {
-        "feature": "gold_return_5",
-        "mean_variable_selection_weight": 0.7579067423939705
+        "feature": "fed_bs",
+        "mean_variable_selection_weight": 0.8928574174642563
       },
       {
         "feature": "cap_util",
-        "mean_variable_selection_weight": 0.7532812282443047
+        "mean_variable_selection_weight": 0.852583572268486
       },
       {
-        "feature": "fred_api_update_applied",
-        "mean_variable_selection_weight": 0.7305077463388443
+        "feature": "gold_lag_1",
+        "mean_variable_selection_weight": 0.8390426337718964
+      },
+      {
+        "feature": "nominal_yield",
+        "mean_variable_selection_weight": 0.7766466438770294
+      },
+      {
+        "feature": "ind_prod",
+        "mean_variable_selection_weight": 0.7133982330560684
+      },
+      {
+        "feature": "fin_stress",
+        "mean_variable_selection_weight": 0.7003095895051956
+      },
+      {
+        "feature": "gold_lag_5",
+        "mean_variable_selection_weight": 0.6919605061411858
+      },
+      {
+        "feature": "gold_price",
+        "mean_variable_selection_weight": 0.6649262681603432
+      },
+      {
+        "feature": "unrate",
+        "mean_variable_selection_weight": 0.64305130392313
       }
     ],
     "temporal_attention_by_horizon": [
@@ -53,204 +53,204 @@
         "top_lag_positions_from_sequence_start": [
           0,
           1,
-          2,
-          3,
-          11,
-          12,
           19,
-          10,
-          13,
-          14
+          2,
+          18,
+          3,
+          4,
+          17,
+          16,
+          12
         ],
         "top_lags_ago_approx": [
           19,
           18,
-          17,
-          16,
-          8,
-          7,
           0,
-          9,
-          6,
-          5
+          17,
+          1,
+          16,
+          15,
+          2,
+          3,
+          7
         ],
         "top_attention_weights": [
-          0.07825404033064842,
-          0.07304714433848858,
-          0.061206456273794174,
-          0.05112015176564455,
-          0.050463901832699776,
-          0.04947520513087511,
-          0.04937892686575651,
-          0.0492065055295825,
-          0.04888129699975252,
-          0.04801707714796066
+          0.3211209997534752,
+          0.09126552566885948,
+          0.05024760402739048,
+          0.04849766753613949,
+          0.03974710125476122,
+          0.03732914570719004,
+          0.03319482319056988,
+          0.032834410667419434,
+          0.031677018385380507,
+          0.0314296162687242
         ],
-        "mean_attention_weight": 0.05000000223517418
+        "mean_attention_weight": 0.05000000107102096
       },
       {
         "horizon_trading_days": 5,
         "top_lag_positions_from_sequence_start": [
-          0,
-          19,
-          18,
-          17,
-          16,
-          11,
-          12,
-          14,
-          13,
-          10
-        ],
-        "top_lags_ago_approx": [
-          19,
-          0,
-          1,
           2,
+          1,
           3,
-          8,
-          7,
+          4,
           5,
           6,
+          7,
+          0,
+          8,
           9
         ],
-        "top_attention_weights": [
-          0.20187894999980927,
-          0.07785145193338394,
-          0.06728697195649147,
-          0.05978604964911938,
-          0.05210163164883852,
-          0.04991915635764599,
-          0.04799247719347477,
-          0.04711244814097881,
-          0.04674462601542473,
-          0.04657037928700447
+        "top_lags_ago_approx": [
+          17,
+          18,
+          16,
+          15,
+          14,
+          13,
+          12,
+          19,
+          11,
+          10
         ],
-        "mean_attention_weight": 0.04999999878928065
+        "top_attention_weights": [
+          0.14160726219415665,
+          0.1382693164050579,
+          0.09120965003967285,
+          0.060002108104527,
+          0.052253433503210545,
+          0.04892907664179802,
+          0.04354017227888107,
+          0.03934146836400032,
+          0.038523999974131584,
+          0.03495878539979458
+        ],
+        "mean_attention_weight": 0.050000000791624186
       },
       {
         "horizon_trading_days": 10,
         "top_lag_positions_from_sequence_start": [
-          0,
-          19,
-          18,
-          17,
-          16,
-          15,
-          14,
-          13,
-          12,
-          11
-        ],
-        "top_lags_ago_approx": [
-          19,
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
           6,
           7,
-          8
+          8,
+          5,
+          9,
+          4,
+          3,
+          11,
+          10,
+          13
+        ],
+        "top_lags_ago_approx": [
+          13,
+          12,
+          11,
+          14,
+          10,
+          15,
+          16,
+          8,
+          9,
+          6
         ],
         "top_attention_weights": [
-          0.18605716153979301,
-          0.09123614989221096,
-          0.08312157727777958,
-          0.07395919226109982,
-          0.06905111484229565,
-          0.06717911176383495,
-          0.058382787741720676,
-          0.052514342591166496,
-          0.047746265307068825,
-          0.04056853707879782
+          0.09121811017394066,
+          0.08959695883095264,
+          0.08381275832653046,
+          0.0719071663916111,
+          0.0679042898118496,
+          0.06015843152999878,
+          0.05462817847728729,
+          0.05144393723458052,
+          0.05018956772983074,
+          0.048938401974737644
         ],
-        "mean_attention_weight": 0.049999999115243554
+        "mean_attention_weight": 0.04999999992833182
       },
       {
         "horizon_trading_days": 20,
         "top_lag_positions_from_sequence_start": [
-          0,
-          19,
-          18,
           17,
           16,
           15,
+          18,
           14,
           13,
+          19,
           12,
-          11
+          11,
+          10
         ],
         "top_lags_ago_approx": [
-          19,
-          0,
-          1,
           2,
           3,
           4,
+          1,
           5,
           6,
+          0,
           7,
-          8
+          8,
+          9
         ],
         "top_attention_weights": [
-          0.24375493079423904,
-          0.12916314229369164,
-          0.1060490719974041,
-          0.08465024642646313,
-          0.07167482562363148,
-          0.06645643152296543,
-          0.05565003119409084,
-          0.048251524567604065,
-          0.04251362010836601,
-          0.034519441425800323
+          0.09003021754324436,
+          0.0876107644289732,
+          0.08172022551298141,
+          0.08160190470516682,
+          0.07566487975418568,
+          0.0689884964376688,
+          0.06439516600221395,
+          0.06259133759886026,
+          0.05910139251500368,
+          0.058347536250948906
         ],
-        "mean_attention_weight": 0.05000000059953891
+        "mean_attention_weight": 0.0500000000858563
       },
       {
         "horizon_trading_days": 30,
         "top_lag_positions_from_sequence_start": [
-          0,
-          19,
-          18,
-          17,
-          16,
-          15,
-          14,
-          13,
-          12,
-          11
+          6,
+          3,
+          7,
+          5,
+          4,
+          2,
+          8,
+          9,
+          11,
+          13
         ],
         "top_lags_ago_approx": [
-          19,
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8
+          13,
+          16,
+          12,
+          14,
+          15,
+          17,
+          11,
+          10,
+          8,
+          6
         ],
         "top_attention_weights": [
-          0.1970299445092678,
-          0.103996641933918,
-          0.09232342429459095,
-          0.07898041419684887,
-          0.0709304679185152,
-          0.06599406711757183,
-          0.05430480185896158,
-          0.04771547298878431,
-          0.043412722647190094,
-          0.0370571743696928
+          0.08331907913088799,
+          0.07820845395326614,
+          0.07692541554570198,
+          0.07384000532329082,
+          0.07007233053445816,
+          0.06975242495536804,
+          0.06783437728881836,
+          0.05545904394239187,
+          0.0455891415476799,
+          0.04374217055737972
         ],
-        "mean_attention_weight": 0.04999999962747097
+        "mean_attention_weight": 0.05000000126019586
       }
     ],
     "quantile_behavior": {
-      "native_test_crossing_count_before_ordering": 0,
+      "native_test_crossing_count_before_ordering": 3068,
       "ordering_rule": "native p10/p50/p90 are sorted before reconstruction",
       "calibration_rule": "V2 widens intervals around p50 using validation residuals",
       "coverage_target_pct": 80.0
@@ -261,11 +261,11 @@
         "status": "ready",
         "method": "validation_residual_symmetric_interval_widening",
         "target_coverage_pct": 80.0,
-        "native_validation_coverage_pct": 82.75862068965517,
-        "required_validation_half_width_price": 46.97454118342433,
-        "median_native_half_width_price": 68.20920209634278,
-        "raw_scale_factor": 0.6886833409526572,
-        "scale_factor": 1.0,
+        "native_validation_coverage_pct": 75.09578544061303,
+        "required_validation_half_width_price": 53.82303720642235,
+        "median_native_half_width_price": 47.025569311717845,
+        "raw_scale_factor": 1.1445483381529356,
+        "scale_factor": 1.1445483381529356,
         "scale_factor_cap": 4.0
       },
       "5": {
@@ -273,11 +273,11 @@
         "status": "ready",
         "method": "validation_residual_symmetric_interval_widening",
         "target_coverage_pct": 80.0,
-        "native_validation_coverage_pct": 72.89272030651341,
-        "required_validation_half_width_price": 119.97167427539831,
-        "median_native_half_width_price": 90.54563269019127,
-        "raw_scale_factor": 1.3249857636523505,
-        "scale_factor": 1.3249857636523505,
+        "native_validation_coverage_pct": 56.03448275862068,
+        "required_validation_half_width_price": 126.07533196726877,
+        "median_native_half_width_price": 59.093981529213124,
+        "raw_scale_factor": 2.133471610893969,
+        "scale_factor": 2.133471610893969,
         "scale_factor_cap": 4.0
       },
       "10": {
@@ -285,11 +285,11 @@
         "status": "ready",
         "method": "validation_residual_symmetric_interval_widening",
         "target_coverage_pct": 80.0,
-        "native_validation_coverage_pct": 74.04214559386973,
-        "required_validation_half_width_price": 118.47035063814403,
-        "median_native_half_width_price": 102.23682382284642,
-        "raw_scale_factor": 1.158783559663656,
-        "scale_factor": 1.158783559663656,
+        "native_validation_coverage_pct": 50.09578544061303,
+        "required_validation_half_width_price": 128.48613846330554,
+        "median_native_half_width_price": 60.34331994826789,
+        "raw_scale_factor": 2.129252062588804,
+        "scale_factor": 2.129252062588804,
         "scale_factor_cap": 4.0
       },
       "20": {
@@ -297,11 +297,11 @@
         "status": "ready",
         "method": "validation_residual_symmetric_interval_widening",
         "target_coverage_pct": 80.0,
-        "native_validation_coverage_pct": 73.08429118773945,
-        "required_validation_half_width_price": 115.25858442928005,
-        "median_native_half_width_price": 91.61392365074425,
-        "raw_scale_factor": 1.2580902534932932,
-        "scale_factor": 1.2580902534932932,
+        "native_validation_coverage_pct": 54.214559386973185,
+        "required_validation_half_width_price": 110.0685028514883,
+        "median_native_half_width_price": 60.21604630582988,
+        "raw_scale_factor": 1.827893221226514,
+        "scale_factor": 1.827893221226514,
         "scale_factor_cap": 4.0
       },
       "30": {
@@ -309,15 +309,15 @@
         "status": "ready",
         "method": "validation_residual_symmetric_interval_widening",
         "target_coverage_pct": 80.0,
-        "native_validation_coverage_pct": 69.73180076628353,
-        "required_validation_half_width_price": 143.04531635499444,
-        "median_native_half_width_price": 99.9784593151926,
-        "raw_scale_factor": 1.430761359344707,
-        "scale_factor": 1.430761359344707,
+        "native_validation_coverage_pct": 45.40229885057471,
+        "required_validation_half_width_price": 139.15777959638515,
+        "median_native_half_width_price": 60.30718140289173,
+        "raw_scale_factor": 2.307482730236047,
+        "scale_factor": 2.307482730236047,
         "scale_factor_cap": 4.0
       }
     }
   },
   "professor_safe_note": "This explanation describes how the Delta model used its inputs and calibrated intervals. It does not claim causality.",
-  "generated_at_utc": "2026-05-05T17:57:12.938683Z"
+  "generated_at_utc": "2026-05-05T21:50:28.822758Z"
 }

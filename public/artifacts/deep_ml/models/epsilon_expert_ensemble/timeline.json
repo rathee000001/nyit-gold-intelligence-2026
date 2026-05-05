@@ -1,17 +1,17 @@
 [
   {
-    "timestamp_utc": "2026-05-05T18:13:09.545801Z",
+    "timestamp_utc": "2026-05-05T21:52:32.892570Z",
     "elapsed_seconds": 0.0,
     "event": "phase9_epsilon_expert_ensemble_started",
     "status": "ok",
     "details": {
-      "run_id": "deepml_run_20260505_181309_epsilon_expert_ensemble",
+      "run_id": "deepml_run_20260505_215232_epsilon_expert_ensemble",
       "repo_root": "D:\\nyit-gold-intelligence-2026"
     }
   },
   {
-    "timestamp_utc": "2026-05-05T18:13:09.589912Z",
-    "elapsed_seconds": 0.044,
+    "timestamp_utc": "2026-05-05T21:52:32.941496Z",
+    "elapsed_seconds": 0.049,
     "event": "dependency_precheck_completed",
     "status": "ok",
     "details": {
@@ -24,8 +24,8 @@
     }
   },
   {
-    "timestamp_utc": "2026-05-05T18:13:10.039085Z",
-    "elapsed_seconds": 0.493,
+    "timestamp_utc": "2026-05-05T21:52:33.346147Z",
+    "elapsed_seconds": 0.454,
     "event": "effective_data_filter_applied",
     "status": "ok",
     "details": {
@@ -35,8 +35,8 @@
     }
   },
   {
-    "timestamp_utc": "2026-05-05T18:13:10.054723Z",
-    "elapsed_seconds": 0.509,
+    "timestamp_utc": "2026-05-05T21:52:33.350984Z",
+    "elapsed_seconds": 0.458,
     "event": "sanity_checks_completed",
     "status": "ok",
     "details": {
@@ -44,15 +44,15 @@
     }
   },
   {
-    "timestamp_utc": "2026-05-05T18:13:10.063510Z",
-    "elapsed_seconds": 0.518,
+    "timestamp_utc": "2026-05-05T21:52:33.354396Z",
+    "elapsed_seconds": 0.462,
     "event": "benchmark_statistical_components_started",
     "status": "ok",
     "details": {}
   },
   {
-    "timestamp_utc": "2026-05-05T18:14:13.090999Z",
-    "elapsed_seconds": 63.545,
+    "timestamp_utc": "2026-05-05T21:53:41.509415Z",
+    "elapsed_seconds": 68.617,
     "event": "benchmark_statistical_components_completed",
     "status": "ok",
     "details": {
@@ -60,15 +60,15 @@
     }
   },
   {
-    "timestamp_utc": "2026-05-05T18:14:13.090999Z",
-    "elapsed_seconds": 63.545,
+    "timestamp_utc": "2026-05-05T21:53:41.509415Z",
+    "elapsed_seconds": 68.617,
     "event": "ml_components_started",
     "status": "ok",
     "details": {}
   },
   {
-    "timestamp_utc": "2026-05-05T18:14:26.205572Z",
-    "elapsed_seconds": 76.66,
+    "timestamp_utc": "2026-05-05T21:53:53.251472Z",
+    "elapsed_seconds": 80.359,
     "event": "ml_components_completed",
     "status": "ok",
     "details": {

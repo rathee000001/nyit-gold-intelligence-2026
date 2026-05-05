@@ -1,12 +1,12 @@
 {
   "artifact_type": "deep_ml_progress_checkpoint",
   "model_key": "delta_tft",
-  "step": "tuning_trial_completed",
-  "status": "running",
-  "updated_at_utc": "2026-05-05T21:27:39.207919Z",
-  "updated_at_local": "2026-05-05T17:27:39.207919-04:00",
+  "step": "completed",
+  "status": "ready_quality_review_required",
+  "updated_at_utc": "2026-05-05T21:50:28.909150Z",
+  "updated_at_local": "2026-05-05T17:50:28.909150-04:00",
   "payload": {
-    "trial_number": 10,
-    "score": 0.014788628762794865
+    "phase_report": "artifacts/deep_ml/models/delta_tft/phase8_delta_tft_report.json",
+    "send_me_this_json": "artifacts/deep_ml/models/delta_tft/phase8_delta_tft_report.json"
   }
 }

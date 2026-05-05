@@ -135,7 +135,7 @@
       "arima_like": 0.0695310578871871,
       "ridge_lag_expert": 0.0512749437303858,
       "elasticnet_lag_expert": 0.04653735468995557,
-      "random_forest_lag_expert": 0.07356971176559003,
+      "random_forest_lag_expert": 0.07356971176559002,
       "extratrees_lag_expert": 0.06273010535840051,
       "gradient_boosting_lag_expert": 0.08025177665413466,
       "xgboost_lag_expert": 0.04897634758436993
@@ -197,7 +197,7 @@
     "validation_disagreement_by_horizon": {
       "1": {
         "component_count": 15,
-        "mean_price_disagreement_std": 42.552680699097955,
+        "mean_price_disagreement_std": 42.55268069909795,
         "median_price_disagreement_std": 49.43290884055685,
         "mean_disagreement_pct_of_forecast": 2.420056181324198
       },
@@ -226,8 +226,8 @@
         "mean_disagreement_pct_of_forecast": 5.247193341383198
       }
     },
-    "generated_at_utc": "2026-05-05T18:14:26.986123Z"
+    "generated_at_utc": "2026-05-05T21:53:54.411551Z"
   },
   "professor_safe_note": "Epsilon interpretability explains component behavior, weighting, and disagreement. It does not identify causal drivers of gold prices.",
-  "generated_at_utc": "2026-05-05T18:14:27.166539Z"
+  "generated_at_utc": "2026-05-05T21:53:54.575612Z"
 }

@@ -55,5 +55,100 @@
     "details": {
       "max_trials": 70
     }
+  },
+  {
+    "timestamp_utc": "2026-05-05T21:49:21.840156Z",
+    "elapsed_seconds": 1696.517,
+    "event": "tuning_completed",
+    "status": "ok",
+    "details": {
+      "sequence_length": 20,
+      "hidden_size": 128,
+      "attention_heads": 2,
+      "dropout": 0.35866006974821746,
+      "learning_rate": 0.0018085126845320196,
+      "weight_decay": 1.4566369505688751e-06,
+      "batch_size": 64,
+      "grn_depth": 3,
+      "best_validation_quantile_loss": 0.013257150099996258
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T21:49:21.848535Z",
+    "elapsed_seconds": 1696.526,
+    "event": "final_evaluation_model_training_started",
+    "status": "ok",
+    "details": {
+      "sequence_length": 20,
+      "hidden_size": 128,
+      "attention_heads": 2,
+      "dropout": 0.35866006974821746,
+      "learning_rate": 0.0018085126845320196,
+      "weight_decay": 1.4566369505688751e-06,
+      "batch_size": 64,
+      "grn_depth": 3,
+      "best_validation_quantile_loss": 0.013257150099996258
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T21:49:36.376918Z",
+    "elapsed_seconds": 1711.054,
+    "event": "final_evaluation_model_training_completed",
+    "status": "ok",
+    "details": {
+      "best_validation_loss": 0.015438979655942497,
+      "epochs": 24
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T21:49:36.377918Z",
+    "elapsed_seconds": 1711.055,
+    "event": "static_evaluation_started",
+    "status": "ok",
+    "details": {}
+  },
+  {
+    "timestamp_utc": "2026-05-05T21:49:37.949776Z",
+    "elapsed_seconds": 1712.627,
+    "event": "static_rolling_uncertainty_calibration_completed",
+    "status": "ok",
+    "details": {}
+  },
+  {
+    "timestamp_utc": "2026-05-05T21:49:37.949776Z",
+    "elapsed_seconds": 1712.627,
+    "event": "interpretability_export_started",
+    "status": "ok",
+    "details": {}
+  },
+  {
+    "timestamp_utc": "2026-05-05T21:49:38.044995Z",
+    "elapsed_seconds": 1712.722,
+    "event": "final_forecast_model_training_started",
+    "status": "ok",
+    "details": {}
+  },
+  {
+    "timestamp_utc": "2026-05-05T21:50:28.807558Z",
+    "elapsed_seconds": 1763.485,
+    "event": "final_forecast_model_training_completed",
+    "status": "ok",
+    "details": {
+      "epochs": 60
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-05T21:50:28.909150Z",
+    "elapsed_seconds": 1763.586,
+    "event": "public_artifacts_copied",
+    "status": "ok",
+    "details": {}
+  },
+  {
+    "timestamp_utc": "2026-05-05T21:50:28.909150Z",
+    "elapsed_seconds": 1763.586,
+    "event": "phase8_delta_tft_v2_completed",
+    "status": "ready_quality_review_required",
+    "details": {}
   }
 ]

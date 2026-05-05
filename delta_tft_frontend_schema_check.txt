@@ -1,0 +1,1842 @@
+===== DELTA TFT FRONTEND SCHEMA CHECK AFTER ROLLFORWARD PATCH =====
+
+
+    Directory: D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\models\delta_tft
+
+
+Mode                 LastWriteTime         Length Name                                                                                                                                                   
+----                 -------------         ------ ----                                                                                                                                                   
+-a----        05-05-2026     17:49            296 best_config.json                                                                                                                                       
+-a----        05-05-2026     17:49        1574022 calibrated_quantile_forecast_table.csv                                                                                                                 
+-a----        05-05-2026     17:21            635 dependency_precheck.json                                                                                                                               
+-a----        05-05-2026     17:50           2757 diagnostics_latest.json                                                                                                                                
+-a----        05-05-2026     17:49           6122 evaluation_by_horizon.json                                                                                                                             
+-a----        05-05-2026     17:49        9467722 evaluation_rollforward.csv                                                                                                                             
+-a----        05-05-2026     17:49            875 evaluation_rollforward_summary.json                                                                                                                    
+-a----        05-05-2026     17:50           9788 forecast_latest.json                                                                                                                                   
+-a----        05-05-2026     17:49           4168 horizon_attention_summary.json                                                                                                                         
+-a----        05-05-2026     17:50          22683 interpretability_latest.json                                                                                                                           
+-a----        05-05-2026     17:49           2967 interval_calibration_summary.json                                                                                                                      
+-a----        05-05-2026     17:50           8947 latest_tft_explanation.json                                                                                                                            
+-a----        05-05-2026     17:49        9377611 native_evaluation_rollforward.csv                                                                                                                      
+-a----        05-05-2026     17:49        1558472 native_quantile_forecast_table.csv                                                                                                                     
+-a----        05-05-2026     17:49           9321 optuna_trials.csv                                                                                                                                      
+-a----        05-05-2026     17:50           3013 page_bundle.json                                                                                                                                       
+-a----        05-05-2026     17:50          39544 phase8_delta_tft_report.json                                                                                                                           
+-a----        05-05-2026     17:49           5611 pinball_loss_summary.json                                                                                                                              
+-a----        05-05-2026     17:49            596 progress_checkpoint.json                                                                                                                               
+-a----        05-05-2026     17:50           1097 quality_review.json                                                                                                                                    
+-a----        05-05-2026     17:49            487 quantile_behavior_summary.json                                                                                                                         
+-a----        05-05-2026     17:49          11583 quantile_coverage_summary.json                                                                                                                         
+-a----        05-05-2026     17:49        1574022 quantile_forecast_table.csv                                                                                                                            
+-a----        05-05-2026     17:49           1873 rolling_origin_metrics.json                                                                                                                            
+-a----        05-05-2026     17:49        1637097 rolling_origin_predictions.csv                                                                                                                         
+-a----        05-05-2026     17:50           5872 run_summary.json                                                                                                                                       
+-a----        05-05-2026     17:21           1581 sanity_checks.json                                                                                                                                     
+-a----        05-05-2026     17:49           4388 temporal_attention_summary.json                                                                                                                        
+-a----        05-05-2026     17:49           2758 tft_dataset_manifest.json                                                                                                                              
+-a----        05-05-2026     17:50           4161 timeline.json                                                                                                                                          
+-a----        05-05-2026     17:50           7442 training_history.csv                                                                                                                                   
+-a----        05-05-2026     17:49          14755 uncertainty_latest.json                                                                                                                                
+-a----        05-05-2026     17:49           3717 variable_selection_summary.json                                                                                                                        
+
+
+
+
+===== evaluation_rollforward.csv HEAD =====
+date,split,horizon,gold_price,actual_target,prediction,naive_prediction,predicted_log_return,error,interval_type,origin_index,origin_date,horizon_trading_days,raw_gold_price_anchor,actual_gold_price,predicted_log_return_p10,predicted_log_return_p50,predicted_log_return_p90,forecast_price_p10,forecast_price_p50,forecast_price_p90,p10,p50,p90,interval_width_price
+2006-01-27,train,1,648.75,648.75,645.1416863501072,648.75,-0.005577473048119077,-3.608313649892807,calibrated,19,2006-01-27,1,648.75,648.75,-0.10034638930287691,-0.005577473048119077,0.011148209717155643,586.8099750442283,645.1416863501072,656.0228654445643,586.8099750442283,645.1416863501072,656.0228654445643,69.21289040033605
+2006-01-27,train,5,648.75,563.75,623.7632187455893,648.75,-0.03927659526122703,60.013218745589256,calibrated,19,2006-01-27,5,648.75,563.75,-0.2534450066197585,-0.03927659526122703,0.060397205228277726,503.5094234440004,623.7632187455893,689.1401352797418,503.5094234440004,623.7632187455893,689.1401352797418,185.6307118357414
+2006-01-27,train,10,648.75,600.5999755859375,632.6924358308315,648.75,-0.025063013779109154,32.09246024489403,calibrated,19,2006-01-27,10,648.75,600.5999755859375,-0.19187747018599088,-0.025063013779109154,0.08508836957366568,535.4834396006472,632.6924358308315,706.3676156676387,535.4834396006472,632.6924358308315,706.3676156676387,170.88417606699147
+2006-01-27,train,20,648.75,620.75,637.7811735123396,648.75,-0.01705219819439615,17.031173512339592,calibrated,19,2006-01-27,20,648.75,620.75,-0.13174597200783364,-0.01705219819439615,0.08231490760641975,568.6706604771603,637.7811735123396,704.4112461629455,568.6706604771603,637.7811735123396,704.4112461629455,135.74058568578528
+2006-01-27,train,30,648.75,582.25,625.3373365849257,648.75,-0.03675619181426883,43.08733658492565,calibrated,19,2006-01-27,30,648.75,582.25,-0.24254356167786398,-0.03675619181426883,0.08401458782728236,509.0284316261559,625.3373365849257,705.6095380934684,509.0284316261559,625.3373365849257,705.6095380934684,196.58110646731245
+2006-01-30,train,1,648.75,648.75,643.0330923199654,648.75,-0.008851246061393326,-5.7169076800346375,calibrated,20,2006-01-30,1,648.75,648.75,-0.10654166012123709,-0.008851246061393326,0.004815501732748778,583.1857663987813,643.0330923199654,651.881590788003,583.1857663987813,643.0330923199654,651.881590788003,68.69582438922168
+2006-01-30,train,5,648.75,632.25,623.8744680583477,648.75,-0.03909825933208677,-8.375531941652298,calibrated,20,2006-01-30,5,648.75,632.25,-0.2413758887555136,-0.03909825933208677,0.04080734135104466,509.62315749754663,623.8744680583477,675.7713477355445,509.62315749754663,623.8744680583477,675.7713477355445,166.14819023799788
+2006-01-30,train,10,648.75,620.75,631.48184068501,648.75,-0.026978248946224418,10.731840685009956,calibrated,20,2006-01-30,10,648.75,620.75,-0.1786840597896511,-0.026978248946224418,0.07219267686693587,542.5951027671433,631.48184068501,697.3169983730091,542.5951027671433,631.48184068501,697.3169983730091,154.72189560586583
+2006-01-30,train,20,648.75,620.75,632.8063919395208,648.75,-0.024882917035443108,12.056391939520836,calibrated,20,2006-01-30,20,648.75,620.75,-0.14177154522806495,-0.024882917035443108,0.05990265058558574,562.9978950101843,632.8063919395208,688.7994020889095,562.9978950101843,632.8063919395208,688.7994020889095,125.8015070787252
+2006-01-30,train,30,648.75,622.75,626.5513345599174,648.75,-0.03481672485763823,3.80133455991745,calibrated,20,2006-01-30,30,648.75,622.75,-0.22114377655638243,-0.03481672485763823,0.06946658877869541,520.0389215576364,626.5513345599174,695.4186395323748,520.0389215576364,626.5513345599174,695.4186395323748,175.37971797473836
+2006-01-31,train,1,648.75,648.75,643.5587134212255,648.75,-0.008034170858275652,-5.191286578774452,calibrated,21,2006-01-31,1,648.75,648.75,-0.10717126734816791,-0.008034170858275652,0.006211574670346097,582.8187039903115,643.5587134212255,652.7923005961626,582.8187039903115,643.5587134212255,652.7923005961626,69.97359660585107
+
+===== evaluation_rollforward_summary.json HEAD =====
+{
+  "artifact_type": "delta_tft_evaluation_rollforward_summary",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "delta_version": "v2_calibrated",
+  "purpose": "Frontend-ready static split forecast path for train, validation, and test.",
+  "main_frontend_source": "evaluation_rollforward.csv",
+  "native_audit_source": "native_evaluation_rollforward.csv",
+  "rows": 26285,
+  "native_rows": 26285,
+  "splits": {
+    "train": 16860,
+    "validation": 5220,
+    "test": 4205
+  },
+  "horizons": [
+    1,
+    5,
+    10,
+    20,
+    30
+  ],
+  "quantiles": [
+    "p10",
+    "p50",
+    "p90"
+  ],
+  "p50_preserved_by_calibration": true,
+  "professor_safe_note": "This artifact supports frontend train/validation/test graphing. p10/p90 intervals are calibrated estimates, not guarantees.",
+  "generated_at_utc": "2026-05-05T21:49:37.595237Z"
+}
+
+===== native_evaluation_rollforward.csv HEAD =====
+date,split,horizon,gold_price,actual_target,prediction,naive_prediction,predicted_log_return,error,interval_type,origin_index,origin_date,horizon_trading_days,raw_gold_price_anchor,actual_gold_price,predicted_log_return_p10,predicted_log_return_p50,predicted_log_return_p90,forecast_price_p10,forecast_price_p50,forecast_price_p90,p10,p50,p90,interval_width_price
+2006-01-27,train,1,648.75,648.75,645.1416863501072,648.75,-0.005577556788921356,-3.608313649892807,native,19,2006-01-27,1,648.75,648.75,-0.08787049353122711,-0.005577556788921356,0.00905129685997963,594.1768565028906,645.1416863501072,654.6486496925354,594.1768565028906,645.1416863501072,654.6486496925354,60.47179318964481
+2006-01-27,train,5,648.75,563.75,623.7632187455893,648.75,-0.0392766073346138,60.013218745589256,native,19,2006-01-27,5,648.75,563.75,-0.13398659229278564,-0.0392766073346138,0.008681446313858032,567.3979056626558,623.7632187455893,654.4066621363163,567.3979056626558,623.7632187455893,654.4066621363163,87.00875647366047
+2006-01-27,train,10,648.75,600.5999755859375,632.6924358308315,648.75,-0.02506297081708908,32.09246024489403,native,19,2006-01-27,10,648.75,600.5999755859375,-0.09995725750923157,-0.02506297081708908,0.028183069080114365,587.0383782684803,632.6924358308315,667.2938722372055,587.0383782684803,632.6924358308315,667.2938722372055,80.2554939687252
+2006-01-27,train,20,648.75,620.75,637.7811735123396,648.75,-0.01705220341682434,17.031173512339592,native,19,2006-01-27,20,648.75,620.75,-0.07816386222839355,-0.01705220341682434,0.038528360426425934,599.9723386019468,637.7811735123396,674.2330142855644,599.9723386019468,637.7811735123396,674.2330142855644,74.26067568361759
+2006-01-27,train,30,648.75,582.25,625.3373365849257,648.75,-0.03675622493028641,43.08733658492565,native,19,2006-01-27,30,648.75,582.25,-0.12079530954360962,-0.03675622493028641,0.0173819400370121,574.9322334676981,625.3373365849257,660.1251165568829,574.9322334676981,625.3373365849257,660.1251165568829,85.19288308918476
+2006-01-30,train,1,648.75,648.75,643.0330923199654,648.75,-0.008851252496242523,-5.7169076800346375,native,20,2006-01-30,1,648.75,648.75,-0.0936645120382309,-0.008851252496242523,0.003099716966971755,590.7440592348576,643.0330923199654,650.7640881836414,590.7440592348576,643.0330923199654,650.7640881836414,60.020028948783875
+2006-01-30,train,5,648.75,632.25,623.8744680583477,648.75,-0.03909827768802643,-8.375531941652298,native,20,2006-01-30,5,648.75,632.25,-0.12884515523910522,-0.03909827768802643,-0.0008487442974001169,570.322637334466,623.8744680583477,648.1995537132025,570.322637334466,623.8744680583477,648.1995537132025,77.8769163787365
+
+===== rolling_origin_predictions.csv HEAD =====
+date,split,horizon,gold_price,actual_target,prediction,naive_prediction,predicted_log_return,error,interval_type,origin_index,origin_date,horizon_trading_days,raw_gold_price_anchor,actual_gold_price,predicted_log_return_p10,predicted_log_return_p50,predicted_log_return_p90,forecast_price_p10,forecast_price_p50,forecast_price_p90,p10,p50,p90,interval_width_price
+2023-01-02,test_rolling_origin,1,1961.699951171875,1852.5,1971.2970385904482,1961.699951171875,0.004880301963944596,118.79703859044821,calibrated,4435,2023-01-02,1,1961.699951171875,1852.5,-0.015106246507605644,0.004880301963944596,0.017203444744083068,1932.2887339819545,1971.2970385904482,1995.7399106367006,1932.2887339819545,1971.2970385904482,1995.7399106367006,63.45117665474618
+2023-01-02,test_rolling_origin,5,1961.699951171875,1974.4000244140625,1955.1072883399174,1961.699951171875,-0.003366348484698665,-19.29273607414507,calibrated,4435,2023-01-02,5,1961.699951171875,1974.4000244140625,-0.0543045761489734,-0.003366348484698665,0.028772154220950284,1858.011524878764,1955.1072883399174,2018.9621123117636,1858.011524878764,1955.1072883399174,2018.9621123117636,160.95058743299955
+2023-01-02,test_rolling_origin,10,1961.699951171875,2005.9000244140625,1953.3873005730711,1961.699951171875,-0.004246476543595899,-52.512723840991384,calibrated,4435,2023-01-02,10,1961.699951171875,2005.9000244140625,-0.05925673583466773,-0.004246476543595899,0.02736516686388194,1848.8331003791416,1953.3873005730711,2016.1234555906867,1848.8331003791416,1953.3873005730711,2016.1234555906867,167.29035521154515
+2023-01-02,test_rolling_origin,20,1961.699951171875,1940.800048828125,1951.297825291389,1961.699951171875,-0.005316716736478223,10.497776463264017,calibrated,4435,2023-01-02,20,1961.699951171875,1940.800048828125,-0.04740197820782837,-0.005316716736478223,0.020888814480134826,1870.8809967018253,1951.297825291389,2003.1085197889702,1870.8809967018253,1951.297825291389,2003.1085197889702,132.22752308714485
+2023-01-02,test_rolling_origin,30,1961.699951171875,1868.5,1952.753793182128,1961.699951171875,-0.004570841373893673,84.25379318212799,calibrated,4435,2023-01-02,30,1961.699951171875,1868.5,-0.06434467924579737,-0.004570841373893673,0.030137037527593998,1839.4502321803193,1952.753793182128,2021.7196414202433,1839.4502321803193,1952.753793182128,2021.7196414202433,182.26940923992402
+2023-01-03,test_rolling_origin,1,1852.5,1852.5,1870.2284297347069,1852.5,0.009524500156429335,17.72842973470688,calibrated,4436,2023-01-03,1,1852.5,1852.5,-0.006509400535013332,0.009524500156429335,0.02436226137285625,1840.4804978269538,1870.2284297347069,1898.185328577917,1840.4804978269538,1870.2284297347069,1898.185328577917,57.70483075096331
+2023-01-03,test_rolling_origin,5,1852.5,1974.4000244140625,1856.8524411320686,1852.5,0.0023467401378643557,-117.54758328199387,calibrated,4436,2023-01-03,5,1852.5,1974.4000244140625,-0.0429852866975957,0.0023467401378643557,0.044054672371096774,1774.5569595002748,1856.8524411320686,1935.9356517299439,1774.5569595002748,1856.8524411320686,1935.9356517299439,161.378692229669
+
+===== forecast_latest.json HEAD =====
+{
+  "artifact_type": "delta_tft_forecast_latest",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "phase_2_deep_ml",
+  "model_key": "delta_tft",
+  "model_name": "Delta TFT Multi-Horizon Expert",
+  "delta_version": "v2_calibrated",
+  "frequency": "trading_day",
+  "target": "anchored_future_log_return_quantiles",
+  "forecast_reconstruction": "raw_gold_price_anchor * exp(predicted_log_return_quantile)",
+  "raw_price_anchor_scaled": false,
+  "interval_display_policy": "use calibrated p10/p90 and native p50; native interval values are retained for audit",
+  "horizons": [
+    1,
+    5,
+    10,
+    20,
+    30
+  ],
+  "quantiles": [
+    "p10",
+    "p50",
+    "p90"
+  ],
+  "latest_origin": {
+    "origin_index": 5305,
+    "origin_date": "2026-05-05",
+    "raw_gold_price_anchor": 4561.7001953125
+  },
+  "path": [
+    {
+      "horizon_trading_days": 1,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-05-06",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "native_predicted_log_return_p10": -0.09314960241317749,
+      "native_predicted_log_return_p50": -0.010285073891282082,
+      "native_predicted_log_return_p90": 0.04013000801205635,
+      "native_forecast_price_p10": 4155.9697265625,
+      "native_forecast_price_p50": 4515.0234375,
+      "native_forecast_price_p90": 4748.484375,
+      "interval_calibration_applied": true,
+      "interval_calibration_factor": 1.1445483381529356,
+      "predicted_log_return_p10": -0.10571645665009476,
+      "predicted_log_return_p50": -0.01028502599891904,
+      "predicted_log_return_p90": 0.04721172110570487,
+      "forecast_price_p10": 4104.06910933884,
+      "forecast_price_p50": 4515.0234375,
+      "forecast_price_p90": 4782.2307655392515,
+      "calibrated_forecast_price_p10": 4104.06910933884,
+      "calibrated_forecast_price_p50": 4515.0234375,
+      "calibrated_forecast_price_p90": 4782.2307655392515
+    },
+    {
+      "horizon_trading_days": 5,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-05-12",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "native_predicted_log_return_p10": -0.2028820514678955,
+      "native_predicted_log_return_p50": -0.11520328372716904,
+      "native_predicted_log_return_p90": -0.032351840287446976,
+      "native_forecast_price_p10": 3724.055908203125,
+      "native_forecast_price_p50": 4065.318603515625,
+      "native_forecast_price_p90": 4416.482421875,
+      "interval_calibration_applied": true,
+      "interval_calibration_factor": 2.133471610893969,
+      "predicted_log_return_p10": -0.31254998797335476,
+      "predicted_log_return_p50": -0.11520328670724073,
+      "predicted_log_return_p90": 0.05394025019145776,
+      "forecast_price_p10": 3337.2443312092482,
+      "forecast_price_p50": 4065.318603515625,
+      "forecast_price_p90": 4814.5166407584775,
+      "calibrated_forecast_price_p10": 3337.2443312092482,
+      "calibrated_forecast_price_p50": 4065.318603515625,
+      "calibrated_forecast_price_p90": 4814.5166407584775
+    },
+    {
+      "horizon_trading_days": 10,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-05-19",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "native_predicted_log_return_p10": -0.15367759764194489,
+      "native_predicted_log_return_p50": -0.08215634524822235,
+      "native_predicted_log_return_p90": -0.0027106255292892456,
+      "native_forecast_price_p10": 3911.878662109375,
+      "native_forecast_price_p50": 4201.90966796875,
+      "native_forecast_price_p90": 4549.35205078125,
+      "interval_calibration_applied": true,
+      "interval_calibration_factor": 2.129252062588804,
+      "predicted_log_return_p10": -0.2411153137957491,
+      "predicted_log_return_p50": -0.08215629908219417,
+      "predicted_log_return_p90": 0.08001441821526128,
+      "forecast_price_p10": 3584.36055052797,
+      "forecast_price_p50": 4201.90966796875,
+      "forecast_price_p90": 4941.702078203034,
+      "calibrated_forecast_price_p10": 3584.36055052797,
+      "calibrated_forecast_price_p50": 4201.90966796875,
+      "calibrated_forecast_price_p90": 4941.702078203034
+    },
+    {
+      "horizon_trading_days": 20,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-06-02",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "native_predicted_log_return_p10": -0.13985270261764526,
+      "native_predicted_log_return_p50": -0.07046159356832504,
+      "native_predicted_log_return_p90": 0.006122369319200516,
+      "native_forecast_price_p10": 3966.33544921875,
+      "native_forecast_price_p50": 4251.337890625,
+      "native_forecast_price_p90": 4589.71435546875,
+      "interval_calibration_applied": true,
+      "interval_calibration_factor": 1.827893221226514,
+      "predicted_log_return_p10": -0.20118426401005587,
+      "predicted_log_return_p50": -0.07046167269228112,
+      "predicted_log_return_p90": 0.06536854034471008,
+      "forecast_price_p10": 3730.383859945509,
+      "forecast_price_p50": 4251.337890625,
+      "forecast_price_p90": 4869.853936935482,
+      "calibrated_forecast_price_p10": 3730.383859945509,
+      "calibrated_forecast_price_p50": 4251.337890625,
+      "calibrated_forecast_price_p90": 4869.853936935482
+    },
+    {
+      "horizon_trading_days": 30,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-06-16",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "native_predicted_log_return_p10": -0.1646018773317337,
+      "native_predicted_log_return_p50": -0.09264124184846878,
+      "native_predicted_log_return_p90": -0.01593669131398201,
+      "native_forecast_price_p10": 3869.377197265625,
+      "native_forecast_price_p50": 4158.0830078125,
+      "native_forecast_price_p90": 4489.578125,
+      "interval_calibration_applied": true,
+      "interval_calibration_factor": 2.307482730236047,
+      "predicted_log_return_p10": -0.267249593396678,
+      "predicted_log_return_p50": -0.09264125124886992,
+      "predicted_log_return_p90": 0.0762231571557763,
+      "forecast_price_p10": 3491.899335856786,
+      "forecast_price_p50": 4158.0830078125,
+      "forecast_price_p90": 4923.002265880231,
+      "calibrated_forecast_price_p10": 3491.899335856786,
+      "calibrated_forecast_price_p50": 4158.0830078125,
+      "calibrated_forecast_price_p90": 4923.002265880231
+    }
+  ],
+  "interval_calibration_summary": {
+    "artifact_type": "delta_tft_interval_calibration_summary",
+    "schema_version": "1.0.0",
+    "model_key": "delta_tft",
+    "calibration_version": "v2_validation_residual_interval_calibration",
+    "target_coverage_pct": 80.0,
+    "p50_preserved": true,
+    "professor_safe_note": "Calibration uses validation residual behavior to widen intervals. It improves empirical interval behavior but does not guarantee future coverage.",
+    "by_horizon": {
+      "1": {
+        "horizon_trading_days": 1,
+        "status": "ready",
+        "method": "validation_residual_symmetric_interval_widening",
+        "target_coverage_pct": 80.0,
+        "native_validation_coverage_pct": 75.09578544061303,
+        "required_validation_half_width_price": 53.82303720642235,
+        "median_native_half_width_price": 47.025569311717845,
+        "raw_scale_factor": 1.1445483381529356,
+        "scale_factor": 1.1445483381529356,
+        "scale_factor_cap": 4.0
+      },
+      "5": {
+        "horizon_trading_days": 5,
+        "status": "ready",
+        "method": "validation_residual_symmetric_interval_widening",
+        "target_coverage_pct": 80.0,
+        "native_validation_coverage_pct": 56.03448275862068,
+        "required_validation_half_width_price": 126.07533196726877,
+        "median_native_half_width_price": 59.093981529213124,
+        "raw_scale_factor": 2.133471610893969,
+        "scale_factor": 2.133471610893969,
+        "scale_factor_cap": 4.0
+      },
+
+===== evaluation_by_horizon.json HEAD =====
+{
+  "artifact_type": "delta_tft_evaluation_by_horizon",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "delta_version": "v2_calibrated",
+  "point_forecast": "p50",
+  "metrics_note": "Point metrics use p50 forecast prices reconstructed from unscaled raw gold price anchors. Calibration preserves p50.",
+  "train": {
+    "1": {
+      "count": 3372,
+      "mae": 28.10635249397662,
+      "rmse": 56.02288839716651,
+      "mape_pct": 2.487713978545288,
+      "smape_pct": 2.4562742481198305,
+      "bias_mean_error": 0.1539548391864113,
+      "directional_accuracy_pct": 70.36713286713287
+    },
+    "5": {
+      "count": 3372,
+      "mae": 45.80369967174474,
+      "rmse": 70.62632145552281,
+      "mape_pct": 3.955906517153772,
+      "smape_pct": 3.9630015734981505,
+      "bias_mean_error": -9.012535667787594,
+      "directional_accuracy_pct": 85.27818808468734
+    },
+    "10": {
+      "count": 3372,
+      "mae": 54.772811889486604,
+      "rmse": 77.0237085437283,
+      "mape_pct": 4.718963838577593,
+      "smape_pct": 4.739418074200004,
+      "bias_mean_error": -11.143910634758836,
+      "directional_accuracy_pct": 81.39111434814275
+    },
+    "20": {
+      "count": 3372,
+      "mae": 52.71316966137295,
+      "rmse": 81.36910377251358,
+      "mape_pct": 4.437684555677329,
+      "smape_pct": 4.534758473466337,
+      "bias_mean_error": -22.23135128022582,
+      "directional_accuracy_pct": 63.112563112563116
+    },
+    "30": {
+      "count": 3372,
+      "mae": 58.78587934284178,
+      "rmse": 85.07675459902914,
+      "mape_pct": 4.993689027234166,
+      "smape_pct": 5.057381109958504,
+      "bias_mean_error": -14.271818647201384,
+      "directional_accuracy_pct": 75.97864768683274
+    }
+  },
+  "validation": {
+    "1": {
+      "count": 1044,
+      "mae": 38.1234750802174,
+      "rmse": 65.5656029461181,
+      "mape_pct": 2.252529226349471,
+      "smape_pct": 2.228145787562222,
+      "bias_mean_error": 10.820779906788934,
+      "directional_accuracy_pct": 53.80952380952381
+    },
+    "5": {
+      "count": 1044,
+      "mae": 76.42671766943427,
+      "rmse": 109.43624270367285,
+      "mape_pct": 4.5189730479924695,
+      "smape_pct": 4.49983209000515,
+      "bias_mean_error": 1.3751671535616228,
+      "directional_accuracy_pct": 59.674329501915715
+    },
+    "10": {
+      "count": 1044,
+      "mae": 81.56166818440352,
+      "rmse": 110.37696434159051,
+      "mape_pct": 4.787077093681114,
+      "smape_pct": 4.79335074965211,
+      "bias_mean_error": -5.826475598856799,
+      "directional_accuracy_pct": 66.0594439117929
+    },
+    "20": {
+      "count": 1044,
+      "mae": 73.1823528881687,
+      "rmse": 100.91448070257225,
+      "mape_pct": 4.239773621440839,
+      "smape_pct": 4.272412062285028,
+      "bias_mean_error": -10.27470107587381,
+      "directional_accuracy_pct": 61.49425287356321
+    },
+    "30": {
+      "count": 1044,
+      "mae": 88.61713667849502,
+      "rmse": 116.39119751108875,
+      "mape_pct": 5.146826397575999,
+      "smape_pct": 5.196403317235343,
+      "bias_mean_error": -15.845543389086728,
+      "directional_accuracy_pct": 69.92337164750958
+    }
+  },
+  "test": {
+    "1": {
+      "count": 841,
+      "mae": 164.72993449510386,
+      "rmse": 277.39602676926285,
+      "mape_pct": 5.04059231918179,
+      "smape_pct": 5.051889204476862,
+      "bias_mean_error": -27.159328752233186,
+      "directional_accuracy_pct": 54.13907284768212
+    },
+    "5": {
+      "count": 841,
+      "mae": 252.62237084034544,
+      "rmse": 400.9669203194671,
+      "mape_pct": 7.937488815780639,
+      "smape_pct": 8.050965665776294,
+      "bias_mean_error": -79.91080537282485,
+      "directional_accuracy_pct": 59.04191616766467
+    },
+    "10": {
+      "count": 841,
+      "mae": 285.84143905119134,
+      "rmse": 436.5886095734515,
+      "mape_pct": 8.906090368173215,
+      "smape_pct": 9.211642314535734,
+      "bias_mean_error": -131.52196039520416,
+      "directional_accuracy_pct": 55.76694411414982
+    },
+    "20": {
+      "count": 841,
+      "mae": 250.45966303230406,
+      "rmse": 390.06257583684936,
+      "mape_pct": 7.60190311537874,
+      "smape_pct": 8.003612812299735,
+      "bias_mean_error": -159.07358920367824,
+      "directional_accuracy_pct": 45.65992865636147
+    },
+    "30": {
+      "count": 841,
+      "mae": 309.8035830725001,
+      "rmse": 466.76181816996404,
+      "mape_pct": 9.401287257519586,
+      "smape_pct": 9.908443989395174,
+      "bias_mean_error": -187.2832295288186,
+      "directional_accuracy_pct": 53.03210463733651
+    }
+  },
+  "naive_baseline_test": {
+    "1": {
+      "count": 841,
+      "mae": 76.46653909036861,
+      "rmse": 181.30243344604654,
+      "mape_pct": 2.6868154209782737,
+      "smape_pct": 2.6201878389798154,
+      "bias_mean_error": -2.9836385139528834,
+      "directional_accuracy_pct": 0.0
+    },
+    "5": {
+      "count": 841,
+      "mae": 212.84974929864,
+      "rmse": 349.84514498482383,
+      "mape_pct": 7.1792406439883685,
+      "smape_pct": 7.159727719440954,
+      "bias_mean_error": -15.090939334683412,
+      "directional_accuracy_pct": 0.0
+    },
+    "10": {
+      "count": 841,
+      "mae": 243.27263961592413,
+      "rmse": 379.46336788146573,
+      "mape_pct": 8.147543309980913,
+      "smape_pct": 8.174809907852758,
+      "bias_mean_error": -31.085885681805514,
+      "directional_accuracy_pct": 0.0
+    },
+    "20": {
+      "count": 841,
+      "mae": 202.02899960983947,
+      "rmse": 317.557832809475,
+      "mape_pct": 6.486116931556498,
+      "smape_pct": 6.677740595631515,
+      "bias_mean_error": -64.7934953505871,
+      "directional_accuracy_pct": 0.0
+    },
+    "30": {
+      "count": 841,
+      "mae": 276.9936469732368,
+      "rmse": 417.8873176421281,
+      "mape_pct": 8.808974393432175,
+      "smape_pct": 9.075281480188343,
+      "bias_mean_error": -96.69706256154318,
+      "directional_accuracy_pct": 0.0
+    }
+  },
+  "generated_at_utc": "2026-05-05T21:49:36.632302Z"
+}
+
+===== uncertainty_latest.json HEAD =====
+{
+  "artifact_type": "delta_tft_uncertainty_latest",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "delta_version": "v2_calibrated",
+  "method": "native_quantile_forecasting_plus_validation_residual_interval_calibration",
+  "quantiles": [
+    0.1,
+    0.5,
+    0.9
+  ],
+  "coverage_target_pct": 80.0,
+  "coverage_by_horizon": {
+    "1": {
+      "count": 841,
+      "coverage_p10_p90_pct": 37.93103448275862,
+      "mean_interval_width_price": 130.28149272726725,
+      "median_interval_width_price": 74.24175908708912,
+      "mean_interval_width_pct_of_anchor": 4.028399045820357,
+      "calibration_error_vs_80pct_abs": 42.06896551724138,
+      "pinball_loss_mean": 0.019777281554088148,
+      "pinball_loss_by_quantile": {
+        "p10": 0.019583882511084415,
+        "p50": 0.02530010068039805,
+        "p90": 0.01444786147078199
+      }
+    },
+    "5": {
+      "count": 841,
+      "coverage_p10_p90_pct": 41.26040428061831,
+      "mean_interval_width_price": 250.72360637179497,
+      "median_interval_width_price": 161.1456410835708,
+      "mean_interval_width_pct_of_anchor": 8.082452728903077,
+      "calibration_error_vs_80pct_abs": 38.73959571938169,
+      "pinball_loss_mean": 0.03134050079786693,
+      "pinball_loss_by_quantile": {
+        "p10": 0.026851712429284098,
+        "p50": 0.04039251921197888,
+        "p90": 0.026777270752337823
+      }
+    },
+    "10": {
+      "count": 841,
+      "coverage_p10_p90_pct": 36.504161712247324,
+      "mean_interval_width_price": 255.58220156818984,
+      "median_interval_width_price": 170.18950035151374,
+      "mean_interval_width_pct_of_anchor": 8.284697200292642,
+      "calibration_error_vs_80pct_abs": 43.495838287752676,
+      "pinball_loss_mean": 0.035749476292367,
+      "pinball_loss_by_quantile": {
+        "p10": 0.02411592628969081,
+        "p50": 0.046225262335601675,
+        "p90": 0.036907240251808505
+      }
+    },
+    "20": {
+      "count": 841,
+      "coverage_p10_p90_pct": 30.79667063020214,
+      "mean_interval_width_price": 219.9452524075876,
+      "median_interval_width_price": 148.3085198276533,
+      "mean_interval_width_pct_of_anchor": 7.12225332689532,
+      "calibration_error_vs_80pct_abs": 49.203329369797856,
+      "pinball_loss_mean": 0.03120167433079953,
+      "pinball_loss_by_quantile": {
+        "p10": 0.016988087228256097,
+        "p50": 0.0401393617374924,
+        "p90": 0.0364775740266501
+      }
+    },
+    "30": {
+      "count": 841,
+      "coverage_p10_p90_pct": 33.88822829964328,
+      "mean_interval_width_price": 274.27300430637564,
+      "median_interval_width_price": 182.67949849225147,
+      "mean_interval_width_pct_of_anchor": 8.884464284115225,
+      "calibration_error_vs_80pct_abs": 46.11177170035672,
+      "pinball_loss_mean": 0.038507982598847426,
+      "pinball_loss_by_quantile": {
+        "p10": 0.022558710098960023,
+        "p50": 0.04975193144946733,
+        "p90": 0.04321330624811494
+      }
+    }
+  },
+  "native_coverage_by_horizon": {
+    "1": {
+      "count": 841,
+      "coverage_p10_p90_pct": 34.126040428061835,
+      "mean_interval_width_price": 113.8278641315531,
+      "median_interval_width_price": 64.86555142520228,
+      "mean_interval_width_pct_of_anchor": 3.5196408151021044,
+      "calibration_error_vs_80pct_abs": 45.873959571938165,
+      "pinball_loss_mean": 0.02030148187594324,
+      "pinball_loss_by_quantile": {
+        "p10": 0.019993871450424194,
+        "p50": 0.025300102308392525,
+        "p90": 0.015610471367835999
+      }
+    },
+    "5": {
+      "count": 841,
+      "coverage_p10_p90_pct": 23.067776456599287,
+      "mean_interval_width_price": 117.51907318173151,
+      "median_interval_width_price": 75.53212344646454,
+      "mean_interval_width_pct_of_anchor": 3.7884041613829407,
+      "calibration_error_vs_80pct_abs": 56.93222354340071,
+      "pinball_loss_mean": 0.03503529520400571,
+      "pinball_loss_by_quantile": {
+        "p10": 0.029069358482956886,
+        "p50": 0.040392518043518066,
+        "p90": 0.035644009709358215
+      }
+    },
+    "10": {
+      "count": 841,
+      "coverage_p10_p90_pct": 18.668252080856124,
+      "mean_interval_width_price": 120.03379311392841,
+      "median_interval_width_price": 79.9292405731394,
+      "mean_interval_width_pct_of_anchor": 3.890895467876112,
+      "calibration_error_vs_80pct_abs": 61.33174791914388,
+      "pinball_loss_mean": 0.04030077985279092,
+      "pinball_loss_by_quantile": {
+        "p10": 0.02685105986893177,
+        "p50": 0.046225257217884064,
+        "p90": 0.04782601445913315
+      }
+    },
+    "20": {
+      "count": 841,
+      "coverage_p10_p90_pct": 18.549346016646847,
+      "mean_interval_width_price": 120.32718861991545,
+      "median_interval_width_price": 81.13631480516051,
+      "mean_interval_width_pct_of_anchor": 3.896427452209872,
+      "calibration_error_vs_80pct_abs": 61.45065398335315,
+      "pinball_loss_mean": 0.03448089970473546,
+      "pinball_loss_by_quantile": {
+        "p10": 0.018329303711652756,
+        "p50": 0.04013936221599579,
+        "p90": 0.044974036514759064
+      }
+    },
+    "30": {
+      "count": 841,
+      "coverage_p10_p90_pct": 13.793103448275861,
+      "mean_interval_width_price": 118.86242991656908,
+      "median_interval_width_price": 79.1683058332419,
+      "mean_interval_width_pct_of_anchor": 3.850284193982409,
+      "calibration_error_vs_80pct_abs": 66.20689655172414,
+      "pinball_loss_mean": 0.04357609683678324,
+      "pinball_loss_by_quantile": {
+        "p10": 0.024638516828417778,
+        "p50": 0.04975193366408348,
+        "p90": 0.05633784458041191
+      }
+    }
+  },
+  "calibrated_coverage_by_horizon": {
+    "1": {
+      "count": 841,
+      "coverage_p10_p90_pct": 37.93103448275862,
+      "mean_interval_width_price": 130.28149272726725,
+      "median_interval_width_price": 74.24175908708912,
+      "mean_interval_width_pct_of_anchor": 4.028399045820357,
+      "calibration_error_vs_80pct_abs": 42.06896551724138,
+      "pinball_loss_mean": 0.019777281554088148,
+      "pinball_loss_by_quantile": {
+        "p10": 0.019583882511084415,
+        "p50": 0.02530010068039805,
+        "p90": 0.01444786147078199
+      }
+    },
+    "5": {
+      "count": 841,
+      "coverage_p10_p90_pct": 41.26040428061831,
+      "mean_interval_width_price": 250.72360637179497,
+      "median_interval_width_price": 161.1456410835708,
+      "mean_interval_width_pct_of_anchor": 8.082452728903077,
+      "calibration_error_vs_80pct_abs": 38.73959571938169,
+      "pinball_loss_mean": 0.03134050079786693,
+      "pinball_loss_by_quantile": {
+        "p10": 0.026851712429284098,
+        "p50": 0.04039251921197888,
+        "p90": 0.026777270752337823
+      }
+    },
+    "10": {
+      "count": 841,
+      "coverage_p10_p90_pct": 36.504161712247324,
+      "mean_interval_width_price": 255.58220156818984,
+      "median_interval_width_price": 170.18950035151374,
+      "mean_interval_width_pct_of_anchor": 8.284697200292642,
+      "calibration_error_vs_80pct_abs": 43.495838287752676,
+      "pinball_loss_mean": 0.035749476292367,
+      "pinball_loss_by_quantile": {
+        "p10": 0.02411592628969081,
+        "p50": 0.046225262335601675,
+        "p90": 0.036907240251808505
+      }
+    },
+    "20": {
+      "count": 841,
+      "coverage_p10_p90_pct": 30.79667063020214,
+      "mean_interval_width_price": 219.9452524075876,
+      "median_interval_width_price": 148.3085198276533,
+      "mean_interval_width_pct_of_anchor": 7.12225332689532,
+      "calibration_error_vs_80pct_abs": 49.203329369797856,
+      "pinball_loss_mean": 0.03120167433079953,
+      "pinball_loss_by_quantile": {
+        "p10": 0.016988087228256097,
+        "p50": 0.0401393617374924,
+        "p90": 0.0364775740266501
+      }
+    },
+    "30": {
+      "count": 841,
+      "coverage_p10_p90_pct": 33.88822829964328,
+      "mean_interval_width_price": 274.27300430637564,
+      "median_interval_width_price": 182.67949849225147,
+      "mean_interval_width_pct_of_anchor": 8.884464284115225,
+      "calibration_error_vs_80pct_abs": 46.11177170035672,
+
+===== interval_calibration_summary.json HEAD =====
+{
+  "artifact_type": "delta_tft_interval_calibration_summary",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "calibration_version": "v2_validation_residual_interval_calibration",
+  "target_coverage_pct": 80.0,
+  "p50_preserved": true,
+  "professor_safe_note": "Calibration uses validation residual behavior to widen intervals. It improves empirical interval behavior but does not guarantee future coverage.",
+  "by_horizon": {
+    "1": {
+      "horizon_trading_days": 1,
+      "status": "ready",
+      "method": "validation_residual_symmetric_interval_widening",
+      "target_coverage_pct": 80.0,
+      "native_validation_coverage_pct": 75.09578544061303,
+      "required_validation_half_width_price": 53.82303720642235,
+      "median_native_half_width_price": 47.025569311717845,
+      "raw_scale_factor": 1.1445483381529356,
+      "scale_factor": 1.1445483381529356,
+      "scale_factor_cap": 4.0
+    },
+    "5": {
+      "horizon_trading_days": 5,
+      "status": "ready",
+      "method": "validation_residual_symmetric_interval_widening",
+      "target_coverage_pct": 80.0,
+      "native_validation_coverage_pct": 56.03448275862068,
+      "required_validation_half_width_price": 126.07533196726877,
+      "median_native_half_width_price": 59.093981529213124,
+      "raw_scale_factor": 2.133471610893969,
+      "scale_factor": 2.133471610893969,
+      "scale_factor_cap": 4.0
+    },
+    "10": {
+      "horizon_trading_days": 10,
+      "status": "ready",
+      "method": "validation_residual_symmetric_interval_widening",
+      "target_coverage_pct": 80.0,
+      "native_validation_coverage_pct": 50.09578544061303,
+      "required_validation_half_width_price": 128.48613846330554,
+      "median_native_half_width_price": 60.34331994826789,
+      "raw_scale_factor": 2.129252062588804,
+      "scale_factor": 2.129252062588804,
+      "scale_factor_cap": 4.0
+    },
+    "20": {
+      "horizon_trading_days": 20,
+      "status": "ready",
+      "method": "validation_residual_symmetric_interval_widening",
+      "target_coverage_pct": 80.0,
+      "native_validation_coverage_pct": 54.214559386973185,
+      "required_validation_half_width_price": 110.0685028514883,
+      "median_native_half_width_price": 60.21604630582988,
+      "raw_scale_factor": 1.827893221226514,
+      "scale_factor": 1.827893221226514,
+      "scale_factor_cap": 4.0
+    },
+    "30": {
+      "horizon_trading_days": 30,
+      "status": "ready",
+      "method": "validation_residual_symmetric_interval_widening",
+      "target_coverage_pct": 80.0,
+      "native_validation_coverage_pct": 45.40229885057471,
+      "required_validation_half_width_price": 139.15777959638515,
+      "median_native_half_width_price": 60.30718140289173,
+      "raw_scale_factor": 2.307482730236047,
+      "scale_factor": 2.307482730236047,
+      "scale_factor_cap": 4.0
+    }
+  },
+  "generated_at_utc": "2026-05-05T21:49:36.628293Z"
+}
+
+===== quantile_coverage_summary.json HEAD =====
+{
+  "artifact_type": "delta_tft_quantile_coverage_summary",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "delta_version": "v2_calibrated",
+  "coverage_target_pct": 80.0,
+  "native_test_coverage_by_horizon": {
+    "1": {
+      "count": 841,
+      "coverage_p10_p90_pct": 34.126040428061835,
+      "mean_interval_width_price": 113.8278641315531,
+      "median_interval_width_price": 64.86555142520228,
+      "mean_interval_width_pct_of_anchor": 3.5196408151021044,
+      "calibration_error_vs_80pct_abs": 45.873959571938165,
+      "pinball_loss_mean": 0.02030148187594324,
+      "pinball_loss_by_quantile": {
+        "p10": 0.019993871450424194,
+        "p50": 0.025300102308392525,
+        "p90": 0.015610471367835999
+      }
+    },
+    "5": {
+      "count": 841,
+      "coverage_p10_p90_pct": 23.067776456599287,
+      "mean_interval_width_price": 117.51907318173151,
+      "median_interval_width_price": 75.53212344646454,
+      "mean_interval_width_pct_of_anchor": 3.7884041613829407,
+      "calibration_error_vs_80pct_abs": 56.93222354340071,
+      "pinball_loss_mean": 0.03503529520400571,
+      "pinball_loss_by_quantile": {
+        "p10": 0.029069358482956886,
+        "p50": 0.040392518043518066,
+        "p90": 0.035644009709358215
+      }
+    },
+    "10": {
+      "count": 841,
+      "coverage_p10_p90_pct": 18.668252080856124,
+      "mean_interval_width_price": 120.03379311392841,
+      "median_interval_width_price": 79.9292405731394,
+      "mean_interval_width_pct_of_anchor": 3.890895467876112,
+      "calibration_error_vs_80pct_abs": 61.33174791914388,
+      "pinball_loss_mean": 0.04030077985279092,
+      "pinball_loss_by_quantile": {
+        "p10": 0.02685105986893177,
+        "p50": 0.046225257217884064,
+        "p90": 0.04782601445913315
+      }
+    },
+    "20": {
+      "count": 841,
+      "coverage_p10_p90_pct": 18.549346016646847,
+      "mean_interval_width_price": 120.32718861991545,
+      "median_interval_width_price": 81.13631480516051,
+      "mean_interval_width_pct_of_anchor": 3.896427452209872,
+      "calibration_error_vs_80pct_abs": 61.45065398335315,
+      "pinball_loss_mean": 0.03448089970473546,
+      "pinball_loss_by_quantile": {
+        "p10": 0.018329303711652756,
+        "p50": 0.04013936221599579,
+        "p90": 0.044974036514759064
+      }
+    },
+    "30": {
+      "count": 841,
+      "coverage_p10_p90_pct": 13.793103448275861,
+      "mean_interval_width_price": 118.86242991656908,
+      "median_interval_width_price": 79.1683058332419,
+      "mean_interval_width_pct_of_anchor": 3.850284193982409,
+      "calibration_error_vs_80pct_abs": 66.20689655172414,
+      "pinball_loss_mean": 0.04357609683678324,
+      "pinball_loss_by_quantile": {
+        "p10": 0.024638516828417778,
+        "p50": 0.04975193366408348,
+        "p90": 0.05633784458041191
+      }
+    }
+  },
+  "calibrated_validation_coverage_by_horizon": {
+    "1": {
+      "count": 1044,
+      "coverage_p10_p90_pct": 78.16091954022988,
+      "mean_interval_width_price": 117.3620200482027,
+      "median_interval_width_price": 107.64607441284477,
+      "mean_interval_width_pct_of_anchor": 6.906438511343526,
+      "calibration_error_vs_80pct_abs": 1.8390804597701162,
+      "pinball_loss_mean": 0.008479896325579227,
+      "pinball_loss_by_quantile": {
+        "p10": 0.007416746306309334,
+        "p50": 0.011147339506868295,
+        "p90": 0.006875603163560054
+      }
+    },
+    "5": {
+      "count": 1044,
+      "coverage_p10_p90_pct": 81.89655172413794,
+      "mean_interval_width_price": 262.41994922203446,
+      "median_interval_width_price": 252.15066393453742,
+      "mean_interval_width_pct_of_anchor": 15.531624628406002,
+      "calibration_error_vs_80pct_abs": 1.896551724137936,
+      "pinball_loss_mean": 0.015073710540437418,
+      "pinball_loss_by_quantile": {
+        "p10": 0.011551693205996447,
+        "p50": 0.022520832074875794,
+        "p90": 0.011148606340440006
+      }
+    },
+    "10": {
+      "count": 1044,
+      "coverage_p10_p90_pct": 80.07662835249042,
+      "mean_interval_width_price": 265.75190279046524,
+      "median_interval_width_price": 256.97227692661113,
+      "mean_interval_width_pct_of_anchor": 15.729368489257446,
+      "calibration_error_vs_80pct_abs": 0.07662835249041677,
+      "pinball_loss_mean": 0.015727465415491287,
+      "pinball_loss_by_quantile": {
+        "p10": 0.011464584224407989,
+        "p50": 0.023987565969693397,
+        "p90": 0.011730246052372469
+      }
+    },
+    "20": {
+      "count": 1044,
+      "coverage_p10_p90_pct": 77.01149425287356,
+      "mean_interval_width_price": 230.50213060073133,
+      "median_interval_width_price": 220.13700570297647,
+      "mean_interval_width_pct_of_anchor": 13.657569686341107,
+      "calibration_error_vs_80pct_abs": 2.988505747126439,
+      "pinball_loss_mean": 0.01429743298659436,
+      "pinball_loss_by_quantile": {
+        "p10": 0.010179472864041732,
+        "p50": 0.021378972373231785,
+        "p90": 0.011333853722509562
+      }
+    },
+    "30": {
+      "count": 1044,
+      "coverage_p10_p90_pct": 77.01149425287356,
+      "mean_interval_width_price": 288.2440365522753,
+      "median_interval_width_price": 278.31555919277037,
+      "mean_interval_width_pct_of_anchor": 17.061295003606954,
+      "calibration_error_vs_80pct_abs": 2.988505747126439,
+      "pinball_loss_mean": 0.016829558169059053,
+      "pinball_loss_by_quantile": {
+        "p10": 0.01197005657536166,
+        "p50": 0.026005414508979682,
+        "p90": 0.01251320342283582
+      }
+    }
+  },
+  "calibrated_test_coverage_by_horizon": {
+    "1": {
+      "count": 841,
+      "coverage_p10_p90_pct": 37.93103448275862,
+      "mean_interval_width_price": 130.28149272726725,
+      "median_interval_width_price": 74.24175908708912,
+      "mean_interval_width_pct_of_anchor": 4.028399045820357,
+      "calibration_error_vs_80pct_abs": 42.06896551724138,
+      "pinball_loss_mean": 0.019777281554088148,
+      "pinball_loss_by_quantile": {
+        "p10": 0.019583882511084415,
+        "p50": 0.02530010068039805,
+        "p90": 0.01444786147078199
+      }
+    },
+    "5": {
+      "count": 841,
+      "coverage_p10_p90_pct": 41.26040428061831,
+      "mean_interval_width_price": 250.72360637179497,
+      "median_interval_width_price": 161.1456410835708,
+      "mean_interval_width_pct_of_anchor": 8.082452728903077,
+      "calibration_error_vs_80pct_abs": 38.73959571938169,
+      "pinball_loss_mean": 0.03134050079786693,
+      "pinball_loss_by_quantile": {
+        "p10": 0.026851712429284098,
+        "p50": 0.04039251921197888,
+        "p90": 0.026777270752337823
+      }
+    },
+    "10": {
+      "count": 841,
+      "coverage_p10_p90_pct": 36.504161712247324,
+      "mean_interval_width_price": 255.58220156818984,
+      "median_interval_width_price": 170.18950035151374,
+      "mean_interval_width_pct_of_anchor": 8.284697200292642,
+      "calibration_error_vs_80pct_abs": 43.495838287752676,
+      "pinball_loss_mean": 0.035749476292367,
+      "pinball_loss_by_quantile": {
+        "p10": 0.02411592628969081,
+        "p50": 0.046225262335601675,
+        "p90": 0.036907240251808505
+      }
+    },
+    "20": {
+      "count": 841,
+      "coverage_p10_p90_pct": 30.79667063020214,
+      "mean_interval_width_price": 219.9452524075876,
+      "median_interval_width_price": 148.3085198276533,
+      "mean_interval_width_pct_of_anchor": 7.12225332689532,
+      "calibration_error_vs_80pct_abs": 49.203329369797856,
+      "pinball_loss_mean": 0.03120167433079953,
+      "pinball_loss_by_quantile": {
+        "p10": 0.016988087228256097,
+        "p50": 0.0401393617374924,
+        "p90": 0.0364775740266501
+      }
+    },
+    "30": {
+      "count": 841,
+      "coverage_p10_p90_pct": 33.88822829964328,
+      "mean_interval_width_price": 274.27300430637564,
+      "median_interval_width_price": 182.67949849225147,
+      "mean_interval_width_pct_of_anchor": 8.884464284115225,
+      "calibration_error_vs_80pct_abs": 46.11177170035672,
+      "pinball_loss_mean": 0.038507982598847426,
+      "pinball_loss_by_quantile": {
+        "p10": 0.022558710098960023,
+        "p50": 0.04975193144946733,
+        "p90": 0.04321330624811494
+      }
+
+===== pinball_loss_summary.json HEAD =====
+{
+  "artifact_type": "delta_tft_pinball_loss_summary",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "native_test_pinball_by_horizon": {
+    "1": {
+      "count": 841,
+      "coverage_p10_p90_pct": 34.126040428061835,
+      "mean_interval_width_price": 113.8278641315531,
+      "median_interval_width_price": 64.86555142520228,
+      "mean_interval_width_pct_of_anchor": 3.5196408151021044,
+      "calibration_error_vs_80pct_abs": 45.873959571938165,
+      "pinball_loss_mean": 0.02030148187594324,
+      "pinball_loss_by_quantile": {
+        "p10": 0.019993871450424194,
+        "p50": 0.025300102308392525,
+        "p90": 0.015610471367835999
+      }
+    },
+    "5": {
+      "count": 841,
+      "coverage_p10_p90_pct": 23.067776456599287,
+      "mean_interval_width_price": 117.51907318173151,
+      "median_interval_width_price": 75.53212344646454,
+      "mean_interval_width_pct_of_anchor": 3.7884041613829407,
+      "calibration_error_vs_80pct_abs": 56.93222354340071,
+      "pinball_loss_mean": 0.03503529520400571,
+      "pinball_loss_by_quantile": {
+        "p10": 0.029069358482956886,
+        "p50": 0.040392518043518066,
+        "p90": 0.035644009709358215
+      }
+    },
+    "10": {
+      "count": 841,
+      "coverage_p10_p90_pct": 18.668252080856124,
+      "mean_interval_width_price": 120.03379311392841,
+      "median_interval_width_price": 79.9292405731394,
+      "mean_interval_width_pct_of_anchor": 3.890895467876112,
+      "calibration_error_vs_80pct_abs": 61.33174791914388,
+      "pinball_loss_mean": 0.04030077985279092,
+      "pinball_loss_by_quantile": {
+        "p10": 0.02685105986893177,
+        "p50": 0.046225257217884064,
+        "p90": 0.04782601445913315
+      }
+    },
+    "20": {
+      "count": 841,
+      "coverage_p10_p90_pct": 18.549346016646847,
+      "mean_interval_width_price": 120.32718861991545,
+      "median_interval_width_price": 81.13631480516051,
+      "mean_interval_width_pct_of_anchor": 3.896427452209872,
+      "calibration_error_vs_80pct_abs": 61.45065398335315,
+      "pinball_loss_mean": 0.03448089970473546,
+      "pinball_loss_by_quantile": {
+        "p10": 0.018329303711652756,
+        "p50": 0.04013936221599579,
+        "p90": 0.044974036514759064
+      }
+    },
+    "30": {
+      "count": 841,
+      "coverage_p10_p90_pct": 13.793103448275861,
+      "mean_interval_width_price": 118.86242991656908,
+      "median_interval_width_price": 79.1683058332419,
+      "mean_interval_width_pct_of_anchor": 3.850284193982409,
+      "calibration_error_vs_80pct_abs": 66.20689655172414,
+      "pinball_loss_mean": 0.04357609683678324,
+      "pinball_loss_by_quantile": {
+        "p10": 0.024638516828417778,
+        "p50": 0.04975193366408348,
+        "p90": 0.05633784458041191
+      }
+    }
+  },
+  "calibrated_test_pinball_by_horizon": {
+    "1": {
+      "count": 841,
+      "coverage_p10_p90_pct": 37.93103448275862,
+      "mean_interval_width_price": 130.28149272726725,
+      "median_interval_width_price": 74.24175908708912,
+      "mean_interval_width_pct_of_anchor": 4.028399045820357,
+      "calibration_error_vs_80pct_abs": 42.06896551724138,
+      "pinball_loss_mean": 0.019777281554088148,
+      "pinball_loss_by_quantile": {
+        "p10": 0.019583882511084415,
+        "p50": 0.02530010068039805,
+        "p90": 0.01444786147078199
+      }
+    },
+    "5": {
+      "count": 841,
+      "coverage_p10_p90_pct": 41.26040428061831,
+      "mean_interval_width_price": 250.72360637179497,
+      "median_interval_width_price": 161.1456410835708,
+      "mean_interval_width_pct_of_anchor": 8.082452728903077,
+      "calibration_error_vs_80pct_abs": 38.73959571938169,
+      "pinball_loss_mean": 0.03134050079786693,
+      "pinball_loss_by_quantile": {
+        "p10": 0.026851712429284098,
+        "p50": 0.04039251921197888,
+        "p90": 0.026777270752337823
+      }
+    },
+    "10": {
+      "count": 841,
+      "coverage_p10_p90_pct": 36.504161712247324,
+      "mean_interval_width_price": 255.58220156818984,
+      "median_interval_width_price": 170.18950035151374,
+      "mean_interval_width_pct_of_anchor": 8.284697200292642,
+      "calibration_error_vs_80pct_abs": 43.495838287752676,
+      "pinball_loss_mean": 0.035749476292367,
+      "pinball_loss_by_quantile": {
+        "p10": 0.02411592628969081,
+        "p50": 0.046225262335601675,
+        "p90": 0.036907240251808505
+      }
+    },
+    "20": {
+      "count": 841,
+      "coverage_p10_p90_pct": 30.79667063020214,
+      "mean_interval_width_price": 219.9452524075876,
+      "median_interval_width_price": 148.3085198276533,
+      "mean_interval_width_pct_of_anchor": 7.12225332689532,
+      "calibration_error_vs_80pct_abs": 49.203329369797856,
+      "pinball_loss_mean": 0.03120167433079953,
+      "pinball_loss_by_quantile": {
+        "p10": 0.016988087228256097,
+        "p50": 0.0401393617374924,
+        "p90": 0.0364775740266501
+      }
+    },
+    "30": {
+      "count": 841,
+      "coverage_p10_p90_pct": 33.88822829964328,
+      "mean_interval_width_price": 274.27300430637564,
+      "median_interval_width_price": 182.67949849225147,
+      "mean_interval_width_pct_of_anchor": 8.884464284115225,
+      "calibration_error_vs_80pct_abs": 46.11177170035672,
+      "pinball_loss_mean": 0.038507982598847426,
+      "pinball_loss_by_quantile": {
+        "p10": 0.022558710098960023,
+        "p50": 0.04975193144946733,
+        "p90": 0.04321330624811494
+      }
+    }
+  },
+  "generated_at_utc": "2026-05-05T21:49:37.949776Z"
+}
+
+===== variable_selection_summary.json HEAD =====
+{
+  "artifact_type": "delta_tft_variable_selection_summary",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "method": "custom_feature_gate_average",
+  "professor_safe_note": "Variable-selection weights summarize model behavior only; they do not prove causality.",
+  "top_features": [
+    {
+      "feature": "usd_index",
+      "mean_variable_selection_weight": 0.8987363427877426
+    },
+    {
+      "feature": "fed_bs",
+      "mean_variable_selection_weight": 0.8928574174642563
+    },
+    {
+      "feature": "cap_util",
+      "mean_variable_selection_weight": 0.852583572268486
+    },
+    {
+      "feature": "gold_lag_1",
+      "mean_variable_selection_weight": 0.8390426337718964
+    },
+    {
+      "feature": "nominal_yield",
+      "mean_variable_selection_weight": 0.7766466438770294
+    },
+    {
+      "feature": "ind_prod",
+      "mean_variable_selection_weight": 0.7133982330560684
+    },
+    {
+      "feature": "fin_stress",
+      "mean_variable_selection_weight": 0.7003095895051956
+    },
+    {
+      "feature": "gold_lag_5",
+      "mean_variable_selection_weight": 0.6919605061411858
+    },
+    {
+      "feature": "gold_price",
+      "mean_variable_selection_weight": 0.6649262681603432
+    },
+    {
+      "feature": "unrate",
+      "mean_variable_selection_weight": 0.64305130392313
+    },
+    {
+      "feature": "real_yield",
+      "mean_variable_selection_weight": 0.6351986303925514
+    },
+    {
+      "feature": "ppi_index",
+      "mean_variable_selection_weight": 0.6273223832249641
+    },
+    {
+      "feature": "gold_return_5",
+      "mean_variable_selection_weight": 0.6246685236692429
+    },
+    {
+      "feature": "gold_return_1",
+      "mean_variable_selection_weight": 0.584068838506937
+    },
+    {
+      "feature": "oil_wti",
+      "mean_variable_selection_weight": 0.5225062631070614
+    },
+    {
+      "feature": "fred_api_update_applied",
+      "mean_variable_selection_weight": 0.5007797479629517
+    },
+    {
+      "feature": "gold_ma_5",
+      "mean_variable_selection_weight": 0.4992687441408634
+    },
+    {
+      "feature": "gold_lag_20",
+      "mean_variable_selection_weight": 0.4063827097415924
+    },
+    {
+      "feature": "jpy_usd",
+      "mean_variable_selection_weight": 0.4046676941215992
+    },
+    {
+      "feature": "gld_tonnes",
+      "mean_variable_selection_weight": 0.3962630182504654
+    },
+    {
+      "feature": "policy_unc",
+      "mean_variable_selection_weight": 0.38073499500751495
+    },
+    {
+      "feature": "vix_index",
+      "mean_variable_selection_weight": 0.335776649415493
+    },
+    {
+      "feature": "gold_ma_60",
+      "mean_variable_selection_weight": 0.32682318054139614
+    },
+    {
+      "feature": "tips_curve",
+      "mean_variable_selection_weight": 0.3202662691473961
+    },
+    {
+      "feature": "gold_price_is_proxy",
+      "mean_variable_selection_weight": 0.3198284022510052
+    },
+    {
+      "feature": "m2_supply",
+      "mean_variable_selection_weight": 0.27690092101693153
+    },
+    {
+      "feature": "gold_price_is_live_extension",
+      "mean_variable_selection_weight": 0.2757117487490177
+    },
+    {
+      "feature": "gpr_index",
+      "mean_variable_selection_weight": 0.21754196844995022
+    },
+    {
+      "feature": "gold_ma_20",
+      "mean_variable_selection_weight": 0.21650006622076035
+    },
+    {
+      "feature": "inflation",
+      "mean_variable_selection_weight": 0.17834789119660854
+    }
+  ],
+  "feature_count": 32,
+  "identifier_feature_policy": "dataset_id and *_id columns are excluded in V2 if detected.",
+  "generated_at_utc": "2026-05-05T21:49:38.031220Z"
+}
+
+===== temporal_attention_summary.json HEAD =====
+{
+  "artifact_type": "delta_tft_temporal_attention_summary",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "method": "horizon_query_attention_over_encoded_sequence",
+  "professor_safe_note": "Temporal attention explains which sequence positions the model emphasized; it is not causal evidence.",
+  "sequence_length": 20,
+  "by_horizon": [
+    {
+      "horizon_trading_days": 1,
+      "top_lag_positions_from_sequence_start": [
+        0,
+        1,
+        19,
+        2,
+        18,
+        3,
+        4,
+        17,
+        16,
+        12
+      ],
+      "top_lags_ago_approx": [
+        19,
+        18,
+        0,
+        17,
+        1,
+        16,
+        15,
+        2,
+        3,
+        7
+      ],
+      "top_attention_weights": [
+        0.3211209997534752,
+        0.09126552566885948,
+        0.05024760402739048,
+        0.04849766753613949,
+        0.03974710125476122,
+        0.03732914570719004,
+        0.03319482319056988,
+        0.032834410667419434,
+        0.031677018385380507,
+        0.0314296162687242
+      ],
+      "mean_attention_weight": 0.05000000107102096
+    },
+    {
+      "horizon_trading_days": 5,
+      "top_lag_positions_from_sequence_start": [
+        2,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        0,
+        8,
+        9
+      ],
+      "top_lags_ago_approx": [
+        17,
+        18,
+        16,
+        15,
+        14,
+        13,
+        12,
+        19,
+        11,
+        10
+      ],
+      "top_attention_weights": [
+        0.14160726219415665,
+        0.1382693164050579,
+        0.09120965003967285,
+        0.060002108104527,
+        0.052253433503210545,
+        0.04892907664179802,
+        0.04354017227888107,
+        0.03934146836400032,
+        0.038523999974131584,
+        0.03495878539979458
+      ],
+      "mean_attention_weight": 0.050000000791624186
+    },
+    {
+      "horizon_trading_days": 10,
+      "top_lag_positions_from_sequence_start": [
+        6,
+        7,
+        8,
+        5,
+        9,
+        4,
+        3,
+        11,
+        10,
+        13
+      ],
+      "top_lags_ago_approx": [
+        13,
+        12,
+        11,
+        14,
+        10,
+        15,
+        16,
+        8,
+        9,
+        6
+      ],
+      "top_attention_weights": [
+        0.09121811017394066,
+        0.08959695883095264,
+        0.08381275832653046,
+        0.0719071663916111,
+        0.0679042898118496,
+        0.06015843152999878,
+        0.05462817847728729,
+        0.05144393723458052,
+        0.05018956772983074,
+        0.048938401974737644
+      ],
+      "mean_attention_weight": 0.04999999992833182
+    },
+    {
+      "horizon_trading_days": 20,
+      "top_lag_positions_from_sequence_start": [
+        17,
+        16,
+        15,
+        18,
+        14,
+        13,
+        19,
+        12,
+        11,
+        10
+      ],
+      "top_lags_ago_approx": [
+        2,
+        3,
+        4,
+        1,
+        5,
+        6,
+        0,
+        7,
+        8,
+        9
+      ],
+      "top_attention_weights": [
+        0.09003021754324436,
+        0.0876107644289732,
+        0.08172022551298141,
+        0.08160190470516682,
+        0.07566487975418568,
+
+===== horizon_attention_summary.json HEAD =====
+{
+  "artifact_type": "delta_tft_horizon_attention_summary",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "by_horizon": [
+    {
+      "horizon_trading_days": 1,
+      "top_lag_positions_from_sequence_start": [
+        0,
+        1,
+        19,
+        2,
+        18,
+        3,
+        4,
+        17,
+        16,
+        12
+      ],
+      "top_lags_ago_approx": [
+        19,
+        18,
+        0,
+        17,
+        1,
+        16,
+        15,
+        2,
+        3,
+        7
+      ],
+      "top_attention_weights": [
+        0.3211209997534752,
+        0.09126552566885948,
+        0.05024760402739048,
+        0.04849766753613949,
+        0.03974710125476122,
+        0.03732914570719004,
+        0.03319482319056988,
+        0.032834410667419434,
+        0.031677018385380507,
+        0.0314296162687242
+      ],
+      "mean_attention_weight": 0.05000000107102096
+    },
+    {
+      "horizon_trading_days": 5,
+      "top_lag_positions_from_sequence_start": [
+        2,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        0,
+        8,
+        9
+      ],
+      "top_lags_ago_approx": [
+        17,
+        18,
+        16,
+        15,
+        14,
+        13,
+        12,
+        19,
+        11,
+        10
+      ],
+      "top_attention_weights": [
+        0.14160726219415665,
+        0.1382693164050579,
+        0.09120965003967285,
+        0.060002108104527,
+        0.052253433503210545,
+        0.04892907664179802,
+        0.04354017227888107,
+        0.03934146836400032,
+        0.038523999974131584,
+        0.03495878539979458
+      ],
+      "mean_attention_weight": 0.050000000791624186
+    },
+    {
+      "horizon_trading_days": 10,
+      "top_lag_positions_from_sequence_start": [
+        6,
+        7,
+        8,
+        5,
+        9,
+        4,
+        3,
+        11,
+        10,
+        13
+      ],
+      "top_lags_ago_approx": [
+        13,
+        12,
+        11,
+        14,
+        10,
+        15,
+        16,
+        8,
+        9,
+        6
+      ],
+      "top_attention_weights": [
+        0.09121811017394066,
+        0.08959695883095264,
+        0.08381275832653046,
+        0.0719071663916111,
+        0.0679042898118496,
+        0.06015843152999878,
+        0.05462817847728729,
+        0.05144393723458052,
+        0.05018956772983074,
+        0.048938401974737644
+      ],
+      "mean_attention_weight": 0.04999999992833182
+    },
+    {
+      "horizon_trading_days": 20,
+      "top_lag_positions_from_sequence_start": [
+        17,
+        16,
+        15,
+        18,
+        14,
+        13,
+        19,
+        12,
+        11,
+        10
+      ],
+      "top_lags_ago_approx": [
+        2,
+        3,
+        4,
+        1,
+        5,
+        6,
+        0,
+        7,
+        8,
+        9
+      ],
+      "top_attention_weights": [
+        0.09003021754324436,
+        0.0876107644289732,
+        0.08172022551298141,
+        0.08160190470516682,
+        0.07566487975418568,
+        0.0689884964376688,
+        0.06439516600221395,
+        0.06259133759886026,
+
+===== phase8_delta_tft_report.json HEAD =====
+{
+  "artifact_type": "phase8_delta_tft_report",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "Phase 8 \u2014 Delta TFT Expert",
+  "model_key": "delta_tft",
+  "model_name": "Delta TFT Multi-Horizon Expert",
+  "delta_version": "v2_calibrated",
+  "status": "ready_quality_review_required",
+  "accepted_previous_checkpoints": {
+    "alpha_structural_v4": {
+      "status": "accepted",
+      "source_status": "read_if_available"
+    },
+    "beta_temporal_v2": {
+      "status": "accepted",
+      "source_status": "read_if_available"
+    }
+  },
+  "run_summary": {
+    "artifact_type": "deep_ml_model_run",
+    "schema_version": "1.0.0",
+    "project": "Gold Nexus Alpha",
+    "phase": "phase_2_deep_ml",
+    "model_key": "delta_tft",
+    "model_name": "Delta TFT Multi-Horizon Expert",
+    "family": "temporal_fusion_quantile_model",
+    "status": "completed_pending_quality_review",
+    "delta_version": "v2_calibrated",
+    "run": {
+      "run_id": "deepml_run_20260505_212105_delta_tft_v2",
+      "study_id": "deepml_feature_refresh_20260505_093208",
+      "generated_at_utc": "2026-05-05T21:21:05.322851Z",
+      "completed_at_utc": "2026-05-05T21:50:28.824512Z",
+      "generated_at_local": "2026-05-05T17:21:05.322851-04:00",
+      "timezone_local": "America/New_York",
+      "git_commit_sha": "a1af654",
+      "code_version": "delta_tft_v2_calibrated_custom_tft_style",
+      "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+      "cuda_available": true,
+      "device": "cuda",
+      "cuda_device_name": "NVIDIA GeForce RTX 5060"
+    },
+    "data_signature": {
+      "feature_store_path": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+      "feature_store_hash": "sha256:faee8e504db2fa957ec3b2209284f4af4662a36f54ab9928402722133da47331",
+      "model_feature_plan_hash": "sha256:85724e0a89c330d95593cd64d6ab105ae39f5e3a252e41b54f2ab93c1f695712",
+      "target_plan_hash": "sha256:e0e880e347304630f181bd52057d517baacc58dc2498f488a3a796dcc92c8553",
+      "factor_state_table_hash": "sha256:7a7d74ab2fc2b9c5e7061f305694921b0aac27dc4ef6de1b9b67d6a1a3c03e04",
+      "effective_data_through_date": "2026-05-05",
+      "forecast_start_date": "2026-05-06"
+    },
+    "model": {
+      "target": "anchored_future_log_return_quantiles",
+      "forecast_reconstruction": "raw_gold_price_anchor * exp(predicted_log_return_quantile)",
+      "horizons": [
+        1,
+        5,
+        10,
+        20,
+        30
+      ],
+      "quantiles": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "training_window": {
+        "train_start": "2006-01-02",
+        "train_end": "2018-12-31",
+        "validation_start": "2019-01-01",
+        "validation_end": "2022-12-30",
+        "test_start": "2023-01-02",
+        "test_end": "2026-05-05"
+      },
+      "selected_config": {
+        "sequence_length": 20,
+        "hidden_size": 128,
+        "attention_heads": 2,
+        "dropout": 0.35866006974821746,
+        "learning_rate": 0.0018085126845320196,
+        "weight_decay": 1.4566369505688751e-06,
+        "batch_size": 64,
+        "grn_depth": 3,
+        "best_validation_quantile_loss": 0.013257150099996258
+      },
+      "backend": "custom_tft_style_pytorch_v2_calibrated",
+      "interval_calibration": "validation_residual_symmetric_interval_widening",
+      "p50_preserved_by_calibration": true
+    },
+    "features": {
+      "used_count": 32,
+      "used": [
+        "gold_price",
+        "gold_lag_1",
+        "gold_lag_5",
+        "gold_lag_20",
+        "gold_return_1",
+        "gold_return_5",
+        "gold_ma_5",
+        "gold_ma_20",
+        "gold_ma_60",
+        "gold_volatility_20",
+        "real_yield",
+        "nominal_yield",
+        "tips_curve",
+        "fed_bs",
+        "m2_supply",
+        "inflation",
+        "usd_index",
+        "eur_usd",
+        "jpy_usd",
+        "vix_index",
+        "fin_stress",
+        "gpr_index",
+        "policy_unc",
+        "oil_wti",
+        "ppi_index",
+        "gld_tonnes",
+        "unrate",
+        "ind_prod",
+        "cap_util",
+        "gold_price_is_live_extension",
+        "gold_price_is_proxy",
+        "fred_api_update_applied"
+      ],
+      "excluded": [
+        "dataset_id",
+        "dataset_id excluded as an identifier if detected",
+        "delta_target_gold_price_h1",
+        "delta_target_gold_price_h10",
+        "delta_target_gold_price_h20",
+        "delta_target_gold_price_h30",
+        "delta_target_gold_price_h5",
+        "delta_target_log_return_h1",
+        "delta_target_log_return_h10",
+        "delta_target_log_return_h20",
+        "delta_target_log_return_h30",
+        "delta_target_log_return_h5",
+        "high_yield excluded from official core mode when detected",
+        "target_direction_t_plus_1",
+        "target_direction_t_plus_10",
+        "target_direction_t_plus_20",
+        "target_direction_t_plus_30",
+        "target_direction_t_plus_5",
+        "target_gold_t_plus_1",
+        "target_gold_t_plus_10",
+        "target_gold_t_plus_20",
+        "target_gold_t_plus_30",
+        "target_gold_t_plus_5",
+        "target_return_t_plus_1",
+        "target_return_t_plus_10",
+        "target_return_t_plus_20",
+        "target_return_t_plus_30",
+        "target_return_t_plus_5"
+      ]
+    },
+    "professor_safe_summary": "Delta TFT V2 is a calibrated temporal-fusion quantile expert. It forecasts anchored future log-return quantiles, reconstructs prices from the unscaled raw gold anchor, preserves p50, and applies validation-based interval calibration to p10/p90.",
+    "ai_grounding": {
+      "allowed_claims": [
+        "Delta TFT V2 produced multi-horizon p10/p50/p90 forecasts from exported artifacts.",
+        "Calibrated intervals use validation residual behavior and are uncertainty estimates, not guarantees.",
+        "Variable-selection and attention artifacts explain model behavior, not causality.",
+        "The raw gold price anchor was used unscaled for reconstruction and metrics."
+      ],
+      "forbidden_claims": [
+        "Delta proves which macro factor caused gold to move.",
+        "Delta guarantees future gold prices.",
+        "Delta is the final Deep ML winner before Omega Fusion and evaluation.",
+        "All factors are live unless factor-state artifacts say so."
+      ],
+      "source_artifacts": [
+        "run_summary.json",
+        "forecast_latest.json",
+        "evaluation_by_horizon.json",
+        "uncertainty_latest.json",
+        "interval_calibration_summary.json",
+        "interpretability_latest.json",
+        "diagnostics_latest.json"
+      ]
+    }
+  },
+  "sanity_checks": {
+    "artifact_type": "delta_tft_sanity_checks",
+    "schema_version": "1.0.0",
+    "model_key": "delta_tft",
+    "status": "pass",
+    "generated_at_utc": "2026-05-05T21:21:05.607783Z",
+    "checks": [
+      {
+        "name": "raw_origin_gold_min_gt_100",
+        "status": "pass",
+        "value": 524.75,
+        "threshold": "> 100"
+      },
+      {
+        "name": "raw_origin_gold_max_lt_10000",
+        "status": "pass",
+        "value": 5414.48,
+        "threshold": "< 10000"
+      },
+      {
+        "name": "target_gold_min_gt_100",
+        "status": "pass",
+        "value": 524.75,
+        "threshold": "> 100"
+      },
+      {
+        "name": "naive_mape_not_near_100pct",
+        "status": "pass",
+        "value": 6.6617381399872455,
+        "threshold": "< 50% rough sanity bound"
+      },
+      {
+        "name": "price_anchor_valid",
+        "status": "pass",
+        "value": {
+          "raw_gold_min": 524.75,
+          "raw_gold_max": 5414.48
+        }
