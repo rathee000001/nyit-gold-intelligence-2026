@@ -495,7 +495,7 @@ function countByStatus(factorState: any) {
 function sampleFactorsByStatus(factorState: any, statusNeedle: string, limit = 8) {
   const factors = Array.isArray(factorState?.factors) ? factorState.factors : [];
   return factors
-    .filter((factor) => String(factor?.status || "").includes(statusNeedle))
+    .filter((factor: { status: any; }) => String(factor?.status || "").includes(statusNeedle))
     .slice(0, limit);
 }
 
