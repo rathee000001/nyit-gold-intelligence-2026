@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import {
   Bar,
   BarChart,
@@ -8,6 +9,7 @@ import {
   Legend,
   Line,
   LineChart,
+  ReferenceArea,
   ReferenceLine,
   ResponsiveContainer,
   Tooltip,
@@ -46,6 +48,76 @@ export type MetricChartRow = {
 
 type ForecastKey = keyof ForecastChartRow | string;
 
+const MARKET_SHOCK_PERIODS = [
+  {
+    label: "Global Financial Crisis",
+    start: "2008-09-15",
+    end: "2009-06-30",
+    fill: "#f97316",
+  },
+  {
+    label: "COVID Shock",
+    start: "2020-02-20",
+    end: "2020-06-30",
+    fill: "#ef4444",
+  },
+  {
+    label: "Russia / Inflation Shock",
+    start: "2022-02-24",
+    end: "2022-12-30",
+    fill: "#a855f7",
+  },
+  {
+    label: "Banking Stress",
+    start: "2023-03-08",
+    end: "2023-05-31",
+    fill: "#0ea5e9",
+  },
+];
+
+function isBlankText(value: any) {
+  if (value === null || value === undefined) return true;
+
+  if (typeof value === "number") {
+    return Number.isNaN(value);
+  }
+
+  const text = String(value).trim();
+  if (!text) return true;
+
+  const lowered = text.toLowerCase();
+  return (
+    lowered === "nan" ||
+    lowered === "null" ||
+    lowered === "undefined" ||
+    lowered === "none" ||
+    lowered === "untitled"
+  );
+}
+
+function firstText(...values: any[]) {
+  for (const value of values) {
+    if (!isBlankText(value)) {
+      return String(value).trim();
+    }
+  }
+
+  return "";
+}
+
+function safeJsonArray(value: any) {
+  if (!value) return [];
+
+  if (Array.isArray(value)) return value;
+
+  try {
+    const parsed = JSON.parse(String(value));
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
 function formatNumber(value: any, digits = 2) {
   if (value === null || value === undefined || value === "") return "—";
 
@@ -65,6 +137,8 @@ function splitColor(split?: string) {
   if (value.includes("validation")) return "#ca8a04";
   if (value.includes("test")) return "#2563eb";
   if (value.includes("forecast")) return "#16a34a";
+  if (value.includes("rolling")) return "#7c3aed";
+  if (value.includes("news")) return "#0f766e";
 
   return "#94a3b8";
 }
@@ -91,6 +165,20 @@ function getSplitDates(rows: ForecastChartRow[]) {
   return found;
 }
 
+function getVisibleMarketShockPeriods(rows: ForecastChartRow[]) {
+  if (!rows.length) return [];
+
+  const dates = rows.map((row) => String(row.date || "").slice(0, 10)).filter(Boolean);
+  if (!dates.length) return [];
+
+  const minDate = dates[0];
+  const maxDate = dates[dates.length - 1];
+
+  return MARKET_SHOCK_PERIODS.filter((period) => {
+    return period.end >= minDate && period.start <= maxDate;
+  });
+}
+
 function rowsWithResidual(rows: ForecastChartRow[], forecastKey: ForecastKey) {
   return rows
     .filter((row) => row.actual !== null && row[forecastKey] !== null)
@@ -103,30 +191,6 @@ function rowsWithResidual(rows: ForecastChartRow[], forecastKey: ForecastKey) {
     }));
 }
 
-
-function firstText(...values: any[]) {
-  for (const value of values) {
-    if (value !== null && value !== undefined && String(value).trim() !== "") {
-      return String(value).trim();
-    }
-  }
-
-  return "";
-}
-
-function safeJsonArray(value: any) {
-  if (!value) return [];
-
-  if (Array.isArray(value)) return value;
-
-  try {
-    const parsed = JSON.parse(String(value));
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
-}
-
 function getNewsContext(row: any) {
   const headline = firstText(
     row?.gamma_tooltip_primary_headline,
@@ -135,6 +199,7 @@ function getNewsContext(row: any) {
   );
 
   const source = firstText(
+    row?.gamma_tooltip_primary_source,
     row?.top_headline_1_source,
     row?.newsSource,
     row?.source
@@ -146,15 +211,58 @@ function getNewsContext(row: any) {
     row?.source_coverage_note
   );
 
-  const recentHeadlines = safeJsonArray(row?.gamma_recent_headlines_json).slice(0, 3);
-  const intensity = row?.gamma_context_intensity;
-  const bucket = firstText(row?.gamma_context_bucket);
+  const recentHeadlines = safeJsonArray(row?.gamma_recent_headlines_json)
+    .slice(0, 5)
+    .filter((item: any) => firstText(item?.title, item?.headline));
 
-  if (!headline && !note && recentHeadlines.length === 0 && !bucket && intensity === undefined) {
+  const rawIntensity = row?.gamma_context_intensity;
+  const intensity =
+    !isBlankText(rawIntensity) && Number.isFinite(Number(rawIntensity))
+      ? Number(rawIntensity)
+      : undefined;
+
+  const articleCount =
+    !isBlankText(row?.article_count) && Number.isFinite(Number(row?.article_count))
+      ? Number(row.article_count)
+      : 0;
+
+  const goldNewsCount =
+    !isBlankText(row?.gold_news_count) && Number.isFinite(Number(row?.gold_news_count))
+      ? Number(row.gold_news_count)
+      : 0;
+
+  const bucket = firstText(row?.gamma_context_bucket);
+  const bucketLower = bucket.toLowerCase();
+
+  const isContinuityOnlyRow =
+    bucketLower === "no_loaded_news_score" &&
+    articleCount === 0 &&
+    goldNewsCount === 0 &&
+    (!Number.isFinite(Number(intensity)) || Number(intensity) === 0) &&
+    !headline &&
+    !source &&
+    recentHeadlines.length === 0;
+
+  const hasRealContext =
+    !!headline ||
+    !!source ||
+    recentHeadlines.length > 0 ||
+    articleCount > 0 ||
+    goldNewsCount > 0 ||
+    (intensity !== undefined && intensity > 0 && bucketLower !== "no_loaded_news_score");
+
+  if (isContinuityOnlyRow || !hasRealContext) {
     return null;
   }
 
-  return { headline, source, note, recentHeadlines, intensity, bucket };
+  return {
+    headline,
+    source,
+    note,
+    recentHeadlines,
+    intensity,
+    bucket,
+  };
 }
 
 function CustomTooltip({ active, payload, label }: any) {
@@ -216,18 +324,28 @@ function CustomTooltip({ active, payload, label }: any) {
             <div className="mt-2 text-[11px] font-bold text-slate-600">
               {news.bucket ? `Context bucket: ${news.bucket}` : ""}
               {news.bucket && news.intensity !== undefined ? " · " : ""}
-              {news.intensity !== undefined ? `Intensity: ${formatNumber(news.intensity, 3)}` : ""}
+              {news.intensity !== undefined
+                ? `Intensity: ${formatNumber(news.intensity, 3)}`
+                : ""}
             </div>
           ) : null}
 
           {news.recentHeadlines.length > 0 ? (
             <div className="mt-2 space-y-1">
-              {news.recentHeadlines.map((item: any, index: number) => (
-                <div key={`${item?.title || "headline"}-${index}`} className="text-[11px] font-semibold leading-4 text-slate-700">
-                  {firstText(item?.title)}
-                  {firstText(item?.source) ? ` — ${firstText(item?.source)}` : ""}
-                </div>
-              ))}
+              {news.recentHeadlines.map((item: any, index: number) => {
+                const itemTitle = firstText(item?.title, item?.headline);
+                const itemSource = firstText(item?.source);
+
+                return (
+                  <div
+                    key={`${itemTitle || "headline"}-${index}`}
+                    className="text-[11px] font-semibold leading-4 text-slate-700"
+                  >
+                    {itemTitle}
+                    {itemSource ? ` — ${itemSource}` : ""}
+                  </div>
+                );
+              })}
             </div>
           ) : null}
 
@@ -255,7 +373,7 @@ function ChartFrame({
   eyebrow: string;
   title: string;
   subtitle: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6">
@@ -284,6 +402,32 @@ function ChartFrame({
   );
 }
 
+function ShockAreas({ periods }: { periods: typeof MARKET_SHOCK_PERIODS }) {
+  return (
+    <>
+      {periods.map((period) => (
+        <ReferenceArea
+          key={period.label}
+          x1={period.start}
+          x2={period.end}
+          fill={period.fill}
+          fillOpacity={0.08}
+          strokeOpacity={0}
+          label={{
+            value: period.label,
+            position: "insideTopLeft",
+            fill: period.fill,
+            fontSize: 10,
+            fontWeight: 800,
+            dy: 22,
+            dx: 4,
+          }}
+        />
+      ))}
+    </>
+  );
+}
+
 export function ActualVsForecastChart({
   rows,
   forecastKey = "forecast",
@@ -294,6 +438,7 @@ export function ActualVsForecastChart({
   subtitle = "Forecast path with readable axes, tooltips, split markers, and zoom control.",
   yAxisLabel = "Gold Price (USD/oz)",
   showSplitMarkers = true,
+  showMarketShockPeriods = true,
 }: {
   rows: ForecastChartRow[];
   forecastKey?: ForecastKey;
@@ -304,12 +449,14 @@ export function ActualVsForecastChart({
   subtitle?: string;
   yAxisLabel?: string;
   showSplitMarkers?: boolean;
+  showMarketShockPeriods?: boolean;
 }) {
   const data = rows.filter(
     (row) => row[actualKey] !== null && row[forecastKey] !== null
   );
 
   const splitDates = getSplitDates(data);
+  const shockPeriods = showMarketShockPeriods ? getVisibleMarketShockPeriods(data) : [];
 
   if (data.length === 0) {
     return (
@@ -323,7 +470,7 @@ export function ActualVsForecastChart({
   return (
     <ChartFrame eyebrow="Actual vs Forecast" title={title} subtitle={subtitle}>
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 20, right: 35, bottom: 70, left: 35 }}>
+        <LineChart data={data} margin={{ top: 58, right: 35, bottom: 70, left: 35 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
 
           <XAxis
@@ -357,6 +504,8 @@ export function ActualVsForecastChart({
           <Tooltip content={<CustomTooltip />} />
           <Legend verticalAlign="top" height={34} />
 
+          <ShockAreas periods={shockPeriods} />
+
           {showSplitMarkers && splitDates.validation ? (
             <ReferenceLine
               x={splitDates.validation}
@@ -366,7 +515,9 @@ export function ActualVsForecastChart({
                 value: "Validation Start",
                 fill: "#92400e",
                 fontSize: 11,
+                fontWeight: 800,
                 position: "top",
+                dy: -6,
               }}
             />
           ) : null}
@@ -380,7 +531,9 @@ export function ActualVsForecastChart({
                 value: "Test Start",
                 fill: "#1d4ed8",
                 fontSize: 11,
+                fontWeight: 800,
                 position: "top",
+                dy: -6,
               }}
             />
           ) : null}
@@ -394,7 +547,9 @@ export function ActualVsForecastChart({
                 value: "Forecast Start",
                 fill: "#15803d",
                 fontSize: 11,
+                fontWeight: 800,
                 position: "top",
+                dy: -6,
               }}
             />
           ) : null}
@@ -444,6 +599,7 @@ export function ResidualChart({
   subtitle = "Residual = actual minus forecast. Large spikes show where the model struggled.",
   yAxisLabel = "Actual - Forecast",
   showSplitMarkers = true,
+  showMarketShockPeriods = true,
 }: {
   rows: ForecastChartRow[];
   forecastKey?: ForecastKey;
@@ -453,6 +609,7 @@ export function ResidualChart({
   subtitle?: string;
   yAxisLabel?: string;
   showSplitMarkers?: boolean;
+  showMarketShockPeriods?: boolean;
 }) {
   const normalizedRows = rows.map((row) => ({
     ...row,
@@ -461,6 +618,7 @@ export function ResidualChart({
 
   const data = rowsWithResidual(normalizedRows, forecastKey);
   const splitDates = getSplitDates(data);
+  const shockPeriods = showMarketShockPeriods ? getVisibleMarketShockPeriods(data) : [];
 
   if (data.length === 0) {
     return (
@@ -474,7 +632,7 @@ export function ResidualChart({
   return (
     <ChartFrame eyebrow="Residual Diagnostic" title={title} subtitle={subtitle}>
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 20, right: 35, bottom: 70, left: 35 }}>
+        <LineChart data={data} margin={{ top: 58, right: 35, bottom: 70, left: 35 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
 
           <XAxis
@@ -508,6 +666,8 @@ export function ResidualChart({
           <Tooltip content={<CustomTooltip />} />
           <Legend verticalAlign="top" height={34} />
 
+          <ShockAreas periods={shockPeriods} />
+
           <ReferenceLine
             y={0}
             stroke="#0f172a"
@@ -529,7 +689,9 @@ export function ResidualChart({
                 value: "Validation Start",
                 fill: "#92400e",
                 fontSize: 11,
+                fontWeight: 800,
                 position: "top",
+                dy: -6,
               }}
             />
           ) : null}
@@ -543,7 +705,9 @@ export function ResidualChart({
                 value: "Test Start",
                 fill: "#1d4ed8",
                 fontSize: 11,
+                fontWeight: 800,
                 position: "top",
+                dy: -6,
               }}
             />
           ) : null}
