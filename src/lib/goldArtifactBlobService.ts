@@ -212,7 +212,11 @@ export async function getArtifactCatalog(): Promise<ArtifactBlob[]> {
 
   // Vercel may not have public/artifacts available inside the serverless function.
   // The generated catalog keeps the AI/blob index alive without bundling artifact contents.
-  const generatedBlobs = GENERATED_ARTIFACT_BLOB_CATALOG.map((item) => ({ ...item })) as ArtifactBlob[];
+  const generatedBlobs: ArtifactBlob[] = GENERATED_ARTIFACT_BLOB_CATALOG.map((item) => ({
+    ...item,
+    tags: Array.from(item.tags),
+    modelKey: "modelKey" in item ? item.modelKey : undefined,
+  }));
 
   const byPath = new Map<string, ArtifactBlob>();
 
