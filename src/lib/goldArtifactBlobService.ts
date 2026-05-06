@@ -1,6 +1,7 @@
 
 import { promises as fs } from "fs";
 import path from "path";
+import { GENERATED_ARTIFACT_BLOB_CATALOG } from "./goldArtifactBlobCatalog.generated";
 
 export type ArtifactBlob = {
   id: string;
@@ -182,7 +183,7 @@ export async function getArtifactCatalog(): Promise<ArtifactBlob[]> {
   const files = await walkFiles(PUBLIC_ARTIFACT_ROOT);
   const supported = new Set([".json", ".csv", ".txt", ".md"]);
 
-  const blobs: ArtifactBlob[] = [];
+  const localBlobs: ArtifactBlob[] = [];
 
   for (const file of files) {
     const ext = path.extname(file).toLowerCase();
@@ -194,7 +195,7 @@ export async function getArtifactCatalog(): Promise<ArtifactBlob[]> {
     const filename = path.basename(file);
     const id = relativeToArtifacts.replace(/[^a-zA-Z0-9]+/g, "_").replace(/^_+|_+$/g, "");
 
-    blobs.push({
+    localBlobs.push({
       id,
       label: titleCase(filename.replace(ext, "")),
       path: relativeToArtifacts,
@@ -209,7 +210,21 @@ export async function getArtifactCatalog(): Promise<ArtifactBlob[]> {
     });
   }
 
-  return blobs.sort((a, b) => a.path.localeCompare(b.path));
+  // Vercel may not have public/artifacts available inside the serverless function.
+  // The generated catalog keeps the AI/blob index alive without bundling artifact contents.
+  const generatedBlobs = GENERATED_ARTIFACT_BLOB_CATALOG.map((item) => ({ ...item })) as ArtifactBlob[];
+
+  const byPath = new Map<string, ArtifactBlob>();
+
+  for (const blob of generatedBlobs) {
+    byPath.set(blob.path, blob);
+  }
+
+  for (const blob of localBlobs) {
+    byPath.set(blob.path, blob);
+  }
+
+  return Array.from(byPath.values()).sort((a, b) => a.path.localeCompare(b.path));
 }
 
 export function routeProfile(pagePath?: string) {
@@ -329,11 +344,48 @@ function csvPreview(raw: string, maxLines = 80) {
   return [`CSV preview lines: ${Math.min(lines.length, maxLines)} of ${lines.length}`, preview].join("\n");
 }
 
-export async function loadArtifactBlobContent(blob: ArtifactBlob, maxChars = MAX_SINGLE_CONTEXT_CHARS): Promise<LoadedArtifactContext> {
-  const filePath = path.join(PUBLIC_ARTIFACT_ROOT, blob.path);
+function artifactRemoteBaseUrl() {
+  const base =
+    process.env.ARTIFACT_BASE_URL ||
+    process.env.NEXT_PUBLIC_ARTIFACT_BASE_URL ||
+    "";
 
+  return String(base || "").trim().replace(/\/+$/, "");
+}
+
+async function readArtifactBlobText(blob: ArtifactBlob) {
+  const localCandidates = [
+    path.join(PUBLIC_ARTIFACT_ROOT, blob.path),
+    path.join(process.cwd(), "artifacts", blob.path),
+  ];
+
+  for (const candidate of localCandidates) {
+    try {
+      return await fs.readFile(candidate, "utf-8");
+    } catch {
+      // try next candidate
+    }
+  }
+
+  const remoteBase = artifactRemoteBaseUrl();
+
+  if (remoteBase) {
+    const url = `${remoteBase}/${blob.publicPath}`;
+    const response = await fetch(url, { cache: "no-store" });
+
+    if (!response.ok) {
+      throw new Error(`Remote artifact HTTP ${response.status}: ${url}`);
+    }
+
+    return await response.text();
+  }
+
+  throw new Error(`Artifact not found locally and no ARTIFACT_BASE_URL is configured: ${blob.publicPath}`);
+}
+
+export async function loadArtifactBlobContent(blob: ArtifactBlob, maxChars = MAX_SINGLE_CONTEXT_CHARS): Promise<LoadedArtifactContext> {
   try {
-    const raw = await fs.readFile(filePath, "utf-8");
+    const raw = await readArtifactBlobText(blob);
 
     let content = "";
 
