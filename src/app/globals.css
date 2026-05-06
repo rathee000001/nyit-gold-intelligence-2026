@@ -241,3 +241,137 @@ body {
  * technical transparency and premium user experience.
  * --------------------------------------------------------------------------------------
  */
+
+
+/* ======================================================================================
+   MOBILE RECRUITER VIEW OPTIMIZATION
+   Purpose: Make the portfolio usable on phones without touching artifact/model logic.
+   ====================================================================================== */
+
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+
+  main {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    padding-top: 0.75rem !important;
+  }
+
+  main > div {
+    max-width: 100% !important;
+  }
+
+  main section {
+    max-width: 100%;
+    border-radius: 1.5rem !important;
+    padding: 1rem !important;
+  }
+
+  main h1 {
+    max-width: 100%;
+    font-size: clamp(2.65rem, 13.5vw, 4.15rem) !important;
+    line-height: 0.96 !important;
+    letter-spacing: -0.06em !important;
+    overflow-wrap: anywhere;
+  }
+
+  main h2 {
+    font-size: clamp(1.75rem, 8.5vw, 2.4rem) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.045em !important;
+    overflow-wrap: anywhere;
+  }
+
+  main h3 {
+    overflow-wrap: anywhere;
+  }
+
+  main p {
+    font-size: 0.92rem;
+    line-height: 1.75;
+  }
+
+  main [class*="grid-cols-"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  main [class*="rounded-[3rem]"],
+  main [class*="rounded-[2.5rem]"] {
+    border-radius: 1.5rem !important;
+  }
+
+  main table {
+    min-width: 720px;
+    font-size: 12px;
+  }
+
+  main .recharts-wrapper {
+    min-width: 720px !important;
+  }
+
+  main .recharts-responsive-container {
+    min-width: 720px !important;
+  }
+
+  main section:has(.recharts-wrapper),
+  main div:has(> table) {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  main a,
+  main button {
+    min-height: 42px;
+  }
+
+  .dialogue-popup {
+    width: min(92vw, 25rem) !important;
+    padding: 1.25rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  main {
+    padding-bottom: 6.5rem !important;
+  }
+
+  main h1 {
+    font-size: clamp(2.4rem, 15vw, 3.65rem) !important;
+  }
+
+  main [class*="text-7xl"],
+  main [class*="text-6xl"],
+  main [class*="text-5xl"] {
+    font-size: clamp(2.35rem, 13vw, 3.55rem) !important;
+    line-height: 0.98 !important;
+  }
+
+  main [class*="p-8"],
+  main [class*="p-7"],
+  main [class*="p-6"] {
+    padding: 1rem !important;
+  }
+
+  main [class*="gap-8"],
+  main [class*="gap-7"],
+  main [class*="gap-6"] {
+    gap: 1rem !important;
+  }
+
+  footer {
+    font-size: 11px;
+  }
+}
+

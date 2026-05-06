@@ -223,7 +223,7 @@ export default function FloatingGoldInterpreter() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={`fixed bottom-6 right-6 z-[9998] flex items-center gap-3 rounded-full border border-white/40 bg-slate-950 px-4 py-3 text-white shadow-2xl shadow-slate-900/30 transition duration-300 hover:-translate-y-1 hover:bg-slate-900 ${
+        className={`fixed bottom-4 right-4 z-[9998] sm:bottom-6 sm:right-6 flex items-center gap-3 rounded-full border border-white/40 bg-slate-950 px-4 py-3 text-white shadow-2xl shadow-slate-900/30 transition duration-300 hover:-translate-y-1 hover:bg-slate-900 ${
           open ? "pointer-events-none scale-95 opacity-0" : "opacity-100"
         }`}
         aria-label="Open Gold AI"
@@ -242,7 +242,7 @@ export default function FloatingGoldInterpreter() {
       </button>
 
       {open ? (
-        <div className="fixed bottom-5 right-5 z-[9999] flex h-[min(790px,calc(100vh-40px))] w-[min(520px,calc(100vw-28px))] flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_30px_120px_rgba(15,23,42,0.35)]">
+        <div className="fixed inset-x-3 bottom-3 z-[9999] flex h-[min(760px,calc(100vh-24px))] w-auto sm:inset-x-auto sm:bottom-5 sm:right-5 sm:w-[min(520px,calc(100vw-28px))] flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_30px_120px_rgba(15,23,42,0.35)]">
           <div className="bg-[radial-gradient(circle_at_top_left,_rgba(212,175,55,0.25),_transparent_30%),linear-gradient(135deg,_#05070d_0%,_#0b1728_70%,_#000_100%)] p-5 text-white">
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-center gap-3">

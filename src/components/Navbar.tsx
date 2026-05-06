@@ -1,23 +1,17 @@
+
 /**
- * ============================================================================================================================================================
- * MODULE: GOLD NEXUS ALPHA NAVIGATION
- * ============================================================================================================================================================
- * Purpose:
- * - Smooth professor-safe navbar for Gold Nexus Alpha.
- * - Main row emphasizes Deep ML Phase 2 pages directly, not hidden in a Deep ML dropdown.
- * - Academic Model is a separate dropdown/second-layer menu for the original baseline pages.
- * - DOCS removed.
- * - JSON-FIRST artifact indicator kept.
- * - No Deep ML pages marked "Coming Soon" in the navbar.
- * ============================================================================================================================================================
+ * MOBILE-FIRST GLOBAL NAVIGATION
+ * - Desktop keeps full Deep ML navigation.
+ * - Mobile collapses into a clean recruiter-friendly menu.
+ * - No artifact/model logic changed.
  */
 
 "use client";
 
-import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 
 type NavItem = {
   name: string;
@@ -63,6 +57,21 @@ function isRouteActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+function Brand() {
+  return (
+    <Link href="/" className="group shrink-0">
+      <div className="flex flex-col leading-none">
+        <h1 className="text-[22px] font-black tracking-tighter text-[#D4AF37] sm:text-[24px]">
+          GOLD<span className="text-slate-300">.AI</span>
+        </h1>
+        <span className="mt-1 text-[6.6px] font-bold uppercase tracking-[0.26em] text-blue-600 sm:text-[7px]">
+          NYIT Forecasting Lab
+        </span>
+      </div>
+    </Link>
+  );
+}
+
 function MainNavLink({
   item,
   pathname,
@@ -92,11 +101,42 @@ function MainNavLink({
   );
 }
 
-function AcademicButton({
-  active,
+function MobileNavLink({
+  item,
+  pathname,
+  onClick,
 }: {
-  active: boolean;
+  item: NavItem;
+  pathname: string;
+  onClick: () => void;
 }) {
+  const active = isRouteActive(pathname, item.href);
+
+  return (
+    <Link
+      href={item.href}
+      onClick={onClick}
+      className={`flex min-h-[48px] items-center justify-between rounded-2xl border px-4 py-3 transition ${
+        active
+          ? "border-blue-200 bg-blue-50 text-blue-700"
+          : "border-slate-200 bg-white text-slate-700 hover:border-blue-200 hover:bg-blue-50"
+      }`}
+    >
+      <span className="text-[12px] font-black uppercase tracking-[0.14em]">
+        {item.name}
+      </span>
+      {item.subtitle ? (
+        <span className="max-w-[120px] text-right text-[10px] font-bold text-slate-400">
+          {item.subtitle}
+        </span>
+      ) : (
+        <span className="text-slate-300">→</span>
+      )}
+    </Link>
+  );
+}
+
+function AcademicButton({ active }: { active: boolean }) {
   return (
     <div
       className={`flex h-10 min-w-[104px] shrink-0 flex-col items-center justify-center rounded-xl border px-3 leading-none transition-all duration-200 ${
@@ -115,11 +155,7 @@ function AcademicButton({
   );
 }
 
-function AcademicPanel({
-  pathname,
-}: {
-  pathname: string;
-}) {
+function AcademicPanel({ pathname }: { pathname: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 8, scale: 0.98 }}
@@ -217,6 +253,7 @@ function ArtifactModePill() {
 export default function Navbar() {
   const pathname = usePathname();
   const [academicOpen, setAcademicOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const academicActive =
     pathname.startsWith("/model3") ||
@@ -225,33 +262,25 @@ export default function Navbar() {
     pathname.startsWith("/model-comparison") ||
     pathname.startsWith("/forecast");
 
+  const coreMobileLinks = mainLinks.slice(0, 4);
+  const deepMlMobileLinks = mainLinks.slice(4);
+  const closeMobile = () => setMobileOpen(false);
+
   return (
-    <nav className="sticky top-0 z-[1000] w-full select-none border-b border-slate-200 bg-white/95 px-4 shadow-sm backdrop-blur-xl">
-      <div className="mx-auto flex min-h-[72px] max-w-[2800px] flex-wrap items-center gap-3 py-2">
-        {/* BRAND */}
-        <div className="flex h-12 shrink-0 items-center border-r border-slate-200 pr-4">
-          <Link href="/" className="group">
-            <div className="flex flex-col leading-none">
-              <h1 className="text-[23px] font-black tracking-tighter text-[#D4AF37]">
-                GOLD<span className="text-slate-300">.AI</span>
-              </h1>
-              <span className="mt-1 text-[6.8px] font-bold uppercase tracking-[0.30em] text-blue-600">
-                NYIT Forecasting Lab
-              </span>
-            </div>
-          </Link>
+    <nav className="sticky top-0 z-[1000] w-full select-none border-b border-slate-200 bg-white/95 px-3 shadow-sm backdrop-blur-xl sm:px-4">
+      <div className="mx-auto flex min-h-[64px] max-w-[2800px] items-center justify-between gap-3 py-2 lg:min-h-[72px]">
+        <div className="flex h-12 shrink-0 items-center lg:border-r lg:border-slate-200 lg:pr-4">
+          <Brand />
         </div>
 
-        {/* MAIN DIRECT LINKS */}
-        <div className="flex min-w-0 flex-1 flex-wrap items-center justify-center gap-1.5 overflow-visible pr-0">
+        <div className="hidden min-w-0 flex-1 flex-wrap items-center justify-center gap-1.5 overflow-visible pr-0 lg:flex">
           {mainLinks.map((item) => (
             <MainNavLink key={item.href} item={item} pathname={pathname} />
           ))}
         </div>
 
-        {/* ACADEMIC MODEL DROPDOWN */}
         <div
-          className="relative shrink-0"
+          className="relative hidden shrink-0 lg:block"
           onMouseEnter={() => setAcademicOpen(true)}
           onMouseLeave={() => setAcademicOpen(false)}
         >
@@ -264,9 +293,92 @@ export default function Navbar() {
           </AnimatePresence>
         </div>
 
-        {/* JSON-FIRST UTILITY */}
         <ArtifactModePill />
+
+        <button
+          type="button"
+          className="inline-flex h-11 items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 text-[11px] font-black uppercase tracking-[0.16em] text-slate-700 shadow-sm lg:hidden"
+          onClick={() => setMobileOpen((value) => !value)}
+          aria-label="Toggle mobile navigation"
+          aria-expanded={mobileOpen}
+        >
+          <span>{mobileOpen ? "Close" : "Menu"}</span>
+          <span className="text-blue-600">{mobileOpen ? "×" : "☰"}</span>
+        </button>
       </div>
+
+      <AnimatePresence>
+        {mobileOpen ? (
+          <motion.div
+            initial={{ opacity: 0, height: 0, y: -8 }}
+            animate={{ opacity: 1, height: "auto", y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -8 }}
+            transition={{ duration: 0.18 }}
+            className="overflow-hidden border-t border-slate-100 pb-4 lg:hidden"
+          >
+            <div className="max-h-[calc(100vh-82px)] overflow-y-auto px-1 pt-4">
+              <div className="mb-4 rounded-[1.5rem] border border-blue-100 bg-blue-50 p-4">
+                <div className="text-[10px] font-black uppercase tracking-[0.24em] text-blue-600">
+                  Gold Nexus Alpha
+                </div>
+                <p className="mt-2 text-sm font-bold leading-6 text-slate-700">
+                  JSON-first gold forecasting platform · Academic models · Deep ML · Artifact AI.
+                </p>
+              </div>
+
+              <div className="space-y-5">
+                <div>
+                  <div className="mb-2 text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">
+                    Main pages
+                  </div>
+                  <div className="grid gap-2">
+                    {coreMobileLinks.map((item) => (
+                      <MobileNavLink
+                        key={item.href}
+                        item={item}
+                        pathname={pathname}
+                        onClick={closeMobile}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <div className="mb-2 text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">
+                    Deep ML system
+                  </div>
+                  <div className="grid gap-2 sm:grid-cols-2">
+                    {deepMlMobileLinks.map((item) => (
+                      <MobileNavLink
+                        key={item.href}
+                        item={item}
+                        pathname={pathname}
+                        onClick={closeMobile}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <div className="mb-2 text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">
+                    Academic model
+                  </div>
+                  <div className="grid gap-2 sm:grid-cols-2">
+                    {[...academicLinks, ...modelLinks].map((item) => (
+                      <MobileNavLink
+                        key={item.href}
+                        item={item}
+                        pathname={pathname}
+                        onClick={closeMobile}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </nav>
   );
 }
