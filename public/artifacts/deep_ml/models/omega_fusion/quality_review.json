@@ -1,0 +1,24 @@
+{
+  "artifact_type": "deep_ml_quality_review",
+  "schema_version": "1.0.0",
+  "phase_key": "phase14_omega_fusion",
+  "model_key": "omega_fusion",
+  "status": "ready",
+  "blocking_flags": [],
+  "warnings": [],
+  "acceptance_gate": {
+    "all_required_model_reports_exist": true,
+    "all_required_rollforward_files_exist": true,
+    "all_required_forecast_files_exist": true,
+    "gamma_report_exists": true,
+    "gamma_used_as_context_only": true,
+    "news_used_as_training_input": false,
+    "weights_use_validation_metrics": true,
+    "test_metrics_reported_not_used_as_primary_weight_basis": true,
+    "omega_rollforward_exists": true,
+    "omega_forecast_latest_exists": true,
+    "omega_evaluation_exists": true
+  },
+  "professor_safe_summary": "Omega fuses Alpha, Beta, Delta, and Epsilon using transparent validation-performance weights. Gamma remains interpretive context only.",
+  "generated_at_utc": "2026-05-06T01:07:25.862658Z"
+}

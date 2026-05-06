@@ -1,0 +1,75 @@
+{
+  "artifact_type": "deep_ml_model_run",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "phase_2_deep_ml",
+  "phase_key": "phase14_omega_fusion",
+  "model_key": "omega_fusion",
+  "model_name": "Omega Fusion",
+  "family": "artifact_level_validation_weighted_fusion",
+  "status": "ready",
+  "run": {
+    "run_id": "deepml_run_20260506_010608_omega_fusion",
+    "generated_at_utc": "2026-05-06T01:06:08.830002Z",
+    "completed_at_utc": "2026-05-06T01:07:25.921011Z",
+    "generated_at_local": "2026-05-05T21:06:08.830002-04:00",
+    "timezone_local": "America/New_York",
+    "git_commit_sha": "cb7a3de",
+    "code_version": "omega_fusion_v2_validation_weighted_artifact_fusion_no_news_training",
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "smoke": false
+  },
+  "fusion_policy": {
+    "component_models": [
+      "alpha_structural",
+      "beta_temporal",
+      "delta_tft",
+      "epsilon_expert_ensemble"
+    ],
+    "weights": "inverse validation metric by horizon with transparent fallback",
+    "primary_weight_metric": "validation MAPE",
+    "news_sensitivity_used_for_weights": false,
+    "gamma_usage": "interpretive_context_only",
+    "no_retraining": true
+  },
+  "source_contract": {
+    "model_sources": {
+      "alpha_structural": {
+        "display_name": "Alpha Structural",
+        "family": "xgboost_structural_expert",
+        "evaluation": "artifacts/deep_ml/models/alpha_structural/evaluation_by_horizon.json",
+        "rollforward": "artifacts/deep_ml/models/alpha_structural/evaluation_rollforward.csv",
+        "forecast": "artifacts/deep_ml/models/alpha_structural/forecast_latest.json",
+        "report": "artifacts/deep_ml/models/alpha_structural/phase6_alpha_structural_report.json"
+      },
+      "beta_temporal": {
+        "display_name": "Beta Temporal",
+        "family": "sequence_temporal_expert",
+        "evaluation": "artifacts/deep_ml/models/beta_temporal/evaluation_by_horizon.json",
+        "rollforward": "artifacts/deep_ml/models/beta_temporal/evaluation_rollforward.csv",
+        "forecast": "artifacts/deep_ml/models/beta_temporal/forecast_latest.json",
+        "report": "artifacts/deep_ml/models/beta_temporal/phase7_beta_temporal_report.json"
+      },
+      "delta_tft": {
+        "display_name": "Delta TFT",
+        "family": "temporal_fusion_quantile_expert",
+        "evaluation": "artifacts/deep_ml/models/delta_tft/evaluation_by_horizon.json",
+        "rollforward": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv",
+        "forecast": "artifacts/deep_ml/models/delta_tft/forecast_latest.json",
+        "report": "artifacts/deep_ml/models/delta_tft/phase8_delta_tft_report.json"
+      },
+      "epsilon_expert_ensemble": {
+        "display_name": "Epsilon Ensemble",
+        "family": "statistical_ml_benchmark_ensemble",
+        "evaluation": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_by_horizon.json",
+        "rollforward": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_rollforward.csv",
+        "forecast": "artifacts/deep_ml/models/epsilon_expert_ensemble/forecast_latest.json",
+        "report": "artifacts/deep_ml/models/epsilon_expert_ensemble/phase9_epsilon_expert_report.json"
+      }
+    },
+    "gamma_report": "artifacts/deep_ml/models/gamma_news_sensitivity/phase13_gamma_news_sensitivity_report.json",
+    "gamma_tooltip_context": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_tooltip_context.json"
+  },
+  "professor_safe_summary": "Omega is a transparent Deep ML fusion candidate. It combines finished expert outputs and reports its own rollforward evaluation and forecast path."
+}

@@ -1,0 +1,2637 @@
+===== GAMMA / OMEGA CONSISTENCY CHECK BEFORE FINAL SCRIPT REBUILD =====
+
+===== GIT STATUS =====
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   artifacts/deep_ml/news/api_pulls/gdelt_news_items_raw.csv
+	modified:   artifacts/deep_ml/news/api_pulls/gdelt_news_items_raw.json
+	modified:   artifacts/deep_ml/news/api_pulls/newsapi_news_items_raw.json
+	modified:   artifacts/deep_ml/news/api_pulls/rss_news_items_raw.csv
+	modified:   artifacts/deep_ml/news/api_pulls/rss_news_items_raw.json
+	modified:   artifacts/deep_ml/news/diagnostics_latest.json
+	modified:   artifacts/deep_ml/news/historical/historical_news_backfill_manifest.json
+	modified:   artifacts/deep_ml/news/historical/historical_news_daily_index.csv
+	modified:   artifacts/deep_ml/news/historical/historical_news_daily_index.parquet
+	modified:   artifacts/deep_ml/news/news_items_unified_raw.csv
+	modified:   artifacts/deep_ml/news/news_items_unified_raw.json
+	modified:   artifacts/deep_ml/news/news_source_coverage_preview.json
+	modified:   artifacts/deep_ml/news/news_source_inventory.json
+	modified:   artifacts/deep_ml/news/phase12_source_news_update_report.json
+	modified:   artifacts/deep_ml/news/progress_checkpoint.json
+	modified:   artifacts/deep_ml/news/quality_review.json
+	modified:   artifacts/deep_ml/news/raw_news_pull_log.json
+	modified:   artifacts/deep_ml/news/structured/news_context_daily_combined.csv
+	modified:   artifacts/deep_ml/news/structured/news_context_daily_combined.parquet
+	modified:   artifacts/deep_ml/news/timeline.json
+	modified:   deep_ml/scripts/12_source_news_update.py
+	modified:   public/artifacts/deep_ml/news/api_pulls/gdelt_news_items_raw.csv
+	modified:   public/artifacts/deep_ml/news/api_pulls/gdelt_news_items_raw.json
+	modified:   public/artifacts/deep_ml/news/api_pulls/newsapi_news_items_raw.json
+	modified:   public/artifacts/deep_ml/news/api_pulls/rss_news_items_raw.csv
+	modified:   public/artifacts/deep_ml/news/api_pulls/rss_news_items_raw.json
+	modified:   public/artifacts/deep_ml/news/diagnostics_latest.json
+	modified:   public/artifacts/deep_ml/news/historical/historical_news_backfill_manifest.json
+	modified:   public/artifacts/deep_ml/news/historical/historical_news_daily_index.csv
+	modified:   public/artifacts/deep_ml/news/news_items_unified_raw.csv
+	modified:   public/artifacts/deep_ml/news/news_items_unified_raw.json
+	modified:   public/artifacts/deep_ml/news/news_source_coverage_preview.json
+	modified:   public/artifacts/deep_ml/news/news_source_inventory.json
+	modified:   public/artifacts/deep_ml/news/phase12_source_news_update_report.json
+	modified:   public/artifacts/deep_ml/news/progress_checkpoint.json
+	modified:   public/artifacts/deep_ml/news/quality_review.json
+	modified:   public/artifacts/deep_ml/news/raw_news_pull_log.json
+	modified:   public/artifacts/deep_ml/news/structured/news_context_daily_combined.csv
+	modified:   public/artifacts/deep_ml/news/timeline.json
+	modified:   src/components/Navbar.tsx
+	modified:   src/components/models/UniversalModelCharts.tsx
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	apply_deep_ml_news_incremental_and_tooltip_patch.py
+	deep_ml/scripts/12_source_news_update.py.bak_news_patch
+	deep_ml/scripts/13_gamma_news_sensitivity.py
+	deep_ml/scripts/14_omega_fusion.py
+	deep_ml_news_patch_context.txt
+	gamma_omega_consistency_check.txt
+	inspect_phase12_news_outputs.py
+	news_source_page.tsx
+	news_source_page_build_context.txt
+	phase12_news_output_schema_check.txt
+	src/app/deep-ml/models/news-source/
+	src/components/models/UniversalModelCharts.tsx.bak_news_patch
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+===== SCRIPT FILES EXISTENCE =====
+
+
+FullName      : D:\nyit-gold-intelligence-2026\deep_ml\scripts\06_train_alpha_structural.py
+Name          : 06_train_alpha_structural.py
+Length        : 72757
+LastWriteTime : 05-05-2026 00:57:39
+
+FullName      : D:\nyit-gold-intelligence-2026\deep_ml\scripts\07_train_beta_temporal.py
+Name          : 07_train_beta_temporal.py
+Length        : 86949
+LastWriteTime : 05-05-2026 01:51:26
+
+FullName      : D:\nyit-gold-intelligence-2026\deep_ml\scripts\08_train_delta_tft.py
+Name          : 08_train_delta_tft.py
+Length        : 102848
+LastWriteTime : 05-05-2026 17:20:35
+
+FullName      : D:\nyit-gold-intelligence-2026\deep_ml\scripts\09_train_epsilon_expert_ensemble.py
+Name          : 09_train_epsilon_expert_ensemble.py
+Length        : 92385
+LastWriteTime : 05-05-2026 17:33:44
+
+FullName      : D:\nyit-gold-intelligence-2026\deep_ml\scripts\12_source_news_update.py
+Name          : 12_source_news_update.py
+Length        : 60227
+LastWriteTime : 05-05-2026 19:53:25
+
+FullName      : D:\nyit-gold-intelligence-2026\deep_ml\scripts\12_source_news_update.py.bak_news_patch
+Name          : 12_source_news_update.py.bak_news_patch
+Length        : 53690
+LastWriteTime : 05-05-2026 19:53:25
+
+FullName      : D:\nyit-gold-intelligence-2026\deep_ml\scripts\13_gamma_news_sensitivity.py
+Name          : 13_gamma_news_sensitivity.py
+Length        : 33825
+LastWriteTime : 05-05-2026 18:09:34
+
+FullName      : D:\nyit-gold-intelligence-2026\deep_ml\scripts\14_omega_fusion.py
+Name          : 14_omega_fusion.py
+Length        : 32028
+LastWriteTime : 05-05-2026 18:10:07
+
+FullName      : D:\nyit-gold-intelligence-2026\deep_ml\scripts\__pycache__\12_source_news_update.cpython-312.pyc
+Name          : 12_source_news_update.cpython-312.pyc
+Length        : 76176
+LastWriteTime : 05-05-2026 19:53:34
+
+
+
+
+
+===== PHASE 12 PATCH CHECK =====
+
+  deep_ml\scripts\12_source_news_update.py:76:
+  deep_ml\scripts\12_source_news_update.py:77:PHASE_KEY = "phase12_source_news_update"
+> deep_ml\scripts\12_source_news_update.py:78:SCRIPT_VERSION = "source_news_update_v4_incremental_historical_recent_safe_fallbacks"
+  deep_ml\scripts\12_source_news_update.py:79:TIMEZONE_LOCAL = "America/New_York"
+  deep_ml\scripts\12_source_news_update.py:80:DOC_API_MIN_DATE = pd.Timestamp("2017-01-01")
+  deep_ml\scripts\12_source_news_update.py:81:DEFAULT_HISTORICAL_START = "2006-01-02"
+  deep_ml\scripts\12_source_news_update.py:669:                    manifest.update(
+  deep_ml\scripts\12_source_news_update.py:670:                        {
+> deep_ml\scripts\12_source_news_update.py:671:                            "cache_used": True,
+> deep_ml\scripts\12_source_news_update.py:672:                            "incremental_update_used": False,
+> deep_ml\scripts\12_source_news_update.py:673:                            "full_rebuild_used": False,
+  deep_ml\scripts\12_source_news_update.py:674:                            "previous_cached_start_date": cached_min,
+> deep_ml\scripts\12_source_news_update.py:675:                            "previous_cached_end_date": cached_max,
+  deep_ml\scripts\12_source_news_update.py:676:                            "historical_start_date": target_start,
+  deep_ml\scripts\12_source_news_update.py:677:                            "historical_end_date": target_end,
+  deep_ml\scripts\12_source_news_update.py:678:                            "row_count": int(len(cached)),
+  deep_ml\scripts\12_source_news_update.py:698:        previous_cached_start = cached_min
+  deep_ml\scripts\12_source_news_update.py:699:        previous_cached_end = cached_max
+> deep_ml\scripts\12_source_news_update.py:700:        incremental_update_used = False
+  deep_ml\scripts\12_source_news_update.py:701:        incremental_start_date = None
+  deep_ml\scripts\12_source_news_update.py:702:        incremental_end_date = None
+  deep_ml\scripts\12_source_news_update.py:703:    else:
+  deep_ml\scripts\12_source_news_update.py:713:            manifest.update(
+  deep_ml\scripts\12_source_news_update.py:714:                {
+> deep_ml\scripts\12_source_news_update.py:715:                    "cache_used": True,
+> deep_ml\scripts\12_source_news_update.py:716:                    "incremental_update_used": False,
+> deep_ml\scripts\12_source_news_update.py:717:                    "full_rebuild_used": False,
+  deep_ml\scripts\12_source_news_update.py:718:                    "previous_cached_start_date": cached_min,
+> deep_ml\scripts\12_source_news_update.py:719:                    "previous_cached_end_date": cached_max,
+  deep_ml\scripts\12_source_news_update.py:720:                    "historical_start_date": target_start,
+  deep_ml\scripts\12_source_news_update.py:721:                    "historical_end_date": target_end,
+  deep_ml\scripts\12_source_news_update.py:722:                    "row_count": int(len(cached)),
+  deep_ml\scripts\12_source_news_update.py:732:        pull_start = max(missing_start_ts, DOC_API_MIN_DATE)
+  deep_ml\scripts\12_source_news_update.py:733:        pull_end = missing_end_ts
+> deep_ml\scripts\12_source_news_update.py:734:        incremental_update_used = True
+  deep_ml\scripts\12_source_news_update.py:735:        incremental_start_date = missing_start_ts.date().isoformat()
+  deep_ml\scripts\12_source_news_update.py:736:        incremental_end_date = missing_end_ts.date().isoformat()
+  deep_ml\scripts\12_source_news_update.py:737:
+  deep_ml\scripts\12_source_news_update.py:749:            last_meta["attempt"] = attempt
+  deep_ml\scripts\12_source_news_update.py:750:            last_meta["historical_sampled_index"] = True
+> deep_ml\scripts\12_source_news_update.py:751:            last_meta["incremental_update_used"] = incremental_update_used
+  deep_ml\scripts\12_source_news_update.py:752:            if q_rows:
+  deep_ml\scripts\12_source_news_update.py:753:                break
+  deep_ml\scripts\12_source_news_update.py:754:            if attempt < retries:
+  deep_ml\scripts\12_source_news_update.py:790:        "source_policy": "Fixed daily index. 2017 onward uses sampled GDELT DOC API where available. Pre-2017 rows are retained with explicit coverage 
+notes unless a future bulk historical GDELT/GKG loader is added.",
+  deep_ml\scripts\12_source_news_update.py:791:        "google_news_rss_policy": "Google News RSS is a recent fallback only, not a 2006 historical archive.",
+> deep_ml\scripts\12_source_news_update.py:792:        "cache_used": bool(cached is not None and not force),
+> deep_ml\scripts\12_source_news_update.py:793:        "incremental_update_used": bool(incremental_update_used),
+> deep_ml\scripts\12_source_news_update.py:794:        "full_rebuild_used": bool(full_rebuild),
+  deep_ml\scripts\12_source_news_update.py:795:        "previous_cached_start_date": previous_cached_start,
+> deep_ml\scripts\12_source_news_update.py:796:        "previous_cached_end_date": previous_cached_end,
+  deep_ml\scripts\12_source_news_update.py:797:        "incremental_start_date": incremental_start_date,
+  deep_ml\scripts\12_source_news_update.py:798:        "incremental_end_date": incremental_end_date,
+> deep_ml\scripts\12_source_news_update.py:799:        "incremental_rows_added": int(len(updated_segment)) if incremental_update_used else 0,
+  deep_ml\scripts\12_source_news_update.py:800:        "historical_api_pull_start_date": pull_start.date().isoformat() if pull_start <= pull_end else None,
+  deep_ml\scripts\12_source_news_update.py:801:        "historical_api_pull_end_date": pull_end.date().isoformat() if pull_start <= pull_end else None,
+  deep_ml\scripts\12_source_news_update.py:802:        "cache_read_error": cache_read_error,
+> deep_ml\scripts\12_source_news_update.py:803:        "cache_reason": "Incremental update appended only missing dates." if incremental_update_used else "Full historical build completed.",
+  deep_ml\scripts\12_source_news_update.py:804:        "generated_at_utc": iso_utc(),
+  deep_ml\scripts\12_source_news_update.py:805:        "outputs": {
+  deep_ml\scripts\12_source_news_update.py:806:            "historical_index_parquet": str(paths.historical_index_parquet.relative_to(paths.repo_root)),
+  deep_ml\scripts\12_source_news_update.py:975:                start_date=args.historical_start,
+  deep_ml\scripts\12_source_news_update.py:976:                historical_end=historical_end,
+> deep_ml\scripts\12_source_news_update.py:977:                force=args.force_historical,
+  deep_ml\scripts\12_source_news_update.py:978:                smoke=args.smoke,
+  deep_ml\scripts\12_source_news_update.py:979:                timeout=args.timeout,
+  deep_ml\scripts\12_source_news_update.py:980:                delay=args.gdelt_delay_seconds,
+  deep_ml\scripts\12_source_news_update.py:982:                max_records=args.historical_max_records,
+  deep_ml\scripts\12_source_news_update.py:983:            )
+> deep_ml\scripts\12_source_news_update.py:984:            logger.timeline("historical_daily_index_ready", details={"rows": int(len(historical_df)), "end": historical_end, "cache_used": 
+historical_manifest.get("cache_used")})
+  deep_ml\scripts\12_source_news_update.py:985:        elif paths.historical_index_parquet.exists():
+  deep_ml\scripts\12_source_news_update.py:986:            historical_df = pd.read_parquet(paths.historical_index_parquet)
+  deep_ml\scripts\12_source_news_update.py:987:            historical_manifest = read_json(paths.historical_manifest, default={}) or {}
+  deep_ml\scripts\12_source_news_update.py:1058:            "historical_start_date": args.historical_start,
+  deep_ml\scripts\12_source_news_update.py:1059:            "historical_end_date": historical_end,
+> deep_ml\scripts\12_source_news_update.py:1060:            "historical_cache_used": historical_manifest.get("cache_used"),
+> deep_ml\scripts\12_source_news_update.py:1061:            "historical_incremental_update_used": historical_manifest.get("incremental_update_used"),
+> deep_ml\scripts\12_source_news_update.py:1062:            "historical_full_rebuild_used": historical_manifest.get("full_rebuild_used"),
+> deep_ml\scripts\12_source_news_update.py:1063:            "historical_previous_cached_end_date": historical_manifest.get("previous_cached_end_date"),
+  deep_ml\scripts\12_source_news_update.py:1064:            "historical_incremental_start_date": historical_manifest.get("incremental_start_date"),
+  deep_ml\scripts\12_source_news_update.py:1065:            "historical_incremental_end_date": historical_manifest.get("incremental_end_date"),
+  deep_ml\scripts\12_source_news_update.py:1066:            "recent_window_days": args.recent_days,
+
+
+
+
+===== CURRENT GAMMA SCRIPT IF EXISTS =====
+"""
+Gold Nexus Alpha — Deep ML Phase 13
+Gamma News Sensitivity Expert
+
+LOCKED SCRIPT NAME:
+    deep_ml/scripts/13_gamma_news_sensitivity.py
+
+Purpose:
+    Reads Phase 12 news context artifacts and Deep ML model prediction artifacts.
+    Builds a professor-safe Gamma artifact layer for news-context sensitivity,
+    chart tooltips, and Gamma/Omega preparation.
+
+Important honesty rules:
+    - Gamma does not claim news caused gold movement.
+    - Historical news rows are continuity/index rows with coverage limitations.
+    - Zero historical score means no public source row was loaded by Phase 12, not that no news existed.
+    - Recent headlines are context/tooltips only.
+    - Gamma is an interpretive/context layer, not the final forecast winner.
+
+Run:
+    py -m py_compile .\deep_ml\scripts\13_gamma_news_sensitivity.py
+    py .\deep_ml\scripts\13_gamma_news_sensitivity.py --smoke
+    py .\deep_ml\scripts\13_gamma_news_sensitivity.py
+
+Review:
+    artifacts/deep_ml/models/gamma_news_sensitivity/phase13_gamma_news_sensitivity_report.json
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import hashlib
+import json
+import platform
+import shutil
+import subprocess
+import sys
+import traceback
+from dataclasses import dataclass
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+import pandas as pd
+
+
+PHASE_KEY = "phase13_gamma_news_sensitivity"
+MODEL_KEY = "gamma_news_sensitivity"
+SCRIPT_VERSION = "gamma_news_sensitivity_v1_phase12_context_guarded"
+TIMEZONE_LOCAL = "America/New_York"
+
+NEWS_SCORE_COLUMNS = [
+    "gold_general_news_score",
+    "inflation_news_score",
+    "fed_policy_news_score",
+    "usd_news_score",
+    "geopolitical_risk_news_score",
+    "safe_haven_news_score",
+    "central_bank_gold_news_score",
+    "net_gold_news_sensitivity_score",
+]
+
+MODEL_SOURCE_FILES = {
+    "alpha_structural": "artifacts/deep_ml/models/alpha_structural/evaluation_rollforward.csv",
+    "beta_temporal": "artifacts/deep_ml/models/beta_temporal/evaluation_rollforward.csv",
+    "delta_tft": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv",
+    "epsilon_expert_ensemble": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_rollforward.csv",
+}
+
+
+@dataclass
+class Paths:
+    repo_root: Path
+    artifacts_root: Path
+    public_root: Path
+    model_dir: Path
+    public_model_dir: Path
+    news_dir: Path
+    public_news_dir: Path
+    combined_news_csv: Path
+    recent_news_csv: Path
+    phase12_report: Path
+    report: Path
+    run_summary: Path
+    diagnostics: Path
+    quality_review: Path
+    date_context: Path
+    model_joined: Path
+    tooltip_context: Path
+    sensitivity_by_horizon: Path
+    latest_context: Path
+    page_bundle: Path
+    timeline: Path
+    checkpoint: Path
+    mode_status: Path
+    matrix_manifest: Path
+
+
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+def iso_utc(dt: Optional[datetime] = None) -> str:
+    return (dt or utc_now()).isoformat().replace("+00:00", "Z")
+
+
+def local_iso(dt: Optional[datetime] = None) -> str:
+    dt = dt or utc_now()
+    try:
+        from zoneinfo import ZoneInfo
+        return dt.astimezone(ZoneInfo(TIMEZONE_LOCAL)).isoformat()
+    except Exception:
+        return dt.isoformat()
+
+
+def detect_repo_root(start: Path) -> Path:
+    current = start.resolve()
+    for candidate in [current, *current.parents]:
+        if (candidate / ".git").exists() or (candidate / "artifacts").exists() or (candidate / "deep_ml").exists():
+            return candidate
+    return current
+
+
+def get_git_commit(repo_root: Path) -> Optional[str]:
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"],
+            cwd=str(repo_root),
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+    except Exception:
+        return None
+
+
+def stable_hash_file(path: Path) -> str:
+    if not path.exists() or not path.is_file():
+        return "missing"
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return "sha256:" + h.hexdigest()
+
+
+def read_json(path: Path, default: Any = None) -> Any:
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return default
+
+
+def write_json(path: Path, data: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, indent=2, default=str), encoding="utf-8")
+
+
+def write_csv_dicts(path: Path, rows: List[Dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    keys: List[str] = []
+    for row in rows:
+        for key in row.keys():
+            if key not in keys:
+                keys.append(key)
+    if not keys:
+        keys = ["empty"]
+    with path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=keys, extrasaction="ignore")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({key: row.get(key) for key in keys})
+
+
+def safe_float(value: Any) -> Optional[float]:
+    try:
+        out = float(value)
+        if pd.isna(out):
+            return None
+        return out
+    except Exception:
+        return None
+
+
+def read_table(path: Path) -> pd.DataFrame:
+    if not path.exists():
+        return pd.DataFrame()
+    if path.suffix.lower() == ".parquet":
+        return pd.read_parquet(path)
+    return pd.read_csv(path)
+
+
+def clean_text(value: Any) -> str:
+    if value is None or (isinstance(value, float) and pd.isna(value)):
+        return ""
+    return " ".join(str(value).split())
+
+
+def build_paths(repo_root: Path) -> Paths:
+    artifacts_root = repo_root / "artifacts" / "deep_ml"
+    public_root = repo_root / "public" / "artifacts" / "deep_ml"
+    model_dir = artifacts_root / "models" / MODEL_KEY
+    news_dir = artifacts_root / "news"
+    return Paths(
+        repo_root=repo_root,
+        artifacts_root=artifacts_root,
+        public_root=public_root,
+        model_dir=model_dir,
+        public_model_dir=public_root / "models" / MODEL_KEY,
+        news_dir=news_dir,
+        public_news_dir=public_root / "news",
+        combined_news_csv=news_dir / "structured" / "news_context_daily_combined.csv",
+        recent_news_csv=news_dir / "news_items_unified_raw.csv",
+        phase12_report=news_dir / "phase12_source_news_update_report.json",
+        report=model_dir / "phase13_gamma_news_sensitivity_report.json",
+        run_summary=model_dir / "run_summary.json",
+        diagnostics=model_dir / "diagnostics_latest.json",
+        quality_review=model_dir / "quality_review.json",
+        date_context=model_dir / "gamma_date_context.csv",
+        model_joined=model_dir / "gamma_model_joined_context.csv",
+        tooltip_context=model_dir / "gamma_tooltip_context.json",
+        sensitivity_by_horizon=model_dir / "gamma_sensitivity_by_horizon.json",
+        latest_context=model_dir / "gamma_latest_context.json",
+        page_bundle=model_dir / "page_bundle.json",
+        timeline=model_dir / "timeline.json",
+        checkpoint=model_dir / "progress_checkpoint.json",
+        mode_status=artifacts_root / "governance" / "deep_ml_mode_status.json",
+        matrix_manifest=artifacts_root / "features" / "deep_ml_numeric_feature_store_manifest.json",
+    )
+
+
+class Logger:
+    def __init__(self, paths: Paths) -> None:
+        self.paths = paths
+        self.events: List[Dict[str, Any]] = []
+        self.started = utc_now()
+
+    def event(self, event: str, status: str = "ok", details: Optional[Dict[str, Any]] = None) -> None:
+        row = {
+            "timestamp_utc": iso_utc(),
+            "event": event,
+            "status": status,
+            "details": details or {},
+        }
+        self.events.append(row)
+        write_json(self.paths.timeline, self.events)
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] {event} [{status}]", flush=True)
+
+    def checkpoint(self, step: str, status: str, payload: Optional[Dict[str, Any]] = None) -> None:
+        write_json(self.paths.checkpoint, {
+            "artifact_type": "deep_ml_progress_checkpoint",
+            "phase_key": PHASE_KEY,
+            "model_key": MODEL_KEY,
+            "step": step,
+            "status": status,
+            "updated_at_utc": iso_utc(),
+            "payload": payload or {},
+        })
+
+
+def parse_args() -> argparse.Namespace:
+    p = argparse.ArgumentParser(description="Build Gamma news-context sensitivity artifacts.")
+    p.add_argument("--repo-root", type=str, default=None)
+    p.add_argument("--smoke", action="store_true")
+    p.add_argument("--horizon", type=int, default=10)
+    p.add_argument("--max-model-rows", type=int, default=0, help="0 means all rows; useful for local debug.")
+    p.add_argument("--no-public-copy", action="store_true")
+    return p.parse_args()
+
+
+def validate_phase12(paths: Paths) -> Dict[str, Any]:
+    report = read_json(paths.phase12_report, default={}) or {}
+    quality = report.get("quality_review") or {}
+    blocking = list(quality.get("blocking_flags") or [])
+    if not paths.combined_news_csv.exists():
+        blocking.append("missing_combined_daily_news_context")
+    if not paths.phase12_report.exists():
+        blocking.append("missing_phase12_report")
+    return {
+        "phase12_status": report.get("status"),
+        "phase12_report_exists": paths.phase12_report.exists(),
+        "combined_news_exists": paths.combined_news_csv.exists(),
+        "recent_news_exists": paths.recent_news_csv.exists(),
+        "blocking_flags": blocking,
+        "report": report,
+    }
+
+
+def prepare_news_context(news: pd.DataFrame, recent: pd.DataFrame) -> pd.DataFrame:
+    if news.empty:
+        return pd.DataFrame()
+
+    out = news.copy()
+    out["date"] = pd.to_datetime(out["date"], errors="coerce").dt.date.astype(str)
+    for col in NEWS_SCORE_COLUMNS:
+        if col not in out.columns:
+            out[col] = 0.0
+        out[col] = pd.to_numeric(out[col], errors="coerce").fillna(0.0)
+
+    out["article_count"] = pd.to_numeric(out.get("article_count", 0), errors="coerce").fillna(0).astype(int)
+    out["gold_news_count"] = pd.to_numeric(out.get("gold_news_count", 0), errors="coerce").fillna(0).astype(int)
+    out["gamma_context_intensity"] = out[NEWS_SCORE_COLUMNS].abs().sum(axis=1)
+    out["gamma_has_recent_or_loaded_headline"] = (
+        out.get("top_headline_1", "").astype(str).str.strip().ne("") |
+        (out["article_count"] > 0)
+    )
+
+    headline_map: Dict[str, List[Dict[str, Any]]] = {}
+    if not recent.empty and "date" in recent.columns:
+        recent_copy = recent.copy()
+        recent_copy["date"] = pd.to_datetime(recent_copy["date"], errors="coerce").dt.date.astype(str)
+        for d, group in recent_copy.groupby("date"):
+            rows = []
+            for _, r in group.head(5).iterrows():
+                rows.append({
+                    "title": clean_text(r.get("title")),
+                    "source": clean_text(r.get("source")),
+                    "url": clean_text(r.get("url")),
+                    "published_at": clean_text(r.get("published_at")),
+                    "query_key": clean_text(r.get("query_key")),
+                    "raw_source": clean_text(r.get("raw_source")),
+                })
+            headline_map[str(d)] = rows
+
+    out["gamma_tooltip_recent_headline_count"] = out["date"].map(lambda d: len(headline_map.get(str(d), [])))
+    out["gamma_tooltip_primary_headline"] = out["date"].map(
+        lambda d: clean_text((headline_map.get(str(d), [{}]) or [{}])[0].get("title") or "")
+    )
+    out["gamma_recent_headlines_json"] = out["date"].map(lambda d: json.dumps(headline_map.get(str(d), [])[:5]))
+    return out
+
+
+def load_model_context(repo_root: Path, max_rows: int, smoke: bool) -> pd.DataFrame:
+    frames: List[pd.DataFrame] = []
+    for model_key, rel_path in MODEL_SOURCE_FILES.items():
+        path = repo_root / rel_path
+        if not path.exists():
+            continue
+        usecols = None
+        df = pd.read_csv(path)
+        if smoke:
+            df = df.head(1500)
+        if max_rows and max_rows > 0:
+            df = df.head(max_rows)
+        required_cols = {"date", "split", "horizon", "actual_target", "prediction", "naive_prediction", "error"}
+        missing = required_cols - set(df.columns)
+        if missing:
+            continue
+        small = df[["date", "split", "horizon", "gold_price", "actual_target", "prediction", "naive_prediction", "error"]].copy()
+        small["source_model_key"] = model_key
+        small["date"] = pd.to_datetime(small["date"], errors="coerce").dt.date.astype(str)
+        frames.append(small)
+    if not frames:
+        return pd.DataFrame()
+    return pd.concat(frames, ignore_index=True)
+
+
+def build_joined_context(model_rows: pd.DataFrame, news_context: pd.DataFrame, selected_horizon: int) -> pd.DataFrame:
+
+===== CURRENT OMEGA SCRIPT IF EXISTS =====
+"""
+Gold Nexus Alpha — Deep ML Phase 14
+Omega Fusion
+
+LOCKED SCRIPT NAME:
+    deep_ml/scripts/14_omega_fusion.py
+
+Purpose:
+    Reads accepted Alpha/Beta/Delta/Epsilon and reviewed Gamma artifacts.
+    Creates an artifact-first fusion layer for final Deep ML model comparison and
+    frontend display. This is not the original baseline final forecast page.
+
+Important honesty rules:
+    - Omega is disabled/blocked until Gamma artifacts exist and are reviewed.
+    - Omega combines model behavior using validation/test metrics and explicit rules.
+    - Omega does not prove causality.
+    - Omega does not replace the existing professor-safe baseline final forecast unless approved.
+
+Run after Gamma is reviewed:
+    py -m py_compile .\deep_ml\scripts\14_omega_fusion.py
+    py .\deep_ml\scripts\14_omega_fusion.py --smoke
+    py .\deep_ml\scripts\14_omega_fusion.py
+
+Review:
+    artifacts/deep_ml/models/omega_fusion/phase14_omega_fusion_report.json
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import hashlib
+import json
+import platform
+import shutil
+import subprocess
+import sys
+import traceback
+from dataclasses import dataclass
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+import pandas as pd
+
+
+PHASE_KEY = "phase14_omega_fusion"
+MODEL_KEY = "omega_fusion"
+SCRIPT_VERSION = "omega_fusion_v1_artifact_weighted_guarded"
+TIMEZONE_LOCAL = "America/New_York"
+
+MODEL_SOURCES = {
+    "alpha_structural": {
+        "evaluation": "artifacts/deep_ml/models/alpha_structural/evaluation_by_horizon.json",
+        "rollforward": "artifacts/deep_ml/models/alpha_structural/evaluation_rollforward.csv",
+        "forecast": "artifacts/deep_ml/models/alpha_structural/forecast_latest.json",
+        "report": "artifacts/deep_ml/models/alpha_structural/phase6_alpha_structural_report.json",
+    },
+    "beta_temporal": {
+        "evaluation": "artifacts/deep_ml/models/beta_temporal/evaluation_by_horizon.json",
+        "rollforward": "artifacts/deep_ml/models/beta_temporal/evaluation_rollforward.csv",
+        "forecast": "artifacts/deep_ml/models/beta_temporal/forecast_latest.json",
+        "report": "artifacts/deep_ml/models/beta_temporal/phase7_beta_temporal_report.json",
+    },
+    "delta_tft": {
+        "evaluation": "artifacts/deep_ml/models/delta_tft/evaluation_by_horizon.json",
+        "rollforward": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv",
+        "forecast": "artifacts/deep_ml/models/delta_tft/forecast_latest.json",
+        "report": "artifacts/deep_ml/models/delta_tft/phase8_delta_tft_report.json",
+    },
+    "epsilon_expert_ensemble": {
+        "evaluation": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_by_horizon.json",
+        "rollforward": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_rollforward.csv",
+        "forecast": "artifacts/deep_ml/models/epsilon_expert_ensemble/forecast_latest.json",
+        "report": "artifacts/deep_ml/models/epsilon_expert_ensemble/phase9_epsilon_expert_report.json",
+    },
+}
+
+
+@dataclass
+class Paths:
+    repo_root: Path
+    artifacts_root: Path
+    public_root: Path
+    model_dir: Path
+    public_model_dir: Path
+    gamma_report: Path
+    gamma_tooltip_context: Path
+    report: Path
+    run_summary: Path
+    diagnostics: Path
+    quality_review: Path
+    model_ranking: Path
+    omega_weights: Path
+    omega_evaluation_by_horizon: Path
+    omega_rollforward: Path
+    omega_forecast_latest: Path
+    page_bundle: Path
+    timeline: Path
+    checkpoint: Path
+
+
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+def iso_utc(dt: Optional[datetime] = None) -> str:
+    return (dt or utc_now()).isoformat().replace("+00:00", "Z")
+
+
+def local_iso(dt: Optional[datetime] = None) -> str:
+    dt = dt or utc_now()
+    try:
+        from zoneinfo import ZoneInfo
+        return dt.astimezone(ZoneInfo(TIMEZONE_LOCAL)).isoformat()
+    except Exception:
+        return dt.isoformat()
+
+
+def detect_repo_root(start: Path) -> Path:
+    current = start.resolve()
+    for candidate in [current, *current.parents]:
+        if (candidate / ".git").exists() or (candidate / "artifacts").exists() or (candidate / "deep_ml").exists():
+            return candidate
+    return current
+
+
+def get_git_commit(repo_root: Path) -> Optional[str]:
+    try:
+        return subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=str(repo_root), text=True, stderr=subprocess.DEVNULL).strip()
+    except Exception:
+        return None
+
+
+def stable_hash_file(path: Path) -> str:
+    if not path.exists() or not path.is_file():
+        return "missing"
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return "sha256:" + h.hexdigest()
+
+
+def read_json(path: Path, default: Any = None) -> Any:
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return default
+
+
+def write_json(path: Path, data: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, indent=2, default=str), encoding="utf-8")
+
+
+def write_csv_dicts(path: Path, rows: List[Dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    keys: List[str] = []
+    for row in rows:
+        for key in row.keys():
+            if key not in keys:
+                keys.append(key)
+    if not keys:
+        keys = ["empty"]
+    with path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=keys, extrasaction="ignore")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({key: row.get(key) for key in keys})
+
+
+def safe_float(value: Any) -> Optional[float]:
+    try:
+        out = float(value)
+        if pd.isna(out):
+            return None
+        return out
+    except Exception:
+        return None
+
+
+def build_paths(repo_root: Path) -> Paths:
+    artifacts_root = repo_root / "artifacts" / "deep_ml"
+    public_root = repo_root / "public" / "artifacts" / "deep_ml"
+    model_dir = artifacts_root / "models" / MODEL_KEY
+    return Paths(
+        repo_root=repo_root,
+        artifacts_root=artifacts_root,
+        public_root=public_root,
+        model_dir=model_dir,
+        public_model_dir=public_root / "models" / MODEL_KEY,
+        gamma_report=artifacts_root / "models" / "gamma_news_sensitivity" / "phase13_gamma_news_sensitivity_report.json",
+        gamma_tooltip_context=artifacts_root / "models" / "gamma_news_sensitivity" / "gamma_tooltip_context.json",
+        report=model_dir / "phase14_omega_fusion_report.json",
+        run_summary=model_dir / "run_summary.json",
+        diagnostics=model_dir / "diagnostics_latest.json",
+        quality_review=model_dir / "quality_review.json",
+        model_ranking=model_dir / "omega_model_ranking.json",
+        omega_weights=model_dir / "omega_weights_by_horizon.json",
+        omega_evaluation_by_horizon=model_dir / "omega_evaluation_by_horizon.json",
+        omega_rollforward=model_dir / "omega_rollforward.csv",
+        omega_forecast_latest=model_dir / "omega_forecast_latest.json",
+        page_bundle=model_dir / "page_bundle.json",
+        timeline=model_dir / "timeline.json",
+        checkpoint=model_dir / "progress_checkpoint.json",
+    )
+
+
+class Logger:
+    def __init__(self, paths: Paths) -> None:
+        self.paths = paths
+        self.events: List[Dict[str, Any]] = []
+        self.started = utc_now()
+
+    def event(self, event: str, status: str = "ok", details: Optional[Dict[str, Any]] = None) -> None:
+        row = {"timestamp_utc": iso_utc(), "event": event, "status": status, "details": details or {}}
+        self.events.append(row)
+        write_json(self.paths.timeline, self.events)
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] {event} [{status}]", flush=True)
+
+    def checkpoint(self, step: str, status: str, payload: Optional[Dict[str, Any]] = None) -> None:
+        write_json(self.paths.checkpoint, {
+            "artifact_type": "deep_ml_progress_checkpoint",
+            "phase_key": PHASE_KEY,
+            "model_key": MODEL_KEY,
+            "step": step,
+            "status": status,
+            "updated_at_utc": iso_utc(),
+            "payload": payload or {},
+        })
+
+
+def parse_args() -> argparse.Namespace:
+    p = argparse.ArgumentParser(description="Build Omega fusion artifacts.")
+    p.add_argument("--repo-root", type=str, default=None)
+    p.add_argument("--smoke", action="store_true")
+    p.add_argument("--horizon", type=int, default=10)
+    p.add_argument("--no-public-copy", action="store_true")
+    return p.parse_args()
+
+
+def load_evaluation(repo_root: Path, rel_path: str) -> Dict[str, Any]:
+    return read_json(repo_root / rel_path, default={}) or {}
+
+
+def extract_test_mape(evaluation: Dict[str, Any], horizon: int) -> Optional[float]:
+    # Alpha/Beta format: metrics_by_horizon[horizon].test.mape
+    value = evaluation.get("metrics_by_horizon", {}).get(str(horizon), {}).get("test", {}).get("mape")
+    if value is not None:
+        return safe_float(value)
+
+    # Delta/Epsilon format: test[horizon].mape_pct
+    value = evaluation.get("test", {}).get(str(horizon), {}).get("mape_pct")
+    return safe_float(value)
+
+
+def extract_validation_mape(evaluation: Dict[str, Any], horizon: int) -> Optional[float]:
+    value = evaluation.get("metrics_by_horizon", {}).get(str(horizon), {}).get("validation", {}).get("mape")
+    if value is not None:
+        return safe_float(value)
+    value = evaluation.get("validation", {}).get(str(horizon), {}).get("mape_pct")
+    return safe_float(value)
+
+
+def build_model_ranking(repo_root: Path, horizons: List[int]) -> Dict[str, Any]:
+    ranking_rows = []
+    weights_by_horizon: Dict[str, Dict[str, float]] = {}
+
+    for horizon in horizons:
+        horizon_rows = []
+        for model_key, source in MODEL_SOURCES.items():
+            eval_path = repo_root / source["evaluation"]
+            if not eval_path.exists():
+                continue
+            evaluation = load_evaluation(repo_root, source["evaluation"])
+            test_mape = extract_test_mape(evaluation, horizon)
+            val_mape = extract_validation_mape(evaluation, horizon)
+            if val_mape is None and test_mape is None:
+                continue
+            score = val_mape if val_mape is not None else test_mape
+            horizon_rows.append({
+                "model_key": model_key,
+                "horizon": horizon,
+                "validation_mape_pct": val_mape,
+                "test_mape_pct": test_mape,
+                "weight_basis_mape_pct": score,
+            })
+
+        horizon_rows = sorted(horizon_rows, key=lambda x: (x["weight_basis_mape_pct"] is None, x["weight_basis_mape_pct"] or 1e9))
+        denom = sum(1.0 / max(float(r["weight_basis_mape_pct"] or 999), 0.0001) for r in horizon_rows)
+        horizon_weights = {}
+        for idx, row in enumerate(horizon_rows, start=1):
+            weight = (1.0 / max(float(row["weight_basis_mape_pct"] or 999), 0.0001)) / denom if denom else 0.0
+            row["rank"] = idx
+            row["omega_weight"] = weight
+            horizon_weights[row["model_key"]] = weight
+            ranking_rows.append(row)
+        weights_by_horizon[str(horizon)] = horizon_weights
+
+    return {
+        "artifact_type": "omega_model_ranking",
+        "schema_version": "1.0.0",
+        "model_key": MODEL_KEY,
+        "ranking_basis": "inverse_validation_mape_by_horizon_fallback_test_mape",
+        "ranking": ranking_rows,
+        "weights_by_horizon": weights_by_horizon,
+        "professor_safe_note": "Weights are validation/test metric based fusion weights. They are not causal importance scores.",
+        "generated_at_utc": iso_utc(),
+    }
+
+
+def load_rollforward(repo_root: Path, model_key: str, rel_path: str, smoke: bool) -> pd.DataFrame:
+    path = repo_root / rel_path
+    if not path.exists():
+        return pd.DataFrame()
+    df = pd.read_csv(path)
+    if smoke:
+        df = df.head(2500)
+    required = {"date", "split", "horizon", "actual_target", "prediction"}
+    if not required.issubset(df.columns):
+        return pd.DataFrame()
+    out = df[["date", "split", "horizon", "gold_price", "actual_target", "prediction", "naive_prediction", "error"]].copy()
+    out["source_model_key"] = model_key
+    return out
+
+
+def build_omega_rollforward(repo_root: Path, weights_by_horizon: Dict[str, Dict[str, float]], smoke: bool) -> pd.DataFrame:
+    frames = []
+    for model_key, source in MODEL_SOURCES.items():
+        df = load_rollforward(repo_root, model_key, source["rollforward"], smoke=smoke)
+        if not df.empty:
+            frames.append(df)
+    if not frames:
+        return pd.DataFrame()
+
+    all_rows = pd.concat(frames, ignore_index=True)
+    all_rows["date"] = pd.to_datetime(all_rows["date"], errors="coerce").dt.date.astype(str)
+    all_rows["horizon"] = pd.to_numeric(all_rows["horizon"], errors="coerce").astype("Int64")
+    all_rows["prediction"] = pd.to_numeric(all_rows["prediction"], errors="coerce")
+    all_rows["actual_target"] = pd.to_numeric(all_rows["actual_target"], errors="coerce")
+    all_rows["naive_prediction"] = pd.to_numeric(all_rows["naive_prediction"], errors="coerce")
+    all_rows["gold_price"] = pd.to_numeric(all_rows["gold_price"], errors="coerce")
+
+    def weighted_group(g: pd.DataFrame) -> pd.Series:
+        horizon = str(int(g["horizon"].iloc[0]))
+        weights = weights_by_horizon.get(horizon, {})
+        valid = g.dropna(subset=["prediction"])
+        if valid.empty:
+            return pd.Series({})
+        w = valid["source_model_key"].map(lambda k: weights.get(str(k), 0.0)).astype(float)
+        if w.sum() <= 0:
+            w = pd.Series([1.0 / len(valid)] * len(valid), index=valid.index)
+        else:
+            w = w / w.sum()
+        pred = float((valid["prediction"] * w).sum())
+        actual = valid["actual_target"].dropna().iloc[0] if valid["actual_target"].notna().any() else None
+        naive = valid["naive_prediction"].dropna().iloc[0] if valid["naive_prediction"].notna().any() else None
+        gold = valid["gold_price"].dropna().iloc[0] if valid["gold_price"].notna().any() else None
+        return pd.Series({
+            "gold_price": gold,
+            "actual_target": actual,
+            "prediction": pred,
+            "naive_prediction": naive,
+            "error": pred - actual if actual is not None and pd.notna(actual) else None,
+            "model_count": int(len(valid)),
+            "component_models": ",".join(valid["source_model_key"].astype(str).tolist()),
+        })
+
+    grouped = all_rows.groupby(["date", "split", "horizon"], dropna=True).apply(weighted_group).reset_index()
+    return grouped.sort_values(["date", "horizon", "split"])
+
+
+def build_omega_evaluation(omega: pd.DataFrame) -> Dict[str, Any]:
+    out: Dict[str, Any] = {
+        "artifact_type": "omega_evaluation_by_horizon",
+        "schema_version": "1.0.0",
+        "model_key": MODEL_KEY,
+        "point_forecast": "weighted_fusion_prediction",
+        "metrics_by_horizon": {},
+        "generated_at_utc": iso_utc(),
+    }
+    if omega.empty:
+        out["status"] = "no_omega_rows"
+        return out
+
+    for horizon, hdf in omega.groupby("horizon"):
+        out["metrics_by_horizon"][str(int(horizon))] = {}
+        for split, sdf in hdf.groupby("split"):
+            y = pd.to_numeric(sdf["actual_target"], errors="coerce")
+            pred = pd.to_numeric(sdf["prediction"], errors="coerce")
+            mask = y.notna() & pred.notna()
+            if not mask.any():
+                continue
+            err = pred[mask] - y[mask]
+            ape = (err.abs() / y[mask].abs().replace(0, pd.NA)).dropna() * 100.0
+            out["metrics_by_horizon"][str(int(horizon))][str(split)] = {
+                "count": int(mask.sum()),
+                "mae": float(err.abs().mean()),
+                "rmse": float((err.pow(2).mean()) ** 0.5),
+                "mape_pct": float(ape.mean()) if len(ape) else None,
+                "bias_mean_error": float(err.mean()),
+            }
+    return out
+
+
+def build_forecast_latest(repo_root: Path, weights_by_horizon: Dict[str, Dict[str, float]]) -> Dict[str, Any]:
+    forecast_points: Dict[str, List[Dict[str, Any]]] = {}
+    for model_key, source in MODEL_SOURCES.items():
+        forecast = read_json(repo_root / source["forecast"], default={}) or {}
+        points = forecast.get("forecast_points") or forecast.get("path") or []
+        for p in points:
+            horizon = str(p.get("horizon") or p.get("horizon_trading_days"))
+            if horizon == "None":
+                continue
+            p50 = p.get("p50") or p.get("forecast_price_p50") or p.get("calibrated_forecast_price_p50")
+            p10 = p.get("p10") or p.get("forecast_price_p10") or p.get("calibrated_forecast_price_p10")
+            p90 = p.get("p90") or p.get("forecast_price_p90") or p.get("calibrated_forecast_price_p90")
+
+===== NEWS ARTIFACTS LIST =====
+
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\.gitkeep
+Name          : .gitkeep
+Length        : 0
+LastWriteTime : 04-05-2026 23:45:02
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\diagnostics_latest.json
+Name          : diagnostics_latest.json
+Length        : 1465
+LastWriteTime : 05-05-2026 19:36:05
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\news_input_inventory.json
+Name          : news_input_inventory.json
+Length        : 319
+LastWriteTime : 05-05-2026 04:47:16
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\news_items_unified_raw.csv
+Name          : news_items_unified_raw.csv
+Length        : 162897
+LastWriteTime : 05-05-2026 19:36:04
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\news_items_unified_raw.json
+Name          : news_items_unified_raw.json
+Length        : 251163
+LastWriteTime : 05-05-2026 19:36:04
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\news_source_coverage_preview.json
+Name          : news_source_coverage_preview.json
+Length        : 2331
+LastWriteTime : 05-05-2026 19:36:05
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\news_source_inventory.json
+Name          : news_source_inventory.json
+Length        : 7556
+LastWriteTime : 05-05-2026 19:36:05
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\phase12_source_news_update_report.json
+Name          : phase12_source_news_update_report.json
+Length        : 17484
+LastWriteTime : 05-05-2026 19:36:05
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\progress_checkpoint.json
+Name          : progress_checkpoint.json
+Length        : 283
+LastWriteTime : 05-05-2026 15:26:45
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\quality_review.json
+Name          : quality_review.json
+Length        : 826
+LastWriteTime : 05-05-2026 19:36:05
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\raw_news_pull_log.json
+Name          : raw_news_pull_log.json
+Length        : 22094
+LastWriteTime : 05-05-2026 19:36:05
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\timeline.json
+Name          : timeline.json
+Length        : 802
+LastWriteTime : 05-05-2026 19:36:04
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\api_pulls\gdelt_news_items_raw.csv
+Name          : gdelt_news_items_raw.csv
+Length        : 17476
+LastWriteTime : 05-05-2026 19:36:04
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\api_pulls\gdelt_news_items_raw.json
+Name          : gdelt_news_items_raw.json
+Length        : 34452
+LastWriteTime : 05-05-2026 19:36:04
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\api_pulls\newsapi_news_items_raw.csv
+Name          : newsapi_news_items_raw.csv
+Length        : 7
+LastWriteTime : 05-05-2026 19:36:04
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\api_pulls\newsapi_news_items_raw.json
+Name          : newsapi_news_items_raw.json
+Length        : 223
+LastWriteTime : 05-05-2026 19:36:04
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\api_pulls\rss_news_items_raw.csv
+Name          : rss_news_items_raw.csv
+Length        : 126229
+LastWriteTime : 05-05-2026 19:36:04
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\api_pulls\rss_news_items_raw.json
+Name          : rss_news_items_raw.json
+Length        : 185868
+LastWriteTime : 05-05-2026 19:36:04
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\historical\historical_news_backfill_manifest.json
+Name          : historical_news_backfill_manifest.json
+Length        : 1000
+LastWriteTime : 05-05-2026 19:33:06
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\historical\historical_news_daily_index.csv
+Name          : historical_news_daily_index.csv
+Length        : 2046201
+LastWriteTime : 05-05-2026 19:33:06
+
+FullName      : D:\nyit-gold-intelligence-2026\public\artifacts\deep_ml\news\structured\news_context_daily_combined.csv
+Name          : news_context_daily_combined.csv
+Length        : 2050824
+LastWriteTime : 05-05-2026 19:36:05
+
+
+
+
+
+===== PHASE 12 REPORT HEAD =====
+{
+  "artifact_type": "phase12_source_news_update_report",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "Phase 12 \u2014 Unified Source News Update",
+  "phase_key": "phase12_source_news_update",
+  "status": "ready",
+  "run": {
+    "run_id": "deepml_run_20260505_192645_source_news_update",
+    "study_id": "deepml_feature_refresh_20260505_093208",
+    "generated_at_utc": "2026-05-05T19:26:45.818364Z",
+    "completed_at_utc": "2026-05-05T23:36:05.170969Z",
+    "generated_at_local": "2026-05-05T15:26:45.818364-04:00",
+    "timezone_local": "America/New_York",
+    "git_commit_sha": "62d1cdd",
+    "code_version": "source_news_update_v3_unified_historical_recent_safe_fallbacks"
+  },
+  "backbone_directory_change_note": "Canonical news artifacts remain under artifacts/deep_ml/news/. Script name remains deep_ml/scripts/12_source_news_update.py. No news_ai folder is used.",
+  "source_summary": {
+    "historical_daily_rows": 7422,
+    "historical_rows_with_loaded_public_source": 1285,
+    "gdelt_recent_rows": 36,
+    "rss_recent_rows": 189,
+    "newsapi_recent_rows": 0,
+    "manual_recent_rows": 0,
+    "unified_recent_rows_after_dedupe": 225,
+    "combined_daily_context_rows": 7429
+  },
+  "historical_manifest_snapshot": {
+    "artifact_type": "historical_news_backfill_manifest",
+    "schema_version": "1.0.0",
+    "phase_key": "phase12_source_news_update",
+    "script_version": "source_news_update_v3_unified_historical_recent_safe_fallbacks",
+    "historical_start_date": "2006-01-02",
+    "historical_end_date": "2026-04-28",
+    "row_count": 7422,
+    "rows_with_loaded_public_source": 1285,
+    "source_policy": "Fixed daily index. 2017 onward uses sampled GDELT DOC API where available. Pre-2017 rows are retained with explicit coverage notes unless a future bulk historical GDELT/GKG loader is added.",
+    "google_news_rss_policy": "Google News RSS is a recent fallback only, not a 2006 historical archive.",
+    "cache_used": false,
+    "generated_at_utc": "2026-05-05T23:33:06.324675Z",
+    "outputs": {
+      "historical_index_parquet": "artifacts\\deep_ml\\news\\historical\\historical_news_daily_index.parquet",
+      "historical_index_csv": "artifacts\\deep_ml\\news\\historical\\historical_news_daily_index.csv"
+    }
+  },
+  "source_inventory_snapshot": {
+    "artifact_type": "news_source_inventory",
+    "schema_version": "1.0.0",
+    "phase_key": "phase12_source_news_update",
+    "canonical_directory": "artifacts/deep_ml/news",
+    "script_path": "deep_ml/scripts/12_source_news_update.py",
+    "sources": [
+      {
+        "source_key": "historical_daily_index",
+        "source_type": "fixed_daily_index",
+        "enabled": true,
+        "rows_loaded": 7422,
+        "status": "ready"
+      },
+      {
+        "source_key": "gdelt_doc_api",
+        "source_type": "public_no_key_api",
+        "enabled": true,
+        "rows_loaded": 36,
+        "status": "ready",
+        "logs_preview": [
+          {
+            "ok": false,
+            "status_code": 429,
+            "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22gold+price%22+OR+%22COMEX+gold%22+OR+%22XAUUSD%22%29&mode=artlist&format=json&maxrecords=30&sort=hybridrel&timespan=7d",
+            "elapsed_seconds": 5.618937,
+            "content_type": "",
+            "text_preview": "Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries.\n\n",
+            "query_key": "gold_general",
+            "query": "(\"gold price\" OR \"COMEX gold\" OR \"XAUUSD\")",
+            "rows_returned": 0,
+            "start": null,
+            "end": null,
+            "timespan": "7d",
+            "attempt": 2
+          },
+          {
+            "ok": false,
+            "status_code": 429,
+            "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22gold+inflation%22+OR+%22gold+yields%22+OR+%22gold+dollar%22%29&mode=artlist&format=json&maxrecords=30&sort=hybridrel&timespan=7d",
+            "elapsed_seconds": 5.131955,
+            "content_type": "",
+            "text_preview": "Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries.\n\n",
+            "query_key": "inflation_yields",
+            "query": "(\"gold inflation\" OR \"gold yields\" OR \"gold dollar\")",
+            "rows_returned": 0,
+            "start": null,
+            "end": null,
+            "timespan": "7d",
+            "attempt": 2
+          },
+          {
+            "ok": true,
+            "status_code": 200,
+            "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22gold+geopolitical+risk%22+OR+%22gold+safe+haven%22%29&mode=artlist&format=json&maxrecords=30&sort=hybridrel&timespan=7d",
+            "elapsed_seconds": 13.913515,
+            "content_type": "application/json; charset=utf-8",
+            "query_key": "geopolitical_safe_haven",
+            "query": "(\"gold geopolitical risk\" OR \"gold safe haven\")",
+            "rows_returned": 6,
+            "start": null,
+            "end": null,
+            "timespan": "7d",
+            "attempt": 2
+          },
+          {
+            "ok": false,
+            "status_code": 429,
+            "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22Federal+Reserve+rates+gold%22+OR+%22dollar+yields+gold%22%29&mode=artlist&format=json&maxrecords=30&sort=hybridrel&timespan=7d",
+            "elapsed_seconds": 5.997823,
+            "content_type": "",
+            "text_preview": "Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries.\n\n",
+            "query_key": "fed_usd_rates",
+            "query": "(\"Federal Reserve rates gold\" OR \"dollar yields gold\")",
+            "rows_returned": 0,
+            "start": null,
+            "end": null,
+            "timespan": "7d",
+            "attempt": 2
+          },
+          {
+            "ok": true,
+            "status_code": 200,
+            "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22central+bank+gold+buying%22+OR+%22gold+reserves%22%29&mode=artlist&format=json&maxrecords=30&sort=hybridrel&timespan=7d",
+            "elapsed_seconds": 15.38851,
+            "content_type": "application/json; charset=utf-8",
+            "query_key": "central_bank_gold",
+            "query": "(\"central bank gold buying\" OR \"gold reserves\")",
+            "rows_returned": 30,
+            "start": null,
+            "end": null,
+            "timespan": "7d",
+            "attempt": 1
+          }
+        ]
+      },
+      {
+        "source_key": "google_news_rss_search",
+        "source_type": "public_no_key_rss_recent_fallback",
+        "enabled": true,
+        "rows_loaded": 189,
+        "status": "ready",
+        "logs_preview": [
+          {
+            "ok": true,
+            "status_code": 200,
+            "url": "https://news.google.com/rss/search?q=gold+price+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+            "elapsed_seconds": 0.740699,
+            "content_type": "application/xml; charset=utf-8",
+            "query_key": "gold_general",
+            "query": "gold price",
+            "source_key": "google_news_rss_search",
+            "rows_returned": 100
+          },
+          {
+            "ok": true,
+            "status_code": 200,
+            "url": "https://news.google.com/rss/search?q=gold+inflation+yields+dollar+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+            "elapsed_seconds": 0.681713,
+            "content_type": "application/xml; charset=utf-8",
+            "query_key": "inflation_yields",
+            "query": "gold inflation yields dollar",
+            "source_key": "google_news_rss_search",
+            "rows_returned": 46
+          },
+          {
+            "ok": true,
+            "status_code": 200,
+            "url": "https://news.google.com/rss/search?q=gold+geopolitical+risk+safe+haven+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+            "elapsed_seconds": 0.728943,
+            "content_type": "application/xml; charset=utf-8",
+            "query_key": "geopolitical_safe_haven",
+            "query": "gold geopolitical risk safe haven",
+            "source_key": "google_news_rss_search",
+            "rows_returned": 52
+          },
+          {
+            "ok": true,
+            "status_code": 200,
+            "url": "https://news.google.com/rss/search?q=Federal+Reserve+rates+gold+dollar+yields+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+            "elapsed_seconds": 4.287046,
+            "content_type": "application/xml; charset=utf-8",
+            "query_key": "fed_usd_rates",
+            "query": "Federal Reserve rates gold dollar yields",
+            "source_key": "google_news_rss_search",
+            "rows_returned": 0
+          },
+          {
+            "ok": true,
+            "status_code": 200,
+            "url": "https://news.google.com/rss/search?q=central+bank+gold+reserves+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+            "elapsed_seconds": 4.285056,
+            "content_type": "application/xml; charset=utf-8",
+            "query_key": "central_bank_gold",
+            "query": "central bank gold reserves",
+            "source_key": "google_news_rss_search",
+            "rows_returned": 0
+          }
+        ]
+      },
+      {
+        "source_key": "newsapi",
+        "source_type": "optional_key_api",
+        "enabled": false,
+        "rows_loaded": 0,
+        "status": "skipped_or_no_rows",
+        "logs_preview": [
+          {
+            "ok": false,
+            "skipped": true,
+            "reason": "NEWS_API_KEY not provided"
+          }
+        ]
+      },
+      {
+        "source_key": "manual_news_csv",
+        "source_type": "manual_csv_backup",
+        "enabled": false,
+        "rows_loaded": 0,
+        "status": "not_provided_or_empty",
+        "meta": {
+          "manual_news_file_exists": false,
+          "manual_news_rows_loaded": 0,
+          "manual_news_template": "artifacts\\deep_ml\\news\\raw_inputs\\manual_news_items_template.csv"
+        }
+      }
+    ],
+    "generated_at_utc": "2026-05-05T23:36:05.051625Z"
+  },
+  "coverage_preview_snapshot": {
+    "artifact_type": "news_source_coverage_preview",
+    "schema_version": "1.0.0",
+    "phase_key": "phase12_source_news_update",
+    "status": "ready",
+    "recent_row_count": 225,
+    "historical_daily_row_count": 7422,
+    "historical_rows_with_loaded_public_source": 1285,
+    "source_type_counts": {
+      "gdelt_doc_api": 36,
+      "google_news_rss_search": 189
+    },
+    "top_sources": {
+      "FXStreet": 16,
+      "KITCO": 13,
+      "MSN": 10,
+      "FXEmpire": 7,
+      "MEXC": 6,
+      "Gold Price": 6,
+      "Yahoo Finance": 6,
+      "Dailyhunt": 5,
+      "The Economic Times": 5,
+      "Whalesbook": 5,
+      "Fortune": 5,
+      "Discovery Alert": 4,
+
+===== HISTORICAL MANIFEST HEAD =====
+{
+  "artifact_type": "historical_news_backfill_manifest",
+  "schema_version": "1.0.0",
+  "phase_key": "phase12_source_news_update",
+  "script_version": "source_news_update_v3_unified_historical_recent_safe_fallbacks",
+  "historical_start_date": "2006-01-02",
+  "historical_end_date": "2026-04-28",
+  "row_count": 7422,
+  "rows_with_loaded_public_source": 1285,
+  "source_policy": "Fixed daily index. 2017 onward uses sampled GDELT DOC API where available. Pre-2017 rows are retained with explicit coverage notes unless a future bulk historical GDELT/GKG loader is added.",
+  "google_news_rss_policy": "Google News RSS is a recent fallback only, not a 2006 historical archive.",
+  "cache_used": false,
+  "generated_at_utc": "2026-05-05T23:33:06.324675Z",
+  "outputs": {
+    "historical_index_parquet": "artifacts\\deep_ml\\news\\historical\\historical_news_daily_index.parquet",
+    "historical_index_csv": "artifacts\\deep_ml\\news\\historical\\historical_news_daily_index.csv"
+  }
+}
+
+===== COMBINED NEWS CONTEXT COLUMNS / HEAD =====
+shape (7429, 19)
+columns ['date', 'article_count', 'gold_news_count', 'gold_general_news_score', 'inflation_news_score', 'fed_policy_news_score', 'usd_news_score', 'geopolitical_risk_news_score', 'safe_haven_news_score', 'central_bank_gold_news_score', 'net_gold_news_sensitivity_score', 'top_headline_1', 'top_headline_1_source', 'top_headline_1_url', 'top_headline_2', 'top_headline_2_source', 'top_headline_2_url', 'source_type', 'source_coverage_note']
+         date  article_count  gold_news_count  gold_general_news_score  inflation_news_score  fed_policy_news_score  usd_news_score  geopolitical_risk_news_score  safe_haven_news_score  central_bank_gold_news_score  net_gold_news_sensitivity_score top_headline_1 top_headline_1_source top_headline_1_url top_headline_2 top_headline_2_source top_headline_2_url                              source_type                                                                                                                      source_coverage_note
+0  2006-01-02              0                0                      0.0                   0.0                    0.0             0.0                           0.0                    0.0                           0.0                              0.0            NaN                   NaN                NaN            NaN                   NaN                NaN  historical_fixed_row_pre_doc_api_window  Public DOC/RSS headline backfill was not available for this pre-2017 period in this script. Row retained for 2006-to-current continuity.
+1  2006-01-03              0                0                      0.0                   0.0                    0.0             0.0                           0.0                    0.0                           0.0                              0.0            NaN                   NaN                NaN            NaN                   NaN                NaN  historical_fixed_row_pre_doc_api_window  Public DOC/RSS headline backfill was not available for this pre-2017 period in this script. Row retained for 2006-to-current continuity.
+2  2006-01-04              0                0                      0.0                   0.0                    0.0             0.0                           0.0                    0.0                           0.0                              0.0            NaN                   NaN                NaN            NaN                   NaN                NaN  historical_fixed_row_pre_doc_api_window  Public DOC/RSS headline backfill was not available for this pre-2017 period in this script. Row retained for 2006-to-current continuity.
+3  2006-01-05              0                0                      0.0                   0.0                    0.0             0.0                           0.0                    0.0                           0.0                              0.0            NaN                   NaN                NaN            NaN                   NaN                NaN  historical_fixed_row_pre_doc_api_window  Public DOC/RSS headline backfill was not available for this pre-2017 period in this script. Row retained for 2006-to-current continuity.
+4  2006-01-06              0                0                      0.0                   0.0                    0.0             0.0                           0.0                    0.0                           0.0                              0.0            NaN                   NaN                NaN            NaN                   NaN                NaN  historical_fixed_row_pre_doc_api_window  Public DOC/RSS headline backfill was not available for this pre-2017 period in this script. Row retained for 2006-to-current continuity.
+
+===== RECENT NEWS COLUMNS / HEAD =====
+shape (225, 18)
+columns ['raw_source', 'query_key', 'source_query', 'source_item_id', 'published_at', 'date', 'source', 'title', 'summary', 'url', 'language', 'country', 'tone', 'image', 'pulled_at_utc', 'unified_news_item_id', 'phase_key', 'run_id']
+
+===== ALPHA ARTIFACT LIST =====
+
+Name                                   Length LastWriteTime      
+----                                   ------ -------------      
+best_params_by_horizon.json              2722 05-05-2026 06:18:03
+diagnostics_latest.json                  3342 05-05-2026 06:18:03
+evaluation_by_horizon.json              21796 05-05-2026 06:18:03
+evaluation_rollforward.csv            2438878 05-05-2026 06:18:03
+forecast_latest.json                     3111 05-05-2026 06:18:03
+interpretability_latest.json            82800 05-05-2026 06:18:03
+optuna_study_summary.json                4312 05-05-2026 06:18:03
+optuna_trials.csv                      144885 05-05-2026 06:18:03
+optuna_trials_partial_h1.csv            29208 05-05-2026 06:02:18
+optuna_trials_partial_h10.csv           29148 05-05-2026 06:14:36
+optuna_trials_partial_h20.csv           29402 05-05-2026 06:16:15
+optuna_trials_partial_h30.csv           29204 05-05-2026 06:17:41
+optuna_trials_partial_h5.csv            28951 05-05-2026 06:12:58
+phase6_alpha_structural_report.json     14001 05-05-2026 06:18:03
+progress_checkpoint.json                 1176 05-05-2026 06:18:03
+quality_review.json                      7483 05-05-2026 06:18:03
+rolling_origin_by_horizon.json           6037 05-05-2026 06:18:03
+rolling_origin_metrics.json              6037 05-05-2026 06:18:03
+rolling_origin_predictions.csv         491801 05-05-2026 06:18:03
+rolling_origin_vs_static_split.json      6608 05-05-2026 06:18:03
+run_summary.json                        44097 05-05-2026 06:18:03
+shap_global_importance.csv               2895 05-05-2026 06:18:03
+shap_latest_forecast_explanation.json   20212 05-05-2026 06:18:03
+shap_summary.json                       18930 05-05-2026 06:18:03
+timeline.json                           10438 05-05-2026 06:18:03
+uncertainty_latest.json                  2133 05-05-2026 06:18:03
+
+
+
+
+===== BETA ARTIFACT LIST =====
+
+Name                              Length LastWriteTime      
+----                              ------ -------------      
+attention_summary.json              3320 05-05-2026 06:33:29
+best_config.json                    1158 05-05-2026 06:33:29
+diagnostics_latest.json             2976 05-05-2026 06:33:29
+evaluation_by_horizon.json         14832 05-05-2026 06:33:29
+evaluation_rollforward.csv       2926855 05-05-2026 06:33:28
+feature_occlusion_importance.csv    7892 05-05-2026 06:33:29
+forecast_latest.json                2552 05-05-2026 06:33:29
+interpretability_latest.json        7837 05-05-2026 06:33:29
+latest_sequence_explanation.json    7880 05-05-2026 06:33:29
+mc_dropout_samples_preview.csv      2787 05-05-2026 06:33:29
+mc_dropout_summary.json            15477 05-05-2026 06:33:29
+optuna_study_summary.json           1231 05-05-2026 06:33:29
+optuna_trials.csv                  14008 05-05-2026 06:32:23
+optuna_trials_partial.csv          14008 05-05-2026 06:32:23
+phase7_beta_temporal_report.json   13418 05-05-2026 06:33:29
+progress_checkpoint.json             832 05-05-2026 06:33:27
+quality_review.json                 8953 05-05-2026 06:33:29
+rolling_origin_metrics.json         6638 05-05-2026 06:33:29
+rolling_origin_predictions.csv    463975 05-05-2026 06:33:28
+run_summary.json                   31347 05-05-2026 06:33:29
+sanity_checks.json                   556 05-05-2026 06:32:34
+sequence_dataset_manifest.json      2521 05-05-2026 06:20:21
+timeline.json                       5949 05-05-2026 06:33:29
+training_history.csv               12805 05-05-2026 06:33:28
+uncertainty_latest.json             3298 05-05-2026 06:33:29
+
+
+
+
+===== DELTA ARTIFACT LIST =====
+
+Name                                    Length LastWriteTime      
+----                                    ------ -------------      
+best_config.json                           296 05-05-2026 17:49:21
+calibrated_quantile_forecast_table.csv 1574022 05-05-2026 17:49:37
+dependency_precheck.json                   635 05-05-2026 17:21:05
+diagnostics_latest.json                   2757 05-05-2026 17:50:28
+evaluation_by_horizon.json                6122 05-05-2026 17:49:36
+evaluation_rollforward.csv             9467722 05-05-2026 17:49:37
+evaluation_rollforward_summary.json        875 05-05-2026 17:49:37
+forecast_latest.json                      9788 05-05-2026 17:50:28
+horizon_attention_summary.json            4168 05-05-2026 17:49:38
+interpretability_latest.json             22683 05-05-2026 17:50:28
+interval_calibration_summary.json         2967 05-05-2026 17:49:36
+latest_tft_explanation.json               8947 05-05-2026 17:50:28
+native_evaluation_rollforward.csv      9377611 05-05-2026 17:49:37
+native_quantile_forecast_table.csv     1558472 05-05-2026 17:49:37
+optuna_trials.csv                         9321 05-05-2026 17:49:21
+page_bundle.json                          3013 05-05-2026 17:50:28
+phase8_delta_tft_report.json             39544 05-05-2026 17:50:28
+pinball_loss_summary.json                 5611 05-05-2026 17:49:37
+progress_checkpoint.json                   596 05-05-2026 17:49:21
+quality_review.json                       1097 05-05-2026 17:50:28
+quantile_behavior_summary.json             487 05-05-2026 17:49:38
+quantile_coverage_summary.json           11583 05-05-2026 17:49:37
+quantile_forecast_table.csv            1574022 05-05-2026 17:49:37
+rolling_origin_metrics.json               1873 05-05-2026 17:49:37
+rolling_origin_predictions.csv         1637097 05-05-2026 17:49:37
+run_summary.json                          5872 05-05-2026 17:50:28
+sanity_checks.json                        1581 05-05-2026 17:21:05
+temporal_attention_summary.json           4388 05-05-2026 17:49:38
+tft_dataset_manifest.json                 2758 05-05-2026 17:49:21
+timeline.json                             4161 05-05-2026 17:50:28
+training_history.csv                      7442 05-05-2026 17:50:28
+uncertainty_latest.json                  14755 05-05-2026 17:49:37
+variable_selection_summary.json           3717 05-05-2026 17:49:38
+
+
+
+
+===== EPSILON ARTIFACT LIST =====
+
+Name                                  Length LastWriteTime      
+----                                  ------ -------------      
+component_diagnostics.json              2754 05-05-2026 17:53:54
+component_evaluation_by_horizon.json   69945 05-05-2026 17:53:53
+component_forecasts.csv              5976342 05-05-2026 17:53:54
+component_models.json                   3638 05-05-2026 17:53:53
+component_ranking.json                  3039 05-05-2026 17:53:53
+component_training_log.csv               516 05-05-2026 17:53:53
+component_weights.json                  4035 05-05-2026 17:53:53
+dependency_precheck.json                 380 05-05-2026 17:52:32
+diagnostics_latest.json                 1904 05-05-2026 17:53:54
+ensemble_forecast.json                  3312 05-05-2026 17:53:54
+ensemble_selection_details.json        90969 05-05-2026 17:53:53
+epsilon_dataset_manifest.json           1498 05-05-2026 17:52:33
+evaluation_by_horizon.json              6060 05-05-2026 17:53:53
+evaluation_rollforward.csv           9867790 05-05-2026 17:53:53
+evaluation_rollforward_summary.json     1240 05-05-2026 17:53:53
+expert_disagreement.json                2564 05-05-2026 17:53:54
+forecast_latest.json                    3312 05-05-2026 17:53:54
+interpretability_latest.json            8989 05-05-2026 17:53:54
+page_bundle.json                        2714 05-05-2026 17:53:54
+phase9_epsilon_expert_report.json     135280 05-05-2026 17:53:54
+progress_checkpoint.json                 515 05-05-2026 17:53:53
+quality_review.json                      868 05-05-2026 17:53:54
+residual_interval_calibration.json      1852 05-05-2026 17:53:53
+rolling_origin_metrics.json             1858 05-05-2026 17:53:54
+rolling_origin_predictions.csv       1631937 05-05-2026 17:53:54
+run_summary.json                        4249 05-05-2026 17:53:54
+sanity_checks.json                       999 05-05-2026 17:52:33
+timeline.json                           2210 05-05-2026 17:53:53
+uncertainty_latest.json                 5794 05-05-2026 17:53:53
+
+
+
+
+===== MODEL EVALUATION_ROLLFORWARD SCHEMAS =====
+
+--- alpha_structural ---
+exists True
+columns ['date', 'split', 'horizon', 'gold_price', 'actual_target', 'predicted_log_return', 'prediction', 'naive_prediction', 'error']
+         date  split  horizon  gold_price  actual_target  predicted_log_return  prediction  naive_prediction     error
+0  2006-01-02  train        1      568.25         564.25             -0.000766  567.814732            568.25  3.564732
+1  2006-01-03  train        1      564.25         564.25             -0.000766  563.817796            564.25 -0.432204
+2  2006-01-04  train        1      564.25         564.25             -0.000766  563.817796            564.25 -0.432204
+
+--- beta_temporal ---
+exists True
+columns ['date', 'horizon', 'raw_origin_gold_price', 'actual_target', 'predicted_log_return', 'prediction', 'naive_prediction', 'error', 'split']
+         date  horizon  raw_origin_gold_price  actual_target  predicted_log_return  prediction  naive_prediction      error  split
+0  2006-01-27        1                 648.75         648.75             -0.013269  640.198425            648.75  -8.551575  train
+1  2006-01-30        1                 648.75         648.75             -0.007499  643.903259            648.75  -4.846741  train
+2  2006-01-31        1                 648.75         648.75             -0.016145  638.359985            648.75 -10.390015  train
+
+--- delta_tft ---
+exists True
+columns ['date', 'split', 'horizon', 'gold_price', 'actual_target', 'prediction', 'naive_prediction', 'predicted_log_return', 'error', 'interval_type', 'origin_index', 'origin_date', 'horizon_trading_days', 'raw_gold_price_anchor', 'actual_gold_price', 'predicted_log_return_p10', 'predicted_log_return_p50', 'predicted_log_return_p90', 'forecast_price_p10', 'forecast_price_p50', 'forecast_price_p90', 'p10', 'p50', 'p90', 'interval_width_price']
+         date  split  horizon  gold_price  actual_target  prediction  naive_prediction  predicted_log_return      error interval_type  origin_index origin_date  horizon_trading_days  raw_gold_price_anchor  actual_gold_price  predicted_log_return_p10  predicted_log_return_p50  predicted_log_return_p90  forecast_price_p10  forecast_price_p50  forecast_price_p90         p10         p50         p90  interval_width_price
+0  2006-01-27  train        1      648.75     648.750000  645.141686            648.75             -0.005577  -3.608314    calibrated            19  2006-01-27                     1                 648.75         648.750000                 -0.100346                 -0.005577                  0.011148          586.809975          645.141686          656.022865  586.809975  645.141686  656.022865             69.212890
+1  2006-01-27  train        5      648.75     563.750000  623.763219            648.75             -0.039277  60.013219    calibrated            19  2006-01-27                     5                 648.75         563.750000                 -0.253445                 -0.039277                  0.060397          503.509423          623.763219          689.140135  503.509423  623.763219  689.140135            185.630712
+2  2006-01-27  train       10      648.75     600.599976  632.692436            648.75             -0.025063  32.092460    calibrated            19  2006-01-27                    10                 648.75         600.599976                 -0.191877                 -0.025063                  0.085088          535.483440          632.692436          706.367616  535.483440  632.692436  706.367616            170.884176
+
+--- epsilon_expert_ensemble ---
+exists True
+columns ['date', 'split', 'horizon', 'gold_price', 'actual_target', 'prediction', 'naive_prediction', 'predicted_log_return', 'error', 'selected_ensemble_strategy', 'origin_index', 'origin_date', 'horizon_trading_days', 'raw_gold_price_anchor', 'actual_gold_price', 'predicted_log_return_p10', 'predicted_log_return_p50', 'predicted_log_return_p90', 'forecast_price_p10', 'forecast_price_p50', 'forecast_price_p90', 'p10', 'p50', 'p90', 'interval_width_price']
+         date  split  horizon  gold_price  actual_target  prediction  naive_prediction  predicted_log_return  error                      selected_ensemble_strategy  origin_index origin_date  horizon_trading_days  raw_gold_price_anchor  actual_gold_price  predicted_log_return_p10  predicted_log_return_p50  predicted_log_return_p90  forecast_price_p10  forecast_price_p50  forecast_price_p90         p10     p50         p90  interval_width_price
+0  2006-01-02  train        1      568.25         564.25      568.25            568.25                   0.0    4.0  best_validation_component::rolling_mean_20_gap             0  2006-01-02                     1                 568.25             564.25                 -0.084758                       0.0                  0.085952          522.070963              568.25          619.252841  522.070963  568.25  619.252841             97.181878
+1  2006-01-02  train        5      568.25         621.05      568.25            568.25                   0.0  -52.8  best_validation_component::rolling_mean_20_gap             0  2006-01-02                     5                 568.25             621.05                 -0.311518                       0.0                  0.251628          416.149022              568.25          730.836017  416.149022  568.25  730.836017            314.686995
+2  2006-01-02  train       10      568.25         648.75      568.25            568.25                   0.0  -80.5  best_validation_component::rolling_mean_20_gap             0  2006-01-02                    10                 568.25             648.75                 -0.310620                       0.0                  0.246503          416.522870              568.25          727.100090  416.522870  568.25  727.100090            310.577220
+
+===== MODEL EVALUATION_BY_HORIZON HEADS =====
+
+----- alpha_structural evaluation_by_horizon.json -----
+
+{
+  "artifact_type": "deep_ml_alpha_evaluation_by_horizon",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:18:03Z",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "run_batch_id": "deepml_feature_refresh_20260505_093208",
+  "run_id": "deepml_run_20260505_100053_alpha_structural_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "model_key": "alpha_structural",
+  "model_version": "alpha_structural_v4_consistent_timed_xgboost_optuna_rolling_shap",
+  "metrics_by_horizon": {
+    "1": {
+      "train": {
+        "n": 3391,
+        "mae": 24.40343450553577,
+        "rmse": 50.53950068170354,
+        "mape": 2.147052368714861,
+        "smape": 2.1326475336464408,
+        "bias_mean_error": -0.37268784791099313,
+        "directional_accuracy": 78.24194952132288
+      },
+      "validation": {
+        "n": 1044,
+        "mae": 35.62340875110978,
+        "rmse": 58.253559131115836,
+        "mape": 2.0842119470371996,
+        "smape": 2.083602272970844,
+        "bias_mean_error": -2.6483440557259237,
+        "directional_accuracy": 61.1904761904762
+      },
+      "test": {
+        "n": 846,
+        "mae": 86.21955628802309,
+        "rmse": 161.54868101351548,
+        "mape": 2.9674286484387498,
+        "smape": 2.928846620734781,
+        "bias_mean_error": -15.262455850836794,
+        "directional_accuracy": 59.44170771756979
+      }
+    },
+    "5": {
+      "train": {
+        "n": 3391,
+        "mae": 49.895510959232396,
+        "rmse": 69.95542630457489,
+        "mape": 4.3346575243746255,
+        "smape": 4.319324818028171,
+        "bias_mean_error": -2.007605354328381,
+        "directional_accuracy": 86.51960784313727
+      },
+      "validation": {
+        "n": 1044,
+        "mae": 66.16475398392056,
+        "rmse": 89.34374785013622,
+        "mape": 3.888062974512648,
+        "smape": 3.9226316896438935,
+        "bias_mean_error": -10.432077030397926,
+        "directional_accuracy": 70.97701149425288
+      },
+      "test": {
+        "n": 842,
+        "mae": 189.63592683378985,
+        "rmse": 282.9992335694585,
+        "mape": 6.109775993158336,
+        "smape": 6.245598976037429,
+        "bias_mean_error": -90.45990000412895,
+        "directional_accuracy": 66.6267942583732
+      }
+    },
+    "10": {
+      "train": {
+        "n": 3391,
+        "mae": 55.53675931569434,
+        "rmse": 76.75020374752177,
+        "mape": 4.837292054775437,
+        "smape": 4.8127498767480885,
+        "bias_mean_error": -1.8801741428991854,
+        "directional_accuracy": 82.06521739130434
+      },
+      "validation": {
+        "n": 1044,
+        "mae": 67.44844510376568,
+        "rmse": 90.49327539749747,
+        "mape": 3.9828932602536335,
+        "smape": 3.9917347768982756,
+        "bias_mean_error": -5.4753674136439034,
+        "directional_accuracy": 72.38734419942475
+      },
+      "test": {
+        "n": 837,
+        "mae": 185.56080236916827,
+        "rmse": 281.6058602957589,
+        "mape": 6.094181825128777,
+        "smape": 6.137261054455398,
+        "bias_mean_error": -57.51852998103648,
+        "directional_accuracy": 72.28195937873357
+      }
+    },
+    "20": {
+      "train": {
+        "n": 3391,
+        "mae": 42.171410195449916,
+        "rmse": 64.36710572836861,
+        "mape": 3.6320551016929716,
+        "smape": 3.629053816318454,
+        "bias_mean_error": -1.3207800135556949,
+        "directional_accuracy": 67.66095688127585
+      },
+      "validation": {
+        "n": 1044,
+        "mae": 65.5819527789722,
+        "rmse": 86.93351595318363,
+        "mape": 3.8081661074769118,
+        "smape": 3.846332156053287,
+        "bias_mean_error": -12.819269893389782,
+        "directional_accuracy": 64.08045977011494
+      },
+      "test": {
+        "n": 827,
+        "mae": 173.28825912196444,
+
+----- beta_temporal evaluation_by_horizon.json -----
+
+{
+  "artifact_type": "deep_ml_beta_evaluation_by_horizon",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:33:29Z",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "run_batch_id": "deepml_feature_refresh_20260505_093208",
+  "run_id": "deepml_run_20260505_102020_beta_temporal_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "model_key": "beta_temporal",
+  "model_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+  "metrics_by_horizon": {
+    "1": {
+      "train": {
+        "n": 3372,
+        "mae": 25.92580858187602,
+        "rmse": 46.337828517552296,
+        "mape": 2.30106795018349,
+        "smape": 2.270170979975853,
+        "bias_mean_error": 5.096545598402283,
+        "directional_accuracy": 77.7972027972028
+      },
+      "validation": {
+        "n": 1044,
+        "mae": 39.18805036873653,
+        "rmse": 62.105032160252804,
+        "mape": 2.3208348903616964,
+        "smape": 2.307273274827768,
+        "bias_mean_error": 0.3817338614628233,
+        "directional_accuracy": 58.69047619047619
+      },
+      "test": {
+        "n": 817,
+        "mae": 96.38846090403152,
+        "rmse": 173.3714912427733,
+        "mape": 3.359087282217979,
+        "smape": 3.322358073418996,
+        "bias_mean_error": -27.242400861574357,
+        "directional_accuracy": 55.51724137931034
+      }
+    },
+    "5": {
+      "train": {
+        "n": 3372,
+        "mae": 26.72654615517613,
+        "rmse": 41.540367837756364,
+        "mape": 2.315368782360192,
+        "smape": 2.3258567883801815,
+        "bias_mean_error": -5.209822377558988,
+        "directional_accuracy": 90.94042343673068
+      },
+      "validation": {
+        "n": 1044,
+        "mae": 64.07678058960428,
+        "rmse": 86.8472300981133,
+        "mape": 3.7504249776195215,
+        "smape": 3.7724730880046367,
+        "bias_mean_error": -15.543227857100096,
+        "directional_accuracy": 67.33716475095785
+      },
+      "test": {
+        "n": 817,
+        "mae": 193.6420438245869,
+        "rmse": 295.74282841587365,
+        "mape": 6.375634561515832,
+        "smape": 6.542248078888065,
+        "bias_mean_error": -99.61645836520808,
+        "directional_accuracy": 63.13193588162762
+      }
+    },
+    "10": {
+      "train": {
+        "n": 3372,
+        "mae": 29.332792632803233,
+        "rmse": 43.615947130520176,
+        "mape": 2.5469282933065656,
+        "smape": 2.544449418564389,
+        "bias_mean_error": -2.0827778265286736,
+        "directional_accuracy": 86.19810633648945
+      },
+      "validation": {
+        "n": 1044,
+        "mae": 77.33022451583453,
+        "rmse": 102.26500791671322,
+        "mape": 4.4801443711195965,
+        "smape": 4.559774488661525,
+        "bias_mean_error": -35.72401235295438,
+        "directional_accuracy": 66.82646212847555
+      },
+      "test": {
+        "n": 817,
+        "mae": 241.5814368856143,
+        "rmse": 356.3029290801383,
+        "mape": 7.737106060586631,
+        "smape": 8.085025214725748,
+        "bias_mean_error": -163.2058123398294,
+        "directional_accuracy": 59.97552019583844
+      }
+    },
+    "20": {
+      "train": {
+        "n": 3372,
+        "mae": 30.250090358096084,
+        "rmse": 44.598885778025426,
+        "mape": 2.587015073228316,
+        "smape": 2.5687880966109184,
+        "bias_mean_error": 6.880760654435887,
+        "directional_accuracy": 67.35966735966737
+      },
+      "validation": {
+        "n": 1044,
+        "mae": 67.15801744716835,
+        "rmse": 87.3415187959922,
+        "mape": 3.9088813239503253,
+        "smape": 3.9467219720402182,
+        "bias_mean_error": -18.774408683923014,
+        "directional_accuracy": 60.82375478927203
+      },
+      "test": {
+        "n": 817,
+        "mae": 200.65326353561048,
+
+----- delta_tft evaluation_by_horizon.json -----
+
+{
+  "artifact_type": "delta_tft_evaluation_by_horizon",
+  "schema_version": "1.0.0",
+  "model_key": "delta_tft",
+  "delta_version": "v2_calibrated",
+  "point_forecast": "p50",
+  "metrics_note": "Point metrics use p50 forecast prices reconstructed from unscaled raw gold price anchors. Calibration preserves p50.",
+  "train": {
+    "1": {
+      "count": 3372,
+      "mae": 28.10635249397662,
+      "rmse": 56.02288839716651,
+      "mape_pct": 2.487713978545288,
+      "smape_pct": 2.4562742481198305,
+      "bias_mean_error": 0.1539548391864113,
+      "directional_accuracy_pct": 70.36713286713287
+    },
+    "5": {
+      "count": 3372,
+      "mae": 45.80369967174474,
+      "rmse": 70.62632145552281,
+      "mape_pct": 3.955906517153772,
+      "smape_pct": 3.9630015734981505,
+      "bias_mean_error": -9.012535667787594,
+      "directional_accuracy_pct": 85.27818808468734
+    },
+    "10": {
+      "count": 3372,
+      "mae": 54.772811889486604,
+      "rmse": 77.0237085437283,
+      "mape_pct": 4.718963838577593,
+      "smape_pct": 4.739418074200004,
+      "bias_mean_error": -11.143910634758836,
+      "directional_accuracy_pct": 81.39111434814275
+    },
+    "20": {
+      "count": 3372,
+      "mae": 52.71316966137295,
+      "rmse": 81.36910377251358,
+      "mape_pct": 4.437684555677329,
+      "smape_pct": 4.534758473466337,
+      "bias_mean_error": -22.23135128022582,
+      "directional_accuracy_pct": 63.112563112563116
+    },
+    "30": {
+      "count": 3372,
+      "mae": 58.78587934284178,
+      "rmse": 85.07675459902914,
+      "mape_pct": 4.993689027234166,
+      "smape_pct": 5.057381109958504,
+      "bias_mean_error": -14.271818647201384,
+      "directional_accuracy_pct": 75.97864768683274
+    }
+  },
+  "validation": {
+    "1": {
+      "count": 1044,
+      "mae": 38.1234750802174,
+      "rmse": 65.5656029461181,
+      "mape_pct": 2.252529226349471,
+      "smape_pct": 2.228145787562222,
+      "bias_mean_error": 10.820779906788934,
+      "directional_accuracy_pct": 53.80952380952381
+    },
+    "5": {
+      "count": 1044,
+      "mae": 76.42671766943427,
+      "rmse": 109.43624270367285,
+      "mape_pct": 4.5189730479924695,
+      "smape_pct": 4.49983209000515,
+      "bias_mean_error": 1.3751671535616228,
+      "directional_accuracy_pct": 59.674329501915715
+    },
+    "10": {
+      "count": 1044,
+      "mae": 81.56166818440352,
+      "rmse": 110.37696434159051,
+      "mape_pct": 4.787077093681114,
+      "smape_pct": 4.79335074965211,
+      "bias_mean_error": -5.826475598856799,
+      "directional_accuracy_pct": 66.0594439117929
+    },
+    "20": {
+      "count": 1044,
+      "mae": 73.1823528881687,
+      "rmse": 100.91448070257225,
+      "mape_pct": 4.239773621440839,
+      "smape_pct": 4.272412062285028,
+      "bias_mean_error": -10.27470107587381,
+      "directional_accuracy_pct": 61.49425287356321
+    },
+    "30": {
+      "count": 1044,
+      "mae": 88.61713667849502,
+      "rmse": 116.39119751108875,
+      "mape_pct": 5.146826397575999,
+      "smape_pct": 5.196403317235343,
+      "bias_mean_error": -15.845543389086728,
+      "directional_accuracy_pct": 69.92337164750958
+    }
+  },
+  "test": {
+    "1": {
+      "count": 841,
+      "mae": 164.72993449510386,
+      "rmse": 277.39602676926285,
+      "mape_pct": 5.04059231918179,
+      "smape_pct": 5.051889204476862,
+      "bias_mean_error": -27.159328752233186,
+      "directional_accuracy_pct": 54.13907284768212
+    },
+    "5": {
+      "count": 841,
+      "mae": 252.62237084034544,
+      "rmse": 400.9669203194671,
+      "mape_pct": 7.937488815780639,
+      "smape_pct": 8.050965665776294,
+      "bias_mean_error": -79.91080537282485,
+      "directional_accuracy_pct": 59.04191616766467
+    },
+
+----- epsilon_expert_ensemble evaluation_by_horizon.json -----
+
+{
+  "artifact_type": "epsilon_evaluation_by_horizon",
+  "schema_version": "1.0.0",
+  "model_key": "epsilon_expert_ensemble",
+  "point_forecast": "ensemble_p50",
+  "selected_ensemble_strategy": "best_validation_component::rolling_mean_20_gap",
+  "train": {
+    "1": {
+      "count": 3391,
+      "mae": 23.55633096969374,
+      "rmse": 59.082457250680854,
+      "mape_pct": 2.0908317541642276,
+      "smape_pct": 2.0667184267557444,
+      "bias_mean_error": -0.26768983820723935,
+      "directional_accuracy_pct": 70.67014795474326
+    },
+    "5": {
+      "count": 3391,
+      "mae": 69.14256600677444,
+      "rmse": 112.68698319199927,
+      "mape_pct": 6.076961500745253,
+      "smape_pct": 6.023836331326126,
+      "bias_mean_error": -1.361949129155802,
+      "directional_accuracy_pct": 84.26470588235294
+    },
+    "10": {
+      "count": 3391,
+      "mae": 82.91724396148862,
+      "rmse": 121.84685667102012,
+      "mape_pct": 7.328467132792765,
+      "smape_pct": 7.293494393625282,
+      "bias_mean_error": -2.821314008242785,
+      "directional_accuracy_pct": 79.20289855072464
+    },
+    "20": {
+      "count": 3391,
+      "mae": 54.85989757973573,
+      "rmse": 90.37822829678075,
+      "mape_pct": 4.696071694861655,
+      "smape_pct": 4.735971416417158,
+      "bias_mean_error": -5.1759118421581345,
+      "directional_accuracy_pct": 59.06674542232723
+    },
+    "30": {
+      "count": 3391,
+      "mae": 85.04824914978596,
+      "rmse": 122.36834364568276,
+      "mape_pct": 7.378745937450469,
+      "smape_pct": 7.396621962071247,
+      "bias_mean_error": -7.696653326152035,
+      "directional_accuracy_pct": 74.43232084930699
+    }
+  },
+  "validation": {
+    "1": {
+      "count": 1044,
+      "mae": 33.48925680073467,
+      "rmse": 67.02756247650179,
+      "mape_pct": 1.9623782354787942,
+      "smape_pct": 1.9554137458453698,
+      "bias_mean_error": -0.7329546455820379,
+      "directional_accuracy_pct": 57.85714285714286
+    },
+    "5": {
+      "count": 1044,
+      "mae": 84.51793482029323,
+      "rmse": 124.85980994566063,
+      "mape_pct": 5.0138678867192175,
+      "smape_pct": 5.016344696715523,
+      "bias_mean_error": -3.383923793868974,
+      "directional_accuracy_pct": 68.19923371647509
+    },
+    "10": {
+      "count": 1044,
+      "mae": 87.67192670605817,
+      "rmse": 120.7533938438067,
+      "mape_pct": 5.169695853483079,
+      "smape_pct": 5.177651512037836,
+      "bias_mean_error": -6.394810448531383,
+      "directional_accuracy_pct": 71.0450623202301
+    },
+    "20": {
+      "count": 1044,
+      "mae": 71.91048030061174,
+      "rmse": 98.44327994337554,
+      "mape_pct": 4.173672052738827,
+      "smape_pct": 4.215436185521511,
+      "bias_mean_error": -13.391251176384808,
+      "directional_accuracy_pct": 64.36781609195403
+    },
+    "30": {
+      "count": 1044,
+      "mae": 88.16934616734503,
+      "rmse": 116.7719642082381,
+      "mape_pct": 5.136382883731691,
+      "smape_pct": 5.201442018653529,
+      "bias_mean_error": -19.7424847814979,
+      "directional_accuracy_pct": 70.88122605363985
+    }
+  },
+  "test": {
+    "1": {
+      "count": 841,
+      "mae": 76.83296647652638,
+      "rmse": 180.39901246611296,
+      "mape_pct": 2.6968669409615678,
+      "smape_pct": 2.631288506983979,
+      "bias_mean_error": -3.508720261585214,
+      "directional_accuracy_pct": 54.80132450331126
+    },
+    "5": {
+      "count": 841,
+      "mae": 207.7053694798343,
+      "rmse": 340.6795073508072,
+      "mape_pct": 7.000097868151533,
+      "smape_pct": 6.986191968127821,
+      "bias_mean_error": -17.68844674183934,
+      "directional_accuracy_pct": 65.38922155688623
+    },
+    "10": {
+
+===== MODEL FORECAST_LATEST HEADS =====
+
+----- alpha_structural forecast_latest.json -----
+
+{
+  "artifact_type": "deep_ml_alpha_forecast_latest",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:18:03Z",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "run_batch_id": "deepml_feature_refresh_20260505_093208",
+  "run_id": "deepml_run_20260505_100053_alpha_structural_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "model_key": "alpha_structural",
+  "model_name": "Alpha Structural Expert",
+  "model_version": "alpha_structural_v4_consistent_timed_xgboost_optuna_rolling_shap",
+  "effective_data_through_date": "2026-05-05",
+  "forecast_start_date": "2026-05-06",
+  "forecast_points": [
+    {
+      "horizon": 1,
+      "forecast_date": "2026-05-06",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "predicted_log_return": 0.0011006837012246251,
+      "predicted_return_pct": 0.1101289675838002,
+      "p10": 4517.170568265169,
+      "p50": 4566.723948641866,
+      "p90": 4621.56890612468,
+      "expected_change": 5.023753329365718,
+      "expected_change_pct": 0.1101289675838002
+    },
+    {
+      "horizon": 5,
+      "forecast_date": "2026-05-12",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "predicted_log_return": 0.0497724749147892,
+      "predicted_return_pct": 5.103193303910247,
+      "p10": 4708.279654097234,
+      "p50": 4794.4925742241485,
+      "p90": 4922.2605930039035,
+      "expected_change": 232.79237891164848,
+      "expected_change_pct": 5.103193303910247
+    },
+    {
+      "horizon": 10,
+      "forecast_date": "2026-05-19",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "predicted_log_return": 0.06274283677339554,
+      "predicted_return_pct": 6.475298870655988,
+      "p10": 4758.5563525555035,
+      "p50": 4857.083916542282,
+      "p90": 4967.455498754731,
+      "expected_change": 295.38372122978217,
+      "expected_change_pct": 6.475298870655988
+    },
+    {
+      "horizon": 20,
+      "forecast_date": "2026-06-02",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "predicted_log_return": -0.01167683582752943,
+      "predicted_return_pct": -1.1608926160407207,
+      "p10": 4418.838932927624,
+      "p50": 4508.743754579202,
+      "p90": 4625.3159713939585,
+      "expected_change": -52.95644073329822,
+      "expected_change_pct": -1.1608926160407318
+    },
+    {
+      "horizon": 30,
+      "forecast_date": "2026-06-16",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "predicted_log_return": 0.049708880484104156,
+      "predicted_return_pct": 5.09650953869627,
+      "p10": 4688.450257546093,
+      "p50": 4794.1876808933275,
+      "p90": 4929.557261543657,
+      "expected_change": 232.48748558082752,
+      "expected_change_pct": 5.09650953869627
+    }
+  ],
+  "professor_safe_summary": "Alpha V4 is an anchored-return XGBoost + Optuna structural expert with rolling-origin validation and SHAP."
+}
+
+----- beta_temporal forecast_latest.json -----
+
+{
+  "artifact_type": "deep_ml_beta_forecast_latest",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-05-05T10:33:29Z",
+  "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+  "study_id": "deepml_feature_refresh_20260505_093208",
+  "run_batch_id": "deepml_feature_refresh_20260505_093208",
+  "run_id": "deepml_run_20260505_102020_beta_temporal_refreshed_yahoo_gold_plus_fred_registry_mode_20260505",
+  "model_key": "beta_temporal",
+  "model_name": "Beta Temporal Expert",
+  "model_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+  "effective_data_through_date": "2026-05-05",
+  "forecast_start_date": "2026-05-06",
+  "forecast_points": [
+    {
+      "horizon": 1,
+      "forecast_date": "2026-05-06",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "p10": 4492.65673828125,
+      "p50": 4567.82958984375,
+      "p90": 4663.865234375,
+      "expected_change": 6.12939453125,
+      "expected_change_pct": 0.13436644822797383
+    },
+    {
+      "horizon": 5,
+      "forecast_date": "2026-05-12",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "p10": 4401.8232421875,
+      "p50": 4533.7998046875,
+      "p90": 4731.34130859375,
+      "expected_change": -27.900390625,
+      "expected_change_pct": -0.6116226281961623
+    },
+    {
+      "horizon": 10,
+      "forecast_date": "2026-05-19",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "p10": 4361.4140625,
+      "p50": 4536.447265625,
+      "p90": 4776.4853515625,
+      "expected_change": -25.2529296875,
+      "expected_change_pct": -0.5535859132840271
+    },
+    {
+      "horizon": 20,
+      "forecast_date": "2026-06-02",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "p10": 4380.2744140625,
+      "p50": 4508.126953125,
+      "p90": 4661.69677734375,
+      "expected_change": -53.5732421875,
+      "expected_change_pct": -1.1744139223035854
+    },
+    {
+      "horizon": 30,
+      "forecast_date": "2026-06-16",
+      "origin_date": "2026-05-05",
+      "origin_gold_price": 4561.7001953125,
+      "p10": 4187.46240234375,
+      "p50": 4353.2333984375,
+      "p90": 4625.63623046875,
+      "expected_change": -208.466796875,
+      "expected_change_pct": -4.569936382255369
+    }
+  ],
+  "professor_safe_summary": "Beta V2 forecast uses PyTorch sequence modeling with raw-price anchoring and calibrated MC-dropout uncertainty."
+}
+
+----- delta_tft forecast_latest.json -----
+
+{
+  "artifact_type": "delta_tft_forecast_latest",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "phase_2_deep_ml",
+  "model_key": "delta_tft",
+  "model_name": "Delta TFT Multi-Horizon Expert",
+  "delta_version": "v2_calibrated",
+  "frequency": "trading_day",
+  "target": "anchored_future_log_return_quantiles",
+  "forecast_reconstruction": "raw_gold_price_anchor * exp(predicted_log_return_quantile)",
+  "raw_price_anchor_scaled": false,
+  "interval_display_policy": "use calibrated p10/p90 and native p50; native interval values are retained for audit",
+  "horizons": [
+    1,
+    5,
+    10,
+    20,
+    30
+  ],
+  "quantiles": [
+    "p10",
+    "p50",
+    "p90"
+  ],
+  "latest_origin": {
+    "origin_index": 5305,
+    "origin_date": "2026-05-05",
+    "raw_gold_price_anchor": 4561.7001953125
+  },
+  "path": [
+    {
+      "horizon_trading_days": 1,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-05-06",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "native_predicted_log_return_p10": -0.09314960241317749,
+      "native_predicted_log_return_p50": -0.010285073891282082,
+      "native_predicted_log_return_p90": 0.04013000801205635,
+      "native_forecast_price_p10": 4155.9697265625,
+      "native_forecast_price_p50": 4515.0234375,
+      "native_forecast_price_p90": 4748.484375,
+      "interval_calibration_applied": true,
+      "interval_calibration_factor": 1.1445483381529356,
+      "predicted_log_return_p10": -0.10571645665009476,
+      "predicted_log_return_p50": -0.01028502599891904,
+      "predicted_log_return_p90": 0.04721172110570487,
+      "forecast_price_p10": 4104.06910933884,
+      "forecast_price_p50": 4515.0234375,
+      "forecast_price_p90": 4782.2307655392515,
+      "calibrated_forecast_price_p10": 4104.06910933884,
+      "calibrated_forecast_price_p50": 4515.0234375,
+      "calibrated_forecast_price_p90": 4782.2307655392515
+    },
+    {
+      "horizon_trading_days": 5,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-05-12",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "native_predicted_log_return_p10": -0.2028820514678955,
+      "native_predicted_log_return_p50": -0.11520328372716904,
+      "native_predicted_log_return_p90": -0.032351840287446976,
+      "native_forecast_price_p10": 3724.055908203125,
+      "native_forecast_price_p50": 4065.318603515625,
+      "native_forecast_price_p90": 4416.482421875,
+      "interval_calibration_applied": true,
+      "interval_calibration_factor": 2.133471610893969,
+      "predicted_log_return_p10": -0.31254998797335476,
+      "predicted_log_return_p50": -0.11520328670724073,
+      "predicted_log_return_p90": 0.05394025019145776,
+      "forecast_price_p10": 3337.2443312092482,
+      "forecast_price_p50": 4065.318603515625,
+      "forecast_price_p90": 4814.5166407584775,
+      "calibrated_forecast_price_p10": 3337.2443312092482,
+      "calibrated_forecast_price_p50": 4065.318603515625,
+      "calibrated_forecast_price_p90": 4814.5166407584775
+    },
+    {
+      "horizon_trading_days": 10,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-05-19",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "native_predicted_log_return_p10": -0.15367759764194489,
+      "native_predicted_log_return_p50": -0.08215634524822235,
+      "native_predicted_log_return_p90": -0.0027106255292892456,
+      "native_forecast_price_p10": 3911.878662109375,
+      "native_forecast_price_p50": 4201.90966796875,
+      "native_forecast_price_p90": 4549.35205078125,
+      "interval_calibration_applied": true,
+      "interval_calibration_factor": 2.129252062588804,
+      "predicted_log_return_p10": -0.2411153137957491,
+      "predicted_log_return_p50": -0.08215629908219417,
+      "predicted_log_return_p90": 0.08001441821526128,
+      "forecast_price_p10": 3584.36055052797,
+      "forecast_price_p50": 4201.90966796875,
+      "forecast_price_p90": 4941.702078203034,
+      "calibrated_forecast_price_p10": 3584.36055052797,
+      "calibrated_forecast_price_p50": 4201.90966796875,
+      "calibrated_forecast_price_p90": 4941.702078203034
+    },
+    {
+      "horizon_trading_days": 20,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-06-02",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "native_predicted_log_return_p10": -0.13985270261764526,
+      "native_predicted_log_return_p50": -0.07046159356832504,
+      "native_predicted_log_return_p90": 0.006122369319200516,
+      "native_forecast_price_p10": 3966.33544921875,
+      "native_forecast_price_p50": 4251.337890625,
+      "native_forecast_price_p90": 4589.71435546875,
+      "interval_calibration_applied": true,
+      "interval_calibration_factor": 1.827893221226514,
+      "predicted_log_return_p10": -0.20118426401005587,
+      "predicted_log_return_p50": -0.07046167269228112,
+      "predicted_log_return_p90": 0.06536854034471008,
+      "forecast_price_p10": 3730.383859945509,
+      "forecast_price_p50": 4251.337890625,
+      "forecast_price_p90": 4869.853936935482,
+      "calibrated_forecast_price_p10": 3730.383859945509,
+      "calibrated_forecast_price_p50": 4251.337890625,
+      "calibrated_forecast_price_p90": 4869.853936935482
+    },
+    {
+      "horizon_trading_days": 30,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-06-16",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "native_predicted_log_return_p10": -0.1646018773317337,
+      "native_predicted_log_return_p50": -0.09264124184846878,
+      "native_predicted_log_return_p90": -0.01593669131398201,
+      "native_forecast_price_p10": 3869.377197265625,
+      "native_forecast_price_p50": 4158.0830078125,
+      "native_forecast_price_p90": 4489.578125,
+      "interval_calibration_applied": true,
+      "interval_calibration_factor": 2.307482730236047,
+      "predicted_log_return_p10": -0.267249593396678,
+      "predicted_log_return_p50": -0.09264125124886992,
+      "predicted_log_return_p90": 0.0762231571557763,
+      "forecast_price_p10": 3491.899335856786,
+      "forecast_price_p50": 4158.0830078125,
+      "forecast_price_p90": 4923.002265880231,
+      "calibrated_forecast_price_p10": 3491.899335856786,
+      "calibrated_forecast_price_p50": 4158.0830078125,
+      "calibrated_forecast_price_p90": 4923.002265880231
+    }
+  ],
+  "interval_calibration_summary": {
+    "artifact_type": "delta_tft_interval_calibration_summary",
+    "schema_version": "1.0.0",
+    "model_key": "delta_tft",
+    "calibration_version": "v2_validation_residual_interval_calibration",
+    "target_coverage_pct": 80.0,
+    "p50_preserved": true,
+    "professor_safe_note": "Calibration uses validation residual behavior to widen intervals. It improves empirical interval behavior but does not guarantee future coverage.",
+    "by_horizon": {
+      "1": {
+        "horizon_trading_days": 1,
+        "status": "ready",
+        "method": "validation_residual_symmetric_interval_widening",
+
+----- epsilon_expert_ensemble forecast_latest.json -----
+
+{
+  "artifact_type": "epsilon_forecast_latest",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "phase_2_deep_ml",
+  "model_key": "epsilon_expert_ensemble",
+  "model_name": "Epsilon Expert Ensemble",
+  "frequency": "trading_day",
+  "target": "anchored_future_log_return",
+  "forecast_reconstruction": "raw_gold_price_anchor * exp(predicted_log_return)",
+  "raw_price_anchor_scaled": false,
+  "selected_ensemble_strategy": "best_validation_component::rolling_mean_20_gap",
+  "latest_origin": {
+    "origin_index": 5305,
+    "origin_date": "2026-05-05",
+    "raw_gold_price_anchor": 4561.7001953125
+  },
+  "path": [
+    {
+      "horizon_trading_days": 1,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-05-06",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "predicted_log_return_p10": -0.009808147385671488,
+      "predicted_log_return_p50": 0.00036293704773311957,
+      "predicted_log_return_p90": 0.011477547949632917,
+      "forecast_price_p10": 4517.177069085264,
+      "forecast_price_p50": 4563.356105791484,
+      "forecast_price_p90": 4614.358946629458
+    },
+    {
+      "horizon_trading_days": 5,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-05-12",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "predicted_log_return_p10": -0.032034378178009554,
+      "predicted_log_return_p50": 0.0018146852386654074,
+      "predicted_log_return_p90": 0.036773367094459206,
+      "forecast_price_p10": 4417.8847831919265,
+      "forecast_price_p50": 4569.985760893173,
+      "forecast_price_p90": 4732.571777791679
+    },
+    {
+      "horizon_trading_days": 10,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-05-19",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "predicted_log_return_p10": -0.030072815661485584,
+      "predicted_log_return_p50": 0.0036293704773306063,
+      "predicted_log_return_p90": 0.03773742813446531,
+      "forecast_price_p10": 4426.559245353457,
+      "forecast_price_p50": 4578.28637581818,
+      "forecast_price_p90": 4737.136465827087
+    },
+    {
+      "horizon_trading_days": 20,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-06-02",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "predicted_log_return_p10": -0.014634359123884859,
+      "predicted_log_return_p50": 0.007258740954661231,
+      "predicted_log_return_p90": 0.03438221820985889,
+      "forecast_price_p10": 4495.42873932711,
+      "forecast_price_p50": 4594.932863089319,
+      "forecast_price_p90": 4721.26901274632
+    },
+    {
+      "horizon_trading_days": 30,
+      "origin_date": "2026-05-05",
+      "forecast_date_business_day_approx": "2026-06-16",
+      "raw_gold_price_anchor": 4561.7001953125,
+      "predicted_log_return_p10": -0.014711700178493353,
+      "predicted_log_return_p50": 0.01088811143199194,
+      "predicted_log_return_p90": 0.04657317181166813,
+      "forecast_price_p10": 4495.081071572162,
+      "forecast_price_p50": 4611.63987639918,
+      "forecast_price_p90": 4779.178050218329
+    }
+  ],
+  "generated_at_utc": "2026-05-05T21:53:54.574606Z",
+  "generated_at_local": "2026-05-05T17:53:54.574606-04:00"
+}
+
+===== DEEP ML PAGE ROUTES =====
+
+
+FullName      : D:\nyit-gold-intelligence-2026\src\app\deep-ml\page.tsx
+Name          : page.tsx
+Length        : 49923
+LastWriteTime : 05-05-2026 16:00:32
+
+FullName      : D:\nyit-gold-intelligence-2026\src\app\deep-ml\models\alpha-structural\page.tsx
+Name          : page.tsx
+Length        : 53218
+LastWriteTime : 05-05-2026 17:06:34
+
+FullName      : D:\nyit-gold-intelligence-2026\src\app\deep-ml\models\beta-temporal\page.tsx
+Name          : page.tsx
+Length        : 60538
+LastWriteTime : 05-05-2026 17:12:02
+
+FullName      : D:\nyit-gold-intelligence-2026\src\app\deep-ml\models\delta-tft\page.tsx
+Name          : page.tsx
+Length        : 60599
+LastWriteTime : 05-05-2026 17:55:05
+
+FullName      : D:\nyit-gold-intelligence-2026\src\app\deep-ml\models\epsilon-ensemble\page.tsx
+Name          : page.tsx
+Length        : 62795
+LastWriteTime : 05-05-2026 18:00:35
+
+FullName      : D:\nyit-gold-intelligence-2026\src\app\deep-ml\models\news-source\page.tsx
+Name          : page.tsx
+Length        : 24047
+LastWriteTime : 05-05-2026 19:46:46
+
+
+
+
+
+===== NAVBAR ROUTES CHECK =====
+
+  src\components\Navbar.tsx:7: * - Main row emphasizes Deep ML Phase 2 pages directly, not hidden in a Deep ML dropdown.
+> src\components\Navbar.tsx:8: * - Academic Model is a separate dropdown/second-layer menu for the original baseline pages.
+> src\components\Navbar.tsx:9: * - DOCS removed.
+> src\components\Navbar.tsx:10: * - JSON-FIRST artifact indicator kept.
+  src\components\Navbar.tsx:11: * - No Deep ML pages marked "Coming Soon" in the navbar.
+  src\components\Navbar.tsx:12: * ============================================================================================================================================================
+  src\components\Navbar.tsx:30:  { name: "HISTORY", href: "/history" },
+> src\components\Navbar.tsx:31:  { name: "DATA MATRIX", href: "/data-matrix" },
+  src\components\Navbar.tsx:32:  { name: "DEEP ML OVERVIEW", href: "/deep-ml" },
+  src\components\Navbar.tsx:33:  { name: "ALPHA STRUCTURAL", href: "/deep-ml/models/alpha-structural" },
+  src\components\Navbar.tsx:36:  { name: "EPSILON ENSEMBLE", href: "/deep-ml/models/epsilon-ensemble" },
+> src\components\Navbar.tsx:37:  { name: "NEWS SOURCE", href: "/deep-ml/models/news-source" },
+> src\components\Navbar.tsx:38:  { name: "GAMMA", href: "/deep-ml/models/gamma-news-sensitivity" },
+> src\components\Navbar.tsx:39:  { name: "OMEGA", href: "/deep-ml/models/omega-fusion" },
+> src\components\Navbar.tsx:40:  { name: "FINAL DEEP ML EVAL", href: "/deep-ml/models/final-deep-ml-evaluation" },
+  src\components\Navbar.tsx:41:];
+  src\components\Navbar.tsx:42:
+> src\components\Navbar.tsx:43:const academicLinks: NavItem[] = [
+  src\components\Navbar.tsx:44:  { name: "INTELLIGENCE", href: "/model3", subtitle: "Research matrix" },
+  src\components\Navbar.tsx:45:  { name: "DATA PIPELINE", href: "/data-pipeline", subtitle: "Source + cleaning" },
+  src\components\Navbar.tsx:93:
+> src\components\Navbar.tsx:94:function AcademicButton({
+  src\components\Navbar.tsx:95:  active,
+  src\components\Navbar.tsx:96:}: {
+  src\components\Navbar.tsx:107:      <span className="text-[8px] font-black uppercase tracking-[0.24em]">
+> src\components\Navbar.tsx:108:        Academic
+  src\components\Navbar.tsx:109:      </span>
+  src\components\Navbar.tsx:110:      <span className="mt-1 text-[10px] font-black uppercase tracking-[0.18em]">
+  src\components\Navbar.tsx:116:
+> src\components\Navbar.tsx:117:function AcademicPanel({
+  src\components\Navbar.tsx:118:  pathname,
+  src\components\Navbar.tsx:119:}: {
+  src\components\Navbar.tsx:133:            <div className="text-[10px] font-black uppercase tracking-[0.26em] text-blue-600">
+> src\components\Navbar.tsx:134:              Academic Model
+  src\components\Navbar.tsx:135:            </div>
+  src\components\Navbar.tsx:136:            <div className="mt-1 text-xs font-semibold text-slate-500">
+  src\components\Navbar.tsx:140:          <div className="rounded-full border border-emerald-100 bg-emerald-50 px-3 py-1 text-[9px] font-black uppercase tracking-widest text-emerald-600">
+> src\components\Navbar.tsx:141:            JSON-FIRST
+  src\components\Navbar.tsx:142:          </div>
+  src\components\Navbar.tsx:143:        </div>
+  src\components\Navbar.tsx:145:        <div className="grid gap-3 md:grid-cols-4">
+> src\components\Navbar.tsx:146:          {academicLinks.map((item) => {
+  src\components\Navbar.tsx:147:            const active = isRouteActive(pathname, item.href);
+  src\components\Navbar.tsx:148:
+  src\components\Navbar.tsx:207:        <span className="text-[10px] font-black uppercase tracking-tighter text-emerald-500">
+> src\components\Navbar.tsx:208:          JSON-FIRST
+  src\components\Navbar.tsx:209:        </span>
+  src\components\Navbar.tsx:210:      </div>
+  src\components\Navbar.tsx:217:  const pathname = usePathname();
+> src\components\Navbar.tsx:218:  const [academicOpen, setAcademicOpen] = useState(false);
+  src\components\Navbar.tsx:219:
+> src\components\Navbar.tsx:220:  const academicActive =
+  src\components\Navbar.tsx:221:    pathname.startsWith("/model3") ||
+  src\components\Navbar.tsx:222:    pathname.startsWith("/data-pipeline") ||
+  src\components\Navbar.tsx:250:
+> src\components\Navbar.tsx:251:        {/* ACADEMIC MODEL DROPDOWN */}
+  src\components\Navbar.tsx:252:        <div
+  src\components\Navbar.tsx:253:          className="relative shrink-0"
+> src\components\Navbar.tsx:254:          onMouseEnter={() => setAcademicOpen(true)}
+> src\components\Navbar.tsx:255:          onMouseLeave={() => setAcademicOpen(false)}
+  src\components\Navbar.tsx:256:        >
+> src\components\Navbar.tsx:257:          <button type="button" aria-label="Academic Model navigation">
+> src\components\Navbar.tsx:258:            <AcademicButton active={academicActive || academicOpen} />
+  src\components\Navbar.tsx:259:          </button>
+  src\components\Navbar.tsx:260:
+  src\components\Navbar.tsx:261:          <AnimatePresence>
+> src\components\Navbar.tsx:262:            {academicOpen ? <AcademicPanel pathname={pathname} /> : null}
+  src\components\Navbar.tsx:263:          </AnimatePresence>
+  src\components\Navbar.tsx:264:        </div>
+  src\components\Navbar.tsx:265:
+> src\components\Navbar.tsx:266:        {/* JSON-FIRST UTILITY */}
+  src\components\Navbar.tsx:267:        <ArtifactModePill />
+  src\components\Navbar.tsx:268:      </div>
+
+
+
+
+===== UNIVERSAL CHART TOOLTIP PATCH CHECK =====
+
+  src\components\models\UniversalModelCharts.tsx:128:}
+  src\components\models\UniversalModelCharts.tsx:129:
+> src\components\models\UniversalModelCharts.tsx:130:function getNewsContext(row: any) {
+  src\components\models\UniversalModelCharts.tsx:131:  const headline = firstText(
+  src\components\models\UniversalModelCharts.tsx:132:    row?.gamma_tooltip_primary_headline,
+  src\components\models\UniversalModelCharts.tsx:133:    row?.top_headline_1,
+  src\components\models\UniversalModelCharts.tsx:142:
+  src\components\models\UniversalModelCharts.tsx:143:  const note = firstText(
+> src\components\models\UniversalModelCharts.tsx:144:    row?.gamma_tooltip_note,
+  src\components\models\UniversalModelCharts.tsx:145:    row?.newsTooltipNote,
+  src\components\models\UniversalModelCharts.tsx:146:    row?.source_coverage_note
+  src\components\models\UniversalModelCharts.tsx:147:  );
+  src\components\models\UniversalModelCharts.tsx:162:
+  src\components\models\UniversalModelCharts.tsx:163:  const row = payload?.[0]?.payload;
+> src\components\models\UniversalModelCharts.tsx:164:  const news = getNewsContext(row);
+  src\components\models\UniversalModelCharts.tsx:165:
+  src\components\models\UniversalModelCharts.tsx:166:  return (
+  src\components\models\UniversalModelCharts.tsx:167:    <div className="max-w-[430px] rounded-2xl border border-slate-200 bg-white p-4 shadow-xl">
+  src\components\models\UniversalModelCharts.tsx:198:        <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 p-3">
+  src\components\models\UniversalModelCharts.tsx:199:          <div className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-700">
+> src\components\models\UniversalModelCharts.tsx:200:            News context
+  src\components\models\UniversalModelCharts.tsx:201:          </div>
+  src\components\models\UniversalModelCharts.tsx:202:
+  src\components\models\UniversalModelCharts.tsx:203:          {news.headline ? (
+  src\components\models\UniversalModelCharts.tsx:239:
+  src\components\models\UniversalModelCharts.tsx:240:          <div className="mt-2 text-[10px] font-black uppercase tracking-widest text-amber-700">
+> src\components\models\UniversalModelCharts.tsx:241:            Context only � not causality
+  src\components\models\UniversalModelCharts.tsx:242:          </div>
+  src\components\models\UniversalModelCharts.tsx:243:        </div>
+  src\components\models\UniversalModelCharts.tsx:244:      ) : null}
+
+
+

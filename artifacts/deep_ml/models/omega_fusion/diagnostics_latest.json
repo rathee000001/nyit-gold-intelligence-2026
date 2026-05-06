@@ -1,0 +1,125 @@
+{
+  "artifact_type": "omega_fusion_diagnostics_latest",
+  "schema_version": "1.0.0",
+  "phase_key": "phase14_omega_fusion",
+  "model_key": "omega_fusion",
+  "status": "ready",
+  "smoke": false,
+  "omega_rollforward_rows": 26386,
+  "omega_forecast_points": 5,
+  "rollforward_meta": {
+    "alpha_structural": {
+      "model_key": "alpha_structural",
+      "input_rows": 26344,
+      "output_rows": 26344,
+      "status": "ready",
+      "gold_price_source_column": "gold_price",
+      "missing_required_columns": [],
+      "p10_source_column": null,
+      "p50_source_column": "prediction",
+      "p90_source_column": null,
+      "split_counts": {
+        "test": 4169,
+        "train": 16955,
+        "validation": 5220
+      },
+      "horizon_counts": {
+        "1": 5281,
+        "5": 5277,
+        "10": 5272,
+        "20": 5262,
+        "30": 5252
+      },
+      "path": "artifacts/deep_ml/models/alpha_structural/evaluation_rollforward.csv",
+      "exists": true,
+      "file_hash": "sha256:4d505ec86e931d28d26f20f016018b080033fc8a522c1863795b522fc070dcbd"
+    },
+    "beta_temporal": {
+      "model_key": "beta_temporal",
+      "input_rows": 26165,
+      "output_rows": 26165,
+      "status": "ready",
+      "gold_price_source_column": "raw_origin_gold_price",
+      "missing_required_columns": [],
+      "p10_source_column": null,
+      "p50_source_column": "prediction",
+      "p90_source_column": null,
+      "split_counts": {
+        "test": 4085,
+        "train": 16860,
+        "validation": 5220
+      },
+      "horizon_counts": {
+        "1": 5233,
+        "5": 5233,
+        "10": 5233,
+        "20": 5233,
+        "30": 5233
+      },
+      "path": "artifacts/deep_ml/models/beta_temporal/evaluation_rollforward.csv",
+      "exists": true,
+      "file_hash": "sha256:05b1e61c74a7927c6e4fc71e7e32d49c756164b7bf93f9fdee142404d00b327e"
+    },
+    "delta_tft": {
+      "model_key": "delta_tft",
+      "input_rows": 26285,
+      "output_rows": 26285,
+      "status": "ready",
+      "gold_price_source_column": "gold_price",
+      "missing_required_columns": [],
+      "p10_source_column": "p10",
+      "p50_source_column": "p50",
+      "p90_source_column": "p90",
+      "split_counts": {
+        "test": 4205,
+        "train": 16860,
+        "validation": 5220
+      },
+      "horizon_counts": {
+        "1": 5257,
+        "5": 5257,
+        "10": 5257,
+        "20": 5257,
+        "30": 5257
+      },
+      "path": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv",
+      "exists": true,
+      "file_hash": "sha256:03caad7f11f330ff4563e5f80c015c015a2fd8d83e85b0e826b024459117ffe4"
+    },
+    "epsilon_expert_ensemble": {
+      "model_key": "epsilon_expert_ensemble",
+      "input_rows": 26380,
+      "output_rows": 26380,
+      "status": "ready",
+      "gold_price_source_column": "gold_price",
+      "missing_required_columns": [],
+      "p10_source_column": "p10",
+      "p50_source_column": "p50",
+      "p90_source_column": "p90",
+      "split_counts": {
+        "test": 4205,
+        "train": 16955,
+        "validation": 5220
+      },
+      "horizon_counts": {
+        "1": 5276,
+        "5": 5276,
+        "10": 5276,
+        "20": 5276,
+        "30": 5276
+      },
+      "path": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_rollforward.csv",
+      "exists": true,
+      "file_hash": "sha256:94c5442ee508fff4026f74706551c284c73872fa5d43bf1f797c41d0b6bf1feb"
+    }
+  },
+  "output_hashes": {
+    "omega_rollforward": "sha256:86d7eebe97e3b32ddefdd481851dfbde67a90788db5d3e0339996701fbf3d82a",
+    "omega_forecast_latest": "sha256:053522d1bd1b470c61297c5ec054a3d69c916dc45ba3f932c8e2e4f133f9e4db",
+    "omega_evaluation_by_horizon": "sha256:2dd02d96185360a79fdde4814dc0ab56b8b6884501e27f13f8737ef719b640e2",
+    "omega_model_ranking": "sha256:3a3c3f0fcbbad73be9fe345f4448590533efff60a053a88f328e0e9aacf45b38",
+    "omega_weights_by_horizon": "sha256:b155107232f9dbf10a7abbfe353b729f0d5f7d72eb8b55176e3ab6203c336f9e"
+  },
+  "professor_safe_note": "Diagnostics describe artifact creation and integrity. They are not claims of predictive guarantee.",
+  "generated_at_utc": "2026-05-06T01:07:25.920241Z"
+}

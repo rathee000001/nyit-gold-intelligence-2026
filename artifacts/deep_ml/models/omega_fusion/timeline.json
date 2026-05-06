@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp_utc": "2026-05-06T01:06:08.830002Z",
+    "event": "phase14_omega_fusion_started",
+    "status": "ok",
+    "details": {
+      "run_id": "deepml_run_20260506_010608_omega_fusion",
+      "smoke": false
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-06T01:06:08.896040Z",
+    "event": "building_validation_weighted_model_ranking",
+    "status": "ok",
+    "details": {}
+  },
+  {
+    "timestamp_utc": "2026-05-06T01:06:08.908351Z",
+    "event": "building_omega_rollforward",
+    "status": "ok",
+    "details": {}
+  },
+  {
+    "timestamp_utc": "2026-05-06T01:07:25.749080Z",
+    "event": "omega_rollforward_ready",
+    "status": "ok",
+    "details": {
+      "rows": 26386
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-06T01:07:25.750136Z",
+    "event": "building_omega_evaluation",
+    "status": "ok",
+    "details": {}
+  },
+  {
+    "timestamp_utc": "2026-05-06T01:07:25.850634Z",
+    "event": "building_omega_latest_forecast",
+    "status": "ok",
+    "details": {}
+  },
+  {
+    "timestamp_utc": "2026-05-06T01:07:26.031912Z",
+    "event": "phase14_omega_fusion_completed",
+    "status": "ready",
+    "details": {}
+  }
+]

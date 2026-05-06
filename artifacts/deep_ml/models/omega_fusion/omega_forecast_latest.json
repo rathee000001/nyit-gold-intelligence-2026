@@ -1,0 +1,414 @@
+{
+  "artifact_type": "omega_forecast_latest",
+  "schema_version": "1.0.0",
+  "phase_key": "phase14_omega_fusion",
+  "model_key": "omega_fusion",
+  "model_name": "Omega Fusion",
+  "frequency": "trading_day",
+  "forecast_method": "validation_weighted_component_p50_with_weighted_interval_context",
+  "gamma_usage": "interpretive_context_only_not_training_input",
+  "path": [
+    {
+      "horizon": 1,
+      "origin_date": "2026-05-05",
+      "forecast_date": "2026-05-06",
+      "origin_gold_price": 4561.7001953125,
+      "omega_p10_weighted": 4413.129784259991,
+      "omega_p50_weighted": 4553.746851683102,
+      "omega_p90_weighted": 4667.634370984928,
+      "omega_p10_component_min": 4104.06910933884,
+      "omega_p90_component_max": 4782.2307655392515,
+      "expected_change": -7.95334362939775,
+      "expected_change_pct": -0.17435042393996927,
+      "component_count": 4,
+      "component_models": [
+        "alpha_structural",
+        "beta_temporal",
+        "delta_tft",
+        "epsilon_expert_ensemble"
+      ],
+      "component_weights": {
+        "alpha_structural": 0.25737342140078423,
+        "beta_temporal": 0.2311326678003166,
+        "delta_tft": 0.23814153150975834,
+        "epsilon_expert_ensemble": 0.2733523792891408
+      },
+      "component_points": [
+        {
+          "model_key": "alpha_structural",
+          "display_name": "Alpha Structural",
+          "horizon": 1,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-05-06",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 4517.170568265169,
+          "p50": 4566.723948641866,
+          "p90": 4621.56890612468,
+          "expected_change": 5.023753329365718,
+          "expected_change_pct": 0.11012896758379723
+        },
+        {
+          "model_key": "beta_temporal",
+          "display_name": "Beta Temporal",
+          "horizon": 1,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-05-06",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 4492.65673828125,
+          "p50": 4567.82958984375,
+          "p90": 4663.865234375,
+          "expected_change": 6.12939453125,
+          "expected_change_pct": 0.1343664482279749
+        },
+        {
+          "model_key": "delta_tft",
+          "display_name": "Delta TFT",
+          "horizon": 1,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-05-06",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 4104.06910933884,
+          "p50": 4515.0234375,
+          "p90": 4782.2307655392515,
+          "expected_change": -46.6767578125,
+          "expected_change_pct": -1.0232315981761357
+        },
+        {
+          "model_key": "epsilon_expert_ensemble",
+          "display_name": "Epsilon Ensemble",
+          "horizon": 1,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-05-06",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 4517.177069085264,
+          "p50": 4563.356105791484,
+          "p90": 4614.358946629458,
+          "expected_change": 1.6559104789839694,
+          "expected_change_pct": 0.03630029173520753
+        }
+      ]
+    },
+    {
+      "horizon": 5,
+      "origin_date": "2026-05-05",
+      "forecast_date": "2026-05-12",
+      "origin_gold_price": 4561.7001953125,
+      "omega_p10_weighted": 4239.25551553099,
+      "omega_p50_weighted": 4502.6712051640725,
+      "omega_p90_weighted": 4803.07254992857,
+      "omega_p10_component_min": 3337.2443312092482,
+      "omega_p90_component_max": 4922.2605930039035,
+      "expected_change": -59.02899014842751,
+      "expected_change_pct": -1.294012925467666,
+      "component_count": 4,
+      "component_models": [
+        "alpha_structural",
+        "beta_temporal",
+        "delta_tft",
+        "epsilon_expert_ensemble"
+      ],
+      "component_weights": {
+        "alpha_structural": 0.27229055555948534,
+        "beta_temporal": 0.2822834301973649,
+        "delta_tft": 0.23427509218065118,
+        "epsilon_expert_ensemble": 0.21115092206249858
+      },
+      "component_points": [
+        {
+          "model_key": "alpha_structural",
+          "display_name": "Alpha Structural",
+          "horizon": 5,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-05-12",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 4708.279654097234,
+          "p50": 4794.4925742241485,
+          "p90": 4922.2605930039035,
+          "expected_change": 232.79237891164848,
+          "expected_change_pct": 5.103193303910254
+        },
+        {
+          "model_key": "beta_temporal",
+          "display_name": "Beta Temporal",
+          "horizon": 5,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-05-12",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 4401.8232421875,
+          "p50": 4533.7998046875,
+          "p90": 4731.34130859375,
+          "expected_change": -27.900390625,
+          "expected_change_pct": -0.6116226281961671
+        },
+        {
+          "model_key": "delta_tft",
+          "display_name": "Delta TFT",
+          "horizon": 5,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-05-12",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 3337.2443312092482,
+          "p50": 4065.318603515625,
+          "p90": 4814.5166407584775,
+          "expected_change": -496.381591796875,
+          "expected_change_pct": -10.881504056468803
+        },
+        {
+          "model_key": "epsilon_expert_ensemble",
+          "display_name": "Epsilon Ensemble",
+          "horizon": 5,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-05-12",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 4417.8847831919265,
+          "p50": 4569.985760893173,
+          "p90": 4732.571777791679,
+          "expected_change": 8.285565580673392,
+          "expected_change_pct": 0.18163327763598872
+        }
+      ]
+    },
+    {
+      "horizon": 10,
+      "origin_date": "2026-05-05",
+      "forecast_date": "2026-05-19",
+      "origin_gold_price": 4561.7001953125,
+      "omega_p10_weighted": 4304.365077749321,
+      "omega_p50_weighted": 4557.79437121682,
+      "omega_p90_weighted": 4861.870047791451,
+      "omega_p10_component_min": 3584.36055052797,
+      "omega_p90_component_max": 4967.455498754731,
+      "expected_change": -3.9058240956801455,
+      "expected_change_pct": -0.0856221129940473,
+      "component_count": 4,
+      "component_models": [
+        "alpha_structural",
+        "beta_temporal",
+        "delta_tft",
+        "epsilon_expert_ensemble"
+      ],
+      "component_weights": {
+        "alpha_structural": 0.2864139280379688,
+        "beta_temporal": 0.2546248533817043,
+        "delta_tft": 0.23829908758540364,
+        "epsilon_expert_ensemble": 0.22066213099492335
+      },
+      "component_points": [
+        {
+          "model_key": "alpha_structural",
+          "display_name": "Alpha Structural",
+          "horizon": 10,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-05-19",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 4758.5563525555035,
+          "p50": 4857.083916542282,
+          "p90": 4967.455498754731,
+          "expected_change": 295.38372122978217,
+          "expected_change_pct": 6.475298870655985
+        },
+        {
+          "model_key": "beta_temporal",
+          "display_name": "Beta Temporal",
+          "horizon": 10,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-05-19",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 4361.4140625,
+          "p50": 4536.447265625,
+          "p90": 4776.4853515625,
+          "expected_change": -25.2529296875,
+          "expected_change_pct": -0.5535859132840282
+        },
+        {
+          "model_key": "delta_tft",
+          "display_name": "Delta TFT",
+          "horizon": 10,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-05-19",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 3584.36055052797,
+          "p50": 4201.90966796875,
+          "p90": 4941.702078203034,
+          "expected_change": -359.79052734375,
+          "expected_change_pct": -7.887202401277108
+        },
+        {
+          "model_key": "epsilon_expert_ensemble",
+          "display_name": "Epsilon Ensemble",
+          "horizon": 10,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-05-19",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 4426.559245353457,
+          "p50": 4578.28637581818,
+          "p90": 4737.136465827087,
+          "expected_change": 16.586180505680204,
+          "expected_change_pct": 0.36359646174739385
+        }
+      ]
+    },
+    {
+      "horizon": 20,
+      "origin_date": "2026-05-05",
+      "forecast_date": "2026-06-02",
+      "origin_gold_price": 4561.7001953125,
+      "omega_p10_weighted": 4263.995986010929,
+      "omega_p50_weighted": 4468.276799475932,
+      "omega_p90_weighted": 4715.844420436817,
+      "omega_p10_component_min": 3730.383859945509,
+      "omega_p90_component_max": 4869.853936935482,
+      "expected_change": -93.42339583656758,
+      "expected_change_pct": -2.0479950859674503,
+      "component_count": 4,
+      "component_models": [
+        "alpha_structural",
+        "beta_temporal",
+        "delta_tft",
+        "epsilon_expert_ensemble"
+      ],
+      "component_weights": {
+        "alpha_structural": 0.2642105365155133,
+        "beta_temporal": 0.25740295675690744,
+        "delta_tft": 0.2373139936784496,
+        "epsilon_expert_ensemble": 0.24107251304912963
+      },
+      "component_points": [
+        {
+          "model_key": "alpha_structural",
+          "display_name": "Alpha Structural",
+          "horizon": 20,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-06-02",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 4418.838932927624,
+          "p50": 4508.743754579202,
+          "p90": 4625.3159713939585,
+          "expected_change": -52.95644073329822,
+          "expected_change_pct": -1.1608926160407267
+        },
+        {
+          "model_key": "beta_temporal",
+          "display_name": "Beta Temporal",
+          "horizon": 20,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-06-02",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 4380.2744140625,
+          "p50": 4508.126953125,
+          "p90": 4661.69677734375,
+          "expected_change": -53.5732421875,
+          "expected_change_pct": -1.1744139223035888
+        },
+        {
+          "model_key": "delta_tft",
+          "display_name": "Delta TFT",
+          "horizon": 20,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-06-02",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 3730.383859945509,
+          "p50": 4251.337890625,
+          "p90": 4869.853936935482,
+          "expected_change": -310.3623046875,
+          "expected_change_pct": -6.8036541508453645
+        },
+        {
+          "model_key": "epsilon_expert_ensemble",
+          "display_name": "Epsilon Ensemble",
+          "horizon": 20,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-06-02",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 4495.42873932711,
+          "p50": 4594.932863089319,
+          "p90": 4721.26901274632,
+          "expected_change": 33.232667776818744,
+          "expected_change_pct": 0.7285149473647541
+        }
+      ]
+    },
+    {
+      "horizon": 30,
+      "origin_date": "2026-05-05",
+      "forecast_date": "2026-06-16",
+      "origin_gold_price": 4561.7001953125,
+      "omega_p10_weighted": 4229.984444132143,
+      "omega_p50_weighted": 4487.956897770466,
+      "omega_p90_weighted": 4816.407561970411,
+      "omega_p10_component_min": 3491.899335856786,
+      "omega_p90_component_max": 4929.557261543657,
+      "expected_change": -73.74329754203427,
+      "expected_change_pct": -1.616574837991572,
+      "component_count": 4,
+      "component_models": [
+        "alpha_structural",
+        "beta_temporal",
+        "delta_tft",
+        "epsilon_expert_ensemble"
+      ],
+      "component_weights": {
+        "alpha_structural": 0.2707511146941289,
+        "beta_temporal": 0.24791095366855392,
+        "delta_tft": 0.24042454507337715,
+        "epsilon_expert_ensemble": 0.2409133865639401
+      },
+      "component_points": [
+        {
+          "model_key": "alpha_structural",
+          "display_name": "Alpha Structural",
+          "horizon": 30,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-06-16",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 4688.450257546093,
+          "p50": 4794.1876808933275,
+          "p90": 4929.557261543657,
+          "expected_change": 232.48748558082752,
+          "expected_change_pct": 5.096509538696261
+        },
+        {
+          "model_key": "beta_temporal",
+          "display_name": "Beta Temporal",
+          "horizon": 30,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-06-16",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 4187.46240234375,
+          "p50": 4353.2333984375,
+          "p90": 4625.63623046875,
+          "expected_change": -208.466796875,
+          "expected_change_pct": -4.569936382255365
+        },
+        {
+          "model_key": "delta_tft",
+          "display_name": "Delta TFT",
+          "horizon": 30,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-06-16",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 3491.899335856786,
+          "p50": 4158.0830078125,
+          "p90": 4923.002265880231,
+          "expected_change": -403.6171875,
+          "expected_change_pct": -8.847955153097258
+        },
+        {
+          "model_key": "epsilon_expert_ensemble",
+          "display_name": "Epsilon Ensemble",
+          "horizon": 30,
+          "origin_date": "2026-05-05",
+          "forecast_date": "2026-06-16",
+          "origin_gold_price": 4561.7001953125,
+          "p10": 4495.081071572162,
+          "p50": 4611.63987639918,
+          "p90": 4779.178050218329,
+          "expected_change": 49.93968108668014,
+          "expected_change_pct": 1.094760263684076
+        }
+      ]
+    }
+  ],
+  "professor_safe_note": "Omega is an artifact-level fusion candidate. It is not a guarantee and it does not use news as a hidden training input.",
+  "generated_at_utc": "2026-05-06T01:07:25.852639Z"
+}

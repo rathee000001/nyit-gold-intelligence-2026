@@ -1,0 +1,13 @@
+{
+  "artifact_type": "deep_ml_progress_checkpoint",
+  "schema_version": "1.0.0",
+  "phase_key": "phase14_omega_fusion",
+  "model_key": "omega_fusion",
+  "step": "completed",
+  "status": "ready",
+  "updated_at_utc": "2026-05-06T01:07:26.031912Z",
+  "payload": {
+    "send_me_this_json": "artifacts/deep_ml/models/omega_fusion/phase14_omega_fusion_report.json",
+    "public_report": "public/artifacts/deep_ml/models/omega_fusion/phase14_omega_fusion_report.json"
+  }
+}

@@ -1,0 +1,2343 @@
+{
+  "artifact_type": "final_deep_ml_eval_inventory",
+  "count": 292,
+  "final_related_count": 215,
+  "files": [
+    {
+      "path": "public\\artifacts\\data\\data_table_audit.json",
+      "name": "data_table_audit.json",
+      "suffix": ".json",
+      "size_bytes": 1028,
+      "updated_epoch": 1777590780.7712722,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\data\\factor_inventory.json",
+      "name": "factor_inventory.json",
+      "suffix": ".json",
+      "size_bytes": 23343,
+      "updated_epoch": 1777590780.772272,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\data\\feature_dictionary.json",
+      "name": "feature_dictionary.json",
+      "suffix": ".json",
+      "size_bytes": 6385,
+      "updated_epoch": 1777590780.772717,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\data\\feature_engineering_audit.json",
+      "name": "feature_engineering_audit.json",
+      "suffix": ".json",
+      "size_bytes": 3087,
+      "updated_epoch": 1777590780.772717,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\data\\missing_values_report.csv",
+      "name": "missing_values_report.csv",
+      "suffix": ".csv",
+      "size_bytes": 2215,
+      "updated_epoch": 1777590780.772717,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\data\\missing_values_report.json",
+      "name": "missing_values_report.json",
+      "suffix": ".json",
+      "size_bytes": 10389,
+      "updated_epoch": 1777590780.772717,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\data\\model_ready_dataset_preview.json",
+      "name": "model_ready_dataset_preview.json",
+      "suffix": ".json",
+      "size_bytes": 25418,
+      "updated_epoch": 1777590780.772717,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\data\\weekday_cleaning_audit.json",
+      "name": "weekday_cleaning_audit.json",
+      "suffix": ".json",
+      "size_bytes": 553,
+      "updated_epoch": 1777590780.772717,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\data\\weekday_matrix_preview.json",
+      "name": "weekday_matrix_preview.json",
+      "suffix": ".json",
+      "size_bytes": 12822,
+      "updated_epoch": 1777590780.772717,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\forecast\\official_forecast.json",
+      "name": "official_forecast.json",
+      "suffix": ".json",
+      "size_bytes": 762051,
+      "updated_epoch": 1777609938.879622,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\forecast\\official_forecast_path.csv",
+      "name": "official_forecast_path.csv",
+      "suffix": ".csv",
+      "size_bytes": 219499,
+      "updated_epoch": 1777590780.772717,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\governance\\cutoff_decision_log.json",
+      "name": "cutoff_decision_log.json",
+      "suffix": ".json",
+      "size_bytes": 1786,
+      "updated_epoch": 1777590780.772717,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\governance\\forecast_governance.json",
+      "name": "forecast_governance.json",
+      "suffix": ".json",
+      "size_bytes": 12470,
+      "updated_epoch": 1777590780.772717,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\governance\\forecast_status.json",
+      "name": "forecast_status.json",
+      "suffix": ".json",
+      "size_bytes": 2517,
+      "updated_epoch": 1777590780.772717,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\governance\\model_window_plan.json",
+      "name": "model_window_plan.json",
+      "suffix": ".json",
+      "size_bytes": 4436,
+      "updated_epoch": 1777590780.772717,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\interpretability\\regression_coefficients.json",
+      "name": "regression_coefficients.json",
+      "suffix": ".json",
+      "size_bytes": 11699,
+      "updated_epoch": 1777605424.8295403,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\interpretability\\xgboost_feature_importance.json",
+      "name": "xgboost_feature_importance.json",
+      "suffix": ".json",
+      "size_bytes": 4164,
+      "updated_epoch": 1777590780.772717,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\interpretability\\xgboost_shap_summary.json",
+      "name": "xgboost_shap_summary.json",
+      "suffix": ".json",
+      "size_bytes": 4338,
+      "updated_epoch": 1777590780.772717,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\models\\arima_diagnostics.json",
+      "name": "arima_diagnostics.json",
+      "suffix": ".json",
+      "size_bytes": 15385,
+      "updated_epoch": 1777590780.772717,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\arima_forecast_path.json",
+      "name": "arima_forecast_path.json",
+      "suffix": ".json",
+      "size_bytes": 2751258,
+      "updated_epoch": 1777590780.788844,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\arima_results.json",
+      "name": "arima_results.json",
+      "suffix": ".json",
+      "size_bytes": 30475,
+      "updated_epoch": 1777590780.788844,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\baseline_forecast_paths.json",
+      "name": "baseline_forecast_paths.json",
+      "suffix": ".json",
+      "size_bytes": 1088818,
+      "updated_epoch": 1777590780.7928493,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\exponential_smoothing_forecast_path.json",
+      "name": "exponential_smoothing_forecast_path.json",
+      "suffix": ".json",
+      "size_bytes": 246493,
+      "updated_epoch": 1777590780.7948487,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\exponential_smoothing_results.json",
+      "name": "exponential_smoothing_results.json",
+      "suffix": ".json",
+      "size_bytes": 5936,
+      "updated_epoch": 1777590780.795849,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\moving_average_results.json",
+      "name": "moving_average_results.json",
+      "suffix": ".json",
+      "size_bytes": 12402,
+      "updated_epoch": 1777590780.795849,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\naive_results.json",
+      "name": "naive_results.json",
+      "suffix": ".json",
+      "size_bytes": 3173,
+      "updated_epoch": 1777590780.795849,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\prophet_forecast_path.csv",
+      "name": "prophet_forecast_path.csv",
+      "suffix": ".csv",
+      "size_bytes": 912719,
+      "updated_epoch": 1777590780.7990453,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\prophet_forecast_path.json",
+      "name": "prophet_forecast_path.json",
+      "suffix": ".json",
+      "size_bytes": 3443175,
+      "updated_epoch": 1777590780.8094091,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\prophet_results.json",
+      "name": "prophet_results.json",
+      "suffix": ".json",
+      "size_bytes": 6499,
+      "updated_epoch": 1777590780.8094091,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\regression_diagnostics.json",
+      "name": "regression_diagnostics.json",
+      "suffix": ".json",
+      "size_bytes": 10277,
+      "updated_epoch": 1777605424.8295403,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\regression_results.json",
+      "name": "regression_results.json",
+      "suffix": ".json",
+      "size_bytes": 48890,
+      "updated_epoch": 1777605424.8295403,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\sarimax_diagnostics.json",
+      "name": "sarimax_diagnostics.json",
+      "suffix": ".json",
+      "size_bytes": 7628,
+      "updated_epoch": 1777590780.8094091,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\sarimax_forecast_path.json",
+      "name": "sarimax_forecast_path.json",
+      "suffix": ".json",
+      "size_bytes": 246580,
+      "updated_epoch": 1777590780.8094091,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\sarimax_results.json",
+      "name": "sarimax_results.json",
+      "suffix": ".json",
+      "size_bytes": 10116,
+      "updated_epoch": 1777590780.8094091,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\xgboost_forecast_path.json",
+      "name": "xgboost_forecast_path.json",
+      "suffix": ".json",
+      "size_bytes": 427120,
+      "updated_epoch": 1777590780.8094091,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\models\\xgboost_results.json",
+      "name": "xgboost_results.json",
+      "suffix": ".json",
+      "size_bytes": 9372,
+      "updated_epoch": 1777590780.8094091,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\pages\\page_arima.json",
+      "name": "page_arima.json",
+      "suffix": ".json",
+      "size_bytes": 4553,
+      "updated_epoch": 1777590780.8094091,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\pages\\page_data_pipeline.json",
+      "name": "page_data_pipeline.json",
+      "suffix": ".json",
+      "size_bytes": 2426,
+      "updated_epoch": 1777590780.8094091,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\pages\\page_exponential_smoothing.json",
+      "name": "page_exponential_smoothing.json",
+      "suffix": ".json",
+      "size_bytes": 7157,
+      "updated_epoch": 1777590780.8145342,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\pages\\page_model_comparison.json",
+      "name": "page_model_comparison.json",
+      "suffix": ".json",
+      "size_bytes": 15997,
+      "updated_epoch": 1777605424.8295403,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\pages\\page_naive_moving_average.json",
+      "name": "page_naive_moving_average.json",
+      "suffix": ".json",
+      "size_bytes": 11399,
+      "updated_epoch": 1777590780.8151433,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\pages\\page_official_forecast.json",
+      "name": "page_official_forecast.json",
+      "suffix": ".json",
+      "size_bytes": 751273,
+      "updated_epoch": 1777607606.7825935,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\pages\\page_prophet.json",
+      "name": "page_prophet.json",
+      "suffix": ".json",
+      "size_bytes": 3655,
+      "updated_epoch": 1777590780.8177228,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\pages\\page_regression.json",
+      "name": "page_regression.json",
+      "suffix": ".json",
+      "size_bytes": 2369439,
+      "updated_epoch": 1777605424.8295403,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\pages\\page_sarimax.json",
+      "name": "page_sarimax.json",
+      "suffix": ".json",
+      "size_bytes": 9919,
+      "updated_epoch": 1777590780.826502,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\pages\\page_xgboost.json",
+      "name": "page_xgboost.json",
+      "suffix": ".json",
+      "size_bytes": 10340,
+      "updated_epoch": 1777590780.826502,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\validation\\model_ranking.csv",
+      "name": "model_ranking.csv",
+      "suffix": ".csv",
+      "size_bytes": 3112,
+      "updated_epoch": 1777605424.8295403,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\validation\\model_ranking.json",
+      "name": "model_ranking.json",
+      "suffix": ".json",
+      "size_bytes": 5826,
+      "updated_epoch": 1777605424.8295403,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\validation\\residual_diagnostics.json",
+      "name": "residual_diagnostics.json",
+      "suffix": ".json",
+      "size_bytes": 4583,
+      "updated_epoch": 1777605424.8295403,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\validation\\selected_model_summary.json",
+      "name": "selected_model_summary.json",
+      "suffix": ".json",
+      "size_bytes": 2037,
+      "updated_epoch": 1777605424.8295403,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\validation\\validation_by_model.csv",
+      "name": "validation_by_model.csv",
+      "suffix": ".csv",
+      "size_bytes": 3112,
+      "updated_epoch": 1777605424.8295403,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\validation\\validation_by_model.json",
+      "name": "validation_by_model.json",
+      "suffix": ".json",
+      "size_bytes": 13687,
+      "updated_epoch": 1777605424.8451931,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\validation\\validation_summary.json",
+      "name": "validation_summary.json",
+      "suffix": ".json",
+      "size_bytes": 1264,
+      "updated_epoch": 1777605424.8459074,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\ai\\.gitkeep",
+      "name": ".gitkeep",
+      "suffix": "",
+      "size_bytes": 0,
+      "updated_epoch": 1777952702.7453072,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\data\\.gitkeep",
+      "name": ".gitkeep",
+      "suffix": "",
+      "size_bytes": 0,
+      "updated_epoch": 1777952702.7427342,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\data\\data_quality_flags.json",
+      "name": "data_quality_flags.json",
+      "suffix": ".json",
+      "size_bytes": 1154,
+      "updated_epoch": 1777953349.8198147,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\data\\factor_staleness_report.json",
+      "name": "factor_staleness_report.json",
+      "suffix": ".json",
+      "size_bytes": 1693,
+      "updated_epoch": 1777953349.8198147,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\data\\factor_state_table.json",
+      "name": "factor_state_table.json",
+      "suffix": ".json",
+      "size_bytes": 21255,
+      "updated_epoch": 1777973528.5013132,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\data\\phase3_factor_state_report.json",
+      "name": "phase3_factor_state_report.json",
+      "suffix": ".json",
+      "size_bytes": 785,
+      "updated_epoch": 1777953349.8198147,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\evaluation\\.gitkeep",
+      "name": ".gitkeep",
+      "suffix": "",
+      "size_bytes": 0,
+      "updated_epoch": 1777952702.7442992,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\features\\.gitkeep",
+      "name": ".gitkeep",
+      "suffix": "",
+      "size_bytes": 0,
+      "updated_epoch": 1777952702.7427342,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+      "name": "deep_ml_numeric_feature_store.parquet",
+      "suffix": ".parquet",
+      "size_bytes": 789638,
+      "updated_epoch": 1777973528.4646058,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store_manifest.json",
+      "name": "deep_ml_numeric_feature_store_manifest.json",
+      "suffix": ".json",
+      "size_bytes": 2771,
+      "updated_epoch": 1777973528.5033147,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store_preview.csv",
+      "name": "deep_ml_numeric_feature_store_preview.csv",
+      "suffix": ".csv",
+      "size_bytes": 106492,
+      "updated_epoch": 1777953752.9712548,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store_preview.json",
+      "name": "deep_ml_numeric_feature_store_preview.json",
+      "suffix": ".json",
+      "size_bytes": 79971,
+      "updated_epoch": 1777953752.9787426,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\features\\deep_ml_refreshed_matrix.csv",
+      "name": "deep_ml_refreshed_matrix.csv",
+      "suffix": ".csv",
+      "size_bytes": 2778757,
+      "updated_epoch": 1777973213.3368394,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\features\\deep_ml_refreshed_matrix.parquet",
+      "name": "deep_ml_refreshed_matrix.parquet",
+      "suffix": ".parquet",
+      "size_bytes": 787256,
+      "updated_epoch": 1777973213.352038,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\features\\feature_manifest.json",
+      "name": "feature_manifest.json",
+      "suffix": ".json",
+      "size_bytes": 31250,
+      "updated_epoch": 1777953710.9369576,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\features\\feature_store_status.json",
+      "name": "feature_store_status.json",
+      "suffix": ".json",
+      "size_bytes": 790,
+      "updated_epoch": 1777953752.9787426,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\features\\leakage_safety_plan.json",
+      "name": "leakage_safety_plan.json",
+      "suffix": ".json",
+      "size_bytes": 1469,
+      "updated_epoch": 1777953710.9369576,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\features\\model_feature_plan.json",
+      "name": "model_feature_plan.json",
+      "suffix": ".json",
+      "size_bytes": 10040,
+      "updated_epoch": 1777973528.5013132,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\features\\phase4_feature_store_report.json",
+      "name": "phase4_feature_store_report.json",
+      "suffix": ".json",
+      "size_bytes": 1059,
+      "updated_epoch": 1777953710.9538064,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\features\\phase5_numeric_feature_store_report.json",
+      "name": "phase5_numeric_feature_store_report.json",
+      "suffix": ".json",
+      "size_bytes": 1251,
+      "updated_epoch": 1777953752.9787426,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\features\\sequence_window_plan.json",
+      "name": "sequence_window_plan.json",
+      "suffix": ".json",
+      "size_bytes": 699,
+      "updated_epoch": 1777953710.9369576,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\features\\target_plan.json",
+      "name": "target_plan.json",
+      "suffix": ".json",
+      "size_bytes": 1294,
+      "updated_epoch": 1777973528.502315,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\feature_refresh\\phase11_governed_feature_store_refresh_report.json",
+      "name": "phase11_governed_feature_store_refresh_report.json",
+      "suffix": ".json",
+      "size_bytes": 11661,
+      "updated_epoch": 1777973528.5579338,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\feature_refresh\\progress_checkpoint.json",
+      "name": "progress_checkpoint.json",
+      "suffix": ".json",
+      "size_bytes": 351,
+      "updated_epoch": 1777973213.0762024,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\feature_refresh\\quality_review.json",
+      "name": "quality_review.json",
+      "suffix": ".json",
+      "size_bytes": 487,
+      "updated_epoch": 1777973528.5067585,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\feature_refresh\\timeline.json",
+      "name": "timeline.json",
+      "suffix": ".json",
+      "size_bytes": 2583,
+      "updated_epoch": 1777973213.417515,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\governance\\.gitkeep",
+      "name": ".gitkeep",
+      "suffix": "",
+      "size_bytes": 0,
+      "updated_epoch": 1777952702.7418387,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\governance\\deep_ml_cutoff_governance.json",
+      "name": "deep_ml_cutoff_governance.json",
+      "suffix": ".json",
+      "size_bytes": 8363,
+      "updated_epoch": 1777953229.5018873,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\governance\\deep_ml_mode_status.json",
+      "name": "deep_ml_mode_status.json",
+      "suffix": ".json",
+      "size_bytes": 881,
+      "updated_epoch": 1777975227.0093749,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\governance\\deep_ml_phase0_status.json",
+      "name": "deep_ml_phase0_status.json",
+      "suffix": ".json",
+      "size_bytes": 327,
+      "updated_epoch": 1777952702.761932,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\governance\\effective_data_window.json",
+      "name": "effective_data_window.json",
+      "suffix": ".json",
+      "size_bytes": 1617,
+      "updated_epoch": 1777953229.5018873,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\governance\\environment_report.json",
+      "name": "environment_report.json",
+      "suffix": ".json",
+      "size_bytes": 12427,
+      "updated_epoch": 1777953114.330834,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\governance\\forecast_start_decision.json",
+      "name": "forecast_start_decision.json",
+      "suffix": ".json",
+      "size_bytes": 517,
+      "updated_epoch": 1777953229.5018873,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\governance\\phase0_contract_validation_report.json",
+      "name": "phase0_contract_validation_report.json",
+      "suffix": ".json",
+      "size_bytes": 838,
+      "updated_epoch": 1777952748.8913548,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\governance\\phase2_cutoff_governance_report.json",
+      "name": "phase2_cutoff_governance_report.json",
+      "suffix": ".json",
+      "size_bytes": 905,
+      "updated_epoch": 1777953229.5018873,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\governance\\study_context.json",
+      "name": "study_context.json",
+      "suffix": ".json",
+      "size_bytes": 9527,
+      "updated_epoch": 1777975236.7771535,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\memory\\.gitkeep",
+      "name": ".gitkeep",
+      "suffix": "",
+      "size_bytes": 0,
+      "updated_epoch": 1777952702.7442992,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\.gitkeep",
+      "name": ".gitkeep",
+      "suffix": "",
+      "size_bytes": 0,
+      "updated_epoch": 1777952702.7427342,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\.gitkeep",
+      "name": ".gitkeep",
+      "suffix": "",
+      "size_bytes": 0,
+      "updated_epoch": 1777952702.7442992,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\diagnostics_latest.json",
+      "name": "diagnostics_latest.json",
+      "suffix": ".json",
+      "size_bytes": 1465,
+      "updated_epoch": 1778024165.1709692,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\news_input_inventory.json",
+      "name": "news_input_inventory.json",
+      "suffix": ".json",
+      "size_bytes": 319,
+      "updated_epoch": 1777970836.8915431,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\news_items_unified_raw.csv",
+      "name": "news_items_unified_raw.csv",
+      "suffix": ".csv",
+      "size_bytes": 162897,
+      "updated_epoch": 1778024164.9238386,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\news_items_unified_raw.json",
+      "name": "news_items_unified_raw.json",
+      "suffix": ".json",
+      "size_bytes": 251163,
+      "updated_epoch": 1778024164.9238386,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\news_source_coverage_preview.json",
+      "name": "news_source_coverage_preview.json",
+      "suffix": ".json",
+      "size_bytes": 2331,
+      "updated_epoch": 1778024165.1709692,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\news_source_inventory.json",
+      "name": "news_source_inventory.json",
+      "suffix": ".json",
+      "size_bytes": 7556,
+      "updated_epoch": 1778024165.1709692,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\phase12_source_news_update_report.json",
+      "name": "phase12_source_news_update_report.json",
+      "suffix": ".json",
+      "size_bytes": 17484,
+      "updated_epoch": 1778024165.2091331,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\progress_checkpoint.json",
+      "name": "progress_checkpoint.json",
+      "suffix": ".json",
+      "size_bytes": 283,
+      "updated_epoch": 1778009205.8183649,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\quality_review.json",
+      "name": "quality_review.json",
+      "suffix": ".json",
+      "size_bytes": 826,
+      "updated_epoch": 1778024165.1709692,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\raw_news_pull_log.json",
+      "name": "raw_news_pull_log.json",
+      "suffix": ".json",
+      "size_bytes": 22094,
+      "updated_epoch": 1778024165.1709692,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\timeline.json",
+      "name": "timeline.json",
+      "suffix": ".json",
+      "size_bytes": 802,
+      "updated_epoch": 1778024164.9112434,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news_ai\\diagnostics_latest.json",
+      "name": "diagnostics_latest.json",
+      "suffix": ".json",
+      "size_bytes": 1976,
+      "updated_epoch": 1778005276.6005797,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news_ai\\news_context_latest.json",
+      "name": "news_context_latest.json",
+      "suffix": ".json",
+      "size_bytes": 24781,
+      "updated_epoch": 1778005276.5995805,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news_ai\\news_factor_exposure.json",
+      "name": "news_factor_exposure.json",
+      "suffix": ".json",
+      "size_bytes": 3996,
+      "updated_epoch": 1778005276.5984266,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news_ai\\news_items_scored.csv",
+      "name": "news_items_scored.csv",
+      "suffix": ".csv",
+      "size_bytes": 3815,
+      "updated_epoch": 1778005276.5958939,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news_ai\\news_theme_summary.json",
+      "name": "news_theme_summary.json",
+      "suffix": ".json",
+      "size_bytes": 5221,
+      "updated_epoch": 1778005276.5977235,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news_ai\\phase12_news_ai_context_report.json",
+      "name": "phase12_news_ai_context_report.json",
+      "suffix": ".json",
+      "size_bytes": 45510,
+      "updated_epoch": 1778005276.6626165,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news_ai\\progress_checkpoint.json",
+      "name": "progress_checkpoint.json",
+      "suffix": ".json",
+      "size_bytes": 277,
+      "updated_epoch": 1778005276.468169,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news_ai\\quality_review.json",
+      "name": "quality_review.json",
+      "suffix": ".json",
+      "size_bytes": 987,
+      "updated_epoch": 1778005276.6626165,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news_ai\\run_summary.json",
+      "name": "run_summary.json",
+      "suffix": ".json",
+      "size_bytes": 4656,
+      "updated_epoch": 1778005276.6626165,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news_ai\\timeline.json",
+      "name": "timeline.json",
+      "suffix": ".json",
+      "size_bytes": 1150,
+      "updated_epoch": 1778005276.5984266,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\pages\\.gitkeep",
+      "name": ".gitkeep",
+      "suffix": "",
+      "size_bytes": 0,
+      "updated_epoch": 1777952702.745973,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\pages\\page_alpha_structural.json",
+      "name": "page_alpha_structural.json",
+      "suffix": ".json",
+      "size_bytes": 2602,
+      "updated_epoch": 1777976283.8311296,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\pages\\page_beta_temporal.json",
+      "name": "page_beta_temporal.json",
+      "suffix": ".json",
+      "size_bytes": 2774,
+      "updated_epoch": 1777977209.8339255,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\pages\\page_deep_ml_data_intelligence.json",
+      "name": "page_deep_ml_data_intelligence.json",
+      "suffix": ".json",
+      "size_bytes": 28370,
+      "updated_epoch": 1777953349.8198147,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\pages\\page_deep_ml_feature_foundation.json",
+      "name": "page_deep_ml_feature_foundation.json",
+      "suffix": ".json",
+      "size_bytes": 2138,
+      "updated_epoch": 1777953710.9520543,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\pages\\page_delta_tft.json",
+      "name": "page_delta_tft.json",
+      "suffix": ".json",
+      "size_bytes": 3013,
+      "updated_epoch": 1778017828.8795145,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\pages\\page_epsilon_expert_ensemble.json",
+      "name": "page_epsilon_expert_ensemble.json",
+      "suffix": ".json",
+      "size_bytes": 2714,
+      "updated_epoch": 1778018034.6073341,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\pages\\page_news_ai_context.json",
+      "name": "page_news_ai_context.json",
+      "suffix": ".json",
+      "size_bytes": 13683,
+      "updated_epoch": 1778005276.6626165,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\accepted_before_refresh_manifest.json",
+      "name": "accepted_before_refresh_manifest.json",
+      "suffix": ".json",
+      "size_bytes": 2357,
+      "updated_epoch": 1777970836.659276,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\environment_status.json",
+      "name": "environment_status.json",
+      "suffix": ".json",
+      "size_bytes": 640,
+      "updated_epoch": 1777970836.5350697,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\feature_store_status.json",
+      "name": "feature_store_status.json",
+      "suffix": ".json",
+      "size_bytes": 476,
+      "updated_epoch": 1777970836.6569102,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\fred_pull_log.csv",
+      "name": "fred_pull_log.csv",
+      "suffix": ".csv",
+      "size_bytes": 0,
+      "updated_epoch": 1777970432.83705,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\fred_series_inventory.json",
+      "name": "fred_series_inventory.json",
+      "suffix": ".json",
+      "size_bytes": 281,
+      "updated_epoch": 1777970432.83605,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\fred_update_summary.json",
+      "name": "fred_update_summary.json",
+      "suffix": ".json",
+      "size_bytes": 597,
+      "updated_epoch": 1777970432.83605,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\gold_live_price_inventory.json",
+      "name": "gold_live_price_inventory.json",
+      "suffix": ".json",
+      "size_bytes": 6473,
+      "updated_epoch": 1777970836.8784797,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\gold_live_pull_log.csv",
+      "name": "gold_live_pull_log.csv",
+      "suffix": ".csv",
+      "size_bytes": 267,
+      "updated_epoch": 1777970836.8784797,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\gold_live_update_summary.json",
+      "name": "gold_live_update_summary.json",
+      "suffix": ".json",
+      "size_bytes": 936,
+      "updated_epoch": 1777970836.8784797,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\main_intelligence_matrix_snapshot_status.json",
+      "name": "main_intelligence_matrix_snapshot_status.json",
+      "suffix": ".json",
+      "size_bytes": 490,
+      "updated_epoch": 1777970836.6569102,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\manual_csv_inventory.json",
+      "name": "manual_csv_inventory.json",
+      "suffix": ".json",
+      "size_bytes": 237,
+      "updated_epoch": 1777970836.8818793,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\manual_csv_schema_warnings.json",
+      "name": "manual_csv_schema_warnings.json",
+      "suffix": ".json",
+      "size_bytes": 179,
+      "updated_epoch": 1777970836.889807,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\manual_csv_update_summary.json",
+      "name": "manual_csv_update_summary.json",
+      "suffix": ".json",
+      "size_bytes": 415,
+      "updated_epoch": 1777970836.8818793,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\news_input_inventory.json",
+      "name": "news_input_inventory.json",
+      "suffix": ".json",
+      "size_bytes": 319,
+      "updated_epoch": 1777970836.8905263,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\news_source_coverage_preview.json",
+      "name": "news_source_coverage_preview.json",
+      "suffix": ".json",
+      "size_bytes": 394,
+      "updated_epoch": 1777970836.8915431,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\phase10_source_update_refresh_report.json",
+      "name": "phase10_source_update_refresh_report.json",
+      "suffix": ".json",
+      "size_bytes": 13001,
+      "updated_epoch": 1777970837.0116174,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\progress_checkpoint.json",
+      "name": "progress_checkpoint.json",
+      "suffix": ".json",
+      "size_bytes": 334,
+      "updated_epoch": 1777970836.481846,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\required_input_status.json",
+      "name": "required_input_status.json",
+      "suffix": ".json",
+      "size_bytes": 1597,
+      "updated_epoch": 1777970836.5350697,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\secret_leak_scan.json",
+      "name": "secret_leak_scan.json",
+      "suffix": ".json",
+      "size_bytes": 295,
+      "updated_epoch": 1777970836.9741697,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\source_update_log.csv",
+      "name": "source_update_log.csv",
+      "suffix": ".csv",
+      "size_bytes": 372,
+      "updated_epoch": 1777970836.894609,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\source_update_log.json",
+      "name": "source_update_log.json",
+      "suffix": ".json",
+      "size_bytes": 943,
+      "updated_epoch": 1777970836.893946,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\source_update_manifest.json",
+      "name": "source_update_manifest.json",
+      "suffix": ".json",
+      "size_bytes": 4054,
+      "updated_epoch": 1777970836.8936262,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\source_update_quality_review.json",
+      "name": "source_update_quality_review.json",
+      "suffix": ".json",
+      "size_bytes": 1359,
+      "updated_epoch": 1777970836.9741697,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\source_update\\timeline.json",
+      "name": "timeline.json",
+      "suffix": ".json",
+      "size_bytes": 2433,
+      "updated_epoch": 1777970836.9741697,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\best_params_by_horizon.json",
+      "name": "best_params_by_horizon.json",
+      "suffix": ".json",
+      "size_bytes": 2722,
+      "updated_epoch": 1777976283.8251555,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\diagnostics_latest.json",
+      "name": "diagnostics_latest.json",
+      "suffix": ".json",
+      "size_bytes": 3342,
+      "updated_epoch": 1777976283.822286,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\evaluation_by_horizon.json",
+      "name": "evaluation_by_horizon.json",
+      "suffix": ".json",
+      "size_bytes": 21796,
+      "updated_epoch": 1777976283.8112175,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\evaluation_rollforward.csv",
+      "name": "evaluation_rollforward.csv",
+      "suffix": ".csv",
+      "size_bytes": 2438878,
+      "updated_epoch": 1777976283.4523916,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\forecast_latest.json",
+      "name": "forecast_latest.json",
+      "suffix": ".json",
+      "size_bytes": 3111,
+      "updated_epoch": 1777976283.809219,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\interpretability_latest.json",
+      "name": "interpretability_latest.json",
+      "suffix": ".json",
+      "size_bytes": 82800,
+      "updated_epoch": 1777976283.8212855,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\optuna_study_summary.json",
+      "name": "optuna_study_summary.json",
+      "suffix": ".json",
+      "size_bytes": 4312,
+      "updated_epoch": 1777976283.8232875,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\optuna_trials.csv",
+      "name": "optuna_trials.csv",
+      "suffix": ".csv",
+      "size_bytes": 144885,
+      "updated_epoch": 1777976283.3012056,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\optuna_trials_partial_h1.csv",
+      "name": "optuna_trials_partial_h1.csv",
+      "suffix": ".csv",
+      "size_bytes": 29208,
+      "updated_epoch": 1777975338.4207222,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\optuna_trials_partial_h10.csv",
+      "name": "optuna_trials_partial_h10.csv",
+      "suffix": ".csv",
+      "size_bytes": 29148,
+      "updated_epoch": 1777976076.8157384,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\optuna_trials_partial_h20.csv",
+      "name": "optuna_trials_partial_h20.csv",
+      "suffix": ".csv",
+      "size_bytes": 29402,
+      "updated_epoch": 1777976175.2816017,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\optuna_trials_partial_h30.csv",
+      "name": "optuna_trials_partial_h30.csv",
+      "suffix": ".csv",
+      "size_bytes": 29204,
+      "updated_epoch": 1777976261.1339498,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\optuna_trials_partial_h5.csv",
+      "name": "optuna_trials_partial_h5.csv",
+      "suffix": ".csv",
+      "size_bytes": 28951,
+      "updated_epoch": 1777975978.8481126,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\phase6_alpha_structural_report.json",
+      "name": "phase6_alpha_structural_report.json",
+      "suffix": ".json",
+      "size_bytes": 14001,
+      "updated_epoch": 1777976283.8333826,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\progress_checkpoint.json",
+      "name": "progress_checkpoint.json",
+      "suffix": ".json",
+      "size_bytes": 1176,
+      "updated_epoch": 1777976283.2883387,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\quality_review.json",
+      "name": "quality_review.json",
+      "suffix": ".json",
+      "size_bytes": 7483,
+      "updated_epoch": 1777976283.8301294,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\rolling_origin_by_horizon.json",
+      "name": "rolling_origin_by_horizon.json",
+      "suffix": ".json",
+      "size_bytes": 6037,
+      "updated_epoch": 1777976283.813494,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\rolling_origin_metrics.json",
+      "name": "rolling_origin_metrics.json",
+      "suffix": ".json",
+      "size_bytes": 6037,
+      "updated_epoch": 1777976283.8122187,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\rolling_origin_predictions.csv",
+      "name": "rolling_origin_predictions.csv",
+      "suffix": ".csv",
+      "size_bytes": 491801,
+      "updated_epoch": 1777976283.4901652,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\rolling_origin_vs_static_split.json",
+      "name": "rolling_origin_vs_static_split.json",
+      "suffix": ".json",
+      "size_bytes": 6608,
+      "updated_epoch": 1777976283.8152242,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\run_summary.json",
+      "name": "run_summary.json",
+      "suffix": ".json",
+      "size_bytes": 44097,
+      "updated_epoch": 1777976283.8082187,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\shap_global_importance.csv",
+      "name": "shap_global_importance.csv",
+      "suffix": ".csv",
+      "size_bytes": 2895,
+      "updated_epoch": 1777976283.7691214,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\shap_latest_forecast_explanation.json",
+      "name": "shap_latest_forecast_explanation.json",
+      "suffix": ".json",
+      "size_bytes": 20212,
+      "updated_epoch": 1777976283.8291314,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\shap_summary.json",
+      "name": "shap_summary.json",
+      "suffix": ".json",
+      "size_bytes": 18930,
+      "updated_epoch": 1777976283.8251555,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\timeline.json",
+      "name": "timeline.json",
+      "suffix": ".json",
+      "size_bytes": 10438,
+      "updated_epoch": 1777976283.8349051,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\alpha_structural\\uncertainty_latest.json",
+      "name": "uncertainty_latest.json",
+      "suffix": ".json",
+      "size_bytes": 2133,
+      "updated_epoch": 1777976283.8159914,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\attention_summary.json",
+      "name": "attention_summary.json",
+      "suffix": ".json",
+      "size_bytes": 3320,
+      "updated_epoch": 1777977209.8267708,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\best_config.json",
+      "name": "best_config.json",
+      "suffix": ".json",
+      "size_bytes": 1158,
+      "updated_epoch": 1777977209.8314958,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\diagnostics_latest.json",
+      "name": "diagnostics_latest.json",
+      "suffix": ".json",
+      "size_bytes": 2976,
+      "updated_epoch": 1777977209.8300865,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\evaluation_by_horizon.json",
+      "name": "evaluation_by_horizon.json",
+      "suffix": ".json",
+      "size_bytes": 14832,
+      "updated_epoch": 1777977209.82195,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\evaluation_rollforward.csv",
+      "name": "evaluation_rollforward.csv",
+      "suffix": ".csv",
+      "size_bytes": 2926855,
+      "updated_epoch": 1777977208.6223462,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\feature_occlusion_importance.csv",
+      "name": "feature_occlusion_importance.csv",
+      "suffix": ".csv",
+      "size_bytes": 7892,
+      "updated_epoch": 1777977209.781172,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\forecast_latest.json",
+      "name": "forecast_latest.json",
+      "suffix": ".json",
+      "size_bytes": 2552,
+      "updated_epoch": 1777977209.820643,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\interpretability_latest.json",
+      "name": "interpretability_latest.json",
+      "suffix": ".json",
+      "size_bytes": 7837,
+      "updated_epoch": 1777977209.829772,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\latest_sequence_explanation.json",
+      "name": "latest_sequence_explanation.json",
+      "suffix": ".json",
+      "size_bytes": 7880,
+      "updated_epoch": 1777977209.827771,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\mc_dropout_samples_preview.csv",
+      "name": "mc_dropout_samples_preview.csv",
+      "suffix": ".csv",
+      "size_bytes": 2787,
+      "updated_epoch": 1777977209.7861154,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\mc_dropout_summary.json",
+      "name": "mc_dropout_summary.json",
+      "suffix": ".json",
+      "size_bytes": 15477,
+      "updated_epoch": 1777977209.8257709,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\optuna_study_summary.json",
+      "name": "optuna_study_summary.json",
+      "suffix": ".json",
+      "size_bytes": 1231,
+      "updated_epoch": 1777977209.8314958,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\optuna_trials.csv",
+      "name": "optuna_trials.csv",
+      "suffix": ".csv",
+      "size_bytes": 14008,
+      "updated_epoch": 1777977143.7430685,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\optuna_trials_partial.csv",
+      "name": "optuna_trials_partial.csv",
+      "suffix": ".csv",
+      "size_bytes": 14008,
+      "updated_epoch": 1777977143.7373273,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\phase7_beta_temporal_report.json",
+      "name": "phase7_beta_temporal_report.json",
+      "suffix": ".json",
+      "size_bytes": 13418,
+      "updated_epoch": 1777977209.8359318,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\progress_checkpoint.json",
+      "name": "progress_checkpoint.json",
+      "suffix": ".json",
+      "size_bytes": 832,
+      "updated_epoch": 1777977207.20354,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\quality_review.json",
+      "name": "quality_review.json",
+      "suffix": ".json",
+      "size_bytes": 8953,
+      "updated_epoch": 1777977209.8339255,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\rolling_origin_metrics.json",
+      "name": "rolling_origin_metrics.json",
+      "suffix": ".json",
+      "size_bytes": 6638,
+      "updated_epoch": 1777977209.8237193,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\rolling_origin_predictions.csv",
+      "name": "rolling_origin_predictions.csv",
+      "suffix": ".csv",
+      "size_bytes": 463975,
+      "updated_epoch": 1777977208.6510956,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\run_summary.json",
+      "name": "run_summary.json",
+      "suffix": ".json",
+      "size_bytes": 31347,
+      "updated_epoch": 1777977209.8196423,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\sanity_checks.json",
+      "name": "sanity_checks.json",
+      "suffix": ".json",
+      "size_bytes": 556,
+      "updated_epoch": 1777977154.653577,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\sequence_dataset_manifest.json",
+      "name": "sequence_dataset_manifest.json",
+      "suffix": ".json",
+      "size_bytes": 2521,
+      "updated_epoch": 1777976421.8291621,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\timeline.json",
+      "name": "timeline.json",
+      "suffix": ".json",
+      "size_bytes": 5949,
+      "updated_epoch": 1777977209.8369384,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\training_history.csv",
+      "name": "training_history.csv",
+      "suffix": ".csv",
+      "size_bytes": 12805,
+      "updated_epoch": 1777977208.3280208,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\beta_temporal\\uncertainty_latest.json",
+      "name": "uncertainty_latest.json",
+      "suffix": ".json",
+      "size_bytes": 3298,
+      "updated_epoch": 1777977209.824772,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\best_config.json",
+      "name": "best_config.json",
+      "suffix": ".json",
+      "size_bytes": 296,
+      "updated_epoch": 1778017761.8401568,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\calibrated_quantile_forecast_table.csv",
+      "name": "calibrated_quantile_forecast_table.csv",
+      "suffix": ".csv",
+      "size_bytes": 1574022,
+      "updated_epoch": 1778017777.8664117,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\dependency_precheck.json",
+      "name": "dependency_precheck.json",
+      "suffix": ".json",
+      "size_bytes": 635,
+      "updated_epoch": 1778016065.3741052,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\diagnostics_latest.json",
+      "name": "diagnostics_latest.json",
+      "suffix": ".json",
+      "size_bytes": 2757,
+      "updated_epoch": 1778017828.8245125,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\evaluation_by_horizon.json",
+      "name": "evaluation_by_horizon.json",
+      "suffix": ".json",
+      "size_bytes": 6122,
+      "updated_epoch": 1778017776.632303,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\evaluation_rollforward.csv",
+      "name": "evaluation_rollforward.csv",
+      "suffix": ".csv",
+      "size_bytes": 9467722,
+      "updated_epoch": 1778017777.2529867,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\evaluation_rollforward_summary.json",
+      "name": "evaluation_rollforward_summary.json",
+      "suffix": ".json",
+      "size_bytes": 875,
+      "updated_epoch": 1778017777.5952375,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\forecast_latest.json",
+      "name": "forecast_latest.json",
+      "suffix": ".json",
+      "size_bytes": 9788,
+      "updated_epoch": 1778017828.8227584,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\horizon_attention_summary.json",
+      "name": "horizon_attention_summary.json",
+      "suffix": ".json",
+      "size_bytes": 4168,
+      "updated_epoch": 1778017778.0449953,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\interpretability_latest.json",
+      "name": "interpretability_latest.json",
+      "suffix": ".json",
+      "size_bytes": 22683,
+      "updated_epoch": 1778017828.8237586,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\interval_calibration_summary.json",
+      "name": "interval_calibration_summary.json",
+      "suffix": ".json",
+      "size_bytes": 2967,
+      "updated_epoch": 1778017776.6282938,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\latest_tft_explanation.json",
+      "name": "latest_tft_explanation.json",
+      "suffix": ".json",
+      "size_bytes": 8947,
+      "updated_epoch": 1778017828.8227584,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\native_evaluation_rollforward.csv",
+      "name": "native_evaluation_rollforward.csv",
+      "suffix": ".csv",
+      "size_bytes": 9377611,
+      "updated_epoch": 1778017777.5838244,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\native_quantile_forecast_table.csv",
+      "name": "native_quantile_forecast_table.csv",
+      "suffix": ".csv",
+      "size_bytes": 1558472,
+      "updated_epoch": 1778017777.7546897,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\optuna_trials.csv",
+      "name": "optuna_trials.csv",
+      "suffix": ".csv",
+      "size_bytes": 9321,
+      "updated_epoch": 1778017761.8401568,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\page_bundle.json",
+      "name": "page_bundle.json",
+      "suffix": ".json",
+      "size_bytes": 3013,
+      "updated_epoch": 1778017828.8795145,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\phase8_delta_tft_report.json",
+      "name": "phase8_delta_tft_report.json",
+      "suffix": ".json",
+      "size_bytes": 39544,
+      "updated_epoch": 1778017828.8805146,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\pinball_loss_summary.json",
+      "name": "pinball_loss_summary.json",
+      "suffix": ".json",
+      "size_bytes": 5611,
+      "updated_epoch": 1778017777.949776,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\progress_checkpoint.json",
+      "name": "progress_checkpoint.json",
+      "suffix": ".json",
+      "size_bytes": 596,
+      "updated_epoch": 1778017761.849843,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\quality_review.json",
+      "name": "quality_review.json",
+      "suffix": ".json",
+      "size_bytes": 1097,
+      "updated_epoch": 1778017828.8785148,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\quantile_behavior_summary.json",
+      "name": "quantile_behavior_summary.json",
+      "suffix": ".json",
+      "size_bytes": 487,
+      "updated_epoch": 1778017778.0449953,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\quantile_coverage_summary.json",
+      "name": "quantile_coverage_summary.json",
+      "suffix": ".json",
+      "size_bytes": 11583,
+      "updated_epoch": 1778017777.949776,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\quantile_forecast_table.csv",
+      "name": "quantile_forecast_table.csv",
+      "suffix": ".csv",
+      "size_bytes": 1574022,
+      "updated_epoch": 1778017777.949776,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\rolling_origin_metrics.json",
+      "name": "rolling_origin_metrics.json",
+      "suffix": ".json",
+      "size_bytes": 1873,
+      "updated_epoch": 1778017777.949776,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\rolling_origin_predictions.csv",
+      "name": "rolling_origin_predictions.csv",
+      "suffix": ".csv",
+      "size_bytes": 1637097,
+      "updated_epoch": 1778017777.6759076,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\run_summary.json",
+      "name": "run_summary.json",
+      "suffix": ".json",
+      "size_bytes": 5872,
+      "updated_epoch": 1778017828.8785148,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\sanity_checks.json",
+      "name": "sanity_checks.json",
+      "suffix": ".json",
+      "size_bytes": 1581,
+      "updated_epoch": 1778016065.6077836,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\temporal_attention_summary.json",
+      "name": "temporal_attention_summary.json",
+      "suffix": ".json",
+      "size_bytes": 4388,
+      "updated_epoch": 1778017778.0449953,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\tft_dataset_manifest.json",
+      "name": "tft_dataset_manifest.json",
+      "suffix": ".json",
+      "size_bytes": 2758,
+      "updated_epoch": 1778017761.848535,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\timeline.json",
+      "name": "timeline.json",
+      "suffix": ".json",
+      "size_bytes": 4161,
+      "updated_epoch": 1778017828.8095646,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\training_history.csv",
+      "name": "training_history.csv",
+      "suffix": ".csv",
+      "size_bytes": 7442,
+      "updated_epoch": 1778017828.8075588,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\uncertainty_latest.json",
+      "name": "uncertainty_latest.json",
+      "suffix": ".json",
+      "size_bytes": 14755,
+      "updated_epoch": 1778017777.949776,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\delta_tft\\variable_selection_summary.json",
+      "name": "variable_selection_summary.json",
+      "suffix": ".json",
+      "size_bytes": 3717,
+      "updated_epoch": 1778017778.0449953,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\component_diagnostics.json",
+      "name": "component_diagnostics.json",
+      "suffix": ".json",
+      "size_bytes": 2754,
+      "updated_epoch": 1778018034.5756128,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\component_evaluation_by_horizon.json",
+      "name": "component_evaluation_by_horizon.json",
+      "suffix": ".json",
+      "size_bytes": 69945,
+      "updated_epoch": 1778018033.2722929,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\component_forecasts.csv",
+      "name": "component_forecasts.csv",
+      "suffix": ".csv",
+      "size_bytes": 5976342,
+      "updated_epoch": 1778018034.3030617,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\component_models.json",
+      "name": "component_models.json",
+      "suffix": ".json",
+      "size_bytes": 3638,
+      "updated_epoch": 1778018033.2722929,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\component_ranking.json",
+      "name": "component_ranking.json",
+      "suffix": ".json",
+      "size_bytes": 3039,
+      "updated_epoch": 1778018033.2732935,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\component_training_log.csv",
+      "name": "component_training_log.csv",
+      "suffix": ".csv",
+      "size_bytes": 516,
+      "updated_epoch": 1778018033.2494657,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\component_weights.json",
+      "name": "component_weights.json",
+      "suffix": ".json",
+      "size_bytes": 4035,
+      "updated_epoch": 1778018033.2732935,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\dependency_precheck.json",
+      "name": "dependency_precheck.json",
+      "suffix": ".json",
+      "size_bytes": 380,
+      "updated_epoch": 1778017952.9414966,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\diagnostics_latest.json",
+      "name": "diagnostics_latest.json",
+      "suffix": ".json",
+      "size_bytes": 1904,
+      "updated_epoch": 1778018034.5766134,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\ensemble_forecast.json",
+      "name": "ensemble_forecast.json",
+      "suffix": ".json",
+      "size_bytes": 3312,
+      "updated_epoch": 1778018034.5756128,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\ensemble_selection_details.json",
+      "name": "ensemble_selection_details.json",
+      "suffix": ".json",
+      "size_bytes": 90969,
+      "updated_epoch": 1778018033.3039398,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\epsilon_dataset_manifest.json",
+      "name": "epsilon_dataset_manifest.json",
+      "suffix": ".json",
+      "size_bytes": 1498,
+      "updated_epoch": 1778017953.354396,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\evaluation_by_horizon.json",
+      "name": "evaluation_by_horizon.json",
+      "suffix": ".json",
+      "size_bytes": 6060,
+      "updated_epoch": 1778018033.300936,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\evaluation_rollforward.csv",
+      "name": "evaluation_rollforward.csv",
+      "suffix": ".csv",
+      "size_bytes": 9867790,
+      "updated_epoch": 1778018033.811036,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\evaluation_rollforward_summary.json",
+      "name": "evaluation_rollforward_summary.json",
+      "suffix": ".json",
+      "size_bytes": 1240,
+      "updated_epoch": 1778018033.818174,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\expert_disagreement.json",
+      "name": "expert_disagreement.json",
+      "suffix": ".json",
+      "size_bytes": 2564,
+      "updated_epoch": 1778018034.411551,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\forecast_latest.json",
+      "name": "forecast_latest.json",
+      "suffix": ".json",
+      "size_bytes": 3312,
+      "updated_epoch": 1778018034.574607,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\interpretability_latest.json",
+      "name": "interpretability_latest.json",
+      "suffix": ".json",
+      "size_bytes": 8989,
+      "updated_epoch": 1778018034.5756128,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\page_bundle.json",
+      "name": "page_bundle.json",
+      "suffix": ".json",
+      "size_bytes": 2714,
+      "updated_epoch": 1778018034.6073341,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\phase9_epsilon_expert_report.json",
+      "name": "phase9_epsilon_expert_report.json",
+      "suffix": ".json",
+      "size_bytes": 135280,
+      "updated_epoch": 1778018034.61201,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\progress_checkpoint.json",
+      "name": "progress_checkpoint.json",
+      "suffix": ".json",
+      "size_bytes": 515,
+      "updated_epoch": 1778018033.2494657,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\quality_review.json",
+      "name": "quality_review.json",
+      "suffix": ".json",
+      "size_bytes": 868,
+      "updated_epoch": 1778018034.6073341,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\residual_interval_calibration.json",
+      "name": "residual_interval_calibration.json",
+      "suffix": ".json",
+      "size_bytes": 1852,
+      "updated_epoch": 1778018033.3049414,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\rolling_origin_metrics.json",
+      "name": "rolling_origin_metrics.json",
+      "suffix": ".json",
+      "size_bytes": 1858,
+      "updated_epoch": 1778018034.4105506,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\rolling_origin_predictions.csv",
+      "name": "rolling_origin_predictions.csv",
+      "suffix": ".csv",
+      "size_bytes": 1631937,
+      "updated_epoch": 1778018034.4085512,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\run_summary.json",
+      "name": "run_summary.json",
+      "suffix": ".json",
+      "size_bytes": 4249,
+      "updated_epoch": 1778018034.6073341,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\sanity_checks.json",
+      "name": "sanity_checks.json",
+      "suffix": ".json",
+      "size_bytes": 999,
+      "updated_epoch": 1778017953.3509848,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\timeline.json",
+      "name": "timeline.json",
+      "suffix": ".json",
+      "size_bytes": 2210,
+      "updated_epoch": 1778018033.251472,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\epsilon_expert_ensemble\\uncertainty_latest.json",
+      "name": "uncertainty_latest.json",
+      "suffix": ".json",
+      "size_bytes": 5794,
+      "updated_epoch": 1778018033.3069398,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\gamma_news_sensitivity\\diagnostics_latest.json",
+      "name": "diagnostics_latest.json",
+      "suffix": ".json",
+      "size_bytes": 3619,
+      "updated_epoch": 1778027172.7382107,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\gamma_news_sensitivity\\gamma_date_context.csv",
+      "name": "gamma_date_context.csv",
+      "suffix": ".csv",
+      "size_bytes": 3458032,
+      "updated_epoch": 1778029553.5942469,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\gamma_news_sensitivity\\gamma_latest_context.json",
+      "name": "gamma_latest_context.json",
+      "suffix": ".json",
+      "size_bytes": 24499,
+      "updated_epoch": 1778027172.5810435,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\gamma_news_sensitivity\\gamma_model_joined_context.csv",
+      "name": "gamma_model_joined_context.csv",
+      "suffix": ".csv",
+      "size_bytes": 67672577,
+      "updated_epoch": 1778027171.665495,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\gamma_news_sensitivity\\gamma_sensitivity_by_horizon.json",
+      "name": "gamma_sensitivity_by_horizon.json",
+      "suffix": ".json",
+      "size_bytes": 88821,
+      "updated_epoch": 1778027172.3306167,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\gamma_news_sensitivity\\gamma_tooltip_context.json",
+      "name": "gamma_tooltip_context.json",
+      "suffix": ".json",
+      "size_bytes": 16302873,
+      "updated_epoch": 1778027172.5810435,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\gamma_news_sensitivity\\page_bundle.json",
+      "name": "page_bundle.json",
+      "suffix": ".json",
+      "size_bytes": 1529,
+      "updated_epoch": 1778027172.7392104,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\gamma_news_sensitivity\\phase13_gamma_news_sensitivity_report.json",
+      "name": "phase13_gamma_news_sensitivity_report.json",
+      "suffix": ".json",
+      "size_bytes": 138733,
+      "updated_epoch": 1778027172.7420092,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\gamma_news_sensitivity\\progress_checkpoint.json",
+      "name": "progress_checkpoint.json",
+      "suffix": ".json",
+      "size_bytes": 384,
+      "updated_epoch": 1778027169.6101232,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\gamma_news_sensitivity\\quality_review.json",
+      "name": "quality_review.json",
+      "suffix": ".json",
+      "size_bytes": 943,
+      "updated_epoch": 1778027172.588965,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\gamma_news_sensitivity\\run_summary.json",
+      "name": "run_summary.json",
+      "suffix": ".json",
+      "size_bytes": 5152,
+      "updated_epoch": 1778027172.6492057,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\gamma_news_sensitivity\\timeline.json",
+      "name": "timeline.json",
+      "suffix": ".json",
+      "size_bytes": 4062,
+      "updated_epoch": 1778027171.6754065,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\omega_fusion\\diagnostics_latest.json",
+      "name": "diagnostics_latest.json",
+      "suffix": ".json",
+      "size_bytes": 4267,
+      "updated_epoch": 1778029645.9210117,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\omega_fusion\\omega_evaluation_by_horizon.json",
+      "name": "omega_evaluation_by_horizon.json",
+      "suffix": ".json",
+      "size_bytes": 14152,
+      "updated_epoch": 1778029645.8506346,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\omega_fusion\\omega_forecast_latest.json",
+      "name": "omega_forecast_latest.json",
+      "suffix": ".json",
+      "size_bytes": 14912,
+      "updated_epoch": 1778029645.8546398,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\omega_fusion\\omega_forecast_points.csv",
+      "name": "omega_forecast_points.csv",
+      "suffix": ".csv",
+      "size_bytes": 2297,
+      "updated_epoch": 1778029645.8556387,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\omega_fusion\\omega_model_ranking.json",
+      "name": "omega_model_ranking.json",
+      "suffix": ".json",
+      "size_bytes": 34551,
+      "updated_epoch": 1778029568.9073493,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\omega_fusion\\omega_rollforward.csv",
+      "name": "omega_rollforward.csv",
+      "suffix": ".csv",
+      "size_bytes": 30620377,
+      "updated_epoch": 1778029645.74908,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\omega_fusion\\omega_weights_by_horizon.json",
+      "name": "omega_weights_by_horizon.json",
+      "suffix": ".json",
+      "size_bytes": 19663,
+      "updated_epoch": 1778029568.9083514,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\omega_fusion\\page_bundle.json",
+      "name": "page_bundle.json",
+      "suffix": ".json",
+      "size_bytes": 1703,
+      "updated_epoch": 1778029645.9979038,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\omega_fusion\\phase14_omega_fusion_report.json",
+      "name": "phase14_omega_fusion_report.json",
+      "suffix": ".json",
+      "size_bytes": 95392,
+      "updated_epoch": 1778029646.0012538,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\omega_fusion\\progress_checkpoint.json",
+      "name": "progress_checkpoint.json",
+      "suffix": ".json",
+      "size_bytes": 354,
+      "updated_epoch": 1778029568.8307004,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\omega_fusion\\quality_review.json",
+      "name": "quality_review.json",
+      "suffix": ".json",
+      "size_bytes": 965,
+      "updated_epoch": 1778029645.8636584,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\omega_fusion\\run_summary.json",
+      "name": "run_summary.json",
+      "suffix": ".json",
+      "size_bytes": 3817,
+      "updated_epoch": 1778029645.996902,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\models\\omega_fusion\\timeline.json",
+      "name": "timeline.json",
+      "suffix": ".json",
+      "size_bytes": 1024,
+      "updated_epoch": 1778029645.8516397,
+      "final_related": true
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\api_pulls\\gdelt_news_items_raw.csv",
+      "name": "gdelt_news_items_raw.csv",
+      "suffix": ".csv",
+      "size_bytes": 17476,
+      "updated_epoch": 1778024164.9147696,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\api_pulls\\gdelt_news_items_raw.json",
+      "name": "gdelt_news_items_raw.json",
+      "suffix": ".json",
+      "size_bytes": 34452,
+      "updated_epoch": 1778024164.9147696,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\api_pulls\\newsapi_news_items_raw.csv",
+      "name": "newsapi_news_items_raw.csv",
+      "suffix": ".csv",
+      "size_bytes": 7,
+      "updated_epoch": 1778024164.9199097,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\api_pulls\\newsapi_news_items_raw.json",
+      "name": "newsapi_news_items_raw.json",
+      "suffix": ".json",
+      "size_bytes": 223,
+      "updated_epoch": 1778024164.9199097,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\api_pulls\\rss_news_items_raw.csv",
+      "name": "rss_news_items_raw.csv",
+      "suffix": ".csv",
+      "size_bytes": 126229,
+      "updated_epoch": 1778024164.9199097,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\api_pulls\\rss_news_items_raw.json",
+      "name": "rss_news_items_raw.json",
+      "suffix": ".json",
+      "size_bytes": 185868,
+      "updated_epoch": 1778024164.9147696,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\historical\\historical_news_backfill_manifest.json",
+      "name": "historical_news_backfill_manifest.json",
+      "suffix": ".json",
+      "size_bytes": 1000,
+      "updated_epoch": 1778023986.327589,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\historical\\historical_news_daily_index.csv",
+      "name": "historical_news_daily_index.csv",
+      "suffix": ".csv",
+      "size_bytes": 2046201,
+      "updated_epoch": 1778023986.32089,
+      "final_related": false
+    },
+    {
+      "path": "public\\artifacts\\deep_ml\\news\\structured\\news_context_daily_combined.csv",
+      "name": "news_context_daily_combined.csv",
+      "suffix": ".csv",
+      "size_bytes": 2050824,
+      "updated_epoch": 1778024165.0516257,
+      "final_related": false
+    }
+  ]
+}

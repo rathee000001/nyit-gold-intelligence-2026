@@ -1,0 +1,2284 @@
+{
+  "artifact_type": "phase14_omega_fusion_report",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "Phase 14 - Omega Fusion",
+  "phase_key": "phase14_omega_fusion",
+  "model_key": "omega_fusion",
+  "model_name": "Omega Fusion",
+  "status": "ready",
+  "run_summary": {
+    "artifact_type": "deep_ml_model_run",
+    "schema_version": "1.0.0",
+    "project": "Gold Nexus Alpha",
+    "phase": "phase_2_deep_ml",
+    "phase_key": "phase14_omega_fusion",
+    "model_key": "omega_fusion",
+    "model_name": "Omega Fusion",
+    "family": "artifact_level_validation_weighted_fusion",
+    "status": "ready",
+    "run": {
+      "run_id": "deepml_run_20260506_010608_omega_fusion",
+      "generated_at_utc": "2026-05-06T01:06:08.830002Z",
+      "completed_at_utc": "2026-05-06T01:07:25.921011Z",
+      "generated_at_local": "2026-05-05T21:06:08.830002-04:00",
+      "timezone_local": "America/New_York",
+      "git_commit_sha": "cb7a3de",
+      "code_version": "omega_fusion_v2_validation_weighted_artifact_fusion_no_news_training",
+      "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "smoke": false
+    },
+    "fusion_policy": {
+      "component_models": [
+        "alpha_structural",
+        "beta_temporal",
+        "delta_tft",
+        "epsilon_expert_ensemble"
+      ],
+      "weights": "inverse validation metric by horizon with transparent fallback",
+      "primary_weight_metric": "validation MAPE",
+      "news_sensitivity_used_for_weights": false,
+      "gamma_usage": "interpretive_context_only",
+      "no_retraining": true
+    },
+    "source_contract": {
+      "model_sources": {
+        "alpha_structural": {
+          "display_name": "Alpha Structural",
+          "family": "xgboost_structural_expert",
+          "evaluation": "artifacts/deep_ml/models/alpha_structural/evaluation_by_horizon.json",
+          "rollforward": "artifacts/deep_ml/models/alpha_structural/evaluation_rollforward.csv",
+          "forecast": "artifacts/deep_ml/models/alpha_structural/forecast_latest.json",
+          "report": "artifacts/deep_ml/models/alpha_structural/phase6_alpha_structural_report.json"
+        },
+        "beta_temporal": {
+          "display_name": "Beta Temporal",
+          "family": "sequence_temporal_expert",
+          "evaluation": "artifacts/deep_ml/models/beta_temporal/evaluation_by_horizon.json",
+          "rollforward": "artifacts/deep_ml/models/beta_temporal/evaluation_rollforward.csv",
+          "forecast": "artifacts/deep_ml/models/beta_temporal/forecast_latest.json",
+          "report": "artifacts/deep_ml/models/beta_temporal/phase7_beta_temporal_report.json"
+        },
+        "delta_tft": {
+          "display_name": "Delta TFT",
+          "family": "temporal_fusion_quantile_expert",
+          "evaluation": "artifacts/deep_ml/models/delta_tft/evaluation_by_horizon.json",
+          "rollforward": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv",
+          "forecast": "artifacts/deep_ml/models/delta_tft/forecast_latest.json",
+          "report": "artifacts/deep_ml/models/delta_tft/phase8_delta_tft_report.json"
+        },
+        "epsilon_expert_ensemble": {
+          "display_name": "Epsilon Ensemble",
+          "family": "statistical_ml_benchmark_ensemble",
+          "evaluation": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_by_horizon.json",
+          "rollforward": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_rollforward.csv",
+          "forecast": "artifacts/deep_ml/models/epsilon_expert_ensemble/forecast_latest.json",
+          "report": "artifacts/deep_ml/models/epsilon_expert_ensemble/phase9_epsilon_expert_report.json"
+        }
+      },
+      "gamma_report": "artifacts/deep_ml/models/gamma_news_sensitivity/phase13_gamma_news_sensitivity_report.json",
+      "gamma_tooltip_context": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_tooltip_context.json"
+    },
+    "professor_safe_summary": "Omega is a transparent Deep ML fusion candidate. It combines finished expert outputs and reports its own rollforward evaluation and forecast path."
+  },
+  "quality_review": {
+    "artifact_type": "deep_ml_quality_review",
+    "schema_version": "1.0.0",
+    "phase_key": "phase14_omega_fusion",
+    "model_key": "omega_fusion",
+    "status": "ready",
+    "blocking_flags": [],
+    "warnings": [],
+    "acceptance_gate": {
+      "all_required_model_reports_exist": true,
+      "all_required_rollforward_files_exist": true,
+      "all_required_forecast_files_exist": true,
+      "gamma_report_exists": true,
+      "gamma_used_as_context_only": true,
+      "news_used_as_training_input": false,
+      "weights_use_validation_metrics": true,
+      "test_metrics_reported_not_used_as_primary_weight_basis": true,
+      "omega_rollforward_exists": true,
+      "omega_forecast_latest_exists": true,
+      "omega_evaluation_exists": true
+    },
+    "professor_safe_summary": "Omega fuses Alpha, Beta, Delta, and Epsilon using transparent validation-performance weights. Gamma remains interpretive context only.",
+    "generated_at_utc": "2026-05-06T01:07:25.862658Z"
+  },
+  "diagnostics_snapshot": {
+    "artifact_type": "omega_fusion_diagnostics_latest",
+    "schema_version": "1.0.0",
+    "phase_key": "phase14_omega_fusion",
+    "model_key": "omega_fusion",
+    "status": "ready",
+    "smoke": false,
+    "omega_rollforward_rows": 26386,
+    "omega_forecast_points": 5,
+    "rollforward_meta": {
+      "alpha_structural": {
+        "model_key": "alpha_structural",
+        "input_rows": 26344,
+        "output_rows": 26344,
+        "status": "ready",
+        "gold_price_source_column": "gold_price",
+        "missing_required_columns": [],
+        "p10_source_column": null,
+        "p50_source_column": "prediction",
+        "p90_source_column": null,
+        "split_counts": {
+          "test": 4169,
+          "train": 16955,
+          "validation": 5220
+        },
+        "horizon_counts": {
+          "1": 5281,
+          "5": 5277,
+          "10": 5272,
+          "20": 5262,
+          "30": 5252
+        },
+        "path": "artifacts/deep_ml/models/alpha_structural/evaluation_rollforward.csv",
+        "exists": true,
+        "file_hash": "sha256:4d505ec86e931d28d26f20f016018b080033fc8a522c1863795b522fc070dcbd"
+      },
+      "beta_temporal": {
+        "model_key": "beta_temporal",
+        "input_rows": 26165,
+        "output_rows": 26165,
+        "status": "ready",
+        "gold_price_source_column": "raw_origin_gold_price",
+        "missing_required_columns": [],
+        "p10_source_column": null,
+        "p50_source_column": "prediction",
+        "p90_source_column": null,
+        "split_counts": {
+          "test": 4085,
+          "train": 16860,
+          "validation": 5220
+        },
+        "horizon_counts": {
+          "1": 5233,
+          "5": 5233,
+          "10": 5233,
+          "20": 5233,
+          "30": 5233
+        },
+        "path": "artifacts/deep_ml/models/beta_temporal/evaluation_rollforward.csv",
+        "exists": true,
+        "file_hash": "sha256:05b1e61c74a7927c6e4fc71e7e32d49c756164b7bf93f9fdee142404d00b327e"
+      },
+      "delta_tft": {
+        "model_key": "delta_tft",
+        "input_rows": 26285,
+        "output_rows": 26285,
+        "status": "ready",
+        "gold_price_source_column": "gold_price",
+        "missing_required_columns": [],
+        "p10_source_column": "p10",
+        "p50_source_column": "p50",
+        "p90_source_column": "p90",
+        "split_counts": {
+          "test": 4205,
+          "train": 16860,
+          "validation": 5220
+        },
+        "horizon_counts": {
+          "1": 5257,
+          "5": 5257,
+          "10": 5257,
+          "20": 5257,
+          "30": 5257
+        },
+        "path": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv",
+        "exists": true,
+        "file_hash": "sha256:03caad7f11f330ff4563e5f80c015c015a2fd8d83e85b0e826b024459117ffe4"
+      },
+      "epsilon_expert_ensemble": {
+        "model_key": "epsilon_expert_ensemble",
+        "input_rows": 26380,
+        "output_rows": 26380,
+        "status": "ready",
+        "gold_price_source_column": "gold_price",
+        "missing_required_columns": [],
+        "p10_source_column": "p10",
+        "p50_source_column": "p50",
+        "p90_source_column": "p90",
+        "split_counts": {
+          "test": 4205,
+          "train": 16955,
+          "validation": 5220
+        },
+        "horizon_counts": {
+          "1": 5276,
+          "5": 5276,
+          "10": 5276,
+          "20": 5276,
+          "30": 5276
+        },
+        "path": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_rollforward.csv",
+        "exists": true,
+        "file_hash": "sha256:94c5442ee508fff4026f74706551c284c73872fa5d43bf1f797c41d0b6bf1feb"
+      }
+    },
+    "output_hashes": {
+      "omega_rollforward": "sha256:86d7eebe97e3b32ddefdd481851dfbde67a90788db5d3e0339996701fbf3d82a",
+      "omega_forecast_latest": "sha256:053522d1bd1b470c61297c5ec054a3d69c916dc45ba3f932c8e2e4f133f9e4db",
+      "omega_evaluation_by_horizon": "sha256:2dd02d96185360a79fdde4814dc0ab56b8b6884501e27f13f8737ef719b640e2",
+      "omega_model_ranking": "sha256:3a3c3f0fcbbad73be9fe345f4448590533efff60a053a88f328e0e9aacf45b38",
+      "omega_weights_by_horizon": "sha256:b155107232f9dbf10a7abbfe353b729f0d5f7d72eb8b55176e3ab6203c336f9e"
+    },
+    "professor_safe_note": "Diagnostics describe artifact creation and integrity. They are not claims of predictive guarantee.",
+    "generated_at_utc": "2026-05-06T01:07:25.920241Z"
+  },
+  "input_inventory": {
+    "gamma": {
+      "report_path": "artifacts/deep_ml/models/gamma_news_sensitivity/phase13_gamma_news_sensitivity_report.json",
+      "tooltip_path": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_tooltip_context.json",
+      "sensitivity_path": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_sensitivity_by_horizon.json",
+      "status": "ready",
+      "quality_status": "ready",
+      "used_as": "interpretive_context_only_not_training_input"
+    },
+    "alpha_structural": {
+      "display_name": "Alpha Structural",
+      "family": "xgboost_structural_expert",
+      "files": {
+        "evaluation": {
+          "path": "artifacts/deep_ml/models/alpha_structural/evaluation_by_horizon.json",
+          "exists": true,
+          "size_bytes": 21796,
+          "hash": "sha256:55abf1fa0128f266c1f04bb62617504881331ddab1c9e5a46b6058646e7bb053"
+        },
+        "rollforward": {
+          "path": "artifacts/deep_ml/models/alpha_structural/evaluation_rollforward.csv",
+          "exists": true,
+          "size_bytes": 2438878,
+          "hash": "sha256:4d505ec86e931d28d26f20f016018b080033fc8a522c1863795b522fc070dcbd"
+        },
+        "forecast": {
+          "path": "artifacts/deep_ml/models/alpha_structural/forecast_latest.json",
+          "exists": true,
+          "size_bytes": 3111,
+          "hash": "sha256:512c3089abfbcc494cecc1ebd64b227882e74cab5f8d2a25b79f940303c7d382"
+        },
+        "report": {
+          "path": "artifacts/deep_ml/models/alpha_structural/phase6_alpha_structural_report.json",
+          "exists": true,
+          "size_bytes": 14001,
+          "hash": "sha256:ab08e055f7858450fa006ab5fe2f4b6e54638ca91693b40d11dea894a8ba52c1"
+        }
+      }
+    },
+    "beta_temporal": {
+      "display_name": "Beta Temporal",
+      "family": "sequence_temporal_expert",
+      "files": {
+        "evaluation": {
+          "path": "artifacts/deep_ml/models/beta_temporal/evaluation_by_horizon.json",
+          "exists": true,
+          "size_bytes": 14832,
+          "hash": "sha256:ecc410deed16b243d2e0c4258114296533c324d724e43121e038ea00b22b6f1b"
+        },
+        "rollforward": {
+          "path": "artifacts/deep_ml/models/beta_temporal/evaluation_rollforward.csv",
+          "exists": true,
+          "size_bytes": 2926855,
+          "hash": "sha256:05b1e61c74a7927c6e4fc71e7e32d49c756164b7bf93f9fdee142404d00b327e"
+        },
+        "forecast": {
+          "path": "artifacts/deep_ml/models/beta_temporal/forecast_latest.json",
+          "exists": true,
+          "size_bytes": 2552,
+          "hash": "sha256:0ef3539efa2d081b7559993a228dc1d6e6b361a8014d572d79e1e6c7f7d7d52d"
+        },
+        "report": {
+          "path": "artifacts/deep_ml/models/beta_temporal/phase7_beta_temporal_report.json",
+          "exists": true,
+          "size_bytes": 13418,
+          "hash": "sha256:ef15c552cb5ecc69faa2e0dab6d2ef0e4cc6173eaff6972ce314f0fa5d34bc53"
+        }
+      }
+    },
+    "delta_tft": {
+      "display_name": "Delta TFT",
+      "family": "temporal_fusion_quantile_expert",
+      "files": {
+        "evaluation": {
+          "path": "artifacts/deep_ml/models/delta_tft/evaluation_by_horizon.json",
+          "exists": true,
+          "size_bytes": 6122,
+          "hash": "sha256:105b4b776845a5ec6de7692e99d5c900cf097c81f7342d3fc0a4de062b2fe012"
+        },
+        "rollforward": {
+          "path": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv",
+          "exists": true,
+          "size_bytes": 9467722,
+          "hash": "sha256:03caad7f11f330ff4563e5f80c015c015a2fd8d83e85b0e826b024459117ffe4"
+        },
+        "forecast": {
+          "path": "artifacts/deep_ml/models/delta_tft/forecast_latest.json",
+          "exists": true,
+          "size_bytes": 9788,
+          "hash": "sha256:df271e897aad3c57a8a137a4dad569c5a09ac8e92f8fac274462f012d7a724f0"
+        },
+        "report": {
+          "path": "artifacts/deep_ml/models/delta_tft/phase8_delta_tft_report.json",
+          "exists": true,
+          "size_bytes": 39544,
+          "hash": "sha256:8f5ad46a2f3bb43e54f7b59534d9ab39441c0c0d1e98938431b6305c0535415e"
+        }
+      }
+    },
+    "epsilon_expert_ensemble": {
+      "display_name": "Epsilon Ensemble",
+      "family": "statistical_ml_benchmark_ensemble",
+      "files": {
+        "evaluation": {
+          "path": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_by_horizon.json",
+          "exists": true,
+          "size_bytes": 6060,
+          "hash": "sha256:c82f28606d090cbd9d2201ac8a0329e91f1033145c79ff2975b5861a6d11e614"
+        },
+        "rollforward": {
+          "path": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_rollforward.csv",
+          "exists": true,
+          "size_bytes": 9867790,
+          "hash": "sha256:94c5442ee508fff4026f74706551c284c73872fa5d43bf1f797c41d0b6bf1feb"
+        },
+        "forecast": {
+          "path": "artifacts/deep_ml/models/epsilon_expert_ensemble/forecast_latest.json",
+          "exists": true,
+          "size_bytes": 3312,
+          "hash": "sha256:fd2519003daa3a1490368b2a5ea700ee412d18421afca49a7ef5b644b60837ff"
+        },
+        "report": {
+          "path": "artifacts/deep_ml/models/epsilon_expert_ensemble/phase9_epsilon_expert_report.json",
+          "exists": true,
+          "size_bytes": 135280,
+          "hash": "sha256:d0977addf6fe524e5337d28a8e9caff63fe4a0f0e6f26e43c826e5d8b3d3e99e"
+        }
+      }
+    }
+  },
+  "component_model_report_snapshots": {
+    "alpha_structural": {
+      "model_key": "alpha_structural",
+      "display_name": "Alpha Structural",
+      "family": "xgboost_structural_expert",
+      "report_path": "artifacts/deep_ml/models/alpha_structural/phase6_alpha_structural_report.json",
+      "status": "ready",
+      "algorithm": "xgboost_optuna",
+      "model_version": "alpha_structural_v4_consistent_timed_xgboost_optuna_rolling_shap",
+      "target_strategy": "anchored_future_log_return",
+      "effective_data_through_date": "2026-05-05",
+      "forecast_start_date": "2026-05-06",
+      "training_window": null,
+      "used_feature_count": 91,
+      "professor_safe_summary": null
+    },
+    "beta_temporal": {
+      "model_key": "beta_temporal",
+      "display_name": "Beta Temporal",
+      "family": "sequence_temporal_expert",
+      "report_path": "artifacts/deep_ml/models/beta_temporal/phase7_beta_temporal_report.json",
+      "status": "ready",
+      "algorithm": "pytorch_recurrent_sequence_model_with_optuna",
+      "model_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+      "target_strategy": "anchored_future_log_return",
+      "effective_data_through_date": "2026-05-05",
+      "forecast_start_date": "2026-05-06",
+      "training_window": null,
+      "used_feature_count": 41,
+      "professor_safe_summary": null
+    },
+    "delta_tft": {
+      "model_key": "delta_tft",
+      "display_name": "Delta TFT",
+      "family": "temporal_fusion_quantile_expert",
+      "report_path": "artifacts/deep_ml/models/delta_tft/phase8_delta_tft_report.json",
+      "status": "ready_quality_review_required",
+      "algorithm": "custom_tft_style_pytorch_v2_calibrated",
+      "model_version": "v2_calibrated",
+      "target_strategy": "anchored_future_log_return_quantiles",
+      "effective_data_through_date": "2026-05-05",
+      "forecast_start_date": "2026-05-06",
+      "training_window": {
+        "train_start": "2006-01-02",
+        "train_end": "2018-12-31",
+        "validation_start": "2019-01-01",
+        "validation_end": "2022-12-30",
+        "test_start": "2023-01-02",
+        "test_end": "2026-05-05"
+      },
+      "used_feature_count": 32,
+      "professor_safe_summary": "Phase 8 Delta TFT V2 trains a calibrated temporal-fusion quantile expert. It uses anchored future log returns, reconstructs prices from unscaled raw gold anchors, preserves the p50 forecast, and widens p10/p90 intervals using validation residual behavior."
+    },
+    "epsilon_expert_ensemble": {
+      "model_key": "epsilon_expert_ensemble",
+      "display_name": "Epsilon Ensemble",
+      "family": "statistical_ml_benchmark_ensemble",
+      "report_path": "artifacts/deep_ml/models/epsilon_expert_ensemble/phase9_epsilon_expert_report.json",
+      "status": "ready",
+      "algorithm": "statistical_ml_benchmark_ensemble",
+      "model_version": null,
+      "target_strategy": "anchored_future_log_return",
+      "effective_data_through_date": "2026-05-05",
+      "forecast_start_date": "2026-05-06",
+      "training_window": {
+        "train_start": "2006-01-02",
+        "train_end": "2018-12-31",
+        "validation_start": "2019-01-01",
+        "validation_end": "2022-12-30",
+        "test_start": "2023-01-02",
+        "test_end": "2026-05-05"
+      },
+      "used_feature_count": 29,
+      "professor_safe_summary": "Phase 9 Epsilon Expert Ensemble provides a rigorous benchmark and ensemble guardrail. V2 compares ensemble candidates against the best validation component so the final Epsilon output does not ignore a stronger benchmark component. It evaluates classical, statistical, and lag-feature ML components under the same horizon-level contract used by Alpha, Beta, and Delta."
+    }
+  },
+  "model_ranking_snapshot": {
+    "artifact_type": "omega_model_ranking",
+    "schema_version": "1.0.0",
+    "phase_key": "phase14_omega_fusion",
+    "model_key": "omega_fusion",
+    "ranking_basis": "validation_metric_weighted_fusion_by_horizon",
+    "weight_policy": {
+      "primary": "inverse validation MAPE by horizon",
+      "fallback_order": [
+        "validation MAPE",
+        "validation MAE",
+        "test MAPE",
+        "test MAE"
+      ],
+      "news_sensitivity_used_for_weights": false,
+      "gamma_usage": "interpretive_context_only",
+      "min_weight_floor_before_renormalization": 0.03,
+      "weight_power": 1.0
+    },
+    "ranking": [
+      {
+        "rank": 1,
+        "model_key": "epsilon_expert_ensemble",
+        "display_name": "Epsilon Ensemble",
+        "family": "statistical_ml_benchmark_ensemble",
+        "horizon": 1,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 1.9623782354787942,
+        "omega_weight_before_floor": 0.2733523792891408,
+        "omega_weight": 0.2733523792891408,
+        "train_mape_pct": 2.0908317541642276,
+        "validation_mape_pct": 1.9623782354787942,
+        "test_mape_pct": 2.6968669409615678,
+        "validation_mae": 33.48925680073467,
+        "test_mae": 76.83296647652638,
+        "validation_directional_accuracy_pct": 57.85714285714286,
+        "test_directional_accuracy_pct": 54.80132450331126
+      },
+      {
+        "rank": 2,
+        "model_key": "alpha_structural",
+        "display_name": "Alpha Structural",
+        "family": "xgboost_structural_expert",
+        "horizon": 1,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 2.0842119470371996,
+        "omega_weight_before_floor": 0.25737342140078423,
+        "omega_weight": 0.25737342140078423,
+        "train_mape_pct": 2.147052368714861,
+        "validation_mape_pct": 2.0842119470371996,
+        "test_mape_pct": 2.9674286484387498,
+        "validation_mae": 35.62340875110978,
+        "test_mae": 86.21955628802309,
+        "validation_directional_accuracy_pct": 61.1904761904762,
+        "test_directional_accuracy_pct": 59.44170771756979
+      },
+      {
+        "rank": 3,
+        "model_key": "delta_tft",
+        "display_name": "Delta TFT",
+        "family": "temporal_fusion_quantile_expert",
+        "horizon": 1,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 2.252529226349471,
+        "omega_weight_before_floor": 0.23814153150975834,
+        "omega_weight": 0.23814153150975834,
+        "train_mape_pct": 2.487713978545288,
+        "validation_mape_pct": 2.252529226349471,
+        "test_mape_pct": 5.04059231918179,
+        "validation_mae": 38.1234750802174,
+        "test_mae": 164.72993449510386,
+        "validation_directional_accuracy_pct": 53.80952380952381,
+        "test_directional_accuracy_pct": 54.13907284768212
+      },
+      {
+        "rank": 4,
+        "model_key": "beta_temporal",
+        "display_name": "Beta Temporal",
+        "family": "sequence_temporal_expert",
+        "horizon": 1,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 2.3208348903616964,
+        "omega_weight_before_floor": 0.2311326678003166,
+        "omega_weight": 0.2311326678003166,
+        "train_mape_pct": 2.30106795018349,
+        "validation_mape_pct": 2.3208348903616964,
+        "test_mape_pct": 3.359087282217979,
+        "validation_mae": 39.18805036873653,
+        "test_mae": 96.38846090403152,
+        "validation_directional_accuracy_pct": 58.69047619047619,
+        "test_directional_accuracy_pct": 55.51724137931034
+      },
+      {
+        "rank": 1,
+        "model_key": "beta_temporal",
+        "display_name": "Beta Temporal",
+        "family": "sequence_temporal_expert",
+        "horizon": 5,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 3.7504249776195215,
+        "omega_weight_before_floor": 0.2822834301973649,
+        "omega_weight": 0.2822834301973649,
+        "train_mape_pct": 2.315368782360192,
+        "validation_mape_pct": 3.7504249776195215,
+        "test_mape_pct": 6.375634561515832,
+        "validation_mae": 64.07678058960428,
+        "test_mae": 193.6420438245869,
+        "validation_directional_accuracy_pct": 67.33716475095785,
+        "test_directional_accuracy_pct": 63.13193588162762
+      },
+      {
+        "rank": 2,
+        "model_key": "alpha_structural",
+        "display_name": "Alpha Structural",
+        "family": "xgboost_structural_expert",
+        "horizon": 5,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 3.888062974512648,
+        "omega_weight_before_floor": 0.27229055555948534,
+        "omega_weight": 0.27229055555948534,
+        "train_mape_pct": 4.3346575243746255,
+        "validation_mape_pct": 3.888062974512648,
+        "test_mape_pct": 6.109775993158336,
+        "validation_mae": 66.16475398392056,
+        "test_mae": 189.63592683378985,
+        "validation_directional_accuracy_pct": 70.97701149425288,
+        "test_directional_accuracy_pct": 66.6267942583732
+      },
+      {
+        "rank": 3,
+        "model_key": "delta_tft",
+        "display_name": "Delta TFT",
+        "family": "temporal_fusion_quantile_expert",
+        "horizon": 5,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 4.5189730479924695,
+        "omega_weight_before_floor": 0.23427509218065118,
+        "omega_weight": 0.23427509218065118,
+        "train_mape_pct": 3.955906517153772,
+        "validation_mape_pct": 4.5189730479924695,
+        "test_mape_pct": 7.937488815780639,
+        "validation_mae": 76.42671766943427,
+        "test_mae": 252.62237084034544,
+        "validation_directional_accuracy_pct": 59.674329501915715,
+        "test_directional_accuracy_pct": 59.04191616766467
+      },
+      {
+        "rank": 4,
+        "model_key": "epsilon_expert_ensemble",
+        "display_name": "Epsilon Ensemble",
+        "family": "statistical_ml_benchmark_ensemble",
+        "horizon": 5,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 5.0138678867192175,
+        "omega_weight_before_floor": 0.21115092206249858,
+        "omega_weight": 0.21115092206249858,
+        "train_mape_pct": 6.076961500745253,
+        "validation_mape_pct": 5.0138678867192175,
+        "test_mape_pct": 7.000097868151533,
+        "validation_mae": 84.51793482029323,
+        "test_mae": 207.7053694798343,
+        "validation_directional_accuracy_pct": 68.19923371647509,
+        "test_directional_accuracy_pct": 65.38922155688623
+      },
+      {
+        "rank": 1,
+        "model_key": "alpha_structural",
+        "display_name": "Alpha Structural",
+        "family": "xgboost_structural_expert",
+        "horizon": 10,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 3.9828932602536335,
+        "omega_weight_before_floor": 0.2864139280379688,
+        "omega_weight": 0.2864139280379688,
+        "train_mape_pct": 4.837292054775437,
+        "validation_mape_pct": 3.9828932602536335,
+        "test_mape_pct": 6.094181825128777,
+        "validation_mae": 67.44844510376568,
+        "test_mae": 185.56080236916827,
+        "validation_directional_accuracy_pct": 72.38734419942475,
+        "test_directional_accuracy_pct": 72.28195937873357
+      },
+      {
+        "rank": 2,
+        "model_key": "beta_temporal",
+        "display_name": "Beta Temporal",
+        "family": "sequence_temporal_expert",
+        "horizon": 10,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 4.4801443711195965,
+        "omega_weight_before_floor": 0.2546248533817043,
+        "omega_weight": 0.2546248533817043,
+        "train_mape_pct": 2.5469282933065656,
+        "validation_mape_pct": 4.4801443711195965,
+        "test_mape_pct": 7.737106060586631,
+        "validation_mae": 77.33022451583453,
+        "test_mae": 241.5814368856143,
+        "validation_directional_accuracy_pct": 66.82646212847555,
+        "test_directional_accuracy_pct": 59.97552019583844
+      },
+      {
+        "rank": 3,
+        "model_key": "delta_tft",
+        "display_name": "Delta TFT",
+        "family": "temporal_fusion_quantile_expert",
+        "horizon": 10,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 4.787077093681114,
+        "omega_weight_before_floor": 0.23829908758540364,
+        "omega_weight": 0.23829908758540364,
+        "train_mape_pct": 4.718963838577593,
+        "validation_mape_pct": 4.787077093681114,
+        "test_mape_pct": 8.906090368173215,
+        "validation_mae": 81.56166818440352,
+        "test_mae": 285.84143905119134,
+        "validation_directional_accuracy_pct": 66.0594439117929,
+        "test_directional_accuracy_pct": 55.76694411414982
+      },
+      {
+        "rank": 4,
+        "model_key": "epsilon_expert_ensemble",
+        "display_name": "Epsilon Ensemble",
+        "family": "statistical_ml_benchmark_ensemble",
+        "horizon": 10,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 5.169695853483079,
+        "omega_weight_before_floor": 0.22066213099492335,
+        "omega_weight": 0.22066213099492335,
+        "train_mape_pct": 7.328467132792765,
+        "validation_mape_pct": 5.169695853483079,
+        "test_mape_pct": 7.718813018174093,
+        "validation_mae": 87.67192670605817,
+        "test_mae": 230.92031906136378,
+        "validation_directional_accuracy_pct": 71.0450623202301,
+        "test_directional_accuracy_pct": 70.03567181926277
+      },
+      {
+        "rank": 1,
+        "model_key": "alpha_structural",
+        "display_name": "Alpha Structural",
+        "family": "xgboost_structural_expert",
+        "horizon": 20,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 3.8081661074769118,
+        "omega_weight_before_floor": 0.2642105365155133,
+        "omega_weight": 0.2642105365155133,
+        "train_mape_pct": 3.6320551016929716,
+        "validation_mape_pct": 3.8081661074769118,
+        "test_mape_pct": 5.527392319768464,
+        "validation_mae": 65.5819527789722,
+        "test_mae": 173.28825912196444,
+        "validation_directional_accuracy_pct": 64.08045977011494,
+        "test_directional_accuracy_pct": 62.87787182587666
+      },
+      {
+        "rank": 2,
+        "model_key": "beta_temporal",
+        "display_name": "Beta Temporal",
+        "family": "sequence_temporal_expert",
+        "horizon": 20,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 3.9088813239503253,
+        "omega_weight_before_floor": 0.25740295675690744,
+        "omega_weight": 0.25740295675690744,
+        "train_mape_pct": 2.587015073228316,
+        "validation_mape_pct": 3.9088813239503253,
+        "test_mape_pct": 6.250502466480472,
+        "validation_mae": 67.15801744716835,
+        "test_mae": 200.65326353561048,
+        "validation_directional_accuracy_pct": 60.82375478927203,
+        "test_directional_accuracy_pct": 54.467564259485926
+      },
+      {
+        "rank": 3,
+        "model_key": "epsilon_expert_ensemble",
+        "display_name": "Epsilon Ensemble",
+        "family": "statistical_ml_benchmark_ensemble",
+        "horizon": 20,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 4.173672052738827,
+        "omega_weight_before_floor": 0.24107251304912963,
+        "omega_weight": 0.24107251304912963,
+        "train_mape_pct": 4.696071694861655,
+        "validation_mape_pct": 4.173672052738827,
+        "test_mape_pct": 6.1510643391551545,
+        "validation_mae": 71.91048030061174,
+        "test_mae": 193.34631602029498,
+        "validation_directional_accuracy_pct": 64.36781609195403,
+        "test_directional_accuracy_pct": 63.614744351961946
+      },
+      {
+        "rank": 4,
+        "model_key": "delta_tft",
+        "display_name": "Delta TFT",
+        "family": "temporal_fusion_quantile_expert",
+        "horizon": 20,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 4.239773621440839,
+        "omega_weight_before_floor": 0.2373139936784496,
+        "omega_weight": 0.2373139936784496,
+        "train_mape_pct": 4.437684555677329,
+        "validation_mape_pct": 4.239773621440839,
+        "test_mape_pct": 7.60190311537874,
+        "validation_mae": 73.1823528881687,
+        "test_mae": 250.45966303230406,
+        "validation_directional_accuracy_pct": 61.49425287356321,
+        "test_directional_accuracy_pct": 45.65992865636147
+      },
+      {
+        "rank": 1,
+        "model_key": "alpha_structural",
+        "display_name": "Alpha Structural",
+        "family": "xgboost_structural_expert",
+        "horizon": 30,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 4.5703353672497045,
+        "omega_weight_before_floor": 0.2707511146941289,
+        "omega_weight": 0.2707511146941289,
+        "train_mape_pct": 5.943447635282789,
+        "validation_mape_pct": 4.5703353672497045,
+        "test_mape_pct": 7.274183528492449,
+        "validation_mae": 78.218130279969,
+        "test_mae": 234.339759051516,
+        "validation_directional_accuracy_pct": 72.98850574712644,
+        "test_directional_accuracy_pct": 71.1138310893513
+      },
+      {
+        "rank": 2,
+        "model_key": "beta_temporal",
+        "display_name": "Beta Temporal",
+        "family": "sequence_temporal_expert",
+        "horizon": 30,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 4.991402666552762,
+        "omega_weight_before_floor": 0.24791095366855392,
+        "omega_weight": 0.24791095366855392,
+        "train_mape_pct": 3.2272987908781454,
+        "validation_mape_pct": 4.991402666552762,
+        "test_mape_pct": 8.768574777084899,
+        "validation_mae": 86.83316355738147,
+        "test_mae": 290.44588221126264,
+        "validation_directional_accuracy_pct": 68.77394636015326,
+        "test_directional_accuracy_pct": 55.32435740514076
+      },
+      {
+        "rank": 3,
+        "model_key": "epsilon_expert_ensemble",
+        "display_name": "Epsilon Ensemble",
+        "family": "statistical_ml_benchmark_ensemble",
+        "horizon": 30,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 5.136382883731691,
+        "omega_weight_before_floor": 0.2409133865639401,
+        "omega_weight": 0.2409133865639401,
+        "train_mape_pct": 7.378745937450469,
+        "validation_mape_pct": 5.136382883731691,
+        "test_mape_pct": 7.883998601949116,
+        "validation_mae": 88.16934616734503,
+        "test_mae": 252.83081762659708,
+        "validation_directional_accuracy_pct": 70.88122605363985,
+        "test_directional_accuracy_pct": 66.94411414982164
+      },
+      {
+        "rank": 4,
+        "model_key": "delta_tft",
+        "display_name": "Delta TFT",
+        "family": "temporal_fusion_quantile_expert",
+        "horizon": 30,
+        "score_basis": "validation_mape_pct",
+        "weight_basis_score": 5.146826397575999,
+        "omega_weight_before_floor": 0.24042454507337715,
+        "omega_weight": 0.24042454507337715,
+        "train_mape_pct": 4.993689027234166,
+        "validation_mape_pct": 5.146826397575999,
+        "test_mape_pct": 9.401287257519586,
+        "validation_mae": 88.61713667849502,
+        "test_mae": 309.8035830725001,
+        "validation_directional_accuracy_pct": 69.92337164750958,
+        "test_directional_accuracy_pct": 53.03210463733651
+      }
+    ],
+    "weights_by_horizon": {
+      "1": {
+        "epsilon_expert_ensemble": 0.2733523792891408,
+        "alpha_structural": 0.25737342140078423,
+        "delta_tft": 0.23814153150975834,
+        "beta_temporal": 0.2311326678003166
+      },
+      "5": {
+        "beta_temporal": 0.2822834301973649,
+        "alpha_structural": 0.27229055555948534,
+        "delta_tft": 0.23427509218065118,
+        "epsilon_expert_ensemble": 0.21115092206249858
+      },
+      "10": {
+        "alpha_structural": 0.2864139280379688,
+        "beta_temporal": 0.2546248533817043,
+        "delta_tft": 0.23829908758540364,
+        "epsilon_expert_ensemble": 0.22066213099492335
+      },
+      "20": {
+        "alpha_structural": 0.2642105365155133,
+        "beta_temporal": 0.25740295675690744,
+        "epsilon_expert_ensemble": 0.24107251304912963,
+        "delta_tft": 0.2373139936784496
+      },
+      "30": {
+        "alpha_structural": 0.2707511146941289,
+        "beta_temporal": 0.24791095366855392,
+        "epsilon_expert_ensemble": 0.2409133865639401,
+        "delta_tft": 0.24042454507337715
+      }
+    },
+    "weight_details_by_horizon": {
+      "1": {
+        "horizon": 1,
+        "weight_basis": "inverse_validation_mape_by_horizon_fallback_validation_mae_then_test_metric",
+        "weight_power": 1.0,
+        "min_weight_floor_before_renormalization": 0.03,
+        "weights": {
+          "epsilon_expert_ensemble": 0.2733523792891408,
+          "alpha_structural": 0.25737342140078423,
+          "delta_tft": 0.23814153150975834,
+          "beta_temporal": 0.2311326678003166
+        },
+        "ranked_models": [
+          {
+            "rank": 1,
+            "model_key": "epsilon_expert_ensemble",
+            "display_name": "Epsilon Ensemble",
+            "family": "statistical_ml_benchmark_ensemble",
+            "horizon": 1,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 1.9623782354787942,
+            "omega_weight_before_floor": 0.2733523792891408,
+            "omega_weight": 0.2733523792891408,
+            "train_mape_pct": 2.0908317541642276,
+            "validation_mape_pct": 1.9623782354787942,
+            "test_mape_pct": 2.6968669409615678,
+            "validation_mae": 33.48925680073467,
+            "test_mae": 76.83296647652638,
+            "validation_directional_accuracy_pct": 57.85714285714286,
+            "test_directional_accuracy_pct": 54.80132450331126
+          },
+          {
+            "rank": 2,
+            "model_key": "alpha_structural",
+            "display_name": "Alpha Structural",
+            "family": "xgboost_structural_expert",
+            "horizon": 1,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 2.0842119470371996,
+            "omega_weight_before_floor": 0.25737342140078423,
+            "omega_weight": 0.25737342140078423,
+            "train_mape_pct": 2.147052368714861,
+            "validation_mape_pct": 2.0842119470371996,
+            "test_mape_pct": 2.9674286484387498,
+            "validation_mae": 35.62340875110978,
+            "test_mae": 86.21955628802309,
+            "validation_directional_accuracy_pct": 61.1904761904762,
+            "test_directional_accuracy_pct": 59.44170771756979
+          },
+          {
+            "rank": 3,
+            "model_key": "delta_tft",
+            "display_name": "Delta TFT",
+            "family": "temporal_fusion_quantile_expert",
+            "horizon": 1,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 2.252529226349471,
+            "omega_weight_before_floor": 0.23814153150975834,
+            "omega_weight": 0.23814153150975834,
+            "train_mape_pct": 2.487713978545288,
+            "validation_mape_pct": 2.252529226349471,
+            "test_mape_pct": 5.04059231918179,
+            "validation_mae": 38.1234750802174,
+            "test_mae": 164.72993449510386,
+            "validation_directional_accuracy_pct": 53.80952380952381,
+            "test_directional_accuracy_pct": 54.13907284768212
+          },
+          {
+            "rank": 4,
+            "model_key": "beta_temporal",
+            "display_name": "Beta Temporal",
+            "family": "sequence_temporal_expert",
+            "horizon": 1,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 2.3208348903616964,
+            "omega_weight_before_floor": 0.2311326678003166,
+            "omega_weight": 0.2311326678003166,
+            "train_mape_pct": 2.30106795018349,
+            "validation_mape_pct": 2.3208348903616964,
+            "test_mape_pct": 3.359087282217979,
+            "validation_mae": 39.18805036873653,
+            "test_mae": 96.38846090403152,
+            "validation_directional_accuracy_pct": 58.69047619047619,
+            "test_directional_accuracy_pct": 55.51724137931034
+          }
+        ]
+      },
+      "5": {
+        "horizon": 5,
+        "weight_basis": "inverse_validation_mape_by_horizon_fallback_validation_mae_then_test_metric",
+        "weight_power": 1.0,
+        "min_weight_floor_before_renormalization": 0.03,
+        "weights": {
+          "beta_temporal": 0.2822834301973649,
+          "alpha_structural": 0.27229055555948534,
+          "delta_tft": 0.23427509218065118,
+          "epsilon_expert_ensemble": 0.21115092206249858
+        },
+        "ranked_models": [
+          {
+            "rank": 1,
+            "model_key": "beta_temporal",
+            "display_name": "Beta Temporal",
+            "family": "sequence_temporal_expert",
+            "horizon": 5,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 3.7504249776195215,
+            "omega_weight_before_floor": 0.2822834301973649,
+            "omega_weight": 0.2822834301973649,
+            "train_mape_pct": 2.315368782360192,
+            "validation_mape_pct": 3.7504249776195215,
+            "test_mape_pct": 6.375634561515832,
+            "validation_mae": 64.07678058960428,
+            "test_mae": 193.6420438245869,
+            "validation_directional_accuracy_pct": 67.33716475095785,
+            "test_directional_accuracy_pct": 63.13193588162762
+          },
+          {
+            "rank": 2,
+            "model_key": "alpha_structural",
+            "display_name": "Alpha Structural",
+            "family": "xgboost_structural_expert",
+            "horizon": 5,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 3.888062974512648,
+            "omega_weight_before_floor": 0.27229055555948534,
+            "omega_weight": 0.27229055555948534,
+            "train_mape_pct": 4.3346575243746255,
+            "validation_mape_pct": 3.888062974512648,
+            "test_mape_pct": 6.109775993158336,
+            "validation_mae": 66.16475398392056,
+            "test_mae": 189.63592683378985,
+            "validation_directional_accuracy_pct": 70.97701149425288,
+            "test_directional_accuracy_pct": 66.6267942583732
+          },
+          {
+            "rank": 3,
+            "model_key": "delta_tft",
+            "display_name": "Delta TFT",
+            "family": "temporal_fusion_quantile_expert",
+            "horizon": 5,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 4.5189730479924695,
+            "omega_weight_before_floor": 0.23427509218065118,
+            "omega_weight": 0.23427509218065118,
+            "train_mape_pct": 3.955906517153772,
+            "validation_mape_pct": 4.5189730479924695,
+            "test_mape_pct": 7.937488815780639,
+            "validation_mae": 76.42671766943427,
+            "test_mae": 252.62237084034544,
+            "validation_directional_accuracy_pct": 59.674329501915715,
+            "test_directional_accuracy_pct": 59.04191616766467
+          },
+          {
+            "rank": 4,
+            "model_key": "epsilon_expert_ensemble",
+            "display_name": "Epsilon Ensemble",
+            "family": "statistical_ml_benchmark_ensemble",
+            "horizon": 5,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 5.0138678867192175,
+            "omega_weight_before_floor": 0.21115092206249858,
+            "omega_weight": 0.21115092206249858,
+            "train_mape_pct": 6.076961500745253,
+            "validation_mape_pct": 5.0138678867192175,
+            "test_mape_pct": 7.000097868151533,
+            "validation_mae": 84.51793482029323,
+            "test_mae": 207.7053694798343,
+            "validation_directional_accuracy_pct": 68.19923371647509,
+            "test_directional_accuracy_pct": 65.38922155688623
+          }
+        ]
+      },
+      "10": {
+        "horizon": 10,
+        "weight_basis": "inverse_validation_mape_by_horizon_fallback_validation_mae_then_test_metric",
+        "weight_power": 1.0,
+        "min_weight_floor_before_renormalization": 0.03,
+        "weights": {
+          "alpha_structural": 0.2864139280379688,
+          "beta_temporal": 0.2546248533817043,
+          "delta_tft": 0.23829908758540364,
+          "epsilon_expert_ensemble": 0.22066213099492335
+        },
+        "ranked_models": [
+          {
+            "rank": 1,
+            "model_key": "alpha_structural",
+            "display_name": "Alpha Structural",
+            "family": "xgboost_structural_expert",
+            "horizon": 10,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 3.9828932602536335,
+            "omega_weight_before_floor": 0.2864139280379688,
+            "omega_weight": 0.2864139280379688,
+            "train_mape_pct": 4.837292054775437,
+            "validation_mape_pct": 3.9828932602536335,
+            "test_mape_pct": 6.094181825128777,
+            "validation_mae": 67.44844510376568,
+            "test_mae": 185.56080236916827,
+            "validation_directional_accuracy_pct": 72.38734419942475,
+            "test_directional_accuracy_pct": 72.28195937873357
+          },
+          {
+            "rank": 2,
+            "model_key": "beta_temporal",
+            "display_name": "Beta Temporal",
+            "family": "sequence_temporal_expert",
+            "horizon": 10,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 4.4801443711195965,
+            "omega_weight_before_floor": 0.2546248533817043,
+            "omega_weight": 0.2546248533817043,
+            "train_mape_pct": 2.5469282933065656,
+            "validation_mape_pct": 4.4801443711195965,
+            "test_mape_pct": 7.737106060586631,
+            "validation_mae": 77.33022451583453,
+            "test_mae": 241.5814368856143,
+            "validation_directional_accuracy_pct": 66.82646212847555,
+            "test_directional_accuracy_pct": 59.97552019583844
+          },
+          {
+            "rank": 3,
+            "model_key": "delta_tft",
+            "display_name": "Delta TFT",
+            "family": "temporal_fusion_quantile_expert",
+            "horizon": 10,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 4.787077093681114,
+            "omega_weight_before_floor": 0.23829908758540364,
+            "omega_weight": 0.23829908758540364,
+            "train_mape_pct": 4.718963838577593,
+            "validation_mape_pct": 4.787077093681114,
+            "test_mape_pct": 8.906090368173215,
+            "validation_mae": 81.56166818440352,
+            "test_mae": 285.84143905119134,
+            "validation_directional_accuracy_pct": 66.0594439117929,
+            "test_directional_accuracy_pct": 55.76694411414982
+          },
+          {
+            "rank": 4,
+            "model_key": "epsilon_expert_ensemble",
+            "display_name": "Epsilon Ensemble",
+            "family": "statistical_ml_benchmark_ensemble",
+            "horizon": 10,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 5.169695853483079,
+            "omega_weight_before_floor": 0.22066213099492335,
+            "omega_weight": 0.22066213099492335,
+            "train_mape_pct": 7.328467132792765,
+            "validation_mape_pct": 5.169695853483079,
+            "test_mape_pct": 7.718813018174093,
+            "validation_mae": 87.67192670605817,
+            "test_mae": 230.92031906136378,
+            "validation_directional_accuracy_pct": 71.0450623202301,
+            "test_directional_accuracy_pct": 70.03567181926277
+          }
+        ]
+      },
+      "20": {
+        "horizon": 20,
+        "weight_basis": "inverse_validation_mape_by_horizon_fallback_validation_mae_then_test_metric",
+        "weight_power": 1.0,
+        "min_weight_floor_before_renormalization": 0.03,
+        "weights": {
+          "alpha_structural": 0.2642105365155133,
+          "beta_temporal": 0.25740295675690744,
+          "epsilon_expert_ensemble": 0.24107251304912963,
+          "delta_tft": 0.2373139936784496
+        },
+        "ranked_models": [
+          {
+            "rank": 1,
+            "model_key": "alpha_structural",
+            "display_name": "Alpha Structural",
+            "family": "xgboost_structural_expert",
+            "horizon": 20,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 3.8081661074769118,
+            "omega_weight_before_floor": 0.2642105365155133,
+            "omega_weight": 0.2642105365155133,
+            "train_mape_pct": 3.6320551016929716,
+            "validation_mape_pct": 3.8081661074769118,
+            "test_mape_pct": 5.527392319768464,
+            "validation_mae": 65.5819527789722,
+            "test_mae": 173.28825912196444,
+            "validation_directional_accuracy_pct": 64.08045977011494,
+            "test_directional_accuracy_pct": 62.87787182587666
+          },
+          {
+            "rank": 2,
+            "model_key": "beta_temporal",
+            "display_name": "Beta Temporal",
+            "family": "sequence_temporal_expert",
+            "horizon": 20,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 3.9088813239503253,
+            "omega_weight_before_floor": 0.25740295675690744,
+            "omega_weight": 0.25740295675690744,
+            "train_mape_pct": 2.587015073228316,
+            "validation_mape_pct": 3.9088813239503253,
+            "test_mape_pct": 6.250502466480472,
+            "validation_mae": 67.15801744716835,
+            "test_mae": 200.65326353561048,
+            "validation_directional_accuracy_pct": 60.82375478927203,
+            "test_directional_accuracy_pct": 54.467564259485926
+          },
+          {
+            "rank": 3,
+            "model_key": "epsilon_expert_ensemble",
+            "display_name": "Epsilon Ensemble",
+            "family": "statistical_ml_benchmark_ensemble",
+            "horizon": 20,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 4.173672052738827,
+            "omega_weight_before_floor": 0.24107251304912963,
+            "omega_weight": 0.24107251304912963,
+            "train_mape_pct": 4.696071694861655,
+            "validation_mape_pct": 4.173672052738827,
+            "test_mape_pct": 6.1510643391551545,
+            "validation_mae": 71.91048030061174,
+            "test_mae": 193.34631602029498,
+            "validation_directional_accuracy_pct": 64.36781609195403,
+            "test_directional_accuracy_pct": 63.614744351961946
+          },
+          {
+            "rank": 4,
+            "model_key": "delta_tft",
+            "display_name": "Delta TFT",
+            "family": "temporal_fusion_quantile_expert",
+            "horizon": 20,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 4.239773621440839,
+            "omega_weight_before_floor": 0.2373139936784496,
+            "omega_weight": 0.2373139936784496,
+            "train_mape_pct": 4.437684555677329,
+            "validation_mape_pct": 4.239773621440839,
+            "test_mape_pct": 7.60190311537874,
+            "validation_mae": 73.1823528881687,
+            "test_mae": 250.45966303230406,
+            "validation_directional_accuracy_pct": 61.49425287356321,
+            "test_directional_accuracy_pct": 45.65992865636147
+          }
+        ]
+      },
+      "30": {
+        "horizon": 30,
+        "weight_basis": "inverse_validation_mape_by_horizon_fallback_validation_mae_then_test_metric",
+        "weight_power": 1.0,
+        "min_weight_floor_before_renormalization": 0.03,
+        "weights": {
+          "alpha_structural": 0.2707511146941289,
+          "beta_temporal": 0.24791095366855392,
+          "epsilon_expert_ensemble": 0.2409133865639401,
+          "delta_tft": 0.24042454507337715
+        },
+        "ranked_models": [
+          {
+            "rank": 1,
+            "model_key": "alpha_structural",
+            "display_name": "Alpha Structural",
+            "family": "xgboost_structural_expert",
+            "horizon": 30,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 4.5703353672497045,
+            "omega_weight_before_floor": 0.2707511146941289,
+            "omega_weight": 0.2707511146941289,
+            "train_mape_pct": 5.943447635282789,
+            "validation_mape_pct": 4.5703353672497045,
+            "test_mape_pct": 7.274183528492449,
+            "validation_mae": 78.218130279969,
+            "test_mae": 234.339759051516,
+            "validation_directional_accuracy_pct": 72.98850574712644,
+            "test_directional_accuracy_pct": 71.1138310893513
+          },
+          {
+            "rank": 2,
+            "model_key": "beta_temporal",
+            "display_name": "Beta Temporal",
+            "family": "sequence_temporal_expert",
+            "horizon": 30,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 4.991402666552762,
+            "omega_weight_before_floor": 0.24791095366855392,
+            "omega_weight": 0.24791095366855392,
+            "train_mape_pct": 3.2272987908781454,
+            "validation_mape_pct": 4.991402666552762,
+            "test_mape_pct": 8.768574777084899,
+            "validation_mae": 86.83316355738147,
+            "test_mae": 290.44588221126264,
+            "validation_directional_accuracy_pct": 68.77394636015326,
+            "test_directional_accuracy_pct": 55.32435740514076
+          },
+          {
+            "rank": 3,
+            "model_key": "epsilon_expert_ensemble",
+            "display_name": "Epsilon Ensemble",
+            "family": "statistical_ml_benchmark_ensemble",
+            "horizon": 30,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 5.136382883731691,
+            "omega_weight_before_floor": 0.2409133865639401,
+            "omega_weight": 0.2409133865639401,
+            "train_mape_pct": 7.378745937450469,
+            "validation_mape_pct": 5.136382883731691,
+            "test_mape_pct": 7.883998601949116,
+            "validation_mae": 88.16934616734503,
+            "test_mae": 252.83081762659708,
+            "validation_directional_accuracy_pct": 70.88122605363985,
+            "test_directional_accuracy_pct": 66.94411414982164
+          },
+          {
+            "rank": 4,
+            "model_key": "delta_tft",
+            "display_name": "Delta TFT",
+            "family": "temporal_fusion_quantile_expert",
+            "horizon": 30,
+            "score_basis": "validation_mape_pct",
+            "weight_basis_score": 5.146826397575999,
+            "omega_weight_before_floor": 0.24042454507337715,
+            "omega_weight": 0.24042454507337715,
+            "train_mape_pct": 4.993689027234166,
+            "validation_mape_pct": 5.146826397575999,
+            "test_mape_pct": 9.401287257519586,
+            "validation_mae": 88.61713667849502,
+            "test_mae": 309.8035830725001,
+            "validation_directional_accuracy_pct": 69.92337164750958,
+            "test_directional_accuracy_pct": 53.03210463733651
+          }
+        ]
+      }
+    },
+    "professor_safe_note": "Omega weights are validation-performance fusion weights. They are not causal factor importance scores.",
+    "generated_at_utc": "2026-05-06T01:06:08.904350Z"
+  },
+  "omega_evaluation_snapshot": {
+    "artifact_type": "omega_evaluation_by_horizon",
+    "schema_version": "1.0.0",
+    "phase_key": "phase14_omega_fusion",
+    "model_key": "omega_fusion",
+    "point_forecast": "validation_weighted_component_prediction",
+    "status": "ready",
+    "metrics_by_horizon": {
+      "1": {
+        "test": {
+          "count": 846,
+          "mae": 93.50956156493886,
+          "rmse": 176.68649017258517,
+          "mape_pct": 3.1157831677706387,
+          "smape_pct": 3.0733410348076244,
+          "bias_mean_error": -18.12675602104814,
+          "directional_accuracy_pct": 60.591133004926114
+        },
+        "train": {
+          "count": 3391,
+          "mae": 24.163914186066407,
+          "rmse": 51.07849912580899,
+          "mape_pct": 2.140460058227005,
+          "smape_pct": 2.1171200972069473,
+          "bias_mean_error": 1.026559914892446,
+          "directional_accuracy_pct": 77.98085291557877
+        },
+        "validation": {
+          "count": 1044,
+          "mae": 34.03950470777837,
+          "rmse": 60.70980768336156,
+          "mape_pct": 2.0031796966903603,
+          "smape_pct": 1.992707845219249,
+          "bias_mean_error": 1.7831408868694258,
+          "directional_accuracy_pct": 60.0
+        }
+      },
+      "5": {
+        "test": {
+          "count": 842,
+          "mae": 196.2795335840158,
+          "rmse": 306.0389686977276,
+          "mape_pct": 6.345918275191756,
+          "smape_pct": 6.437356963470013,
+          "bias_mean_error": -76.04737691233926,
+          "directional_accuracy_pct": 64.83253588516746
+        },
+        "train": {
+          "count": 3391,
+          "mae": 40.4188571613727,
+          "rmse": 60.30979670669552,
+          "mape_pct": 3.517279953287144,
+          "smape_pct": 3.5111605836516544,
+          "bias_mean_error": -4.426568265508509,
+          "directional_accuracy_pct": 90.53921568627452
+        },
+        "validation": {
+          "count": 1044,
+          "mae": 66.70726769553413,
+          "rmse": 92.54473500555879,
+          "mape_pct": 3.933442389004683,
+          "smape_pct": 3.942567686091113,
+          "bias_mean_error": -7.620501880667275,
+          "directional_accuracy_pct": 70.11494252873564
+        }
+      },
+      "10": {
+        "test": {
+          "count": 841,
+          "mae": 221.38295105045935,
+          "rmse": 336.11189318424056,
+          "mape_pct": 7.095730113023845,
+          "smape_pct": 7.254610777133167,
+          "bias_mean_error": -97.23523551290909,
+          "directional_accuracy_pct": 66.94411414982164
+        },
+        "train": {
+          "count": 3391,
+          "mae": 49.792844238524836,
+          "rmse": 68.89599869128956,
+          "mape_pct": 4.352322006149665,
+          "smape_pct": 4.340724320518412,
+          "bias_mean_error": -4.357728951886865,
+          "directional_accuracy_pct": 85.39855072463767
+        },
+        "validation": {
+          "count": 1044,
+          "mae": 72.0832890667506,
+          "rmse": 97.51468460054215,
+          "mape_pct": 4.234449190273216,
+          "smape_pct": 4.259543984213378,
+          "bias_mean_error": -13.46397821304131,
+          "directional_accuracy_pct": 72.77085330776606
+        }
+      },
+      "20": {
+        "test": {
+          "count": 841,
+          "mae": 196.27192388536534,
+          "rmse": 302.63284050609343,
+          "mape_pct": 6.108419869327397,
+          "smape_pct": 6.35602285956966,
+          "bias_mean_error": -116.24052413396086,
+          "directional_accuracy_pct": 58.97740784780024
+        },
+        "train": {
+          "count": 3391,
+          "mae": 41.95837294472194,
+          "rmse": 64.21872619918273,
+          "mape_pct": 3.5774915895510206,
+          "smape_pct": 3.5939654305954543,
+          "bias_mean_error": -5.085133429009721,
+          "directional_accuracy_pct": 68.28115770821029
+        },
+        "validation": {
+          "count": 1044,
+          "mae": 66.80388307877101,
+          "rmse": 88.83297349966597,
+          "mape_pct": 3.8795390130092127,
+          "smape_pct": 3.9182319509592047,
+          "bias_mean_error": -13.886166269241784,
+          "directional_accuracy_pct": 67.33716475095785
+        }
+      },
+      "30": {
+        "test": {
+          "count": 841,
+          "mae": 256.1396588809602,
+          "rmse": 393.4093139407797,
+          "mape_pct": 7.847788771997005,
+          "smape_pct": 8.22880450811907,
+          "bias_mean_error": -163.45882847625285,
+          "directional_accuracy_pct": 64.56599286563615
+        },
+        "train": {
+          "count": 3391,
+          "mae": 58.169288581141274,
+          "rmse": 82.68549919043363,
+          "mape_pct": 5.015228828681425,
+          "smape_pct": 5.02972689164741,
+          "bias_mean_error": -6.854066369562589,
+          "directional_accuracy_pct": 79.3276319669714
+        },
+        "validation": {
+          "count": 1044,
+          "mae": 78.77314127478537,
+          "rmse": 105.05946375456719,
+          "mape_pct": 4.579629176433344,
+          "smape_pct": 4.644761185731565,
+          "bias_mean_error": -23.461577430777567,
+          "directional_accuracy_pct": 74.71264367816092
+        }
+      }
+    },
+    "naive_baseline_by_horizon": {
+      "1": {
+        "test": {
+          "count": 846,
+          "mae": 76.54348699763592,
+          "rmse": 180.94409293210228,
+          "mape_pct": 2.6826273617791516,
+          "smape_pct": 2.6164571649605266,
+          "bias_mean_error": -3.2008865248226948,
+          "directional_accuracy_pct": 0.0
+        },
+        "train": {
+          "count": 3391,
+          "mae": 23.331303450309647,
+          "rmse": 59.37583269527385,
+          "mape_pct": 2.0712857286726365,
+          "smape_pct": 2.0471458651486025,
+          "bias_mean_error": -0.21127985844883518,
+          "directional_accuracy_pct": 0.0
+        },
+        "validation": {
+          "count": 1044,
+          "mae": 33.499616858237545,
+          "rmse": 67.3662807748848,
+          "mape_pct": 1.9625428109157346,
+          "smape_pct": 1.955352274415954,
+          "bias_mean_error": -0.6484674329501916,
+          "directional_accuracy_pct": 0.0
+        }
+      },
+      "5": {
+        "test": {
+          "count": 842,
+          "mae": 212.83295724465555,
+          "rmse": 349.7043900276801,
+          "mape_pct": 7.175768079944093,
+          "smape_pct": 7.1563881975406325,
+          "bias_mean_error": -15.309014251781473,
+          "directional_accuracy_pct": 0.0
+        },
+        "train": {
+          "count": 3391,
+          "mae": 70.0212031849012,
+          "rmse": 115.82130532432438,
+          "mape_pct": 6.15767899029377,
+          "smape_pct": 6.103617272394929,
+          "bias_mean_error": -1.087938661161899,
+          "directional_accuracy_pct": 0.0
+        },
+        "validation": {
+          "count": 1044,
+          "mae": 86.77959770114941,
+          "rmse": 128.44949888718062,
+          "mape_pct": 5.149524369572443,
+          "smape_pct": 5.149288127218857,
+          "bias_mean_error": -2.96772030651341,
+          "directional_accuracy_pct": 0.0
+        }
+      },
+      "10": {
+        "test": {
+          "count": 841,
+          "mae": 243.27263920370098,
+          "rmse": 379.4633590356315,
+          "mape_pct": 8.14754326190237,
+          "smape_pct": 8.174809865129589,
+          "bias_mean_error": -31.085886361102855,
+          "directional_accuracy_pct": 0.0
+        },
+        "train": {
+          "count": 3391,
+          "mae": 86.37310527867886,
+          "rmse": 128.63706577171615,
+          "mape_pct": 7.640442356598772,
+          "smape_pct": 7.602404351469976,
+          "bias_mean_error": -2.293394278973754,
+          "directional_accuracy_pct": 0.0
+        },
+        "validation": {
+          "count": 1044,
+          "mae": 92.60862068965517,
+          "rmse": 127.68878946102899,
+          "mape_pct": 5.4643667980227235,
+          "smape_pct": 5.467237892331557,
+          "bias_mean_error": -5.577969348659004,
+          "directional_accuracy_pct": 0.0
+        }
+      },
+      "20": {
+        "test": {
+          "count": 841,
+          "mae": 202.02900193222354,
+          "rmse": 317.5578349080545,
+          "mape_pct": 6.486117015675523,
+          "smape_pct": 6.677740676676062,
+          "bias_mean_error": -64.79349555960167,
+          "directional_accuracy_pct": 0.0
+        },
+        "train": {
+          "count": 3391,
+          "mae": 55.602948982601,
+          "rmse": 96.07754720367058,
+          "mape_pct": 4.7574973655536,
+          "smape_pct": 4.80159277536757,
+          "bias_mean_error": -4.200501327042171,
+          "directional_accuracy_pct": 0.0
+        },
+        "validation": {
+          "count": 1044,
+          "mae": 76.9829501915709,
+          "rmse": 107.36853879328602,
+          "mape_pct": 4.466028860456138,
+          "smape_pct": 4.504908203235513,
+          "bias_mean_error": -11.819731800766286,
+          "directional_accuracy_pct": 0.0
+        }
+      },
+      "30": {
+        "test": {
+          "count": 841,
+          "mae": 276.99363896681774,
+          "rmse": 417.8873122038497,
+          "mape_pct": 8.808974141960386,
+          "smape_pct": 9.07528122945171,
+          "bias_mean_error": -96.69706295054252,
+          "directional_accuracy_pct": 0.0
+        },
+        "train": {
+          "count": 3391,
+          "mae": 96.02071660277204,
+          "rmse": 139.1321481164108,
+          "mape_pct": 8.357941756776551,
+          "smape_pct": 8.372795034283715,
+          "bias_mean_error": -6.354246534945445,
+          "directional_accuracy_pct": 0.0
+        },
+        "validation": {
+          "count": 1044,
+          "mae": 101.25201149425288,
+          "rmse": 133.15289741510816,
+          "mape_pct": 5.91200143666717,
+          "smape_pct": 5.972021578520313,
+          "bias_mean_error": -17.478256704980843,
+          "directional_accuracy_pct": 0.0
+        }
+      }
+    },
+    "improvement_vs_naive_by_horizon": {
+      "1": {
+        "test": {
+          "mae_improvement_pct_vs_naive": -22.16527523475243,
+          "rmse_improvement_pct_vs_naive": 2.352993507842636,
+          "mape_pct_improvement_pct_vs_naive": -16.14670051319438,
+          "smape_pct_improvement_pct_vs_naive": -17.461928135712117
+        },
+        "train": {
+          "mae_improvement_pct_vs_naive": -3.5686421786507996,
+          "rmse_improvement_pct_vs_naive": 13.974260558244442,
+          "mape_pct_improvement_pct_vs_naive": -3.339680691890743,
+          "smape_pct_improvement_pct_vs_naive": -3.418136110846469
+        },
+        "validation": {
+          "mae_improvement_pct_vs_naive": -1.6116239532693855,
+          "rmse_improvement_pct_vs_naive": 9.88101616262134,
+          "mape_pct_improvement_pct_vs_naive": -2.0706241692462415,
+          "smape_pct_improvement_pct_vs_naive": -1.9104266424040075
+        }
+      },
+      "5": {
+        "test": {
+          "mae_improvement_pct_vs_naive": 7.777659942774398,
+          "rmse_improvement_pct_vs_naive": 12.486380661820187,
+          "mape_pct_improvement_pct_vs_naive": 11.564612951632663,
+          "smape_pct_improvement_pct_vs_naive": 10.047404000774044
+        },
+        "train": {
+          "mae_improvement_pct_vs_naive": 42.276260157025845,
+          "rmse_improvement_pct_vs_naive": 47.928581414433886,
+          "mape_pct_improvement_pct_vs_naive": 42.879777285705146,
+          "smape_pct_improvement_pct_vs_naive": 42.474103028515245
+        },
+        "validation": {
+          "mae_improvement_pct_vs_naive": 23.130240906094247,
+          "rmse_improvement_pct_vs_naive": 27.952435932161634,
+          "mape_pct_improvement_pct_vs_naive": 23.615423353530602,
+          "smape_pct_improvement_pct_vs_naive": 23.434704202102914
+        }
+      },
+      "10": {
+        "test": {
+          "mae_improvement_pct_vs_naive": 8.998006608919384,
+          "rmse_improvement_pct_vs_naive": 11.42441419418318,
+          "mape_pct_improvement_pct_vs_naive": 12.909574273717176,
+          "smape_pct_improvement_pct_vs_naive": 11.256519762271372
+        },
+        "train": {
+          "mae_improvement_pct_vs_naive": 42.35144831499284,
+          "rmse_improvement_pct_vs_naive": 46.44156543996827,
+          "mape_pct_improvement_pct_vs_naive": 43.0357327100214,
+          "smape_pct_improvement_pct_vs_naive": 42.90326954683615
+        },
+        "validation": {
+          "mae_improvement_pct_vs_naive": 22.16352157072711,
+          "rmse_improvement_pct_vs_naive": 23.630974173888667,
+          "mape_pct_improvement_pct_vs_naive": 22.507962097173852,
+          "smape_pct_improvement_pct_vs_naive": 22.089653530754738
+        }
+      },
+      "20": {
+        "test": {
+          "mae_improvement_pct_vs_naive": 2.8496295045745836,
+          "rmse_improvement_pct_vs_naive": 4.699929512456343,
+          "mape_pct_improvement_pct_vs_naive": 5.823162694032728,
+          "smape_pct_improvement_pct_vs_naive": 4.8177644608167265
+        },
+        "train": {
+          "mae_improvement_pct_vs_naive": 24.539302838323657,
+          "rmse_improvement_pct_vs_naive": 33.15948619811425,
+          "mape_pct_improvement_pct_vs_naive": 24.8030778649789,
+          "smape_pct_improvement_pct_vs_naive": 25.150557351871004
+        },
+        "validation": {
+          "mae_improvement_pct_vs_naive": 13.22249548435002,
+          "rmse_improvement_pct_vs_naive": 17.26349776381526,
+          "mape_pct_improvement_pct_vs_naive": 13.132244904190435,
+          "smape_pct_improvement_pct_vs_naive": 13.023045660618482
+        }
+      },
+      "30": {
+        "test": {
+          "mae_improvement_pct_vs_naive": 7.5286855552505,
+          "rmse_improvement_pct_vs_naive": 5.857559573651131,
+          "mape_pct_improvement_pct_vs_naive": 10.911433663823585,
+          "smape_pct_improvement_pct_vs_naive": 9.327278129801599
+        },
+        "train": {
+          "mae_improvement_pct_vs_naive": 39.42006408702227,
+          "rmse_improvement_pct_vs_naive": 40.570529306245376,
+          "mape_pct_improvement_pct_vs_naive": 39.99445109060351,
+          "smape_pct_improvement_pct_vs_naive": 39.92774370980767
+        },
+        "validation": {
+          "mae_improvement_pct_vs_naive": 22.200912246314655,
+          "rmse_improvement_pct_vs_naive": 21.09862737192931,
+          "mape_pct_improvement_pct_vs_naive": 22.536737761432903,
+          "smape_pct_improvement_pct_vs_naive": 22.22464161151948
+        }
+      }
+    },
+    "professor_safe_note": "Omega evaluation is computed from fused artifact predictions. It is not retraining and does not use news as a training input.",
+    "generated_at_utc": "2026-05-06T01:07:25.751135Z"
+  },
+  "omega_forecast_latest_snapshot": {
+    "artifact_type": "omega_forecast_latest",
+    "schema_version": "1.0.0",
+    "phase_key": "phase14_omega_fusion",
+    "model_key": "omega_fusion",
+    "model_name": "Omega Fusion",
+    "frequency": "trading_day",
+    "forecast_method": "validation_weighted_component_p50_with_weighted_interval_context",
+    "gamma_usage": "interpretive_context_only_not_training_input",
+    "path": [
+      {
+        "horizon": 1,
+        "origin_date": "2026-05-05",
+        "forecast_date": "2026-05-06",
+        "origin_gold_price": 4561.7001953125,
+        "omega_p10_weighted": 4413.129784259991,
+        "omega_p50_weighted": 4553.746851683102,
+        "omega_p90_weighted": 4667.634370984928,
+        "omega_p10_component_min": 4104.06910933884,
+        "omega_p90_component_max": 4782.2307655392515,
+        "expected_change": -7.95334362939775,
+        "expected_change_pct": -0.17435042393996927,
+        "component_count": 4,
+        "component_models": [
+          "alpha_structural",
+          "beta_temporal",
+          "delta_tft",
+          "epsilon_expert_ensemble"
+        ],
+        "component_weights": {
+          "alpha_structural": 0.25737342140078423,
+          "beta_temporal": 0.2311326678003166,
+          "delta_tft": 0.23814153150975834,
+          "epsilon_expert_ensemble": 0.2733523792891408
+        },
+        "component_points": [
+          {
+            "model_key": "alpha_structural",
+            "display_name": "Alpha Structural",
+            "horizon": 1,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-05-06",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 4517.170568265169,
+            "p50": 4566.723948641866,
+            "p90": 4621.56890612468,
+            "expected_change": 5.023753329365718,
+            "expected_change_pct": 0.11012896758379723
+          },
+          {
+            "model_key": "beta_temporal",
+            "display_name": "Beta Temporal",
+            "horizon": 1,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-05-06",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 4492.65673828125,
+            "p50": 4567.82958984375,
+            "p90": 4663.865234375,
+            "expected_change": 6.12939453125,
+            "expected_change_pct": 0.1343664482279749
+          },
+          {
+            "model_key": "delta_tft",
+            "display_name": "Delta TFT",
+            "horizon": 1,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-05-06",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 4104.06910933884,
+            "p50": 4515.0234375,
+            "p90": 4782.2307655392515,
+            "expected_change": -46.6767578125,
+            "expected_change_pct": -1.0232315981761357
+          },
+          {
+            "model_key": "epsilon_expert_ensemble",
+            "display_name": "Epsilon Ensemble",
+            "horizon": 1,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-05-06",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 4517.177069085264,
+            "p50": 4563.356105791484,
+            "p90": 4614.358946629458,
+            "expected_change": 1.6559104789839694,
+            "expected_change_pct": 0.03630029173520753
+          }
+        ]
+      },
+      {
+        "horizon": 5,
+        "origin_date": "2026-05-05",
+        "forecast_date": "2026-05-12",
+        "origin_gold_price": 4561.7001953125,
+        "omega_p10_weighted": 4239.25551553099,
+        "omega_p50_weighted": 4502.6712051640725,
+        "omega_p90_weighted": 4803.07254992857,
+        "omega_p10_component_min": 3337.2443312092482,
+        "omega_p90_component_max": 4922.2605930039035,
+        "expected_change": -59.02899014842751,
+        "expected_change_pct": -1.294012925467666,
+        "component_count": 4,
+        "component_models": [
+          "alpha_structural",
+          "beta_temporal",
+          "delta_tft",
+          "epsilon_expert_ensemble"
+        ],
+        "component_weights": {
+          "alpha_structural": 0.27229055555948534,
+          "beta_temporal": 0.2822834301973649,
+          "delta_tft": 0.23427509218065118,
+          "epsilon_expert_ensemble": 0.21115092206249858
+        },
+        "component_points": [
+          {
+            "model_key": "alpha_structural",
+            "display_name": "Alpha Structural",
+            "horizon": 5,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-05-12",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 4708.279654097234,
+            "p50": 4794.4925742241485,
+            "p90": 4922.2605930039035,
+            "expected_change": 232.79237891164848,
+            "expected_change_pct": 5.103193303910254
+          },
+          {
+            "model_key": "beta_temporal",
+            "display_name": "Beta Temporal",
+            "horizon": 5,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-05-12",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 4401.8232421875,
+            "p50": 4533.7998046875,
+            "p90": 4731.34130859375,
+            "expected_change": -27.900390625,
+            "expected_change_pct": -0.6116226281961671
+          },
+          {
+            "model_key": "delta_tft",
+            "display_name": "Delta TFT",
+            "horizon": 5,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-05-12",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 3337.2443312092482,
+            "p50": 4065.318603515625,
+            "p90": 4814.5166407584775,
+            "expected_change": -496.381591796875,
+            "expected_change_pct": -10.881504056468803
+          },
+          {
+            "model_key": "epsilon_expert_ensemble",
+            "display_name": "Epsilon Ensemble",
+            "horizon": 5,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-05-12",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 4417.8847831919265,
+            "p50": 4569.985760893173,
+            "p90": 4732.571777791679,
+            "expected_change": 8.285565580673392,
+            "expected_change_pct": 0.18163327763598872
+          }
+        ]
+      },
+      {
+        "horizon": 10,
+        "origin_date": "2026-05-05",
+        "forecast_date": "2026-05-19",
+        "origin_gold_price": 4561.7001953125,
+        "omega_p10_weighted": 4304.365077749321,
+        "omega_p50_weighted": 4557.79437121682,
+        "omega_p90_weighted": 4861.870047791451,
+        "omega_p10_component_min": 3584.36055052797,
+        "omega_p90_component_max": 4967.455498754731,
+        "expected_change": -3.9058240956801455,
+        "expected_change_pct": -0.0856221129940473,
+        "component_count": 4,
+        "component_models": [
+          "alpha_structural",
+          "beta_temporal",
+          "delta_tft",
+          "epsilon_expert_ensemble"
+        ],
+        "component_weights": {
+          "alpha_structural": 0.2864139280379688,
+          "beta_temporal": 0.2546248533817043,
+          "delta_tft": 0.23829908758540364,
+          "epsilon_expert_ensemble": 0.22066213099492335
+        },
+        "component_points": [
+          {
+            "model_key": "alpha_structural",
+            "display_name": "Alpha Structural",
+            "horizon": 10,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-05-19",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 4758.5563525555035,
+            "p50": 4857.083916542282,
+            "p90": 4967.455498754731,
+            "expected_change": 295.38372122978217,
+            "expected_change_pct": 6.475298870655985
+          },
+          {
+            "model_key": "beta_temporal",
+            "display_name": "Beta Temporal",
+            "horizon": 10,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-05-19",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 4361.4140625,
+            "p50": 4536.447265625,
+            "p90": 4776.4853515625,
+            "expected_change": -25.2529296875,
+            "expected_change_pct": -0.5535859132840282
+          },
+          {
+            "model_key": "delta_tft",
+            "display_name": "Delta TFT",
+            "horizon": 10,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-05-19",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 3584.36055052797,
+            "p50": 4201.90966796875,
+            "p90": 4941.702078203034,
+            "expected_change": -359.79052734375,
+            "expected_change_pct": -7.887202401277108
+          },
+          {
+            "model_key": "epsilon_expert_ensemble",
+            "display_name": "Epsilon Ensemble",
+            "horizon": 10,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-05-19",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 4426.559245353457,
+            "p50": 4578.28637581818,
+            "p90": 4737.136465827087,
+            "expected_change": 16.586180505680204,
+            "expected_change_pct": 0.36359646174739385
+          }
+        ]
+      },
+      {
+        "horizon": 20,
+        "origin_date": "2026-05-05",
+        "forecast_date": "2026-06-02",
+        "origin_gold_price": 4561.7001953125,
+        "omega_p10_weighted": 4263.995986010929,
+        "omega_p50_weighted": 4468.276799475932,
+        "omega_p90_weighted": 4715.844420436817,
+        "omega_p10_component_min": 3730.383859945509,
+        "omega_p90_component_max": 4869.853936935482,
+        "expected_change": -93.42339583656758,
+        "expected_change_pct": -2.0479950859674503,
+        "component_count": 4,
+        "component_models": [
+          "alpha_structural",
+          "beta_temporal",
+          "delta_tft",
+          "epsilon_expert_ensemble"
+        ],
+        "component_weights": {
+          "alpha_structural": 0.2642105365155133,
+          "beta_temporal": 0.25740295675690744,
+          "delta_tft": 0.2373139936784496,
+          "epsilon_expert_ensemble": 0.24107251304912963
+        },
+        "component_points": [
+          {
+            "model_key": "alpha_structural",
+            "display_name": "Alpha Structural",
+            "horizon": 20,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-06-02",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 4418.838932927624,
+            "p50": 4508.743754579202,
+            "p90": 4625.3159713939585,
+            "expected_change": -52.95644073329822,
+            "expected_change_pct": -1.1608926160407267
+          },
+          {
+            "model_key": "beta_temporal",
+            "display_name": "Beta Temporal",
+            "horizon": 20,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-06-02",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 4380.2744140625,
+            "p50": 4508.126953125,
+            "p90": 4661.69677734375,
+            "expected_change": -53.5732421875,
+            "expected_change_pct": -1.1744139223035888
+          },
+          {
+            "model_key": "delta_tft",
+            "display_name": "Delta TFT",
+            "horizon": 20,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-06-02",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 3730.383859945509,
+            "p50": 4251.337890625,
+            "p90": 4869.853936935482,
+            "expected_change": -310.3623046875,
+            "expected_change_pct": -6.8036541508453645
+          },
+          {
+            "model_key": "epsilon_expert_ensemble",
+            "display_name": "Epsilon Ensemble",
+            "horizon": 20,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-06-02",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 4495.42873932711,
+            "p50": 4594.932863089319,
+            "p90": 4721.26901274632,
+            "expected_change": 33.232667776818744,
+            "expected_change_pct": 0.7285149473647541
+          }
+        ]
+      },
+      {
+        "horizon": 30,
+        "origin_date": "2026-05-05",
+        "forecast_date": "2026-06-16",
+        "origin_gold_price": 4561.7001953125,
+        "omega_p10_weighted": 4229.984444132143,
+        "omega_p50_weighted": 4487.956897770466,
+        "omega_p90_weighted": 4816.407561970411,
+        "omega_p10_component_min": 3491.899335856786,
+        "omega_p90_component_max": 4929.557261543657,
+        "expected_change": -73.74329754203427,
+        "expected_change_pct": -1.616574837991572,
+        "component_count": 4,
+        "component_models": [
+          "alpha_structural",
+          "beta_temporal",
+          "delta_tft",
+          "epsilon_expert_ensemble"
+        ],
+        "component_weights": {
+          "alpha_structural": 0.2707511146941289,
+          "beta_temporal": 0.24791095366855392,
+          "delta_tft": 0.24042454507337715,
+          "epsilon_expert_ensemble": 0.2409133865639401
+        },
+        "component_points": [
+          {
+            "model_key": "alpha_structural",
+            "display_name": "Alpha Structural",
+            "horizon": 30,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-06-16",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 4688.450257546093,
+            "p50": 4794.1876808933275,
+            "p90": 4929.557261543657,
+            "expected_change": 232.48748558082752,
+            "expected_change_pct": 5.096509538696261
+          },
+          {
+            "model_key": "beta_temporal",
+            "display_name": "Beta Temporal",
+            "horizon": 30,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-06-16",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 4187.46240234375,
+            "p50": 4353.2333984375,
+            "p90": 4625.63623046875,
+            "expected_change": -208.466796875,
+            "expected_change_pct": -4.569936382255365
+          },
+          {
+            "model_key": "delta_tft",
+            "display_name": "Delta TFT",
+            "horizon": 30,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-06-16",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 3491.899335856786,
+            "p50": 4158.0830078125,
+            "p90": 4923.002265880231,
+            "expected_change": -403.6171875,
+            "expected_change_pct": -8.847955153097258
+          },
+          {
+            "model_key": "epsilon_expert_ensemble",
+            "display_name": "Epsilon Ensemble",
+            "horizon": 30,
+            "origin_date": "2026-05-05",
+            "forecast_date": "2026-06-16",
+            "origin_gold_price": 4561.7001953125,
+            "p10": 4495.081071572162,
+            "p50": 4611.63987639918,
+            "p90": 4779.178050218329,
+            "expected_change": 49.93968108668014,
+            "expected_change_pct": 1.094760263684076
+          }
+        ]
+      }
+    ],
+    "professor_safe_note": "Omega is an artifact-level fusion candidate. It is not a guarantee and it does not use news as a hidden training input.",
+    "generated_at_utc": "2026-05-06T01:07:25.852639Z"
+  },
+  "gamma_snapshot": {
+    "status": "ready",
+    "quality_status": "ready",
+    "page_bundle": {
+      "artifact_type": "gamma_page_bundle",
+      "schema_version": "1.0.0",
+      "model_key": "gamma_news_sensitivity",
+      "page_title": "Gamma News Sensitivity",
+      "status": "ready",
+      "route": "/deep-ml/models/gamma-news-sensitivity",
+      "chart_artifacts": {
+        "gamma_date_context": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_date_context.csv",
+        "gamma_model_joined_context": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_model_joined_context.csv",
+        "gamma_tooltip_context": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_tooltip_context.json",
+        "gamma_sensitivity_by_horizon": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_sensitivity_by_horizon.json",
+        "gamma_latest_context": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_latest_context.json"
+      },
+      "frontend_patch_contract": {
+        "news_tooltip_source": "gamma_tooltip_context.json",
+        "preferred_join_key": "date",
+        "optional_model_join_keys": [
+          "date",
+          "source_model_key",
+          "horizon"
+        ],
+        "chart_row_fields_to_add": [
+          "gamma_tooltip_primary_headline",
+          "gamma_tooltip_primary_source",
+          "gamma_tooltip_note",
+          "gamma_context_intensity",
+          "gamma_context_bucket",
+          "source_coverage_note",
+          "top_headline_1",
+          "top_headline_1_source"
+        ]
+      },
+      "professor_safe_note": "Gamma supports context tooltips and sensitivity summaries only. It does not claim causality.",
+      "generated_at_utc": "2026-05-06T00:26:12.738210Z"
+    },
+    "usage_in_omega": "interpretive_context_only_not_weight_or_training_feature"
+  },
+  "governance_snapshot": {
+    "mode_status": {
+      "artifact_type": "deep_ml_mode_status",
+      "schema_version": "2.0.0",
+      "phase_key": "phase11_governed_feature_store_refresh",
+      "study_id": "deepml_feature_refresh_20260505_093208",
+      "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+      "official_model_cutoff": "2026-03-31",
+      "effective_data_through_date": "2026-05-05",
+      "forecast_start_date": "2026-05-06",
+      "gold_live_source": "yahoo_gc_f",
+      "fred_registry_merge_applied": true,
+      "manual_factor_policy": "manual/local factors carried forward unless source CSVs are added",
+      "frontend_policy": "RecursiveClientView.tsx and model3 frontend were not modified.",
+      "generated_at_utc": "2026-05-05T09:32:08.481268Z",
+      "effective_model_data_through_date": "2026-05-05",
+      "refreshed_matrix_end_date": "2026-05-05",
+      "official_research_cutoff_date": "2026-03-31",
+      "official_cutoff": "2026-03-31"
+    },
+    "matrix_manifest": {
+      "artifact_type": "deep_ml_numeric_feature_store_manifest",
+      "schema_version": "2.0.0",
+      "phase_key": "phase11_governed_feature_store_refresh",
+      "study_id": "deepml_feature_refresh_20260505_093208",
+      "row_count": 5306,
+      "column_count": 56,
+      "date_range": {
+        "start": "2006-01-02",
+        "end": "2026-05-05"
+      },
+      "official_cutoff": "2026-03-31",
+      "post_cutoff_row_count": 24,
+      "gold_live_source": {
+        "path": "artifacts\\deep_ml\\source_update\\gold_live_pulled\\gold_live_GC_F.csv",
+        "hash": "sha256:403b5493f0cc7dfefc2a4da987c4749a05c5db0e222008067f5de9e981a51661",
+        "row_count": 24,
+        "first_date": "2026-04-01",
+        "last_date": "2026-05-05",
+        "source_type": "yahoo_gc_f_comex_futures_proxy_delayed"
+      },
+      "fred_merge_summary": {
+        "fred_pull_report_path": "artifacts\\deep_ml\\source_update\\fred_registry_pull_report.json",
+        "fred_pull_report_hash": "sha256:88f7efe21b64caf6d0256b24ef989a4bc383f9f09ef7f16c2703b2869098fe61",
+        "fred_pull_status": "ready",
+        "fred_report_script_version": "fred_registry_pull_v2_retry_long_window",
+        "fred_series_attempted": 17,
+        "fred_series_valid_pulled": 17,
+        "fred_series_failed": 0,
+        "fred_latest_valid_observation_date": "2026-05-04",
+        "fred_series_used_in_merge": 16,
+        "fred_series_skipped_in_merge": 1,
+        "fred_columns_updated": [
+          "cap_util",
+          "eur_usd",
+          "fed_bs",
+          "fin_stress",
+          "ind_prod",
+          "inflation",
+          "jpy_usd",
+          "m2_supply",
+          "nominal_yield",
+          "oil_wti",
+          "ppi_index",
+          "real_yield",
+          "tips_curve",
+          "unrate",
+          "usd_index",
+          "vix_index"
+        ],
+        "merge_policy": "FRED values are forward-filled onto post-cutoff Yahoo gold dates; manual factors remain carried forward."
+      },
+      "outputs": {
+        "numeric_feature_store": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+        "refreshed_matrix_csv": "artifacts\\deep_ml\\feature_refresh\\deep_ml_refreshed_matrix.csv",
+        "refreshed_matrix_parquet": "artifacts\\deep_ml\\feature_refresh\\deep_ml_refreshed_matrix.parquet",
+        "factor_state_table": "artifacts\\deep_ml\\data\\factor_state_table.json",
+        "model_feature_plan": "artifacts\\deep_ml\\features\\model_feature_plan.json",
+        "target_plan": "artifacts\\deep_ml\\features\\target_plan.json"
+      },
+      "hashes": {
+        "numeric_feature_store": "sha256:faee8e504db2fa957ec3b2209284f4af4662a36f54ab9928402722133da47331",
+        "refreshed_matrix_csv": "sha256:df95dd1954f3c08a6d1989103f94b7ae834e3b42dac8b33edcafa68a3c9add6d",
+        "refreshed_matrix_parquet": "sha256:faee8e504db2fa957ec3b2209284f4af4662a36f54ab9928402722133da47331"
+      },
+      "generated_at_utc": "2026-05-05T09:32:08.500313Z"
+    }
+  },
+  "outputs": {
+    "run_summary": "artifacts/deep_ml/models/omega_fusion/run_summary.json",
+    "quality_review": "artifacts/deep_ml/models/omega_fusion/quality_review.json",
+    "diagnostics": "artifacts/deep_ml/models/omega_fusion/diagnostics_latest.json",
+    "omega_model_ranking": "artifacts/deep_ml/models/omega_fusion/omega_model_ranking.json",
+    "omega_weights_by_horizon": "artifacts/deep_ml/models/omega_fusion/omega_weights_by_horizon.json",
+    "omega_evaluation_by_horizon": "artifacts/deep_ml/models/omega_fusion/omega_evaluation_by_horizon.json",
+    "omega_rollforward": "artifacts/deep_ml/models/omega_fusion/omega_rollforward.csv",
+    "omega_forecast_latest": "artifacts/deep_ml/models/omega_fusion/omega_forecast_latest.json",
+    "omega_forecast_points": "artifacts/deep_ml/models/omega_fusion/omega_forecast_points.csv",
+    "page_bundle": "artifacts/deep_ml/models/omega_fusion/page_bundle.json"
+  },
+  "public_outputs": {
+    "run_summary": "public/artifacts/deep_ml/models/omega_fusion/run_summary.json",
+    "quality_review": "public/artifacts/deep_ml/models/omega_fusion/quality_review.json",
+    "diagnostics": "public/artifacts/deep_ml/models/omega_fusion/diagnostics_latest.json",
+    "omega_model_ranking": "public/artifacts/deep_ml/models/omega_fusion/omega_model_ranking.json",
+    "omega_weights_by_horizon": "public/artifacts/deep_ml/models/omega_fusion/omega_weights_by_horizon.json",
+    "omega_evaluation_by_horizon": "public/artifacts/deep_ml/models/omega_fusion/omega_evaluation_by_horizon.json",
+    "omega_rollforward": "public/artifacts/deep_ml/models/omega_fusion/omega_rollforward.csv",
+    "omega_forecast_latest": "public/artifacts/deep_ml/models/omega_fusion/omega_forecast_latest.json",
+    "omega_forecast_points": "public/artifacts/deep_ml/models/omega_fusion/omega_forecast_points.csv",
+    "page_bundle": "public/artifacts/deep_ml/models/omega_fusion/page_bundle.json"
+  },
+  "ai_grounding": {
+    "allowed_claims": [
+      "Omega fuses Alpha, Beta, Delta, and Epsilon using transparent validation-performance weights.",
+      "Omega uses Gamma as interpretive context only.",
+      "Omega does not retrain component models.",
+      "Omega does not use news sensitivity as a hidden training input.",
+      "Omega outputs a candidate Deep ML fusion forecast and evaluation artifacts."
+    ],
+    "forbidden_claims": [
+      "Omega proves causal drivers of gold prices.",
+      "Omega guarantees future gold prices.",
+      "Gamma news caused Omega forecast changes.",
+      "Omega replaces the baseline final forecast without explicit approval.",
+      "Test metrics are the primary weighting basis when validation metrics exist."
+    ]
+  },
+  "next_step_after_acceptance": {
+    "phase": "Omega frontend page",
+    "route": "/deep-ml/models/omega-fusion",
+    "instruction": "After this report is accepted, build the Omega Fusion frontend from Omega artifacts only."
+  },
+  "final_instruction": "Send me artifacts/deep_ml/models/omega_fusion/phase14_omega_fusion_report.json for review before building the Omega frontend.",
+  "generated_at_utc": "2026-05-06T01:07:25.997903Z"
+}

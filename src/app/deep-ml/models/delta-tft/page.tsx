@@ -49,6 +49,7 @@ const ARTIFACTS: ArtifactRequest[] = [
   { key: "bestConfig", label: "Best Config", path: "artifacts/deep_ml/models/delta_tft/best_config.json", kind: "json" },
   { key: "modeStatus", label: "Deep ML Mode Status", path: "artifacts/deep_ml/governance/deep_ml_mode_status.json", kind: "json" },
   { key: "matrixManifest", label: "Numeric Feature Store Manifest", path: "artifacts/deep_ml/features/deep_ml_numeric_feature_store_manifest.json", kind: "json" },
+  { key: "gammaDateContext", label: "Gamma Date Context for News Tooltips", path: "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_date_context.csv", kind: "csv" },
 ];
 
 function cleanPath(value: string) {
@@ -525,7 +526,50 @@ function rowHorizon(row: any) {
   return Number(firstValue(row.horizon, row.horizon_trading_days));
 }
 
-function buildSplitRows(rows: any[], horizon = 10): ForecastChartRow[] {
+
+type GammaDateContextLookup = Record<string, Record<string, any>>;
+
+function normalizeChartDate(value: any) {
+  if (value === null || value === undefined) return "";
+  return String(value).slice(0, 10);
+}
+
+function buildGammaDateContextLookup(rows: any[]): GammaDateContextLookup {
+  const lookup: GammaDateContextLookup = {};
+
+  if (!Array.isArray(rows)) return lookup;
+
+  for (const row of rows) {
+    const date = normalizeChartDate(row?.date);
+    if (!date) continue;
+
+    lookup[date] = {
+      gamma_tooltip_primary_headline: row.gamma_tooltip_primary_headline || row.top_headline_1 || "",
+      gamma_tooltip_primary_source: row.gamma_tooltip_primary_source || row.top_headline_1_source || "",
+      gamma_tooltip_note: row.gamma_tooltip_note || row.source_coverage_note || "",
+      gamma_context_intensity: row.gamma_context_intensity,
+      gamma_context_bucket: row.gamma_context_bucket,
+      gamma_recent_headlines_json: row.gamma_recent_headlines_json || "[]",
+      source_coverage_note: row.source_coverage_note || "",
+      top_headline_1: row.top_headline_1 || "",
+      top_headline_1_source: row.top_headline_1_source || "",
+      top_headline_1_url: row.top_headline_1_url || "",
+    };
+  }
+
+  return lookup;
+}
+
+function getGammaContextForDate(
+  gammaLookup: GammaDateContextLookup,
+  dateValue: any
+): Record<string, any> {
+  const date = normalizeChartDate(dateValue);
+  if (!date) return {};
+  return gammaLookup[date] || {};
+}
+
+function buildSplitRows(rows: any[], horizon = 10, gammaLookup: GammaDateContextLookup = {}): ForecastChartRow[] {
   return rows
     .filter((row) => rowHorizon(row) === horizon)
     .map((row) => {
@@ -535,6 +579,7 @@ function buildSplitRows(rows: any[], horizon = 10): ForecastChartRow[] {
 
       return {
         date: String(firstValue(row.date, row.origin_date)),
+        ...getGammaContextForDate(gammaLookup, firstValue(row.date, row.origin_date)),
         split: String(firstValue(row.split, "test")),
         actual: asNumber(firstValue(row.actual_target, row.actual_gold_price)),
         forecast: p50,
@@ -551,11 +596,12 @@ function buildSplitRows(rows: any[], horizon = 10): ForecastChartRow[] {
     .filter((row) => row.actual !== null && row.forecast !== null);
 }
 
-function buildRollingRows(rows: any[], horizon = 10): ForecastChartRow[] {
+function buildRollingRows(rows: any[], horizon = 10, gammaLookup: GammaDateContextLookup = {}): ForecastChartRow[] {
   return rows
     .filter((row) => rowHorizon(row) === horizon)
     .map((row) => ({
       date: String(firstValue(row.date, row.origin_date)),
+      ...getGammaContextForDate(gammaLookup, firstValue(row.date, row.origin_date)),
       split: "rolling_test",
       actual: asNumber(firstValue(row.actual_target, row.actual_gold_price)),
       forecast: asNumber(firstValue(row.prediction, row.forecast_price_p50, row.p50)),
@@ -889,11 +935,13 @@ export default async function DeltaTftPage() {
   const matrixManifest = getArtifact(results, "matrixManifest");
 
   const loadedCount = results.filter((item) => item.ok).length;
+  const gammaDateContext = getArtifact(results, "gammaDateContext") || [];
+  const gammaLookup = buildGammaDateContextLookup(gammaDateContext);
 
   const selectedHorizon = 10;
-  const splitRows = buildSplitRows(evaluationRollforward, selectedHorizon);
+  const splitRows = buildSplitRows(evaluationRollforward, selectedHorizon, gammaLookup);
   const recentTestRows = splitRows.filter((row) => row.split === "test").slice(-180);
-  const rollingRows = buildRollingRows(rollingOriginPredictions, selectedHorizon).slice(-180);
+  const rollingRows = buildRollingRows(rollingOriginPredictions, selectedHorizon, gammaLookup).slice(-180);
   const trainingRows = buildTrainingRows(trainingHistory);
 
   const metricRows = buildMetricRows(evaluation);

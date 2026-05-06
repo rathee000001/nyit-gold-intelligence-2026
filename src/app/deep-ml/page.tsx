@@ -83,6 +83,16 @@ const PAGE_ARTIFACTS: ArtifactRequest[] = [
     label: "Phase 12 News Source Update Report",
     path: "artifacts/deep_ml/news/phase12_source_news_update_report.json",
   },
+  {
+    key: "gammaReport",
+    label: "Gamma News Sensitivity Report",
+    path: "artifacts/deep_ml/models/gamma_news_sensitivity/phase13_gamma_news_sensitivity_report.json",
+  },
+  {
+    key: "omegaReport",
+    label: "Omega Fusion Report",
+    path: "artifacts/deep_ml/models/omega_fusion/phase14_omega_fusion_report.json",
+  },
 ];
 
 const EXPERT_MODULES: ModuleConfig[] = [
@@ -114,17 +124,23 @@ const EXPERT_MODULES: ModuleConfig[] = [
     path: "artifacts/deep_ml/models/epsilon_expert_ensemble/phase9_epsilon_expert_report.json",
     route: "/deep-ml/models/epsilon-ensemble",
   },
+  {
+    key: "gammaReport",
+    label: "Gamma News Sensitivity",
+    shortLabel: "Context",
+    path: "artifacts/deep_ml/models/gamma_news_sensitivity/phase13_gamma_news_sensitivity_report.json",
+    route: "/deep-ml/models/gamma-news-sensitivity",
+  },
+  {
+    key: "omegaReport",
+    label: "Omega Fusion",
+    shortLabel: "Fusion",
+    path: "artifacts/deep_ml/models/omega_fusion/phase14_omega_fusion_report.json",
+    route: "/deep-ml/models/omega-fusion",
+  },
 ];
 
 const FUTURE_MODULES = [
-  {
-    label: "Gamma News Sensitivity",
-    note: "Locked until Gamma artifacts are created and reviewed.",
-  },
-  {
-    label: "Omega Fusion",
-    note: "Locked until fusion artifacts are created and reviewed.",
-  },
   {
     label: "Final Deep ML Evaluation",
     note: "Locked until final Deep ML evaluation artifacts exist.",
@@ -763,9 +779,9 @@ function DeepMlAnimation() {
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur">
             <div className="text-[9px] font-black uppercase tracking-widest text-white/50">
-              Future Modules
+              Advanced Modules
             </div>
-            <div className="mt-2 text-sm font-black text-white">Locked until artifacts exist</div>
+            <div className="mt-2 text-sm font-black text-white">Gamma and Omega live</div>
           </div>
         </div>
       </div>
@@ -1389,8 +1405,8 @@ export default async function DeepMlOverviewPage() {
         <section className="mt-14">
           <SectionHeader
             eyebrow="Locked Future Work"
-            title="Gamma, Omega, and final evaluation remain gated"
-            description="These modules stay locked until their backend artifacts are created, reviewed, and accepted. Later we patch only the module registry and artifact list."
+            title="Final Deep ML evaluation remains gated"
+            description="Gamma and Omega are now live because their backend artifacts were created, reviewed, and accepted. The final Deep ML evaluation remains locked until its own artifacts exist."
           />
 
           <div className="grid gap-5 md:grid-cols-3">

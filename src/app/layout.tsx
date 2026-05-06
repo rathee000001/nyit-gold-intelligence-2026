@@ -13,8 +13,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar"; // Integrated Global Nav
-import Footer from "@/components/Footer"; // Integrated Global Footer
-import FloatingGoldInterpreter from "@/components/interpreter/FloatingGoldInterpreter"; // Floating Gold Nexus AI Interpreter
+import Footer from "@/components/Footer";
+import FloatingGoldInterpreter from "@/components/interpreter/FloatingGoldInterpreter"; // Integrated Global Footer
 
 /**
  * TYPOGRAPHY ENGINE: Inter Institutional
@@ -83,9 +83,8 @@ export default function RootLayout({
         {/* LAYER 2: UNIVERSAL FOOTER */}
         <Footer />
 
-        {/* LAYER 3: FLOATING GOLD NEXUS ALPHA INTERPRETER */}
+        {/* LAYER 3: FLOATING GOLD AI HOUSE ASSISTANT */}
         <FloatingGoldInterpreter />
-
         {/* ================================================================================
           SECTION 3: ARCHITECTURAL REDUNDANT BUFFER (1400+ LINE BASELINE HARD RULE)
           --------------------------------------------------------------------------------

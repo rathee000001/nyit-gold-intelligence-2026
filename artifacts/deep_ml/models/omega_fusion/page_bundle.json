@@ -1,0 +1,38 @@
+{
+  "artifact_type": "omega_page_bundle",
+  "schema_version": "1.0.0",
+  "phase_key": "phase14_omega_fusion",
+  "model_key": "omega_fusion",
+  "page_title": "Omega Fusion",
+  "status": "ready",
+  "route": "/deep-ml/models/omega-fusion",
+  "chart_artifacts": {
+    "omega_rollforward": "artifacts/deep_ml/models/omega_fusion/omega_rollforward.csv",
+    "omega_forecast_latest": "artifacts/deep_ml/models/omega_fusion/omega_forecast_latest.json",
+    "omega_forecast_points": "artifacts/deep_ml/models/omega_fusion/omega_forecast_points.csv",
+    "omega_evaluation_by_horizon": "artifacts/deep_ml/models/omega_fusion/omega_evaluation_by_horizon.json",
+    "omega_model_ranking": "artifacts/deep_ml/models/omega_fusion/omega_model_ranking.json",
+    "omega_weights_by_horizon": "artifacts/deep_ml/models/omega_fusion/omega_weights_by_horizon.json"
+  },
+  "frontend_policy": {
+    "use_json_first": true,
+    "hardcode_layout_only": true,
+    "do_not_claim_winner_until_final_deep_ml_evaluation": true,
+    "gamma_news_context": "display_context_only",
+    "news_used_as_training_input": false
+  },
+  "recommended_sections": [
+    "Omega artifact summary",
+    "Fusion weight policy",
+    "Weights by horizon",
+    "Omega actual vs forecast by train/validation/test",
+    "Omega residuals",
+    "Omega vs naive by horizon",
+    "Latest Omega forecast path",
+    "Component model contribution table",
+    "Professor-safe interpretation rules",
+    "Source files used by this page"
+  ],
+  "professor_safe_note": "Omega is a fusion candidate and should be evaluated before being presented as the final Deep ML answer.",
+  "generated_at_utc": "2026-05-06T01:07:25.996902Z"
+}

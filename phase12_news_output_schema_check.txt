@@ -1,0 +1,102 @@
+
+==========================================================================================
+PHASE 12 NEWS OUTPUT FILE EXISTENCE
+==========================================================================================
+phase12_report: public\artifacts\deep_ml\news\phase12_source_news_update_report.json
+  exists: True
+  size_bytes: 17181
+historical_csv: public\artifacts\deep_ml\news\historical\historical_news_daily_index.csv
+  exists: True
+  size_bytes: 1773317
+historical_parquet: public\artifacts\deep_ml\news\historical\historical_news_daily_index.parquet
+  exists: False
+historical_manifest: public\artifacts\deep_ml\news\historical\historical_news_backfill_manifest.json
+  exists: True
+  size_bytes: 998
+recent_json: public\artifacts\deep_ml\news\news_items_unified_raw.json
+  exists: True
+  size_bytes: 388062
+recent_csv: public\artifacts\deep_ml\news\news_items_unified_raw.csv
+  exists: True
+  size_bytes: 256293
+combined_csv: public\artifacts\deep_ml\news\structured\news_context_daily_combined.csv
+  exists: True
+  size_bytes: 1777840
+combined_parquet: public\artifacts\deep_ml\news\structured\news_context_daily_combined.parquet
+  exists: False
+
+==========================================================================================
+PHASE 12 REPORT SUMMARY
+==========================================================================================
+artifact_type: phase12_source_news_update_report
+schema_version: 1.0.0
+project: Gold Nexus Alpha
+phase: Phase 12 — Unified Source News Update
+status: ready
+generated_at_utc: 2026-05-05T19:22:32.982907Z
+generated_at_local: None
+run_id: None
+study_id: None
+
+Top-level keys:
+['artifact_type', 'schema_version', 'project', 'phase', 'phase_key', 'status', 'run', 'backbone_directory_change_note', 'source_summary', 'historical_manifest_snapshot', 'source_inventory_snapshot', 'coverage_preview_snapshot', 'diagnostics_snapshot', 'quality_review', 'outputs', 'ai_grounding', 'professor_safe_summary', 'next_step', 'final_instruction', 'generated_at_utc']
+
+professor_safe_summary:
+Phase 12 builds a fixed historical daily news index and recent news inventory for Gamma. It summarizes source coverage and does not make causal claims.
+
+ai_grounding:
+{
+  "allowed_claims": [
+    "Phase 12 builds a historical daily news index plus recent news inventory under canonical Deep ML news artifacts.",
+    "Recent headlines may be used later for Gamma tooltips/context.",
+    "Historical rows are continuity/index rows and clearly mark coverage limitations."
+  ],
+  "forbidden_claims": [
+    "This source update proves news caused gold prices to move.",
+    "Google News RSS provides complete historical news from 2006.",
+    "Zero historical score means no news existed.",
+    "This source update forecasts gold prices."
+  ]
+}
+
+outputs:
+{
+  "historical_index_parquet": "artifacts\\deep_ml\\news\\historical\\historical_news_daily_index.parquet",
+  "historical_index_csv": "artifacts\\deep_ml\\news\\historical\\historical_news_daily_index.csv",
+  "historical_manifest": "artifacts\\deep_ml\\news\\historical\\historical_news_backfill_manifest.json",
+  "combined_daily_context_parquet": "artifacts\\deep_ml\\news\\structured\\news_context_daily_combined.parquet",
+  "combined_daily_context_csv": "artifacts\\deep_ml\\news\\structured\\news_context_daily_combined.csv",
+  "unified_recent_json": "artifacts\\deep_ml\\news\\news_items_unified_raw.json",
+  "unified_recent_csv": "artifacts\\deep_ml\\news\\news_items_unified_raw.csv",
+  "source_inventory": "artifacts\\deep_ml\\news\\news_source_inventory.json",
+  "quality_review": "artifacts\\deep_ml\\news\\quality_review.json",
+  "timeline": "artifacts\\deep_ml\\news\\timeline.json",
+  "progress_checkpoint": "artifacts\\deep_ml\\news\\progress_checkpoint.json"
+}
+
+quality_review:
+{
+  "artifact_type": "deep_ml_quality_review",
+  "schema_version": "1.0.0",
+  "phase_key": "phase12_source_news_update",
+  "model_key": "source_news_update",
+  "status": "ready",
+  "blocking_flags": [],
+  "warnings": [],
+  "acceptance_gate": {
+    "historical_daily_index_exists": true,
+    "combined_daily_context_exists": true,
+    "recent_or_manual_news_loaded": true,
+    "canonical_news_directory_used": true,
+    "no_news_ai_folder_used": true,
+    "script_name_preserved": true,
+    "professor_safe_no_causality_claims": true,
+    "required_outputs_exist": true
+  },
+  "professor_safe_summary": "Unified Source News Update builds a fixed historical daily index and recent news inventory. It does not forecast gold and does not claim causality.",
+  "generated_at_utc": "2026-05-05T19:22:32.950899Z"
+}
+
+==========================================================================================
+HISTORICAL DAILY INDEX CSV
+==========================================================================================

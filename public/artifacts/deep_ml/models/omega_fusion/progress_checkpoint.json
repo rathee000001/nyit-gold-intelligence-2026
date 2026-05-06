@@ -1,0 +1,13 @@
+{
+  "artifact_type": "deep_ml_progress_checkpoint",
+  "schema_version": "1.0.0",
+  "phase_key": "phase14_omega_fusion",
+  "model_key": "omega_fusion",
+  "step": "started",
+  "status": "running",
+  "updated_at_utc": "2026-05-06T01:06:08.830002Z",
+  "payload": {
+    "run_id": "deepml_run_20260506_010608_omega_fusion",
+    "smoke": false
+  }
+}
