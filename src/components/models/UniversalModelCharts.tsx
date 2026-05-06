@@ -103,13 +103,68 @@ function rowsWithResidual(rows: ForecastChartRow[], forecastKey: ForecastKey) {
     }));
 }
 
+
+function firstText(...values: any[]) {
+  for (const value of values) {
+    if (value !== null && value !== undefined && String(value).trim() !== "") {
+      return String(value).trim();
+    }
+  }
+
+  return "";
+}
+
+function safeJsonArray(value: any) {
+  if (!value) return [];
+
+  if (Array.isArray(value)) return value;
+
+  try {
+    const parsed = JSON.parse(String(value));
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function getNewsContext(row: any) {
+  const headline = firstText(
+    row?.gamma_tooltip_primary_headline,
+    row?.top_headline_1,
+    row?.newsHeadline
+  );
+
+  const source = firstText(
+    row?.top_headline_1_source,
+    row?.newsSource,
+    row?.source
+  );
+
+  const note = firstText(
+    row?.gamma_tooltip_note,
+    row?.newsTooltipNote,
+    row?.source_coverage_note
+  );
+
+  const recentHeadlines = safeJsonArray(row?.gamma_recent_headlines_json).slice(0, 3);
+  const intensity = row?.gamma_context_intensity;
+  const bucket = firstText(row?.gamma_context_bucket);
+
+  if (!headline && !note && recentHeadlines.length === 0 && !bucket && intensity === undefined) {
+    return null;
+  }
+
+  return { headline, source, note, recentHeadlines, intensity, bucket };
+}
+
 function CustomTooltip({ active, payload, label }: any) {
   if (!active || !payload || payload.length === 0) return null;
 
   const row = payload?.[0]?.payload;
+  const news = getNewsContext(row);
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xl">
+    <div className="max-w-[430px] rounded-2xl border border-slate-200 bg-white p-4 shadow-xl">
       <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">
         {label}
       </p>
@@ -138,6 +193,55 @@ function CustomTooltip({ active, payload, label }: any) {
           </div>
         ))}
       </div>
+
+      {news ? (
+        <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 p-3">
+          <div className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-700">
+            News context
+          </div>
+
+          {news.headline ? (
+            <div className="mt-2 text-xs font-black leading-5 text-slate-900">
+              {news.headline}
+            </div>
+          ) : null}
+
+          {news.source ? (
+            <div className="mt-1 text-[11px] font-bold text-slate-500">
+              Source: {news.source}
+            </div>
+          ) : null}
+
+          {news.bucket || news.intensity !== undefined ? (
+            <div className="mt-2 text-[11px] font-bold text-slate-600">
+              {news.bucket ? `Context bucket: ${news.bucket}` : ""}
+              {news.bucket && news.intensity !== undefined ? " · " : ""}
+              {news.intensity !== undefined ? `Intensity: ${formatNumber(news.intensity, 3)}` : ""}
+            </div>
+          ) : null}
+
+          {news.recentHeadlines.length > 0 ? (
+            <div className="mt-2 space-y-1">
+              {news.recentHeadlines.map((item: any, index: number) => (
+                <div key={`${item?.title || "headline"}-${index}`} className="text-[11px] font-semibold leading-4 text-slate-700">
+                  {firstText(item?.title)}
+                  {firstText(item?.source) ? ` — ${firstText(item?.source)}` : ""}
+                </div>
+              ))}
+            </div>
+          ) : null}
+
+          {news.note ? (
+            <div className="mt-2 text-[11px] font-semibold leading-4 text-slate-600">
+              {news.note}
+            </div>
+          ) : null}
+
+          <div className="mt-2 text-[10px] font-black uppercase tracking-widest text-amber-700">
+            Context only · not causality
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -1,0 +1,150 @@
+[
+  {
+    "timestamp_utc": "2026-05-06T00:26:09.610123Z",
+    "event": "phase13_gamma_news_sensitivity_started",
+    "status": "ok",
+    "details": {
+      "run_id": "deepml_run_20260506_002609_gamma_news_sensitivity",
+      "smoke": false
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-06T00:26:09.610123Z",
+    "event": "loading_news_artifacts",
+    "status": "ok",
+    "details": {}
+  },
+  {
+    "timestamp_utc": "2026-05-06T00:26:09.785857Z",
+    "event": "news_context_ready",
+    "status": "ok",
+    "details": {
+      "rows": 7429
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-06T00:26:09.840766Z",
+    "event": "loading_model_rollforwards",
+    "status": "ok",
+    "details": {}
+  },
+  {
+    "timestamp_utc": "2026-05-06T00:26:10.171040Z",
+    "event": "model_rollforwards_ready",
+    "status": "ok",
+    "details": {
+      "rows": 105174,
+      "usable_model_count": 4,
+      "model_load_meta": {
+        "alpha_structural": {
+          "model_key": "alpha_structural",
+          "input_rows": 26344,
+          "output_rows": 26344,
+          "missing_required_columns": [],
+          "status": "ready",
+          "gold_price_source_column": "gold_price",
+          "split_counts": {
+            "test": 4169,
+            "train": 16955,
+            "validation": 5220
+          },
+          "horizon_counts": {
+            "1": 5281,
+            "5": 5277,
+            "10": 5272,
+            "20": 5262,
+            "30": 5252
+          },
+          "path": "artifacts/deep_ml/models/alpha_structural/evaluation_rollforward.csv",
+          "exists": true
+        },
+        "beta_temporal": {
+          "model_key": "beta_temporal",
+          "input_rows": 26165,
+          "output_rows": 26165,
+          "missing_required_columns": [],
+          "status": "ready",
+          "gold_price_source_column": "raw_origin_gold_price",
+          "split_counts": {
+            "test": 4085,
+            "train": 16860,
+            "validation": 5220
+          },
+          "horizon_counts": {
+            "1": 5233,
+            "5": 5233,
+            "10": 5233,
+            "20": 5233,
+            "30": 5233
+          },
+          "path": "artifacts/deep_ml/models/beta_temporal/evaluation_rollforward.csv",
+          "exists": true
+        },
+        "delta_tft": {
+          "model_key": "delta_tft",
+          "input_rows": 26285,
+          "output_rows": 26285,
+          "missing_required_columns": [],
+          "status": "ready",
+          "gold_price_source_column": "gold_price",
+          "split_counts": {
+            "test": 4205,
+            "train": 16860,
+            "validation": 5220
+          },
+          "horizon_counts": {
+            "1": 5257,
+            "5": 5257,
+            "10": 5257,
+            "20": 5257,
+            "30": 5257
+          },
+          "path": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv",
+          "exists": true
+        },
+        "epsilon_expert_ensemble": {
+          "model_key": "epsilon_expert_ensemble",
+          "input_rows": 26380,
+          "output_rows": 26380,
+          "missing_required_columns": [],
+          "status": "ready",
+          "gold_price_source_column": "gold_price",
+          "split_counts": {
+            "test": 4205,
+            "train": 16955,
+            "validation": 5220
+          },
+          "horizon_counts": {
+            "1": 5276,
+            "5": 5276,
+            "10": 5276,
+            "20": 5276,
+            "30": 5276
+          },
+          "path": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_rollforward.csv",
+          "exists": true
+        }
+      }
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-06T00:26:10.171040Z",
+    "event": "joining_model_rows_to_news_context",
+    "status": "ok",
+    "details": {}
+  },
+  {
+    "timestamp_utc": "2026-05-06T00:26:11.674889Z",
+    "event": "joined_context_ready",
+    "status": "ok",
+    "details": {
+      "rows": 105174
+    }
+  },
+  {
+    "timestamp_utc": "2026-05-06T00:26:12.774231Z",
+    "event": "phase13_gamma_news_sensitivity_completed",
+    "status": "ready",
+    "details": {}
+  }
+]

@@ -2,12 +2,12 @@
   "artifact_type": "source_news_update_diagnostics_latest",
   "schema_version": "1.0.0",
   "phase_key": "phase12_source_news_update",
-  "run_id": "deepml_run_20260505_191939_source_news_update",
+  "run_id": "deepml_run_20260505_192645_source_news_update",
   "script_version": "source_news_update_v3_unified_historical_recent_safe_fallbacks",
   "repo_root": "D:\\nyit-gold-intelligence-2026",
   "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
   "platform": "Windows-11-10.0.26200-SP0",
-  "git_commit_sha": "be6e3bf",
+  "git_commit_sha": "62d1cdd",
   "study_id": "deepml_feature_refresh_20260505_093208",
   "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
   "effective_data_through_date": "2026-05-05",
@@ -16,11 +16,11 @@
   "historical_end_date": "2026-04-28",
   "recent_window_days": 7,
   "output_hashes": {
-    "historical_index_parquet": "sha256:21a8a75958438b5821b1698be28f869229bccb03950d66c973651ad30739da51",
-    "historical_index_csv": "sha256:b557cc1f1c2c8ff8feec4a24fb70b2a8124bd909d2114353773415b6dbf34237",
-    "combined_daily_context_csv": "sha256:96d2c24a3bd4aac37bb2708a7f17f896f790233b8958879ec0f70997bb742ffd",
-    "unified_raw_json": "sha256:2e635f648901e811f5f158b727088fa8996d7fb3d4ea6ed8a242cfd0d2e976b0"
+    "historical_index_parquet": "sha256:b62354c61ac9d0b063b5a8ccf8d50d383f2c9dcf0b260a15f015a7597cb410fd",
+    "historical_index_csv": "sha256:d4f00afd2410c399c3b4e17684fa3ae9cfeaf51a910a364e152002c228ff9101",
+    "combined_daily_context_csv": "sha256:1fbc2dd3017dab511da502b435024ed08dc46863f5152ecc20f348bbdc4ee3c2",
+    "unified_raw_json": "sha256:2c46083fc58b77ea797d4087be043d3080fa9df70600ce6beb8a54623023e5d6"
   },
   "professor_safe_note": "Diagnostics describe source update execution only. They do not claim news caused gold movement.",
-  "generated_at_utc": "2026-05-05T19:22:32.947898Z"
+  "generated_at_utc": "2026-05-05T23:36:05.170969Z"
 }

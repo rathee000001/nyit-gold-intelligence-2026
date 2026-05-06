@@ -1,0 +1,23 @@
+{
+  "artifact_type": "deep_ml_quality_review",
+  "schema_version": "1.0.0",
+  "phase_key": "phase13_gamma_news_sensitivity",
+  "model_key": "gamma_news_sensitivity",
+  "status": "ready",
+  "blocking_flags": [],
+  "warnings": [],
+  "acceptance_gate": {
+    "phase12_report_exists": true,
+    "combined_daily_context_exists": true,
+    "recent_news_exists": true,
+    "gamma_date_context_exists": true,
+    "gamma_model_joined_context_exists": true,
+    "gamma_tooltip_context_exists": true,
+    "all_four_model_rollforwards_loaded": true,
+    "no_causality_claims": true,
+    "rss_not_treated_as_historical_archive": true,
+    "zero_score_not_treated_as_no_news": true
+  },
+  "professor_safe_summary": "Gamma is a source-context and sensitivity layer. It joins Phase 12 news context to model prediction dates and supports chart tooltips. It does not claim causality.",
+  "generated_at_utc": "2026-05-06T00:26:12.588964Z"
+}

@@ -1,0 +1,2810 @@
+{
+  "artifact_type": "phase13_gamma_news_sensitivity_report",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "Phase 13 - Gamma News Sensitivity",
+  "phase_key": "phase13_gamma_news_sensitivity",
+  "model_key": "gamma_news_sensitivity",
+  "model_name": "Gamma News Sensitivity",
+  "status": "ready",
+  "run_summary": {
+    "artifact_type": "deep_ml_model_run",
+    "schema_version": "1.0.0",
+    "project": "Gold Nexus Alpha",
+    "phase": "phase_2_deep_ml",
+    "phase_key": "phase13_gamma_news_sensitivity",
+    "model_key": "gamma_news_sensitivity",
+    "model_name": "Gamma News Sensitivity",
+    "family": "news_context_sensitivity_layer",
+    "status": "ready",
+    "run": {
+      "run_id": "deepml_run_20260506_002609_gamma_news_sensitivity",
+      "generated_at_utc": "2026-05-06T00:26:09.610123Z",
+      "completed_at_utc": "2026-05-06T00:26:12.588964Z",
+      "generated_at_local": "2026-05-05T20:26:09.610123-04:00",
+      "timezone_local": "America/New_York",
+      "git_commit_sha": "62d1cdd",
+      "code_version": "gamma_news_sensitivity_v2_consistent_phase12_artifact_context",
+      "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "smoke": false
+    },
+    "source_contract": {
+      "phase12_report": "artifacts/deep_ml/news/phase12_source_news_update_report.json",
+      "combined_daily_context": "artifacts/deep_ml/news/structured/news_context_daily_combined.csv",
+      "recent_news": "artifacts/deep_ml/news/news_items_unified_raw.csv",
+      "model_rollforward_sources": {
+        "alpha_structural": "artifacts/deep_ml/models/alpha_structural/evaluation_rollforward.csv",
+        "beta_temporal": "artifacts/deep_ml/models/beta_temporal/evaluation_rollforward.csv",
+        "delta_tft": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv",
+        "epsilon_expert_ensemble": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_rollforward.csv"
+      },
+      "model_report_sources": {
+        "alpha_structural": "artifacts/deep_ml/models/alpha_structural/phase6_alpha_structural_report.json",
+        "beta_temporal": "artifacts/deep_ml/models/beta_temporal/phase7_beta_temporal_report.json",
+        "delta_tft": "artifacts/deep_ml/models/delta_tft/phase8_delta_tft_report.json",
+        "epsilon_expert_ensemble": "artifacts/deep_ml/models/epsilon_expert_ensemble/phase9_epsilon_expert_report.json"
+      },
+      "model_forecast_sources": {
+        "alpha_structural": "artifacts/deep_ml/models/alpha_structural/forecast_latest.json",
+        "beta_temporal": "artifacts/deep_ml/models/beta_temporal/forecast_latest.json",
+        "delta_tft": "artifacts/deep_ml/models/delta_tft/forecast_latest.json",
+        "epsilon_expert_ensemble": "artifacts/deep_ml/models/epsilon_expert_ensemble/forecast_latest.json"
+      }
+    },
+    "model_load_meta": {
+      "alpha_structural": {
+        "model_key": "alpha_structural",
+        "input_rows": 26344,
+        "output_rows": 26344,
+        "missing_required_columns": [],
+        "status": "ready",
+        "gold_price_source_column": "gold_price",
+        "split_counts": {
+          "test": 4169,
+          "train": 16955,
+          "validation": 5220
+        },
+        "horizon_counts": {
+          "1": 5281,
+          "5": 5277,
+          "10": 5272,
+          "20": 5262,
+          "30": 5252
+        },
+        "path": "artifacts/deep_ml/models/alpha_structural/evaluation_rollforward.csv",
+        "exists": true
+      },
+      "beta_temporal": {
+        "model_key": "beta_temporal",
+        "input_rows": 26165,
+        "output_rows": 26165,
+        "missing_required_columns": [],
+        "status": "ready",
+        "gold_price_source_column": "raw_origin_gold_price",
+        "split_counts": {
+          "test": 4085,
+          "train": 16860,
+          "validation": 5220
+        },
+        "horizon_counts": {
+          "1": 5233,
+          "5": 5233,
+          "10": 5233,
+          "20": 5233,
+          "30": 5233
+        },
+        "path": "artifacts/deep_ml/models/beta_temporal/evaluation_rollforward.csv",
+        "exists": true
+      },
+      "delta_tft": {
+        "model_key": "delta_tft",
+        "input_rows": 26285,
+        "output_rows": 26285,
+        "missing_required_columns": [],
+        "status": "ready",
+        "gold_price_source_column": "gold_price",
+        "split_counts": {
+          "test": 4205,
+          "train": 16860,
+          "validation": 5220
+        },
+        "horizon_counts": {
+          "1": 5257,
+          "5": 5257,
+          "10": 5257,
+          "20": 5257,
+          "30": 5257
+        },
+        "path": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv",
+        "exists": true
+      },
+      "epsilon_expert_ensemble": {
+        "model_key": "epsilon_expert_ensemble",
+        "input_rows": 26380,
+        "output_rows": 26380,
+        "missing_required_columns": [],
+        "status": "ready",
+        "gold_price_source_column": "gold_price",
+        "split_counts": {
+          "test": 4205,
+          "train": 16955,
+          "validation": 5220
+        },
+        "horizon_counts": {
+          "1": 5276,
+          "5": 5276,
+          "10": 5276,
+          "20": 5276,
+          "30": 5276
+        },
+        "path": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_rollforward.csv",
+        "exists": true
+      }
+    },
+    "professor_safe_summary": "Gamma reads accepted Deep ML model prediction artifacts and Phase 12 news-context rows to build context-aware sensitivity artifacts and tooltips."
+  },
+  "quality_review": {
+    "artifact_type": "deep_ml_quality_review",
+    "schema_version": "1.0.0",
+    "phase_key": "phase13_gamma_news_sensitivity",
+    "model_key": "gamma_news_sensitivity",
+    "status": "ready",
+    "blocking_flags": [],
+    "warnings": [],
+    "acceptance_gate": {
+      "phase12_report_exists": true,
+      "combined_daily_context_exists": true,
+      "recent_news_exists": true,
+      "gamma_date_context_exists": true,
+      "gamma_model_joined_context_exists": true,
+      "gamma_tooltip_context_exists": true,
+      "all_four_model_rollforwards_loaded": true,
+      "no_causality_claims": true,
+      "rss_not_treated_as_historical_archive": true,
+      "zero_score_not_treated_as_no_news": true
+    },
+    "professor_safe_summary": "Gamma is a source-context and sensitivity layer. It joins Phase 12 news context to model prediction dates and supports chart tooltips. It does not claim causality.",
+    "generated_at_utc": "2026-05-06T00:26:12.588964Z"
+  },
+  "diagnostics_snapshot": {
+    "artifact_type": "gamma_news_sensitivity_diagnostics_latest",
+    "schema_version": "1.0.0",
+    "phase_key": "phase13_gamma_news_sensitivity",
+    "model_key": "gamma_news_sensitivity",
+    "status": "ready",
+    "smoke": false,
+    "news_context_rows": 7429,
+    "recent_news_rows": 225,
+    "model_rows_loaded": 105174,
+    "joined_rows": 105174,
+    "date_context_rows": 7429,
+    "model_context_preview_rows": 5000,
+    "model_load_meta": {
+      "alpha_structural": {
+        "model_key": "alpha_structural",
+        "input_rows": 26344,
+        "output_rows": 26344,
+        "missing_required_columns": [],
+        "status": "ready",
+        "gold_price_source_column": "gold_price",
+        "split_counts": {
+          "test": 4169,
+          "train": 16955,
+          "validation": 5220
+        },
+        "horizon_counts": {
+          "1": 5281,
+          "5": 5277,
+          "10": 5272,
+          "20": 5262,
+          "30": 5252
+        },
+        "path": "artifacts/deep_ml/models/alpha_structural/evaluation_rollforward.csv",
+        "exists": true
+      },
+      "beta_temporal": {
+        "model_key": "beta_temporal",
+        "input_rows": 26165,
+        "output_rows": 26165,
+        "missing_required_columns": [],
+        "status": "ready",
+        "gold_price_source_column": "raw_origin_gold_price",
+        "split_counts": {
+          "test": 4085,
+          "train": 16860,
+          "validation": 5220
+        },
+        "horizon_counts": {
+          "1": 5233,
+          "5": 5233,
+          "10": 5233,
+          "20": 5233,
+          "30": 5233
+        },
+        "path": "artifacts/deep_ml/models/beta_temporal/evaluation_rollforward.csv",
+        "exists": true
+      },
+      "delta_tft": {
+        "model_key": "delta_tft",
+        "input_rows": 26285,
+        "output_rows": 26285,
+        "missing_required_columns": [],
+        "status": "ready",
+        "gold_price_source_column": "gold_price",
+        "split_counts": {
+          "test": 4205,
+          "train": 16860,
+          "validation": 5220
+        },
+        "horizon_counts": {
+          "1": 5257,
+          "5": 5257,
+          "10": 5257,
+          "20": 5257,
+          "30": 5257
+        },
+        "path": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv",
+        "exists": true
+      },
+      "epsilon_expert_ensemble": {
+        "model_key": "epsilon_expert_ensemble",
+        "input_rows": 26380,
+        "output_rows": 26380,
+        "missing_required_columns": [],
+        "status": "ready",
+        "gold_price_source_column": "gold_price",
+        "split_counts": {
+          "test": 4205,
+          "train": 16955,
+          "validation": 5220
+        },
+        "horizon_counts": {
+          "1": 5276,
+          "5": 5276,
+          "10": 5276,
+          "20": 5276,
+          "30": 5276
+        },
+        "path": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_rollforward.csv",
+        "exists": true
+      }
+    },
+    "output_hashes": {
+      "gamma_date_context": "sha256:99f631c5705d28b9278650fb013fdf7b20a1be005f57edf8e65d207c68bccb92",
+      "gamma_model_joined_context": "sha256:0360d0397461c38339f3622404cecd04fae27356028287c8d371f57b7c392f36",
+      "gamma_tooltip_context": "sha256:ac8fbce61d03bf6f7628e5258be45090ac3f505eaaec436899906fc97c10cfad",
+      "gamma_sensitivity_by_horizon": "sha256:4515fe79f00a1fa9b52b63ffcc47d23ef775142746f198550488ae7665f3029b",
+      "gamma_latest_context": "sha256:06897d2793befe555f2f588748508db140e46eb8581cf1d5161f6bfcdd21f782"
+    },
+    "professor_safe_note": "Diagnostics describe execution and output integrity only. They do not claim news caused gold price movement.",
+    "generated_at_utc": "2026-05-06T00:26:12.738210Z"
+  },
+  "phase12_snapshot": {
+    "phase12_status": "ready",
+    "phase12_quality_status": "ready",
+    "source_summary": {
+      "historical_daily_rows": 7422,
+      "historical_rows_with_loaded_public_source": 1285,
+      "gdelt_recent_rows": 36,
+      "rss_recent_rows": 189,
+      "newsapi_recent_rows": 0,
+      "manual_recent_rows": 0,
+      "unified_recent_rows_after_dedupe": 225,
+      "combined_daily_context_rows": 7429
+    },
+    "historical_manifest_snapshot": {
+      "artifact_type": "historical_news_backfill_manifest",
+      "schema_version": "1.0.0",
+      "phase_key": "phase12_source_news_update",
+      "script_version": "source_news_update_v3_unified_historical_recent_safe_fallbacks",
+      "historical_start_date": "2006-01-02",
+      "historical_end_date": "2026-04-28",
+      "row_count": 7422,
+      "rows_with_loaded_public_source": 1285,
+      "source_policy": "Fixed daily index. 2017 onward uses sampled GDELT DOC API where available. Pre-2017 rows are retained with explicit coverage notes unless a future bulk historical GDELT/GKG loader is added.",
+      "google_news_rss_policy": "Google News RSS is a recent fallback only, not a 2006 historical archive.",
+      "cache_used": false,
+      "generated_at_utc": "2026-05-05T23:33:06.324675Z",
+      "outputs": {
+        "historical_index_parquet": "artifacts\\deep_ml\\news\\historical\\historical_news_daily_index.parquet",
+        "historical_index_csv": "artifacts\\deep_ml\\news\\historical\\historical_news_daily_index.csv"
+      }
+    }
+  },
+  "input_model_report_snapshots": {
+    "alpha_structural": {
+      "report_path": "artifacts/deep_ml/models/alpha_structural/phase6_alpha_structural_report.json",
+      "status": "ready",
+      "model_key": "alpha_structural",
+      "model_name": null,
+      "model_version": "alpha_structural_v4_consistent_timed_xgboost_optuna_rolling_shap",
+      "quality_status": null
+    },
+    "beta_temporal": {
+      "report_path": "artifacts/deep_ml/models/beta_temporal/phase7_beta_temporal_report.json",
+      "status": "ready",
+      "model_key": "beta_temporal",
+      "model_name": null,
+      "model_version": "beta_temporal_v2_raw_anchor_pytorch_optuna_mc_dropout_attention_occlusion",
+      "quality_status": null
+    },
+    "delta_tft": {
+      "report_path": "artifacts/deep_ml/models/delta_tft/phase8_delta_tft_report.json",
+      "status": "ready_quality_review_required",
+      "model_key": "delta_tft",
+      "model_name": "Delta TFT Multi-Horizon Expert",
+      "model_version": "v2_calibrated",
+      "quality_status": "ready_quality_review_required"
+    },
+    "epsilon_expert_ensemble": {
+      "report_path": "artifacts/deep_ml/models/epsilon_expert_ensemble/phase9_epsilon_expert_report.json",
+      "status": "ready",
+      "model_key": "epsilon_expert_ensemble",
+      "model_name": "Epsilon Expert Ensemble",
+      "model_version": null,
+      "quality_status": "ready"
+    }
+  },
+  "mode_status_snapshot": {
+    "artifact_type": "deep_ml_mode_status",
+    "schema_version": "2.0.0",
+    "phase_key": "phase11_governed_feature_store_refresh",
+    "study_id": "deepml_feature_refresh_20260505_093208",
+    "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
+    "official_model_cutoff": "2026-03-31",
+    "effective_data_through_date": "2026-05-05",
+    "forecast_start_date": "2026-05-06",
+    "gold_live_source": "yahoo_gc_f",
+    "fred_registry_merge_applied": true,
+    "manual_factor_policy": "manual/local factors carried forward unless source CSVs are added",
+    "frontend_policy": "RecursiveClientView.tsx and model3 frontend were not modified.",
+    "generated_at_utc": "2026-05-05T09:32:08.481268Z",
+    "effective_model_data_through_date": "2026-05-05",
+    "refreshed_matrix_end_date": "2026-05-05",
+    "official_research_cutoff_date": "2026-03-31",
+    "official_cutoff": "2026-03-31"
+  },
+  "matrix_manifest_snapshot": {
+    "artifact_type": "deep_ml_numeric_feature_store_manifest",
+    "schema_version": "2.0.0",
+    "phase_key": "phase11_governed_feature_store_refresh",
+    "study_id": "deepml_feature_refresh_20260505_093208",
+    "row_count": 5306,
+    "column_count": 56,
+    "date_range": {
+      "start": "2006-01-02",
+      "end": "2026-05-05"
+    },
+    "official_cutoff": "2026-03-31",
+    "post_cutoff_row_count": 24,
+    "gold_live_source": {
+      "path": "artifacts\\deep_ml\\source_update\\gold_live_pulled\\gold_live_GC_F.csv",
+      "hash": "sha256:403b5493f0cc7dfefc2a4da987c4749a05c5db0e222008067f5de9e981a51661",
+      "row_count": 24,
+      "first_date": "2026-04-01",
+      "last_date": "2026-05-05",
+      "source_type": "yahoo_gc_f_comex_futures_proxy_delayed"
+    },
+    "fred_merge_summary": {
+      "fred_pull_report_path": "artifacts\\deep_ml\\source_update\\fred_registry_pull_report.json",
+      "fred_pull_report_hash": "sha256:88f7efe21b64caf6d0256b24ef989a4bc383f9f09ef7f16c2703b2869098fe61",
+      "fred_pull_status": "ready",
+      "fred_report_script_version": "fred_registry_pull_v2_retry_long_window",
+      "fred_series_attempted": 17,
+      "fred_series_valid_pulled": 17,
+      "fred_series_failed": 0,
+      "fred_latest_valid_observation_date": "2026-05-04",
+      "fred_series_used_in_merge": 16,
+      "fred_series_skipped_in_merge": 1,
+      "fred_columns_updated": [
+        "cap_util",
+        "eur_usd",
+        "fed_bs",
+        "fin_stress",
+        "ind_prod",
+        "inflation",
+        "jpy_usd",
+        "m2_supply",
+        "nominal_yield",
+        "oil_wti",
+        "ppi_index",
+        "real_yield",
+        "tips_curve",
+        "unrate",
+        "usd_index",
+        "vix_index"
+      ],
+      "merge_policy": "FRED values are forward-filled onto post-cutoff Yahoo gold dates; manual factors remain carried forward."
+    },
+    "outputs": {
+      "numeric_feature_store": "artifacts\\deep_ml\\features\\deep_ml_numeric_feature_store.parquet",
+      "refreshed_matrix_csv": "artifacts\\deep_ml\\feature_refresh\\deep_ml_refreshed_matrix.csv",
+      "refreshed_matrix_parquet": "artifacts\\deep_ml\\feature_refresh\\deep_ml_refreshed_matrix.parquet",
+      "factor_state_table": "artifacts\\deep_ml\\data\\factor_state_table.json",
+      "model_feature_plan": "artifacts\\deep_ml\\features\\model_feature_plan.json",
+      "target_plan": "artifacts\\deep_ml\\features\\target_plan.json"
+    },
+    "hashes": {
+      "numeric_feature_store": "sha256:faee8e504db2fa957ec3b2209284f4af4662a36f54ab9928402722133da47331",
+      "refreshed_matrix_csv": "sha256:df95dd1954f3c08a6d1989103f94b7ae834e3b42dac8b33edcafa68a3c9add6d",
+      "refreshed_matrix_parquet": "sha256:faee8e504db2fa957ec3b2209284f4af4662a36f54ab9928402722133da47331"
+    },
+    "generated_at_utc": "2026-05-05T09:32:08.500313Z"
+  },
+  "latest_context_snapshot": {
+    "artifact_type": "gamma_latest_context",
+    "schema_version": "1.0.0",
+    "model_key": "gamma_news_sensitivity",
+    "latest_daily_context": {
+      "date": "2026-05-05",
+      "article_count": 39,
+      "gold_news_count": 39,
+      "source_type": "recent_api_rss_manual_news",
+      "source_coverage_note": "Historical/recent public source rows were loaded for this date. Scores summarize source coverage, not causality.",
+      "top_headline_1": "Gold Price Today : \u0932\u0917\u093e\u0924\u093e\u0930 \u0926\u0942\u0938\u0930\u0947 \u0926\u093f\u0928 \u0917\u094b\u0932\u094d\u0921 \u0938\u0938\u094d\u0924\u093e , \u091a\u093e\u0902\u0926\u0940 \u092d\u0940 \u092b\u093f\u0938\u0932\u0940 , \u091a\u0947\u0915 \u0915\u0930\u0947\u0902 \u0926\u093f\u0932\u094d\u0932\u0940 \u0938\u0947 \u0932\u0916\u0928\u090a - \u092a\u091f\u0928\u093e \u0924\u0915 \u0938\u094b\u0928\u0947 \u0915\u093e \u092d\u093e\u0935",
+      "top_headline_1_source": "hindi.moneycontrol.com",
+      "top_headline_1_url": "https://hindi.moneycontrol.com/news/your-money/gold-price-today-on-tuesday-5-may-gold-rate-sone-ka-bhav-24k-22k-18k-delhi-mumbai-chennai-kolkata-lucknow-jaipur-patna-silver-price-today-2398413.html",
+      "gamma_context_intensity": 3.6999999999999997,
+      "gamma_context_bucket": "high",
+      "gamma_tooltip_note": "News context loaded: Gold Price Today : \u0932\u0917\u093e\u0924\u093e\u0930 \u0926\u0942\u0938\u0930\u0947 \u0926\u093f\u0928 \u0917\u094b\u0932\u094d\u0921 \u0938\u0938\u094d\u0924\u093e , \u091a\u093e\u0902\u0926\u0940 \u092d\u0940 \u092b\u093f\u0938\u0932\u0940 , \u091a\u0947\u0915 \u0915\u0930\u0947\u0902 \u0926\u093f\u0932\u094d\u0932\u0940 \u0938\u0947 \u0932\u0916\u0928\u090a - \u092a\u091f\u0928\u093e \u0924\u0915 \u0938\u094b\u0928\u0947 \u0915\u093e \u092d\u093e\u0935",
+      "gold_general_news_score": 1.0,
+      "inflation_news_score": 0.9,
+      "fed_policy_news_score": 0.0,
+      "usd_news_score": 0.0,
+      "geopolitical_risk_news_score": 0.4,
+      "safe_haven_news_score": 0.0,
+      "central_bank_gold_news_score": 0.4,
+      "net_gold_news_sensitivity_score": 1.0
+    },
+    "recent_headline_items": [
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T19:47:26Z",
+        "source": "Investing.com",
+        "title": "Gold Price Pullback Opens Tactical Entry but Lacks Strong Support - Investing.com",
+        "summary": "Gold Price Pullback Opens Tactical Entry but Lacks Strong Support &nbsp;&nbsp; Investing.com",
+        "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNOUpvTlhEdVVRVXZKb1NVVHFtbUhaajh1VGJEUDd1OGZIbWRVM1BYeUxXdTlFOVFoMFF6Wk1kLXIzRVk0cGUxeGgzSGpfR3RmNkVTc2pLc1NvVE1JUHMybm5JNF9zU09Xa3lwRXZadkNmaDd6bVN0RUFRbHJwZlB1aGxNQmc1TWpwcks2cThFUFpjR0d4cmRwcXZEX2UyQk1NNGtMYWV3aWNOVEdKUzAw?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T18:18:34Z",
+        "source": "GoldSilver",
+        "title": "What\u2019s Really Driving Gold Prices Today \u2014 5 Key Signals - GoldSilver",
+        "summary": "What\u2019s Really Driving Gold Prices Today \u2014 5 Key Signals &nbsp;&nbsp; GoldSilver",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNTlNMQVlxbmxUa0NFY0pRU1hSTFRBcm9DSjhINjRBSW1DazhReEFIR3gwanBxM3lPeWQwajdzYmRabWdIRmpVQnlqcUQxMHowcWJ4amZTQlctVFFnZ1FhMVBGaXFNY1ZVTHlXT0tjclFLTjlHaWxwbXAyc0I0YWVNZENvVE1MLXpPMmJzYkdWM2lwUFQ1Z2Faek5HMVp6WnljSGluTlE5cERTdw?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T17:30:16Z",
+        "source": "KITCO",
+        "title": "Gold price is attractive now, so don't wait to build a 3% to 8% position - NDR\u2019s LaForge - KITCO",
+        "summary": "Gold price is attractive now, so don't wait to build a 3% to 8% position - NDR\u2019s LaForge &nbsp;&nbsp; KITCO",
+        "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOZmlPVkhiam9rNU1TVnJRTm51VEJvN2xINGZ6SFVpcDRXYmlwOEFiQmhReVIyUzNfaTB3Vk5JbnNqYldSYkVZN0xXNUxOdTlkSHRzVl8zLXQwby1TQzFuQ0pCVTBHbXAtSnVLaDQ0bXVpYTVBaXVNQTh0RVNDY1Q1T1JRaUVjVkVPMVNsYXowR1prUUotZDhGUzFJMkhZd0RldXFJMnJnY3pmR1VuV2R3Tm5CTXYtemM?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T17:17:07Z",
+        "source": "LiteFinance",
+        "title": "Gold (XAU/USD) Price Forecast for Today, Tomorrow, Next Week, and the Next 30 Days - LiteFinance",
+        "summary": "Gold (XAU/USD) Price Forecast for Today, Tomorrow, Next Week, and the Next 30 Days &nbsp;&nbsp; LiteFinance",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOZ1BXeVdPR08tTmQ4MHdZMkloUzlsNjRjSE5VVmxyeVRrdDZqbDI3Tm5VVUdfYTdZM0dOYjkzVFBuMGhJUzZEM3E0RDBkc0RTUXd2VFdMdm5uenpPXzJobUNvRklvRkt0S0pfYkZ0UWRXaWRDc09MR1pBUkVDRXN2Y2FINkVmUDBlRkZHNGhzZkNyNk5LUzZrM2VUV1pVOV9N?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T16:59:12Z",
+        "source": "FOREX.com",
+        "title": "Gold Analysis: XAU/USD Remains Stuck Near the $4,600 Level - FOREX.com",
+        "summary": "Gold Analysis: XAU/USD Remains Stuck Near the $4,600 Level &nbsp;&nbsp; FOREX.com",
+        "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNUlFKM01NSkdmVmp2UUhoOG9USWxqWUFDdzhpcWVIQzF3WXZxUER6aFhWZkNsbjZ1b3EwdzEzd0xpREJtZXIzTHY4UkhxSkNzZnF6RzZaU3R5WXdYX01mNGRFQWpsWV9BeGlqYnRsV2ZjNnctaVBqc0JXX19paDJnblZDV2NyYnpDUi1yQzVuZzFldzlGWWV1dkRaS0NZbHFnaWln0gGvAUFVX3lxTE9jcUNEWHYxZnphanM4MW5NRnJJZUdiZVVoMDg2RmJwWTV6QTlwajJCYm5oRkdTNnpHVjBDN05SalhpODdMY3hpMVNkcklPRWtyNGg3VXFyWDJyaTZzbTJoQ2JaN3lTVVZPTXpRTnNNMWpTRzQ3bEFhRUY3Ykd0Z05XeGlwd3I5cVMtcEpVS2lCUUNuQzhHeUFkR3cxZnIyNlRjLTZod2luSFFneUVlTEE?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T16:11:48Z",
+        "source": "Yahoo Finance",
+        "title": "Gold price outlook: Could $6,000 happen this year? - Yahoo Finance",
+        "summary": "Gold price outlook: Could $6,000 happen this year? &nbsp;&nbsp; Yahoo Finance",
+        "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOVHRhZ2R4NVU2dFNpRjZfUktha285ZXFhV1hHZnFFNms1R0dsbmxoUE1ELUdPRktDTmpmalJpc2EzY1psbS0tVE5naXFTRHFycnppWXlTX3lHZjFOYlEyWW9FLXlvWUQwVWdWeHZ3MnBfT254ZmU0OGlTODdyUWZxWF9PZ1dIVXBOYnZnbVN3VWE5elJpWTZUekFULTk4aFVKckpvclhEb3k3dDBUd3o2Zkc3VlVCYnZWNlpGOTVsaw?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T16:08:51Z",
+        "source": "Yahoo Finance",
+        "title": "Gold forecast and tracker: Where prices could land in 2026 - Yahoo Finance",
+        "summary": "Gold forecast and tracker: Where prices could land in 2026 &nbsp;&nbsp; Yahoo Finance",
+        "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQQWh0SkZWR0tTWTJXTDJIQzNtSExfckkyRTFaTnNQR09hT0phYmU5aTd0NzZvYThyWUNaVW51dHp4cmRTZXVmdlRFRmF6U3BNTUFMSjB2ZmRuNDNRYUJNelV1U2hlM19odkZDTUVXZW9HUmtHWjVBZm5aSnN3cDRlSFo1RkJ5eUNxMzkwMnhNY09jT3NCcGFWQ3FlLWk4QlVtLThmNmdVZTVfUHBTVExrVDljLW9SeTE4eWJhcnFwSng1T0ZsZkRlNkJxcENmdw?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T16:01:00Z",
+        "source": "IndexBox",
+        "title": "Gold Price Analysis: Central Bank Risks and Global Reserve Shifts Push Gold Toward $5,500 - News and Statistics - IndexBox",
+        "summary": "Gold Price Analysis: Central Bank Risks and Global Reserve Shifts Push Gold Toward $5,500 - News and Statistics &nbsp;&nbsp; IndexBox",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPeVl2bER5a3NFazU0R2RDNVg5V3RLZHp5TC1GWGVWczVQeGg2WjItajBCTUpjd3BUUzhYR29oRnhwS2ZLWTFKXzBGd1NmekxPZzl0emhocGVzSENtQ0VpdHJ4dUUzaHF2cjN5bjctdG9mcFFxOFMybHlRcnlPYlZsNkhCbHRlMVBURmV2aTdiSk1zTGdsT1h5UkZGd21YTTdkSDZScVBvMWstWGs?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T15:44:42Z",
+        "source": "KITCO",
+        "title": "A gold price sale: Is it time to buy? - KITCO",
+        "summary": "A gold price sale: Is it time to buy? &nbsp;&nbsp; KITCO",
+        "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE91S1VwczR1Y2F2T2k4TFloT3dud1ByT2lPenZ4UUdOQllTZnd5dU0zTFBrVXo1TXp6WlhjR25QQTZFUmhGZHRHOTZDSG1taUdqcktkb2xQZmxaZ0FvcUR6d3h4LWduMlNZbHljMFotSlQxNVBqOTNr?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T13:57:54Z",
+        "source": "GoldSilver",
+        "title": "Gold Price and the Jobs Report: A Pre-Market Guide - GoldSilver",
+        "summary": "Gold Price and the Jobs Report: A Pre-Market Guide &nbsp;&nbsp; GoldSilver",
+        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQSUtpOHZtdmF6U3pQalFmZXU3bGlhWjVOblEycVVveDVyd1JKUUlNdmp5STEwbnotczdzWElwNEVHbkJPbGZmdDFobVdZZzRILVByOWN4LVF6MFZfOXVSUUFjTktUZk9mXzN6ekV2TFhsb093MUljQU51OUZBZnM3WjhyYURHeDNqQnFDWXBYSE1ZQmJiajQ5dUw5OEdFZUlrTEVUXzlR?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T13:52:00Z",
+        "source": "FXEmpire",
+        "title": "Gold Price Analysis \u2013 Gold Rises Toward a Major Level on Tuesday - FXEmpire",
+        "summary": "Gold Price Analysis \u2013 Gold Rises Toward a Major Level on Tuesday &nbsp;&nbsp; FXEmpire",
+        "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPMlBNdmt5NC04Tjc0ajNNblM4WmQwMXlwUUxiOEtjSzFDdWhRQks1Q0hMRzhoeEpVNkw0d05UaF9GeUN1RDUyX2dnUGI4Ylh2bHkxOXIxclJRbWl0dDI2dTg5YV9NbnZHMkplYkZwNk9JazVCd0NCNzNwbC1zVTdPaDZuVFl0cWpiWWRqdXRqb09xZzlJUU5YeFFCVWV6YmVoZ3QxZWFqWFlMTV9ieWdyM1lvYw?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T13:04:00Z",
+        "source": "Fortune",
+        "title": "Current price of gold as of May 5, 2026 - Fortune",
+        "summary": "Current price of gold as of May 5, 2026 &nbsp;&nbsp; Fortune",
+        "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE50bHZId0Fqd3h1M2FjQkt6alpIOU5oX1RBR2ZiNHA2aWE2eWs4bk1QV1pDWGUtVDUzMU1NRVdPdEFyVThzT1g5TS14YWIydGtSMzRWV0lwYkFQQkJVVU5KRy14QnFVdGRkZmVDMldR?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T12:26:02Z",
+        "source": "USA Today",
+        "title": "Gold Price Today on May 05, 2026 - USA Today",
+        "summary": "Gold Price Today on May 05, 2026 &nbsp;&nbsp; USA Today",
+        "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxORDJJeV9VNjFHMnc1ZXNvRjJDa2ZnYlhXbFpjV2E3MTY0WkFEWlN0WGZOeG1ORlBEdzlCd1p0YmhWbW5HbjY3RDJiLTNmck1GQkZDQWFRSU9oZzVqWEoxazY5eWwwYkxqNzVHOWFyaDVpSW5WM3dmMHJJX0lKYUZob1pWWWhzcHcyWUxQLXJreG51dVVTN3JNdm9LN2JsVEprMWJuQg?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T11:27:11Z",
+        "source": "Discovery Alert",
+        "title": "Why Gold Struggles With a Strong Dollar and Rising Oil Prices - Discovery Alert",
+        "summary": "Why Gold Struggles With a Strong Dollar and Rising Oil Prices &nbsp;&nbsp; Discovery Alert",
+        "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQRmFEdjVaX190R1hzVzhkc3Voa19TMU9sbWZYaWljUkg3RnFQNXlJRTNKZWswQzhOdVlkVlM1aERBQjVBWktZeXVmQTF5S1ZYUFZvVk4taVFfc0FKUWk5aU8yclh0ZmhEd0xnMEw0UXdNUkRETlEwbm1yd1pOcmE2YkhidXI4NHM4?oc=5",
+        "query_key": "inflation_yields",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T11:25:12Z",
+        "source": "Zacks Investment Research",
+        "title": "Kinross Gold Q1 Earnings and Sales Beat on Higher Gold Prices - Zacks Investment Research",
+        "summary": "Kinross Gold Q1 Earnings and Sales Beat on Higher Gold Prices &nbsp;&nbsp; Zacks Investment Research",
+        "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQLVZKazRKdTdNaTZGWFlRNWRqRjhmWVZZSExrbjhWQzU2TXFjczZLMjZGZ1BEYjJlZldGS3EtOGNzWFplNkdabl8zZ214TGkyM3ZkVjV4NXdtQkptTm1sRjI0RlVVeDNKeFVTM1Q5WVY4NHMxSlFJanJMY3dYdWJ0Q3lqTjlvajlQTnZ5Q19Ra1hfRjk4N29Wdi1iTFRuem5wUF9oOQ?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T11:06:03Z",
+        "source": "FOREX.com",
+        "title": "Gold forecast undermined by oil, yields and dollar strength - FOREX.com",
+        "summary": "Gold forecast undermined by oil, yields and dollar strength &nbsp;&nbsp; FOREX.com",
+        "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQOE52a2U1MmZlcVd5c1N4aVdjZTRUTFRkWUxNazdjY1QzaW5teTJUbnFIZ0pjdjVka3UySHAxMUtMczZyaGk4NmxOaDZTeE9NTklCZVdBSTRjc08yVGtFVXBxQ2hTbG54Y21saVFaazdlQlpVakZQTkdGY1l0ODRRdzJDeENsNG8zd1hpVnBwbTRmSTVwcVA1bzlINUZwQTJNYU5OZkUwZTU3b0VtQTQ4c0ZBQ0XSAbQBQVVfeXFMUDhOdmtlNTJmZXFXeXNTeGlXY2U0VExUZFlMTWs3Y2NUM2lubXkyVG5xSGdKY3Y1ZGt1MkhwMTFLTHM2cmhpODZsTmg2U3hPTU5JQmVXQUk0Y3NPMlRrRVVwcUNoU2xueGNtbGlRWms3ZUJaVWpGUE5HRmNZdDg0UXcyQ3hDbDRvM3dYaVZwcG00Zkk1cHFQNW85SDVGcEEyTWFOTmZFMGU1N29FbUE0OHNGQUNF?oc=5",
+        "query_key": "inflation_yields",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T11:05:00Z",
+        "source": "KITCO",
+        "title": "Gold prices see some renewed buying as U.S job openings falls to 6.87 million - KITCO",
+        "summary": "Gold prices see some renewed buying as U.S job openings falls to 6.87 million &nbsp;&nbsp; KITCO",
+        "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQVnFqQmdBUF9XaUJDZlg3T1VtVnNOM2x4emc3bVJEdHdIWVZTaE9FcWo2X1c4T3I2TTg1aEViYUdLTEtPRXpZZUFISXRBWTBqT2I5Ym1hbFJOOV9WWGJLU2NuMkVmWVY5N3hsWWl6YXFTNWpOcmFZWVFua20wdnFxeXhrRVB0eUlXaUlGRU9zNnNiLTlFTTNuRlRCV0NjUlF1bmpRRVFIR2JnTzBQcjBwX1ZGbGszdw?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T11:00:20Z",
+        "source": "Yahoo Finance",
+        "title": "Gold and silver prices today, Tuesday, May 5: Lowest open for gold in over a month following attacks near Hormuz - Yahoo Finance",
+        "summary": "Gold and silver prices today, Tuesday, May 5: Lowest open for gold in over a month following attacks near Hormuz &nbsp;&nbsp; Yahoo Finance",
+        "url": "https://news.google.com/rss/articles/CBMikwJBVV95cUxPbGI2cEc1dlNzNFZfRlFhZlVObFo5em9adUlyaVdPSVQzNE5sdmZ6TGdxUHVGa3ZpX0JpVnd1a2F1YjFjbTdSdFVnYXpkVDMtR1BwdURUcjhtVE1kMEY5RXNwdnl3c3ItdTVUcnpMY0E4NWpHaW1uUGd0TE9xdXoyOWJIZlhuSmo2NmRDRkJSR2ZqcUx4dWxjNFhMU2pVTDY1Q1RTLXczdng3SlRNOE43dThNNmNLU2hsMGFrU003LVBTWVFKd0F1WTk0eWRGTGkzeEc2by12V3ZJMU8tdW1YT19TMVJtNHdXTU4wcko2eTdDVXQybXM4a2pWS1k4cENUQ0hFY3lPS0x2WlZfQThVeXVCVQ?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T11:00:00Z",
+        "source": "welt.de",
+        "title": "Deutschland ist in die H\u00e4nde von Pl\u00fcnderern gefallen",
+        "summary": "",
+        "url": "https://www.welt.de/politik/deutschland/harald-martenstein/plus69f5ce8423e6b3dbf3c968a4/deutschland-ist-in-die-haende-von-pluenderern-gefallen.html",
+        "query_key": "central_bank_gold",
+        "raw_source": "gdelt_doc_api"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T10:00:00Z",
+        "source": "livemint.com",
+        "title": "Why RBI wants to keep India gold at home",
+        "summary": "",
+        "url": "https://www.livemint.com/economy/rbi-gold-reserve-central-banks-us-treasury-yield-west-asia-war-11777967888957.html",
+        "query_key": "central_bank_gold",
+        "raw_source": "gdelt_doc_api"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T09:39:26Z",
+        "source": "NDTV Profit",
+        "title": "Gold Rebounds From Five-Week Low But Inflation Fears, Strong Dollar Cap Upside - NDTV Profit",
+        "summary": "Gold Rebounds From Five-Week Low But Inflation Fears, Strong Dollar Cap Upside &nbsp;&nbsp; NDTV Profit",
+        "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPV3F6TmlPcFhuekZmR2VKTm8wQlNkOUZGcHlIR3d0eks3WEJ5YXpqZGNxanRZeHYydTh0a3RKODhvVndUbGhvM2p0ZHlhMlJQQ0FOcVp6d2Jzc3hyQ2VHYWVKNFJ2NXNLMHZyejJKUFZ5UGJPT1ZwRHRPazlWOEFTblA4MGdyMXJwOXc5Y3hMTFVGNUM4S0lzTHZXaDRXQ1Q1dXp1NW02OTNPWVBvZVYxcDZSZ0fSAbwBQVVfeXFMTlF3WUE2ZDN0cDl5b21JSFNXUjFVaGU1UHFydWZQMGR4cGhhcEdGRFBjaU84MnpacUZlU2gzS0Ywczh5VkljWHJmckl3TlZKZkdCeWtkR3paUkRzdWEwcmZMcmp1WEhnemUzMVpjVzhSSUZmQ1dvUHZRaDgycGhLXzZWYVExNGpzXzgyY1VtX01VOTBtZl95YVMyVHk5S2dJb1J3a2htOUoxSjZ4RjdvT1QwbTd5NGhBQnZFdzU?oc=5",
+        "query_key": "inflation_yields",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T08:52:31Z",
+        "source": "Investing.com",
+        "title": "Gold Positions Ahead of ISM PMI, Jobs Data as Yields, US Dollar Define Next Move - Investing.com",
+        "summary": "Gold Positions Ahead of ISM PMI, Jobs Data as Yields, US Dollar Define Next Move &nbsp;&nbsp; Investing.com",
+        "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNV3dzY193N25iOE5hSVQzcUw4TFZhWlQzaVFlSnYwWVR1OUhLZHRRbUd1Z19TLUhHaG5SS0dsR3ZoYlZKMHJjcDByMGxmN004bmNEZmlGcUxlYXlMNTBPYXllRzRjM0pDYURwNnVmLXVNTmI3TV96VDRoZGhoakdXajhGTnNIcTRJajN6eGljZmZVMU9yX3B0U3Z6Zm0zODFrYUNDeWI5a0MtYmFpaU9yeWwySXZZUkJ3WVJZVWtkX0k?oc=5",
+        "query_key": "inflation_yields",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T06:56:24Z",
+        "source": "MSN",
+        "title": "Gold falls over 1% as dollar firms, oil tops $113 - MSN",
+        "summary": "Gold falls over 1% as dollar firms, oil tops $113 &nbsp;&nbsp; MSN",
+        "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNbWp5SzFFdGlpM0dVNkphb0NaT09qTjRtNHB0X3NQX2N2S3RPYU1iSzQ0SEsxQ3ZwZUJSQUE2bDhHOTV3cXV6UmtQX2pKZnllSHpja1ZSLXlZSl9zbi1SbFhaNTctclZtTUtwUVIzbjNPVUhNYTd1UDl5T0ZkWWZqUlc1OFdUeXhYY1Mtc0U4WVNYMkw1N2NiRWJ5elViWWVsZDBXeWo1ZDM4NG1rcWt5d0NDM2ktYXJHeWZJLVhmMUtPeVhMd3hQY0tZY29QbFQzQWc?oc=5",
+        "query_key": "geopolitical_safe_haven",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T06:48:00Z",
+        "source": "The Star",
+        "title": "Gold rebounds from five-week low but inflation fears cap gains - The Star",
+        "summary": "Gold rebounds from five-week low but inflation fears cap gains &nbsp;&nbsp; The Star",
+        "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPcGlYM1RlZlJ1WjF6cWF5RGI2TGRjSFM3dHdjYm9TcHVRdjA1YXp0UzJWOGt3Y3ROS29zbk0xekh1SzEzbV9WV0NFUDVQM2tJdWlIMHVMek5FQ3RzcHJtMEN5TDdCbi1qVWxTaWY3Mzh3T1FYX0h6X1Q3cU1UMmUyV015M0k0dTNyeTh3bGt3dlBxUl9ObDZpRG1qSGpDX0xvV0lpUGZ4SkUzZS1jM3hWak5abFFvVW9oTWxDaDV5Qjc?oc=5",
+        "query_key": "inflation_yields",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T06:17:00Z",
+        "source": "TradingView",
+        "title": "Central bank policy errors may drive gold to $5,500/oz by Q1 2027: expert - TradingView",
+        "summary": "Central bank policy errors may drive gold to $5,500/oz by Q1 2027: expert &nbsp;&nbsp; TradingView",
+        "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOS3dXVFdKeG80NmpsZ1kzSTJCZGJkWUhrV05kNXNUeGFrRFpsdVM1TDFQenFSYTFpdzdBQ0tKLWIwSEpOQTFPTW5RYWJIMmJlTVZvV0g0YzNaakhpcEJwTkVKeGI5d3ZhWlpydEZtazJpd1UzYzJGMThPcmNXUEJLMXA5Q0k4QXlvUXZSazh5OW12Q1drdy1YdzRlM0ktQ0JEUHNEeEo3ODJVOFhYcTk4QTRCUFVmY0NYT0tpZWZRb3MwQnNrelBr?oc=5",
+        "query_key": "geopolitical_safe_haven",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T06:10:00Z",
+        "source": "Nation Thailand",
+        "title": "World Gold Council says Thai Q1 gold investment hits 7-year high - Nation Thailand",
+        "summary": "World Gold Council says Thai Q1 gold investment hits 7-year high &nbsp;&nbsp; Nation Thailand",
+        "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5BSEZFWUhpTDAyNmZnUzhSTGVwU2lQM2F5STVxTE1KdUhwOXNzUGI5U2hGd1ppeGJ4QW5NQjNleXNiZC1SbGhiNG1vcGFrMHhBa1VTVXJNSEVOcmRiU3doT0szSzNoOUxSWVNjeFBTX054VW5uSFE?oc=5",
+        "query_key": "geopolitical_safe_haven",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T05:54:00Z",
+        "source": "The Times of India",
+        "title": "Gold price prediction today: Why gold prices are expected to be vulnerable due to rising oil prices - Che - The Times of India",
+        "summary": "Gold price prediction today: Why gold prices are expected to be vulnerable due to rising oil prices - Che &nbsp;&nbsp; The Times of India",
+        "url": "https://news.google.com/rss/articles/CBMipwJBVV95cUxOaHQ3al9VQkUtRTd1TjRzRm85NkFJTTkxbTFOYWNkSEJmNFVWZjQwVDk1N1Bhc284X01jb2VaTkVUUUNGSTE2czJtU0tsdkNMbjlfM1hBOG9mTHIyejNCYWViVndRd2dzYmQyVkpHRnp3Y1h6VXJzblpGVE5ET3pLdWlid1lZYVBjUm45cms1ZDhtUEVxQU9sazAtR1RrQVJHSThLREk3RDhDRFdfS3MxV2F3ZURnV2k5Z1VpdU05TG01SnJVa3VnZGJIajE1TURZOXhQMnlPTDc2NlhLeXpNVmpkRl9Jal84TDR1U2h2N0prdGdheVM5UnlYSHNBaDQ1b25oU3lPbWVjbVJ5SVo3enRvVW5HRk94elNiRG1aRDhNcEV5dFhJ0gGsAkFVX3lxTE55UjloQVUwZ0p6eGh2Q3JjSEhZM0ZHMUx2UFU2UHlEdTdDVm1HdGh5Sm9vRE0tdFYweVNxaGtibVFNNkh3V05hNnRwYVZfU2Z1cDBMZGtkcFRUMlpGeURvbk50aTlUMVlkQXdzQy1HdmV4QVJjaXVyY0kzaVNnVm5DOHNrSTRQajNNNU9tZDJObmY5cVl6TXVwVThUMk1IZFRSLXZKRGZKTzRtaHEzbUdjT3k3NUg3aFRnYTJVdlM0Sm1yajh6c2FXYnNOWldPcll3N3RrYmRLQ29BNEZjS3p3OFY5VzlfU0JNdVV6eFNlNFRaWDJRSWpleVlfd1duSnF2LXRNdEU3U3RXS0M5d2R6QjQxWWI1SzFlcFFPRWx3clVQYm9qLVhDMnp1UQ?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T05:15:00Z",
+        "source": "1prime.ru",
+        "title": "\u042d\u043a\u043e\u043d\u043e\u043c\u0438\u0441\u0442 \u0440\u0430\u0441\u043a\u0440\u044b\u043b \u0440\u043e\u043b\u044c \u0437\u043e\u043b\u043e\u0442\u0430 \u0438\u0437 \u041c\u0430\u043b\u0438 \u0434\u043b\u044f \u043c\u0438\u0440\u043e\u0432\u043e\u0433\u043e \u0440\u044b\u043d\u043a\u0430",
+        "summary": "",
+        "url": "https://1prime.ru/20260505/mali-869655092.html",
+        "query_key": "central_bank_gold",
+        "raw_source": "gdelt_doc_api"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T05:05:17Z",
+        "source": "FXStreet",
+        "title": "Gold price in Saudi Arabia: Rates on May 5 - FXStreet",
+        "summary": "Gold price in Saudi Arabia: Rates on May 5 &nbsp;&nbsp; FXStreet",
+        "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQcVJyQ0h3U3hZWDZFMEF6c3dXTTk0T2dYZ2xHanBvVEtZbTQ1T2pjREE3YXBaaE9GV2NUNzN3ZW9tRHZQd2JqbjhYR19MWUVobTBIYjFtU1hYZ0IwUDkwM2Y2Q3duZGp4X0J2UmFyNnVUcXBOcTJqRUFkbHlucVhHQmw2VlVpMGpuYy03RW9Qcm8wdklEbThKcHAyb0lfVE1UNHpDdm5xMUJKdEx2X0hr?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      },
+      {
+        "date": "2026-05-05",
+        "published_at": "2026-05-05T05:00:04Z",
+        "source": "FXStreet",
+        "title": "Gold price in Philippines: Rates on May 5 - FXStreet",
+        "summary": "Gold price in Philippines: Rates on May 5 &nbsp;&nbsp; FXStreet",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOUW9PUUx6MFNzMmM0d3hlWllDTHZKaVFLYlBWYU9TSUJQc3JSbmp5eHVhV1BNY0pPQmFSTzV0WW9zNjJZRW9za2xzei1KeTN1Z1pDMlBfZWpFeWJWVGF0eWxvM1JTdGVkWjBfY3dMb1B0QktGOEkxaDRoaXFPUHF6Zndhb19wQ2dMQUNySkxkdUkxUHg0MlJfcGlxZ2hiLWVrQjhHVHlVQU9SSU9zVXc?oc=5",
+        "query_key": "gold_general",
+        "raw_source": "google_news_rss_search"
+      }
+    ],
+    "recent_headline_count": 30,
+    "professor_safe_note": "Recent headlines are for context/tooltips only and should not be presented as causal drivers.",
+    "generated_at_utc": "2026-05-06T00:26:12.330616Z"
+  },
+  "sensitivity_snapshot": {
+    "artifact_type": "gamma_sensitivity_by_horizon",
+    "schema_version": "1.0.0",
+    "model_key": "gamma_news_sensitivity",
+    "status": "ready",
+    "by_model": {
+      "alpha_structural": {
+        "row_count": 26344,
+        "split_counts": {
+          "test": 4169,
+          "train": 16955,
+          "validation": 5220
+        },
+        "by_horizon": {
+          "1": {
+            "row_count": 5281,
+            "split_summary": {
+              "test": {
+                "row_count": 846,
+                "mean_abs_model_error": 86.21955628802307,
+                "median_abs_model_error": 39.266898351907685,
+                "mean_model_error": -15.262455850836794,
+                "mean_gamma_context_intensity": 0.1401891252955083,
+                "mean_article_count": 0.7009456264775413,
+                "model_beats_naive_pct": 33.451536643026
+              },
+              "train": {
+                "row_count": 3391,
+                "mean_abs_model_error": 24.40343450553577,
+                "median_abs_model_error": 5.063429534435272,
+                "mean_model_error": -0.37268784791099313,
+                "mean_gamma_context_intensity": 0.023414921851961076,
+                "mean_article_count": 0.11707460925980537,
+                "model_beats_naive_pct": 25.65614862872309
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 35.62340875110978,
+                "median_abs_model_error": 21.060568982362838,
+                "mean_model_error": -2.6483440557259237,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 40.99616858237548
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 26.019771819114748,
+                "median_abs_model_error": 33.933577597141266,
+                "mean_model_error": -3.6800646853446324,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 40.0
+              },
+              "low": {
+                "row_count": 863,
+                "mean_abs_model_error": 49.480494892814754,
+                "median_abs_model_error": 23.448264813423062,
+                "mean_model_error": -8.917929405594894,
+                "mean_gamma_context_intensity": 0.25075318655851686,
+                "mean_article_count": 1.253765932792584,
+                "model_beats_naive_pct": 36.50057937427578
+              },
+              "medium": {
+                "row_count": 203,
+                "mean_abs_model_error": 42.220812611312695,
+                "median_abs_model_error": 17.233697843551454,
+                "mean_model_error": -7.324606899519284,
+                "mean_gamma_context_intensity": 0.7458128078817733,
+                "mean_article_count": 3.729064039408867,
+                "model_beats_naive_pct": 37.4384236453202
+              },
+              "no_loaded_news_score": {
+                "row_count": 4210,
+                "mean_abs_model_error": 33.60618500057168,
+                "median_abs_model_error": 10.853942024707749,
+                "mean_model_error": -1.838295661566375,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 28.21852731591449
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": -0.004858537442895141,
+              "inflation_news_score": 0.02495950241926317,
+              "fed_policy_news_score": 0.06280433755827229,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.02728858478266376,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.048414467906582395,
+              "net_gold_news_sensitivity_score": 0.052013247220149716,
+              "gamma_context_intensity": 0.052013247220149716,
+              "article_count": 0.05201324722014969,
+              "gold_news_count": 0.05201324722014969
+            }
+          },
+          "5": {
+            "row_count": 5277,
+            "split_summary": {
+              "test": {
+                "row_count": 842,
+                "mean_abs_model_error": 189.63592683378985,
+                "median_abs_model_error": 102.67943205833433,
+                "mean_model_error": -90.45990000412895,
+                "mean_gamma_context_intensity": 0.14061757719714968,
+                "mean_article_count": 0.7030878859857482,
+                "model_beats_naive_pct": 50.1187648456057
+              },
+              "train": {
+                "row_count": 3391,
+                "mean_abs_model_error": 49.895510959232396,
+                "median_abs_model_error": 34.163156896829605,
+                "mean_model_error": -2.007605354328381,
+                "mean_gamma_context_intensity": 0.023414921851961076,
+                "mean_article_count": 0.11707460925980537,
+                "model_beats_naive_pct": 48.717192568563846
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 66.16475398392056,
+                "median_abs_model_error": 50.07458502650263,
+                "mean_model_error": -10.432077030397926,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 58.14176245210728
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 80.93797257304195,
+                "median_abs_model_error": 67.93097388744354,
+                "mean_model_error": -5.917636023759863,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 60.0
+              },
+              "low": {
+                "row_count": 862,
+                "mean_abs_model_error": 92.52224709454309,
+                "median_abs_model_error": 50.359561115503425,
+                "mean_model_error": -36.898143151737834,
+                "mean_gamma_context_intensity": 0.25081206496519726,
+                "mean_article_count": 1.254060324825986,
+                "model_beats_naive_pct": 55.800464037122964
+              },
+              "medium": {
+                "row_count": 203,
+                "mean_abs_model_error": 100.71046130628419,
+                "median_abs_model_error": 49.27960982322702,
+                "mean_model_error": -36.50251032629625,
+                "mean_gamma_context_intensity": 0.7458128078817733,
+                "mean_article_count": 3.729064039408867,
+                "model_beats_naive_pct": 47.783251231527096
+              },
+              "no_loaded_news_score": {
+                "row_count": 4207,
+                "mean_abs_model_error": 70.67792743344047,
+                "median_abs_model_error": 40.55803596973419,
+                "mean_model_error": -12.983198670450344,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 49.91680532445923
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": -0.002709353046855797,
+              "inflation_news_score": 0.07067071322597959,
+              "fed_policy_news_score": 0.0396289093298772,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.02688856401114381,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.048097132736863495,
+              "net_gold_news_sensitivity_score": 0.07023745887682362,
+              "gamma_context_intensity": 0.0702374588768236,
+              "article_count": 0.07023745887682366,
+              "gold_news_count": 0.07023745887682366
+            }
+          },
+          "10": {
+            "row_count": 5272,
+            "split_summary": {
+              "test": {
+                "row_count": 837,
+                "mean_abs_model_error": 185.56080236916827,
+                "median_abs_model_error": 98.51965131759609,
+                "mean_model_error": -57.51852998103648,
+                "mean_gamma_context_intensity": 0.14097968936678618,
+                "mean_article_count": 0.7048984468339307,
+                "model_beats_naive_pct": 61.17084826762246
+              },
+              "train": {
+                "row_count": 3391,
+                "mean_abs_model_error": 55.53675931569434,
+                "median_abs_model_error": 39.88554496765141,
+                "mean_model_error": -1.8801741428991854,
+                "mean_gamma_context_intensity": 0.023414921851961076,
+                "mean_article_count": 0.11707460925980537,
+                "model_beats_naive_pct": 59.53995871424359
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 67.44844510376568,
+                "median_abs_model_error": 52.82286199331293,
+                "mean_model_error": -5.475367413643904,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 60.53639846743295
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 51.8863400197029,
+                "median_abs_model_error": 58.29060055613513,
+                "mean_model_error": -51.8863400197029,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 60.0
+              },
+              "low": {
+                "row_count": 860,
+                "mean_abs_model_error": 88.86280711636431,
+                "median_abs_model_error": 51.324981582164696,
+                "mean_model_error": -21.984253491059288,
+                "mean_gamma_context_intensity": 0.25093023255813957,
+                "mean_article_count": 1.2546511627906978,
+                "model_beats_naive_pct": 61.16279069767442
+              },
+              "medium": {
+                "row_count": 203,
+                "mean_abs_model_error": 75.40368547079305,
+                "median_abs_model_error": 47.00600018501268,
+                "mean_model_error": -17.96236937124448,
+                "mean_gamma_context_intensity": 0.7458128078817733,
+                "mean_article_count": 3.729064039408867,
+                "model_beats_naive_pct": 58.128078817733986
+              },
+              "no_loaded_news_score": {
+                "row_count": 4204,
+                "mean_abs_model_error": 76.60973480972928,
+                "median_abs_model_error": 48.02722802758217,
+                "mean_model_error": -8.901691961886483,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 59.84776403425309
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": -0.023953494463413008,
+              "inflation_news_score": 0.03508385669148611,
+              "fed_policy_news_score": 0.019870397589658757,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": -0.011080237727641353,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.02304454815307217,
+              "net_gold_news_sensitivity_score": 0.01372317687410558,
+              "gamma_context_intensity": 0.01372317687410558,
+              "article_count": 0.013723176874105573,
+              "gold_news_count": 0.013723176874105573
+            }
+          },
+          "20": {
+            "row_count": 5262,
+            "split_summary": {
+              "test": {
+                "row_count": 827,
+                "mean_abs_model_error": 173.28825912196444,
+                "median_abs_model_error": 96.84686170220355,
+                "mean_model_error": -88.00163653961907,
+                "mean_gamma_context_intensity": 0.14123337363966143,
+                "mean_article_count": 0.7061668681983071,
+                "model_beats_naive_pct": 57.79927448609432
+              },
+              "train": {
+                "row_count": 3391,
+                "mean_abs_model_error": 42.171410195449916,
+                "median_abs_model_error": 24.53655254840851,
+                "mean_model_error": -1.3207800135556949,
+                "mean_gamma_context_intensity": 0.023414921851961076,
+                "mean_article_count": 0.11707460925980537,
+                "model_beats_naive_pct": 59.00914184606311
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 65.5819527789722,
+                "median_abs_model_error": 52.81200018823142,
+                "mean_model_error": -12.819269893389782,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 56.80076628352491
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 22.438631055355064,
+                "median_abs_model_error": 15.471094679832504,
+                "mean_model_error": -7.040854718685159,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 40.0
+              },
+              "low": {
+                "row_count": 858,
+                "mean_abs_model_error": 89.67866359031214,
+                "median_abs_model_error": 50.80216498374932,
+                "mean_model_error": -34.13776262854433,
+                "mean_gamma_context_intensity": 0.2510489510489511,
+                "mean_article_count": 1.2552447552447552,
+                "model_beats_naive_pct": 57.57575757575758
+              },
+              "medium": {
+                "row_count": 202,
+                "mean_abs_model_error": 85.40451260806607,
+                "median_abs_model_error": 49.19546803236017,
+                "mean_model_error": -8.45515332725084,
+                "mean_gamma_context_intensity": 0.7455445544554454,
+                "mean_article_count": 3.727722772277228,
+                "model_beats_naive_pct": 54.95049504950495
+              },
+              "no_loaded_news_score": {
+                "row_count": 4197,
+                "mean_abs_model_error": 62.061473172572875,
+                "median_abs_model_error": 31.01885622739792,
+                "mean_model_error": -14.202070677136565,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 58.73242792470812
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": -0.020533403741700682,
+              "inflation_news_score": 0.07168837343876404,
+              "fed_policy_news_score": 0.03932662471412811,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.038347240052251895,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.03826370264419565,
+              "net_gold_news_sensitivity_score": 0.06479608206035582,
+              "gamma_context_intensity": 0.06479608206035582,
+              "article_count": 0.06479608206035581,
+              "gold_news_count": 0.06479608206035581
+            }
+          },
+          "30": {
+            "row_count": 5252,
+            "split_summary": {
+              "test": {
+                "row_count": 817,
+                "mean_abs_model_error": 234.339759051516,
+                "median_abs_model_error": 128.29276850819588,
+                "mean_model_error": -132.23467057703394,
+                "mean_gamma_context_intensity": 0.14296205630354958,
+                "mean_article_count": 0.7148102815177478,
+                "model_beats_naive_pct": 63.1578947368421
+              },
+              "train": {
+                "row_count": 3391,
+                "mean_abs_model_error": 68.6002513157156,
+                "median_abs_model_error": 49.86137559413919,
+                "mean_model_error": -2.1822670447627766,
+                "mean_gamma_context_intensity": 0.023414921851961076,
+                "mean_article_count": 0.11707460925980537,
+                "model_beats_naive_pct": 62.96077853140667
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 78.218130279969,
+                "median_abs_model_error": 62.512922322750114,
+                "mean_model_error": -10.098824134434773,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 60.53639846743295
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 53.50194219827654,
+                "median_abs_model_error": 62.56104011535649,
+                "mean_model_error": -50.7649798369408,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 100.0
+              },
+              "low": {
+                "row_count": 858,
+                "mean_abs_model_error": 115.08980153081718,
+                "median_abs_model_error": 58.15946044921873,
+                "mean_model_error": -51.423563349590154,
+                "mean_gamma_context_intensity": 0.2510489510489511,
+                "mean_article_count": 1.2552447552447552,
+                "model_beats_naive_pct": 61.771561771561764
+              },
+              "medium": {
+                "row_count": 202,
+                "mean_abs_model_error": 100.21082324079063,
+                "median_abs_model_error": 56.96516945362089,
+                "mean_model_error": -33.57074101493795,
+                "mean_gamma_context_intensity": 0.7455445544554454,
+                "mean_article_count": 3.727722772277228,
+                "model_beats_naive_pct": 56.43564356435643
+              },
+              "no_loaded_news_score": {
+                "row_count": 4187,
+                "mean_abs_model_error": 92.30513915688931,
+                "median_abs_model_error": 57.07448017597199,
+                "mean_model_error": -17.8701776614346,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 62.90900406018629
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": -0.031162064799537578,
+              "inflation_news_score": 0.05921891960452039,
+              "fed_policy_news_score": 0.029783975583258238,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.016853399664836587,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.01064820386766795,
+              "net_gold_news_sensitivity_score": 0.03042779239361311,
+              "gamma_context_intensity": 0.03042779239361311,
+              "article_count": 0.030427792393613096,
+              "gold_news_count": 0.030427792393613096
+            }
+          }
+        },
+        "overall_error_context_correlation": {
+          "gold_general_news_score": -0.017504152378214472,
+          "inflation_news_score": 0.05263396264788811,
+          "fed_policy_news_score": 0.034916080494426086,
+          "usd_news_score": null,
+          "geopolitical_risk_news_score": 0.018239762694835206,
+          "safe_haven_news_score": null,
+          "central_bank_gold_news_score": 0.030263851554052677,
+          "net_gold_news_sensitivity_score": 0.043350866422016285,
+          "gamma_context_intensity": 0.04335086642201629,
+          "article_count": 0.04335086642201627,
+          "gold_news_count": 0.04335086642201627
+        }
+      },
+      "beta_temporal": {
+        "row_count": 26165,
+        "split_counts": {
+          "test": 4085,
+          "train": 16860,
+          "validation": 5220
+        },
+        "by_horizon": {
+          "1": {
+            "row_count": 5233,
+            "split_summary": {
+              "test": {
+                "row_count": 817,
+                "mean_abs_model_error": 96.38846090403152,
+                "median_abs_model_error": 45.811767578125,
+                "mean_model_error": -27.242400861574357,
+                "mean_gamma_context_intensity": 0.14296205630354958,
+                "mean_article_count": 0.7148102815177478,
+                "model_beats_naive_pct": 27.66217870257038
+              },
+              "train": {
+                "row_count": 3372,
+                "mean_abs_model_error": 25.92580858187602,
+                "median_abs_model_error": 12.693878173828125,
+                "mean_model_error": 5.096545598402283,
+                "mean_gamma_context_intensity": 0.023546856465005934,
+                "mean_article_count": 0.11773428232502965,
+                "model_beats_naive_pct": 23.368920521945434
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 39.18805036873653,
+                "median_abs_model_error": 24.2266845703125,
+                "mean_model_error": 0.3817338614628233,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 35.15325670498085
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 27.252197265625,
+                "median_abs_model_error": 31.0224609375,
+                "mean_model_error": 11.986328125,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 20.0
+              },
+              "low": {
+                "row_count": 858,
+                "mean_abs_model_error": 54.92615272504189,
+                "median_abs_model_error": 27.2236328125,
+                "mean_model_error": -10.255100063510708,
+                "mean_gamma_context_intensity": 0.2510489510489511,
+                "mean_article_count": 1.2552447552447552,
+                "model_beats_naive_pct": 32.28438228438228
+              },
+              "medium": {
+                "row_count": 202,
+                "mean_abs_model_error": 45.24267578125,
+                "median_abs_model_error": 23.423583984375,
+                "mean_model_error": -8.911076007503095,
+                "mean_gamma_context_intensity": 0.7455445544554454,
+                "mean_article_count": 3.727722772277228,
+                "model_beats_naive_pct": 29.7029702970297
+              },
+              "no_loaded_news_score": {
+                "row_count": 4168,
+                "mean_abs_model_error": 36.15201611070395,
+                "median_abs_model_error": 16.52618408203125,
+                "mean_model_error": 1.4073949070672385,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 25.023992322456813
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": -0.013666034951426861,
+              "inflation_news_score": 0.03211603035833004,
+              "fed_policy_news_score": 0.07236156750096356,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.03881185911748795,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.049164404963312085,
+              "net_gold_news_sensitivity_score": 0.058710633022247084,
+              "gamma_context_intensity": 0.058710633022247084,
+              "article_count": 0.05871063302224707,
+              "gold_news_count": 0.05871063302224707
+            }
+          },
+          "5": {
+            "row_count": 5233,
+            "split_summary": {
+              "test": {
+                "row_count": 817,
+                "mean_abs_model_error": 193.6420438245869,
+                "median_abs_model_error": 104.519287109375,
+                "mean_model_error": -99.61645836520808,
+                "mean_gamma_context_intensity": 0.14296205630354958,
+                "mean_article_count": 0.7148102815177478,
+                "model_beats_naive_pct": 47.24602203182375
+              },
+              "train": {
+                "row_count": 3372,
+                "mean_abs_model_error": 26.72654615517613,
+                "median_abs_model_error": 16.7567138671875,
+                "mean_model_error": -5.209822377558988,
+                "mean_gamma_context_intensity": 0.023546856465005934,
+                "mean_article_count": 0.11773428232502965,
+                "model_beats_naive_pct": 51.06761565836299
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 64.07678058960428,
+                "median_abs_model_error": 45.803955078125,
+                "mean_model_error": -15.543227857100096,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 54.69348659003831
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 82.4839599609375,
+                "median_abs_model_error": 54.2027587890625,
+                "mean_model_error": 15.4981201171875,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 60.0
+              },
+              "low": {
+                "row_count": 858,
+                "mean_abs_model_error": 90.64453694092366,
+                "median_abs_model_error": 49.32122802734375,
+                "mean_model_error": -36.96235368635271,
+                "mean_gamma_context_intensity": 0.2510489510489511,
+                "mean_article_count": 1.2552447552447552,
+                "model_beats_naive_pct": 55.011655011655016
+              },
+              "medium": {
+                "row_count": 202,
+                "mean_abs_model_error": 99.35300196279394,
+                "median_abs_model_error": 38.2535400390625,
+                "mean_model_error": -49.89018748066213,
+                "mean_gamma_context_intensity": 0.7455445544554454,
+                "mean_article_count": 3.727722772277228,
+                "model_beats_naive_pct": 52.475247524752476
+              },
+              "no_loaded_news_score": {
+                "row_count": 4168,
+                "mean_abs_model_error": 52.055874156402766,
+                "median_abs_model_error": 22.541351318359375,
+                "mean_model_error": -17.626504484385308,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 50.3358925143954
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": 0.019840294076274995,
+              "inflation_news_score": 0.08818818072841367,
+              "fed_policy_news_score": 0.05968499799555934,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.059822919965134676,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.07242087504241908,
+              "net_gold_news_sensitivity_score": 0.11643734059719023,
+              "gamma_context_intensity": 0.11643734059719024,
+              "article_count": 0.11643734059719026,
+              "gold_news_count": 0.11643734059719026
+            }
+          },
+          "10": {
+            "row_count": 5233,
+            "split_summary": {
+              "test": {
+                "row_count": 817,
+                "mean_abs_model_error": 241.5814368856143,
+                "median_abs_model_error": 136.99462890625,
+                "mean_model_error": -163.2058123398294,
+                "mean_gamma_context_intensity": 0.14296205630354958,
+                "mean_article_count": 0.7148102815177478,
+                "model_beats_naive_pct": 44.92044063647491
+              },
+              "train": {
+                "row_count": 3372,
+                "mean_abs_model_error": 29.332792632803233,
+                "median_abs_model_error": 19.8203125,
+                "mean_model_error": -2.0827778265286736,
+                "mean_gamma_context_intensity": 0.023546856465005934,
+                "mean_article_count": 0.11773428232502965,
+                "model_beats_naive_pct": 63.70106761565836
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 77.33022451583453,
+                "median_abs_model_error": 60.1422119140625,
+                "mean_model_error": -35.72401235295438,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 53.83141762452107
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 67.2256591796875,
+                "median_abs_model_error": 52.179443359375,
+                "mean_model_error": -67.2256591796875,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 40.0
+              },
+              "low": {
+                "row_count": 858,
+                "mean_abs_model_error": 106.99209502249053,
+                "median_abs_model_error": 59.38836669921875,
+                "mean_model_error": -61.19857226107226,
+                "mean_gamma_context_intensity": 0.2510489510489511,
+                "mean_article_count": 1.2552447552447552,
+                "model_beats_naive_pct": 52.21445221445221
+              },
+              "medium": {
+                "row_count": 202,
+                "mean_abs_model_error": 92.65464314375774,
+                "median_abs_model_error": 46.7218017578125,
+                "mean_model_error": -62.04108512047494,
+                "mean_gamma_context_intensity": 0.7455445544554454,
+                "mean_article_count": 3.727722772277228,
+                "model_beats_naive_pct": 52.475247524752476
+              },
+              "no_loaded_news_score": {
+                "row_count": 4168,
+                "mean_abs_model_error": 63.858776714888734,
+                "median_abs_model_error": 27.3929443359375,
+                "mean_model_error": -26.938901612031025,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 60.48464491362764
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": 0.01807201245641055,
+              "inflation_news_score": 0.05710267811496546,
+              "fed_policy_news_score": 0.041293018840237186,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.038474675819539006,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.05454708018509989,
+              "net_gold_news_sensitivity_score": 0.0811725543593899,
+              "gamma_context_intensity": 0.0811725543593899,
+              "article_count": 0.08117255435938989,
+              "gold_news_count": 0.08117255435938989
+            }
+          },
+          "20": {
+            "row_count": 5233,
+            "split_summary": {
+              "test": {
+                "row_count": 817,
+                "mean_abs_model_error": 200.65326353561048,
+                "median_abs_model_error": 115.40283203125,
+                "mean_model_error": -147.68011452197445,
+                "mean_gamma_context_intensity": 0.14296205630354958,
+                "mean_article_count": 0.7148102815177478,
+                "model_beats_naive_pct": 45.65483476132191
+              },
+              "train": {
+                "row_count": 3372,
+                "mean_abs_model_error": 30.250090358096084,
+                "median_abs_model_error": 20.34686279296875,
+                "mean_model_error": 6.880760654435887,
+                "mean_gamma_context_intensity": 0.023546856465005934,
+                "mean_article_count": 0.11773428232502965,
+                "model_beats_naive_pct": 60.02372479240806
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 67.15801744716835,
+                "median_abs_model_error": 54.76025390625,
+                "mean_model_error": -18.774408683923014,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 51.053639846743295
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 31.068701171875,
+                "median_abs_model_error": 29.68896484375,
+                "mean_model_error": 15.138720703125,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 40.0
+              },
+              "low": {
+                "row_count": 858,
+                "mean_abs_model_error": 98.11411824259724,
+                "median_abs_model_error": 50.64654541015625,
+                "mean_model_error": -51.3068245841073,
+                "mean_gamma_context_intensity": 0.2510489510489511,
+                "mean_article_count": 1.2552447552447552,
+                "model_beats_naive_pct": 50.58275058275058
+              },
+              "medium": {
+                "row_count": 202,
+                "mean_abs_model_error": 89.7782387308555,
+                "median_abs_model_error": 54.20208740234375,
+                "mean_model_error": -25.555566768835085,
+                "mean_gamma_context_intensity": 0.7455445544554454,
+                "mean_article_count": 3.727722772277228,
+                "model_beats_naive_pct": 53.46534653465347
+              },
+              "no_loaded_news_score": {
+                "row_count": 4168,
+                "mean_abs_model_error": 56.04067419129004,
+                "median_abs_model_error": 26.02386474609375,
+                "mean_model_error": -16.30168544308009,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 57.245681381957766
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": -0.0017908937004361455,
+              "inflation_news_score": 0.07884613328488382,
+              "fed_policy_news_score": 0.03315345979802934,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.05323244065764359,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.060617251654062385,
+              "net_gold_news_sensitivity_score": 0.09263921635474552,
+              "gamma_context_intensity": 0.09263921635474553,
+              "article_count": 0.09263921635474552,
+              "gold_news_count": 0.09263921635474552
+            }
+          },
+          "30": {
+            "row_count": 5233,
+            "split_summary": {
+              "test": {
+                "row_count": 817,
+                "mean_abs_model_error": 290.44588221126264,
+                "median_abs_model_error": 167.190185546875,
+                "mean_model_error": -231.57712318672543,
+                "mean_gamma_context_intensity": 0.14296205630354958,
+                "mean_article_count": 0.7148102815177478,
+                "model_beats_naive_pct": 44.92044063647491
+              },
+              "train": {
+                "row_count": 3372,
+                "mean_abs_model_error": 37.69002463271751,
+                "median_abs_model_error": 25.59356689453125,
+                "mean_model_error": -4.12397731722179,
+                "mean_gamma_context_intensity": 0.023546856465005934,
+                "mean_article_count": 0.11773428232502965,
+                "model_beats_naive_pct": 72.68683274021353
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 86.83316355738147,
+                "median_abs_model_error": 69.85992431640625,
+                "mean_model_error": -49.055615187604765,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 54.02298850574713
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 67.835107421875,
+                "median_abs_model_error": 31.6851806640625,
+                "mean_model_error": -60.312353515625,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 60.0
+              },
+              "low": {
+                "row_count": 858,
+                "mean_abs_model_error": 134.09003681458515,
+                "median_abs_model_error": 64.01641845703125,
+                "mean_model_error": -93.47504999476435,
+                "mean_gamma_context_intensity": 0.2510489510489511,
+                "mean_article_count": 1.2552447552447552,
+                "model_beats_naive_pct": 56.64335664335665
+              },
+              "medium": {
+                "row_count": 202,
+                "mean_abs_model_error": 115.90118770788212,
+                "median_abs_model_error": 55.3782958984375,
+                "mean_model_error": -79.06222624825959,
+                "mean_gamma_context_intensity": 0.7455445544554454,
+                "mean_article_count": 3.727722772277228,
+                "model_beats_naive_pct": 55.940594059405946
+              },
+              "no_loaded_news_score": {
+                "row_count": 4168,
+                "mean_abs_model_error": 75.87293774976382,
+                "median_abs_model_error": 34.0780029296875,
+                "mean_model_error": -37.870657161192796,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 66.69865642994242
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": 0.006900149848884834,
+              "inflation_news_score": 0.08680546359353473,
+              "fed_policy_news_score": 0.044702310483889146,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.04732190755361664,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.0460350601690974,
+              "net_gold_news_sensitivity_score": 0.09059093113675633,
+              "gamma_context_intensity": 0.09059093113675633,
+              "article_count": 0.09059093113675633,
+              "gold_news_count": 0.09059093113675633
+            }
+          }
+        },
+        "overall_error_context_correlation": {
+          "gold_general_news_score": 0.007349498246208588,
+          "inflation_news_score": 0.06959446414758572,
+          "fed_policy_news_score": 0.04608088449621757,
+          "usd_news_score": null,
+          "geopolitical_risk_news_score": 0.04605365830820649,
+          "safe_haven_news_score": null,
+          "central_bank_gold_news_score": 0.054043397487656505,
+          "net_gold_news_sensitivity_score": 0.08656286126652477,
+          "gamma_context_intensity": 0.08656286126652477,
+          "article_count": 0.08656286126652478,
+          "gold_news_count": 0.08656286126652478
+        }
+      },
+      "delta_tft": {
+        "row_count": 26285,
+        "split_counts": {
+          "test": 4205,
+          "train": 16860,
+          "validation": 5220
+        },
+        "by_horizon": {
+          "1": {
+            "row_count": 5257,
+            "split_summary": {
+              "test": {
+                "row_count": 841,
+                "mean_abs_model_error": 164.72993449510386,
+                "median_abs_model_error": 80.52570251915313,
+                "mean_model_error": -27.159328752233186,
+                "mean_gamma_context_intensity": 0.1405469678953627,
+                "mean_article_count": 0.7027348394768134,
+                "model_beats_naive_pct": 21.640903686087988
+              },
+              "train": {
+                "row_count": 3372,
+                "mean_abs_model_error": 28.10635249397662,
+                "median_abs_model_error": 8.570987909362884,
+                "mean_model_error": 0.1539548391864113,
+                "mean_gamma_context_intensity": 0.023546856465005934,
+                "mean_article_count": 0.11773428232502965,
+                "model_beats_naive_pct": 22.004744958481616
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 38.1234750802174,
+                "median_abs_model_error": 17.34648426654894,
+                "mean_model_error": 10.820779906788934,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 35.63218390804598
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 26.24399605488579,
+                "median_abs_model_error": 21.73081695842848,
+                "mean_model_error": 17.551669271514402,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 0.0
+              },
+              "low": {
+                "row_count": 861,
+                "mean_abs_model_error": 68.83528164301883,
+                "median_abs_model_error": 19.806962370872498,
+                "mean_model_error": 0.10326021892545527,
+                "mean_gamma_context_intensity": 0.25087108013937287,
+                "mean_article_count": 1.254355400696864,
+                "model_beats_naive_pct": 29.61672473867596
+              },
+              "medium": {
+                "row_count": 203,
+                "mean_abs_model_error": 60.53466606767908,
+                "median_abs_model_error": 17.639114273159066,
+                "mean_model_error": -6.275600840431875,
+                "mean_gamma_context_intensity": 0.7458128078817733,
+                "mean_article_count": 3.729064039408867,
+                "model_beats_naive_pct": 29.55665024630542
+              },
+              "no_loaded_news_score": {
+                "row_count": 4188,
+                "mean_abs_model_error": 48.09610048165377,
+                "median_abs_model_error": 12.09188424050808,
+                "mean_model_error": -2.3705071548349097,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 23.42406876790831
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": -0.010473377873319012,
+              "inflation_news_score": 0.034705214947510825,
+              "fed_policy_news_score": 0.04991208115895522,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.016950888633337248,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.04182600480606431,
+              "net_gold_news_sensitivity_score": 0.04457890025682961,
+              "gamma_context_intensity": 0.044578900256829604,
+              "article_count": 0.04457890025682962,
+              "gold_news_count": 0.04457890025682962
+            }
+          },
+          "5": {
+            "row_count": 5257,
+            "split_summary": {
+              "test": {
+                "row_count": 841,
+                "mean_abs_model_error": 252.62237084034544,
+                "median_abs_model_error": 118.45187428884674,
+                "mean_model_error": -79.91080537282485,
+                "mean_gamma_context_intensity": 0.1405469678953627,
+                "mean_article_count": 0.7027348394768134,
+                "model_beats_naive_pct": 48.39476813317479
+              },
+              "train": {
+                "row_count": 3372,
+                "mean_abs_model_error": 45.80369967174474,
+                "median_abs_model_error": 26.55913521646289,
+                "mean_model_error": -9.012535667787594,
+                "mean_gamma_context_intensity": 0.023546856465005934,
+                "mean_article_count": 0.11773428232502965,
+                "model_beats_naive_pct": 48.19098457888493
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 76.42671766943427,
+                "median_abs_model_error": 48.193075565875915,
+                "mean_model_error": 1.3751671535616228,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 55.55555555555556
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 106.64570761716459,
+                "median_abs_model_error": 91.22353914380074,
+                "mean_model_error": 4.3305599717714305,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 40.0
+              },
+              "low": {
+                "row_count": 861,
+                "mean_abs_model_error": 114.98702771847745,
+                "median_abs_model_error": 55.70461583137512,
+                "mean_model_error": -17.789614558085724,
+                "mean_gamma_context_intensity": 0.25087108013937287,
+                "mean_article_count": 1.254355400696864,
+                "model_beats_naive_pct": 54.47154471544715
+              },
+              "medium": {
+                "row_count": 203,
+                "mean_abs_model_error": 123.26838299151426,
+                "median_abs_model_error": 44.34262271688203,
+                "mean_model_error": -37.08258911060381,
+                "mean_gamma_context_intensity": 0.7458128078817733,
+                "mean_article_count": 3.729064039408867,
+                "model_beats_naive_pct": 55.66502463054187
+              },
+              "no_loaded_news_score": {
+                "row_count": 4188,
+                "mean_abs_model_error": 76.91844347320222,
+                "median_abs_model_error": 34.52715843915939,
+                "mean_model_error": -17.51112993264126,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 48.42406876790831
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": 0.015121354760702229,
+              "inflation_news_score": 0.06616357637547651,
+              "fed_policy_news_score": 0.05083948376989498,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.03503839671450523,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.04990922967120232,
+              "net_gold_news_sensitivity_score": 0.0810500053066599,
+              "gamma_context_intensity": 0.08105000530665989,
+              "article_count": 0.08105000530665989,
+              "gold_news_count": 0.08105000530665989
+            }
+          },
+          "10": {
+            "row_count": 5257,
+            "split_summary": {
+              "test": {
+                "row_count": 841,
+                "mean_abs_model_error": 285.84143905119134,
+                "median_abs_model_error": 141.7629700899124,
+                "mean_model_error": -131.52196039520416,
+                "mean_gamma_context_intensity": 0.1405469678953627,
+                "mean_article_count": 0.7027348394768134,
+                "model_beats_naive_pct": 47.91914387633769
+              },
+              "train": {
+                "row_count": 3372,
+                "mean_abs_model_error": 54.772811889486604,
+                "median_abs_model_error": 39.652289897203445,
+                "mean_model_error": -11.143910634758836,
+                "mean_gamma_context_intensity": 0.023546856465005934,
+                "mean_article_count": 0.11773428232502965,
+                "model_beats_naive_pct": 58.86714116251483
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 81.56166818440352,
+                "median_abs_model_error": 58.46983088216075,
+                "mean_model_error": -5.826475598856799,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 61.68582375478927
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 58.23327676775225,
+                "median_abs_model_error": 51.60464648694324,
+                "mean_model_error": -37.591418172974954,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 60.0
+              },
+              "low": {
+                "row_count": 861,
+                "mean_abs_model_error": 123.12554444126553,
+                "median_abs_model_error": 64.38723158836365,
+                "mean_model_error": -31.030137596975543,
+                "mean_gamma_context_intensity": 0.25087108013937287,
+                "mean_article_count": 1.254355400696864,
+                "model_beats_naive_pct": 56.44599303135889
+              },
+              "medium": {
+                "row_count": 203,
+                "mean_abs_model_error": 113.49622184134238,
+                "median_abs_model_error": 50.27816083145444,
+                "mean_model_error": -39.95376799634766,
+                "mean_gamma_context_intensity": 0.7458128078817733,
+                "mean_article_count": 3.729064039408867,
+                "model_beats_naive_pct": 56.65024630541872
+              },
+              "no_loaded_news_score": {
+                "row_count": 4188,
+                "mean_abs_model_error": 90.94913093036226,
+                "median_abs_model_error": 47.78070396349358,
+                "mean_model_error": -28.475299764293357,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 57.97516714422159
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": -0.005506485455711153,
+              "inflation_news_score": 0.04489667750782183,
+              "fed_policy_news_score": 0.035359734745575244,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.017890866974800246,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.032100953038154634,
+              "net_gold_news_sensitivity_score": 0.045307627207536845,
+              "gamma_context_intensity": 0.045307627207536845,
+              "article_count": 0.04530762720753684,
+              "gold_news_count": 0.04530762720753684
+            }
+          },
+          "20": {
+            "row_count": 5257,
+            "split_summary": {
+              "test": {
+                "row_count": 841,
+                "mean_abs_model_error": 250.45966303230406,
+                "median_abs_model_error": 137.0225962586992,
+                "mean_model_error": -159.07358920367824,
+                "mean_gamma_context_intensity": 0.1405469678953627,
+                "mean_article_count": 0.7027348394768134,
+                "model_beats_naive_pct": 37.69322235434007
+              },
+              "train": {
+                "row_count": 3372,
+                "mean_abs_model_error": 52.71316966137295,
+                "median_abs_model_error": 32.43037185736466,
+                "mean_model_error": -22.23135128022582,
+                "mean_gamma_context_intensity": 0.023546856465005934,
+                "mean_article_count": 0.11773428232502965,
+                "model_beats_naive_pct": 48.0723606168446
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 73.1823528881687,
+                "median_abs_model_error": 53.98536402195168,
+                "mean_model_error": -10.27470107587381,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 56.22605363984674
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 27.334454751512386,
+                "median_abs_model_error": 27.706098379392643,
+                "mean_model_error": 10.2701456901239,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 40.0
+              },
+              "low": {
+                "row_count": 861,
+                "mean_abs_model_error": 117.38392910184818,
+                "median_abs_model_error": 53.84542642903398,
+                "mean_model_error": -49.88805028891198,
+                "mean_gamma_context_intensity": 0.25087108013937287,
+                "mean_article_count": 1.254355400696864,
+                "model_beats_naive_pct": 49.012775842044135
+              },
+              "medium": {
+                "row_count": 203,
+                "mean_abs_model_error": 105.3943635186874,
+                "median_abs_model_error": 55.57979105958657,
+                "mean_model_error": -25.917043247488323,
+                "mean_gamma_context_intensity": 0.7458128078817733,
+                "mean_article_count": 3.729064039408867,
+                "model_beats_naive_pct": 52.70935960591133
+              },
+              "no_loaded_news_score": {
+                "row_count": 4188,
+                "mean_abs_model_error": 81.70689352884983,
+                "median_abs_model_error": 40.606724321842194,
+                "mean_model_error": -40.9045779873172,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 47.612225405921684
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": -0.012332690451133738,
+              "inflation_news_score": 0.05816657220844069,
+              "fed_policy_news_score": 0.04330932247261969,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.029122635155847707,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.03044237212751277,
+              "net_gold_news_sensitivity_score": 0.054068914190696385,
+              "gamma_context_intensity": 0.054068914190696385,
+              "article_count": 0.054068914190696385,
+              "gold_news_count": 0.054068914190696385
+            }
+          },
+          "30": {
+            "row_count": 5257,
+            "split_summary": {
+              "test": {
+                "row_count": 841,
+                "mean_abs_model_error": 309.8035830725001,
+                "median_abs_model_error": 171.94473439699505,
+                "mean_model_error": -187.2832295288186,
+                "mean_gamma_context_intensity": 0.1405469678953627,
+                "mean_article_count": 0.7027348394768134,
+                "model_beats_naive_pct": 45.89774078478002
+              },
+              "train": {
+                "row_count": 3372,
+                "mean_abs_model_error": 58.78587934284178,
+                "median_abs_model_error": 40.68301649391651,
+                "mean_model_error": -14.271818647201384,
+                "mean_gamma_context_intensity": 0.023546856465005934,
+                "mean_article_count": 0.11773428232502965,
+                "model_beats_naive_pct": 65.83629893238434
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 88.61713667849502,
+                "median_abs_model_error": 72.38250981963938,
+                "mean_model_error": -15.845543389086728,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 66.28352490421456
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 87.36453864234355,
+                "median_abs_model_error": 100.41897569097635,
+                "mean_model_error": -38.48515802754991,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 80.0
+              },
+              "low": {
+                "row_count": 861,
+                "mean_abs_model_error": 143.527049123536,
+                "median_abs_model_error": 76.06880103856383,
+                "mean_model_error": -61.60296413174352,
+                "mean_gamma_context_intensity": 0.25087108013937287,
+                "mean_article_count": 1.254355400696864,
+                "model_beats_naive_pct": 58.30429732868757
+              },
+              "medium": {
+                "row_count": 203,
+                "mean_abs_model_error": 128.71594958591496,
+                "median_abs_model_error": 63.28154749906389,
+                "mean_model_error": -51.674551300026955,
+                "mean_gamma_context_intensity": 0.7458128078817733,
+                "mean_article_count": 3.729064039408867,
+                "model_beats_naive_pct": 57.635467980295566
+              },
+              "no_loaded_news_score": {
+                "row_count": 4188,
+                "mean_abs_model_error": 95.78417847322515,
+                "median_abs_model_error": 50.369501546025276,
+                "mean_model_error": -37.83428939561405,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 63.87297039159503
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": -0.006146491159953538,
+              "inflation_news_score": 0.07011847162388427,
+              "fed_policy_news_score": 0.03994966262787291,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.0405938543233263,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.034410499775611274,
+              "net_gold_news_sensitivity_score": 0.06895390708570844,
+              "gamma_context_intensity": 0.06895390708570844,
+              "article_count": 0.06895390708570845,
+              "gold_news_count": 0.06895390708570845
+            }
+          }
+        },
+        "overall_error_context_correlation": {
+          "gold_general_news_score": -0.0034683278385831094,
+          "inflation_news_score": 0.05527934964799351,
+          "fed_policy_news_score": 0.04256653082243179,
+          "usd_news_score": null,
+          "geopolitical_risk_news_score": 0.028272521231644674,
+          "safe_haven_news_score": null,
+          "central_bank_gold_news_score": 0.0367355736426699,
+          "net_gold_news_sensitivity_score": 0.0587163080433048,
+          "gamma_context_intensity": 0.0587163080433048,
+          "article_count": 0.058716308043304834,
+          "gold_news_count": 0.058716308043304834
+        }
+      },
+      "epsilon_expert_ensemble": {
+        "row_count": 26380,
+        "split_counts": {
+          "test": 4205,
+          "train": 16955,
+          "validation": 5220
+        },
+        "by_horizon": {
+          "1": {
+            "row_count": 5276,
+            "split_summary": {
+              "test": {
+                "row_count": 841,
+                "mean_abs_model_error": 76.83296647652638,
+                "median_abs_model_error": 13.740464759838687,
+                "mean_model_error": -3.5087202615852133,
+                "mean_gamma_context_intensity": 0.1405469678953627,
+                "mean_article_count": 0.7027348394768134,
+                "model_beats_naive_pct": 39.00118906064209
+              },
+              "train": {
+                "row_count": 3391,
+                "mean_abs_model_error": 23.55633096969374,
+                "median_abs_model_error": 0.8330353237745385,
+                "mean_model_error": -0.2676898382072394,
+                "mean_gamma_context_intensity": 0.023414921851961076,
+                "mean_article_count": 0.11707460925980537,
+                "model_beats_naive_pct": 23.975228546151577
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 33.48925680073467,
+                "median_abs_model_error": 9.90543494919666,
+                "mean_model_error": -0.7329546455820379,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 46.455938697318004
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 9.34269357229282,
+                "median_abs_model_error": 1.9936678243989263,
+                "mean_model_error": 8.545226442533249,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 20.0
+              },
+              "low": {
+                "row_count": 861,
+                "mean_abs_model_error": 45.96795759099843,
+                "median_abs_model_error": 9.555005951596286,
+                "mean_model_error": -3.9038947281334373,
+                "mean_gamma_context_intensity": 0.25087108013937287,
+                "mean_article_count": 1.254355400696864,
+                "model_beats_naive_pct": 41.46341463414634
+              },
+              "medium": {
+                "row_count": 203,
+                "mean_abs_model_error": 37.66940569489007,
+                "median_abs_model_error": 6.361231886290852,
+                "mean_model_error": -4.425702693264714,
+                "mean_gamma_context_intensity": 0.7458128078817733,
+                "mean_article_count": 3.729064039408867,
+                "model_beats_naive_pct": 39.90147783251231
+              },
+              "no_loaded_news_score": {
+                "row_count": 4207,
+                "mean_abs_model_error": 31.420682889275813,
+                "median_abs_model_error": 1.1713666559751346,
+                "mean_model_error": -0.0967030558351797,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 28.214879961968148
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": -0.01710886595070682,
+              "inflation_news_score": 0.01783452864070088,
+              "fed_policy_news_score": 0.060998685598249884,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.021257823084186056,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.03908924148352522,
+              "net_gold_news_sensitivity_score": 0.036559491989670505,
+              "gamma_context_intensity": 0.0365594919896705,
+              "article_count": 0.03655949198967051,
+              "gold_news_count": 0.03655949198967051
+            }
+          },
+          "5": {
+            "row_count": 5276,
+            "split_summary": {
+              "test": {
+                "row_count": 841,
+                "mean_abs_model_error": 207.7053694798343,
+                "median_abs_model_error": 86.73743058912851,
+                "mean_model_error": -17.68844674183934,
+                "mean_gamma_context_intensity": 0.1405469678953627,
+                "mean_article_count": 0.7027348394768134,
+                "model_beats_naive_pct": 63.97146254458978
+              },
+              "train": {
+                "row_count": 3391,
+                "mean_abs_model_error": 69.14256600677444,
+                "median_abs_model_error": 24.12627474932788,
+                "mean_model_error": -1.3619491291558021,
+                "mean_gamma_context_intensity": 0.023414921851961076,
+                "mean_article_count": 0.11707460925980537,
+                "model_beats_naive_pct": 50.60454143320554
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 84.51793482029323,
+                "median_abs_model_error": 45.76984843042385,
+                "mean_model_error": -3.383923793868974,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 67.33716475095785
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 130.34505194427805,
+                "median_abs_model_error": 86.76449378101142,
+                "mean_model_error": -6.789604860076134,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 60.0
+              },
+              "low": {
+                "row_count": 861,
+                "mean_abs_model_error": 109.99743791678267,
+                "median_abs_model_error": 53.39045049976357,
+                "mean_model_error": -5.56846183491219,
+                "mean_gamma_context_intensity": 0.25087108013937287,
+                "mean_article_count": 1.254355400696864,
+                "model_beats_naive_pct": 66.55052264808361
+              },
+              "medium": {
+                "row_count": 203,
+                "mean_abs_model_error": 120.2780107113833,
+                "median_abs_model_error": 47.013415875771216,
+                "mean_model_error": -20.921467461163495,
+                "mean_gamma_context_intensity": 0.7458128078817733,
+                "mean_article_count": 3.729064039408867,
+                "model_beats_naive_pct": 60.09852216748769
+              },
+              "no_loaded_news_score": {
+                "row_count": 4207,
+                "mean_abs_model_error": 89.75598420095479,
+                "median_abs_model_error": 38.80429748956385,
+                "mean_model_error": -3.3163104561153913,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 53.69622058473972
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": -0.007098636307548634,
+              "inflation_news_score": 0.051404320114812406,
+              "fed_policy_news_score": 0.05110209728088023,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.02010874741134676,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.041919798476047695,
+              "net_gold_news_sensitivity_score": 0.054878993784557156,
+              "gamma_context_intensity": 0.054878993784557156,
+              "article_count": 0.05487899378455713,
+              "gold_news_count": 0.05487899378455713
+            }
+          },
+          "10": {
+            "row_count": 5276,
+            "split_summary": {
+              "test": {
+                "row_count": 841,
+                "mean_abs_model_error": 230.92031906136378,
+                "median_abs_model_error": 105.88974999913808,
+                "mean_model_error": -36.21122331955034,
+                "mean_gamma_context_intensity": 0.1405469678953627,
+                "mean_article_count": 0.7027348394768134,
+                "model_beats_naive_pct": 68.6087990487515
+              },
+              "train": {
+                "row_count": 3391,
+                "mean_abs_model_error": 82.91724396148862,
+                "median_abs_model_error": 54.3183898962111,
+                "mean_model_error": -2.821314008242785,
+                "mean_gamma_context_intensity": 0.023414921851961076,
+                "mean_article_count": 0.11707460925980537,
+                "model_beats_naive_pct": 63.5505750516072
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 87.67192670605817,
+                "median_abs_model_error": 58.288538391464385,
+                "mean_model_error": -6.394810448531383,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 70.59386973180077
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 59.58315734551006,
+                "median_abs_model_error": 56.43645988970616,
+                "mean_model_error": -37.0085733896276,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 80.0
+              },
+              "low": {
+                "row_count": 861,
+                "mean_abs_model_error": 112.31357134505521,
+                "median_abs_model_error": 63.50846949733659,
+                "mean_model_error": -7.5851518000262015,
+                "mean_gamma_context_intensity": 0.25087108013937287,
+                "mean_article_count": 1.254355400696864,
+                "model_beats_naive_pct": 69.68641114982579
+              },
+              "medium": {
+                "row_count": 203,
+                "mean_abs_model_error": 104.88707651298982,
+                "median_abs_model_error": 53.12768236057332,
+                "mean_model_error": -13.086198009167218,
+                "mean_gamma_context_intensity": 0.7458128078817733,
+                "mean_article_count": 3.729064039408867,
+                "model_beats_naive_pct": 66.99507389162561
+              },
+              "no_loaded_news_score": {
+                "row_count": 4207,
+                "mean_abs_model_error": 106.63510264753567,
+                "median_abs_model_error": 65.40447154255708,
+                "mean_model_error": -8.87200854749899,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 64.86807701449965
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": -0.03454762613140105,
+              "inflation_news_score": 0.01564785221173297,
+              "fed_policy_news_score": 0.020135576486545927,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": -0.004464173758904517,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.008179287992117205,
+              "net_gold_news_sensitivity_score": -0.002639485313032887,
+              "gamma_context_intensity": -0.0026394853130328895,
+              "article_count": -0.0026394853130328982,
+              "gold_news_count": -0.0026394853130328982
+            }
+          },
+          "20": {
+            "row_count": 5276,
+            "split_summary": {
+              "test": {
+                "row_count": 841,
+                "mean_abs_model_error": 193.34631602029498,
+                "median_abs_model_error": 104.22770517529102,
+                "mean_model_error": -74.76593055459733,
+                "mean_gamma_context_intensity": 0.1405469678953627,
+                "mean_article_count": 0.7027348394768134,
+                "model_beats_naive_pct": 59.80975029726516
+              },
+              "train": {
+                "row_count": 3391,
+                "mean_abs_model_error": 54.85989757973573,
+                "median_abs_model_error": 28.02335036956515,
+                "mean_model_error": -5.1759118421581345,
+                "mean_gamma_context_intensity": 0.023414921851961076,
+                "mean_article_count": 0.11707460925980537,
+                "model_beats_naive_pct": 50.427602477145385
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 71.91048030061174,
+                "median_abs_model_error": 52.48317796993922,
+                "mean_model_error": -13.391251176384808,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 59.86590038314177
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 18.55807643498074,
+                "median_abs_model_error": 16.923131716330317,
+                "mean_model_error": 4.745259284396252,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 60.0
+              },
+              "low": {
+                "row_count": 861,
+                "mean_abs_model_error": 99.36222603966405,
+                "median_abs_model_error": 49.5973318693932,
+                "mean_model_error": -31.422458703876515,
+                "mean_gamma_context_intensity": 0.25087108013937287,
+                "mean_article_count": 1.254355400696864,
+                "model_beats_naive_pct": 59.23344947735192
+              },
+              "medium": {
+                "row_count": 203,
+                "mean_abs_model_error": 94.67591869932194,
+                "median_abs_model_error": 55.20753282503574,
+                "mean_model_error": -3.356880147567188,
+                "mean_gamma_context_intensity": 0.7458128078817733,
+                "mean_article_count": 3.729064039408867,
+                "model_beats_naive_pct": 60.09852216748769
+              },
+              "no_loaded_news_score": {
+                "row_count": 4207,
+                "mean_abs_model_error": 75.78935759484253,
+                "median_abs_model_error": 35.02916749612086,
+                "mean_model_error": -15.853975175599833,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 52.365105776087475
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": -0.02986470479256335,
+              "inflation_news_score": 0.050800313546947744,
+              "fed_policy_news_score": 0.047577524727223555,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.02637919781473341,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.0331569916351512,
+              "net_gold_news_sensitivity_score": 0.04453244219378307,
+              "gamma_context_intensity": 0.044532442193783064,
+              "article_count": 0.0445324421937831,
+              "gold_news_count": 0.0445324421937831
+            }
+          },
+          "30": {
+            "row_count": 5276,
+            "split_summary": {
+              "test": {
+                "row_count": 841,
+                "mean_abs_model_error": 252.83081762659708,
+                "median_abs_model_error": 133.98499144488142,
+                "mean_model_error": -111.23919981197541,
+                "mean_gamma_context_intensity": 0.1405469678953627,
+                "mean_article_count": 0.7027348394768134,
+                "model_beats_naive_pct": 64.3281807372176
+              },
+              "train": {
+                "row_count": 3391,
+                "mean_abs_model_error": 85.04824914978596,
+                "median_abs_model_error": 57.97409877647033,
+                "mean_model_error": -7.696653326152035,
+                "mean_gamma_context_intensity": 0.023414921851961076,
+                "mean_article_count": 0.11707460925980537,
+                "model_beats_naive_pct": 68.00353877912121
+              },
+              "validation": {
+                "row_count": 1044,
+                "mean_abs_model_error": 88.16934616734503,
+                "median_abs_model_error": 67.94323272251722,
+                "mean_model_error": -19.7424847814979,
+                "mean_gamma_context_intensity": 0.171455938697318,
+                "mean_article_count": 0.85727969348659,
+                "model_beats_naive_pct": 67.1455938697318
+              }
+            },
+            "context_bucket_summary": {
+              "high": {
+                "row_count": 5,
+                "mean_abs_model_error": 90.87764035291107,
+                "median_abs_model_error": 97.84281826552638,
+                "mean_model_error": -47.7587787692994,
+                "mean_gamma_context_intensity": 1.8399999999999999,
+                "mean_article_count": 9.2,
+                "model_beats_naive_pct": 100.0
+              },
+              "low": {
+                "row_count": 861,
+                "mean_abs_model_error": 123.43491196337152,
+                "median_abs_model_error": 67.665313891599,
+                "mean_model_error": -47.7341749830493,
+                "mean_gamma_context_intensity": 0.25087108013937287,
+                "mean_article_count": 1.254355400696864,
+                "model_beats_naive_pct": 67.59581881533101
+              },
+              "medium": {
+                "row_count": 203,
+                "mean_abs_model_error": 111.6466341596264,
+                "median_abs_model_error": 60.1433068944591,
+                "mean_model_error": -31.12982353032185,
+                "mean_gamma_context_intensity": 0.7458128078817733,
+                "mean_article_count": 3.729064039408867,
+                "model_beats_naive_pct": 60.591133004926114
+              },
+              "no_loaded_news_score": {
+                "row_count": 4207,
+                "mean_abs_model_error": 110.21678482361989,
+                "median_abs_model_error": 69.08356806768711,
+                "mean_model_error": -22.012217697130833,
+                "mean_gamma_context_intensity": 0.0,
+                "mean_article_count": 0.0,
+                "model_beats_naive_pct": 67.45899690991205
+              }
+            },
+            "error_context_correlation": {
+              "gold_general_news_score": -0.044367633118144255,
+              "inflation_news_score": 0.040810445215530115,
+              "fed_policy_news_score": 0.024879744567800906,
+              "usd_news_score": null,
+              "geopolitical_risk_news_score": 0.015266988484732959,
+              "safe_haven_news_score": null,
+              "central_bank_gold_news_score": 0.0034178115739175365,
+              "net_gold_news_sensitivity_score": 0.012612290726931909,
+              "gamma_context_intensity": 0.012612290726931907,
+              "article_count": 0.012612290726931907,
+              "gold_news_count": 0.012612290726931907
+            }
+          }
+        },
+        "overall_error_context_correlation": {
+          "gold_general_news_score": -0.026486408769470587,
+          "inflation_news_score": 0.034945988338728654,
+          "fed_policy_news_score": 0.03712540287248883,
+          "usd_news_score": null,
+          "geopolitical_risk_news_score": 0.014183726016230625,
+          "safe_haven_news_score": null,
+          "central_bank_gold_news_score": 0.02241479767144899,
+          "net_gold_news_sensitivity_score": 0.02663188696885581,
+          "gamma_context_intensity": 0.026631886968855805,
+          "article_count": 0.026631886968855815,
+          "gold_news_count": 0.026631886968855815
+        }
+      }
+    },
+    "by_horizon_global": {
+      "1": {
+        "row_count": 21047,
+        "model_counts": {
+          "alpha_structural": 5281,
+          "beta_temporal": 5233,
+          "delta_tft": 5257,
+          "epsilon_expert_ensemble": 5276
+        },
+        "context_bucket_summary": {
+          "high": {
+            "row_count": 20,
+            "mean_abs_model_error": 22.21466467797959,
+            "median_abs_model_error": 18.516818772793386,
+            "mean_model_error": 8.600789788425754,
+            "mean_gamma_context_intensity": 1.8400000000000003,
+            "mean_article_count": 9.2,
+            "model_beats_naive_pct": 20.0
+          },
+          "low": {
+            "row_count": 3443,
+            "mean_abs_model_error": 54.79927246908915,
+            "median_abs_model_error": 19.78679951549748,
+            "mean_model_error": -5.741328853891563,
+            "mean_gamma_context_intensity": 0.25088585535869884,
+            "mean_article_count": 1.2544292767934941,
+            "model_beats_naive_pct": 34.96950334011037
+          },
+          "medium": {
+            "row_count": 811,
+            "mean_abs_model_error": 46.41833789853331,
+            "median_abs_model_error": 16.744842457771256,
+            "mean_model_error": -6.731562480220034,
+            "mean_gamma_context_intensity": 0.7457459926017262,
+            "mean_article_count": 3.7287299630086315,
+            "model_beats_naive_pct": 34.1553637484587
+          },
+          "no_loaded_news_score": {
+            "row_count": 16773,
+            "mean_abs_model_error": 37.30858664127885,
+            "median_abs_model_error": 10.341381013393402,
+            "mean_model_error": -0.7278195005595536,
+            "mean_gamma_context_intensity": 0.0,
+            "mean_article_count": 0.0,
+            "model_beats_naive_pct": 26.22667382102188
+          }
+        }
+      },
+      "5": {
+        "row_count": 21043,
+        "model_counts": {
+          "alpha_structural": 5277,
+          "beta_temporal": 5233,
+          "delta_tft": 5257,
+          "epsilon_expert_ensemble": 5276
+        },
+        "context_bucket_summary": {
+          "high": {
+            "row_count": 20,
+            "mean_abs_model_error": 100.10317302385553,
+            "median_abs_model_error": 77.34773383422748,
+            "mean_model_error": 1.7803598012807327,
+            "mean_gamma_context_intensity": 1.8400000000000003,
+            "mean_article_count": 9.2,
+            "model_beats_naive_pct": 55.00000000000001
+          },
+          "low": {
+            "row_count": 3442,
+            "mean_abs_model_error": 102.0449780949354,
+            "median_abs_model_error": 51.27528378460556,
+            "mean_model_error": -24.29726979490408,
+            "mean_gamma_context_intensity": 0.2509006391632772,
+            "mean_article_count": 1.254503195816386,
+            "model_beats_naive_pct": 57.96048808832074
+          },
+          "medium": {
+            "row_count": 811,
+            "mean_abs_model_error": 110.91670525690292,
+            "median_abs_model_error": 44.56849875363696,
+            "mean_model_error": -36.08218366387257,
+            "mean_gamma_context_intensity": 0.7457459926017262,
+            "mean_article_count": 3.7287299630086315,
+            "model_beats_naive_pct": 54.00739827373613
+          },
+          "no_loaded_news_score": {
+            "row_count": 16770,
+            "mean_abs_model_error": 72.39408413807743,
+            "median_abs_model_error": 32.41551323940803,
+            "mean_model_error": -12.842928905443149,
+            "mean_gamma_context_intensity": 0.0,
+            "mean_article_count": 0.0,
+            "model_beats_naive_pct": 50.596302921884316
+          }
+        }
+      },
+      "10": {
+        "row_count": 21038,
+        "model_counts": {
+          "alpha_structural": 5272,
+          "beta_temporal": 5233,
+          "delta_tft": 5257,
+          "epsilon_expert_ensemble": 5276
+        },
+        "context_bucket_summary": {
+          "high": {
+            "row_count": 20,
+            "mean_abs_model_error": 59.23210832816318,
+            "median_abs_model_error": 54.30795162454058,
+            "mean_model_error": -48.42799769049824,
+            "mean_gamma_context_intensity": 1.8400000000000003,
+            "mean_article_count": 9.2,
+            "model_beats_naive_pct": 60.0
+          },
+          "low": {
+            "row_count": 3440,
+            "mean_abs_model_error": 107.82974137831172,
+            "median_abs_model_error": 59.387782471316996,
+            "mean_model_error": -30.425173596839965,
+            "mean_gamma_context_intensity": 0.25093023255813957,
+            "mean_article_count": 1.2546511627906978,
+            "model_beats_naive_pct": 59.883720930232556
+          },
+          "medium": {
+            "row_count": 811,
+            "mean_abs_model_error": 96.61528437921021,
+            "median_abs_model_error": 49.27026525139809,
+            "mean_model_error": -33.225367787691845,
+            "mean_gamma_context_intensity": 0.7457459926017262,
+            "mean_article_count": 3.7287299630086315,
+            "model_beats_naive_pct": 58.56966707768188
+          },
+          "no_loaded_news_score": {
+            "row_count": 16767,
+            "mean_abs_model_error": 84.55534941625203,
+            "median_abs_model_error": 43.21621057715265,
+            "mean_model_error": -18.267021548214046,
+            "mean_gamma_context_intensity": 0.0,
+            "mean_article_count": 0.0,
+            "model_beats_naive_pct": 60.797996063696544
+          }
+        }
+      },
+      "20": {
+        "row_count": 21028,
+        "model_counts": {
+          "alpha_structural": 5262,
+          "beta_temporal": 5233,
+          "delta_tft": 5257,
+          "epsilon_expert_ensemble": 5276
+        },
+        "context_bucket_summary": {
+          "high": {
+            "row_count": 20,
+            "mean_abs_model_error": 24.849965853430795,
+            "median_abs_model_error": 22.165127740860044,
+            "mean_model_error": 5.7783177397399985,
+            "mean_gamma_context_intensity": 1.8400000000000003,
+            "mean_article_count": 9.2,
+            "model_beats_naive_pct": 45.0
+          },
+          "low": {
+            "row_count": 3438,
+            "mean_abs_model_error": 101.1473666054329,
+            "median_abs_model_error": 51.30180258154871,
+            "mean_model_error": -41.68697035231123,
+            "mean_gamma_context_intensity": 0.2509598603839442,
+            "mean_article_count": 1.2547993019197208,
+            "model_beats_naive_pct": 54.10122164048866
+          },
+          "medium": {
+            "row_count": 810,
+            "mean_abs_model_error": 93.82862106261489,
+            "median_abs_model_error": 53.76527341683868,
+            "mean_model_error": -15.818236924204479,
+            "mean_gamma_context_intensity": 0.745679012345679,
+            "mean_article_count": 3.728395061728395,
+            "model_beats_naive_pct": 55.30864197530864
+          },
+          "no_loaded_news_score": {
+            "row_count": 16760,
+            "mean_abs_model_error": 68.9190829615102,
+            "median_abs_model_error": 33.18074077686731,
+            "mean_model_error": -21.811310365950654,
+            "mean_gamma_context_intensity": 0.0,
+            "mean_article_count": 0.0,
+            "model_beats_naive_pct": 53.985680190930786
+          }
+        }
+      },
+      "30": {
+        "row_count": 21018,
+        "model_counts": {
+          "alpha_structural": 5252,
+          "beta_temporal": 5233,
+          "delta_tft": 5257,
+          "epsilon_expert_ensemble": 5276
+        },
+        "context_bucket_summary": {
+          "high": {
+            "row_count": 20,
+            "mean_abs_model_error": 74.89480715385153,
+            "median_abs_model_error": 89.09124402960401,
+            "mean_model_error": -49.33031753735378,
+            "mean_gamma_context_intensity": 1.8400000000000003,
+            "mean_article_count": 9.2,
+            "model_beats_naive_pct": 85.0
+          },
+          "low": {
+            "row_count": 3438,
+            "mean_abs_model_error": 129.0432082013329,
+            "median_abs_model_error": 65.5814913481239,
+            "mean_model_error": -63.54342263737428,
+            "mean_gamma_context_intensity": 0.2509598603839442,
+            "mean_article_count": 1.2547993019197208,
+            "model_beats_naive_pct": 61.08202443280978
+          },
+          "medium": {
+            "row_count": 810,
+            "mean_abs_model_error": 114.13361816293431,
+            "median_abs_model_error": 59.42129297986423,
+            "mean_model_error": -48.84092281200829,
+            "mean_gamma_context_intensity": 0.745679012345679,
+            "mean_article_count": 3.728395061728395,
+            "model_beats_naive_pct": 57.654320987654316
+          },
+          "no_loaded_news_score": {
+            "row_count": 16750,
+            "mean_abs_model_error": 93.5848462919252,
+            "median_abs_model_error": 50.50756034797314,
+            "mean_model_error": -28.878969358623245,
+            "mean_gamma_context_intensity": 0.0,
+            "mean_article_count": 0.0,
+            "model_beats_naive_pct": 65.2358208955224
+          }
+        }
+      }
+    },
+    "interpretation_rule": "Correlations and bucket summaries describe co-movement between model errors and loaded news-context fields only. They do not imply news caused gold movement.",
+    "professor_safe_note": "Gamma summarizes context coverage and model behavior under Phase 12 news-context rows. It is not a causal model.",
+    "generated_at_utc": "2026-05-06T00:26:12.174845Z"
+  },
+  "outputs": {
+    "run_summary": "artifacts/deep_ml/models/gamma_news_sensitivity/run_summary.json",
+    "quality_review": "artifacts/deep_ml/models/gamma_news_sensitivity/quality_review.json",
+    "diagnostics": "artifacts/deep_ml/models/gamma_news_sensitivity/diagnostics_latest.json",
+    "gamma_date_context": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_date_context.csv",
+    "gamma_model_joined_context": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_model_joined_context.csv",
+    "gamma_tooltip_context": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_tooltip_context.json",
+    "gamma_sensitivity_by_horizon": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_sensitivity_by_horizon.json",
+    "gamma_latest_context": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_latest_context.json",
+    "page_bundle": "artifacts/deep_ml/models/gamma_news_sensitivity/page_bundle.json"
+  },
+  "public_outputs": {
+    "run_summary": "public/artifacts/deep_ml/models/gamma_news_sensitivity/run_summary.json",
+    "quality_review": "public/artifacts/deep_ml/models/gamma_news_sensitivity/quality_review.json",
+    "diagnostics": "public/artifacts/deep_ml/models/gamma_news_sensitivity/diagnostics_latest.json",
+    "gamma_date_context": "public/artifacts/deep_ml/models/gamma_news_sensitivity/gamma_date_context.csv",
+    "gamma_model_joined_context": "public/artifacts/deep_ml/models/gamma_news_sensitivity/gamma_model_joined_context.csv",
+    "gamma_tooltip_context": "public/artifacts/deep_ml/models/gamma_news_sensitivity/gamma_tooltip_context.json",
+    "gamma_sensitivity_by_horizon": "public/artifacts/deep_ml/models/gamma_news_sensitivity/gamma_sensitivity_by_horizon.json",
+    "gamma_latest_context": "public/artifacts/deep_ml/models/gamma_news_sensitivity/gamma_latest_context.json",
+    "page_bundle": "public/artifacts/deep_ml/models/gamma_news_sensitivity/page_bundle.json"
+  },
+  "ai_grounding": {
+    "allowed_claims": [
+      "Gamma joins Phase 12 news-context rows to model prediction dates.",
+      "Gamma provides context-aware tooltip fields for model charts.",
+      "Gamma summarizes model behavior under loaded news-context buckets.",
+      "Gamma does not claim news caused gold price movement.",
+      "Historical rows are continuity/index rows with coverage limitations.",
+      "Recent headlines are context/tooltips only."
+    ],
+    "forbidden_claims": [
+      "Gamma proves news caused gold prices to move.",
+      "Zero historical news score means no news existed.",
+      "Google News RSS is a complete historical archive from 2006.",
+      "Gamma is the final Deep ML forecast winner."
+    ]
+  },
+  "next_step_after_acceptance": {
+    "phase": "Phase 14 - Omega Fusion",
+    "instruction": "After Gamma is accepted, recall all Alpha/Beta/Delta/Epsilon/Gamma reports, evaluations, forecasts, and public paths before rebuilding Omega."
+  },
+  "final_instruction": "Send me artifacts/deep_ml/models/gamma_news_sensitivity/phase13_gamma_news_sensitivity_report.json for review before running Omega.",
+  "generated_at_utc": "2026-05-06T00:26:12.739210Z"
+}

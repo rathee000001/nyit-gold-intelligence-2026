@@ -3,11 +3,12 @@
  * MODULE: GOLD NEXUS ALPHA NAVIGATION
  * ============================================================================================================================================================
  * Purpose:
- * - Professor-safe navigation for the clean Gold Nexus Alpha forecasting platform.
- * - Keeps Models as a dropdown after Data Pipeline.
- * - Shows Model Comparison and Final Forecast as direct top-level links.
- * - Adds a separate Deep ML Models dropdown after Final Forecast.
- * - Keeps frontend JSON-first: this navbar only hardcodes route labels.
+ * - Smooth professor-safe navbar for Gold Nexus Alpha.
+ * - Main row emphasizes Deep ML Phase 2 pages directly, not hidden in a Deep ML dropdown.
+ * - Academic Model is a separate dropdown/second-layer menu for the original baseline pages.
+ * - DOCS removed.
+ * - JSON-FIRST artifact indicator kept.
+ * - No Deep ML pages marked "Coming Soon" in the navbar.
  * ============================================================================================================================================================
  */
 
@@ -16,16 +17,37 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
-const globalLinksBeforeModels = [
+type NavItem = {
+  name: string;
+  href: string;
+  subtitle?: string;
+};
+
+const mainLinks: NavItem[] = [
   { name: "HOME", href: "/" },
   { name: "HISTORY", href: "/history" },
-  { name: "INTELLIGENCE", href: "/model3" },
-  { name: "DATA PIPELINE", href: "/data-pipeline" },
+  { name: "DATA MATRIX", href: "/data-matrix" },
+  { name: "DEEP ML OVERVIEW", href: "/deep-ml" },
+  { name: "ALPHA STRUCTURAL", href: "/deep-ml/models/alpha-structural" },
+  { name: "BETA TEMPORAL", href: "/deep-ml/models/beta-temporal" },
+  { name: "DELTA TFT", href: "/deep-ml/models/delta-tft" },
+  { name: "EPSILON ENSEMBLE", href: "/deep-ml/models/epsilon-ensemble" },
+  { name: "NEWS SOURCE", href: "/deep-ml/models/news-source" },
+  { name: "GAMMA", href: "/deep-ml/models/gamma-news-sensitivity" },
+  { name: "OMEGA", href: "/deep-ml/models/omega-fusion" },
+  { name: "FINAL DEEP ML EVAL", href: "/deep-ml/models/final-deep-ml-evaluation" },
 ];
 
-const modelLinks = [
+const academicLinks: NavItem[] = [
+  { name: "INTELLIGENCE", href: "/model3", subtitle: "Research matrix" },
+  { name: "DATA PIPELINE", href: "/data-pipeline", subtitle: "Source + cleaning" },
+  { name: "MODEL COMPARISON", href: "/model-comparison", subtitle: "Baseline ranking" },
+  { name: "FINAL FORECAST", href: "/forecast", subtitle: "Professor-safe output" },
+];
+
+const modelLinks: NavItem[] = [
   { name: "NAIVE + MOVING AVG", href: "/models/naive-moving-average" },
   { name: "EXP. SMOOTHING", href: "/models/exponential-smoothing" },
   { name: "REGRESSION", href: "/models/regression" },
@@ -34,263 +56,215 @@ const modelLinks = [
   { name: "XGBOOST", href: "/models/xgboost" },
 ];
 
-const globalLinksAfterModels = [
-  { name: "MODEL COMPARISON", href: "/model-comparison" },
-  { name: "FINAL FORECAST", href: "/forecast" },
-];
-
-const deepMlLinks = [
-  { name: "DEEP ML OVERVIEW", href: "/deep-ml" },
-  { name: "ALPHA STRUCTURAL", href: "/deep-ml/models/alpha-structural" },
-  { name: "BETA TEMPORAL", href: "/deep-ml/models/beta-temporal" },
-  { name: "DELTA TFT", href: "/deep-ml/models/delta-tft" },
-  { name: "EPSILON ENSEMBLE", href: "/deep-ml/models/epsilon-ensemble" },
-  { name: "NEWS SOURCE", href: "/deep-ml/news-source" },
-  { name: "GAMMA NEWS SENSITIVITY", href: "", locked: true },
-  { name: "OMEGA FUSION", href: "", locked: true },
-  { name: "FINAL DEEP ML EVALUATION", href: "", locked: true },
-];
-
 function isRouteActive(pathname: string, href: string) {
   if (!href) return false;
   if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-function TopNavLink({
-  name,
-  href,
+function MainNavLink({
+  item,
   pathname,
 }: {
-  name: string;
-  href: string;
+  item: NavItem;
   pathname: string;
 }) {
-  const active = isRouteActive(pathname, href);
+  const active = isRouteActive(pathname, item.href);
 
   return (
     <Link
-      href={href}
-      className={`whitespace-nowrap text-[12px] font-black uppercase tracking-widest transition-colors ${
-        active ? "text-blue-600" : "text-slate-400 hover:text-slate-700"
+      href={item.href}
+      className={`group relative flex h-12 shrink-0 items-center justify-center rounded-2xl px-3 text-center transition-all duration-200 ${
+        active
+          ? "bg-blue-50 text-blue-600 shadow-sm"
+          : "text-slate-400 hover:bg-slate-50 hover:text-slate-700"
       }`}
     >
-      {name}
-    </Link>
-  );
-}
-
-function DropdownCell({
-  name,
-  href,
-  isActive,
-  locked = false,
-}: {
-  name: string;
-  href: string;
-  isActive: boolean;
-  locked?: boolean;
-}) {
-  const cellClassName = `group relative flex min-h-[52px] w-full items-center justify-center rounded-2xl border px-4 py-2 text-center shadow-inner backdrop-blur-md transition-all duration-300 ${
-    locked
-      ? "cursor-not-allowed border-white/10 bg-white/5 opacity-60"
-      : isActive
-        ? "scale-[1.02] border-yellow-300/50 bg-yellow-300/25 shadow-lg"
-        : "border-white/10 bg-white/10 hover:bg-white/20"
-  }`;
-
-  const content = (
-    <div className="flex flex-col items-center justify-center gap-1">
-      <span
-        className={`text-[11px] font-black uppercase leading-tight tracking-widest ${
-          isActive ? "text-white" : "text-white/70 group-hover:text-white"
-        }`}
-      >
-        {name}
+      <span className="whitespace-nowrap text-[10px] font-black uppercase leading-tight tracking-[0.16em]">
+        {item.name}
       </span>
 
-      {locked && (
-        <span className="rounded-full border border-yellow-300/30 bg-yellow-300/10 px-2 py-0.5 text-[7px] font-black uppercase tracking-widest text-yellow-200">
-          Coming Soon
-        </span>
-      )}
-    </div>
-  );
-
-  if (locked || !href) {
-    return (
-      <div className={cellClassName} aria-disabled="true">
-        {content}
-      </div>
-    );
-  }
-
-  return (
-    <Link href={href} className={cellClassName}>
-      {content}
+      {active ? (
+        <span className="absolute bottom-1.5 left-1/2 h-[2px] w-7 -translate-x-1/2 rounded-full bg-blue-600" />
+      ) : null}
     </Link>
   );
 }
 
-function NavDropdown({
-  label,
-  subtitle,
+function AcademicButton({
   active,
-  hoverKey,
-  activeHover,
-  setActiveHover,
-  links,
-  widthClassName,
 }: {
-  label: string;
-  subtitle: string;
   active: boolean;
-  hoverKey: string;
-  activeHover: string | null;
-  setActiveHover: React.Dispatch<React.SetStateAction<string | null>>;
-  links: Array<{ name: string; href: string; locked?: boolean }>;
-  widthClassName: string;
 }) {
   return (
     <div
-      className="relative flex h-16 shrink-0 cursor-pointer items-center px-2"
-      onMouseEnter={() => setActiveHover(hoverKey)}
-      onMouseLeave={() => setActiveHover(null)}
+      className={`flex h-12 min-w-[116px] shrink-0 flex-col items-center justify-center rounded-2xl border px-4 leading-none transition-all duration-200 ${
+        active
+          ? "border-blue-200 bg-blue-50 text-blue-600 shadow-sm"
+          : "border-slate-100 bg-white text-slate-400 hover:border-slate-200 hover:bg-slate-50 hover:text-slate-700"
+      }`}
     >
-      <div className="text-center leading-none">
-        <span
-          className={`text-[11px] font-black uppercase tracking-widest transition-colors ${
-            activeHover === hoverKey || active ? "text-blue-600" : "text-blue-600/70"
-          }`}
-        >
-          {label}
-        </span>
-        <p className="mt-0.5 text-[7px] font-bold uppercase tracking-widest text-slate-400">
-          {subtitle}
-        </p>
-      </div>
+      <span className="text-[8px] font-black uppercase tracking-[0.24em]">
+        Academic
+      </span>
+      <span className="mt-1 text-[10px] font-black uppercase tracking-[0.18em]">
+        Model
+      </span>
+    </div>
+  );
+}
 
-      <AnimatePresence>
-        {activeHover === hoverKey && (
-          <motion.div
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 5 }}
-            className="absolute left-1/2 top-full -translate-x-1/2 pt-2"
-          >
-            <div className="absolute left-0 top-0 h-3 w-full" />
-            <div
-              className={`grid gap-3 rounded-[2rem] border border-blue-500/40 bg-[#0f172a] p-5 shadow-2xl shadow-blue-600/30 ${widthClassName}`}
-            >
-              {links.map((link) => (
-                <DropdownCell
-                  key={`${hoverKey}-${link.name}`}
-                  {...link}
-                  isActive={isRouteActive(usePathname(), link.href)}
-                />
-              ))}
+function AcademicPanel({
+  pathname,
+}: {
+  pathname: string;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 8, scale: 0.98 }}
+      transition={{ duration: 0.16 }}
+      className="absolute right-0 top-full pt-3"
+    >
+      <div className="w-[780px] overflow-hidden rounded-[2rem] border border-slate-200 bg-white/95 p-4 shadow-2xl shadow-slate-300/40 backdrop-blur-xl">
+        <div className="mb-4 flex items-center justify-between border-b border-slate-100 pb-3">
+          <div>
+            <div className="text-[10px] font-black uppercase tracking-[0.26em] text-blue-600">
+              Academic Model
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <div className="mt-1 text-xs font-semibold text-slate-500">
+              Original professor-safe forecasting pages and baseline model methods.
+            </div>
+          </div>
+          <div className="rounded-full border border-emerald-100 bg-emerald-50 px-3 py-1 text-[9px] font-black uppercase tracking-widest text-emerald-600">
+            JSON-FIRST
+          </div>
+        </div>
+
+        <div className="grid gap-3 md:grid-cols-4">
+          {academicLinks.map((item) => {
+            const active = isRouteActive(pathname, item.href);
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`rounded-2xl border p-4 transition-all duration-200 ${
+                  active
+                    ? "border-blue-200 bg-blue-50 text-blue-700"
+                    : "border-slate-100 bg-slate-50 text-slate-600 hover:border-slate-200 hover:bg-white"
+                }`}
+              >
+                <div className="text-[10px] font-black uppercase tracking-[0.18em]">
+                  {item.name}
+                </div>
+                <div className="mt-2 text-[11px] font-semibold leading-4 text-slate-500">
+                  {item.subtitle}
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+
+        <div className="mt-4 rounded-[1.5rem] border border-slate-100 bg-slate-50 p-4">
+          <div className="mb-3 text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">
+            Models / Forecast Methods
+          </div>
+
+          <div className="grid gap-2 md:grid-cols-3">
+            {modelLinks.map((item) => {
+              const active = isRouteActive(pathname, item.href);
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`rounded-xl border px-3 py-3 text-center text-[10px] font-black uppercase tracking-[0.14em] transition-all duration-200 ${
+                    active
+                      ? "border-blue-200 bg-blue-50 text-blue-600"
+                      : "border-slate-100 bg-white text-slate-500 hover:border-slate-200 hover:text-slate-800"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function ArtifactModePill() {
+  return (
+    <div className="hidden h-11 shrink-0 items-center gap-4 rounded-2xl border border-slate-100 bg-white px-5 shadow-sm 2xl:flex">
+      <div className="flex flex-col items-end leading-tight">
+        <span className="text-[7px] font-bold uppercase tracking-widest text-slate-400">
+          ARTIFACT MODE
+        </span>
+        <span className="text-[10px] font-black uppercase tracking-tighter text-emerald-500">
+          JSON-FIRST
+        </span>
+      </div>
+      <div className="h-2.5 w-2.5 animate-pulse rounded-full bg-emerald-500" />
     </div>
   );
 }
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [activeHover, setActiveHover] = useState<string | null>(null);
+  const [academicOpen, setAcademicOpen] = useState(false);
 
-  const modelsActive = pathname.startsWith("/models");
-  const deepMlActive = pathname.startsWith("/deep-ml");
+  const academicActive =
+    pathname.startsWith("/model3") ||
+    pathname.startsWith("/data-pipeline") ||
+    pathname.startsWith("/models") ||
+    pathname.startsWith("/model-comparison") ||
+    pathname.startsWith("/forecast");
 
   return (
-    <nav className="sticky top-0 z-[1000] h-16 w-full select-none border-b border-slate-200 bg-white px-6 shadow-sm">
-      <div className="mx-auto flex h-full max-w-[2600px] items-center">
-        {/* BRANDING */}
-        <div className="mr-6 flex shrink-0 items-center gap-6 border-r border-slate-200 pr-7">
-          <Link href="/">
+    <nav className="sticky top-0 z-[1000] h-16 w-full select-none border-b border-slate-200 bg-white/95 px-4 shadow-sm backdrop-blur-xl">
+      <div className="mx-auto flex h-full max-w-[2800px] items-center gap-4">
+        {/* BRAND */}
+        <div className="flex h-full shrink-0 items-center border-r border-slate-200 pr-5">
+          <Link href="/" className="group">
             <div className="flex flex-col leading-none">
-              <h1 className="text-[25px] font-black tracking-tighter text-[#D4AF37]">
+              <h1 className="text-[24px] font-black tracking-tighter text-[#D4AF37]">
                 GOLD<span className="text-slate-300">.AI</span>
               </h1>
-              <span className="mt-1 text-[8px] font-bold uppercase tracking-[0.35em] text-blue-600">
+              <span className="mt-1 text-[7px] font-bold uppercase tracking-[0.34em] text-blue-600">
                 NYIT Forecasting Lab
               </span>
             </div>
           </Link>
         </div>
 
-        {/* MAIN NAV */}
-        <div className="flex min-w-0 flex-grow items-center gap-5">
-          {/* LEFT LINKS */}
-          <div className="flex items-center gap-5 border-r border-slate-100 pr-5">
-            {globalLinksBeforeModels.map((link) => (
-              <TopNavLink key={link.href} {...link} pathname={pathname} />
-            ))}
-          </div>
-
-          {/* BASELINE MODELS DROPDOWN */}
-          <NavDropdown
-            label="MODELS"
-            subtitle="FORECAST METHODS"
-            active={modelsActive}
-            hoverKey="models"
-            activeHover={activeHover}
-            setActiveHover={setActiveHover}
-            links={modelLinks}
-            widthClassName="w-[520px] grid-cols-2"
-          />
-
-          {/* RIGHT LINKS AFTER MODELS */}
-          <div className="flex items-center gap-5 border-l border-slate-100 pl-5">
-            {globalLinksAfterModels.map((link) => (
-              <TopNavLink key={link.href} {...link} pathname={pathname} />
-            ))}
-
-            {/* DEEP ML MODELS DROPDOWN */}
-            <NavDropdown
-              label="DEEP ML MODELS"
-              subtitle="PHASE 2 RESEARCH"
-              active={deepMlActive}
-              hoverKey="deepml"
-              activeHover={activeHover}
-              setActiveHover={setActiveHover}
-              links={deepMlLinks}
-              widthClassName="w-[760px] grid-cols-3"
-            />
-          </div>
+        {/* MAIN DIRECT LINKS */}
+        <div className="flex min-w-0 flex-1 items-center gap-1 overflow-x-auto pr-2">
+          {mainLinks.map((item) => (
+            <MainNavLink key={item.href} item={item} pathname={pathname} />
+          ))}
         </div>
 
-        {/* RIGHT UTILITY */}
-        <div className="ml-auto flex shrink-0 items-center gap-4">
-          <Link
-            href="/documentation"
-            className="group flex h-11 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 px-6 shadow-sm transition-all hover:border-blue-300"
-          >
-            <span
-              className={`text-[12px] font-black uppercase tracking-widest ${
-                isRouteActive(pathname, "/documentation")
-                  ? "text-blue-600"
-                  : "text-slate-400 group-hover:text-slate-600"
-              }`}
-            >
-              DOCS
-            </span>
-          </Link>
+        {/* ACADEMIC MODEL DROPDOWN */}
+        <div
+          className="relative shrink-0"
+          onMouseEnter={() => setAcademicOpen(true)}
+          onMouseLeave={() => setAcademicOpen(false)}
+        >
+          <button type="button" aria-label="Academic Model navigation">
+            <AcademicButton active={academicActive || academicOpen} />
+          </button>
 
-          <div className="hidden h-11 items-center gap-4 rounded-2xl border border-slate-100 bg-white px-5 shadow-sm xl:flex">
-            <div className="flex flex-col items-end leading-tight">
-              <span className="text-[7px] font-bold uppercase tracking-widest text-slate-400">
-                ARTIFACT MODE
-              </span>
-              <span className="text-[10px] font-black uppercase tracking-tighter text-emerald-500">
-                JSON-FIRST
-              </span>
-            </div>
-            <div className="h-2.5 w-2.5 animate-pulse rounded-full bg-emerald-500" />
-          </div>
+          <AnimatePresence>
+            {academicOpen ? <AcademicPanel pathname={pathname} /> : null}
+          </AnimatePresence>
         </div>
+
+        {/* JSON-FIRST UTILITY */}
+        <ArtifactModePill />
       </div>
     </nav>
   );

@@ -1,0 +1,36 @@
+{
+  "artifact_type": "gamma_page_bundle",
+  "schema_version": "1.0.0",
+  "model_key": "gamma_news_sensitivity",
+  "page_title": "Gamma News Sensitivity",
+  "status": "ready",
+  "route": "/deep-ml/models/gamma-news-sensitivity",
+  "chart_artifacts": {
+    "gamma_date_context": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_date_context.csv",
+    "gamma_model_joined_context": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_model_joined_context.csv",
+    "gamma_tooltip_context": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_tooltip_context.json",
+    "gamma_sensitivity_by_horizon": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_sensitivity_by_horizon.json",
+    "gamma_latest_context": "artifacts/deep_ml/models/gamma_news_sensitivity/gamma_latest_context.json"
+  },
+  "frontend_patch_contract": {
+    "news_tooltip_source": "gamma_tooltip_context.json",
+    "preferred_join_key": "date",
+    "optional_model_join_keys": [
+      "date",
+      "source_model_key",
+      "horizon"
+    ],
+    "chart_row_fields_to_add": [
+      "gamma_tooltip_primary_headline",
+      "gamma_tooltip_primary_source",
+      "gamma_tooltip_note",
+      "gamma_context_intensity",
+      "gamma_context_bucket",
+      "source_coverage_note",
+      "top_headline_1",
+      "top_headline_1_source"
+    ]
+  },
+  "professor_safe_note": "Gamma supports context tooltips and sensitivity summaries only. It does not claim causality.",
+  "generated_at_utc": "2026-05-06T00:26:12.738210Z"
+}

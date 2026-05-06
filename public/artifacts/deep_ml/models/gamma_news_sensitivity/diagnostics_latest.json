@@ -1,0 +1,113 @@
+{
+  "artifact_type": "gamma_news_sensitivity_diagnostics_latest",
+  "schema_version": "1.0.0",
+  "phase_key": "phase13_gamma_news_sensitivity",
+  "model_key": "gamma_news_sensitivity",
+  "status": "ready",
+  "smoke": false,
+  "news_context_rows": 7429,
+  "recent_news_rows": 225,
+  "model_rows_loaded": 105174,
+  "joined_rows": 105174,
+  "date_context_rows": 7429,
+  "model_context_preview_rows": 5000,
+  "model_load_meta": {
+    "alpha_structural": {
+      "model_key": "alpha_structural",
+      "input_rows": 26344,
+      "output_rows": 26344,
+      "missing_required_columns": [],
+      "status": "ready",
+      "gold_price_source_column": "gold_price",
+      "split_counts": {
+        "test": 4169,
+        "train": 16955,
+        "validation": 5220
+      },
+      "horizon_counts": {
+        "1": 5281,
+        "5": 5277,
+        "10": 5272,
+        "20": 5262,
+        "30": 5252
+      },
+      "path": "artifacts/deep_ml/models/alpha_structural/evaluation_rollforward.csv",
+      "exists": true
+    },
+    "beta_temporal": {
+      "model_key": "beta_temporal",
+      "input_rows": 26165,
+      "output_rows": 26165,
+      "missing_required_columns": [],
+      "status": "ready",
+      "gold_price_source_column": "raw_origin_gold_price",
+      "split_counts": {
+        "test": 4085,
+        "train": 16860,
+        "validation": 5220
+      },
+      "horizon_counts": {
+        "1": 5233,
+        "5": 5233,
+        "10": 5233,
+        "20": 5233,
+        "30": 5233
+      },
+      "path": "artifacts/deep_ml/models/beta_temporal/evaluation_rollforward.csv",
+      "exists": true
+    },
+    "delta_tft": {
+      "model_key": "delta_tft",
+      "input_rows": 26285,
+      "output_rows": 26285,
+      "missing_required_columns": [],
+      "status": "ready",
+      "gold_price_source_column": "gold_price",
+      "split_counts": {
+        "test": 4205,
+        "train": 16860,
+        "validation": 5220
+      },
+      "horizon_counts": {
+        "1": 5257,
+        "5": 5257,
+        "10": 5257,
+        "20": 5257,
+        "30": 5257
+      },
+      "path": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv",
+      "exists": true
+    },
+    "epsilon_expert_ensemble": {
+      "model_key": "epsilon_expert_ensemble",
+      "input_rows": 26380,
+      "output_rows": 26380,
+      "missing_required_columns": [],
+      "status": "ready",
+      "gold_price_source_column": "gold_price",
+      "split_counts": {
+        "test": 4205,
+        "train": 16955,
+        "validation": 5220
+      },
+      "horizon_counts": {
+        "1": 5276,
+        "5": 5276,
+        "10": 5276,
+        "20": 5276,
+        "30": 5276
+      },
+      "path": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_rollforward.csv",
+      "exists": true
+    }
+  },
+  "output_hashes": {
+    "gamma_date_context": "sha256:99f631c5705d28b9278650fb013fdf7b20a1be005f57edf8e65d207c68bccb92",
+    "gamma_model_joined_context": "sha256:0360d0397461c38339f3622404cecd04fae27356028287c8d371f57b7c392f36",
+    "gamma_tooltip_context": "sha256:ac8fbce61d03bf6f7628e5258be45090ac3f505eaaec436899906fc97c10cfad",
+    "gamma_sensitivity_by_horizon": "sha256:4515fe79f00a1fa9b52b63ffcc47d23ef775142746f198550488ae7665f3029b",
+    "gamma_latest_context": "sha256:06897d2793befe555f2f588748508db140e46eb8581cf1d5161f6bfcdd21f782"
+  },
+  "professor_safe_note": "Diagnostics describe execution and output integrity only. They do not claim news caused gold price movement.",
+  "generated_at_utc": "2026-05-06T00:26:12.738210Z"
+}

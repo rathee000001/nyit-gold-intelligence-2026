@@ -1,0 +1,137 @@
+{
+  "artifact_type": "deep_ml_model_run",
+  "schema_version": "1.0.0",
+  "project": "Gold Nexus Alpha",
+  "phase": "phase_2_deep_ml",
+  "phase_key": "phase13_gamma_news_sensitivity",
+  "model_key": "gamma_news_sensitivity",
+  "model_name": "Gamma News Sensitivity",
+  "family": "news_context_sensitivity_layer",
+  "status": "ready",
+  "run": {
+    "run_id": "deepml_run_20260506_002609_gamma_news_sensitivity",
+    "generated_at_utc": "2026-05-06T00:26:09.610123Z",
+    "completed_at_utc": "2026-05-06T00:26:12.588964Z",
+    "generated_at_local": "2026-05-05T20:26:09.610123-04:00",
+    "timezone_local": "America/New_York",
+    "git_commit_sha": "62d1cdd",
+    "code_version": "gamma_news_sensitivity_v2_consistent_phase12_artifact_context",
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "smoke": false
+  },
+  "source_contract": {
+    "phase12_report": "artifacts/deep_ml/news/phase12_source_news_update_report.json",
+    "combined_daily_context": "artifacts/deep_ml/news/structured/news_context_daily_combined.csv",
+    "recent_news": "artifacts/deep_ml/news/news_items_unified_raw.csv",
+    "model_rollforward_sources": {
+      "alpha_structural": "artifacts/deep_ml/models/alpha_structural/evaluation_rollforward.csv",
+      "beta_temporal": "artifacts/deep_ml/models/beta_temporal/evaluation_rollforward.csv",
+      "delta_tft": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv",
+      "epsilon_expert_ensemble": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_rollforward.csv"
+    },
+    "model_report_sources": {
+      "alpha_structural": "artifacts/deep_ml/models/alpha_structural/phase6_alpha_structural_report.json",
+      "beta_temporal": "artifacts/deep_ml/models/beta_temporal/phase7_beta_temporal_report.json",
+      "delta_tft": "artifacts/deep_ml/models/delta_tft/phase8_delta_tft_report.json",
+      "epsilon_expert_ensemble": "artifacts/deep_ml/models/epsilon_expert_ensemble/phase9_epsilon_expert_report.json"
+    },
+    "model_forecast_sources": {
+      "alpha_structural": "artifacts/deep_ml/models/alpha_structural/forecast_latest.json",
+      "beta_temporal": "artifacts/deep_ml/models/beta_temporal/forecast_latest.json",
+      "delta_tft": "artifacts/deep_ml/models/delta_tft/forecast_latest.json",
+      "epsilon_expert_ensemble": "artifacts/deep_ml/models/epsilon_expert_ensemble/forecast_latest.json"
+    }
+  },
+  "model_load_meta": {
+    "alpha_structural": {
+      "model_key": "alpha_structural",
+      "input_rows": 26344,
+      "output_rows": 26344,
+      "missing_required_columns": [],
+      "status": "ready",
+      "gold_price_source_column": "gold_price",
+      "split_counts": {
+        "test": 4169,
+        "train": 16955,
+        "validation": 5220
+      },
+      "horizon_counts": {
+        "1": 5281,
+        "5": 5277,
+        "10": 5272,
+        "20": 5262,
+        "30": 5252
+      },
+      "path": "artifacts/deep_ml/models/alpha_structural/evaluation_rollforward.csv",
+      "exists": true
+    },
+    "beta_temporal": {
+      "model_key": "beta_temporal",
+      "input_rows": 26165,
+      "output_rows": 26165,
+      "missing_required_columns": [],
+      "status": "ready",
+      "gold_price_source_column": "raw_origin_gold_price",
+      "split_counts": {
+        "test": 4085,
+        "train": 16860,
+        "validation": 5220
+      },
+      "horizon_counts": {
+        "1": 5233,
+        "5": 5233,
+        "10": 5233,
+        "20": 5233,
+        "30": 5233
+      },
+      "path": "artifacts/deep_ml/models/beta_temporal/evaluation_rollforward.csv",
+      "exists": true
+    },
+    "delta_tft": {
+      "model_key": "delta_tft",
+      "input_rows": 26285,
+      "output_rows": 26285,
+      "missing_required_columns": [],
+      "status": "ready",
+      "gold_price_source_column": "gold_price",
+      "split_counts": {
+        "test": 4205,
+        "train": 16860,
+        "validation": 5220
+      },
+      "horizon_counts": {
+        "1": 5257,
+        "5": 5257,
+        "10": 5257,
+        "20": 5257,
+        "30": 5257
+      },
+      "path": "artifacts/deep_ml/models/delta_tft/evaluation_rollforward.csv",
+      "exists": true
+    },
+    "epsilon_expert_ensemble": {
+      "model_key": "epsilon_expert_ensemble",
+      "input_rows": 26380,
+      "output_rows": 26380,
+      "missing_required_columns": [],
+      "status": "ready",
+      "gold_price_source_column": "gold_price",
+      "split_counts": {
+        "test": 4205,
+        "train": 16955,
+        "validation": 5220
+      },
+      "horizon_counts": {
+        "1": 5276,
+        "5": 5276,
+        "10": 5276,
+        "20": 5276,
+        "30": 5276
+      },
+      "path": "artifacts/deep_ml/models/epsilon_expert_ensemble/evaluation_rollforward.csv",
+      "exists": true
+    }
+  },
+  "professor_safe_summary": "Gamma reads accepted Deep ML model prediction artifacts and Phase 12 news-context rows to build context-aware sensitivity artifacts and tooltips."
+}

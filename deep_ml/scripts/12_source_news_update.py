@@ -31,6 +31,11 @@ Run:
     py .\deep_ml\scripts\12_source_news_update.py --smoke
     py .\deep_ml\scripts\12_source_news_update.py
 
+Incremental refresh rule:
+    After the first full historical build, normal runs reuse the saved historical
+    index and only pull missing dates. Use --force-historical only when you
+    intentionally want a full rebuild.
+
 Useful options:
     py .\deep_ml\scripts\12_source_news_update.py --recent-only
     py .\deep_ml\scripts\12_source_news_update.py --historical-only
@@ -70,7 +75,7 @@ except Exception:  # pragma: no cover
     requests = None
 
 PHASE_KEY = "phase12_source_news_update"
-SCRIPT_VERSION = "source_news_update_v3_unified_historical_recent_safe_fallbacks"
+SCRIPT_VERSION = "source_news_update_v4_incremental_historical_recent_safe_fallbacks"
 TIMEZONE_LOCAL = "America/New_York"
 DOC_API_MIN_DATE = pd.Timestamp("2017-01-01")
 DEFAULT_HISTORICAL_START = "2006-01-02"
@@ -626,32 +631,116 @@ def apply_items_to_daily_index(df: pd.DataFrame, items: List[Dict[str, Any]], so
     return out
 
 
+
 def build_or_load_historical_index(paths: Paths, start_date: str, historical_end: str, force: bool, smoke: bool, timeout: int, delay: float, retries: int, max_records: int) -> Tuple[pd.DataFrame, Dict[str, Any], List[Dict[str, Any]]]:
+    """
+    Build or incrementally update the fixed historical daily news index.
+
+    Normal monthly behavior:
+        - If the cached historical index already covers historical_end, use it.
+        - If the cached index is behind, only request the missing date range.
+        - Use --force-historical only for a full rebuild.
+
+    Professor-safe rule:
+        This is a source-coverage index. Zero score means no public source row was
+        loaded by this script for the date; it is not proof that no news existed.
+    """
     logs: List[Dict[str, Any]] = []
+    target_start = pd.Timestamp(start_date).date().isoformat()
+    target_end = pd.Timestamp(historical_end).date().isoformat()
+
+    cached: Optional[pd.DataFrame] = None
+    cached_min: Optional[str] = None
+    cached_max: Optional[str] = None
+    cache_read_error: Optional[str] = None
+
     if paths.historical_index_parquet.exists() and not force:
         try:
             cached = pd.read_parquet(paths.historical_index_parquet)
             if "date" in cached.columns and not cached.empty:
-                min_d = str(cached["date"].min())
-                max_d = str(cached["date"].max())
-                if min_d <= start_date and max_d >= historical_end:
+                cached = cached.copy()
+                cached["date"] = pd.to_datetime(cached["date"], errors="coerce").dt.date.astype(str)
+                cached = cached.dropna(subset=["date"]).drop_duplicates("date", keep="last").sort_values("date")
+                cached_min = str(cached["date"].min())
+                cached_max = str(cached["date"].max())
+
+                if cached_min <= target_start and cached_max >= target_end:
                     manifest = read_json(paths.historical_manifest, default={}) or {}
-                    manifest["cache_used"] = True
-                    manifest["cache_reason"] = "Existing historical index covers requested window. Use --force-historical to rebuild."
+                    manifest.update(
+                        {
+                            "cache_used": True,
+                            "incremental_update_used": False,
+                            "full_rebuild_used": False,
+                            "previous_cached_start_date": cached_min,
+                            "previous_cached_end_date": cached_max,
+                            "historical_start_date": target_start,
+                            "historical_end_date": target_end,
+                            "row_count": int(len(cached)),
+                            "rows_with_loaded_public_source": int((pd.to_numeric(cached.get("article_count", 0), errors="coerce").fillna(0) > 0).sum()),
+                            "cache_reason": "Existing historical index already covers requested window. Use --force-historical only for a full rebuild.",
+                            "generated_at_utc": iso_utc(),
+                        }
+                    )
+                    write_json(paths.historical_manifest, manifest)
                     return cached, manifest, logs
-        except Exception:
-            pass
+        except Exception as exc:
+            cache_read_error = repr(exc)
+            cached = None
+            cached_min = None
+            cached_max = None
 
-    base = empty_daily_index(start_date, historical_end)
+    full_rebuild = bool(force or cached is None or (cached is not None and cached.empty))
+
+    if full_rebuild:
+        base = empty_daily_index(target_start, target_end)
+        pull_start = max(pd.Timestamp(target_start), DOC_API_MIN_DATE)
+        pull_end = pd.Timestamp(target_end)
+        previous_cached_start = cached_min
+        previous_cached_end = cached_max
+        incremental_update_used = False
+        incremental_start_date = None
+        incremental_end_date = None
+    else:
+        assert cached is not None
+        previous_cached_start = cached_min
+        previous_cached_end = cached_max
+
+        missing_start_ts = pd.Timestamp(cached_max) + pd.Timedelta(days=1)
+        missing_end_ts = pd.Timestamp(target_end)
+
+        if missing_start_ts > missing_end_ts:
+            manifest = read_json(paths.historical_manifest, default={}) or {}
+            manifest.update(
+                {
+                    "cache_used": True,
+                    "incremental_update_used": False,
+                    "full_rebuild_used": False,
+                    "previous_cached_start_date": cached_min,
+                    "previous_cached_end_date": cached_max,
+                    "historical_start_date": target_start,
+                    "historical_end_date": target_end,
+                    "row_count": int(len(cached)),
+                    "rows_with_loaded_public_source": int((pd.to_numeric(cached.get("article_count", 0), errors="coerce").fillna(0) > 0).sum()),
+                    "cache_reason": "No missing historical dates detected.",
+                    "generated_at_utc": iso_utc(),
+                }
+            )
+            write_json(paths.historical_manifest, manifest)
+            return cached, manifest, logs
+
+        base = empty_daily_index(missing_start_ts.date().isoformat(), missing_end_ts.date().isoformat())
+        pull_start = max(missing_start_ts, DOC_API_MIN_DATE)
+        pull_end = missing_end_ts
+        incremental_update_used = True
+        incremental_start_date = missing_start_ts.date().isoformat()
+        incremental_end_date = missing_end_ts.date().isoformat()
+
     historical_items: List[Dict[str, Any]] = []
-    hist_start = max(pd.Timestamp(start_date), DOC_API_MIN_DATE)
-    hist_end = pd.Timestamp(historical_end)
-    chunks = month_chunks(hist_start, hist_end, smoke=smoke)
+    chunks = month_chunks(pull_start, pull_end, smoke=smoke)
 
-    # Historical DOC API best-effort from 2017 onward. It is intentionally sampled
-    # and logged. We do not pretend it is every article ever published.
     query_items = list(GDELT_QUERIES.items())[:2] if smoke else list(GDELT_QUERIES.items())
     tasks = [(query_key, query, start, end) for start, end in chunks for query_key, query in query_items]
+
     for query_key, query, start, end in progress_iter(tasks, "Historical GDELT sampled index"):
         q_rows: List[Dict[str, Any]] = []
         last_meta: Dict[str, Any] = {}
@@ -659,6 +748,7 @@ def build_or_load_historical_index(paths: Paths, start_date: str, historical_end
             q_rows, last_meta = gdelt_doc_pull(query_key, query, timespan=None, start=start, end=end, max_records=max_records, timeout=timeout)
             last_meta["attempt"] = attempt
             last_meta["historical_sampled_index"] = True
+            last_meta["incremental_update_used"] = incremental_update_used
             if q_rows:
                 break
             if attempt < retries:
@@ -667,32 +757,59 @@ def build_or_load_historical_index(paths: Paths, start_date: str, historical_end
         logs.append(last_meta)
         time.sleep(delay)
 
-    base = apply_items_to_daily_index(base, historical_items, "historical_gdelt_doc_sampled_index")
-    if pd.Timestamp(start_date) < DOC_API_MIN_DATE:
-        pre_mask = pd.to_datetime(base["date"]) < DOC_API_MIN_DATE
-        base.loc[pre_mask, "source_type"] = "historical_fixed_row_pre_doc_api_window"
-        base.loc[pre_mask, "source_coverage_note"] = "Public DOC/RSS headline backfill was not available for this pre-2017 period in this script. Row retained for 2006-to-current continuity."
+    updated_segment = apply_items_to_daily_index(base, historical_items, "historical_gdelt_doc_sampled_index")
+
+    if not updated_segment.empty and pd.Timestamp(updated_segment["date"].min()) < DOC_API_MIN_DATE:
+        pre_mask = pd.to_datetime(updated_segment["date"]) < DOC_API_MIN_DATE
+        updated_segment.loc[pre_mask, "source_type"] = "historical_fixed_row_pre_doc_api_window"
+        updated_segment.loc[pre_mask, "source_coverage_note"] = "Public DOC/RSS headline backfill was not available for this pre-2017 period in this script. Row retained for 2006-to-current continuity."
+
+    if not full_rebuild and cached is not None:
+        final_df = pd.concat([cached, updated_segment], ignore_index=True)
+    else:
+        final_df = updated_segment
+
+    final_df["date"] = pd.to_datetime(final_df["date"], errors="coerce").dt.date.astype(str)
+    final_df = final_df.dropna(subset=["date"]).drop_duplicates("date", keep="last").sort_values("date").reset_index(drop=True)
 
     paths.historical_dir.mkdir(parents=True, exist_ok=True)
-    base.to_parquet(paths.historical_index_parquet, index=False)
-    base.to_csv(paths.historical_index_csv, index=False)
+    final_df.to_parquet(paths.historical_index_parquet, index=False)
+    final_df.to_csv(paths.historical_index_csv, index=False)
+
     manifest = {
         "artifact_type": "historical_news_backfill_manifest",
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
         "phase_key": PHASE_KEY,
         "script_version": SCRIPT_VERSION,
-        "historical_start_date": start_date,
-        "historical_end_date": historical_end,
-        "row_count": int(len(base)),
-        "rows_with_loaded_public_source": int((base["article_count"] > 0).sum()),
+        "historical_start_date": str(final_df["date"].min()) if not final_df.empty else target_start,
+        "historical_end_date": str(final_df["date"].max()) if not final_df.empty else target_end,
+        "requested_historical_start_date": target_start,
+        "requested_historical_end_date": target_end,
+        "row_count": int(len(final_df)),
+        "rows_with_loaded_public_source": int((pd.to_numeric(final_df.get("article_count", 0), errors="coerce").fillna(0) > 0).sum()),
         "source_policy": "Fixed daily index. 2017 onward uses sampled GDELT DOC API where available. Pre-2017 rows are retained with explicit coverage notes unless a future bulk historical GDELT/GKG loader is added.",
         "google_news_rss_policy": "Google News RSS is a recent fallback only, not a 2006 historical archive.",
-        "cache_used": False,
+        "cache_used": bool(cached is not None and not force),
+        "incremental_update_used": bool(incremental_update_used),
+        "full_rebuild_used": bool(full_rebuild),
+        "previous_cached_start_date": previous_cached_start,
+        "previous_cached_end_date": previous_cached_end,
+        "incremental_start_date": incremental_start_date,
+        "incremental_end_date": incremental_end_date,
+        "incremental_rows_added": int(len(updated_segment)) if incremental_update_used else 0,
+        "historical_api_pull_start_date": pull_start.date().isoformat() if pull_start <= pull_end else None,
+        "historical_api_pull_end_date": pull_end.date().isoformat() if pull_start <= pull_end else None,
+        "cache_read_error": cache_read_error,
+        "cache_reason": "Incremental update appended only missing dates." if incremental_update_used else "Full historical build completed.",
         "generated_at_utc": iso_utc(),
-        "outputs": {"historical_index_parquet": str(paths.historical_index_parquet.relative_to(paths.repo_root)), "historical_index_csv": str(paths.historical_index_csv.relative_to(paths.repo_root))},
+        "outputs": {
+            "historical_index_parquet": str(paths.historical_index_parquet.relative_to(paths.repo_root)),
+            "historical_index_csv": str(paths.historical_index_csv.relative_to(paths.repo_root)),
+        },
     }
     write_json(paths.historical_manifest, manifest)
-    return base, manifest, logs
+    return final_df, manifest, logs
+
 
 
 # -----------------------------------------------------------------------------
@@ -940,6 +1057,12 @@ def main() -> int:
             "forecast_start_date": mode_status.get("forecast_start_date"),
             "historical_start_date": args.historical_start,
             "historical_end_date": historical_end,
+            "historical_cache_used": historical_manifest.get("cache_used"),
+            "historical_incremental_update_used": historical_manifest.get("incremental_update_used"),
+            "historical_full_rebuild_used": historical_manifest.get("full_rebuild_used"),
+            "historical_previous_cached_end_date": historical_manifest.get("previous_cached_end_date"),
+            "historical_incremental_start_date": historical_manifest.get("incremental_start_date"),
+            "historical_incremental_end_date": historical_manifest.get("incremental_end_date"),
             "recent_window_days": args.recent_days,
             "output_hashes": {"historical_index_parquet": stable_hash_file(paths.historical_index_parquet), "historical_index_csv": stable_hash_file(paths.historical_index_csv), "combined_daily_context_csv": stable_hash_file(paths.combined_daily_context_csv), "unified_raw_json": stable_hash_file(paths.unified_raw_json)},
             "professor_safe_note": "Diagnostics describe source update execution only. They do not claim news caused gold movement.",

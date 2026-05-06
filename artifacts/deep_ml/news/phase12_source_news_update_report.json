@@ -6,24 +6,24 @@
   "phase_key": "phase12_source_news_update",
   "status": "ready",
   "run": {
-    "run_id": "deepml_run_20260505_191939_source_news_update",
+    "run_id": "deepml_run_20260505_192645_source_news_update",
     "study_id": "deepml_feature_refresh_20260505_093208",
-    "generated_at_utc": "2026-05-05T19:19:39.568571Z",
-    "completed_at_utc": "2026-05-05T19:22:32.951898Z",
-    "generated_at_local": "2026-05-05T15:19:39.568571-04:00",
+    "generated_at_utc": "2026-05-05T19:26:45.818364Z",
+    "completed_at_utc": "2026-05-05T23:36:05.170969Z",
+    "generated_at_local": "2026-05-05T15:26:45.818364-04:00",
     "timezone_local": "America/New_York",
-    "git_commit_sha": "be6e3bf",
+    "git_commit_sha": "62d1cdd",
     "code_version": "source_news_update_v3_unified_historical_recent_safe_fallbacks"
   },
   "backbone_directory_change_note": "Canonical news artifacts remain under artifacts/deep_ml/news/. Script name remains deep_ml/scripts/12_source_news_update.py. No news_ai folder is used.",
   "source_summary": {
     "historical_daily_rows": 7422,
-    "historical_rows_with_loaded_public_source": 13,
-    "gdelt_recent_rows": 30,
-    "rss_recent_rows": 312,
+    "historical_rows_with_loaded_public_source": 1285,
+    "gdelt_recent_rows": 36,
+    "rss_recent_rows": 189,
     "newsapi_recent_rows": 0,
     "manual_recent_rows": 0,
-    "unified_recent_rows_after_dedupe": 342,
+    "unified_recent_rows_after_dedupe": 225,
     "combined_daily_context_rows": 7429
   },
   "historical_manifest_snapshot": {
@@ -34,16 +34,15 @@
     "historical_start_date": "2006-01-02",
     "historical_end_date": "2026-04-28",
     "row_count": 7422,
-    "rows_with_loaded_public_source": 13,
+    "rows_with_loaded_public_source": 1285,
     "source_policy": "Fixed daily index. 2017 onward uses sampled GDELT DOC API where available. Pre-2017 rows are retained with explicit coverage notes unless a future bulk historical GDELT/GKG loader is added.",
     "google_news_rss_policy": "Google News RSS is a recent fallback only, not a 2006 historical archive.",
-    "cache_used": true,
-    "generated_at_utc": "2026-05-05T19:13:39.866444Z",
+    "cache_used": false,
+    "generated_at_utc": "2026-05-05T23:33:06.324675Z",
     "outputs": {
       "historical_index_parquet": "artifacts\\deep_ml\\news\\historical\\historical_news_daily_index.parquet",
       "historical_index_csv": "artifacts\\deep_ml\\news\\historical\\historical_news_daily_index.csv"
-    },
-    "cache_reason": "Existing historical index covers requested window. Use --force-historical to rebuild."
+    }
   },
   "source_inventory_snapshot": {
     "artifact_type": "news_source_inventory",
@@ -63,18 +62,19 @@
         "source_key": "gdelt_doc_api",
         "source_type": "public_no_key_api",
         "enabled": true,
-        "rows_loaded": 30,
+        "rows_loaded": 36,
         "status": "ready",
         "logs_preview": [
           {
-            "ok": true,
-            "status_code": 200,
+            "ok": false,
+            "status_code": 429,
             "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22gold+price%22+OR+%22COMEX+gold%22+OR+%22XAUUSD%22%29&mode=artlist&format=json&maxrecords=30&sort=hybridrel&timespan=7d",
-            "elapsed_seconds": 13.073343,
-            "content_type": "application/json; charset=utf-8",
+            "elapsed_seconds": 5.618937,
+            "content_type": "",
+            "text_preview": "Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries.\n\n",
             "query_key": "gold_general",
             "query": "(\"gold price\" OR \"COMEX gold\" OR \"XAUUSD\")",
-            "rows_returned": 30,
+            "rows_returned": 0,
             "start": null,
             "end": null,
             "timespan": "7d",
@@ -84,7 +84,7 @@
             "ok": false,
             "status_code": 429,
             "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22gold+inflation%22+OR+%22gold+yields%22+OR+%22gold+dollar%22%29&mode=artlist&format=json&maxrecords=30&sort=hybridrel&timespan=7d",
-            "elapsed_seconds": 6.736321,
+            "elapsed_seconds": 5.131955,
             "content_type": "",
             "text_preview": "Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries.\n\n",
             "query_key": "inflation_yields",
@@ -96,15 +96,14 @@
             "attempt": 2
           },
           {
-            "ok": false,
-            "status_code": 429,
+            "ok": true,
+            "status_code": 200,
             "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22gold+geopolitical+risk%22+OR+%22gold+safe+haven%22%29&mode=artlist&format=json&maxrecords=30&sort=hybridrel&timespan=7d",
-            "elapsed_seconds": 5.766842,
-            "content_type": "",
-            "text_preview": "Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries.\n\n",
+            "elapsed_seconds": 13.913515,
+            "content_type": "application/json; charset=utf-8",
             "query_key": "geopolitical_safe_haven",
             "query": "(\"gold geopolitical risk\" OR \"gold safe haven\")",
-            "rows_returned": 0,
+            "rows_returned": 6,
             "start": null,
             "end": null,
             "timespan": "7d",
@@ -114,7 +113,7 @@
             "ok": false,
             "status_code": 429,
             "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22Federal+Reserve+rates+gold%22+OR+%22dollar+yields+gold%22%29&mode=artlist&format=json&maxrecords=30&sort=hybridrel&timespan=7d",
-            "elapsed_seconds": 7.553781,
+            "elapsed_seconds": 5.997823,
             "content_type": "",
             "text_preview": "Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries.\n\n",
             "query_key": "fed_usd_rates",
@@ -126,19 +125,18 @@
             "attempt": 2
           },
           {
-            "ok": false,
-            "status_code": 429,
+            "ok": true,
+            "status_code": 200,
             "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22central+bank+gold+buying%22+OR+%22gold+reserves%22%29&mode=artlist&format=json&maxrecords=30&sort=hybridrel&timespan=7d",
-            "elapsed_seconds": 7.663844,
-            "content_type": "",
-            "text_preview": "Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries.\n\n",
+            "elapsed_seconds": 15.38851,
+            "content_type": "application/json; charset=utf-8",
             "query_key": "central_bank_gold",
             "query": "(\"central bank gold buying\" OR \"gold reserves\")",
-            "rows_returned": 0,
+            "rows_returned": 30,
             "start": null,
             "end": null,
             "timespan": "7d",
-            "attempt": 2
+            "attempt": 1
           }
         ]
       },
@@ -146,14 +144,14 @@
         "source_key": "google_news_rss_search",
         "source_type": "public_no_key_rss_recent_fallback",
         "enabled": true,
-        "rows_loaded": 312,
+        "rows_loaded": 189,
         "status": "ready",
         "logs_preview": [
           {
             "ok": true,
             "status_code": 200,
             "url": "https://news.google.com/rss/search?q=gold+price+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
-            "elapsed_seconds": 0.914735,
+            "elapsed_seconds": 0.740699,
             "content_type": "application/xml; charset=utf-8",
             "query_key": "gold_general",
             "query": "gold price",
@@ -164,7 +162,7 @@
             "ok": true,
             "status_code": 200,
             "url": "https://news.google.com/rss/search?q=gold+inflation+yields+dollar+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
-            "elapsed_seconds": 1.069529,
+            "elapsed_seconds": 0.681713,
             "content_type": "application/xml; charset=utf-8",
             "query_key": "inflation_yields",
             "query": "gold inflation yields dollar",
@@ -175,34 +173,34 @@
             "ok": true,
             "status_code": 200,
             "url": "https://news.google.com/rss/search?q=gold+geopolitical+risk+safe+haven+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
-            "elapsed_seconds": 0.801399,
+            "elapsed_seconds": 0.728943,
             "content_type": "application/xml; charset=utf-8",
             "query_key": "geopolitical_safe_haven",
             "query": "gold geopolitical risk safe haven",
             "source_key": "google_news_rss_search",
-            "rows_returned": 49
+            "rows_returned": 52
           },
           {
             "ok": true,
             "status_code": 200,
             "url": "https://news.google.com/rss/search?q=Federal+Reserve+rates+gold+dollar+yields+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
-            "elapsed_seconds": 0.809892,
+            "elapsed_seconds": 4.287046,
             "content_type": "application/xml; charset=utf-8",
             "query_key": "fed_usd_rates",
             "query": "Federal Reserve rates gold dollar yields",
             "source_key": "google_news_rss_search",
-            "rows_returned": 45
+            "rows_returned": 0
           },
           {
             "ok": true,
             "status_code": 200,
             "url": "https://news.google.com/rss/search?q=central+bank+gold+reserves+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
-            "elapsed_seconds": 0.893942,
+            "elapsed_seconds": 4.285056,
             "content_type": "application/xml; charset=utf-8",
             "query_key": "central_bank_gold",
             "query": "central bank gold reserves",
             "source_key": "google_news_rss_search",
-            "rows_returned": 100
+            "rows_returned": 0
           }
         ]
       },
@@ -233,62 +231,62 @@
         }
       }
     ],
-    "generated_at_utc": "2026-05-05T19:22:32.855031Z"
+    "generated_at_utc": "2026-05-05T23:36:05.051625Z"
   },
   "coverage_preview_snapshot": {
     "artifact_type": "news_source_coverage_preview",
     "schema_version": "1.0.0",
     "phase_key": "phase12_source_news_update",
     "status": "ready",
-    "recent_row_count": 342,
+    "recent_row_count": 225,
     "historical_daily_row_count": 7422,
-    "historical_rows_with_loaded_public_source": 13,
+    "historical_rows_with_loaded_public_source": 1285,
     "source_type_counts": {
-      "gdelt_doc_api": 30,
-      "google_news_rss_search": 312
+      "gdelt_doc_api": 36,
+      "google_news_rss_search": 189
     },
     "top_sources": {
-      "MSN": 23,
-      "FXStreet": 21,
-      "KITCO": 15,
-      "MEXC": 12,
-      "IndexBox": 10,
-      "The Economic Times": 8,
+      "FXStreet": 16,
+      "KITCO": 13,
+      "MSN": 10,
       "FXEmpire": 7,
-      "Gold Price": 7,
-      "Yahoo Finance": 7,
-      "Discovery Alert": 7,
-      "Investing.com": 6,
-      "CryptoRank": 6,
+      "MEXC": 6,
+      "Gold Price": 6,
+      "Yahoo Finance": 6,
+      "Dailyhunt": 5,
+      "The Economic Times": 5,
+      "Whalesbook": 5,
       "Fortune": 5,
-      "FOREX.com": 5,
-      "Dailyhunt": 5
+      "Discovery Alert": 4,
+      "Investing.com": 4,
+      "FOREX.com": 4,
+      "Meyka": 3
     },
     "sample_titles": [
-      "Gold , silver tumble in sharp selloff as precious metals lose momentum ( XAUUSD : CUR : Commodity )",
-      "Gold , silver listless - The HinduBusinessLine",
-      "Gold prices continue to drop on MCX as crude oil gains , silver too falls | Check city - wise rates",
-      "Gold , Silver Rate Today Live Updates : Gold prices hold steady as uncertainty on US - Iran talks persists",
-      "Comex Gold Settles 1 . 02 % Lower at $4545 . 20 Data Talk",
-      "Gold , Silver Rate Today Live Updates : Gold prices dip in international trade ; all eyes on US - Iran talks",
-      "Gold futures rise to Rs 1 . 50 lakh / 10g ahead of US Fed policy decision",
-      "Gold price rises over 1 % to \u20b91 . 5 lakh / 10g on Fed pause , geopolitical worries",
-      "Latest updates on metals prices worldwide at 0200 GMT , May 5",
-      "Why silver falls as crude surges , gold holds near \u20b91 . 5 lakh ?"
+      "Global gold demand rises 2 % in Jan - Mar quarter on strong bar , coin buying : WGC",
+      "Surging gold prices shift global demand from jewellery to investment : World Gold Council",
+      "Surging gold prices shift global demand from jewellery to investment : World Gold Council",
+      "Gold ETF : \u0917\u094b\u0932\u094d\u0921 ETF \u092e\u0947\u0902 \u0917\u093f\u0930\u093e\u0935\u091f \u0915\u094d\u092f\u094b\u0902 , \u0905\u092c \u0915\u094d\u092f\u093e \u0915\u0930\u0947\u0902 \u0928\u093f\u0935\u0947\u0936\u0915 ? \u091c\u093e\u0928\u093f\u090f \u090f\u0915\u094d\u0938\u092a\u0930\u094d\u091f \u0938\u0947",
+      "Gold Price Today : \u0932\u0917\u093e\u0924\u093e\u0930 \u0926\u0942\u0938\u0930\u0947 \u0926\u093f\u0928 \u0917\u094b\u0932\u094d\u0921 \u0938\u0938\u094d\u0924\u093e , \u091a\u093e\u0902\u0926\u0940 \u092d\u0940 \u092b\u093f\u0938\u0932\u0940 , \u091a\u0947\u0915 \u0915\u0930\u0947\u0902 \u0926\u093f\u0932\u094d\u0932\u0940 \u0938\u0947 \u0932\u0916\u0928\u090a - \u092a\u091f\u0928\u093e \u0924\u0915 \u0938\u094b\u0928\u0947 \u0915\u093e \u092d\u093e\u0935",
+      "BTC Holds $76K for Ninth Day as MACD Fails to Break It",
+      "Why RBI wants to keep India gold at home",
+      "RBI Shifts More Gold To Domestic Vaults",
+      "Gold sales cushioned deeper BoG losses , Amin Adam alleges",
+      "Staatsverschuldung : Deutschland ist in die H\u00e4nde von Pl\u00fcnderern gefallen"
     ],
     "professor_safe_note": "Coverage preview describes source inventory only. It does not evaluate causal price impact.",
-    "generated_at_utc": "2026-05-05T19:22:32.855031Z"
+    "generated_at_utc": "2026-05-05T23:36:05.062954Z"
   },
   "diagnostics_snapshot": {
     "artifact_type": "source_news_update_diagnostics_latest",
     "schema_version": "1.0.0",
     "phase_key": "phase12_source_news_update",
-    "run_id": "deepml_run_20260505_191939_source_news_update",
+    "run_id": "deepml_run_20260505_192645_source_news_update",
     "script_version": "source_news_update_v3_unified_historical_recent_safe_fallbacks",
     "repo_root": "D:\\nyit-gold-intelligence-2026",
     "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
     "platform": "Windows-11-10.0.26200-SP0",
-    "git_commit_sha": "be6e3bf",
+    "git_commit_sha": "62d1cdd",
     "study_id": "deepml_feature_refresh_20260505_093208",
     "mode": "refreshed_yahoo_gold_plus_fred_registry_mode",
     "effective_data_through_date": "2026-05-05",
@@ -297,13 +295,13 @@
     "historical_end_date": "2026-04-28",
     "recent_window_days": 7,
     "output_hashes": {
-      "historical_index_parquet": "sha256:21a8a75958438b5821b1698be28f869229bccb03950d66c973651ad30739da51",
-      "historical_index_csv": "sha256:b557cc1f1c2c8ff8feec4a24fb70b2a8124bd909d2114353773415b6dbf34237",
-      "combined_daily_context_csv": "sha256:96d2c24a3bd4aac37bb2708a7f17f896f790233b8958879ec0f70997bb742ffd",
-      "unified_raw_json": "sha256:2e635f648901e811f5f158b727088fa8996d7fb3d4ea6ed8a242cfd0d2e976b0"
+      "historical_index_parquet": "sha256:b62354c61ac9d0b063b5a8ccf8d50d383f2c9dcf0b260a15f015a7597cb410fd",
+      "historical_index_csv": "sha256:d4f00afd2410c399c3b4e17684fa3ae9cfeaf51a910a364e152002c228ff9101",
+      "combined_daily_context_csv": "sha256:1fbc2dd3017dab511da502b435024ed08dc46863f5152ecc20f348bbdc4ee3c2",
+      "unified_raw_json": "sha256:2c46083fc58b77ea797d4087be043d3080fa9df70600ce6beb8a54623023e5d6"
     },
     "professor_safe_note": "Diagnostics describe source update execution only. They do not claim news caused gold movement.",
-    "generated_at_utc": "2026-05-05T19:22:32.947898Z"
+    "generated_at_utc": "2026-05-05T23:36:05.170969Z"
   },
   "quality_review": {
     "artifact_type": "deep_ml_quality_review",
@@ -324,7 +322,7 @@
       "required_outputs_exist": true
     },
     "professor_safe_summary": "Unified Source News Update builds a fixed historical daily index and recent news inventory. It does not forecast gold and does not claim causality.",
-    "generated_at_utc": "2026-05-05T19:22:32.950899Z"
+    "generated_at_utc": "2026-05-05T23:36:05.170969Z"
   },
   "outputs": {
     "historical_index_parquet": "artifacts\\deep_ml\\news\\historical\\historical_news_daily_index.parquet",
@@ -359,5 +357,5 @@
     "instruction": "Review this report first. If ready, structure/classify historical + recent news context for Gamma."
   },
   "final_instruction": "Send me artifacts/deep_ml/news/phase12_source_news_update_report.json for review before News Context or Gamma.",
-  "generated_at_utc": "2026-05-05T19:22:32.982907Z"
+  "generated_at_utc": "2026-05-05T23:36:05.206181Z"
 }

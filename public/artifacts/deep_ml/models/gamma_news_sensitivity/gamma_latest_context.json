@@ -1,0 +1,331 @@
+{
+  "artifact_type": "gamma_latest_context",
+  "schema_version": "1.0.0",
+  "model_key": "gamma_news_sensitivity",
+  "latest_daily_context": {
+    "date": "2026-05-05",
+    "article_count": 39,
+    "gold_news_count": 39,
+    "source_type": "recent_api_rss_manual_news",
+    "source_coverage_note": "Historical/recent public source rows were loaded for this date. Scores summarize source coverage, not causality.",
+    "top_headline_1": "Gold Price Today : \u0932\u0917\u093e\u0924\u093e\u0930 \u0926\u0942\u0938\u0930\u0947 \u0926\u093f\u0928 \u0917\u094b\u0932\u094d\u0921 \u0938\u0938\u094d\u0924\u093e , \u091a\u093e\u0902\u0926\u0940 \u092d\u0940 \u092b\u093f\u0938\u0932\u0940 , \u091a\u0947\u0915 \u0915\u0930\u0947\u0902 \u0926\u093f\u0932\u094d\u0932\u0940 \u0938\u0947 \u0932\u0916\u0928\u090a - \u092a\u091f\u0928\u093e \u0924\u0915 \u0938\u094b\u0928\u0947 \u0915\u093e \u092d\u093e\u0935",
+    "top_headline_1_source": "hindi.moneycontrol.com",
+    "top_headline_1_url": "https://hindi.moneycontrol.com/news/your-money/gold-price-today-on-tuesday-5-may-gold-rate-sone-ka-bhav-24k-22k-18k-delhi-mumbai-chennai-kolkata-lucknow-jaipur-patna-silver-price-today-2398413.html",
+    "gamma_context_intensity": 3.6999999999999997,
+    "gamma_context_bucket": "high",
+    "gamma_tooltip_note": "News context loaded: Gold Price Today : \u0932\u0917\u093e\u0924\u093e\u0930 \u0926\u0942\u0938\u0930\u0947 \u0926\u093f\u0928 \u0917\u094b\u0932\u094d\u0921 \u0938\u0938\u094d\u0924\u093e , \u091a\u093e\u0902\u0926\u0940 \u092d\u0940 \u092b\u093f\u0938\u0932\u0940 , \u091a\u0947\u0915 \u0915\u0930\u0947\u0902 \u0926\u093f\u0932\u094d\u0932\u0940 \u0938\u0947 \u0932\u0916\u0928\u090a - \u092a\u091f\u0928\u093e \u0924\u0915 \u0938\u094b\u0928\u0947 \u0915\u093e \u092d\u093e\u0935",
+    "gold_general_news_score": 1.0,
+    "inflation_news_score": 0.9,
+    "fed_policy_news_score": 0.0,
+    "usd_news_score": 0.0,
+    "geopolitical_risk_news_score": 0.4,
+    "safe_haven_news_score": 0.0,
+    "central_bank_gold_news_score": 0.4,
+    "net_gold_news_sensitivity_score": 1.0
+  },
+  "recent_headline_items": [
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T19:47:26Z",
+      "source": "Investing.com",
+      "title": "Gold Price Pullback Opens Tactical Entry but Lacks Strong Support - Investing.com",
+      "summary": "Gold Price Pullback Opens Tactical Entry but Lacks Strong Support &nbsp;&nbsp; Investing.com",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNOUpvTlhEdVVRVXZKb1NVVHFtbUhaajh1VGJEUDd1OGZIbWRVM1BYeUxXdTlFOVFoMFF6Wk1kLXIzRVk0cGUxeGgzSGpfR3RmNkVTc2pLc1NvVE1JUHMybm5JNF9zU09Xa3lwRXZadkNmaDd6bVN0RUFRbHJwZlB1aGxNQmc1TWpwcks2cThFUFpjR0d4cmRwcXZEX2UyQk1NNGtMYWV3aWNOVEdKUzAw?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T18:18:34Z",
+      "source": "GoldSilver",
+      "title": "What\u2019s Really Driving Gold Prices Today \u2014 5 Key Signals - GoldSilver",
+      "summary": "What\u2019s Really Driving Gold Prices Today \u2014 5 Key Signals &nbsp;&nbsp; GoldSilver",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNTlNMQVlxbmxUa0NFY0pRU1hSTFRBcm9DSjhINjRBSW1DazhReEFIR3gwanBxM3lPeWQwajdzYmRabWdIRmpVQnlqcUQxMHowcWJ4amZTQlctVFFnZ1FhMVBGaXFNY1ZVTHlXT0tjclFLTjlHaWxwbXAyc0I0YWVNZENvVE1MLXpPMmJzYkdWM2lwUFQ1Z2Faek5HMVp6WnljSGluTlE5cERTdw?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T17:30:16Z",
+      "source": "KITCO",
+      "title": "Gold price is attractive now, so don't wait to build a 3% to 8% position - NDR\u2019s LaForge - KITCO",
+      "summary": "Gold price is attractive now, so don't wait to build a 3% to 8% position - NDR\u2019s LaForge &nbsp;&nbsp; KITCO",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOZmlPVkhiam9rNU1TVnJRTm51VEJvN2xINGZ6SFVpcDRXYmlwOEFiQmhReVIyUzNfaTB3Vk5JbnNqYldSYkVZN0xXNUxOdTlkSHRzVl8zLXQwby1TQzFuQ0pCVTBHbXAtSnVLaDQ0bXVpYTVBaXVNQTh0RVNDY1Q1T1JRaUVjVkVPMVNsYXowR1prUUotZDhGUzFJMkhZd0RldXFJMnJnY3pmR1VuV2R3Tm5CTXYtemM?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T17:17:07Z",
+      "source": "LiteFinance",
+      "title": "Gold (XAU/USD) Price Forecast for Today, Tomorrow, Next Week, and the Next 30 Days - LiteFinance",
+      "summary": "Gold (XAU/USD) Price Forecast for Today, Tomorrow, Next Week, and the Next 30 Days &nbsp;&nbsp; LiteFinance",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOZ1BXeVdPR08tTmQ4MHdZMkloUzlsNjRjSE5VVmxyeVRrdDZqbDI3Tm5VVUdfYTdZM0dOYjkzVFBuMGhJUzZEM3E0RDBkc0RTUXd2VFdMdm5uenpPXzJobUNvRklvRkt0S0pfYkZ0UWRXaWRDc09MR1pBUkVDRXN2Y2FINkVmUDBlRkZHNGhzZkNyNk5LUzZrM2VUV1pVOV9N?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T16:59:12Z",
+      "source": "FOREX.com",
+      "title": "Gold Analysis: XAU/USD Remains Stuck Near the $4,600 Level - FOREX.com",
+      "summary": "Gold Analysis: XAU/USD Remains Stuck Near the $4,600 Level &nbsp;&nbsp; FOREX.com",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNUlFKM01NSkdmVmp2UUhoOG9USWxqWUFDdzhpcWVIQzF3WXZxUER6aFhWZkNsbjZ1b3EwdzEzd0xpREJtZXIzTHY4UkhxSkNzZnF6RzZaU3R5WXdYX01mNGRFQWpsWV9BeGlqYnRsV2ZjNnctaVBqc0JXX19paDJnblZDV2NyYnpDUi1yQzVuZzFldzlGWWV1dkRaS0NZbHFnaWln0gGvAUFVX3lxTE9jcUNEWHYxZnphanM4MW5NRnJJZUdiZVVoMDg2RmJwWTV6QTlwajJCYm5oRkdTNnpHVjBDN05SalhpODdMY3hpMVNkcklPRWtyNGg3VXFyWDJyaTZzbTJoQ2JaN3lTVVZPTXpRTnNNMWpTRzQ3bEFhRUY3Ykd0Z05XeGlwd3I5cVMtcEpVS2lCUUNuQzhHeUFkR3cxZnIyNlRjLTZod2luSFFneUVlTEE?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T16:11:48Z",
+      "source": "Yahoo Finance",
+      "title": "Gold price outlook: Could $6,000 happen this year? - Yahoo Finance",
+      "summary": "Gold price outlook: Could $6,000 happen this year? &nbsp;&nbsp; Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOVHRhZ2R4NVU2dFNpRjZfUktha285ZXFhV1hHZnFFNms1R0dsbmxoUE1ELUdPRktDTmpmalJpc2EzY1psbS0tVE5naXFTRHFycnppWXlTX3lHZjFOYlEyWW9FLXlvWUQwVWdWeHZ3MnBfT254ZmU0OGlTODdyUWZxWF9PZ1dIVXBOYnZnbVN3VWE5elJpWTZUekFULTk4aFVKckpvclhEb3k3dDBUd3o2Zkc3VlVCYnZWNlpGOTVsaw?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T16:08:51Z",
+      "source": "Yahoo Finance",
+      "title": "Gold forecast and tracker: Where prices could land in 2026 - Yahoo Finance",
+      "summary": "Gold forecast and tracker: Where prices could land in 2026 &nbsp;&nbsp; Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQQWh0SkZWR0tTWTJXTDJIQzNtSExfckkyRTFaTnNQR09hT0phYmU5aTd0NzZvYThyWUNaVW51dHp4cmRTZXVmdlRFRmF6U3BNTUFMSjB2ZmRuNDNRYUJNelV1U2hlM19odkZDTUVXZW9HUmtHWjVBZm5aSnN3cDRlSFo1RkJ5eUNxMzkwMnhNY09jT3NCcGFWQ3FlLWk4QlVtLThmNmdVZTVfUHBTVExrVDljLW9SeTE4eWJhcnFwSng1T0ZsZkRlNkJxcENmdw?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T16:01:00Z",
+      "source": "IndexBox",
+      "title": "Gold Price Analysis: Central Bank Risks and Global Reserve Shifts Push Gold Toward $5,500 - News and Statistics - IndexBox",
+      "summary": "Gold Price Analysis: Central Bank Risks and Global Reserve Shifts Push Gold Toward $5,500 - News and Statistics &nbsp;&nbsp; IndexBox",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPeVl2bER5a3NFazU0R2RDNVg5V3RLZHp5TC1GWGVWczVQeGg2WjItajBCTUpjd3BUUzhYR29oRnhwS2ZLWTFKXzBGd1NmekxPZzl0emhocGVzSENtQ0VpdHJ4dUUzaHF2cjN5bjctdG9mcFFxOFMybHlRcnlPYlZsNkhCbHRlMVBURmV2aTdiSk1zTGdsT1h5UkZGd21YTTdkSDZScVBvMWstWGs?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T15:44:42Z",
+      "source": "KITCO",
+      "title": "A gold price sale: Is it time to buy? - KITCO",
+      "summary": "A gold price sale: Is it time to buy? &nbsp;&nbsp; KITCO",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE91S1VwczR1Y2F2T2k4TFloT3dud1ByT2lPenZ4UUdOQllTZnd5dU0zTFBrVXo1TXp6WlhjR25QQTZFUmhGZHRHOTZDSG1taUdqcktkb2xQZmxaZ0FvcUR6d3h4LWduMlNZbHljMFotSlQxNVBqOTNr?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T13:57:54Z",
+      "source": "GoldSilver",
+      "title": "Gold Price and the Jobs Report: A Pre-Market Guide - GoldSilver",
+      "summary": "Gold Price and the Jobs Report: A Pre-Market Guide &nbsp;&nbsp; GoldSilver",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQSUtpOHZtdmF6U3pQalFmZXU3bGlhWjVOblEycVVveDVyd1JKUUlNdmp5STEwbnotczdzWElwNEVHbkJPbGZmdDFobVdZZzRILVByOWN4LVF6MFZfOXVSUUFjTktUZk9mXzN6ekV2TFhsb093MUljQU51OUZBZnM3WjhyYURHeDNqQnFDWXBYSE1ZQmJiajQ5dUw5OEdFZUlrTEVUXzlR?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T13:52:00Z",
+      "source": "FXEmpire",
+      "title": "Gold Price Analysis \u2013 Gold Rises Toward a Major Level on Tuesday - FXEmpire",
+      "summary": "Gold Price Analysis \u2013 Gold Rises Toward a Major Level on Tuesday &nbsp;&nbsp; FXEmpire",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPMlBNdmt5NC04Tjc0ajNNblM4WmQwMXlwUUxiOEtjSzFDdWhRQks1Q0hMRzhoeEpVNkw0d05UaF9GeUN1RDUyX2dnUGI4Ylh2bHkxOXIxclJRbWl0dDI2dTg5YV9NbnZHMkplYkZwNk9JazVCd0NCNzNwbC1zVTdPaDZuVFl0cWpiWWRqdXRqb09xZzlJUU5YeFFCVWV6YmVoZ3QxZWFqWFlMTV9ieWdyM1lvYw?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T13:04:00Z",
+      "source": "Fortune",
+      "title": "Current price of gold as of May 5, 2026 - Fortune",
+      "summary": "Current price of gold as of May 5, 2026 &nbsp;&nbsp; Fortune",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE50bHZId0Fqd3h1M2FjQkt6alpIOU5oX1RBR2ZiNHA2aWE2eWs4bk1QV1pDWGUtVDUzMU1NRVdPdEFyVThzT1g5TS14YWIydGtSMzRWV0lwYkFQQkJVVU5KRy14QnFVdGRkZmVDMldR?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T12:26:02Z",
+      "source": "USA Today",
+      "title": "Gold Price Today on May 05, 2026 - USA Today",
+      "summary": "Gold Price Today on May 05, 2026 &nbsp;&nbsp; USA Today",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxORDJJeV9VNjFHMnc1ZXNvRjJDa2ZnYlhXbFpjV2E3MTY0WkFEWlN0WGZOeG1ORlBEdzlCd1p0YmhWbW5HbjY3RDJiLTNmck1GQkZDQWFRSU9oZzVqWEoxazY5eWwwYkxqNzVHOWFyaDVpSW5WM3dmMHJJX0lKYUZob1pWWWhzcHcyWUxQLXJreG51dVVTN3JNdm9LN2JsVEprMWJuQg?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T11:27:11Z",
+      "source": "Discovery Alert",
+      "title": "Why Gold Struggles With a Strong Dollar and Rising Oil Prices - Discovery Alert",
+      "summary": "Why Gold Struggles With a Strong Dollar and Rising Oil Prices &nbsp;&nbsp; Discovery Alert",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQRmFEdjVaX190R1hzVzhkc3Voa19TMU9sbWZYaWljUkg3RnFQNXlJRTNKZWswQzhOdVlkVlM1aERBQjVBWktZeXVmQTF5S1ZYUFZvVk4taVFfc0FKUWk5aU8yclh0ZmhEd0xnMEw0UXdNUkRETlEwbm1yd1pOcmE2YkhidXI4NHM4?oc=5",
+      "query_key": "inflation_yields",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T11:25:12Z",
+      "source": "Zacks Investment Research",
+      "title": "Kinross Gold Q1 Earnings and Sales Beat on Higher Gold Prices - Zacks Investment Research",
+      "summary": "Kinross Gold Q1 Earnings and Sales Beat on Higher Gold Prices &nbsp;&nbsp; Zacks Investment Research",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQLVZKazRKdTdNaTZGWFlRNWRqRjhmWVZZSExrbjhWQzU2TXFjczZLMjZGZ1BEYjJlZldGS3EtOGNzWFplNkdabl8zZ214TGkyM3ZkVjV4NXdtQkptTm1sRjI0RlVVeDNKeFVTM1Q5WVY4NHMxSlFJanJMY3dYdWJ0Q3lqTjlvajlQTnZ5Q19Ra1hfRjk4N29Wdi1iTFRuem5wUF9oOQ?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T11:06:03Z",
+      "source": "FOREX.com",
+      "title": "Gold forecast undermined by oil, yields and dollar strength - FOREX.com",
+      "summary": "Gold forecast undermined by oil, yields and dollar strength &nbsp;&nbsp; FOREX.com",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQOE52a2U1MmZlcVd5c1N4aVdjZTRUTFRkWUxNazdjY1QzaW5teTJUbnFIZ0pjdjVka3UySHAxMUtMczZyaGk4NmxOaDZTeE9NTklCZVdBSTRjc08yVGtFVXBxQ2hTbG54Y21saVFaazdlQlpVakZQTkdGY1l0ODRRdzJDeENsNG8zd1hpVnBwbTRmSTVwcVA1bzlINUZwQTJNYU5OZkUwZTU3b0VtQTQ4c0ZBQ0XSAbQBQVVfeXFMUDhOdmtlNTJmZXFXeXNTeGlXY2U0VExUZFlMTWs3Y2NUM2lubXkyVG5xSGdKY3Y1ZGt1MkhwMTFLTHM2cmhpODZsTmg2U3hPTU5JQmVXQUk0Y3NPMlRrRVVwcUNoU2xueGNtbGlRWms3ZUJaVWpGUE5HRmNZdDg0UXcyQ3hDbDRvM3dYaVZwcG00Zkk1cHFQNW85SDVGcEEyTWFOTmZFMGU1N29FbUE0OHNGQUNF?oc=5",
+      "query_key": "inflation_yields",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T11:05:00Z",
+      "source": "KITCO",
+      "title": "Gold prices see some renewed buying as U.S job openings falls to 6.87 million - KITCO",
+      "summary": "Gold prices see some renewed buying as U.S job openings falls to 6.87 million &nbsp;&nbsp; KITCO",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQVnFqQmdBUF9XaUJDZlg3T1VtVnNOM2x4emc3bVJEdHdIWVZTaE9FcWo2X1c4T3I2TTg1aEViYUdLTEtPRXpZZUFISXRBWTBqT2I5Ym1hbFJOOV9WWGJLU2NuMkVmWVY5N3hsWWl6YXFTNWpOcmFZWVFua20wdnFxeXhrRVB0eUlXaUlGRU9zNnNiLTlFTTNuRlRCV0NjUlF1bmpRRVFIR2JnTzBQcjBwX1ZGbGszdw?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T11:00:20Z",
+      "source": "Yahoo Finance",
+      "title": "Gold and silver prices today, Tuesday, May 5: Lowest open for gold in over a month following attacks near Hormuz - Yahoo Finance",
+      "summary": "Gold and silver prices today, Tuesday, May 5: Lowest open for gold in over a month following attacks near Hormuz &nbsp;&nbsp; Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMikwJBVV95cUxPbGI2cEc1dlNzNFZfRlFhZlVObFo5em9adUlyaVdPSVQzNE5sdmZ6TGdxUHVGa3ZpX0JpVnd1a2F1YjFjbTdSdFVnYXpkVDMtR1BwdURUcjhtVE1kMEY5RXNwdnl3c3ItdTVUcnpMY0E4NWpHaW1uUGd0TE9xdXoyOWJIZlhuSmo2NmRDRkJSR2ZqcUx4dWxjNFhMU2pVTDY1Q1RTLXczdng3SlRNOE43dThNNmNLU2hsMGFrU003LVBTWVFKd0F1WTk0eWRGTGkzeEc2by12V3ZJMU8tdW1YT19TMVJtNHdXTU4wcko2eTdDVXQybXM4a2pWS1k4cENUQ0hFY3lPS0x2WlZfQThVeXVCVQ?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T11:00:00Z",
+      "source": "welt.de",
+      "title": "Deutschland ist in die H\u00e4nde von Pl\u00fcnderern gefallen",
+      "summary": "",
+      "url": "https://www.welt.de/politik/deutschland/harald-martenstein/plus69f5ce8423e6b3dbf3c968a4/deutschland-ist-in-die-haende-von-pluenderern-gefallen.html",
+      "query_key": "central_bank_gold",
+      "raw_source": "gdelt_doc_api"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T10:00:00Z",
+      "source": "livemint.com",
+      "title": "Why RBI wants to keep India gold at home",
+      "summary": "",
+      "url": "https://www.livemint.com/economy/rbi-gold-reserve-central-banks-us-treasury-yield-west-asia-war-11777967888957.html",
+      "query_key": "central_bank_gold",
+      "raw_source": "gdelt_doc_api"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T09:39:26Z",
+      "source": "NDTV Profit",
+      "title": "Gold Rebounds From Five-Week Low But Inflation Fears, Strong Dollar Cap Upside - NDTV Profit",
+      "summary": "Gold Rebounds From Five-Week Low But Inflation Fears, Strong Dollar Cap Upside &nbsp;&nbsp; NDTV Profit",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPV3F6TmlPcFhuekZmR2VKTm8wQlNkOUZGcHlIR3d0eks3WEJ5YXpqZGNxanRZeHYydTh0a3RKODhvVndUbGhvM2p0ZHlhMlJQQ0FOcVp6d2Jzc3hyQ2VHYWVKNFJ2NXNLMHZyejJKUFZ5UGJPT1ZwRHRPazlWOEFTblA4MGdyMXJwOXc5Y3hMTFVGNUM4S0lzTHZXaDRXQ1Q1dXp1NW02OTNPWVBvZVYxcDZSZ0fSAbwBQVVfeXFMTlF3WUE2ZDN0cDl5b21JSFNXUjFVaGU1UHFydWZQMGR4cGhhcEdGRFBjaU84MnpacUZlU2gzS0Ywczh5VkljWHJmckl3TlZKZkdCeWtkR3paUkRzdWEwcmZMcmp1WEhnemUzMVpjVzhSSUZmQ1dvUHZRaDgycGhLXzZWYVExNGpzXzgyY1VtX01VOTBtZl95YVMyVHk5S2dJb1J3a2htOUoxSjZ4RjdvT1QwbTd5NGhBQnZFdzU?oc=5",
+      "query_key": "inflation_yields",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T08:52:31Z",
+      "source": "Investing.com",
+      "title": "Gold Positions Ahead of ISM PMI, Jobs Data as Yields, US Dollar Define Next Move - Investing.com",
+      "summary": "Gold Positions Ahead of ISM PMI, Jobs Data as Yields, US Dollar Define Next Move &nbsp;&nbsp; Investing.com",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNV3dzY193N25iOE5hSVQzcUw4TFZhWlQzaVFlSnYwWVR1OUhLZHRRbUd1Z19TLUhHaG5SS0dsR3ZoYlZKMHJjcDByMGxmN004bmNEZmlGcUxlYXlMNTBPYXllRzRjM0pDYURwNnVmLXVNTmI3TV96VDRoZGhoakdXajhGTnNIcTRJajN6eGljZmZVMU9yX3B0U3Z6Zm0zODFrYUNDeWI5a0MtYmFpaU9yeWwySXZZUkJ3WVJZVWtkX0k?oc=5",
+      "query_key": "inflation_yields",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T06:56:24Z",
+      "source": "MSN",
+      "title": "Gold falls over 1% as dollar firms, oil tops $113 - MSN",
+      "summary": "Gold falls over 1% as dollar firms, oil tops $113 &nbsp;&nbsp; MSN",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNbWp5SzFFdGlpM0dVNkphb0NaT09qTjRtNHB0X3NQX2N2S3RPYU1iSzQ0SEsxQ3ZwZUJSQUE2bDhHOTV3cXV6UmtQX2pKZnllSHpja1ZSLXlZSl9zbi1SbFhaNTctclZtTUtwUVIzbjNPVUhNYTd1UDl5T0ZkWWZqUlc1OFdUeXhYY1Mtc0U4WVNYMkw1N2NiRWJ5elViWWVsZDBXeWo1ZDM4NG1rcWt5d0NDM2ktYXJHeWZJLVhmMUtPeVhMd3hQY0tZY29QbFQzQWc?oc=5",
+      "query_key": "geopolitical_safe_haven",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T06:48:00Z",
+      "source": "The Star",
+      "title": "Gold rebounds from five-week low but inflation fears cap gains - The Star",
+      "summary": "Gold rebounds from five-week low but inflation fears cap gains &nbsp;&nbsp; The Star",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPcGlYM1RlZlJ1WjF6cWF5RGI2TGRjSFM3dHdjYm9TcHVRdjA1YXp0UzJWOGt3Y3ROS29zbk0xekh1SzEzbV9WV0NFUDVQM2tJdWlIMHVMek5FQ3RzcHJtMEN5TDdCbi1qVWxTaWY3Mzh3T1FYX0h6X1Q3cU1UMmUyV015M0k0dTNyeTh3bGt3dlBxUl9ObDZpRG1qSGpDX0xvV0lpUGZ4SkUzZS1jM3hWak5abFFvVW9oTWxDaDV5Qjc?oc=5",
+      "query_key": "inflation_yields",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T06:17:00Z",
+      "source": "TradingView",
+      "title": "Central bank policy errors may drive gold to $5,500/oz by Q1 2027: expert - TradingView",
+      "summary": "Central bank policy errors may drive gold to $5,500/oz by Q1 2027: expert &nbsp;&nbsp; TradingView",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOS3dXVFdKeG80NmpsZ1kzSTJCZGJkWUhrV05kNXNUeGFrRFpsdVM1TDFQenFSYTFpdzdBQ0tKLWIwSEpOQTFPTW5RYWJIMmJlTVZvV0g0YzNaakhpcEJwTkVKeGI5d3ZhWlpydEZtazJpd1UzYzJGMThPcmNXUEJLMXA5Q0k4QXlvUXZSazh5OW12Q1drdy1YdzRlM0ktQ0JEUHNEeEo3ODJVOFhYcTk4QTRCUFVmY0NYT0tpZWZRb3MwQnNrelBr?oc=5",
+      "query_key": "geopolitical_safe_haven",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T06:10:00Z",
+      "source": "Nation Thailand",
+      "title": "World Gold Council says Thai Q1 gold investment hits 7-year high - Nation Thailand",
+      "summary": "World Gold Council says Thai Q1 gold investment hits 7-year high &nbsp;&nbsp; Nation Thailand",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5BSEZFWUhpTDAyNmZnUzhSTGVwU2lQM2F5STVxTE1KdUhwOXNzUGI5U2hGd1ppeGJ4QW5NQjNleXNiZC1SbGhiNG1vcGFrMHhBa1VTVXJNSEVOcmRiU3doT0szSzNoOUxSWVNjeFBTX054VW5uSFE?oc=5",
+      "query_key": "geopolitical_safe_haven",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T05:54:00Z",
+      "source": "The Times of India",
+      "title": "Gold price prediction today: Why gold prices are expected to be vulnerable due to rising oil prices - Che - The Times of India",
+      "summary": "Gold price prediction today: Why gold prices are expected to be vulnerable due to rising oil prices - Che &nbsp;&nbsp; The Times of India",
+      "url": "https://news.google.com/rss/articles/CBMipwJBVV95cUxOaHQ3al9VQkUtRTd1TjRzRm85NkFJTTkxbTFOYWNkSEJmNFVWZjQwVDk1N1Bhc284X01jb2VaTkVUUUNGSTE2czJtU0tsdkNMbjlfM1hBOG9mTHIyejNCYWViVndRd2dzYmQyVkpHRnp3Y1h6VXJzblpGVE5ET3pLdWlid1lZYVBjUm45cms1ZDhtUEVxQU9sazAtR1RrQVJHSThLREk3RDhDRFdfS3MxV2F3ZURnV2k5Z1VpdU05TG01SnJVa3VnZGJIajE1TURZOXhQMnlPTDc2NlhLeXpNVmpkRl9Jal84TDR1U2h2N0prdGdheVM5UnlYSHNBaDQ1b25oU3lPbWVjbVJ5SVo3enRvVW5HRk94elNiRG1aRDhNcEV5dFhJ0gGsAkFVX3lxTE55UjloQVUwZ0p6eGh2Q3JjSEhZM0ZHMUx2UFU2UHlEdTdDVm1HdGh5Sm9vRE0tdFYweVNxaGtibVFNNkh3V05hNnRwYVZfU2Z1cDBMZGtkcFRUMlpGeURvbk50aTlUMVlkQXdzQy1HdmV4QVJjaXVyY0kzaVNnVm5DOHNrSTRQajNNNU9tZDJObmY5cVl6TXVwVThUMk1IZFRSLXZKRGZKTzRtaHEzbUdjT3k3NUg3aFRnYTJVdlM0Sm1yajh6c2FXYnNOWldPcll3N3RrYmRLQ29BNEZjS3p3OFY5VzlfU0JNdVV6eFNlNFRaWDJRSWpleVlfd1duSnF2LXRNdEU3U3RXS0M5d2R6QjQxWWI1SzFlcFFPRWx3clVQYm9qLVhDMnp1UQ?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T05:15:00Z",
+      "source": "1prime.ru",
+      "title": "\u042d\u043a\u043e\u043d\u043e\u043c\u0438\u0441\u0442 \u0440\u0430\u0441\u043a\u0440\u044b\u043b \u0440\u043e\u043b\u044c \u0437\u043e\u043b\u043e\u0442\u0430 \u0438\u0437 \u041c\u0430\u043b\u0438 \u0434\u043b\u044f \u043c\u0438\u0440\u043e\u0432\u043e\u0433\u043e \u0440\u044b\u043d\u043a\u0430",
+      "summary": "",
+      "url": "https://1prime.ru/20260505/mali-869655092.html",
+      "query_key": "central_bank_gold",
+      "raw_source": "gdelt_doc_api"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T05:05:17Z",
+      "source": "FXStreet",
+      "title": "Gold price in Saudi Arabia: Rates on May 5 - FXStreet",
+      "summary": "Gold price in Saudi Arabia: Rates on May 5 &nbsp;&nbsp; FXStreet",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQcVJyQ0h3U3hZWDZFMEF6c3dXTTk0T2dYZ2xHanBvVEtZbTQ1T2pjREE3YXBaaE9GV2NUNzN3ZW9tRHZQd2JqbjhYR19MWUVobTBIYjFtU1hYZ0IwUDkwM2Y2Q3duZGp4X0J2UmFyNnVUcXBOcTJqRUFkbHlucVhHQmw2VlVpMGpuYy03RW9Qcm8wdklEbThKcHAyb0lfVE1UNHpDdm5xMUJKdEx2X0hr?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    },
+    {
+      "date": "2026-05-05",
+      "published_at": "2026-05-05T05:00:04Z",
+      "source": "FXStreet",
+      "title": "Gold price in Philippines: Rates on May 5 - FXStreet",
+      "summary": "Gold price in Philippines: Rates on May 5 &nbsp;&nbsp; FXStreet",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOUW9PUUx6MFNzMmM0d3hlWllDTHZKaVFLYlBWYU9TSUJQc3JSbmp5eHVhV1BNY0pPQmFSTzV0WW9zNjJZRW9za2xzei1KeTN1Z1pDMlBfZWpFeWJWVGF0eWxvM1JTdGVkWjBfY3dMb1B0QktGOEkxaDRoaXFPUHF6Zndhb19wQ2dMQUNySkxkdUkxUHg0MlJfcGlxZ2hiLWVrQjhHVHlVQU9SSU9zVXc?oc=5",
+      "query_key": "gold_general",
+      "raw_source": "google_news_rss_search"
+    }
+  ],
+  "recent_headline_count": 30,
+  "professor_safe_note": "Recent headlines are for context/tooltips only and should not be presented as causal drivers.",
+  "generated_at_utc": "2026-05-06T00:26:12.330616Z"
+}
