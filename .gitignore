@@ -18,3 +18,14 @@ build/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Local AI/blob build context and temporary patch files
+gold_ai_full_project_context.txt
+gold_ai_artifact_inventory.json
+ai_blob_build_context.txt
+*_context.txt
+patch_*.py
+fix_*.py
+apply_*_patch.py
+apply_gold_ai_blob_service_patch.py
+.env.local

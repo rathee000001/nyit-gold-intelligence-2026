@@ -37,7 +37,8 @@ const mainLinks: NavItem[] = [
   { name: "NEWS SOURCE", href: "/deep-ml/models/news-source" },
   { name: "GAMMA", href: "/deep-ml/models/gamma-news-sensitivity" },
   { name: "OMEGA", href: "/deep-ml/models/omega-fusion" },
-  { name: "FINAL DEEP ML EVAL", href: "/deep-ml/models/final-deep-ml-evaluation" },
+  { name: "FINAL EVAL", href: "/deep-ml/models/final-deep-ml-evaluation" },
+  { name: "GOLD AI", href: "/gold-ai" },
 ];
 
 const academicLinks: NavItem[] = [
@@ -74,18 +75,18 @@ function MainNavLink({
   return (
     <Link
       href={item.href}
-      className={`group relative flex h-12 shrink-0 items-center justify-center rounded-2xl px-3 text-center transition-all duration-200 ${
+      className={`group relative flex h-10 shrink-0 items-center justify-center rounded-xl px-2.5 text-center transition-all duration-200 ${
         active
           ? "bg-blue-50 text-blue-600 shadow-sm"
           : "text-slate-400 hover:bg-slate-50 hover:text-slate-700"
       }`}
     >
-      <span className="whitespace-nowrap text-[10px] font-black uppercase leading-tight tracking-[0.16em]">
+      <span className="whitespace-nowrap text-[9.6px] font-black uppercase leading-tight tracking-[0.13em]">
         {item.name}
       </span>
 
       {active ? (
-        <span className="absolute bottom-1.5 left-1/2 h-[2px] w-7 -translate-x-1/2 rounded-full bg-blue-600" />
+        <span className="absolute bottom-1 left-1/2 h-[2px] w-6 -translate-x-1/2 rounded-full bg-blue-600" />
       ) : null}
     </Link>
   );
@@ -98,16 +99,16 @@ function AcademicButton({
 }) {
   return (
     <div
-      className={`flex h-12 min-w-[116px] shrink-0 flex-col items-center justify-center rounded-2xl border px-4 leading-none transition-all duration-200 ${
+      className={`flex h-10 min-w-[104px] shrink-0 flex-col items-center justify-center rounded-xl border px-3 leading-none transition-all duration-200 ${
         active
           ? "border-blue-200 bg-blue-50 text-blue-600 shadow-sm"
           : "border-slate-100 bg-white text-slate-400 hover:border-slate-200 hover:bg-slate-50 hover:text-slate-700"
       }`}
     >
-      <span className="text-[8px] font-black uppercase tracking-[0.24em]">
+      <span className="text-[7.4px] font-black uppercase tracking-[0.22em]">
         Academic
       </span>
-      <span className="mt-1 text-[10px] font-black uppercase tracking-[0.18em]">
+      <span className="mt-0.5 text-[8.8px] font-black uppercase tracking-[0.16em]">
         Model
       </span>
     </div>
@@ -199,7 +200,7 @@ function AcademicPanel({
 
 function ArtifactModePill() {
   return (
-    <div className="hidden h-11 shrink-0 items-center gap-4 rounded-2xl border border-slate-100 bg-white px-5 shadow-sm 2xl:flex">
+    <div className="hidden h-10 shrink-0 items-center gap-3 rounded-xl border border-slate-100 bg-white px-4 shadow-sm min-[1750px]:flex">
       <div className="flex flex-col items-end leading-tight">
         <span className="text-[7px] font-bold uppercase tracking-widest text-slate-400">
           ARTIFACT MODE
@@ -225,16 +226,16 @@ export default function Navbar() {
     pathname.startsWith("/forecast");
 
   return (
-    <nav className="sticky top-0 z-[1000] h-16 w-full select-none border-b border-slate-200 bg-white/95 px-4 shadow-sm backdrop-blur-xl">
-      <div className="mx-auto flex h-full max-w-[2800px] items-center gap-4">
+    <nav className="sticky top-0 z-[1000] w-full select-none border-b border-slate-200 bg-white/95 px-4 shadow-sm backdrop-blur-xl">
+      <div className="mx-auto flex min-h-[72px] max-w-[2800px] flex-wrap items-center gap-3 py-2">
         {/* BRAND */}
-        <div className="flex h-full shrink-0 items-center border-r border-slate-200 pr-5">
+        <div className="flex h-12 shrink-0 items-center border-r border-slate-200 pr-4">
           <Link href="/" className="group">
             <div className="flex flex-col leading-none">
-              <h1 className="text-[24px] font-black tracking-tighter text-[#D4AF37]">
+              <h1 className="text-[23px] font-black tracking-tighter text-[#D4AF37]">
                 GOLD<span className="text-slate-300">.AI</span>
               </h1>
-              <span className="mt-1 text-[7px] font-bold uppercase tracking-[0.34em] text-blue-600">
+              <span className="mt-1 text-[6.8px] font-bold uppercase tracking-[0.30em] text-blue-600">
                 NYIT Forecasting Lab
               </span>
             </div>
@@ -242,7 +243,7 @@ export default function Navbar() {
         </div>
 
         {/* MAIN DIRECT LINKS */}
-        <div className="flex min-w-0 flex-1 items-center gap-1 overflow-x-auto pr-2">
+        <div className="flex min-w-0 flex-1 flex-wrap items-center justify-center gap-1.5 overflow-visible pr-0">
           {mainLinks.map((item) => (
             <MainNavLink key={item.href} item={item} pathname={pathname} />
           ))}
