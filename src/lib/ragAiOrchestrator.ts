@@ -39,6 +39,8 @@ const ACTIVE_RAG_ARCHITECTURE = [
   "Optional SQL result context is accepted when a page passes sqlContext.",
   "OpenRouter LLM generation is active when OPENROUTER_API_KEY is configured.",
   "Local fallback is active when the provider key is missing or provider calls fail.",
+  "Current migrated UI calls use /api/rag-ai.",
+  "Legacy /api/gold-ai route is retained as a fallback route for now.",
 ];
 
 const NOT_ACTIVE_RAG_ARCHITECTURE = [
@@ -48,7 +50,7 @@ const NOT_ACTIVE_RAG_ARCHITECTURE = [
   "The orchestrator does not train, rerun, or validate forecasting models.",
   "The orchestrator does not update artifacts or run scheduled data refreshes.",
   "The orchestrator does not automatically execute SQL tools by itself yet.",
-  "Existing UI components have not all been migrated from /api/gold-ai to /api/rag-ai yet.",
+
 ];
 
 function buildArchitectureStatusText() {

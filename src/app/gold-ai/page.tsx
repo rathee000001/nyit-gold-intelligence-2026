@@ -845,6 +845,7 @@ function AIArchitecturePanel() {
     "SQL context",
     "OpenRouter",
     "fallback",
+    "legacy route retained",
   ];
 
   const notActive = [
@@ -885,7 +886,7 @@ function AIArchitecturePanel() {
 
         <div className="rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-[11px] font-bold leading-5 text-blue-800 lg:max-w-sm">
           Safe description: structured artifact catalog + SQL context + LLM generation.
-          Vector retrieval, embeddings, and LangChain/LlamaIndex are future layers.
+          Vector retrieval, embeddings, and LangChain/LlamaIndex are future layers. Legacy /api/gold-ai remains as fallback.
         </div>
       </div>
 
