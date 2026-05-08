@@ -117,6 +117,94 @@ function buildSqlContextText(sqlContext?: RagSqlContext | null) {
   return trimText(JSON.stringify(payload, null, 2), 18000);
 }
 
+
+function isFinalDeepMlPagePath(pagePath?: string) {
+  const p = String(pagePath || "").toLowerCase();
+  return p.includes("final-deep-ml-evaluation");
+}
+
+function buildFinalDeepMlStrictRulesText() {
+  return [
+    "FINAL DEEP ML EVALUATION STRICT RULES:",
+    "- This page may explain final Deep ML artifacts, Omega Fusion, component experts, forecast paths, intervals, and evaluation outputs.",
+    "- Do not say the model is performing well, highly accurate, reliable, below industry benchmarks, production-ready, or decision-ready unless the provided artifact context explicitly states that exact claim.",
+    "- Do not invent accuracy, confidence score, directional accuracy, industry benchmark, cost saving, operational efficiency, or business impact claims.",
+    "- Do not call uncertainty bands a confidence score. If lower/upper bands exist, describe them as artifact-provided intervals or uncertainty bands.",
+    "- Do not describe forecasts as guarantees.",
+    "- Do not claim Gamma/news context is causal.",
+    "- Do not say Omega is selected because it is best unless the final evaluation/ranking artifact explicitly supports that selection.",
+    "- If exact metrics are not visible in the provided context, say the page contains evaluation artifacts but the exact metric value is not available in the selected context.",
+    "- Date windows must be described exactly. Do not call a May-to-July period a six-month window.",
+    "- Safe wording: 'The page presents artifact-backed Deep ML forecast and evaluation outputs.'",
+    "- Safe wording: 'The forecast path is a model output for review, not a guaranteed future price path.'",
+  ].join("\n");
+}
+
+function finalDeepMlRiskTerms(answer: string) {
+  const lower = String(answer || "").toLowerCase();
+
+  const risky = [
+    "performing well",
+    "strong performance",
+    "high accuracy",
+    "highly accurate",
+    "reliable forecast",
+    "reliable forecasts",
+    "below industry benchmark",
+    "industry benchmark",
+    "directional accuracy",
+    "confidence score",
+    "above 95",
+    "95%",
+    "production-ready",
+    "decision-ready",
+    "cost savings",
+    "optimize operations",
+    "improved efficiency",
+    "strong model",
+    "quite confident",
+    "guarantee",
+    "guaranteed",
+    "6-month window",
+    "six-month window",
+  ];
+
+  return risky.filter((term) => lower.includes(term));
+}
+
+function buildFinalDeepMlSafetyFallback(
+  context: Awaited<ReturnType<typeof buildArtifactContextForQuestion>>,
+  riskyTerms: string[]
+) {
+  const sourceNames = context.selected.map((item) => item.label).slice(0, 8);
+
+  return sanitizeGeneratedAnswer([
+    "This final Deep ML evaluation page should be explained from approved artifacts only.",
+    "",
+    "Safe business explanation:",
+    "- The page presents Deep ML forecast and evaluation artifacts for Omega Fusion and the component expert models.",
+    "- Omega Fusion can be described as the final Deep ML forecast layer only where supported by the final evaluation artifacts.",
+    "- Forecast values, intervals, ranking, and quality statements must come from the loaded CSV/JSON artifacts.",
+    "- Forecast paths are model outputs for review, not guaranteed future prices.",
+    "- Gamma/news context should be treated as interpretive context, not causality.",
+    "",
+    "What I will not claim without artifact evidence:",
+    "- High accuracy or strong performance.",
+    "- Industry benchmark comparison.",
+    "- A confidence score above 95%.",
+    "- Directional accuracy strength.",
+    "- Cost savings or operational efficiency impact.",
+    "- Production readiness or approval status.",
+    "",
+    `Safety filter triggered by unsupported wording: ${riskyTerms.join(", ")}`,
+    "",
+    sourceNames.length
+      ? `Sources used: ${sourceNames.join(", ")}`
+      : "Sources used: selected final Deep ML artifacts.",
+  ].join("\n"));
+}
+
+
 function sourceListFromContext(
   context: Awaited<ReturnType<typeof buildArtifactContextForQuestion>>
 ) {
@@ -189,15 +277,20 @@ async function callOpenRouter({
   context,
   projectMode,
   sqlContextText,
+  pagePath,
 }: {
   question: string;
   history: RagChatMessage[];
   context: Awaited<ReturnType<typeof buildArtifactContextForQuestion>>;
   projectMode: boolean;
   sqlContextText: string;
+  pagePath?: string;
 }) {
   const apiKey = process.env.OPENROUTER_API_KEY;
   const architectureStatusText = buildArchitectureStatusText();
+  const finalDeepMlRulesText = isFinalDeepMlPagePath(pagePath)
+    ? buildFinalDeepMlStrictRulesText()
+    : "";
 
   if (!apiKey) {
     return localFallbackAnswer({ question, context, projectMode, sqlContextText });
@@ -210,6 +303,7 @@ ARCHITECTURE STATUS:
 ${architectureStatusText}
 
 STRICT GROUNDING RULES:
+${finalDeepMlRulesText ? `${finalDeepMlRulesText}\n` : ""}
 - For architecture, RAG, orchestrator, vector, LangChain, LlamaIndex, SQL-tool, or implementation-status questions, answer from ARCHITECTURE STATUS first.
 - Do not infer implementation status from artifact names.
 - Selected artifacts are sources for project context, not proof that a system feature is implemented.
@@ -293,8 +387,15 @@ ${context.contextText}
     data?.choices?.[0]?.text ||
     "No answer returned from OpenRouter.";
 
+  const sanitizedAnswer = sanitizeGeneratedAnswer(rawAnswer);
+  const riskyFinalDeepMlTerms = isFinalDeepMlPagePath(pagePath)
+    ? finalDeepMlRiskTerms(sanitizedAnswer)
+    : [];
+
   return {
-    answer: sanitizeGeneratedAnswer(rawAnswer),
+    answer: riskyFinalDeepMlTerms.length
+      ? buildFinalDeepMlSafetyFallback(context, riskyFinalDeepMlTerms)
+      : sanitizedAnswer,
     mode: projectMode ? "rag_sql_orchestrator_ai" : "general_ai",
     provider: "openrouter",
   };
@@ -326,6 +427,7 @@ export async function orchestrateRagAi(input: RagOrchestratorInput) {
     context,
     projectMode,
     sqlContextText,
+    pagePath,
   });
 
   return {

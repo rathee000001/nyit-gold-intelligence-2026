@@ -1048,7 +1048,7 @@ export default function FinalDeepMLEvaluationPage() {
   const [aiMessages, setAiMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
-      mode: "deep_ml_forecast_ai",
+      mode: "rag_sql_orchestrator_ai",
       content:
         "I can explain this Deep ML final forecast page using Omega, Alpha, Beta, Delta, Epsilon, Gamma, Step 10, Step 10A, Step 11, and Deep ML governance artifacts only.",
       sources: [],
@@ -1172,6 +1172,33 @@ export default function FinalDeepMLEvaluationPage() {
     };
   });
 
+
+  function buildFinalDeepMlContextForAi() {
+    return {
+      source: "final_deep_ml_evaluation_page",
+      title: "Final Deep ML Evaluation page artifact context",
+      tableName: "final_deep_ml_evaluation_artifacts",
+      query: "page_context_artifact_list",
+      rowCount: ARTIFACTS.length,
+      columns: ["label", "path", "group", "kind", "required"],
+      rows: ARTIFACTS.map((artifact) => ({
+        label: artifact.label,
+        path: artifact.path,
+        group: artifact.group,
+        kind: artifact.kind,
+        required: Boolean(artifact.required),
+      })).slice(0, 80),
+      notes: [
+        "This is page context from the Final Deep ML Evaluation page.",
+        "Rows identify approved page artifacts and should not be treated as forecast evidence by themselves.",
+        "Claims about selected model, forecast values, intervals, ranking, or quality must come from loaded artifacts.",
+        "Do not describe forecasts as guarantees.",
+        "Do not claim causality from Gamma, news context, weights, or model outputs.",
+        "Omega can be described as the selected final Deep ML forecast layer only when supported by final evaluation artifacts.",
+      ],
+    };
+  }
+
   async function askAI(promptOverride?: string) {
     const prompt = (promptOverride || aiQuestion).trim();
     if (!prompt || aiBusy) return;
@@ -1187,13 +1214,14 @@ export default function FinalDeepMLEvaluationPage() {
     setAiBusy(true);
 
     try {
-      const response = await fetch("/api/gold-ai", {
+      const response = await fetch("/api/rag-ai", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           question: pagePrompt,
           pagePath: "/deep-ml/models/final-deep-ml-evaluation",
           history: nextMessages.slice(-8),
+          sqlContext: buildFinalDeepMlContextForAi(),
         }),
       });
 
