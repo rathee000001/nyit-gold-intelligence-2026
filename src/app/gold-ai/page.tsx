@@ -836,6 +836,96 @@ function findCatalogBlobForSqlRow(row: any, catalog: ArtifactBlob[]) {
 
 
 
+
+function AIArchitecturePanel() {
+  const active = [
+    "page-aware routing",
+    "artifact catalog",
+    "artifact context",
+    "SQL context",
+    "OpenRouter",
+    "fallback",
+  ];
+
+  const notActive = [
+    "vector DB",
+    "embedding index",
+    "LangChain",
+    "LlamaIndex",
+    "auto SQL tools",
+    "model reruns",
+    "scheduled refresh",
+  ];
+
+  return (
+    <section className="mt-6 rounded-[1.4rem] border border-slate-200 bg-white/95 p-4 shadow-sm">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <div className="max-w-3xl">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-blue-700">
+              AI Architecture
+            </span>
+            <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">
+              JSON-first
+            </span>
+            <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-amber-700">
+              Vector DB not active
+            </span>
+          </div>
+
+          <h2 className="mt-3 text-xl font-black tracking-tight text-slate-950">
+            RAG + SQL Orchestrator Snapshot
+          </h2>
+
+          <p className="mt-2 text-xs font-semibold leading-6 text-slate-600">
+            Current AI uses RAG-style retrieval from the approved artifact catalog, optional read-only
+            SQL result context, and an LLM generation layer. Forecasts remain artifact outputs, not guarantees.
+          </p>
+        </div>
+
+        <div className="rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-[11px] font-bold leading-5 text-blue-800 lg:max-w-sm">
+          Safe description: structured artifact catalog + SQL context + LLM generation.
+          Vector retrieval, embeddings, and LangChain/LlamaIndex are future layers.
+        </div>
+      </div>
+
+      <div className="mt-4 grid gap-3 lg:grid-cols-2">
+        <div>
+          <div className="mb-2 text-[10px] font-black uppercase tracking-[0.22em] text-emerald-700">
+            Active
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {active.map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-emerald-700"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <div className="mb-2 text-[10px] font-black uppercase tracking-[0.22em] text-rose-700">
+            Not active yet
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {notActive.map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-rose-200 bg-rose-50 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-rose-700"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function GoldAIStudioPage() {
   const [catalog, setCatalog] = useState<ArtifactBlob[]>([]);
   const [catalogLoading, setCatalogLoading] = useState(true);
@@ -1523,7 +1613,8 @@ export default function GoldAIStudioPage() {
 
   return (
     <main className="min-h-screen bg-slate-50 px-6 py-8 text-slate-900">
-      <div className="mx-auto max-w-[1900px]">
+      
+<div className="mx-auto max-w-[1900px]">
         <section className="relative overflow-hidden rounded-[3rem] border border-slate-200 bg-slate-950 p-8 shadow-2xl shadow-blue-950/20">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(250,204,21,0.18),transparent_32%),radial-gradient(circle_at_80%_28%,rgba(96,165,250,0.20),transparent_34%),radial-gradient(circle_at_50%_100%,rgba(34,211,238,0.12),transparent_35%)]" />
           <div className="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(148,163,184,.12)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,.12)_1px,transparent_1px)] [background-size:38px_38px]" />
@@ -1735,6 +1826,8 @@ export default function GoldAIStudioPage() {
 
           </div>
         </section>
+
+        <AIArchitecturePanel />
 
         <section className="mt-8 grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
           <div className="rounded-[2.5rem] border border-slate-200 bg-white p-6 shadow-sm">
