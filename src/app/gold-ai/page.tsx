@@ -140,7 +140,8 @@ function splitCsvLine(line: string) {
 }
 
 function parseCsv(text: string, maxRows = 3000) {
-  const lines = text.trim().split(/\r?\n/).filter(Boolean);
+  const normalizedText = text.replace(/^\s*CSV preview lines:[^\r\n]*\r?\n/i, "");
+  const lines = normalizedText.trim().split(/\r?\n/).filter(Boolean);
   if (lines.length < 2) return [];
 
   const headers = splitCsvLine(lines[0]).map((item) => item.trim());
@@ -773,6 +774,50 @@ function blobCatalogToSqlRows(catalog: ArtifactBlob[]) {
   }));
 }
 
+function normalizeArtifactSqlCandidate(value: any) {
+  return String(value ?? "")
+    .trim()
+    .replace(/^\/+/, "")
+    .replace(/^public\//, "")
+    .replace(/^artifacts\//, "");
+}
+
+function findCatalogBlobForSqlRow(row: any, catalog: ArtifactBlob[]) {
+  if (!row || !catalog.length) return null;
+
+  const candidates = [
+    row.path,
+    row.publicPath,
+    row.id,
+    row.label,
+  ]
+    .map(normalizeArtifactSqlCandidate)
+    .filter(Boolean);
+
+  for (const candidate of candidates) {
+    const found = catalog.find((blob) => {
+      const blobPath = normalizeArtifactSqlCandidate(blob.path);
+      const blobPublicPath = normalizeArtifactSqlCandidate(blob.publicPath);
+      const blobId = normalizeArtifactSqlCandidate(blob.id);
+      const blobLabel = normalizeArtifactSqlCandidate(blob.label);
+
+      return (
+        blobPath === candidate ||
+        blobPublicPath === candidate ||
+        blobId === candidate ||
+        blobLabel === candidate ||
+        blobPublicPath.endsWith(candidate) ||
+        candidate.endsWith(blobPath)
+      );
+    });
+
+    if (found) return found;
+  }
+
+  return null;
+}
+
+
 
 export default function GoldAIStudioPage() {
   const [catalog, setCatalog] = useState<ArtifactBlob[]>([]);
@@ -812,6 +857,13 @@ export default function GoldAIStudioPage() {
   const numericCols = useMemo(() => numericColumns(rows), [rows]);
   const xColumns = useMemo(() => likelyXAxisColumns(rows), [rows]);
   const blobSqlColumns = useMemo(() => inferColumns(blobSqlRows), [blobSqlRows]);
+  const firstOpenableBlobFromSqlRows = useMemo(() => {
+    for (const row of blobSqlRows) {
+      const blob = findCatalogBlobForSqlRow(row, catalog);
+      if (blob && (blob.ext === ".csv" || blob.ext === ".json")) return blob;
+    }
+    return null;
+  }, [blobSqlRows, catalog]);
 
   useEffect(() => {
     async function loadCatalog() {
@@ -830,6 +882,46 @@ export default function GoldAIStudioPage() {
   useEffect(() => {
     chatBottom.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages.length]);
+
+  function scrollToVisualLab() {
+    window.setTimeout(() => {
+      document
+        .getElementById("artifact-visual-lab")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 40);
+  }
+
+  function useBlobSqlRowsInVisualLab() {
+    if (!blobSqlRows.length) {
+      setBlobSqlError("Run a Blob SQL query first.");
+      return;
+    }
+
+    const nextX = likelyXAxisColumns(blobSqlRows)[0] || "";
+    const nextY = numericColumns(blobSqlRows).slice(0, 4);
+
+    setRows(blobSqlRows);
+    setXKey(nextX);
+    setYKeys(nextY);
+    setChartType(nextY.length ? "bar" : "table");
+    setVisualPrompt("Visualize the current Blob SQL result rows.");
+    setSelectedArtifact(null);
+    setLoadedArtifact(null);
+    setBlobSqlError("");
+
+    scrollToVisualLab();
+  }
+
+  async function openFirstBlobSqlArtifactInVisualLab() {
+    if (!firstOpenableBlobFromSqlRows) {
+      setBlobSqlError("No openable CSV/JSON artifact was detected in the current SQL result. Include path, publicPath, id, or label in the SELECT query.");
+      return;
+    }
+
+    await openArtifact(firstOpenableBlobFromSqlRows);
+    setBlobSqlError("");
+    scrollToVisualLab();
+  }
 
   async function searchArtifacts(queryOverride?: string) {
     const query = queryOverride || artifactQuery;
@@ -2003,13 +2095,64 @@ export default function GoldAIStudioPage() {
 
 
         <section className="mt-8 rounded-[2.5rem] border border-slate-200 bg-white p-6 shadow-sm">
+          <div id="artifact-visual-lab" />
+
+
           <SectionTitle
             eyebrow="Chart + Table Lab"
             title="Generate visuals from artifact rows"
             description="Open a CSV or JSON artifact above. The studio extracts rows, detects columns, and lets you create a chart or table without hardcoding claims."
           />
 
-          {rows.length === 0 ? (
+          
+          {blobSqlRows.length > 0 ? (
+            <div className="mb-6 rounded-[1.5rem] border border-blue-100 bg-blue-50/60 p-5">
+              <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+                <div>
+                  <div className="text-[11px] font-black uppercase tracking-[0.28em] text-blue-700">
+                    SQL → Visual Bridge
+                  </div>
+                  <p className="mt-2 max-w-4xl text-sm font-semibold leading-6 text-slate-600">
+                    Blob SQL results are metadata rows. Use the first button to chart the SQL result itself,
+                    or open a detected CSV/JSON artifact path from the SQL result into the artifact visual lab.
+                  </p>
+                  {firstOpenableBlobFromSqlRows ? (
+                    <p className="mt-2 text-xs font-black text-emerald-700">
+                      Detected openable artifact: {firstOpenableBlobFromSqlRows.label}
+                    </p>
+                  ) : (
+                    <p className="mt-2 text-xs font-bold text-amber-700">
+                      No CSV/JSON artifact detected yet. Include path, publicPath, id, or label in your SQL SELECT.
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  <button
+                    type="button"
+                    onClick={useBlobSqlRowsInVisualLab}
+                    className="rounded-full bg-slate-950 px-5 py-3 text-xs font-black uppercase tracking-[0.18em] text-white shadow-sm"
+                  >
+                    Use SQL Rows
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={openFirstBlobSqlArtifactInVisualLab}
+                    disabled={!firstOpenableBlobFromSqlRows}
+                    className={`rounded-full border px-5 py-3 text-xs font-black uppercase tracking-[0.18em] ${
+                      firstOpenableBlobFromSqlRows
+                        ? "border-emerald-200 bg-emerald-50 text-emerald-700"
+                        : "cursor-not-allowed border-slate-200 bg-slate-100 text-slate-400"
+                    }`}
+                  >
+                    Open CSV/JSON Artifact
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : null}
+{rows.length === 0 ? (
             <div className="rounded-[2rem] border border-amber-200 bg-amber-50 p-5 text-sm font-semibold leading-7 text-amber-900">
               No chartable rows are loaded yet. Use the Quick Visual Actions above, or search and open a chartable CSV such as omega_rollforward.csv, official_forecast_path.csv, model_ranking.csv, or a matrix/feature-store CSV.
             </div>
