@@ -45,12 +45,12 @@ const ACTIVE_RAG_ARCHITECTURE = [
   "Local fallback is active when the provider key is missing or provider calls fail.",
   "Current migrated UI calls use /api/rag-ai.",
   "Legacy /api/gold-ai route is retained as a fallback route for now.",
-  "Vector provider abstraction is present and optional.",
+  "Vector provider layer is wired and can query Upstash Vector when environment variables and index records are configured.",
 ];
 
 const NOT_ACTIVE_RAG_ARCHITECTURE = [
-  "Production vector retrieval is active only when vector provider environment variables and an index are configured.",
-  "Generated embedding/index records still need to be created and loaded into the vector provider.",
+  "Production vector retrieval is conditional: active only when the vector provider is configured and returns matches.",
+  "Generated artifact vector records are available through the project manifest and can be loaded into Upstash Vector.",
   "LangChain and LlamaIndex are not integrated yet.",
   "The orchestrator does not train, rerun, or validate forecasting models.",
   "The orchestrator does not update artifacts or run scheduled data refreshes.",
@@ -295,6 +295,29 @@ function sourceListFromContext(
     .join("\n");
 }
 
+function vectorSourcesFromMatches(matches: any[]) {
+  return matches.slice(0, 8).map((match) => {
+    const metadata = match.metadata || {};
+    return {
+      id: match.id,
+      label: String(metadata.label || metadata.title || match.id),
+      path: String(metadata.path || metadata.publicPath || ""),
+      publicPath: String(metadata.publicPath || ""),
+      group: String(metadata.group || ""),
+      domain: String(metadata.domain || ""),
+      modelKey: String(metadata.modelKey || ""),
+      score: match.score,
+      safeBoundaries: Array.isArray(metadata.safeBoundaries) ? metadata.safeBoundaries : [],
+    };
+  });
+}
+
+function vectorSourceLabels(matches: any[]) {
+  return vectorSourcesFromMatches(matches)
+    .map((item) => item.label)
+    .filter(Boolean);
+}
+
 function localFallbackAnswer({
   question,
   context,
@@ -325,7 +348,7 @@ function localFallbackAnswer({
 
   if (q.includes("vector")) {
     facts.push(
-      "Vector retrieval is not active in this skeleton. It is reserved for a future generated index, LangChain/LlamaIndex layer, or vector database integration."
+      "Vector retrieval is optional context. When Upstash Vector is configured and returns matches, the response metadata exposes those matches as retrieval candidates. Vector matches do not replace approved artifact content."
     );
   }
 
@@ -533,6 +556,8 @@ export async function orchestrateRagAi(input: RagOrchestratorInput) {
   });
   const vectorContextText = formatVectorMatchesForPrompt(vectorResult);
   const vectorStatusText = vectorResult.status.description;
+  const vectorSources = vectorSourcesFromMatches(vectorResult.matches);
+  const vectorLabels = vectorSourceLabels(vectorResult.matches);
 
   const result = await callOpenRouter({
     question,
@@ -552,19 +577,23 @@ export async function orchestrateRagAi(input: RagOrchestratorInput) {
     model: OPENROUTER_MODEL,
     sqlContextUsed: Boolean(sqlContextText),
     orchestration: {
-      level: "RAG-1",
+      level: vectorResult.status.active && vectorResult.matches.length > 0 ? "RAG + SQL + Vector" : "RAG + SQL",
       activeLayers: [
         "page-aware routing",
         "artifact blob retrieval",
         "artifact context loading",
         ...(sqlContextText ? ["SQL result context"] : []),
-        vectorResult.status.active ? "vector retrieval provider" : "vector provider abstraction",
+        vectorResult.status.active && vectorResult.matches.length > 0
+          ? "Upstash vector retrieval"
+          : vectorResult.status.configured
+          ? "vector provider configured"
+          : "vector provider abstraction",
         result.provider === "openrouter" ? "OpenRouter LLM generation" : "local fallback",
       ],
       futureLayers: [
-        "generated artifact summary/index records",
-        "LangChain or LlamaIndex routing",
+        "LangChain or LlamaIndex orchestration framework",
         "automatic SQL tool execution",
+        "scheduled artifact refresh or model rerun orchestration",
       ],
       professorSafeDescription:
         "RAG-style artifact retrieval using a structured artifact catalog, optional SQL result context, optional vector retrieval when configured, and an LLM generation layer.",
@@ -575,11 +604,19 @@ export async function orchestrateRagAi(input: RagOrchestratorInput) {
       configured: vectorResult.status.configured,
       description: vectorResult.status.description,
       matchCount: vectorResult.matches.length,
+      sourceLabels: vectorLabels,
       matches: vectorResult.matches.slice(0, 8).map((match) => ({
         id: match.id,
         score: match.score,
         metadata: match.metadata || {},
       })),
+    },
+    vectorSources,
+    retrievalSummary: {
+      artifactCatalogHits: context.selected.length,
+      vectorHits: vectorResult.matches.length,
+      sqlContextUsed: Boolean(sqlContextText),
+      vectorContextUsed: vectorResult.status.active && vectorResult.matches.length > 0,
     },
     selectedArtifacts: context.selected.map((item) => ({
       id: item.id,
@@ -590,7 +627,10 @@ export async function orchestrateRagAi(input: RagOrchestratorInput) {
       modelKey: item.modelKey,
       sizeBytes: item.sizeBytes,
     })),
-    sources: context.selected.map((item) => item.label),
+    sources: Array.from(new Set([
+      ...context.selected.map((item) => item.label),
+      ...vectorLabels.map((label) => `Vector: ${label}`),
+    ])),
     suggestions: [
       "Explain the current page using artifacts.",
       "Explain this SQL result in business language.",

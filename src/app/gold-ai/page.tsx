@@ -257,7 +257,7 @@ function textPreview(value: string, chars = 5000) {
 
 function cleanAiModeLabel(mode?: string) {
   if (!mode) return "Gold AI";
-  if (mode === "rag_sql_orchestrator_ai") return "RAG + SQL Orchestrator";
+  if (mode === "rag_sql_orchestrator_ai") return "RAG + SQL + Vector Orchestrator";
   if (mode === "rag_sql_orchestrator_fallback") return "RAG + SQL Fallback";
   if (mode === "artifact_blob_ai") return "RAG + SQL AI";
   if (mode === "artifact_fallback") return "Artifact Fallback";
@@ -839,23 +839,25 @@ function findCatalogBlobForSqlRow(row: any, catalog: ArtifactBlob[]) {
 
 function AIArchitecturePanel() {
   const active = [
+    "RAG + SQL + Vector",
     "page-aware routing",
     "artifact catalog",
     "artifact context",
-    "SQL context",
+    "SQL context optional",
+    "Upstash Vector wired",
+    "vector sources exposed",
     "OpenRouter",
     "fallback",
     "legacy route retained",
   ];
 
   const notActive = [
-    "vector DB",
-    "embedding index",
     "LangChain",
     "LlamaIndex",
     "auto SQL tools",
     "model reruns",
     "scheduled refresh",
+    "vector-only mode",
   ];
 
   return (
@@ -869,8 +871,11 @@ function AIArchitecturePanel() {
             <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">
               JSON-first
             </span>
-            <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-amber-700">
-              Vector DB not active
+            <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-emerald-700">
+              Upstash Vector wired
+            </span>
+            <span className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-blue-700">
+              Active when env configured
             </span>
           </div>
 
@@ -886,7 +891,7 @@ function AIArchitecturePanel() {
 
         <div className="rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3 text-[11px] font-bold leading-5 text-blue-800 lg:max-w-sm">
           Safe description: structured artifact catalog + SQL context + LLM generation.
-          Vector retrieval, embeddings, and LangChain/LlamaIndex are future layers. Legacy /api/gold-ai remains as fallback.
+          Upstash Vector retrieval is wired and active when environment variables and indexed records are configured. Vector matches are retrieval candidates only; they do not replace approved artifact sources or prove model quality. Legacy /api/gold-ai remains as fallback.
         </div>
       </div>
 
