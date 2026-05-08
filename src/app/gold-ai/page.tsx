@@ -71,6 +71,26 @@ const CHART_QUERIES = [
   "epsilon evaluation",
 ];
 
+const BLOB_SQL_EXAMPLE_QUERIES = [
+  {
+    label: "Omega artifacts",
+    query: "SELECT label, path, ext, sizeBytes, domain, modelKey FROM artifacts WHERE modelKey = 'omega_fusion' ORDER BY sizeBytes DESC LIMIT 50",
+  },
+  {
+    label: "Deep ML model files by family",
+    query: "SELECT modelKey, COUNT(*) AS files, SUM(sizeBytes) AS totalBytes FROM artifacts WHERE domain = 'deep_ml_model' GROUP BY modelKey ORDER BY files DESC LIMIT 25",
+  },
+  {
+    label: "CSV forecast artifacts",
+    query: "SELECT label, path, modelKey, sizeBytes FROM artifacts WHERE ext = '.csv' AND tags LIKE '%forecast%' ORDER BY sizeBytes DESC LIMIT 50",
+  },
+  {
+    label: "Largest project artifacts",
+    query: "SELECT label, path, ext, sizeBytes, group FROM artifacts ORDER BY sizeBytes DESC LIMIT 25",
+  },
+];
+
+
 function formatBytes(value: number) {
   if (!Number.isFinite(value)) return "—";
   if (value > 1024 * 1024) return `${(value / 1024 / 1024).toFixed(2)} MB`;
@@ -485,6 +505,275 @@ function inferVisualIntentFromPrompt(prompt: string): VisualIntent {
   return "current_gold";
 }
 
+
+function formatBlobSqlCell(value: any) {
+  if (value === undefined || value === null || value === "") return "—";
+  if (Array.isArray(value)) return value.join(", ");
+  if (typeof value === "object") return JSON.stringify(value);
+  if (typeof value === "number") return Number.isFinite(value) ? formatNumber(value, 4) : "—";
+  return String(value);
+}
+
+function splitBlobSqlSelectList(value: string) {
+  const parts: string[] = [];
+  let current = "";
+  let depth = 0;
+
+  for (const char of value) {
+    if (char === "(") depth += 1;
+    if (char === ")") depth -= 1;
+
+    if (char === "," && depth === 0) {
+      parts.push(current.trim());
+      current = "";
+      continue;
+    }
+
+    current += char;
+  }
+
+  if (current.trim()) parts.push(current.trim());
+  return parts;
+}
+
+function stripBlobSqlQuotes(value: string) {
+  return String(value || "").trim().replace(/^['"]|['"]$/g, "");
+}
+
+function compareBlobSqlValues(left: any, operator: string, rightRaw: string) {
+  const right = stripBlobSqlQuotes(rightRaw);
+  const leftNumber = Number(left);
+  const rightNumber = Number(right);
+  const bothNumeric = Number.isFinite(leftNumber) && Number.isFinite(rightNumber);
+
+  const a = bothNumeric ? leftNumber : String(left ?? "");
+  const b = bothNumeric ? rightNumber : String(right ?? "");
+
+  if (operator === "=") return a === b;
+  if (operator === "!=" || operator === "<>") return a !== b;
+  if (operator === ">") return a > b;
+  if (operator === ">=") return a >= b;
+  if (operator === "<") return a < b;
+  if (operator === "<=") return a <= b;
+
+  if (operator.toLowerCase() === "like") {
+    const pattern = String(b).replaceAll("%", "").toLowerCase();
+    return String(left ?? "").toLowerCase().includes(pattern);
+  }
+
+  return false;
+}
+
+function applyBlobSqlWhere(rows: any[], whereClause: string) {
+  if (!whereClause.trim()) return rows;
+
+  const conditions = whereClause
+    .split(/\s+and\s+/i)
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+  return rows.filter((row) =>
+    conditions.every((condition) => {
+      const match = condition.match(/^([a-zA-Z0-9_]+)\s*(=|!=|<>|>=|<=|>|<|like)\s*(.+)$/i);
+      if (!match) return false;
+
+      const [, column, operator, value] = match;
+      return compareBlobSqlValues(row?.[column], operator, value);
+    })
+  );
+}
+
+function parseBlobSqlAlias(expression: string) {
+  const parts = expression.split(/\s+as\s+/i);
+  return {
+    body: parts[0].trim(),
+    alias: (parts[1] || "").trim(),
+  };
+}
+
+function aggregateBlobSqlRows(rows: any[], selectClause: string, groupByClause: string) {
+  const groupColumn = groupByClause.trim().split(/\s+/)[0];
+  const expressions = splitBlobSqlSelectList(selectClause);
+  const groups = new Map<string, any[]>();
+
+  for (const row of rows) {
+    const key = String(row?.[groupColumn] ?? "");
+    groups.set(key, [...(groups.get(key) || []), row]);
+  }
+
+  return Array.from(groups.entries()).map(([groupValue, groupRows]) => {
+    const out: Record<string, any> = {};
+
+    for (const expression of expressions) {
+      const { body, alias } = parseBlobSqlAlias(expression);
+
+      if (body === groupColumn) {
+        out[alias || groupColumn] = groupValue;
+        continue;
+      }
+
+      if (/^count\(\*\)$/i.test(body)) {
+        out[alias || "count"] = groupRows.length;
+        continue;
+      }
+
+      const sumMatch = body.match(/^sum\(([a-zA-Z0-9_]+)\)$/i);
+      if (sumMatch) {
+        const column = sumMatch[1];
+        const values = groupRows.map((row) => Number(row?.[column])).filter(Number.isFinite);
+        out[alias || `sum_${column}`] = values.reduce((sum, value) => sum + value, 0);
+        continue;
+      }
+
+      const avgMatch = body.match(/^avg\(([a-zA-Z0-9_]+)\)$/i);
+      if (avgMatch) {
+        const column = avgMatch[1];
+        const values = groupRows.map((row) => Number(row?.[column])).filter(Number.isFinite);
+        out[alias || `avg_${column}`] = values.length
+          ? values.reduce((sum, value) => sum + value, 0) / values.length
+          : null;
+        continue;
+      }
+
+      const minMatch = body.match(/^min\(([a-zA-Z0-9_]+)\)$/i);
+      if (minMatch) {
+        const column = minMatch[1];
+        const values = groupRows
+          .map((row) => row?.[column])
+          .filter((value) => value !== undefined && value !== null && value !== "")
+          .sort();
+        out[alias || `min_${column}`] = values.length ? values[0] : null;
+        continue;
+      }
+
+      const maxMatch = body.match(/^max\(([a-zA-Z0-9_]+)\)$/i);
+      if (maxMatch) {
+        const column = maxMatch[1];
+        const values = groupRows
+          .map((row) => row?.[column])
+          .filter((value) => value !== undefined && value !== null && value !== "")
+          .sort();
+        out[alias || `max_${column}`] = values.length ? values[values.length - 1] : null;
+        continue;
+      }
+
+      out[alias || body] = groupRows[0]?.[body] ?? null;
+    }
+
+    return out;
+  });
+}
+
+function projectBlobSqlRows(rows: any[], selectClause: string) {
+  const select = selectClause.trim();
+
+  if (select === "*") return rows.map((row) => ({ ...row }));
+
+  const expressions = splitBlobSqlSelectList(select);
+
+  return rows.map((row) => {
+    const out: Record<string, any> = {};
+
+    for (const expression of expressions) {
+      const { body, alias } = parseBlobSqlAlias(expression);
+      out[alias || body] = row?.[body] ?? null;
+    }
+
+    return out;
+  });
+}
+
+function sortBlobSqlRows(rows: any[], key: string, direction: "asc" | "desc") {
+  const sign = direction === "asc" ? 1 : -1;
+
+  return [...rows].sort((a, b) => {
+    const av = a?.[key];
+    const bv = b?.[key];
+
+    const an = Number(av);
+    const bn = Number(bv);
+
+    if (Number.isFinite(an) && Number.isFinite(bn)) {
+      return (an - bn) * sign;
+    }
+
+    return String(av ?? "").localeCompare(String(bv ?? "")) * sign;
+  });
+}
+
+function runBlobSqlLite(query: string, sourceRows: any[]) {
+  const cleaned = query.trim().replace(/;+\s*$/, "").replace(/\s+/g, " ");
+  const lower = cleaned.toLowerCase();
+
+  const selectStart = lower.indexOf("select ");
+  const fromIndex = lower.indexOf(" from artifacts");
+
+  if (selectStart !== 0 || fromIndex === -1) {
+    throw new Error("Use syntax: SELECT ... FROM artifacts ...");
+  }
+
+  const selectClause = cleaned.slice("select ".length, fromIndex).trim();
+  const rest = cleaned.slice(fromIndex + " from artifacts".length).trim();
+  const restLower = rest.toLowerCase();
+
+  function clause(name: string, nextNames: string[]) {
+    const token = `${name} `;
+    const startIndex = restLower.indexOf(token);
+    if (startIndex === -1) return "";
+
+    const valueStart = startIndex + token.length;
+    const nextPositions = nextNames
+      .map((next) => restLower.indexOf(`${next} `, valueStart))
+      .filter((index) => index >= 0);
+
+    const valueEnd = nextPositions.length ? Math.min(...nextPositions) : rest.length;
+    return rest.slice(valueStart, valueEnd).trim();
+  }
+
+  const whereClause = clause("where", ["group by", "order by", "limit"]);
+  const groupByClause = clause("group by", ["order by", "limit"]);
+  const orderByClause = clause("order by", ["limit"]);
+  const limitClause = clause("limit", []);
+
+  let resultRows = applyBlobSqlWhere(sourceRows.map((row) => ({ ...row })), whereClause);
+
+  if (groupByClause) {
+    resultRows = aggregateBlobSqlRows(resultRows, selectClause, groupByClause);
+  } else {
+    resultRows = projectBlobSqlRows(resultRows, selectClause);
+  }
+
+  if (orderByClause) {
+    const [column, directionRaw] = orderByClause.split(/\s+/);
+    const direction = String(directionRaw || "asc").toLowerCase() === "desc" ? "desc" : "asc";
+    resultRows = sortBlobSqlRows(resultRows, column, direction);
+  }
+
+  const requestedLimit = Number(limitClause || 1000);
+  const safeLimit = Number.isFinite(requestedLimit)
+    ? Math.max(1, Math.min(1000, requestedLimit))
+    : 1000;
+
+  return resultRows.slice(0, safeLimit);
+}
+
+function blobCatalogToSqlRows(catalog: ArtifactBlob[]) {
+  return catalog.map((blob) => ({
+    id: blob.id,
+    label: blob.label,
+    path: blob.path,
+    publicPath: blob.publicPath,
+    ext: blob.ext,
+    sizeBytes: blob.sizeBytes,
+    group: blob.group,
+    domain: blob.domain,
+    modelKey: blob.modelKey || "",
+    tags: Array.isArray(blob.tags) ? blob.tags.join(", ") : "",
+    updatedAt: blob.updatedAt || "",
+  }));
+}
+
+
 export default function GoldAIStudioPage() {
   const [catalog, setCatalog] = useState<ArtifactBlob[]>([]);
   const [catalogLoading, setCatalogLoading] = useState(true);
@@ -512,11 +801,17 @@ export default function GoldAIStudioPage() {
   const [chartType, setChartType] = useState<"line" | "bar" | "table">("line");
   const [visualPrompt, setVisualPrompt] = useState("Plot gold_price from Deep ML matrix");
 
+  const [blobSqlQuery, setBlobSqlQuery] = useState(BLOB_SQL_EXAMPLE_QUERIES[0].query);
+  const [blobSqlRows, setBlobSqlRows] = useState<any[]>([]);
+  const [blobSqlError, setBlobSqlError] = useState("");
+  const [blobSqlBusy, setBlobSqlBusy] = useState(false);
+
   const chatBottom = useRef<HTMLDivElement | null>(null);
 
   const allColumns = useMemo(() => inferColumns(rows), [rows]);
   const numericCols = useMemo(() => numericColumns(rows), [rows]);
   const xColumns = useMemo(() => likelyXAxisColumns(rows), [rows]);
+  const blobSqlColumns = useMemo(() => inferColumns(blobSqlRows), [blobSqlRows]);
 
   useEffect(() => {
     async function loadCatalog() {
@@ -660,6 +955,140 @@ export default function GoldAIStudioPage() {
     } finally {
       setAsking(false);
     }
+  }
+
+
+
+  function isSafeBlobSqlQuery(query: string) {
+    const normalized = query.trim().replace(/\s+/g, " ").toLowerCase();
+
+    if (!normalized.startsWith("select ")) {
+      return "Only SELECT queries are allowed in this Blob SQL Explorer.";
+    }
+
+    if (!normalized.includes(" from artifacts")) {
+      return "Use FROM artifacts. The blob catalog is exposed as the SQL table named artifacts.";
+    }
+
+    const forbidden = [
+      "insert ",
+      "update ",
+      "delete ",
+      "drop ",
+      "alter ",
+      "create ",
+      "attach ",
+      "detach ",
+      "truncate ",
+      "replace ",
+      "into ",
+      "load ",
+      "require",
+      "import ",
+      "export ",
+      "localstorage",
+      "sessionstorage",
+      "document.",
+      "window.",
+      "fetch(",
+    ];
+
+    const blocked = forbidden.find((word) => normalized.includes(word));
+
+    if (blocked) {
+      return `Blocked SQL token: ${blocked.trim()}. This explorer is read-only.`;
+    }
+
+    return "";
+  }
+
+  function runBlobSqlQuery(queryOverride?: string) {
+    const query = String(queryOverride || blobSqlQuery || "").trim();
+
+    if (!query) {
+      setBlobSqlError("Enter a SQL SELECT query first.");
+      return;
+    }
+
+    if (!catalog.length) {
+      setBlobSqlError("Artifact catalog is not loaded yet.");
+      return;
+    }
+
+    const safetyError = isSafeBlobSqlQuery(query);
+
+    if (safetyError) {
+      setBlobSqlError(safetyError);
+      setBlobSqlRows([]);
+      return;
+    }
+
+    setBlobSqlBusy(true);
+    setBlobSqlError("");
+
+    try {
+      const sourceRows = blobCatalogToSqlRows(catalog);
+      const resultRows = runBlobSqlLite(query, sourceRows);
+
+      setBlobSqlRows(resultRows);
+      setBlobSqlQuery(query);
+    } catch (error) {
+      setBlobSqlRows([]);
+      setBlobSqlError(error instanceof Error ? error.message : "Blob SQL query failed.");
+    } finally {
+      setBlobSqlBusy(false);
+    }
+  }
+
+  function downloadBlobSqlResults() {
+    if (!blobSqlRows.length) return;
+
+    const columns = blobSqlColumns.length ? blobSqlColumns : inferColumns(blobSqlRows);
+
+    const escapeCell = (value: any) => {
+      if (value === null || value === undefined) return "";
+      const text = String(value);
+      if (text.includes(",") || text.includes('"') || text.includes("\n")) {
+        return `"${text.replaceAll('"', '""')}"`;
+      }
+      return text;
+    };
+
+    const csv = [
+      columns.map(escapeCell).join(","),
+      ...blobSqlRows.map((row) => columns.map((column) => escapeCell(row?.[column])).join(",")),
+    ].join("\n");
+
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+
+    anchor.href = url;
+    anchor.download = "gold_artifact_blob_sql_result.csv";
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function askAIAboutBlobSqlResults() {
+    const preview = blobSqlRows.slice(0, 10);
+    const columns = blobSqlColumns.slice(0, 16);
+
+    askAI(
+      [
+        "Explain this SQL result from the artifact blob catalog in business language.",
+        "",
+        "SQL query:",
+        blobSqlQuery,
+        "",
+        `Rows returned: ${blobSqlRows.length}`,
+        `Columns: ${columns.join(", ")}`,
+        "",
+        "Preview rows:",
+        JSON.stringify(preview, null, 2),
+      ].join("\n")
+    );
   }
 
 
@@ -1424,6 +1853,154 @@ export default function GoldAIStudioPage() {
             ) : null}
           </div>
         </section>
+
+
+        <section className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+          <SectionTitle
+            eyebrow="SQL BLOB EXPLORER"
+            title="Query the artifact blob catalog"
+            description="This read-only SQL lab exposes the project artifact catalog as a table named artifacts. Use it to inspect model outputs, file groups, domains, tags, model keys, sizes, and artifact lineage before asking Gold AI to explain the results."
+          />
+
+          <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
+            <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <div className="text-[10px] font-black uppercase tracking-[0.22em] text-blue-600">
+                    SQL Input
+                  </div>
+                  <p className="mt-1 text-xs font-semibold leading-5 text-slate-500">
+                    Table name: <span className="font-black text-slate-800">artifacts</span>. Read-only SELECT queries only.
+                  </p>
+                </div>
+
+                <StatusPill tone="green">
+                  {catalogLoading ? "Loading catalog" : `${catalog.length.toLocaleString()} artifacts`}
+                </StatusPill>
+              </div>
+
+              <textarea
+                value={blobSqlQuery}
+                onChange={(event) => setBlobSqlQuery(event.target.value)}
+                rows={7}
+                spellCheck={false}
+                className="w-full resize-y rounded-2xl border border-slate-200 bg-white p-4 font-mono text-sm leading-6 text-slate-900 outline-none transition focus:border-blue-300 focus:ring-4 focus:ring-blue-100"
+                placeholder="SELECT label, path, modelKey FROM artifacts WHERE modelKey = 'omega_fusion' LIMIT 50"
+              />
+
+              {blobSqlError ? (
+                <div className="mt-3 rounded-2xl border border-rose-200 bg-rose-50 p-3 text-sm font-bold leading-6 text-rose-700">
+                  {blobSqlError}
+                </div>
+              ) : null}
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={() => runBlobSqlQuery()}
+                  disabled={blobSqlBusy || !catalog.length}
+                  className="rounded-full bg-blue-600 px-5 py-3 text-xs font-black uppercase tracking-[0.16em] text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300"
+                >
+                  {blobSqlBusy ? "Running SQL..." : "Run Blob SQL"}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={downloadBlobSqlResults}
+                  disabled={!blobSqlRows.length}
+                  className="rounded-full border border-slate-200 bg-white px-5 py-3 text-xs font-black uppercase tracking-[0.16em] text-slate-700 transition hover:border-blue-200 hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Download Result
+                </button>
+
+                <button
+                  type="button"
+                  onClick={askAIAboutBlobSqlResults}
+                  disabled={!blobSqlRows.length || asking}
+                  className="rounded-full border border-amber-200 bg-amber-50 px-5 py-3 text-xs font-black uppercase tracking-[0.16em] text-amber-700 transition hover:bg-amber-100 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Ask AI About Blob SQL
+                </button>
+              </div>
+
+              <div className="mt-4 grid gap-2 md:grid-cols-2">
+                {BLOB_SQL_EXAMPLE_QUERIES.map((example) => (
+                  <button
+                    key={example.label}
+                    type="button"
+                    onClick={() => {
+                      setBlobSqlQuery(example.query);
+                      runBlobSqlQuery(example.query);
+                    }}
+                    className="rounded-2xl border border-slate-200 bg-white p-3 text-left transition hover:border-blue-200 hover:bg-blue-50"
+                  >
+                    <div className="text-[10px] font-black uppercase tracking-[0.18em] text-blue-600">
+                      {example.label}
+                    </div>
+                    <div className="mt-2 line-clamp-2 font-mono text-[11px] leading-5 text-slate-500">
+                      {example.query}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[1.5rem] border border-slate-200 bg-white p-4">
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <div className="text-[10px] font-black uppercase tracking-[0.22em] text-slate-400">
+                    Blob SQL Results
+                  </div>
+                  <p className="mt-1 text-xs font-semibold leading-5 text-slate-500">
+                    Showing up to 1,000 metadata rows from the artifact catalog.
+                  </p>
+                </div>
+
+                <StatusPill>{`${blobSqlRows.length.toLocaleString()} rows`}</StatusPill>
+              </div>
+
+              {blobSqlRows.length ? (
+                <div className="max-h-[440px] overflow-auto rounded-2xl border border-slate-200">
+                  <table className="min-w-full text-left text-xs">
+                    <thead className="sticky top-0 z-10 bg-slate-100 text-[10px] uppercase tracking-[0.16em] text-slate-500">
+                      <tr>
+                        {blobSqlColumns.slice(0, 18).map((column) => (
+                          <th key={column} className="whitespace-nowrap px-3 py-3 font-black">
+                            {column}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {blobSqlRows.slice(0, 150).map((row, rowIndex) => (
+                        <tr key={rowIndex} className="hover:bg-blue-50/40">
+                          {blobSqlColumns.slice(0, 18).map((column) => (
+                            <td key={`${rowIndex}-${column}`} className="max-w-[280px] truncate px-3 py-2 font-semibold text-slate-700">
+                              {column === "publicPath" || column === "path" ? (
+                                <span title={String(row?.[column] || "")}>{formatBlobSqlCell(row?.[column])}</span>
+                              ) : (
+                                formatBlobSqlCell(row?.[column])
+                              )}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-6 text-sm font-semibold leading-7 text-slate-500">
+                  No Blob SQL result yet. Run an example query or write your own SELECT query using the artifacts table.
+                </div>
+              )}
+
+              <div className="mt-4 rounded-2xl border border-yellow-200 bg-yellow-50 p-4 text-xs font-bold leading-6 text-yellow-900">
+                Professor-safe note: Blob SQL queries artifact metadata only. It does not alter model files, forecasts, or approved JSON/CSV outputs.
+              </div>
+            </div>
+          </div>
+        </section>
+
 
         <section className="mt-8 rounded-[2.5rem] border border-slate-200 bg-white p-6 shadow-sm">
           <SectionTitle
