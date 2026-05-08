@@ -77,7 +77,9 @@ function pageSuggestions(pathname: string) {
 
 function modeLabel(mode?: string) {
   if (!mode) return "Gold AI";
-  if (mode === "artifact_blob_ai") return "Artifact Blob AI";
+  if (mode === "artifact_blob_ai") return "RAG + SQL AI";
+  if (mode === "rag_sql_orchestrator_ai") return "RAG SQL Orchestrator";
+  if (mode === "rag_sql_orchestrator_fallback") return "RAG SQL Fallback";
   if (mode === "general_ai") return "General AI";
   if (mode === "artifact_fallback") return "Artifact Fallback";
   if (mode === "needs_openrouter_key") return "Needs API Key";
@@ -131,7 +133,7 @@ export default function FloatingGoldInterpreter() {
       role: "assistant",
       mode: "artifact_blob_ai",
       content:
-        "Hi — I am the floating Gold AI assistant. I am connected to the same artifact blob system as the full Gold AI Studio. I can explain this page, read approved JSON/CSV artifacts, and send you to the full AI House for deeper chart/table work.",
+        "Hi - I am the floating Gold AI assistant. I now use the RAG + SQL AI Orchestrator test route. I can explain this page from approved JSON/CSV artifacts and send you to the full AI House for deeper SQL, chart, and table work.",
       sources: [],
     },
   ]);
@@ -164,7 +166,7 @@ export default function FloatingGoldInterpreter() {
     setBusy(true);
 
     try {
-      const response = await fetch("/api/gold-ai", {
+      const response = await fetch("/api/rag-ai", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -256,7 +258,7 @@ export default function FloatingGoldInterpreter() {
                     Artifact Blob AI
                   </h3>
                   <p className="mt-1 text-xs leading-5 text-slate-300">
-                    Page-aware answers from JSON/CSV artifacts.
+                    Page-aware answers from artifacts and optional SQL context.
                   </p>
                 </div>
               </div>
@@ -283,7 +285,7 @@ export default function FloatingGoldInterpreter() {
 
             <div className="mt-4 flex flex-wrap gap-2">
               <span className="rounded-full border border-emerald-300/30 bg-emerald-300/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-emerald-200">
-                Artifact blobs
+                RAG + SQL
               </span>
               <span className="max-w-full rounded-full border border-blue-300/30 bg-blue-300/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-blue-200">
                 Current page: {pathname}
@@ -338,7 +340,7 @@ export default function FloatingGoldInterpreter() {
                   <span className="h-2 w-2 animate-bounce rounded-full bg-blue-600 [animation-delay:120ms]" />
                   <span className="h-2 w-2 animate-bounce rounded-full bg-blue-600 [animation-delay:240ms]" />
                   <span className="ml-2 text-xs font-black uppercase tracking-[0.18em] text-slate-500">
-                    Searching artifact blobs
+                    Orchestrating artifacts
                   </span>
                 </div>
               </div>
@@ -385,7 +387,7 @@ export default function FloatingGoldInterpreter() {
 
             <div className="mt-3 flex items-center justify-between gap-3">
               <p className="text-[11px] leading-5 text-slate-500">
-                Project answers are grounded in selected artifact blobs. General AI answers are labeled separately.
+                Project answers are grounded in approved artifacts. SQL context is used only when supplied by a page.
               </p>
 
               <Link
