@@ -60,13 +60,25 @@ function buildArchitectureStatusText() {
     ...NOT_ACTIVE_RAG_ARCHITECTURE.map((item) => `- ${item}`),
     "",
     "Safe description:",
-    "- RAG-style artifact retrieval using a structured blob catalog, optional SQL result context, and an LLM generation layer.",
+    "- RAG-style artifact retrieval using a structured artifact catalog, optional SQL result context, and an LLM generation layer.",
     "- Do not call this a production vector database-backed RAG system until vector retrieval is actually implemented.",
   ].join("\n");
 }
 
 function sanitizeGeneratedAnswer(value: string) {
   return String(value || "")
+    .replaceAll("rag_sql_orchestrator_ai", "RAG + SQL Orchestrator")
+    .replaceAll("rag_sql_orchestrator_fallback", "RAG + SQL Fallback")
+    .replaceAll("rag sql orchestrator ai", "RAG + SQL Orchestrator")
+    .replaceAll("rag sql orchestrator fallback", "RAG + SQL Fallback")
+    .replaceAll("RAG SQL Orchestrator", "RAG + SQL Orchestrator")
+    .replaceAll("RAG SQL Fallback", "RAG + SQL Fallback")
+    .replaceAll("-", "-")
+    .replaceAll("-", "-")
+    .replaceAll("‒", "-")
+    .replaceAll("–", "-")
+    .replaceAll("—", "-")
+    .replaceAll("−", "-")
     .replaceAll("â€™", "'")
     .replaceAll("â€œ", '"')
     .replaceAll("â€", '"')
@@ -82,8 +94,15 @@ function sanitizeGeneratedAnswer(value: string) {
     .replaceAll("”", '"')
     .replaceAll("–", "-")
     .replaceAll("—", "-")
+    .replaceAll("-", "-")
+    .replaceAll("‐", "-")
+    .replaceAll("−", "-")
     .replaceAll("•", "-")
     .replaceAll("\u00a0", " ")
+    .replaceAll("/api/rag-airoute", "/api/rag-ai route")
+    .replaceAll("/api/gold-airoute", "/api/gold-ai route")
+    .replaceAll("RAG-style", "RAG-style")
+    .replaceAll("artifact-blob", "artifact blob")
     .replace(/\s+\n/g, "\n")
     .replace(/\n{4,}/g, "\n\n\n")
     .trim();
@@ -196,7 +215,7 @@ function buildFinalDeepMlSafetyFallback(
     "- Cost savings or operational efficiency impact.",
     "- Production readiness or approval status.",
     "",
-    `Safety filter triggered by unsupported wording: ${riskyTerms.join(", ")}`,
+    "Artifact-safe response note: Some performance or reliability wording was not repeated because it requires direct support from the approved artifacts.",
     "",
     sourceNames.length
       ? `Sources used: ${sourceNames.join(", ")}`
@@ -262,7 +281,7 @@ function localFallbackAnswer({
       : projectMode
       ? "The orchestrator loaded project context, but the exact answer is not clearly available in the selected approved artifacts."
       : "General AI answer, not from project artifacts. A full response requires a valid OPENROUTER_API_KEY.") +
-    "\n\nLocal orchestrator fallback only. Configure OPENROUTER_API_KEY for full natural-language generation.";
+    "\n\nProvider fallback response. A fuller natural-language answer requires the configured AI provider to be available.";
 
   return {
     answer: sanitizeGeneratedAnswer(fallbackAnswer),
@@ -374,7 +393,7 @@ ${context.contextText}
 
     return {
       answer:
-        "Gold AI Orchestrator could not call OpenRouter. The artifact retrieval and optional SQL context layer loaded, but the AI provider returned an error.\n\n" +
+        "Gold AI Orchestrator could not reach the AI provider. The artifact retrieval and optional SQL context layer loaded correctly, but the provider returned an error.\n\n" +
         text.slice(0, 700),
       mode: "openrouter_api_error",
       provider: "openrouter_error",
@@ -401,6 +420,24 @@ ${context.contextText}
   };
 }
 
+
+function isArchitectureQuestion(question: string) {
+  const q = String(question || "").toLowerCase();
+
+  return (
+    q.includes("rag") ||
+    q.includes("orchestrator") ||
+    q.includes("vector") ||
+    q.includes("embedding") ||
+    q.includes("langchain") ||
+    q.includes("llamaindex") ||
+    q.includes("sql tool") ||
+    q.includes("sql context") ||
+    q.includes("active yet") ||
+    q.includes("not active")
+  );
+}
+
 export async function orchestrateRagAi(input: RagOrchestratorInput) {
   const question = String(input.question || "").trim();
   const pagePath = String(input.pagePath || "");
@@ -409,6 +446,7 @@ export async function orchestrateRagAi(input: RagOrchestratorInput) {
   const sqlContextText = buildSqlContextText(sqlContext);
 
   const projectMode =
+    isArchitectureQuestion(question) ||
     isProjectQuestion(question, pagePath) ||
     Boolean(sqlContextText) ||
     pagePath.includes("gold-ai") ||
@@ -451,7 +489,7 @@ export async function orchestrateRagAi(input: RagOrchestratorInput) {
         "optional LangChain or LlamaIndex routing",
       ],
       professorSafeDescription:
-        "RAG-style artifact retrieval using a structured blob catalog, optional SQL result context, and an LLM generation layer.",
+        "RAG-style artifact retrieval using a structured artifact catalog, optional SQL result context, and an LLM generation layer.",
     },
     selectedArtifacts: context.selected.map((item) => ({
       id: item.id,

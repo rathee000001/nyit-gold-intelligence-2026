@@ -565,6 +565,28 @@ function SectionTitle({
   );
 }
 
+
+function cleanAiModeLabel(mode?: string) {
+  if (!mode) return "Gold AI";
+  if (mode === "rag_sql_orchestrator_ai") return "RAG + SQL Orchestrator";
+  if (mode === "rag_sql_orchestrator_fallback") return "RAG + SQL Fallback";
+  if (mode === "artifact_blob_ai") return "RAG + SQL AI";
+  if (mode === "artifact_fallback") return "Artifact Fallback";
+  if (mode === "general_ai") return "General AI";
+  if (mode === "needs_openrouter_key") return "Needs API Key";
+  if (mode === "openrouter_api_error") return "AI Provider Error";
+  if (mode === "deep_ml_forecast_ai") return "Deep ML Forecast AI";
+  if (mode === "error") return "AI Error";
+  return String(mode)
+    .replaceAll("_", " ")
+    .replace(/\bRAG + SQL Orchestrator\b/i, "RAG + SQL Orchestrator")
+    .replace(/\brag sql orchestrator fallback\b/i, "RAG + SQL Fallback")
+    .replace(/\bartifact blob ai\b/i, "RAG + SQL AI")
+    .replace(/\bai\b/i, "AI")
+    .trim();
+}
+
+
 export default function DataMatrixPage() {
   const [catalog, setCatalog] = useState<ArtifactBlob[]>([]);
   const [jsonMap, setJsonMap] = useState<Record<string, any>>({});
@@ -585,9 +607,9 @@ export default function DataMatrixPage() {
   const [aiMessages, setAiMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
-      mode: "artifact_blob_ai",
+      mode: "RAG + SQL Orchestrator",
       content:
-        "I can explain the refreshed Deep ML matrix, Step 10 source update, Step 10A gold live patch, and Step 11 governed feature store using approved artifacts.",
+        "I can explain the refreshed Deep ML matrix, Step 10 source update, Step 10A gold live patch, Step 11 governed feature store, and any supplied read-only SQL result using approved artifacts.",
       sources: [],
     },
   ]);
@@ -708,6 +730,26 @@ export default function DataMatrixPage() {
   const tableRows = sortedRows.slice(0, tableLimit);
   const chartRows = downsampleRows(sortedRows, 700);
   const sqlColumns = useMemo(() => columnsFromRows(sqlRows), [sqlRows]);
+
+  function buildMatrixSqlContextForAi() {
+    if (!sqlRows.length) return null;
+
+    return {
+      source: "data_matrix_sql_explorer",
+      title: "Deep ML Data Matrix SQL result",
+      tableName: "matrix",
+      query: sqlQuery,
+      rowCount: sqlRows.length,
+      columns: sqlColumns,
+      rows: sqlRows.slice(0, 50),
+      notes: [
+        "This is a read-only SQL result from the browser Data Matrix explorer.",
+        "Rows come from the loaded matrix table named matrix.",
+        "Do not infer causality, model quality, validation status, or forecast guarantees from SQL rows alone.",
+        "If only a limited SQL result is supplied, summarize only the displayed rows and columns.",
+      ],
+    };
+  }
 
   const latestRow = matrixRows[matrixRows.length - 1] || {};
   const firstRow = matrixRows[0] || {};
@@ -841,7 +883,7 @@ export default function DataMatrixPage() {
     setAiBusy(true);
 
     try {
-      const response = await fetch("/api/gold-ai", {
+      const response = await fetch("/api/rag-ai", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -850,6 +892,7 @@ export default function DataMatrixPage() {
           question: prompt,
           pagePath: "/data-matrix",
           history: nextMessages.slice(-8),
+          sqlContext: buildMatrixSqlContextForAi(),
         }),
       });
 
@@ -1492,7 +1535,7 @@ export default function DataMatrixPage() {
           <StatCard
             label="Blob Catalog"
             value={`${formatNumber(catalog.length)} files`}
-            note={`${formatNumber(matrixBlobs.length)} matrix/data-related artifact blobs detected by this page.`}
+            note={`${formatNumber(matrixBlobs.length)} matrix/data-related approved artifacts detected by this page.`}
           />
           <StatCard
             label="Factor State Rows"
@@ -1600,7 +1643,7 @@ export default function DataMatrixPage() {
                   >
                     {message.mode ? (
                       <div className="mb-2 inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-blue-700">
-                        {message.mode.replaceAll("_", " ")}
+                        {cleanAiModeLabel(message.mode)}
                       </div>
                     ) : null}
                     <div className="whitespace-pre-wrap text-sm leading-7">{message.content}</div>

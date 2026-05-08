@@ -254,15 +254,30 @@ function textPreview(value: string, chars = 5000) {
   return `${value.slice(0, chars)}\n... [preview truncated]`;
 }
 
-function modeLabel(mode?: string) {
+
+function cleanAiModeLabel(mode?: string) {
   if (!mode) return "Gold AI";
+  if (mode === "rag_sql_orchestrator_ai") return "RAG + SQL Orchestrator";
+  if (mode === "rag_sql_orchestrator_fallback") return "RAG + SQL Fallback";
   if (mode === "artifact_blob_ai") return "RAG + SQL AI";
-  if (mode === "rag_sql_orchestrator_ai") return "RAG SQL Orchestrator";
-  if (mode === "rag_sql_orchestrator_fallback") return "RAG SQL Fallback";
   if (mode === "artifact_fallback") return "Artifact Fallback";
   if (mode === "general_ai") return "General AI";
   if (mode === "needs_openrouter_key") return "Needs API Key";
-  return mode.replaceAll("_", " ");
+  if (mode === "openrouter_api_error") return "AI Provider Error";
+  if (mode === "deep_ml_forecast_ai") return "Deep ML Forecast AI";
+  if (mode === "error") return "AI Error";
+  return String(mode)
+    .replaceAll("_", " ")
+    .replace(/\bRAG + SQL Orchestrator\b/i, "RAG + SQL Orchestrator")
+    .replace(/\brag sql orchestrator fallback\b/i, "RAG + SQL Fallback")
+    .replace(/\bartifact blob ai\b/i, "RAG + SQL AI")
+    .replace(/\bai\b/i, "AI")
+    .trim();
+}
+
+
+function modeLabel(mode?: string) {
+  return cleanAiModeLabel(mode);
 }
 
 function StatusPill({ children, tone = "blue" }: { children: string; tone?: "blue" | "green" | "amber" | "slate" }) {

@@ -1033,9 +1033,30 @@ function ForecastTooltip({ active, payload, label }: any) {
   );
 }
 
-function modeLabel(mode?: string) {
+
+function cleanAiModeLabel(mode?: string) {
   if (!mode) return "Gold AI";
-  return mode.replaceAll("_", " ");
+  if (mode === "rag_sql_orchestrator_ai") return "RAG + SQL Orchestrator";
+  if (mode === "rag_sql_orchestrator_fallback") return "RAG + SQL Fallback";
+  if (mode === "artifact_blob_ai") return "RAG + SQL AI";
+  if (mode === "artifact_fallback") return "Artifact Fallback";
+  if (mode === "general_ai") return "General AI";
+  if (mode === "needs_openrouter_key") return "Needs API Key";
+  if (mode === "openrouter_api_error") return "AI Provider Error";
+  if (mode === "deep_ml_forecast_ai") return "Deep ML Forecast AI";
+  if (mode === "error") return "AI Error";
+  return String(mode)
+    .replaceAll("_", " ")
+    .replace(/\bRAG + SQL Orchestrator\b/i, "RAG + SQL Orchestrator")
+    .replace(/\brag sql orchestrator fallback\b/i, "RAG + SQL Fallback")
+    .replace(/\bartifact blob ai\b/i, "RAG + SQL AI")
+    .replace(/\bai\b/i, "AI")
+    .trim();
+}
+
+
+function modeLabel(mode?: string) {
+  return cleanAiModeLabel(mode);
 }
 
 export default function FinalDeepMLEvaluationPage() {
@@ -1048,7 +1069,7 @@ export default function FinalDeepMLEvaluationPage() {
   const [aiMessages, setAiMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
-      mode: "rag_sql_orchestrator_ai",
+      mode: "RAG + SQL Orchestrator",
       content:
         "I can explain this Deep ML final forecast page using Omega, Alpha, Beta, Delta, Epsilon, Gamma, Step 10, Step 10A, Step 11, and Deep ML governance artifacts only.",
       sources: [],

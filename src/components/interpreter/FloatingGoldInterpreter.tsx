@@ -75,17 +75,30 @@ function pageSuggestions(pathname: string) {
   return STARTER_SUGGESTIONS;
 }
 
-function modeLabel(mode?: string) {
+
+function cleanAiModeLabel(mode?: string) {
   if (!mode) return "Gold AI";
+  if (mode === "rag_sql_orchestrator_ai") return "RAG + SQL Orchestrator";
+  if (mode === "rag_sql_orchestrator_fallback") return "RAG + SQL Fallback";
   if (mode === "artifact_blob_ai") return "RAG + SQL AI";
-  if (mode === "rag_sql_orchestrator_ai") return "RAG SQL Orchestrator";
-  if (mode === "rag_sql_orchestrator_fallback") return "RAG SQL Fallback";
-  if (mode === "general_ai") return "General AI";
   if (mode === "artifact_fallback") return "Artifact Fallback";
+  if (mode === "general_ai") return "General AI";
   if (mode === "needs_openrouter_key") return "Needs API Key";
   if (mode === "openrouter_api_error") return "AI Provider Error";
   if (mode === "deep_ml_forecast_ai") return "Deep ML Forecast AI";
-  return mode.replaceAll("_", " ");
+  if (mode === "error") return "AI Error";
+  return String(mode)
+    .replaceAll("_", " ")
+    .replace(/\bRAG + SQL Orchestrator\b/i, "RAG + SQL Orchestrator")
+    .replace(/\brag sql orchestrator fallback\b/i, "RAG + SQL Fallback")
+    .replace(/\bartifact blob ai\b/i, "RAG + SQL AI")
+    .replace(/\bai\b/i, "AI")
+    .trim();
+}
+
+
+function modeLabel(mode?: string) {
+  return cleanAiModeLabel(mode);
 }
 
 function RobotIcon() {
@@ -186,7 +199,7 @@ export default function FloatingGoldInterpreter() {
           role: "assistant",
           content:
             data.answer ||
-            "I could not generate an answer from the available artifact blobs.",
+            "I could not generate an answer from the available approved artifacts.",
           mode: data.mode || "artifact_blob_ai",
           sources: data.sources || [],
         },
@@ -238,7 +251,7 @@ export default function FloatingGoldInterpreter() {
           </p>
           <p className="text-sm font-black">Ask this page</p>
           <p className="text-[10px] font-bold text-slate-300">
-            AI House connected
+            Orchestrator connected
           </p>
         </div>
       </button>
@@ -255,10 +268,10 @@ export default function FloatingGoldInterpreter() {
                     Gold Nexus Alpha
                   </p>
                   <h3 className="mt-1 text-xl font-black">
-                    Artifact Blob AI
+                    RAG + SQL AI
                   </h3>
                   <p className="mt-1 text-xs leading-5 text-slate-300">
-                    Page-aware answers from artifacts and optional SQL context.
+                    Page-aware answers from approved artifacts and optional SQL context.
                   </p>
                 </div>
               </div>
@@ -387,7 +400,7 @@ export default function FloatingGoldInterpreter() {
 
             <div className="mt-3 flex items-center justify-between gap-3">
               <p className="text-[11px] leading-5 text-slate-500">
-                Project answers are grounded in approved artifacts. SQL context is used only when supplied by a page.
+                Project answers are grounded in approved artifacts. SQL context is read-only and used only when supplied by a page.
               </p>
 
               <Link
