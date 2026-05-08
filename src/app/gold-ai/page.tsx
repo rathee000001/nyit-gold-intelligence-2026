@@ -256,7 +256,9 @@ function textPreview(value: string, chars = 5000) {
 
 function modeLabel(mode?: string) {
   if (!mode) return "Gold AI";
-  if (mode === "artifact_blob_ai") return "Artifact Blob AI";
+  if (mode === "artifact_blob_ai") return "RAG + SQL AI";
+  if (mode === "rag_sql_orchestrator_ai") return "RAG SQL Orchestrator";
+  if (mode === "rag_sql_orchestrator_fallback") return "RAG SQL Fallback";
   if (mode === "artifact_fallback") return "Artifact Fallback";
   if (mode === "general_ai") return "General AI";
   if (mode === "needs_openrouter_key") return "Needs API Key";
@@ -832,7 +834,7 @@ export default function GoldAIStudioPage() {
     {
       role: "assistant",
       content:
-        "Welcome to Gold AI Studio. I can search the project artifact blob, explain model logic, and help generate charts/tables from approved JSON and CSV outputs.",
+        "Welcome to Gold AI Studio. I can search approved project artifacts, explain model logic, use supplied Blob SQL result context, and help generate charts/tables from approved JSON and CSV outputs.",
       mode: "artifact_blob_ai",
       sources: [],
     },
@@ -857,6 +859,25 @@ export default function GoldAIStudioPage() {
   const numericCols = useMemo(() => numericColumns(rows), [rows]);
   const xColumns = useMemo(() => likelyXAxisColumns(rows), [rows]);
   const blobSqlColumns = useMemo(() => inferColumns(blobSqlRows), [blobSqlRows]);
+
+  function buildBlobSqlContextForAi() {
+    if (!blobSqlRows.length) return null;
+
+    return {
+      source: "gold_ai_studio_blob_sql_explorer",
+      title: "Gold AI Studio Blob SQL result",
+      tableName: "artifacts",
+      query: blobSqlQuery,
+      rowCount: blobSqlRows.length,
+      columns: blobSqlColumns,
+      rows: blobSqlRows.slice(0, 40),
+      notes: [
+        "This is a read-only SQL result from the artifact catalog.",
+        "Rows are artifact metadata unless a CSV/JSON artifact is opened separately.",
+        "Do not infer validation, approval, cutoff alignment, or model quality from metadata alone.",
+      ],
+    };
+  }
   const firstOpenableBlobFromSqlRows = useMemo(() => {
     for (const row of blobSqlRows) {
       const blob = findCatalogBlobForSqlRow(row, catalog);
@@ -1011,7 +1032,7 @@ export default function GoldAIStudioPage() {
     setAsking(true);
 
     try {
-      const response = await fetch("/api/gold-ai", {
+      const response = await fetch("/api/rag-ai", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
