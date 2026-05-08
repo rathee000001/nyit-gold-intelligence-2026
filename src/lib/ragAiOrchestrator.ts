@@ -2,6 +2,10 @@ import {
   buildArtifactContextForQuestion,
   isProjectQuestion,
 } from "@/lib/goldArtifactBlobService";
+import {
+  formatVectorMatchesForPrompt,
+  searchVectorArtifacts,
+} from "@/lib/vector/vectorProvider";
 
 export type RagChatMessage = {
   role: "user" | "assistant" | "system";
@@ -41,11 +45,12 @@ const ACTIVE_RAG_ARCHITECTURE = [
   "Local fallback is active when the provider key is missing or provider calls fail.",
   "Current migrated UI calls use /api/rag-ai.",
   "Legacy /api/gold-ai route is retained as a fallback route for now.",
+  "Vector provider abstraction is present and optional.",
 ];
 
 const NOT_ACTIVE_RAG_ARCHITECTURE = [
-  "No production vector database is active yet.",
-  "No generated embedding index is active yet.",
+  "Production vector retrieval is active only when vector provider environment variables and an index are configured.",
+  "Generated embedding/index records still need to be created and loaded into the vector provider.",
   "LangChain and LlamaIndex are not integrated yet.",
   "The orchestrator does not train, rerun, or validate forecasting models.",
   "The orchestrator does not update artifacts or run scheduled data refreshes.",
@@ -53,17 +58,18 @@ const NOT_ACTIVE_RAG_ARCHITECTURE = [
 
 ];
 
-function buildArchitectureStatusText() {
+function buildArchitectureStatusText(vectorStatusText = "") {
   return [
     "Active now:",
     ...ACTIVE_RAG_ARCHITECTURE.map((item) => `- ${item}`),
+    ...(vectorStatusText ? [`- Vector status: ${vectorStatusText}`] : []),
     "",
-    "Not active yet:",
+    "Not active yet / conditional:",
     ...NOT_ACTIVE_RAG_ARCHITECTURE.map((item) => `- ${item}`),
     "",
     "Safe description:",
-    "- RAG-style artifact retrieval using a structured artifact catalog, optional SQL result context, and an LLM generation layer.",
-    "- Do not call this a production vector database-backed RAG system until vector retrieval is actually implemented.",
+    "- RAG-style artifact retrieval using a structured artifact catalog, optional SQL result context, optional vector retrieval when configured, and an LLM generation layer.",
+    "- Do not call this a production vector database-backed RAG system unless a vector provider is configured and returning matches.",
   ].join("\n");
 }
 
@@ -82,6 +88,14 @@ function sanitizeGeneratedAnswer(value: string) {
     .replaceAll("—", "-")
     .replaceAll("−", "-")
     .replaceAll("â€™", "'")
+    .replaceAll("âsafe", "-safe")
+    .replaceAll("âordered", "-ordered")
+    .replaceAll("âaware", "-aware")
+    .replaceAll("âai", "-ai")
+    .replaceAll("âbased", "-based")
+    .replaceAll("âseries", "-series")
+    .replaceAll("â03", "-03")
+    .replaceAll("â", "-")
     .replaceAll("â€œ", '"')
     .replaceAll("â€", '"')
     .replaceAll("â€\"", "-")
@@ -330,6 +344,8 @@ async function callOpenRouter({
   context,
   projectMode,
   sqlContextText,
+  vectorContextText,
+  vectorStatusText,
   pagePath,
 }: {
   question: string;
@@ -337,10 +353,12 @@ async function callOpenRouter({
   context: Awaited<ReturnType<typeof buildArtifactContextForQuestion>>;
   projectMode: boolean;
   sqlContextText: string;
+  vectorContextText: string;
+  vectorStatusText: string;
   pagePath?: string;
 }) {
   const apiKey = process.env.OPENROUTER_API_KEY;
-  const architectureStatusText = buildArchitectureStatusText();
+  const architectureStatusText = buildArchitectureStatusText(vectorStatusText);
   const finalDeepMlRulesText = isFinalDeepMlPagePath(pagePath)
     ? buildFinalDeepMlStrictRulesText()
     : "";
@@ -392,6 +410,9 @@ ${sourceListFromContext(context)}
 
 SQL RESULT CONTEXT:
 ${sqlContextText || "No SQL result context supplied."}
+
+VECTOR RETRIEVAL CONTEXT:
+${vectorContextText || "No vector retrieval context supplied."}
 
 ARTIFACT CONTEXT:
 ${context.contextText}
@@ -493,12 +514,22 @@ export async function orchestrateRagAi(input: RagOrchestratorInput) {
     maxArtifacts: input.maxArtifacts || (projectMode ? 12 : 5),
   });
 
+  const vectorResult = await searchVectorArtifacts({
+    query: question,
+    pagePath,
+    topK: projectMode ? 8 : 4,
+  });
+  const vectorContextText = formatVectorMatchesForPrompt(vectorResult);
+  const vectorStatusText = vectorResult.status.description;
+
   const result = await callOpenRouter({
     question,
     history,
     context,
     projectMode,
     sqlContextText,
+    vectorContextText,
+    vectorStatusText,
     pagePath,
   });
 
@@ -515,15 +546,28 @@ export async function orchestrateRagAi(input: RagOrchestratorInput) {
         "artifact blob retrieval",
         "artifact context loading",
         ...(sqlContextText ? ["SQL result context"] : []),
+        vectorResult.status.active ? "vector retrieval provider" : "vector provider abstraction",
         result.provider === "openrouter" ? "OpenRouter LLM generation" : "local fallback",
       ],
       futureLayers: [
-        "generated artifact summary index",
-        "optional vector retrieval",
-        "optional LangChain or LlamaIndex routing",
+        "generated artifact summary/index records",
+        "LangChain or LlamaIndex routing",
+        "automatic SQL tool execution",
       ],
       professorSafeDescription:
-        "RAG-style artifact retrieval using a structured artifact catalog, optional SQL result context, and an LLM generation layer.",
+        "RAG-style artifact retrieval using a structured artifact catalog, optional SQL result context, optional vector retrieval when configured, and an LLM generation layer.",
+    },
+    vectorRetrieval: {
+      provider: vectorResult.status.provider,
+      active: vectorResult.status.active,
+      configured: vectorResult.status.configured,
+      description: vectorResult.status.description,
+      matchCount: vectorResult.matches.length,
+      matches: vectorResult.matches.slice(0, 8).map((match) => ({
+        id: match.id,
+        score: match.score,
+        metadata: match.metadata || {},
+      })),
     },
     selectedArtifacts: context.selected.map((item) => ({
       id: item.id,
@@ -540,7 +584,7 @@ export async function orchestrateRagAi(input: RagOrchestratorInput) {
       "Explain this SQL result in business language.",
       "Which artifacts support this answer?",
       "What is active in the RAG orchestrator now?",
-      "What is not implemented yet in vector retrieval?",
+      "What is the current vector retrieval status?",
     ],
   };
 }
