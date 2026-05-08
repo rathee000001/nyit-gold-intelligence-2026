@@ -1059,7 +1059,491 @@ function modeLabel(mode?: string) {
   return cleanAiModeLabel(mode);
 }
 
+
+const FINAL_EVAL_SQL_EXAMPLES = [
+  {
+    label: "Omega artifacts",
+    query: "SELECT label, path, group, kind FROM final_artifacts WHERE group = 'Omega' ORDER BY label ASC LIMIT 50",
+  },
+  {
+    label: "Forecast files",
+    query: "SELECT label, path, group, kind FROM final_artifacts WHERE tags LIKE '%forecast%' ORDER BY group ASC LIMIT 50",
+  },
+  {
+    label: "CSV artifacts",
+    query: "SELECT label, path, group, kind FROM final_artifacts WHERE kind = 'csv' ORDER BY group ASC LIMIT 100",
+  },
+  {
+    label: "Files by group",
+    query: "SELECT group, COUNT(*) AS files FROM final_artifacts GROUP BY group ORDER BY files DESC",
+  },
+];
+
+function finalEvalArtifactSqlRows() {
+  return ARTIFACTS.map((artifact) => {
+    const lower = `${artifact.key} ${artifact.label} ${artifact.path} ${artifact.group} ${artifact.kind}`.toLowerCase();
+
+    let modelKey = "";
+    if (lower.includes("omega")) modelKey = "omega";
+    else if (lower.includes("alpha")) modelKey = "alpha";
+    else if (lower.includes("beta")) modelKey = "beta";
+    else if (lower.includes("delta")) modelKey = "delta";
+    else if (lower.includes("epsilon")) modelKey = "epsilon";
+    else if (lower.includes("gamma")) modelKey = "gamma";
+
+    const tags = [
+      artifact.group,
+      artifact.kind,
+      artifact.required ? "required" : "optional",
+      modelKey,
+      lower.includes("forecast") ? "forecast" : "",
+      lower.includes("evaluation") ? "evaluation" : "",
+      lower.includes("ranking") ? "ranking" : "",
+      lower.includes("weight") ? "weights" : "",
+      lower.includes("quality") ? "quality" : "",
+      lower.includes("governance") ? "governance" : "",
+    ].filter(Boolean);
+
+    return {
+      key: artifact.key,
+      label: artifact.label,
+      path: artifact.path,
+      kind: artifact.kind,
+      group: artifact.group,
+      required: Boolean(artifact.required),
+      modelKey,
+      domain: "deep_ml_final_evaluation",
+      tags: tags.join(" "),
+    };
+  });
+}
+
+function finalEvalSqlColumns(rows: any[]) {
+  const cols = new Set<string>();
+  rows.slice(0, 80).forEach((row) => Object.keys(row || {}).forEach((key) => cols.add(key)));
+  return Array.from(cols);
+}
+
+function finalEvalSqlCsv(rows: any[], columns: string[]) {
+  const escapeCell = (value: any) => {
+    if (value === null || value === undefined) return "";
+    const text = String(value);
+    if (text.includes(",") || text.includes('"') || text.includes("\n")) {
+      return `"${text.replaceAll('"', '""')}"`;
+    }
+    return text;
+  };
+
+  return [
+    columns.map(escapeCell).join(","),
+    ...rows.map((row) => columns.map((column) => escapeCell(row?.[column])).join(",")),
+  ].join("\n");
+}
+
+function finalEvalSqlCompare(rowValue: any, operator: string, expectedValue: string) {
+  const leftText = String(rowValue ?? "");
+  const rightText = String(expectedValue ?? "");
+
+  if (operator === "LIKE") {
+    const needle = rightText.replaceAll("%", "").toLowerCase();
+    return leftText.toLowerCase().includes(needle);
+  }
+
+  const leftNumber = Number(leftText);
+  const rightNumber = Number(rightText);
+
+  if (Number.isFinite(leftNumber) && Number.isFinite(rightNumber)) {
+    if (operator === "=") return leftNumber === rightNumber;
+    if (operator === "!=" || operator === "<>") return leftNumber !== rightNumber;
+    if (operator === ">") return leftNumber > rightNumber;
+    if (operator === ">=") return leftNumber >= rightNumber;
+    if (operator === "<") return leftNumber < rightNumber;
+    if (operator === "<=") return leftNumber <= rightNumber;
+  }
+
+  if (operator === "=") return leftText.toLowerCase() === rightText.toLowerCase();
+  if (operator === "!=" || operator === "<>") return leftText.toLowerCase() !== rightText.toLowerCase();
+
+  return false;
+}
+
+function runFinalEvalSqlLite(query: string, sourceRows: any[]) {
+  const raw = String(query || "").trim();
+  const normalized = raw.replace(/\s+/g, " ");
+  const lower = normalized.toLowerCase();
+
+  if (!lower.startsWith("select ")) {
+    throw new Error("Only SELECT queries are allowed.");
+  }
+
+  const forbidden = [
+    "insert ",
+    "update ",
+    "delete ",
+    "drop ",
+    "alter ",
+    "create ",
+    "truncate ",
+    "replace ",
+    "attach ",
+    "detach ",
+    " into ",
+    "load ",
+    "require",
+    "import ",
+    "export ",
+    "fetch(",
+    "window.",
+    "document.",
+  ];
+
+  const blocked = forbidden.find((token) => lower.includes(token));
+  if (blocked) {
+    throw new Error(`Blocked SQL token: ${blocked.trim()}. This explorer is read-only.`);
+  }
+
+  const fromMatch = normalized.match(/^select\s+(.+?)\s+from\s+final_artifacts(?:\s+|$)(.*)$/i);
+  if (!fromMatch) {
+    throw new Error("Use FROM final_artifacts. This explorer exposes the Final Deep ML artifact registry only.");
+  }
+
+  const selectText = fromMatch[1].trim();
+  let tail = (fromMatch[2] || "").trim();
+
+  let limit = 100;
+  const limitMatch = tail.match(/\s+limit\s+(\d+)\s*$/i);
+  if (limitMatch) {
+    limit = Math.max(1, Math.min(Number(limitMatch[1]) || 100, 500));
+    tail = tail.slice(0, limitMatch.index).trim();
+  }
+
+  let orderKey = "";
+  let orderDirection: "asc" | "desc" = "asc";
+  const orderMatch = tail.match(/\s+order\s+by\s+([a-zA-Z0-9_]+)(?:\s+(asc|desc))?\s*$/i);
+  if (orderMatch) {
+    orderKey = orderMatch[1];
+    orderDirection = String(orderMatch[2] || "asc").toLowerCase() === "desc" ? "desc" : "asc";
+    tail = tail.slice(0, orderMatch.index).trim();
+  }
+
+  let groupKey = "";
+  const groupMatch = tail.match(/^group\s+by\s+([a-zA-Z0-9_]+)\s*$/i);
+  if (groupMatch) {
+    groupKey = groupMatch[1];
+    tail = tail.slice(0, groupMatch.index).trim();
+  }
+
+  let whereText = "";
+  const whereMatch = tail.match(/^where\s+(.+)$/i);
+  if (whereMatch) {
+    whereText = whereMatch[1].trim();
+  } else if (tail.trim()) {
+    throw new Error(`Unsupported SQL clause: ${tail}`);
+  }
+
+  let rows = [...sourceRows];
+
+  if (whereText) {
+    const conditions = whereText.split(/\s+and\s+/i).map((item) => item.trim()).filter(Boolean);
+
+    rows = rows.filter((row) =>
+      conditions.every((condition) => {
+        const match = condition.match(/^([a-zA-Z0-9_]+)\s*(=|!=|<>|>=|<=|>|<|LIKE)\s*'([^']*)'$/i);
+        if (!match) {
+          throw new Error(`Unsupported WHERE condition: ${condition}. Use examples like group = 'Omega' or tags LIKE '%forecast%'.`);
+        }
+
+        const [, key, operator, expected] = match;
+        return finalEvalSqlCompare(row?.[key], operator.toUpperCase(), expected);
+      })
+    );
+  }
+
+  const selectParts = selectText.split(",").map((item) => item.trim()).filter(Boolean);
+  const wantsCount = selectParts.some((part) => /^count\(\*\)(?:\s+as\s+[a-zA-Z0-9_]+)?$/i.test(part));
+
+  if (groupKey) {
+    const groups = new Map<string, any[]>();
+
+    rows.forEach((row) => {
+      const key = String(row?.[groupKey] ?? "");
+      groups.set(key, [...(groups.get(key) || []), row]);
+    });
+
+    rows = Array.from(groups.entries()).map(([groupValue, groupRows]) => {
+      const out: Record<string, any> = { [groupKey]: groupValue };
+
+      selectParts.forEach((part) => {
+        const countMatch = part.match(/^count\(\*\)(?:\s+as\s+([a-zA-Z0-9_]+))?$/i);
+        if (countMatch) {
+          out[countMatch[1] || "count"] = groupRows.length;
+          return;
+        }
+
+        if (part !== groupKey && part !== "*") {
+          out[part] = groupRows[0]?.[part];
+        }
+      });
+
+      return out;
+    });
+  } else if (wantsCount) {
+    const alias = selectParts
+      .map((part) => part.match(/^count\(\*\)(?:\s+as\s+([a-zA-Z0-9_]+))?$/i))
+      .find(Boolean)?.[1] || "count";
+    rows = [{ [alias]: rows.length }];
+  } else if (!(selectParts.length === 1 && selectParts[0] === "*")) {
+    rows = rows.map((row) => {
+      const out: Record<string, any> = {};
+      selectParts.forEach((part) => {
+        out[part] = row?.[part];
+      });
+      return out;
+    });
+  }
+
+  if (orderKey) {
+    rows = [...rows].sort((a, b) => {
+      const av = a?.[orderKey];
+      const bv = b?.[orderKey];
+      const an = Number(av);
+      const bn = Number(bv);
+
+      let cmp = 0;
+      if (Number.isFinite(an) && Number.isFinite(bn)) {
+        cmp = an - bn;
+      } else {
+        cmp = String(av ?? "").localeCompare(String(bv ?? ""));
+      }
+
+      return orderDirection === "desc" ? -cmp : cmp;
+    });
+  }
+
+  return rows.slice(0, limit);
+}
+
+function FinalEvalSqlExplorer({
+  query,
+  setQuery,
+  rows,
+  error,
+  busy,
+  onRun,
+  onDownload,
+  onAskAi,
+}: {
+  query: string;
+  setQuery: (value: string) => void;
+  rows: any[];
+  error: string;
+  busy: boolean;
+  onRun: () => void;
+  onDownload: () => void;
+  onAskAi: () => void;
+}) {
+  const columns = finalEvalSqlColumns(rows);
+
+  return (
+    <section className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <div>
+          <div className="text-[11px] font-black uppercase tracking-[0.32em] text-blue-600">
+            SQL-4A Final Eval SQL
+          </div>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
+            Query final evaluation artifacts
+          </h2>
+          <p className="mt-3 max-w-5xl text-sm font-semibold leading-7 text-slate-600">
+            Read-only SQL explorer for the Final Deep ML Evaluation artifact registry.
+            Table name: <span className="font-black text-slate-950">final_artifacts</span>.
+            It inspects artifact metadata only and does not alter forecasts, models, or files.
+          </p>
+        </div>
+
+        <div className="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-emerald-700">
+          {rows.length ? `${rows.length} rows` : "read-only"}
+        </div>
+      </div>
+
+      <div className="mt-6 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="rounded-[1.4rem] border border-slate-200 bg-slate-50 p-4">
+          <textarea
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            rows={7}
+            className="min-h-[180px] w-full resize-y rounded-2xl border border-slate-200 bg-white p-4 font-mono text-sm leading-7 text-slate-950 outline-none focus:border-blue-300"
+          />
+
+          {error ? (
+            <div className="mt-3 rounded-2xl border border-rose-200 bg-rose-50 p-3 text-sm font-bold text-rose-700">
+              {error}
+            </div>
+          ) : null}
+
+          <div className="mt-4 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={onRun}
+              disabled={busy}
+              className="rounded-full bg-blue-600 px-5 py-3 text-xs font-black uppercase tracking-[0.18em] text-white shadow-lg shadow-blue-600/20 disabled:bg-slate-300"
+            >
+              {busy ? "Running..." : "Run SQL"}
+            </button>
+
+            <button
+              type="button"
+              onClick={onDownload}
+              disabled={!rows.length}
+              className="rounded-full border border-slate-200 bg-white px-5 py-3 text-xs font-black uppercase tracking-[0.18em] text-slate-800 disabled:opacity-40"
+            >
+              Download Result
+            </button>
+
+            <button
+              type="button"
+              onClick={onAskAi}
+              disabled={!rows.length}
+              className="rounded-full border border-amber-200 bg-amber-50 px-5 py-3 text-xs font-black uppercase tracking-[0.18em] text-amber-800 disabled:opacity-40"
+            >
+              Ask AI About SQL
+            </button>
+          </div>
+        </div>
+
+        <div className="rounded-[1.4rem] border border-slate-200 bg-white p-4">
+          <div className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-slate-500">
+            Examples
+          </div>
+
+          <div className="grid gap-2">
+            {FINAL_EVAL_SQL_EXAMPLES.map((example) => (
+              <button
+                key={example.label}
+                type="button"
+                onClick={() => setQuery(example.query)}
+                className="rounded-2xl border border-slate-200 bg-slate-50 p-3 text-left text-xs font-bold leading-5 text-slate-700 hover:border-blue-200 hover:bg-blue-50"
+              >
+                <div className="font-black uppercase tracking-[0.14em] text-blue-700">
+                  {example.label}
+                </div>
+                <div className="mt-1 font-mono text-[11px] text-slate-500">
+                  {example.query}
+                </div>
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 p-3 text-xs font-bold leading-5 text-amber-800">
+            Professor-safe note: this SQL explorer inspects artifact metadata. It does not prove
+            model accuracy, approval, causality, or forecast guarantees.
+          </div>
+        </div>
+      </div>
+
+      {rows.length ? (
+        <div className="mt-6 overflow-hidden rounded-[1.4rem] border border-slate-200">
+          <div className="max-h-[360px] overflow-auto">
+            <table className="min-w-full text-left text-xs">
+              <thead className="sticky top-0 bg-slate-100 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">
+                <tr>
+                  {columns.map((column) => (
+                    <th key={column} className="whitespace-nowrap px-4 py-3">
+                      {column}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 bg-white">
+                {rows.slice(0, 100).map((row, index) => (
+                  <tr key={index}>
+                    {columns.map((column) => (
+                      <td key={column} className="max-w-[360px] truncate px-4 py-3 font-semibold text-slate-700">
+                        {String(row?.[column] ?? "")}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : null}
+    </section>
+  );
+}
+
+
+
 export default function FinalDeepMLEvaluationPage() {
+
+  const finalArtifactSqlTable = useMemo(() => finalEvalArtifactSqlRows(), []);
+  const [finalSqlQuery, setFinalSqlQuery] = useState(FINAL_EVAL_SQL_EXAMPLES[0].query);
+  const [finalSqlRows, setFinalSqlRows] = useState<any[]>([]);
+  const [finalSqlError, setFinalSqlError] = useState("");
+  const [finalSqlBusy, setFinalSqlBusy] = useState(false);
+
+  function runFinalEvalSql() {
+    setFinalSqlBusy(true);
+    setFinalSqlError("");
+
+    try {
+      const result = runFinalEvalSqlLite(finalSqlQuery, finalArtifactSqlTable);
+      setFinalSqlRows(result);
+    } catch (error) {
+      setFinalSqlRows([]);
+      setFinalSqlError(error instanceof Error ? error.message : "Final evaluation SQL failed.");
+    } finally {
+      setFinalSqlBusy(false);
+    }
+  }
+
+  function downloadFinalEvalSqlResult() {
+    if (!finalSqlRows.length) return;
+
+    const columns = finalEvalSqlColumns(finalSqlRows);
+    const csv = finalEvalSqlCsv(finalSqlRows, columns);
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+
+    anchor.href = url;
+    anchor.download = "final_deep_ml_sql_result.csv";
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function buildFinalDeepMlSqlContextForAi() {
+    if (!finalSqlRows.length) return buildFinalDeepMlContextForAi();
+
+    return {
+      source: "final_deep_ml_sql_explorer",
+      title: "Final Deep ML Evaluation SQL result",
+      tableName: "final_artifacts",
+      query: finalSqlQuery,
+      rowCount: finalSqlRows.length,
+      columns: finalEvalSqlColumns(finalSqlRows),
+      rows: finalSqlRows.slice(0, 50),
+      notes: [
+        "This is a read-only SQL result from the Final Deep ML Evaluation artifact registry.",
+        "Rows are artifact metadata unless a CSV/JSON artifact is opened separately.",
+        "Do not infer model quality, approval, causality, validation status, or forecast guarantees from metadata alone.",
+      ],
+    };
+  }
+
+  function askAiAboutFinalEvalSql() {
+    if (!finalSqlRows.length) {
+      setFinalSqlError("Run a Final Eval SQL query first.");
+      return;
+    }
+
+    askAI("Explain this Final Deep ML SQL result in professor-safe business language.");
+  }
+
+
   const [loaded, setLoaded] = useState<Record<string, LoadedArtifact>>({});
   const [loading, setLoading] = useState(true);
   const [selectedModelKey, setSelectedModelKey] = useState<ModelKey>("omega");
@@ -1242,7 +1726,7 @@ export default function FinalDeepMLEvaluationPage() {
           question: pagePrompt,
           pagePath: "/deep-ml/models/final-deep-ml-evaluation",
           history: nextMessages.slice(-8),
-          sqlContext: buildFinalDeepMlContextForAi(),
+          sqlContext: buildFinalDeepMlSqlContextForAi(),
         }),
       });
 
@@ -1475,6 +1959,17 @@ export default function FinalDeepMLEvaluationPage() {
             })}
           </div>
         </section>
+
+        <FinalEvalSqlExplorer
+          query={finalSqlQuery}
+          setQuery={setFinalSqlQuery}
+          rows={finalSqlRows}
+          error={finalSqlError}
+          busy={finalSqlBusy}
+          onRun={runFinalEvalSql}
+          onDownload={downloadFinalEvalSqlResult}
+          onAskAi={askAiAboutFinalEvalSql}
+        />
 
         {requiredMissing.length ? (
           <section className="mt-6 rounded-[2rem] border border-amber-200 bg-amber-50 p-5 text-sm font-bold leading-7 text-amber-900">

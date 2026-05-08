@@ -195,9 +195,41 @@ function finalDeepMlRiskTerms(answer: string) {
 
 function buildFinalDeepMlSafetyFallback(
   context: Awaited<ReturnType<typeof buildArtifactContextForQuestion>>,
-  riskyTerms: string[]
+  riskyTerms: string[],
+  sqlContextText = ""
 ) {
   const sourceNames = context.selected.map((item) => item.label).slice(0, 8);
+  const hasFinalEvalSqlContext =
+    sqlContextText.toLowerCase().includes("final_deep_ml_sql_explorer") ||
+    sqlContextText.toLowerCase().includes("final deep ml evaluation sql result") ||
+    sqlContextText.toLowerCase().includes("table: final_artifacts") ||
+    sqlContextText.toLowerCase().includes("final_artifacts");
+
+  if (hasFinalEvalSqlContext) {
+    return sanitizeGeneratedAnswer([
+      "This SQL result should be interpreted as Final Deep ML artifact metadata only.",
+      "",
+      "Safe SQL explanation:",
+      "- The rows describe files registered on the Final Deep ML Evaluation page.",
+      "- The result can identify artifact groups, labels, paths, file kinds, model families, and metadata tags.",
+      "- A grouped result, such as files by group, shows project organization and artifact coverage by section.",
+      "- Omega rows can be described as forecast, rollforward, evaluation, ranking, weights, report, or quality-review artifacts only when the label/path supports that description.",
+      "- Metadata helps with traceability and navigation, but it is not the same as opening the artifact content.",
+      "",
+      "What this SQL result does not prove by itself:",
+      "- Model accuracy or strong performance.",
+      "- Production readiness or approval status.",
+      "- Forecast validation or benchmark superiority.",
+      "- Causality from Gamma/news context.",
+      "- Guaranteed future gold prices.",
+      "",
+      "Artifact-safe response note: Some performance or reliability wording was not repeated because it requires direct support from the approved CSV/JSON artifacts.",
+      "",
+      sourceNames.length
+        ? `Sources used: ${sourceNames.join(", ")}`
+        : "Sources used: supplied Final Deep ML SQL result context.",
+    ].join("\n"));
+  }
 
   return sanitizeGeneratedAnswer([
     "This final Deep ML evaluation page should be explained from approved artifacts only.",
@@ -415,7 +447,7 @@ ${context.contextText}
 
   return {
     answer: riskyFinalDeepMlTerms.length
-      ? buildFinalDeepMlSafetyFallback(context, riskyFinalDeepMlTerms)
+      ? buildFinalDeepMlSafetyFallback(context, riskyFinalDeepMlTerms, sqlContextText)
       : sanitizedAnswer,
     mode: projectMode ? "rag_sql_orchestrator_ai" : "general_ai",
     provider: "openrouter",
