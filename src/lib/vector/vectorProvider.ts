@@ -76,7 +76,7 @@ export async function searchVectorArtifacts(input: SearchInput): Promise<VectorS
   const config = getUpstashConfig();
 
   try {
-    const response = await fetch(`${config.restUrl}/query`, {
+    const response = await fetch(`${config.restUrl}/query-data`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${config.restToken}`,
