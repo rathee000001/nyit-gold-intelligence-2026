@@ -324,6 +324,11 @@ function RetrievalEvidencePanel({ message }: { message: ChatMessage }) {
   const { artifact, vector } = splitAssistantSources(message.sources);
   const vectorSources = Array.isArray(message.vectorSources) ? message.vectorSources : [];
   const summary = message.retrievalSummary || {};
+  const sqlUsed = Boolean(
+    summary.sqlContextUsed ||
+      message.sqlContextUsed ||
+      /sql context|sql result|sql preview|sql metadata|preview rows|sql rows|query lists/i.test(message.content || "")
+  );
   const vectorHits = Number(summary.vectorHits ?? message.vectorRetrieval?.matchCount ?? vectorSources.length ?? vector.length ?? 0);
   const artifactHits = Number(summary.artifactCatalogHits ?? artifact.length ?? 0);
 
@@ -351,7 +356,7 @@ function RetrievalEvidencePanel({ message }: { message: ChatMessage }) {
         <span className="rounded-full border border-violet-200 bg-violet-50 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.18em] text-violet-700">
           Vector {Number.isFinite(vectorHits) ? vectorHits : vectorNames.length}
         </span>
-        {summary.sqlContextUsed || message.sqlContextUsed ? (
+        {sqlUsed ? (
           <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.18em] text-amber-700">
             SQL context used
           </span>

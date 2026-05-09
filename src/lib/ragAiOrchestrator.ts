@@ -164,6 +164,63 @@ function buildSqlContextText(sqlContext?: RagSqlContext | null) {
   return trimText(JSON.stringify(payload, null, 2), 18000);
 }
 
+function buildCombinedSqlVectorEvidenceText({
+  sqlContext,
+  sqlContextText,
+  context,
+  vectorResult,
+}: {
+  sqlContext: RagSqlContext | null;
+  sqlContextText: string;
+  context: Awaited<ReturnType<typeof buildArtifactContextForQuestion>>;
+  vectorResult: Awaited<ReturnType<typeof searchVectorArtifacts>>;
+}) {
+  const sqlUsed = Boolean(sqlContextText);
+  const artifactLines = context.selected.slice(0, 10).map((item) => {
+    return `- ${item.label} | artifacts/${item.path} | ${item.group} | ${item.domain}`;
+  });
+
+  const vectorLines = vectorResult.matches.slice(0, 8).map((match) => {
+    const metadata = match.metadata || {};
+    const label = String(metadata.label || metadata.title || match.id || "Vector match");
+    const path = String(metadata.path || metadata.publicPath || "");
+    const score = Number(match.score);
+    const scoreText = Number.isFinite(score) ? score.toFixed(4) : "n/a";
+    return `- ${label} | ${path} | score=${scoreText}`;
+  });
+
+  const sqlTitle = sqlContext?.title || "SQL result context";
+  const sqlTable = sqlContext?.tableName || "";
+  const sqlRows = Number.isFinite(Number(sqlContext?.rowCount))
+    ? Number(sqlContext?.rowCount)
+    : Array.isArray(sqlContext?.rows)
+    ? sqlContext.rows.length
+    : 0;
+
+  return [
+    "COMBINED SQL + VECTOR EXPLAIN MODE:",
+    `- SQL context supplied: ${sqlUsed ? "yes" : "no"}`,
+    `- SQL title: ${sqlTitle}`,
+    `- SQL table: ${sqlTable || "not supplied"}`,
+    `- SQL preview row count: ${sqlRows}`,
+    `- Approved artifact source count: ${context.selected.length}`,
+    `- Vector match count: ${vectorResult.matches.length}`,
+    "",
+    "Required answer structure when SQL context is supplied:",
+    "1. Start with what the SQL preview rows show.",
+    "2. Mention the approved artifact sources used as grounding context.",
+    "3. Mention vector-matched retrieval candidates only as candidate context.",
+    "4. Include the caution: This interpretation is based on SQL metadata or preview rows only; deeper claims require opening the artifact or governance file.",
+    "5. Do not claim model accuracy, production approval, causality, validation, or forecast guarantees from SQL rows or vector matches.",
+    "",
+    "Approved artifact sources:",
+    artifactLines.length ? artifactLines.join("\n") : "- none selected",
+    "",
+    "Vector-matched retrieval candidates:",
+    vectorLines.length ? vectorLines.join("\n") : "- no vector matches returned",
+  ].join("\n");
+}
+
 
 function isFinalDeepMlPagePath(pagePath?: string) {
   const p = String(pagePath || "").toLowerCase();
@@ -381,6 +438,7 @@ async function callOpenRouter({
   sqlContextText,
   vectorContextText,
   vectorStatusText,
+  retrievalEvidenceText,
   pagePath,
 }: {
   question: string;
@@ -390,6 +448,7 @@ async function callOpenRouter({
   sqlContextText: string;
   vectorContextText: string;
   vectorStatusText: string;
+  retrievalEvidenceText: string;
   pagePath?: string;
 }) {
   const apiKey = process.env.OPENROUTER_API_KEY;
@@ -420,7 +479,11 @@ ${finalDeepMlRulesText ? `${finalDeepMlRulesText}\n` : ""}
 - Do not describe a SQL row as approved, final, production-ready, validated, curated, stakeholder-ready, cutoff-aligned, or decision-making-ready unless those exact claims are present in the supplied SQL rows or loaded artifact context.
 - File names such as official_forecast_path.csv can be described as "named Official Forecast Path" or "appears to be the official forecast path artifact by filename"; do not convert the filename into a verified governance claim.
 - For file-size comments, say "larger file size may indicate more rows or wider output, but file size alone does not prove content detail or model quality."
-- When explaining SQL results, include a short caution line: "This interpretation is based on SQL metadata only; deeper claims require opening the artifact or governance file."
+- When explaining SQL results, include a short caution line: "This interpretation is based on SQL metadata or preview rows only; deeper claims require opening the artifact or governance file."
+- If SQL context and vector context are both present, use combined SQL + Vector explain mode.
+- In combined SQL + Vector explain mode, separate: what the SQL rows show, approved artifact sources, vector-matched retrieval candidates, and safe limitations.
+- Vector matches are retrieval candidates only. They do not replace approved artifact content and do not prove model quality.
+- Do not claim model accuracy, production approval, causality, validation, or forecast guarantees from SQL rows or vector matches.
 - Use plain ASCII punctuation only. Avoid smart quotes, em dashes, bullets, nonbreaking spaces, and mojibake characters.
 
 CURRENT PAGE:
@@ -448,6 +511,9 @@ ${sqlContextText || "No SQL result context supplied."}
 
 VECTOR RETRIEVAL CONTEXT:
 ${vectorContextText || "No vector retrieval context supplied."}
+
+COMBINED SQL + VECTOR RETRIEVAL EVIDENCE:
+${retrievalEvidenceText}
 
 ARTIFACT CONTEXT:
 ${context.contextText}
@@ -558,6 +624,12 @@ export async function orchestrateRagAi(input: RagOrchestratorInput) {
   const vectorStatusText = vectorResult.status.description;
   const vectorSources = vectorSourcesFromMatches(vectorResult.matches);
   const vectorLabels = vectorSourceLabels(vectorResult.matches);
+  const retrievalEvidenceText = buildCombinedSqlVectorEvidenceText({
+    sqlContext,
+    sqlContextText,
+    context,
+    vectorResult,
+  });
 
   const result = await callOpenRouter({
     question,
@@ -567,6 +639,7 @@ export async function orchestrateRagAi(input: RagOrchestratorInput) {
     sqlContextText,
     vectorContextText,
     vectorStatusText,
+    retrievalEvidenceText,
     pagePath,
   });
 
@@ -617,6 +690,13 @@ export async function orchestrateRagAi(input: RagOrchestratorInput) {
       vectorHits: vectorResult.matches.length,
       sqlContextUsed: Boolean(sqlContextText),
       vectorContextUsed: vectorResult.status.active && vectorResult.matches.length > 0,
+    },
+    combinedExplainMode: {
+      active: Boolean(sqlContextText) && vectorResult.status.active && vectorResult.matches.length > 0,
+      sqlContextUsed: Boolean(sqlContextText),
+      artifactCatalogHits: context.selected.length,
+      vectorHits: vectorResult.matches.length,
+      note: "SQL context is read-only preview context. Vector matches are retrieval candidates only.",
     },
     selectedArtifacts: context.selected.map((item) => ({
       id: item.id,
