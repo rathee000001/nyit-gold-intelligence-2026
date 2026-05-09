@@ -42,6 +42,29 @@ type ChatMessage = {
   content: string;
   mode?: string;
   sources?: string[];
+  vectorSources?: {
+    id?: string;
+    label?: string;
+    path?: string;
+    publicPath?: string;
+    group?: string;
+    domain?: string;
+    modelKey?: string;
+    score?: number;
+  }[];
+  vectorRetrieval?: {
+    active?: boolean;
+    configured?: boolean;
+    matchCount?: number;
+    sourceLabels?: string[];
+  };
+  retrievalSummary?: {
+    artifactCatalogHits?: number;
+    vectorHits?: number;
+    sqlContextUsed?: boolean;
+    vectorContextUsed?: boolean;
+  };
+  sqlContextUsed?: boolean;
 };
 
 type LoadedArtifact = {
@@ -278,6 +301,100 @@ function cleanAiModeLabel(mode?: string) {
 
 function modeLabel(mode?: string) {
   return cleanAiModeLabel(mode);
+}
+
+function splitAssistantSources(sources?: string[]) {
+  const allSources = Array.isArray(sources) ? sources : [];
+  const vector = allSources
+    .filter((source) => String(source).startsWith("Vector:"))
+    .map((source) => String(source).replace(/^Vector:\s*/, "").trim())
+    .filter(Boolean);
+
+  const artifact = allSources
+    .filter((source) => !String(source).startsWith("Vector:"))
+    .map((source) => String(source).trim())
+    .filter(Boolean);
+
+  return { artifact, vector };
+}
+
+function RetrievalEvidencePanel({ message }: { message: ChatMessage }) {
+  if (message.role !== "assistant") return null;
+
+  const { artifact, vector } = splitAssistantSources(message.sources);
+  const vectorSources = Array.isArray(message.vectorSources) ? message.vectorSources : [];
+  const summary = message.retrievalSummary || {};
+  const vectorHits = Number(summary.vectorHits ?? message.vectorRetrieval?.matchCount ?? vectorSources.length ?? vector.length ?? 0);
+  const artifactHits = Number(summary.artifactCatalogHits ?? artifact.length ?? 0);
+
+  const vectorNames = vectorSources.length
+    ? vectorSources.map((item) => item.label || item.id || item.path || "Vector source").filter(Boolean)
+    : vector;
+
+  const hasEvidence =
+    artifact.length > 0 ||
+    vectorNames.length > 0 ||
+    Number.isFinite(vectorHits) && vectorHits > 0 ||
+    Number.isFinite(artifactHits) && artifactHits > 0;
+
+  if (!hasEvidence) return null;
+
+  return (
+    <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50/80 p-3">
+      <div className="mb-2 flex flex-wrap items-center gap-2">
+        <span className="rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.18em] text-blue-700">
+          Retrieval evidence
+        </span>
+        <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.18em] text-emerald-700">
+          Artifacts {Number.isFinite(artifactHits) ? artifactHits : artifact.length}
+        </span>
+        <span className="rounded-full border border-violet-200 bg-violet-50 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.18em] text-violet-700">
+          Vector {Number.isFinite(vectorHits) ? vectorHits : vectorNames.length}
+        </span>
+        {summary.sqlContextUsed || message.sqlContextUsed ? (
+          <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.18em] text-amber-700">
+            SQL context used
+          </span>
+        ) : (
+          <span className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.18em] text-slate-500">
+            No SQL context
+          </span>
+        )}
+      </div>
+
+      <div className="grid gap-3 md:grid-cols-2">
+        <div>
+          <div className="mb-1 text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
+            Approved artifact sources
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {(artifact.length ? artifact : ["No artifact source labels returned"]).slice(0, 8).map((source) => (
+              <span key={source} className="rounded-full border border-emerald-100 bg-white px-2 py-1 text-[10px] font-bold text-slate-700">
+                {source}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <div className="mb-1 text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
+            Vector-matched retrieval candidates
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {(vectorNames.length ? vectorNames : ["No vector candidates returned"]).slice(0, 8).map((source) => (
+              <span key={source} className="rounded-full border border-violet-100 bg-white px-2 py-1 text-[10px] font-bold text-slate-700">
+                {source}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <p className="mt-3 text-[11px] font-bold leading-5 text-slate-500">
+        Vector matches are retrieval candidates only. Approved artifact content remains the grounded source layer; forecasts are model outputs, not guarantees.
+      </p>
+    </div>
+  );
 }
 
 function StatusPill({ children, tone = "blue" }: { children: string; tone?: "blue" | "green" | "amber" | "slate" }) {
@@ -1163,7 +1280,7 @@ export default function GoldAIStudioPage() {
           role: "assistant",
           content: data.answer || "No answer returned.",
           mode: data.mode,
-          sources: data.sources,
+          sources: data.sources, vectorSources: data.vectorSources || [], vectorRetrieval: data.vectorRetrieval, retrievalSummary: data.retrievalSummary, sqlContextUsed: Boolean(data.sqlContextUsed),
         },
       ]);
     } catch (error) {
@@ -1913,6 +2030,7 @@ export default function GoldAIStudioPage() {
                     <div className="whitespace-pre-wrap text-sm leading-7">
                       {message.content}
                     </div>
+                    {message.role === "assistant" ? <RetrievalEvidencePanel message={message} /> : null}
 
                     {message.sources?.length ? (
                       <div className="mt-3 flex flex-wrap gap-2">
