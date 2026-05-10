@@ -1,11 +1,15 @@
 const nextConfig = {
   reactCompiler: true,
 
+  outputFileTracingIncludes: {
+    "/*": ["./data/**/*"],
+    "/model3/**/*": ["./data/**/*"],
+  },
+
   outputFileTracingExcludes: {
     "/*": [
       "./artifacts/**/*",
       "./public/artifacts/**/*",
-      "./data/**/*",
       "./.git/**/*",
       "./.next/cache/**/*",
       "./node_modules/.cache/**/*",
@@ -13,17 +17,14 @@ const nextConfig = {
     "/api/**/*": [
       "./artifacts/**/*",
       "./public/artifacts/**/*",
-      "./data/**/*",
     ],
     "/deep-ml/**/*": [
       "./artifacts/**/*",
       "./public/artifacts/**/*",
-      "./data/**/*",
     ],
     "/deep-ml/models/**/*": [
       "./artifacts/**/*",
       "./public/artifacts/**/*",
-      "./data/**/*",
     ],
   },
 };
