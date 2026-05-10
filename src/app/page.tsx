@@ -552,7 +552,7 @@ export default function HomePage() {
                 <PersonCard name="Praveen Rathee" id="1356370" />
                 <PersonCard name="Sarthak Pareek" id="1360682" />
                 <PersonCard name="Abhimanyu Chandrasekharan Menon" id="1360346" />
-                <PersonCard name="Himanshu Mukeshbhai Patel" id="1360346" />
+                
               </div>
 
               <div className="mt-5 rounded-2xl border border-amber-100 bg-amber-50 p-4">
