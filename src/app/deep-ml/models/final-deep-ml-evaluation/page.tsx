@@ -1037,7 +1037,7 @@ function ForecastTooltip({ active, payload, label }: any) {
   const row = payload[0]?.payload || {};
 
   return (
-    <div className="min-w-[340px] rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl">
+    <div className="max-w-[min(86vw,720px)] overflow-hidden break-words whitespace-normal min-w-[340px] rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl">
       <div className="text-sm font-black text-slate-800">{label}</div>
       <div className="mt-1 text-[10px] font-black uppercase tracking-widest text-slate-400">
         {row.split || "forecast"} · {row.source || "Deep ML"}
@@ -1045,7 +1045,7 @@ function ForecastTooltip({ active, payload, label }: any) {
 
       <div className="mt-4 grid gap-2 text-sm">
         <div className="flex justify-between gap-4">
-          <span className="font-bold text-emerald-700">Actual Gold</span>
+          <span className="font-bold text-emerald-700">Actual Gold (Yahoo)</span>
           <span className="font-black">{formatMoney(row.actual)}</span>
         </div>
         <div className="flex justify-between gap-4">
@@ -1061,17 +1061,17 @@ function ForecastTooltip({ active, payload, label }: any) {
           <span className="font-black">{formatMoney(row.upper)}</span>
         </div>
         <div className="flex justify-between gap-4">
-          <span className="font-bold text-slate-500">Residual</span>
+          <span className="font-bold text-slate-500">Residual (visual only)</span>
           <span className="font-black">{formatNumber(row.residual, 2)}</span>
         </div>
         <div className="flex justify-between gap-4">
-          <span className="font-bold text-slate-500">APE</span>
+          <span className="font-bold text-slate-500">APE (visual only)</span>
           <span className="font-black">{formatPct(row.absolute_percentage_error)}</span>
         </div>
       </div>
 
       <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-[11px] font-bold leading-5 text-amber-900">
-        Band source: {row.interval_source || "not available"}. Forecasts are model outputs, not guarantees.
+        Band source: {row.interval_source || "not available"}. Forecasts are model outputs, not guarantees. Yahoo dots are observed GC=F prices for visual comparison only; they do not alter artifacts or prove quality.
       </div>
     </div>
   );
@@ -2039,7 +2039,7 @@ export default function FinalDeepMLEvaluationPage() {
                       <div className="mt-1 text-sm font-black text-slate-800">{formatMoney(row?.mae)}</div>
                     </div>
                     <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                      <div className="text-[9px] font-black uppercase tracking-widest text-slate-400">APE</div>
+                      <div className="text-[9px] font-black uppercase tracking-widest text-slate-400">APE (visual only)</div>
                       <div className="mt-1 text-sm font-black text-slate-800">{formatPct(row?.mape)}</div>
                     </div>
                   </div>
@@ -2122,10 +2122,10 @@ export default function FinalDeepMLEvaluationPage() {
 
               <div className="mb-5 flex flex-wrap gap-3">
                 <span className="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-emerald-700">
-                  actual rows: {metrics.actualRows}
+                  Yahoo actual points: {metrics.actualRows}
                 </span>
                 <span className="rounded-full border border-emerald-200 bg-white px-4 py-2 text-[10px] font-black uppercase tracking-widest text-emerald-700">
-                  matrix actual overlay: {matrixActualRowsForForecast.length}
+                  Yahoo actual overlay: {yahooActualRows.length}
                 </span>
                 <span className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-blue-700">
                   selected: {selectedModel.label}
@@ -2154,7 +2154,7 @@ export default function FinalDeepMLEvaluationPage() {
                         style: { textAnchor: "middle", fontSize: 12, fontWeight: 700, fill: "#64748b" },
                       }}
                     />
-                    <Tooltip content={<ForecastTooltip />} />
+                    <Tooltip wrapperStyle={{ maxWidth: "min(86vw, 760px)", zIndex: 60 }} content={<ForecastTooltip />} />
                     <Legend />
                     <Area type="monotone" dataKey="upper" name="Upper 95%" stroke="#d97706" fill="#fde68a" fillOpacity={0.28} dot={false} connectNulls />
                     <Area type="monotone" dataKey="lower" name="Lower 95%" stroke="#d97706" fill="#ffffff" fillOpacity={1} dot={false} connectNulls />
@@ -2169,7 +2169,7 @@ export default function FinalDeepMLEvaluationPage() {
                       connectNulls={false}
                       isAnimationActive={false}
                     />
-                    <Line type="monotone" dataKey="actual" name="Actual Gold Price" stroke="#16a34a" strokeWidth={2.6} dot={false} connectNulls />
+                    <Line type="monotone" dataKey="actual" name="Actual Gold (Yahoo) Price" stroke="#16a34a" strokeWidth={2.6} dot={false} connectNulls />
                     <Line type="monotone" dataKey="forecast" name={`${selectedModel.label} Forecast`} stroke="#2563eb" strokeWidth={2.6} dot={false} connectNulls />
                   </AreaChart>
                 </ResponsiveContainer>
@@ -2281,7 +2281,7 @@ export default function FinalDeepMLEvaluationPage() {
               source: {selectedModel.label} rollforward
             </span>
             <span className="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-emerald-700">
-              actual rows: {diagnosticMetrics.actualRows}
+              Yahoo actual points: {diagnosticMetrics.actualRows}
             </span>
             <span className="rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-amber-700">
               horizon: {diagnosticHorizon}
@@ -2348,7 +2348,7 @@ export default function FinalDeepMLEvaluationPage() {
                   <Legend />
                   <ReferenceLine y={0} stroke="#64748b" strokeDasharray="4 4" />
                   {shockOverlays()}
-                  <Line type="monotone" dataKey="residual" name="Residual Actual - Forecast" stroke="#7c3aed" strokeWidth={2} dot={false} connectNulls />
+                  <Line type="monotone" dataKey="residual" name="Residual (visual only) Actual - Forecast" stroke="#7c3aed" strokeWidth={2} dot={false} connectNulls />
                   <Line type="monotone" dataKey="absolute_percentage_error" name="Absolute Percentage Error" stroke="#dc2626" strokeWidth={2} dot={false} connectNulls />
                   <Brush dataKey="date" height={30} stroke="#7c3aed" travellerWidth={10} />
                 </LineChart>
