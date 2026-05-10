@@ -64,6 +64,11 @@ type ForecastRow = {
   interval_source: string;
 };
 
+type YahooActualRow = {
+  date: string;
+  actual: number;
+};
+
 type DiagnosticRow = {
   date: string;
   actual: number | null;
@@ -695,6 +700,45 @@ function dedupeForecastRows(rows: ForecastRow[]) {
   }
 
   return Array.from(map.values()).sort((a, b) => String(a.date).localeCompare(String(b.date)));
+}
+
+
+function mergeForecastRowsWithYahooActuals(forecastRows: ForecastRow[], actualRows: YahooActualRow[]) {
+  if (!actualRows.length) return forecastRows;
+
+  const actualByDate = new Map(
+    actualRows
+      .filter((row) => row.date && Number.isFinite(Number(row.actual)))
+      .map((row) => [row.date, Number(row.actual)])
+  );
+
+  return forecastRows.map((row) => {
+    const yahooActual = actualByDate.get(row.date);
+
+    if (!Number.isFinite(Number(yahooActual))) {
+      return row;
+    }
+
+    const forecast = row.forecast;
+    const residual =
+      forecast !== null && Number.isFinite(Number(forecast))
+        ? Number(yahooActual) - Number(forecast)
+        : null;
+    const absolute_error = residual !== null ? Math.abs(residual) : null;
+    const absolute_percentage_error =
+      absolute_error !== null && Number(yahooActual) !== 0
+        ? (absolute_error / Math.abs(Number(yahooActual))) * 100
+        : null;
+
+    return {
+      ...row,
+      actual: Number(yahooActual),
+      residual,
+      absolute_error,
+      absolute_percentage_error,
+      split: `${row.split || "forecast"} + yahoo_actual_overlay`,
+    };
+  });
 }
 
 function residualStd(rows: ForecastRow[]) {
@@ -1476,6 +1520,47 @@ function FinalEvalSqlExplorer({
 
 
 export default function FinalDeepMLEvaluationPage() {
+  const [yahooActualRows, setYahooActualRows] = useState<YahooActualRow[]>([]);
+  const [yahooActualStatus, setYahooActualStatus] = useState("not loaded");
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadYahooActuals() {
+      try {
+        setYahooActualStatus("loading");
+        const response = await fetch(`/api/market/gold-actuals?start=${PROJECT_FORECAST_START}`, {
+          cache: "no-store",
+        });
+        const payload = await response.json();
+        const rows = Array.isArray(payload?.rows) ? payload.rows : [];
+
+        if (!cancelled) {
+          setYahooActualRows(
+            rows
+              .map((row: any) => ({
+                date: String(row.date || ""),
+                actual: Number(row.actual),
+              }))
+              .filter((row: YahooActualRow) => row.date && Number.isFinite(row.actual))
+          );
+          setYahooActualStatus(payload?.ok ? `Yahoo actuals: ${rows.length}` : "Yahoo actuals unavailable");
+        }
+      } catch {
+        if (!cancelled) {
+          setYahooActualRows([]);
+          setYahooActualStatus("Yahoo actuals unavailable");
+        }
+      }
+    }
+
+    loadYahooActuals();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
 
   const finalArtifactSqlTable = useMemo(() => finalEvalArtifactSqlRows(), []);
   const [finalSqlQuery, setFinalSqlQuery] = useState(FINAL_EVAL_SQL_EXAMPLES[0].query);
@@ -1608,8 +1693,12 @@ export default function FinalDeepMLEvaluationPage() {
   );
 
   const selectedForecastRows = useMemo(
-    () => mergeForecastWithMatrixActuals(rawSelectedForecastRows, matrixActualRowsForForecast),
-    [rawSelectedForecastRows, matrixActualRowsForForecast]
+    () =>
+      mergeForecastRowsWithYahooActuals(
+        rawSelectedForecastRows.filter((row) => row.forecast !== null),
+        yahooActualRows
+      ),
+    [rawSelectedForecastRows, yahooActualRows]
   );
 
   const chartRows = useMemo(() => downsampleRows(selectedForecastRows, 900), [selectedForecastRows]);
@@ -2069,6 +2158,17 @@ export default function FinalDeepMLEvaluationPage() {
                     <Legend />
                     <Area type="monotone" dataKey="upper" name="Upper 95%" stroke="#d97706" fill="#fde68a" fillOpacity={0.28} dot={false} connectNulls />
                     <Area type="monotone" dataKey="lower" name="Lower 95%" stroke="#d97706" fill="#ffffff" fillOpacity={1} dot={false} connectNulls />
+                    <Line
+                      type="monotone"
+                      dataKey="actual"
+                      name="Actual Gold (Yahoo)"
+                      stroke="#16a34a"
+                      strokeWidth={0}
+                      dot={{ r: 4, strokeWidth: 2 }}
+                      activeDot={{ r: 6 }}
+                      connectNulls={false}
+                      isAnimationActive={false}
+                    />
                     <Line type="monotone" dataKey="actual" name="Actual Gold Price" stroke="#16a34a" strokeWidth={2.6} dot={false} connectNulls />
                     <Line type="monotone" dataKey="forecast" name={`${selectedModel.label} Forecast`} stroke="#2563eb" strokeWidth={2.6} dot={false} connectNulls />
                   </AreaChart>
