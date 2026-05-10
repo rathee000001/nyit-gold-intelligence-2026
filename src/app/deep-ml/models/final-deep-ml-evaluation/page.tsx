@@ -64,6 +64,11 @@ type ForecastRow = {
   interval_source: string;
 };
 
+type YahooActualRow = {
+  date: string;
+  actual: number;
+};
+
 type DiagnosticRow = {
   date: string;
   actual: number | null;
@@ -697,6 +702,45 @@ function dedupeForecastRows(rows: ForecastRow[]) {
   return Array.from(map.values()).sort((a, b) => String(a.date).localeCompare(String(b.date)));
 }
 
+
+function mergeForecastRowsWithYahooActuals(forecastRows: ForecastRow[], actualRows: YahooActualRow[]) {
+  if (!actualRows.length) return forecastRows;
+
+  const actualByDate = new Map(
+    actualRows
+      .filter((row) => row.date && Number.isFinite(Number(row.actual)))
+      .map((row) => [row.date, Number(row.actual)])
+  );
+
+  return forecastRows.map((row) => {
+    const yahooActual = actualByDate.get(row.date);
+
+    if (!Number.isFinite(Number(yahooActual))) {
+      return row;
+    }
+
+    const forecast = row.forecast;
+    const residual =
+      forecast !== null && Number.isFinite(Number(forecast))
+        ? Number(yahooActual) - Number(forecast)
+        : null;
+    const absolute_error = residual !== null ? Math.abs(residual) : null;
+    const absolute_percentage_error =
+      absolute_error !== null && Number(yahooActual) !== 0
+        ? (absolute_error / Math.abs(Number(yahooActual))) * 100
+        : null;
+
+    return {
+      ...row,
+      actual: Number(yahooActual),
+      residual,
+      absolute_error,
+      absolute_percentage_error,
+      split: `${row.split || "forecast"} + yahoo_actual_overlay`,
+    };
+  });
+}
+
 function residualStd(rows: ForecastRow[]) {
   const residuals = rows.map((row) => row.residual).filter((value): value is number => Number.isFinite(Number(value)));
 
@@ -993,7 +1037,7 @@ function ForecastTooltip({ active, payload, label }: any) {
   const row = payload[0]?.payload || {};
 
   return (
-    <div className="min-w-[340px] rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl">
+    <div className="max-w-[min(86vw,720px)] overflow-hidden break-words whitespace-normal min-w-[340px] rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl">
       <div className="text-sm font-black text-slate-800">{label}</div>
       <div className="mt-1 text-[10px] font-black uppercase tracking-widest text-slate-400">
         {row.split || "forecast"} · {row.source || "Deep ML"}
@@ -1001,7 +1045,7 @@ function ForecastTooltip({ active, payload, label }: any) {
 
       <div className="mt-4 grid gap-2 text-sm">
         <div className="flex justify-between gap-4">
-          <span className="font-bold text-emerald-700">Actual Gold</span>
+          <span className="font-bold text-emerald-700">Actual Gold (Yahoo)</span>
           <span className="font-black">{formatMoney(row.actual)}</span>
         </div>
         <div className="flex justify-between gap-4">
@@ -1017,28 +1061,574 @@ function ForecastTooltip({ active, payload, label }: any) {
           <span className="font-black">{formatMoney(row.upper)}</span>
         </div>
         <div className="flex justify-between gap-4">
-          <span className="font-bold text-slate-500">Residual</span>
+          <span className="font-bold text-slate-500">Residual (visual only)</span>
           <span className="font-black">{formatNumber(row.residual, 2)}</span>
         </div>
         <div className="flex justify-between gap-4">
-          <span className="font-bold text-slate-500">APE</span>
+          <span className="font-bold text-slate-500">APE (visual only)</span>
           <span className="font-black">{formatPct(row.absolute_percentage_error)}</span>
         </div>
       </div>
 
       <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-[11px] font-bold leading-5 text-amber-900">
-        Band source: {row.interval_source || "not available"}. Forecasts are model outputs, not guarantees.
+        Band source: {row.interval_source || "not available"}. Forecasts are model outputs, not guarantees. Yahoo dots are observed GC=F prices for visual comparison only; they do not alter artifacts or prove quality.
       </div>
     </div>
   );
 }
 
-function modeLabel(mode?: string) {
+
+function cleanAiModeLabel(mode?: string) {
   if (!mode) return "Gold AI";
-  return mode.replaceAll("_", " ");
+  if (mode === "rag_sql_orchestrator_ai") return "RAG + SQL Orchestrator";
+  if (mode === "rag_sql_orchestrator_fallback") return "RAG + SQL Fallback";
+  if (mode === "artifact_blob_ai") return "RAG + SQL AI";
+  if (mode === "artifact_fallback") return "Artifact Fallback";
+  if (mode === "general_ai") return "General AI";
+  if (mode === "needs_openrouter_key") return "Needs API Key";
+  if (mode === "openrouter_api_error") return "AI Provider Error";
+  if (mode === "deep_ml_forecast_ai") return "Deep ML Forecast AI";
+  if (mode === "error") return "AI Error";
+  return String(mode)
+    .replaceAll("_", " ")
+    .replace(/\bRAG + SQL Orchestrator\b/i, "RAG + SQL Orchestrator")
+    .replace(/\brag sql orchestrator fallback\b/i, "RAG + SQL Fallback")
+    .replace(/\bartifact blob ai\b/i, "RAG + SQL AI")
+    .replace(/\bai\b/i, "AI")
+    .trim();
 }
 
+
+function modeLabel(mode?: string) {
+  return cleanAiModeLabel(mode);
+}
+
+
+const FINAL_EVAL_SQL_EXAMPLES = [
+  {
+    label: "Omega artifacts",
+    query: "SELECT label, path, group, kind FROM final_artifacts WHERE group = 'Omega' ORDER BY label ASC LIMIT 50",
+  },
+  {
+    label: "Forecast files",
+    query: "SELECT label, path, group, kind FROM final_artifacts WHERE tags LIKE '%forecast%' ORDER BY group ASC LIMIT 50",
+  },
+  {
+    label: "CSV artifacts",
+    query: "SELECT label, path, group, kind FROM final_artifacts WHERE kind = 'csv' ORDER BY group ASC LIMIT 100",
+  },
+  {
+    label: "Files by group",
+    query: "SELECT group, COUNT(*) AS files FROM final_artifacts GROUP BY group ORDER BY files DESC",
+  },
+];
+
+function finalEvalArtifactSqlRows() {
+  return ARTIFACTS.map((artifact) => {
+    const lower = `${artifact.key} ${artifact.label} ${artifact.path} ${artifact.group} ${artifact.kind}`.toLowerCase();
+
+    let modelKey = "";
+    if (lower.includes("omega")) modelKey = "omega";
+    else if (lower.includes("alpha")) modelKey = "alpha";
+    else if (lower.includes("beta")) modelKey = "beta";
+    else if (lower.includes("delta")) modelKey = "delta";
+    else if (lower.includes("epsilon")) modelKey = "epsilon";
+    else if (lower.includes("gamma")) modelKey = "gamma";
+
+    const tags = [
+      artifact.group,
+      artifact.kind,
+      artifact.required ? "required" : "optional",
+      modelKey,
+      lower.includes("forecast") ? "forecast" : "",
+      lower.includes("evaluation") ? "evaluation" : "",
+      lower.includes("ranking") ? "ranking" : "",
+      lower.includes("weight") ? "weights" : "",
+      lower.includes("quality") ? "quality" : "",
+      lower.includes("governance") ? "governance" : "",
+    ].filter(Boolean);
+
+    return {
+      key: artifact.key,
+      label: artifact.label,
+      path: artifact.path,
+      kind: artifact.kind,
+      group: artifact.group,
+      required: Boolean(artifact.required),
+      modelKey,
+      domain: "deep_ml_final_evaluation",
+      tags: tags.join(" "),
+    };
+  });
+}
+
+function finalEvalSqlColumns(rows: any[]) {
+  const cols = new Set<string>();
+  rows.slice(0, 80).forEach((row) => Object.keys(row || {}).forEach((key) => cols.add(key)));
+  return Array.from(cols);
+}
+
+function finalEvalSqlCsv(rows: any[], columns: string[]) {
+  const escapeCell = (value: any) => {
+    if (value === null || value === undefined) return "";
+    const text = String(value);
+    if (text.includes(",") || text.includes('"') || text.includes("\n")) {
+      return `"${text.replaceAll('"', '""')}"`;
+    }
+    return text;
+  };
+
+  return [
+    columns.map(escapeCell).join(","),
+    ...rows.map((row) => columns.map((column) => escapeCell(row?.[column])).join(",")),
+  ].join("\n");
+}
+
+function finalEvalSqlCompare(rowValue: any, operator: string, expectedValue: string) {
+  const leftText = String(rowValue ?? "");
+  const rightText = String(expectedValue ?? "");
+
+  if (operator === "LIKE") {
+    const needle = rightText.replaceAll("%", "").toLowerCase();
+    return leftText.toLowerCase().includes(needle);
+  }
+
+  const leftNumber = Number(leftText);
+  const rightNumber = Number(rightText);
+
+  if (Number.isFinite(leftNumber) && Number.isFinite(rightNumber)) {
+    if (operator === "=") return leftNumber === rightNumber;
+    if (operator === "!=" || operator === "<>") return leftNumber !== rightNumber;
+    if (operator === ">") return leftNumber > rightNumber;
+    if (operator === ">=") return leftNumber >= rightNumber;
+    if (operator === "<") return leftNumber < rightNumber;
+    if (operator === "<=") return leftNumber <= rightNumber;
+  }
+
+  if (operator === "=") return leftText.toLowerCase() === rightText.toLowerCase();
+  if (operator === "!=" || operator === "<>") return leftText.toLowerCase() !== rightText.toLowerCase();
+
+  return false;
+}
+
+function runFinalEvalSqlLite(query: string, sourceRows: any[]) {
+  const raw = String(query || "").trim();
+  const normalized = raw.replace(/\s+/g, " ");
+  const lower = normalized.toLowerCase();
+
+  if (!lower.startsWith("select ")) {
+    throw new Error("Only SELECT queries are allowed.");
+  }
+
+  const forbidden = [
+    "insert ",
+    "update ",
+    "delete ",
+    "drop ",
+    "alter ",
+    "create ",
+    "truncate ",
+    "replace ",
+    "attach ",
+    "detach ",
+    " into ",
+    "load ",
+    "require",
+    "import ",
+    "export ",
+    "fetch(",
+    "window.",
+    "document.",
+  ];
+
+  const blocked = forbidden.find((token) => lower.includes(token));
+  if (blocked) {
+    throw new Error(`Blocked SQL token: ${blocked.trim()}. This explorer is read-only.`);
+  }
+
+  const fromMatch = normalized.match(/^select\s+(.+?)\s+from\s+final_artifacts(?:\s+|$)(.*)$/i);
+  if (!fromMatch) {
+    throw new Error("Use FROM final_artifacts. This explorer exposes the Final Deep ML artifact registry only.");
+  }
+
+  const selectText = fromMatch[1].trim();
+  let tail = (fromMatch[2] || "").trim();
+
+  let limit = 100;
+  const limitMatch = tail.match(/\s+limit\s+(\d+)\s*$/i);
+  if (limitMatch) {
+    limit = Math.max(1, Math.min(Number(limitMatch[1]) || 100, 500));
+    tail = tail.slice(0, limitMatch.index).trim();
+  }
+
+  let orderKey = "";
+  let orderDirection: "asc" | "desc" = "asc";
+  const orderMatch = tail.match(/\s+order\s+by\s+([a-zA-Z0-9_]+)(?:\s+(asc|desc))?\s*$/i);
+  if (orderMatch) {
+    orderKey = orderMatch[1];
+    orderDirection = String(orderMatch[2] || "asc").toLowerCase() === "desc" ? "desc" : "asc";
+    tail = tail.slice(0, orderMatch.index).trim();
+  }
+
+  let groupKey = "";
+  const groupMatch = tail.match(/^group\s+by\s+([a-zA-Z0-9_]+)\s*$/i);
+  if (groupMatch) {
+    groupKey = groupMatch[1];
+    tail = tail.slice(0, groupMatch.index).trim();
+  }
+
+  let whereText = "";
+  const whereMatch = tail.match(/^where\s+(.+)$/i);
+  if (whereMatch) {
+    whereText = whereMatch[1].trim();
+  } else if (tail.trim()) {
+    throw new Error(`Unsupported SQL clause: ${tail}`);
+  }
+
+  let rows = [...sourceRows];
+
+  if (whereText) {
+    const conditions = whereText.split(/\s+and\s+/i).map((item) => item.trim()).filter(Boolean);
+
+    rows = rows.filter((row) =>
+      conditions.every((condition) => {
+        const match = condition.match(/^([a-zA-Z0-9_]+)\s*(=|!=|<>|>=|<=|>|<|LIKE)\s*'([^']*)'$/i);
+        if (!match) {
+          throw new Error(`Unsupported WHERE condition: ${condition}. Use examples like group = 'Omega' or tags LIKE '%forecast%'.`);
+        }
+
+        const [, key, operator, expected] = match;
+        return finalEvalSqlCompare(row?.[key], operator.toUpperCase(), expected);
+      })
+    );
+  }
+
+  const selectParts = selectText.split(",").map((item) => item.trim()).filter(Boolean);
+  const wantsCount = selectParts.some((part) => /^count\(\*\)(?:\s+as\s+[a-zA-Z0-9_]+)?$/i.test(part));
+
+  if (groupKey) {
+    const groups = new Map<string, any[]>();
+
+    rows.forEach((row) => {
+      const key = String(row?.[groupKey] ?? "");
+      groups.set(key, [...(groups.get(key) || []), row]);
+    });
+
+    rows = Array.from(groups.entries()).map(([groupValue, groupRows]) => {
+      const out: Record<string, any> = { [groupKey]: groupValue };
+
+      selectParts.forEach((part) => {
+        const countMatch = part.match(/^count\(\*\)(?:\s+as\s+([a-zA-Z0-9_]+))?$/i);
+        if (countMatch) {
+          out[countMatch[1] || "count"] = groupRows.length;
+          return;
+        }
+
+        if (part !== groupKey && part !== "*") {
+          out[part] = groupRows[0]?.[part];
+        }
+      });
+
+      return out;
+    });
+  } else if (wantsCount) {
+    const alias = selectParts
+      .map((part) => part.match(/^count\(\*\)(?:\s+as\s+([a-zA-Z0-9_]+))?$/i))
+      .find(Boolean)?.[1] || "count";
+    rows = [{ [alias]: rows.length }];
+  } else if (!(selectParts.length === 1 && selectParts[0] === "*")) {
+    rows = rows.map((row) => {
+      const out: Record<string, any> = {};
+      selectParts.forEach((part) => {
+        out[part] = row?.[part];
+      });
+      return out;
+    });
+  }
+
+  if (orderKey) {
+    rows = [...rows].sort((a, b) => {
+      const av = a?.[orderKey];
+      const bv = b?.[orderKey];
+      const an = Number(av);
+      const bn = Number(bv);
+
+      let cmp = 0;
+      if (Number.isFinite(an) && Number.isFinite(bn)) {
+        cmp = an - bn;
+      } else {
+        cmp = String(av ?? "").localeCompare(String(bv ?? ""));
+      }
+
+      return orderDirection === "desc" ? -cmp : cmp;
+    });
+  }
+
+  return rows.slice(0, limit);
+}
+
+function FinalEvalSqlExplorer({
+  query,
+  setQuery,
+  rows,
+  error,
+  busy,
+  onRun,
+  onDownload,
+  onAskAi,
+}: {
+  query: string;
+  setQuery: (value: string) => void;
+  rows: any[];
+  error: string;
+  busy: boolean;
+  onRun: () => void;
+  onDownload: () => void;
+  onAskAi: () => void;
+}) {
+  const columns = finalEvalSqlColumns(rows);
+
+  return (
+    <section className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <div>
+          <div className="text-[11px] font-black uppercase tracking-[0.32em] text-blue-600">
+            SQL-4A Final Eval SQL
+          </div>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
+            Query final evaluation artifacts
+          </h2>
+          <p className="mt-3 max-w-5xl text-sm font-semibold leading-7 text-slate-600">
+            Read-only SQL explorer for the Final Deep ML Evaluation artifact registry.
+            Table name: <span className="font-black text-slate-950">final_artifacts</span>.
+            It inspects artifact metadata only and does not alter forecasts, models, or files.
+          </p>
+        </div>
+
+        <div className="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-emerald-700">
+          {rows.length ? `${rows.length} rows` : "read-only"}
+        </div>
+      </div>
+
+      <div className="mt-6 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="rounded-[1.4rem] border border-slate-200 bg-slate-50 p-4">
+          <textarea
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            rows={7}
+            className="min-h-[180px] w-full resize-y rounded-2xl border border-slate-200 bg-white p-4 font-mono text-sm leading-7 text-slate-950 outline-none focus:border-blue-300"
+          />
+
+          {error ? (
+            <div className="mt-3 rounded-2xl border border-rose-200 bg-rose-50 p-3 text-sm font-bold text-rose-700">
+              {error}
+            </div>
+          ) : null}
+
+          <div className="mt-4 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={onRun}
+              disabled={busy}
+              className="rounded-full bg-blue-600 px-5 py-3 text-xs font-black uppercase tracking-[0.18em] text-white shadow-lg shadow-blue-600/20 disabled:bg-slate-300"
+            >
+              {busy ? "Running..." : "Run SQL"}
+            </button>
+
+            <button
+              type="button"
+              onClick={onDownload}
+              disabled={!rows.length}
+              className="rounded-full border border-slate-200 bg-white px-5 py-3 text-xs font-black uppercase tracking-[0.18em] text-slate-800 disabled:opacity-40"
+            >
+              Download Result
+            </button>
+
+            <button
+              type="button"
+              onClick={onAskAi}
+              disabled={!rows.length}
+              className="rounded-full border border-amber-200 bg-amber-50 px-5 py-3 text-xs font-black uppercase tracking-[0.18em] text-amber-800 disabled:opacity-40"
+            >
+              Ask AI About SQL
+            </button>
+          </div>
+        </div>
+
+        <div className="rounded-[1.4rem] border border-slate-200 bg-white p-4">
+          <div className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-slate-500">
+            Examples
+          </div>
+
+          <div className="grid gap-2">
+            {FINAL_EVAL_SQL_EXAMPLES.map((example) => (
+              <button
+                key={example.label}
+                type="button"
+                onClick={() => setQuery(example.query)}
+                className="rounded-2xl border border-slate-200 bg-slate-50 p-3 text-left text-xs font-bold leading-5 text-slate-700 hover:border-blue-200 hover:bg-blue-50"
+              >
+                <div className="font-black uppercase tracking-[0.14em] text-blue-700">
+                  {example.label}
+                </div>
+                <div className="mt-1 font-mono text-[11px] text-slate-500">
+                  {example.query}
+                </div>
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 p-3 text-xs font-bold leading-5 text-amber-800">
+            Professor-safe note: this SQL explorer inspects artifact metadata. It does not prove
+            model accuracy, approval, causality, or forecast guarantees.
+          </div>
+        </div>
+      </div>
+
+      {rows.length ? (
+        <div className="mt-6 overflow-hidden rounded-[1.4rem] border border-slate-200">
+          <div className="max-h-[360px] overflow-auto">
+            <table className="min-w-full text-left text-xs">
+              <thead className="sticky top-0 bg-slate-100 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500">
+                <tr>
+                  {columns.map((column) => (
+                    <th key={column} className="whitespace-nowrap px-4 py-3">
+                      {column}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 bg-white">
+                {rows.slice(0, 100).map((row, index) => (
+                  <tr key={index}>
+                    {columns.map((column) => (
+                      <td key={column} className="max-w-[360px] truncate px-4 py-3 font-semibold text-slate-700">
+                        {String(row?.[column] ?? "")}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : null}
+    </section>
+  );
+}
+
+
+
 export default function FinalDeepMLEvaluationPage() {
+  const [yahooActualRows, setYahooActualRows] = useState<YahooActualRow[]>([]);
+  const [yahooActualStatus, setYahooActualStatus] = useState("not loaded");
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadYahooActuals() {
+      try {
+        setYahooActualStatus("loading");
+        const response = await fetch(`/api/market/gold-actuals?start=${PROJECT_FORECAST_START}`, {
+          cache: "no-store",
+        });
+        const payload = await response.json();
+        const rows = Array.isArray(payload?.rows) ? payload.rows : [];
+
+        if (!cancelled) {
+          setYahooActualRows(
+            rows
+              .map((row: any) => ({
+                date: String(row.date || ""),
+                actual: Number(row.actual),
+              }))
+              .filter((row: YahooActualRow) => row.date && Number.isFinite(row.actual))
+          );
+          setYahooActualStatus(payload?.ok ? `Yahoo actuals: ${rows.length}` : "Yahoo actuals unavailable");
+        }
+      } catch {
+        if (!cancelled) {
+          setYahooActualRows([]);
+          setYahooActualStatus("Yahoo actuals unavailable");
+        }
+      }
+    }
+
+    loadYahooActuals();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+
+  const finalArtifactSqlTable = useMemo(() => finalEvalArtifactSqlRows(), []);
+  const [finalSqlQuery, setFinalSqlQuery] = useState(FINAL_EVAL_SQL_EXAMPLES[0].query);
+  const [finalSqlRows, setFinalSqlRows] = useState<any[]>([]);
+  const [finalSqlError, setFinalSqlError] = useState("");
+  const [finalSqlBusy, setFinalSqlBusy] = useState(false);
+
+  function runFinalEvalSql() {
+    setFinalSqlBusy(true);
+    setFinalSqlError("");
+
+    try {
+      const result = runFinalEvalSqlLite(finalSqlQuery, finalArtifactSqlTable);
+      setFinalSqlRows(result);
+    } catch (error) {
+      setFinalSqlRows([]);
+      setFinalSqlError(error instanceof Error ? error.message : "Final evaluation SQL failed.");
+    } finally {
+      setFinalSqlBusy(false);
+    }
+  }
+
+  function downloadFinalEvalSqlResult() {
+    if (!finalSqlRows.length) return;
+
+    const columns = finalEvalSqlColumns(finalSqlRows);
+    const csv = finalEvalSqlCsv(finalSqlRows, columns);
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+
+    anchor.href = url;
+    anchor.download = "final_deep_ml_sql_result.csv";
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function buildFinalDeepMlSqlContextForAi() {
+    if (!finalSqlRows.length) return buildFinalDeepMlContextForAi();
+
+    return {
+      source: "final_deep_ml_sql_explorer",
+      title: "Final Deep ML Evaluation SQL result",
+      tableName: "final_artifacts",
+      query: finalSqlQuery,
+      rowCount: finalSqlRows.length,
+      columns: finalEvalSqlColumns(finalSqlRows),
+      rows: finalSqlRows.slice(0, 50),
+      notes: [
+        "This is a read-only SQL result from the Final Deep ML Evaluation artifact registry.",
+        "Rows are artifact metadata unless a CSV/JSON artifact is opened separately.",
+        "Do not infer model quality, approval, causality, validation status, or forecast guarantees from metadata alone.",
+      ],
+    };
+  }
+
+  function askAiAboutFinalEvalSql() {
+    if (!finalSqlRows.length) {
+      setFinalSqlError("Run a Final Eval SQL query first.");
+      return;
+    }
+
+    askAI("Explain this Final Deep ML SQL result in professor-safe business language.");
+  }
+
+
   const [loaded, setLoaded] = useState<Record<string, LoadedArtifact>>({});
   const [loading, setLoading] = useState(true);
   const [selectedModelKey, setSelectedModelKey] = useState<ModelKey>("omega");
@@ -1048,7 +1638,7 @@ export default function FinalDeepMLEvaluationPage() {
   const [aiMessages, setAiMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
-      mode: "deep_ml_forecast_ai",
+      mode: "RAG + SQL Orchestrator",
       content:
         "I can explain this Deep ML final forecast page using Omega, Alpha, Beta, Delta, Epsilon, Gamma, Step 10, Step 10A, Step 11, and Deep ML governance artifacts only.",
       sources: [],
@@ -1103,8 +1693,12 @@ export default function FinalDeepMLEvaluationPage() {
   );
 
   const selectedForecastRows = useMemo(
-    () => mergeForecastWithMatrixActuals(rawSelectedForecastRows, matrixActualRowsForForecast),
-    [rawSelectedForecastRows, matrixActualRowsForForecast]
+    () =>
+      mergeForecastRowsWithYahooActuals(
+        rawSelectedForecastRows.filter((row) => row.forecast !== null),
+        yahooActualRows
+      ),
+    [rawSelectedForecastRows, yahooActualRows]
   );
 
   const chartRows = useMemo(() => downsampleRows(selectedForecastRows, 900), [selectedForecastRows]);
@@ -1172,6 +1766,33 @@ export default function FinalDeepMLEvaluationPage() {
     };
   });
 
+
+  function buildFinalDeepMlContextForAi() {
+    return {
+      source: "final_deep_ml_evaluation_page",
+      title: "Final Deep ML Evaluation page artifact context",
+      tableName: "final_deep_ml_evaluation_artifacts",
+      query: "page_context_artifact_list",
+      rowCount: ARTIFACTS.length,
+      columns: ["label", "path", "group", "kind", "required"],
+      rows: ARTIFACTS.map((artifact) => ({
+        label: artifact.label,
+        path: artifact.path,
+        group: artifact.group,
+        kind: artifact.kind,
+        required: Boolean(artifact.required),
+      })).slice(0, 80),
+      notes: [
+        "This is page context from the Final Deep ML Evaluation page.",
+        "Rows identify approved page artifacts and should not be treated as forecast evidence by themselves.",
+        "Claims about selected model, forecast values, intervals, ranking, or quality must come from loaded artifacts.",
+        "Do not describe forecasts as guarantees.",
+        "Do not claim causality from Gamma, news context, weights, or model outputs.",
+        "Omega can be described as the selected final Deep ML forecast layer only when supported by final evaluation artifacts.",
+      ],
+    };
+  }
+
   async function askAI(promptOverride?: string) {
     const prompt = (promptOverride || aiQuestion).trim();
     if (!prompt || aiBusy) return;
@@ -1187,13 +1808,14 @@ export default function FinalDeepMLEvaluationPage() {
     setAiBusy(true);
 
     try {
-      const response = await fetch("/api/gold-ai", {
+      const response = await fetch("/api/rag-ai", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           question: pagePrompt,
           pagePath: "/deep-ml/models/final-deep-ml-evaluation",
           history: nextMessages.slice(-8),
+          sqlContext: buildFinalDeepMlSqlContextForAi(),
         }),
       });
 
@@ -1417,7 +2039,7 @@ export default function FinalDeepMLEvaluationPage() {
                       <div className="mt-1 text-sm font-black text-slate-800">{formatMoney(row?.mae)}</div>
                     </div>
                     <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                      <div className="text-[9px] font-black uppercase tracking-widest text-slate-400">APE</div>
+                      <div className="text-[9px] font-black uppercase tracking-widest text-slate-400">APE (visual only)</div>
                       <div className="mt-1 text-sm font-black text-slate-800">{formatPct(row?.mape)}</div>
                     </div>
                   </div>
@@ -1426,6 +2048,17 @@ export default function FinalDeepMLEvaluationPage() {
             })}
           </div>
         </section>
+
+        <FinalEvalSqlExplorer
+          query={finalSqlQuery}
+          setQuery={setFinalSqlQuery}
+          rows={finalSqlRows}
+          error={finalSqlError}
+          busy={finalSqlBusy}
+          onRun={runFinalEvalSql}
+          onDownload={downloadFinalEvalSqlResult}
+          onAskAi={askAiAboutFinalEvalSql}
+        />
 
         {requiredMissing.length ? (
           <section className="mt-6 rounded-[2rem] border border-amber-200 bg-amber-50 p-5 text-sm font-bold leading-7 text-amber-900">
@@ -1489,10 +2122,10 @@ export default function FinalDeepMLEvaluationPage() {
 
               <div className="mb-5 flex flex-wrap gap-3">
                 <span className="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-emerald-700">
-                  actual rows: {metrics.actualRows}
+                  Yahoo actual points: {metrics.actualRows}
                 </span>
                 <span className="rounded-full border border-emerald-200 bg-white px-4 py-2 text-[10px] font-black uppercase tracking-widest text-emerald-700">
-                  matrix actual overlay: {matrixActualRowsForForecast.length}
+                  Yahoo actual overlay: {yahooActualRows.length}
                 </span>
                 <span className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-blue-700">
                   selected: {selectedModel.label}
@@ -1521,11 +2154,22 @@ export default function FinalDeepMLEvaluationPage() {
                         style: { textAnchor: "middle", fontSize: 12, fontWeight: 700, fill: "#64748b" },
                       }}
                     />
-                    <Tooltip content={<ForecastTooltip />} />
+                    <Tooltip wrapperStyle={{ maxWidth: "min(86vw, 760px)", zIndex: 60 }} content={<ForecastTooltip />} />
                     <Legend />
                     <Area type="monotone" dataKey="upper" name="Upper 95%" stroke="#d97706" fill="#fde68a" fillOpacity={0.28} dot={false} connectNulls />
                     <Area type="monotone" dataKey="lower" name="Lower 95%" stroke="#d97706" fill="#ffffff" fillOpacity={1} dot={false} connectNulls />
-                    <Line type="monotone" dataKey="actual" name="Actual Gold Price" stroke="#16a34a" strokeWidth={2.6} dot={false} connectNulls />
+                    <Line
+                      type="monotone"
+                      dataKey="actual"
+                      name="Actual Gold (Yahoo)"
+                      stroke="#16a34a"
+                      strokeWidth={0}
+                      dot={{ r: 4, strokeWidth: 2 }}
+                      activeDot={{ r: 6 }}
+                      connectNulls={false}
+                      isAnimationActive={false}
+                    />
+                    <Line type="monotone" dataKey="actual" name="Actual Gold (Yahoo) Price" stroke="#16a34a" strokeWidth={2.6} dot={false} connectNulls />
                     <Line type="monotone" dataKey="forecast" name={`${selectedModel.label} Forecast`} stroke="#2563eb" strokeWidth={2.6} dot={false} connectNulls />
                   </AreaChart>
                 </ResponsiveContainer>
@@ -1637,7 +2281,7 @@ export default function FinalDeepMLEvaluationPage() {
               source: {selectedModel.label} rollforward
             </span>
             <span className="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-emerald-700">
-              actual rows: {diagnosticMetrics.actualRows}
+              Yahoo actual points: {diagnosticMetrics.actualRows}
             </span>
             <span className="rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-amber-700">
               horizon: {diagnosticHorizon}
@@ -1704,7 +2348,7 @@ export default function FinalDeepMLEvaluationPage() {
                   <Legend />
                   <ReferenceLine y={0} stroke="#64748b" strokeDasharray="4 4" />
                   {shockOverlays()}
-                  <Line type="monotone" dataKey="residual" name="Residual Actual - Forecast" stroke="#7c3aed" strokeWidth={2} dot={false} connectNulls />
+                  <Line type="monotone" dataKey="residual" name="Residual (visual only) Actual - Forecast" stroke="#7c3aed" strokeWidth={2} dot={false} connectNulls />
                   <Line type="monotone" dataKey="absolute_percentage_error" name="Absolute Percentage Error" stroke="#dc2626" strokeWidth={2} dot={false} connectNulls />
                   <Brush dataKey="date" height={30} stroke="#7c3aed" travellerWidth={10} />
                 </LineChart>

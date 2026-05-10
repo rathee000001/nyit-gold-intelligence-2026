@@ -217,6 +217,26 @@ const DATA_ARTIFACTS: DataArtifact[] = [
   },
 ];
 
+const SQL_EXAMPLE_QUERIES = [
+  {
+    label: "Latest 50 gold rows",
+    query: "SELECT date, gold_price, policy_unc, gpr_index, real_yield FROM matrix ORDER BY date DESC LIMIT 50",
+  },
+  {
+    label: "Post-2023 factor view",
+    query: "SELECT date, gold_price, policy_unc, gpr_index, real_yield FROM matrix WHERE date >= '2023-01-01' ORDER BY date ASC LIMIT 250",
+  },
+  {
+    label: "Highest gold observations",
+    query: "SELECT date, gold_price, policy_unc, gpr_index FROM matrix WHERE gold_price > 0 ORDER BY gold_price DESC LIMIT 25",
+  },
+  {
+    label: "Average gold by split",
+    query: "SELECT split, COUNT(*) AS rows, AVG(gold_price) AS avg_gold, MIN(date) AS first_date, MAX(date) AS last_date FROM matrix GROUP BY split ORDER BY rows DESC",
+  },
+];
+
+
 function cleanHref(pathValue: string) {
   return `/${String(pathValue || "").replace(/^\/+/, "").replace(/^public\//, "")}`;
 }
@@ -545,6 +565,28 @@ function SectionTitle({
   );
 }
 
+
+function cleanAiModeLabel(mode?: string) {
+  if (!mode) return "Gold AI";
+  if (mode === "rag_sql_orchestrator_ai") return "RAG + SQL Orchestrator";
+  if (mode === "rag_sql_orchestrator_fallback") return "RAG + SQL Fallback";
+  if (mode === "artifact_blob_ai") return "RAG + SQL AI";
+  if (mode === "artifact_fallback") return "Artifact Fallback";
+  if (mode === "general_ai") return "General AI";
+  if (mode === "needs_openrouter_key") return "Needs API Key";
+  if (mode === "openrouter_api_error") return "AI Provider Error";
+  if (mode === "deep_ml_forecast_ai") return "Deep ML Forecast AI";
+  if (mode === "error") return "AI Error";
+  return String(mode)
+    .replaceAll("_", " ")
+    .replace(/\bRAG + SQL Orchestrator\b/i, "RAG + SQL Orchestrator")
+    .replace(/\brag sql orchestrator fallback\b/i, "RAG + SQL Fallback")
+    .replace(/\bartifact blob ai\b/i, "RAG + SQL AI")
+    .replace(/\bai\b/i, "AI")
+    .trim();
+}
+
+
 export default function DataMatrixPage() {
   const [catalog, setCatalog] = useState<ArtifactBlob[]>([]);
   const [jsonMap, setJsonMap] = useState<Record<string, any>>({});
@@ -565,12 +607,17 @@ export default function DataMatrixPage() {
   const [aiMessages, setAiMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
-      mode: "artifact_blob_ai",
+      mode: "RAG + SQL Orchestrator",
       content:
-        "I can explain the refreshed Deep ML matrix, Step 10 source update, Step 10A gold live patch, and Step 11 governed feature store using approved artifacts.",
+        "I can explain the refreshed Deep ML matrix, Step 10 source update, Step 10A gold live patch, Step 11 governed feature store, and any supplied read-only SQL result using approved artifacts.",
       sources: [],
     },
   ]);
+
+  const [sqlQuery, setSqlQuery] = useState(SQL_EXAMPLE_QUERIES[0].query);
+  const [sqlRows, setSqlRows] = useState<any[]>([]);
+  const [sqlError, setSqlError] = useState("");
+  const [sqlBusy, setSqlBusy] = useState(false);
 
   useEffect(() => {
     async function loadPageData() {
@@ -682,6 +729,27 @@ export default function DataMatrixPage() {
   const sortedRows = useMemo(() => sortRows(filteredRows, sortKey, sortDirection), [filteredRows, sortKey, sortDirection]);
   const tableRows = sortedRows.slice(0, tableLimit);
   const chartRows = downsampleRows(sortedRows, 700);
+  const sqlColumns = useMemo(() => columnsFromRows(sqlRows), [sqlRows]);
+
+  function buildMatrixSqlContextForAi() {
+    if (!sqlRows.length) return null;
+
+    return {
+      source: "data_matrix_sql_explorer",
+      title: "Deep ML Data Matrix SQL result",
+      tableName: "matrix",
+      query: sqlQuery,
+      rowCount: sqlRows.length,
+      columns: sqlColumns,
+      rows: sqlRows.slice(0, 50),
+      notes: [
+        "This is a read-only SQL result from the browser Data Matrix explorer.",
+        "Rows come from the loaded matrix table named matrix.",
+        "Do not infer causality, model quality, validation status, or forecast guarantees from SQL rows alone.",
+        "If only a limited SQL result is supplied, summarize only the displayed rows and columns.",
+      ],
+    };
+  }
 
   const latestRow = matrixRows[matrixRows.length - 1] || {};
   const firstRow = matrixRows[0] || {};
@@ -815,7 +883,7 @@ export default function DataMatrixPage() {
     setAiBusy(true);
 
     try {
-      const response = await fetch("/api/gold-ai", {
+      const response = await fetch("/api/rag-ai", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -824,6 +892,7 @@ export default function DataMatrixPage() {
           question: prompt,
           pagePath: "/data-matrix",
           history: nextMessages.slice(-8),
+          sqlContext: buildMatrixSqlContextForAi(),
         }),
       });
 
@@ -877,6 +946,343 @@ export default function DataMatrixPage() {
     anchor.remove();
     URL.revokeObjectURL(url);
   }
+
+
+  function isSafeSelectQuery(query: string) {
+    const normalized = query.trim().replace(/\s+/g, " ").toLowerCase();
+
+    if (!normalized.startsWith("select ")) {
+      return "Only SELECT queries are allowed in this browser SQL explorer.";
+    }
+
+    const forbidden = [
+      "insert ",
+      "update ",
+      "delete ",
+      "drop ",
+      "alter ",
+      "create ",
+      "attach ",
+      "detach ",
+      "truncate ",
+      "replace ",
+      "into ",
+      "load ",
+      "require",
+      "import ",
+      "export ",
+      "localstorage",
+      "sessionstorage",
+      "document.",
+      "window.",
+      "fetch(",
+    ];
+
+    const blocked = forbidden.find((word) => normalized.includes(word));
+
+    if (blocked) {
+      return `Blocked SQL token: ${blocked.trim()}. This explorer is read-only.`;
+    }
+
+    if (!normalized.includes(" from matrix")) {
+      return "Use FROM matrix. The refreshed Data Matrix is exposed as the SQL table named matrix.";
+    }
+
+    return "";
+  }
+
+  function splitSqlSelectList(value: string) {
+    const parts: string[] = [];
+    let current = "";
+    let depth = 0;
+
+    for (const char of value) {
+      if (char === "(") depth += 1;
+      if (char === ")") depth -= 1;
+
+      if (char === "," && depth === 0) {
+        parts.push(current.trim());
+        current = "";
+        continue;
+      }
+
+      current += char;
+    }
+
+    if (current.trim()) parts.push(current.trim());
+    return parts;
+  }
+
+  function stripSqlQuotes(value: string) {
+    return String(value || "")
+      .trim()
+      .replace(/^['"]|['"]$/g, "");
+  }
+
+  function compareSqlValues(left: any, operator: string, rightRaw: string) {
+    const right = stripSqlQuotes(rightRaw);
+    const leftNumber = Number(left);
+    const rightNumber = Number(right);
+    const bothNumeric = Number.isFinite(leftNumber) && Number.isFinite(rightNumber);
+
+    const a = bothNumeric ? leftNumber : String(left ?? "");
+    const b = bothNumeric ? rightNumber : String(right ?? "");
+
+    if (operator === "=") return a === b;
+    if (operator === "!=" || operator === "<>") return a !== b;
+    if (operator === ">") return a > b;
+    if (operator === ">=") return a >= b;
+    if (operator === "<") return a < b;
+    if (operator === "<=") return a <= b;
+
+    if (operator.toLowerCase() === "like") {
+      const pattern = String(b).replaceAll("%", "").toLowerCase();
+      return String(left ?? "").toLowerCase().includes(pattern);
+    }
+
+    return false;
+  }
+
+  function applySqlWhere(rows: any[], whereClause: string) {
+    if (!whereClause.trim()) return rows;
+
+    const conditions = whereClause
+      .split(/\s+and\s+/i)
+      .map((item) => item.trim())
+      .filter(Boolean);
+
+    return rows.filter((row) =>
+      conditions.every((condition) => {
+        const match = condition.match(/^([a-zA-Z0-9_]+)\s*(=|!=|<>|>=|<=|>|<|like)\s*(.+)$/i);
+        if (!match) return false;
+
+        const [, column, operator, value] = match;
+        return compareSqlValues(row?.[column], operator, value);
+      })
+    );
+  }
+
+  function parseSqlAlias(expression: string) {
+    const parts = expression.split(/\s+as\s+/i);
+    return {
+      body: parts[0].trim(),
+      alias: (parts[1] || "").trim(),
+    };
+  }
+
+  function aggregateSqlRows(rows: any[], selectClause: string, groupByClause: string) {
+    const groupColumn = groupByClause.trim().split(/\s+/)[0];
+    const expressions = splitSqlSelectList(selectClause);
+    const groups = new Map<string, any[]>();
+
+    for (const row of rows) {
+      const key = String(row?.[groupColumn] ?? "");
+      groups.set(key, [...(groups.get(key) || []), row]);
+    }
+
+    return Array.from(groups.entries()).map(([groupValue, groupRows]) => {
+      const out: Record<string, any> = {};
+
+      for (const expression of expressions) {
+        const { body, alias } = parseSqlAlias(expression);
+
+        if (body === groupColumn) {
+          out[alias || groupColumn] = groupValue;
+          continue;
+        }
+
+        if (/^count\(\*\)$/i.test(body)) {
+          out[alias || "rows"] = groupRows.length;
+          continue;
+        }
+
+        const avgMatch = body.match(/^avg\(([a-zA-Z0-9_]+)\)$/i);
+        if (avgMatch) {
+          const column = avgMatch[1];
+          const values = groupRows.map((row) => Number(row?.[column])).filter(Number.isFinite);
+          out[alias || `avg_${column}`] = values.length
+            ? values.reduce((sum, value) => sum + value, 0) / values.length
+            : null;
+          continue;
+        }
+
+        const minMatch = body.match(/^min\(([a-zA-Z0-9_]+)\)$/i);
+        if (minMatch) {
+          const column = minMatch[1];
+          const values = groupRows
+            .map((row) => row?.[column])
+            .filter((value) => value !== undefined && value !== null && value !== "")
+            .sort();
+          out[alias || `min_${column}`] = values.length ? values[0] : null;
+          continue;
+        }
+
+        const maxMatch = body.match(/^max\(([a-zA-Z0-9_]+)\)$/i);
+        if (maxMatch) {
+          const column = maxMatch[1];
+          const values = groupRows
+            .map((row) => row?.[column])
+            .filter((value) => value !== undefined && value !== null && value !== "")
+            .sort();
+          out[alias || `max_${column}`] = values.length ? values[values.length - 1] : null;
+          continue;
+        }
+
+        out[alias || body] = groupRows[0]?.[body] ?? null;
+      }
+
+      return out;
+    });
+  }
+
+  function projectSqlRows(rows: any[], selectClause: string) {
+    const select = selectClause.trim();
+
+    if (select === "*") return rows.map((row) => ({ ...row }));
+
+    const expressions = splitSqlSelectList(select);
+
+    return rows.map((row) => {
+      const out: Record<string, any> = {};
+
+      for (const expression of expressions) {
+        const { body, alias } = parseSqlAlias(expression);
+        out[alias || body] = row?.[body] ?? null;
+      }
+
+      return out;
+    });
+  }
+
+  function runSqlLite(query: string, rows: any[]) {
+    const cleaned = query.trim().replace(/;+\s*$/, "").replace(/\s+/g, " ");
+    const lower = cleaned.toLowerCase();
+
+    const selectStart = lower.indexOf("select ");
+    const fromIndex = lower.indexOf(" from matrix");
+
+    if (selectStart !== 0 || fromIndex === -1) {
+      throw new Error("Use syntax: SELECT ... FROM matrix ...");
+    }
+
+    const selectClause = cleaned.slice("select ".length, fromIndex).trim();
+    const rest = cleaned.slice(fromIndex + " from matrix".length).trim();
+    const restLower = rest.toLowerCase();
+
+    function clause(name: string, nextNames: string[]) {
+      const token = `${name} `;
+      const startIndex = restLower.indexOf(token);
+      if (startIndex === -1) return "";
+
+      const valueStart = startIndex + token.length;
+      const nextPositions = nextNames
+        .map((next) => restLower.indexOf(`${next} `, valueStart))
+        .filter((index) => index >= 0);
+
+      const valueEnd = nextPositions.length ? Math.min(...nextPositions) : rest.length;
+      return rest.slice(valueStart, valueEnd).trim();
+    }
+
+    const whereClause = clause("where", ["group by", "order by", "limit"]);
+    const groupByClause = clause("group by", ["order by", "limit"]);
+    const orderByClause = clause("order by", ["limit"]);
+    const limitClause = clause("limit", []);
+
+    let resultRows = applySqlWhere(rows.map((row) => ({ ...row })), whereClause);
+
+    if (groupByClause) {
+      resultRows = aggregateSqlRows(resultRows, selectClause, groupByClause);
+    } else {
+      resultRows = projectSqlRows(resultRows, selectClause);
+    }
+
+    if (orderByClause) {
+      const [column, directionRaw] = orderByClause.split(/\s+/);
+      const direction = String(directionRaw || "asc").toLowerCase() === "desc" ? "desc" : "asc";
+      resultRows = sortRows(resultRows, column, direction);
+    }
+
+    const requestedLimit = Number(limitClause || 1000);
+    const safeLimit = Number.isFinite(requestedLimit)
+      ? Math.max(1, Math.min(1000, requestedLimit))
+      : 1000;
+
+    return resultRows.slice(0, safeLimit);
+  }
+
+  async function runSqlQuery(queryOverride?: string) {
+    const query = String(queryOverride || sqlQuery || "").trim();
+
+    if (!query) {
+      setSqlError("Enter a SQL SELECT query first.");
+      return;
+    }
+
+    if (!matrixRows.length) {
+      setSqlError("Matrix rows are not loaded yet.");
+      return;
+    }
+
+    const safetyError = isSafeSelectQuery(query);
+
+    if (safetyError) {
+      setSqlError(safetyError);
+      setSqlRows([]);
+      return;
+    }
+
+    setSqlBusy(true);
+    setSqlError("");
+
+    try {
+      const resultRows = runSqlLite(query, matrixRows);
+      setSqlRows(resultRows);
+      setSqlQuery(query);
+    } catch (error) {
+      setSqlRows([]);
+      setSqlError(error instanceof Error ? error.message : "SQL query failed.");
+    } finally {
+      setSqlBusy(false);
+    }
+  }
+
+  function downloadSqlResults() {
+    if (!sqlRows.length) return;
+
+    const columns = sqlColumns.length ? sqlColumns : columnsFromRows(sqlRows);
+    const csv = toCsvDownload(sqlRows, columns);
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+
+    anchor.href = url;
+    anchor.download = "gold_data_matrix_sql_result.csv";
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function askAIAboutSqlResults() {
+    const preview = sqlRows.slice(0, 8);
+    const columns = sqlColumns.slice(0, 16);
+
+    askAI(
+      [
+        "Explain this SQL result from the Data Matrix page in business language.",
+        "",
+        "SQL query:",
+        sqlQuery,
+        "",
+        `Rows returned: ${sqlRows.length}`,
+        `Columns: ${columns.join(", ")}`,
+        "",
+        "Preview rows:",
+        JSON.stringify(preview, null, 2),
+      ].join("\n")
+    );
+  }
+
 
   return (
     <main className="min-h-screen bg-slate-50 px-5 py-8 text-slate-950">
@@ -1129,7 +1535,7 @@ export default function DataMatrixPage() {
           <StatCard
             label="Blob Catalog"
             value={`${formatNumber(catalog.length)} files`}
-            note={`${formatNumber(matrixBlobs.length)} matrix/data-related artifact blobs detected by this page.`}
+            note={`${formatNumber(matrixBlobs.length)} matrix/data-related approved artifacts detected by this page.`}
           />
           <StatCard
             label="Factor State Rows"
@@ -1237,7 +1643,7 @@ export default function DataMatrixPage() {
                   >
                     {message.mode ? (
                       <div className="mb-2 inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-blue-700">
-                        {message.mode.replaceAll("_", " ")}
+                        {cleanAiModeLabel(message.mode)}
                       </div>
                     ) : null}
                     <div className="whitespace-pre-wrap text-sm leading-7">{message.content}</div>
@@ -1292,6 +1698,152 @@ export default function DataMatrixPage() {
             </Link>
           </div>
         </section>
+
+        <section className="mt-8 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+          <SectionTitle
+            eyebrow="SQL MATRIX EXPLORER"
+            title="Run SQL on the refreshed Data Matrix"
+            description="This read-only SQL lab exposes the loaded Deep ML matrix as a table named matrix. Use SELECT queries to filter, aggregate, inspect, export, and explain model-ready rows without changing the underlying artifacts."
+          />
+
+          <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
+            <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <div className="text-[10px] font-black uppercase tracking-[0.22em] text-blue-600">
+                    SQL Input
+                  </div>
+                  <p className="mt-1 text-xs font-semibold leading-5 text-slate-500">
+                    Table name: <span className="font-black text-slate-800">matrix</span>. Read-only SELECT queries only.
+                  </p>
+                </div>
+
+                <div className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-emerald-700">
+                  {formatNumber(matrixRows.length)} rows available
+                </div>
+              </div>
+
+              <textarea
+                value={sqlQuery}
+                onChange={(event) => setSqlQuery(event.target.value)}
+                rows={7}
+                spellCheck={false}
+                className="w-full resize-y rounded-2xl border border-slate-200 bg-white p-4 font-mono text-sm leading-6 text-slate-900 outline-none transition focus:border-blue-300 focus:ring-4 focus:ring-blue-100"
+                placeholder="SELECT date, gold_price FROM matrix ORDER BY date DESC LIMIT 50"
+              />
+
+              {sqlError ? (
+                <div className="mt-3 rounded-2xl border border-rose-200 bg-rose-50 p-3 text-sm font-bold leading-6 text-rose-700">
+                  {sqlError}
+                </div>
+              ) : null}
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={() => runSqlQuery()}
+                  disabled={sqlBusy || !matrixRows.length}
+                  className="rounded-full bg-blue-600 px-5 py-3 text-xs font-black uppercase tracking-[0.16em] text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300"
+                >
+                  {sqlBusy ? "Running SQL..." : "Run SQL"}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={downloadSqlResults}
+                  disabled={!sqlRows.length}
+                  className="rounded-full border border-slate-200 bg-white px-5 py-3 text-xs font-black uppercase tracking-[0.16em] text-slate-700 transition hover:border-blue-200 hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Download SQL Result
+                </button>
+
+                <button
+                  type="button"
+                  onClick={askAIAboutSqlResults}
+                  disabled={!sqlRows.length || aiBusy}
+                  className="rounded-full border border-amber-200 bg-amber-50 px-5 py-3 text-xs font-black uppercase tracking-[0.16em] text-amber-700 transition hover:bg-amber-100 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Ask AI About Result
+                </button>
+              </div>
+
+              <div className="mt-4 grid gap-2 md:grid-cols-2">
+                {SQL_EXAMPLE_QUERIES.map((example) => (
+                  <button
+                    key={example.label}
+                    type="button"
+                    onClick={() => {
+                      setSqlQuery(example.query);
+                      runSqlQuery(example.query);
+                    }}
+                    className="rounded-2xl border border-slate-200 bg-white p-3 text-left transition hover:border-blue-200 hover:bg-blue-50"
+                  >
+                    <div className="text-[10px] font-black uppercase tracking-[0.18em] text-blue-600">
+                      {example.label}
+                    </div>
+                    <div className="mt-2 line-clamp-2 font-mono text-[11px] leading-5 text-slate-500">
+                      {example.query}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[1.5rem] border border-slate-200 bg-white p-4">
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <div className="text-[10px] font-black uppercase tracking-[0.22em] text-slate-400">
+                    SQL Results
+                  </div>
+                  <p className="mt-1 text-xs font-semibold leading-5 text-slate-500">
+                    Showing up to 1,000 returned rows. Export for deeper analysis.
+                  </p>
+                </div>
+
+                <div className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-blue-700">
+                  {formatNumber(sqlRows.length)} rows
+                </div>
+              </div>
+
+              {sqlRows.length ? (
+                <div className="max-h-[440px] overflow-auto rounded-2xl border border-slate-200">
+                  <table className="min-w-full text-left text-xs">
+                    <thead className="sticky top-0 z-10 bg-slate-100 text-[10px] uppercase tracking-[0.16em] text-slate-500">
+                      <tr>
+                        {sqlColumns.slice(0, 18).map((column) => (
+                          <th key={column} className="whitespace-nowrap px-3 py-3 font-black">
+                            {column}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {sqlRows.slice(0, 150).map((row, rowIndex) => (
+                        <tr key={rowIndex} className="hover:bg-blue-50/40">
+                          {sqlColumns.slice(0, 18).map((column) => (
+                            <td key={`${rowIndex}-${column}`} className="max-w-[220px] truncate px-3 py-2 font-semibold text-slate-700">
+                              {formatMaybe(row?.[column])}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-6 text-sm font-semibold leading-7 text-slate-500">
+                  No SQL result yet. Run an example query or write your own SELECT query using the matrix table.
+                </div>
+              )}
+
+              <div className="mt-4 rounded-2xl border border-yellow-200 bg-yellow-50 p-4 text-xs font-bold leading-6 text-yellow-900">
+                Professor-safe note: SQL is used here for data exploration only. It does not change model training, forecast artifacts, or approved JSON/CSV outputs.
+              </div>
+            </div>
+          </div>
+        </section>
+
+
 
         <section className="mt-8 rounded-[2.5rem] border border-slate-200 bg-white p-6 shadow-sm">
           <SectionTitle
